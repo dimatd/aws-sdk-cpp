@@ -13,9 +13,13 @@
 #include "aws/ec2/model/DescribeAddressesRequest.h"
 #include <iomanip>
 
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 Aws::SDKOptions options;
 
-#define JCHECK(expr) if(!(expr)) { OutputMsg = #expr; return false; }
+#define JCHECK(expr) if(!(expr)) { snprintf(OutputMsg, OutputMsgSize, "%s", #expr); return false; }
 
 namespace UE
 {
@@ -209,7 +213,7 @@ namespace UE
 		JCHECK(instances.size() == 1);
 
 		const Aws::String& Ip = instances[0].GetPublicIpAddress();
-		strncpy_s(OutIp, OutIpSize, Ip.c_str(), Ip.size());
+		std::strncpy(OutIp, Ip.c_str(), OutIpSize);
 		return true;
 	}
 }
