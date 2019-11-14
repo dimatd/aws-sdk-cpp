@@ -33,7 +33,22 @@ namespace UE
 		Aws::ShutdownAPI(options);
 	}
 
-	bool CreateInstance(const char* InstanceName, const char* AmiID, Aws::EC2::Model::InstanceType InstanceType, const char* Region, char* OutputMsg, size_t OutputMsgSize)
+	bool CheckConfig(char* OutputMsg, size_t OutputMsgSize)
+	{
+		Aws::EC2::EC2Client ec2;
+		Aws::EC2::Model::DescribeAddressesRequest request;
+		auto outcome = ec2.DescribeAddresses(request);
+		if (outcome.IsSuccess())
+		{
+			return true;
+		}
+
+		snprintf(OutputMsg, OutputMsgSize, "CheckConfig : '%s'"
+			, outcome.GetError().GetMessage().c_str());
+		return false;
+	}
+
+	bool CreateInstance(const char* InstanceName, const char* AmiID, Aws::EC2::Model::InstanceType InstanceType, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutInstanceID, size_t OutInstanceIDSize)
 	{
 		//char Outputbuffer[1024];
 		Aws::String instanceName = InstanceName;
@@ -99,6 +114,11 @@ namespace UE
 			, instance_id.c_str()
 			, AmiID);
 
+#ifdef PLATFORM_WINDOWS
+		strncpy_s(OutInstanceID, OutInstanceIDSize, instance_id.c_str(), instance_id.size());
+#else
+		std::strncpy(OutInstanceID, instance_id.c_str(), OutInstanceIDSize);
+#endif
 		return true;
 	}
 
@@ -213,7 +233,11 @@ namespace UE
 		JCHECK(instances.size() == 1);
 
 		const Aws::String& Ip = instances[0].GetPublicIpAddress();
+#ifdef PLATFORM_WINDOWS
+		strncpy_s(OutIp, OutIpSize, Ip.c_str(), Ip.size());
+#else
 		std::strncpy(OutIp, Ip.c_str(), OutIpSize);
+#endif
 		return true;
 	}
 }
