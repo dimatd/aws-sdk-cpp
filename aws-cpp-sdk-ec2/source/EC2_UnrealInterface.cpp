@@ -207,7 +207,9 @@ namespace UE
 		return true;
 	}
 
-	bool GetInstanceIP(const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutIp, size_t OutIpSize)
+
+
+	bool GetInstanceIP(const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutPublicIp, size_t OutIpPublicSize, char* OutPrivateIp, size_t OutIpPrivateSize)
 	{
 		Aws::String instance_id = InstanceID;
 
@@ -232,11 +234,15 @@ namespace UE
 		auto instances = reservation.GetInstances();
 		JCHECK(instances.size() == 1);
 
-		const Aws::String& Ip = instances[0].GetPublicIpAddress();
+		const Aws::String& PublicIP  = instances[0].GetPublicIpAddress();
+		const Aws::String& PrivateIP = instances[0].GetPrivateIpAddress();
+
 #ifdef PLATFORM_WINDOWS
-		strncpy_s(OutIp, OutIpSize, Ip.c_str(), Ip.size());
+		strncpy_s(OutPublicIp, OutIpPublicSize, PublicIP.c_str(), PublicIP.size());
+		strncpy_s(OutPrivateIp, OutIpPrivateSize, PrivateIP.c_str(), PrivateIP.size());
 #else
-		std::strncpy(OutIp, Ip.c_str(), OutIpSize);
+		std::strncpy(OutPublicIp, PublicIP.c_str(), OutIpPublicSize);
+		std::strncpy(OutPrivateIp, PrivateIP.c_str(), OutIpPrivateSize);
 #endif
 		return true;
 	}

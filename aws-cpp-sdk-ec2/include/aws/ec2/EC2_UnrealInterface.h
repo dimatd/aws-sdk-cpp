@@ -16,5 +16,5 @@ namespace UE
 	AWS_EC2_API bool StopInstance    (const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize);
 
 	AWS_EC2_API bool GetInstanceState(const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize, int& OutInstanceState);
-	AWS_EC2_API bool GetInstanceIP   (const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutIp, size_t OutIpSize);
+	AWS_EC2_API bool GetInstanceIP   (const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutPublicIp, size_t OutIpPublicSize, char* OutPrivateIp, size_t OutIpPrivateSize);
 }
