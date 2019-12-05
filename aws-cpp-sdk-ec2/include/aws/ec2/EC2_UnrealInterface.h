@@ -10,7 +10,7 @@ namespace UE
 
 	AWS_EC2_API bool CheckConfig(char* OutputMsg, size_t OutputMsgSize);
 
-	AWS_EC2_API bool CreateInstance  (const char* InstanceName, const char* AmiID, Aws::EC2::Model::InstanceType InstanceType, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutInstanceID, size_t OutInstanceIDSize);
+	AWS_EC2_API bool CreateInstance  (const char* InstanceName, const char* AmiID, const char* SecurityGroup, Aws::EC2::Model::InstanceType InstanceType, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutInstanceID, size_t OutInstanceIDSize);
 
 	AWS_EC2_API bool StartInstance   (const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize);
 	AWS_EC2_API bool StopInstance    (const char* InstanceID, const char* Region, char* OutputMsg, size_t OutputMsgSize);

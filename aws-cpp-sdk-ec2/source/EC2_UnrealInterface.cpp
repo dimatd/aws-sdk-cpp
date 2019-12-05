@@ -48,11 +48,14 @@ namespace UE
 		return false;
 	}
 
-	bool CreateInstance(const char* InstanceName, const char* AmiID, Aws::EC2::Model::InstanceType InstanceType, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutInstanceID, size_t OutInstanceIDSize)
+	bool CreateInstance(const char* InstanceName, const char* AmiID, const char* SecurityGroup, Aws::EC2::Model::InstanceType InstanceType, const char* Region, char* OutputMsg, size_t OutputMsgSize, char* OutInstanceID, size_t OutInstanceIDSize)
 	{
 		//char Outputbuffer[1024];
 		Aws::String instanceName = InstanceName;
 		Aws::String ami_id = AmiID;
+
+		Aws::Vector<Aws::String> SecurityGroups;
+		SecurityGroups.push_back(SecurityGroup);
 
 		// snippet-start:[ec2.cpp.create_instance.code]
 		Aws::Client::ClientConfiguration clientConfiguration;
@@ -66,6 +69,7 @@ namespace UE
 		run_request.SetInstanceType(InstanceType);
 		run_request.SetMinCount(1);
 		run_request.SetMaxCount(1);
+		run_request.SetSecurityGroupIds(SecurityGroups);
 
 		auto run_outcome = ec2.RunInstances(run_request);
 
