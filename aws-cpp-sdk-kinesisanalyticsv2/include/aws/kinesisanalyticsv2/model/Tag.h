@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/kinesisanalyticsv2/KinesisAnalyticsV2_EXPORTS.h>
@@ -35,13 +25,12 @@ namespace Model
 
   /**
    * <p>A key-value pair (the value is optional) that you can define and assign to
-   * AWS resources. If you specify a tag that already exists, the tag value is
+   * Amazon resources. If you specify a tag that already exists, the tag value is
    * replaced with the value that you specify in the request. Note that the maximum
    * number of application tags includes system tags. The maximum number of
    * user-defined application tags is 50. For more information, see <a
-   * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using
-   * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management
-   * Guide</i>.</p><p><h3>See Also:</h3>   <a
+   * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
+   * Tagging</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/Tag">AWS
    * API Reference</a></p>
    */

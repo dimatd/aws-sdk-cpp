@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ecs/model/DescribeTaskSetsRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -25,7 +15,8 @@ using namespace Aws::Utils;
 DescribeTaskSetsRequest::DescribeTaskSetsRequest() : 
     m_clusterHasBeenSet(false),
     m_serviceHasBeenSet(false),
-    m_taskSetsHasBeenSet(false)
+    m_taskSetsHasBeenSet(false),
+    m_includeHasBeenSet(false)
 {
 }
 
@@ -53,6 +44,17 @@ Aws::String DescribeTaskSetsRequest::SerializePayload() const
      taskSetsJsonList[taskSetsIndex].AsString(m_taskSets[taskSetsIndex]);
    }
    payload.WithArray("taskSets", std::move(taskSetsJsonList));
+
+  }
+
+  if(m_includeHasBeenSet)
+  {
+   Array<JsonValue> includeJsonList(m_include.size());
+   for(unsigned includeIndex = 0; includeIndex < includeJsonList.GetLength(); ++includeIndex)
+   {
+     includeJsonList[includeIndex].AsString(TaskSetFieldMapper::GetNameForTaskSetField(m_include[includeIndex]));
+   }
+   payload.WithArray("include", std::move(includeJsonList));
 
   }
 

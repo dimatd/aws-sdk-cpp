@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/Stage.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,11 +20,16 @@ namespace Model
 
 Stage::Stage() : 
     m_accessLogSettingsHasBeenSet(false),
+    m_apiGatewayManaged(false),
+    m_apiGatewayManagedHasBeenSet(false),
+    m_autoDeploy(false),
+    m_autoDeployHasBeenSet(false),
     m_clientCertificateIdHasBeenSet(false),
     m_createdDateHasBeenSet(false),
     m_defaultRouteSettingsHasBeenSet(false),
     m_deploymentIdHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_lastDeploymentStatusMessageHasBeenSet(false),
     m_lastUpdatedDateHasBeenSet(false),
     m_routeSettingsHasBeenSet(false),
     m_stageNameHasBeenSet(false),
@@ -45,11 +40,16 @@ Stage::Stage() :
 
 Stage::Stage(JsonView jsonValue) : 
     m_accessLogSettingsHasBeenSet(false),
+    m_apiGatewayManaged(false),
+    m_apiGatewayManagedHasBeenSet(false),
+    m_autoDeploy(false),
+    m_autoDeployHasBeenSet(false),
     m_clientCertificateIdHasBeenSet(false),
     m_createdDateHasBeenSet(false),
     m_defaultRouteSettingsHasBeenSet(false),
     m_deploymentIdHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_lastDeploymentStatusMessageHasBeenSet(false),
     m_lastUpdatedDateHasBeenSet(false),
     m_routeSettingsHasBeenSet(false),
     m_stageNameHasBeenSet(false),
@@ -66,6 +66,20 @@ Stage& Stage::operator =(JsonView jsonValue)
     m_accessLogSettings = jsonValue.GetObject("accessLogSettings");
 
     m_accessLogSettingsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("apiGatewayManaged"))
+  {
+    m_apiGatewayManaged = jsonValue.GetBool("apiGatewayManaged");
+
+    m_apiGatewayManagedHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("autoDeploy"))
+  {
+    m_autoDeploy = jsonValue.GetBool("autoDeploy");
+
+    m_autoDeployHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("clientCertificateId"))
@@ -101,6 +115,13 @@ Stage& Stage::operator =(JsonView jsonValue)
     m_description = jsonValue.GetString("description");
 
     m_descriptionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("lastDeploymentStatusMessage"))
+  {
+    m_lastDeploymentStatusMessage = jsonValue.GetString("lastDeploymentStatusMessage");
+
+    m_lastDeploymentStatusMessageHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("lastUpdatedDate"))
@@ -160,6 +181,18 @@ JsonValue Stage::Jsonize() const
 
   }
 
+  if(m_apiGatewayManagedHasBeenSet)
+  {
+   payload.WithBool("apiGatewayManaged", m_apiGatewayManaged);
+
+  }
+
+  if(m_autoDeployHasBeenSet)
+  {
+   payload.WithBool("autoDeploy", m_autoDeploy);
+
+  }
+
   if(m_clientCertificateIdHasBeenSet)
   {
    payload.WithString("clientCertificateId", m_clientCertificateId);
@@ -186,6 +219,12 @@ JsonValue Stage::Jsonize() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
+
+  }
+
+  if(m_lastDeploymentStatusMessageHasBeenSet)
+  {
+   payload.WithString("lastDeploymentStatusMessage", m_lastDeploymentStatusMessage);
 
   }
 

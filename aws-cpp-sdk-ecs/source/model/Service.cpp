@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ecs/model/Service.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -43,7 +33,9 @@ Service::Service() :
     m_pendingCountHasBeenSet(false),
     m_launchType(LaunchType::NOT_SET),
     m_launchTypeHasBeenSet(false),
+    m_capacityProviderStrategyHasBeenSet(false),
     m_platformVersionHasBeenSet(false),
+    m_platformFamilyHasBeenSet(false),
     m_taskDefinitionHasBeenSet(false),
     m_deploymentConfigurationHasBeenSet(false),
     m_taskSetsHasBeenSet(false),
@@ -64,7 +56,9 @@ Service::Service() :
     m_enableECSManagedTags(false),
     m_enableECSManagedTagsHasBeenSet(false),
     m_propagateTags(PropagateTags::NOT_SET),
-    m_propagateTagsHasBeenSet(false)
+    m_propagateTagsHasBeenSet(false),
+    m_enableExecuteCommand(false),
+    m_enableExecuteCommandHasBeenSet(false)
 {
 }
 
@@ -83,7 +77,9 @@ Service::Service(JsonView jsonValue) :
     m_pendingCountHasBeenSet(false),
     m_launchType(LaunchType::NOT_SET),
     m_launchTypeHasBeenSet(false),
+    m_capacityProviderStrategyHasBeenSet(false),
     m_platformVersionHasBeenSet(false),
+    m_platformFamilyHasBeenSet(false),
     m_taskDefinitionHasBeenSet(false),
     m_deploymentConfigurationHasBeenSet(false),
     m_taskSetsHasBeenSet(false),
@@ -104,7 +100,9 @@ Service::Service(JsonView jsonValue) :
     m_enableECSManagedTags(false),
     m_enableECSManagedTagsHasBeenSet(false),
     m_propagateTags(PropagateTags::NOT_SET),
-    m_propagateTagsHasBeenSet(false)
+    m_propagateTagsHasBeenSet(false),
+    m_enableExecuteCommand(false),
+    m_enableExecuteCommandHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -187,11 +185,28 @@ Service& Service::operator =(JsonView jsonValue)
     m_launchTypeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("capacityProviderStrategy"))
+  {
+    Array<JsonView> capacityProviderStrategyJsonList = jsonValue.GetArray("capacityProviderStrategy");
+    for(unsigned capacityProviderStrategyIndex = 0; capacityProviderStrategyIndex < capacityProviderStrategyJsonList.GetLength(); ++capacityProviderStrategyIndex)
+    {
+      m_capacityProviderStrategy.push_back(capacityProviderStrategyJsonList[capacityProviderStrategyIndex].AsObject());
+    }
+    m_capacityProviderStrategyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("platformVersion"))
   {
     m_platformVersion = jsonValue.GetString("platformVersion");
 
     m_platformVersionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("platformFamily"))
+  {
+    m_platformFamily = jsonValue.GetString("platformFamily");
+
+    m_platformFamilyHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("taskDefinition"))
@@ -331,6 +346,13 @@ Service& Service::operator =(JsonView jsonValue)
     m_propagateTagsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("enableExecuteCommand"))
+  {
+    m_enableExecuteCommand = jsonValue.GetBool("enableExecuteCommand");
+
+    m_enableExecuteCommandHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -407,9 +429,26 @@ JsonValue Service::Jsonize() const
    payload.WithString("launchType", LaunchTypeMapper::GetNameForLaunchType(m_launchType));
   }
 
+  if(m_capacityProviderStrategyHasBeenSet)
+  {
+   Array<JsonValue> capacityProviderStrategyJsonList(m_capacityProviderStrategy.size());
+   for(unsigned capacityProviderStrategyIndex = 0; capacityProviderStrategyIndex < capacityProviderStrategyJsonList.GetLength(); ++capacityProviderStrategyIndex)
+   {
+     capacityProviderStrategyJsonList[capacityProviderStrategyIndex].AsObject(m_capacityProviderStrategy[capacityProviderStrategyIndex].Jsonize());
+   }
+   payload.WithArray("capacityProviderStrategy", std::move(capacityProviderStrategyJsonList));
+
+  }
+
   if(m_platformVersionHasBeenSet)
   {
    payload.WithString("platformVersion", m_platformVersion);
+
+  }
+
+  if(m_platformFamilyHasBeenSet)
+  {
+   payload.WithString("platformFamily", m_platformFamily);
 
   }
 
@@ -540,6 +579,12 @@ JsonValue Service::Jsonize() const
   if(m_propagateTagsHasBeenSet)
   {
    payload.WithString("propagateTags", PropagateTagsMapper::GetNameForPropagateTags(m_propagateTags));
+  }
+
+  if(m_enableExecuteCommandHasBeenSet)
+  {
+   payload.WithBool("enableExecuteCommand", m_enableExecuteCommand);
+
   }
 
   return payload;

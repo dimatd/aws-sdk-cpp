@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/backup/Backup_EXPORTS.h>
@@ -46,46 +36,31 @@ namespace Model
 
     /**
      * <p>Specifies the body of a request to assign a set of resources to a backup
-     * plan.</p> <p>It includes an array of resources, an optional array of patterns to
-     * exclude resources, an optional role to provide access to the AWS service that
-     * the resource belongs to, and an optional array of tags used to identify a set of
-     * resources.</p>
+     * plan.</p>
      */
     inline const BackupSelection& GetBackupSelection() const{ return m_backupSelection; }
 
     /**
      * <p>Specifies the body of a request to assign a set of resources to a backup
-     * plan.</p> <p>It includes an array of resources, an optional array of patterns to
-     * exclude resources, an optional role to provide access to the AWS service that
-     * the resource belongs to, and an optional array of tags used to identify a set of
-     * resources.</p>
+     * plan.</p>
      */
     inline void SetBackupSelection(const BackupSelection& value) { m_backupSelection = value; }
 
     /**
      * <p>Specifies the body of a request to assign a set of resources to a backup
-     * plan.</p> <p>It includes an array of resources, an optional array of patterns to
-     * exclude resources, an optional role to provide access to the AWS service that
-     * the resource belongs to, and an optional array of tags used to identify a set of
-     * resources.</p>
+     * plan.</p>
      */
     inline void SetBackupSelection(BackupSelection&& value) { m_backupSelection = std::move(value); }
 
     /**
      * <p>Specifies the body of a request to assign a set of resources to a backup
-     * plan.</p> <p>It includes an array of resources, an optional array of patterns to
-     * exclude resources, an optional role to provide access to the AWS service that
-     * the resource belongs to, and an optional array of tags used to identify a set of
-     * resources.</p>
+     * plan.</p>
      */
     inline GetBackupSelectionResult& WithBackupSelection(const BackupSelection& value) { SetBackupSelection(value); return *this;}
 
     /**
      * <p>Specifies the body of a request to assign a set of resources to a backup
-     * plan.</p> <p>It includes an array of resources, an optional array of patterns to
-     * exclude resources, an optional role to provide access to the AWS service that
-     * the resource belongs to, and an optional array of tags used to identify a set of
-     * resources.</p>
+     * plan.</p>
      */
     inline GetBackupSelectionResult& WithBackupSelection(BackupSelection&& value) { SetBackupSelection(std::move(value)); return *this;}
 
@@ -212,43 +187,43 @@ namespace Model
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline const Aws::String& GetCreatorRequestId() const{ return m_creatorRequestId; }
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline void SetCreatorRequestId(const Aws::String& value) { m_creatorRequestId = value; }
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline void SetCreatorRequestId(Aws::String&& value) { m_creatorRequestId = std::move(value); }
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline void SetCreatorRequestId(const char* value) { m_creatorRequestId.assign(value); }
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline GetBackupSelectionResult& WithCreatorRequestId(const Aws::String& value) { SetCreatorRequestId(value); return *this;}
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline GetBackupSelectionResult& WithCreatorRequestId(Aws::String&& value) { SetCreatorRequestId(std::move(value)); return *this;}
 
     /**
      * <p>A unique string that identifies the request and allows failed requests to be
-     * retried without the risk of executing the operation twice.</p>
+     * retried without the risk of running the operation twice.</p>
      */
     inline GetBackupSelectionResult& WithCreatorRequestId(const char* value) { SetCreatorRequestId(value); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
@@ -32,7 +22,7 @@ namespace Model
 {
 
   /**
-   * <p>Limits that are related to concurrency and code storage. All file and storage
+   * <p>Limits that are related to concurrency and storage. All file and storage
    * sizes are in bytes.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/AccountLimit">AWS
    * API Reference</a></p>
@@ -72,50 +62,50 @@ namespace Model
 
 
     /**
-     * <p>The maximum size of your function's code and layers when they're
+     * <p>The maximum size of a function's deployment package and layers when they're
      * extracted.</p>
      */
     inline long long GetCodeSizeUnzipped() const{ return m_codeSizeUnzipped; }
 
     /**
-     * <p>The maximum size of your function's code and layers when they're
+     * <p>The maximum size of a function's deployment package and layers when they're
      * extracted.</p>
      */
     inline bool CodeSizeUnzippedHasBeenSet() const { return m_codeSizeUnzippedHasBeenSet; }
 
     /**
-     * <p>The maximum size of your function's code and layers when they're
+     * <p>The maximum size of a function's deployment package and layers when they're
      * extracted.</p>
      */
     inline void SetCodeSizeUnzipped(long long value) { m_codeSizeUnzippedHasBeenSet = true; m_codeSizeUnzipped = value; }
 
     /**
-     * <p>The maximum size of your function's code and layers when they're
+     * <p>The maximum size of a function's deployment package and layers when they're
      * extracted.</p>
      */
     inline AccountLimit& WithCodeSizeUnzipped(long long value) { SetCodeSizeUnzipped(value); return *this;}
 
 
     /**
-     * <p>The maximum size of a deployment package when it's uploaded directly to AWS
+     * <p>The maximum size of a deployment package when it's uploaded directly to
      * Lambda. Use Amazon S3 for larger files.</p>
      */
     inline long long GetCodeSizeZipped() const{ return m_codeSizeZipped; }
 
     /**
-     * <p>The maximum size of a deployment package when it's uploaded directly to AWS
+     * <p>The maximum size of a deployment package when it's uploaded directly to
      * Lambda. Use Amazon S3 for larger files.</p>
      */
     inline bool CodeSizeZippedHasBeenSet() const { return m_codeSizeZippedHasBeenSet; }
 
     /**
-     * <p>The maximum size of a deployment package when it's uploaded directly to AWS
+     * <p>The maximum size of a deployment package when it's uploaded directly to
      * Lambda. Use Amazon S3 for larger files.</p>
      */
     inline void SetCodeSizeZipped(long long value) { m_codeSizeZippedHasBeenSet = true; m_codeSizeZipped = value; }
 
     /**
-     * <p>The maximum size of a deployment package when it's uploaded directly to AWS
+     * <p>The maximum size of a deployment package when it's uploaded directly to
      * Lambda. Use Amazon S3 for larger files.</p>
      */
     inline AccountLimit& WithCodeSizeZipped(long long value) { SetCodeSizeZipped(value); return *this;}

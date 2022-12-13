@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -133,251 +123,252 @@ namespace Model
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetContext() const{ return m_context; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline void SetContext(const Aws::Map<Aws::String, Aws::String>& value) { m_contextHasBeenSet = true; m_context = value; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline void SetContext(Aws::Map<Aws::String, Aws::String>&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& WithContext(const Aws::Map<Aws::String, Aws::String>& value) { SetContext(value); return *this;}
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& WithContext(Aws::Map<Aws::String, Aws::String>&& value) { SetContext(std::move(value)); return *this;}
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(const Aws::String& key, const Aws::String& value) { m_contextHasBeenSet = true; m_context.emplace(key, value); return *this; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(Aws::String&& key, const Aws::String& value) { m_contextHasBeenSet = true; m_context.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(const Aws::String& key, Aws::String&& value) { m_contextHasBeenSet = true; m_context.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(Aws::String&& key, Aws::String&& value) { m_contextHasBeenSet = true; m_context.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(const char* key, Aws::String&& value) { m_contextHasBeenSet = true; m_context.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(Aws::String&& key, const char* value) { m_contextHasBeenSet = true; m_context.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>An object that maps custom attributes to attributes for the address and is
-     * attached to the message. For a push notification, this payload is added to the
-     * data.pinpoint object. For an email or text message, this payload is added to
-     * email/SMS delivery receipt event attributes.</p>
+     * attached to the message. Attribute names are case sensitive.</p> <p>For a push
+     * notification, this payload is added to the data.pinpoint object. For an email or
+     * text message, this payload is added to email/SMS delivery receipt event
+     * attributes.</p>
      */
     inline AddressConfiguration& AddContext(const char* key, const char* value) { m_contextHasBeenSet = true; m_context.emplace(key, value); return *this; }
 
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline const Aws::String& GetRawContent() const{ return m_rawContent; }
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline bool RawContentHasBeenSet() const { return m_rawContentHasBeenSet; }
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline void SetRawContent(const Aws::String& value) { m_rawContentHasBeenSet = true; m_rawContent = value; }
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline void SetRawContent(Aws::String&& value) { m_rawContentHasBeenSet = true; m_rawContent = std::move(value); }
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline void SetRawContent(const char* value) { m_rawContentHasBeenSet = true; m_rawContent.assign(value); }
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline AddressConfiguration& WithRawContent(const Aws::String& value) { SetRawContent(value); return *this;}
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline AddressConfiguration& WithRawContent(Aws::String&& value) { SetRawContent(std::move(value)); return *this;}
 
     /**
-     * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides the message.</p>
+     * <p>The raw, JSON-formatted string to use as the payload for the message. If
+     * specified, this value overrides all other values for the message.</p>
      */
     inline AddressConfiguration& WithRawContent(const char* value) { SetRawContent(value); return *this;}
 
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetSubstitutions() const{ return m_substitutions; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline bool SubstitutionsHasBeenSet() const { return m_substitutionsHasBeenSet; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline void SetSubstitutions(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { m_substitutionsHasBeenSet = true; m_substitutions = value; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline void SetSubstitutions(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { m_substitutionsHasBeenSet = true; m_substitutions = std::move(value); }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& WithSubstitutions(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { SetSubstitutions(value); return *this;}
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& WithSubstitutions(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { SetSubstitutions(std::move(value)); return *this;}
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& AddSubstitutions(const Aws::String& key, const Aws::Vector<Aws::String>& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, value); return *this; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& AddSubstitutions(Aws::String&& key, const Aws::Vector<Aws::String>& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& AddSubstitutions(const Aws::String& key, Aws::Vector<Aws::String>&& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& AddSubstitutions(Aws::String&& key, Aws::Vector<Aws::String>&& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& AddSubstitutions(const char* key, Aws::Vector<Aws::String>&& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>An object that maps variable values for the message. Amazon Pinpoint merges
-     * these values with the variable values specified by properties of the
-     * DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.</p>
+     * <p>A map of the message variables to merge with the variables specified by
+     * properties of the DefaultMessage object. The variables specified in this map
+     * take precedence over all other variables.</p>
      */
     inline AddressConfiguration& AddSubstitutions(const char* key, const Aws::Vector<Aws::String>& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, value); return *this; }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/rds/model/ModifyDBClusterRequest.h>
 #include <aws/core/utils/StringUtils.h>
@@ -44,13 +34,34 @@ ModifyDBClusterRequest::ModifyDBClusterRequest() :
     m_allowMajorVersionUpgrade(false),
     m_allowMajorVersionUpgradeHasBeenSet(false),
     m_dBInstanceParameterGroupNameHasBeenSet(false),
+    m_domainHasBeenSet(false),
+    m_domainIAMRoleNameHasBeenSet(false),
     m_scalingConfigurationHasBeenSet(false),
     m_deletionProtection(false),
     m_deletionProtectionHasBeenSet(false),
     m_enableHttpEndpoint(false),
     m_enableHttpEndpointHasBeenSet(false),
     m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false)
+    m_copyTagsToSnapshotHasBeenSet(false),
+    m_enableGlobalWriteForwarding(false),
+    m_enableGlobalWriteForwardingHasBeenSet(false),
+    m_dBClusterInstanceClassHasBeenSet(false),
+    m_allocatedStorage(0),
+    m_allocatedStorageHasBeenSet(false),
+    m_storageTypeHasBeenSet(false),
+    m_iops(0),
+    m_iopsHasBeenSet(false),
+    m_autoMinorVersionUpgrade(false),
+    m_autoMinorVersionUpgradeHasBeenSet(false),
+    m_monitoringInterval(0),
+    m_monitoringIntervalHasBeenSet(false),
+    m_monitoringRoleArnHasBeenSet(false),
+    m_enablePerformanceInsights(false),
+    m_enablePerformanceInsightsHasBeenSet(false),
+    m_performanceInsightsKMSKeyIdHasBeenSet(false),
+    m_performanceInsightsRetentionPeriod(0),
+    m_performanceInsightsRetentionPeriodHasBeenSet(false),
+    m_serverlessV2ScalingConfigurationHasBeenSet(false)
 {
 }
 
@@ -149,6 +160,16 @@ Aws::String ModifyDBClusterRequest::SerializePayload() const
     ss << "DBInstanceParameterGroupName=" << StringUtils::URLEncode(m_dBInstanceParameterGroupName.c_str()) << "&";
   }
 
+  if(m_domainHasBeenSet)
+  {
+    ss << "Domain=" << StringUtils::URLEncode(m_domain.c_str()) << "&";
+  }
+
+  if(m_domainIAMRoleNameHasBeenSet)
+  {
+    ss << "DomainIAMRoleName=" << StringUtils::URLEncode(m_domainIAMRoleName.c_str()) << "&";
+  }
+
   if(m_scalingConfigurationHasBeenSet)
   {
     m_scalingConfiguration.OutputToStream(ss, "ScalingConfiguration");
@@ -167,6 +188,66 @@ Aws::String ModifyDBClusterRequest::SerializePayload() const
   if(m_copyTagsToSnapshotHasBeenSet)
   {
     ss << "CopyTagsToSnapshot=" << std::boolalpha << m_copyTagsToSnapshot << "&";
+  }
+
+  if(m_enableGlobalWriteForwardingHasBeenSet)
+  {
+    ss << "EnableGlobalWriteForwarding=" << std::boolalpha << m_enableGlobalWriteForwarding << "&";
+  }
+
+  if(m_dBClusterInstanceClassHasBeenSet)
+  {
+    ss << "DBClusterInstanceClass=" << StringUtils::URLEncode(m_dBClusterInstanceClass.c_str()) << "&";
+  }
+
+  if(m_allocatedStorageHasBeenSet)
+  {
+    ss << "AllocatedStorage=" << m_allocatedStorage << "&";
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+    ss << "StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
+  }
+
+  if(m_iopsHasBeenSet)
+  {
+    ss << "Iops=" << m_iops << "&";
+  }
+
+  if(m_autoMinorVersionUpgradeHasBeenSet)
+  {
+    ss << "AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
+  }
+
+  if(m_monitoringIntervalHasBeenSet)
+  {
+    ss << "MonitoringInterval=" << m_monitoringInterval << "&";
+  }
+
+  if(m_monitoringRoleArnHasBeenSet)
+  {
+    ss << "MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
+  }
+
+  if(m_enablePerformanceInsightsHasBeenSet)
+  {
+    ss << "EnablePerformanceInsights=" << std::boolalpha << m_enablePerformanceInsights << "&";
+  }
+
+  if(m_performanceInsightsKMSKeyIdHasBeenSet)
+  {
+    ss << "PerformanceInsightsKMSKeyId=" << StringUtils::URLEncode(m_performanceInsightsKMSKeyId.c_str()) << "&";
+  }
+
+  if(m_performanceInsightsRetentionPeriodHasBeenSet)
+  {
+    ss << "PerformanceInsightsRetentionPeriod=" << m_performanceInsightsRetentionPeriod << "&";
+  }
+
+  if(m_serverlessV2ScalingConfigurationHasBeenSet)
+  {
+    m_serverlessV2ScalingConfiguration.OutputToStream(ss, "ServerlessV2ScalingConfiguration");
   }
 
   ss << "Version=2014-10-31";

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/dms/model/TableStatistics.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -45,6 +35,10 @@ TableStatistics::TableStatistics() :
     m_fullLoadCondtnlChkFailedRowsHasBeenSet(false),
     m_fullLoadErrorRows(0),
     m_fullLoadErrorRowsHasBeenSet(false),
+    m_fullLoadStartTimeHasBeenSet(false),
+    m_fullLoadEndTimeHasBeenSet(false),
+    m_fullLoadReloaded(false),
+    m_fullLoadReloadedHasBeenSet(false),
     m_lastUpdateTimeHasBeenSet(false),
     m_tableStateHasBeenSet(false),
     m_validationPendingRecords(0),
@@ -75,6 +69,10 @@ TableStatistics::TableStatistics(JsonView jsonValue) :
     m_fullLoadCondtnlChkFailedRowsHasBeenSet(false),
     m_fullLoadErrorRows(0),
     m_fullLoadErrorRowsHasBeenSet(false),
+    m_fullLoadStartTimeHasBeenSet(false),
+    m_fullLoadEndTimeHasBeenSet(false),
+    m_fullLoadReloaded(false),
+    m_fullLoadReloadedHasBeenSet(false),
     m_lastUpdateTimeHasBeenSet(false),
     m_tableStateHasBeenSet(false),
     m_validationPendingRecords(0),
@@ -152,6 +150,27 @@ TableStatistics& TableStatistics::operator =(JsonView jsonValue)
     m_fullLoadErrorRows = jsonValue.GetInt64("FullLoadErrorRows");
 
     m_fullLoadErrorRowsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FullLoadStartTime"))
+  {
+    m_fullLoadStartTime = jsonValue.GetDouble("FullLoadStartTime");
+
+    m_fullLoadStartTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FullLoadEndTime"))
+  {
+    m_fullLoadEndTime = jsonValue.GetDouble("FullLoadEndTime");
+
+    m_fullLoadEndTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FullLoadReloaded"))
+  {
+    m_fullLoadReloaded = jsonValue.GetBool("FullLoadReloaded");
+
+    m_fullLoadReloadedHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("LastUpdateTime"))
@@ -261,6 +280,22 @@ JsonValue TableStatistics::Jsonize() const
   if(m_fullLoadErrorRowsHasBeenSet)
   {
    payload.WithInt64("FullLoadErrorRows", m_fullLoadErrorRows);
+
+  }
+
+  if(m_fullLoadStartTimeHasBeenSet)
+  {
+   payload.WithDouble("FullLoadStartTime", m_fullLoadStartTime.SecondsWithMSPrecision());
+  }
+
+  if(m_fullLoadEndTimeHasBeenSet)
+  {
+   payload.WithDouble("FullLoadEndTime", m_fullLoadEndTime.SecondsWithMSPrecision());
+  }
+
+  if(m_fullLoadReloadedHasBeenSet)
+  {
+   payload.WithBool("FullLoadReloaded", m_fullLoadReloaded);
 
   }
 

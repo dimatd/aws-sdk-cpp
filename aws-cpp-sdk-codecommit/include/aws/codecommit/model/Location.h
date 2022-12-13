@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -99,59 +89,59 @@ namespace Model
 
 
     /**
-     * <p>The position of a change within a compared file, in line number format.</p>
+     * <p>The position of a change in a compared file, in line number format.</p>
      */
     inline long long GetFilePosition() const{ return m_filePosition; }
 
     /**
-     * <p>The position of a change within a compared file, in line number format.</p>
+     * <p>The position of a change in a compared file, in line number format.</p>
      */
     inline bool FilePositionHasBeenSet() const { return m_filePositionHasBeenSet; }
 
     /**
-     * <p>The position of a change within a compared file, in line number format.</p>
+     * <p>The position of a change in a compared file, in line number format.</p>
      */
     inline void SetFilePosition(long long value) { m_filePositionHasBeenSet = true; m_filePosition = value; }
 
     /**
-     * <p>The position of a change within a compared file, in line number format.</p>
+     * <p>The position of a change in a compared file, in line number format.</p>
      */
     inline Location& WithFilePosition(long long value) { SetFilePosition(value); return *this;}
 
 
     /**
      * <p>In a comparison of commits or a pull request, whether the change is in the
-     * 'before' or 'after' of that comparison.</p>
+     * before or after of that comparison.</p>
      */
     inline const RelativeFileVersionEnum& GetRelativeFileVersion() const{ return m_relativeFileVersion; }
 
     /**
      * <p>In a comparison of commits or a pull request, whether the change is in the
-     * 'before' or 'after' of that comparison.</p>
+     * before or after of that comparison.</p>
      */
     inline bool RelativeFileVersionHasBeenSet() const { return m_relativeFileVersionHasBeenSet; }
 
     /**
      * <p>In a comparison of commits or a pull request, whether the change is in the
-     * 'before' or 'after' of that comparison.</p>
+     * before or after of that comparison.</p>
      */
     inline void SetRelativeFileVersion(const RelativeFileVersionEnum& value) { m_relativeFileVersionHasBeenSet = true; m_relativeFileVersion = value; }
 
     /**
      * <p>In a comparison of commits or a pull request, whether the change is in the
-     * 'before' or 'after' of that comparison.</p>
+     * before or after of that comparison.</p>
      */
     inline void SetRelativeFileVersion(RelativeFileVersionEnum&& value) { m_relativeFileVersionHasBeenSet = true; m_relativeFileVersion = std::move(value); }
 
     /**
      * <p>In a comparison of commits or a pull request, whether the change is in the
-     * 'before' or 'after' of that comparison.</p>
+     * before or after of that comparison.</p>
      */
     inline Location& WithRelativeFileVersion(const RelativeFileVersionEnum& value) { SetRelativeFileVersion(value); return *this;}
 
     /**
      * <p>In a comparison of commits or a pull request, whether the change is in the
-     * 'before' or 'after' of that comparison.</p>
+     * before or after of that comparison.</p>
      */
     inline Location& WithRelativeFileVersion(RelativeFileVersionEnum&& value) { SetRelativeFileVersion(std::move(value)); return *this;}
 

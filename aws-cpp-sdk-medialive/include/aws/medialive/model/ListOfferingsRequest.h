@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
@@ -158,44 +148,85 @@ namespace Model
 
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline const Aws::String& GetCodec() const{ return m_codec; }
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline bool CodecHasBeenSet() const { return m_codecHasBeenSet; }
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline void SetCodec(const Aws::String& value) { m_codecHasBeenSet = true; m_codec = value; }
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline void SetCodec(Aws::String&& value) { m_codecHasBeenSet = true; m_codec = std::move(value); }
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline void SetCodec(const char* value) { m_codecHasBeenSet = true; m_codec.assign(value); }
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline ListOfferingsRequest& WithCodec(const Aws::String& value) { SetCodec(value); return *this;}
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline ListOfferingsRequest& WithCodec(Aws::String&& value) { SetCodec(std::move(value)); return *this;}
 
     /**
-     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+     * Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
      */
     inline ListOfferingsRequest& WithCodec(const char* value) { SetCodec(value); return *this;}
+
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline const Aws::String& GetDuration() const{ return m_duration; }
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline void SetDuration(const Aws::String& value) { m_durationHasBeenSet = true; m_duration = value; }
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline void SetDuration(Aws::String&& value) { m_durationHasBeenSet = true; m_duration = std::move(value); }
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline void SetDuration(const char* value) { m_durationHasBeenSet = true; m_duration.assign(value); }
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline ListOfferingsRequest& WithDuration(const Aws::String& value) { SetDuration(value); return *this;}
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline ListOfferingsRequest& WithDuration(Aws::String&& value) { SetDuration(std::move(value)); return *this;}
+
+    /**
+     * Filter by offering duration, e.g. '12'
+     */
+    inline ListOfferingsRequest& WithDuration(const char* value) { SetDuration(value); return *this;}
 
 
     
@@ -327,83 +358,83 @@ namespace Model
 
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline const Aws::String& GetResolution() const{ return m_resolution; }
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline bool ResolutionHasBeenSet() const { return m_resolutionHasBeenSet; }
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline void SetResolution(const Aws::String& value) { m_resolutionHasBeenSet = true; m_resolution = value; }
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline void SetResolution(Aws::String&& value) { m_resolutionHasBeenSet = true; m_resolution = std::move(value); }
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline void SetResolution(const char* value) { m_resolutionHasBeenSet = true; m_resolution.assign(value); }
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline ListOfferingsRequest& WithResolution(const Aws::String& value) { SetResolution(value); return *this;}
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline ListOfferingsRequest& WithResolution(Aws::String&& value) { SetResolution(std::move(value)); return *this;}
 
     /**
-     * Filter by resolution, 'SD', 'HD', or 'UHD'
+     * Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
      */
     inline ListOfferingsRequest& WithResolution(const char* value) { SetResolution(value); return *this;}
 
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline const Aws::String& GetResourceType() const{ return m_resourceType; }
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline ListOfferingsRequest& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline ListOfferingsRequest& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
 
     /**
-     * Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+     * Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
      */
     inline ListOfferingsRequest& WithResourceType(const char* value) { SetResourceType(value); return *this;}
 
@@ -515,6 +546,9 @@ namespace Model
 
     Aws::String m_codec;
     bool m_codecHasBeenSet;
+
+    Aws::String m_duration;
+    bool m_durationHasBeenSet;
 
     int m_maxResults;
     bool m_maxResultsHasBeenSet;

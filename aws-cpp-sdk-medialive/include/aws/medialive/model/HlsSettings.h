@@ -1,21 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
 #include <aws/medialive/model/AudioOnlyHlsSettings.h>
+#include <aws/medialive/model/Fmp4HlsSettings.h>
+#include <aws/medialive/model/FrameCaptureHlsSettings.h>
 #include <aws/medialive/model/StandardHlsSettings.h>
 #include <utility>
 
@@ -68,6 +60,44 @@ namespace Model
 
 
     
+    inline const Fmp4HlsSettings& GetFmp4HlsSettings() const{ return m_fmp4HlsSettings; }
+
+    
+    inline bool Fmp4HlsSettingsHasBeenSet() const { return m_fmp4HlsSettingsHasBeenSet; }
+
+    
+    inline void SetFmp4HlsSettings(const Fmp4HlsSettings& value) { m_fmp4HlsSettingsHasBeenSet = true; m_fmp4HlsSettings = value; }
+
+    
+    inline void SetFmp4HlsSettings(Fmp4HlsSettings&& value) { m_fmp4HlsSettingsHasBeenSet = true; m_fmp4HlsSettings = std::move(value); }
+
+    
+    inline HlsSettings& WithFmp4HlsSettings(const Fmp4HlsSettings& value) { SetFmp4HlsSettings(value); return *this;}
+
+    
+    inline HlsSettings& WithFmp4HlsSettings(Fmp4HlsSettings&& value) { SetFmp4HlsSettings(std::move(value)); return *this;}
+
+
+    
+    inline const FrameCaptureHlsSettings& GetFrameCaptureHlsSettings() const{ return m_frameCaptureHlsSettings; }
+
+    
+    inline bool FrameCaptureHlsSettingsHasBeenSet() const { return m_frameCaptureHlsSettingsHasBeenSet; }
+
+    
+    inline void SetFrameCaptureHlsSettings(const FrameCaptureHlsSettings& value) { m_frameCaptureHlsSettingsHasBeenSet = true; m_frameCaptureHlsSettings = value; }
+
+    
+    inline void SetFrameCaptureHlsSettings(FrameCaptureHlsSettings&& value) { m_frameCaptureHlsSettingsHasBeenSet = true; m_frameCaptureHlsSettings = std::move(value); }
+
+    
+    inline HlsSettings& WithFrameCaptureHlsSettings(const FrameCaptureHlsSettings& value) { SetFrameCaptureHlsSettings(value); return *this;}
+
+    
+    inline HlsSettings& WithFrameCaptureHlsSettings(FrameCaptureHlsSettings&& value) { SetFrameCaptureHlsSettings(std::move(value)); return *this;}
+
+
+    
     inline const StandardHlsSettings& GetStandardHlsSettings() const{ return m_standardHlsSettings; }
 
     
@@ -89,6 +119,12 @@ namespace Model
 
     AudioOnlyHlsSettings m_audioOnlyHlsSettings;
     bool m_audioOnlyHlsSettingsHasBeenSet;
+
+    Fmp4HlsSettings m_fmp4HlsSettings;
+    bool m_fmp4HlsSettingsHasBeenSet;
+
+    FrameCaptureHlsSettings m_frameCaptureHlsSettings;
+    bool m_frameCaptureHlsSettingsHasBeenSet;
 
     StandardHlsSettings m_standardHlsSettings;
     bool m_standardHlsSettingsHasBeenSet;

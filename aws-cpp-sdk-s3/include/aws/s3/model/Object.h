@@ -1,24 +1,16 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/s3/model/ObjectStorageClass.h>
 #include <aws/s3/model/Owner.h>
+#include <aws/s3/model/ChecksumAlgorithm.h>
 #include <utility>
 
 namespace Aws
@@ -36,7 +28,8 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>An object consists of data and its descriptive metadata.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/Object">AWS API
    * Reference</a></p>
    */
@@ -51,135 +44,296 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline const Aws::String& GetKey() const{ return m_key; }
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline Object& WithKey(const Aws::String& value) { SetKey(value); return *this;}
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline Object& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>The name that you assign to an object. You use the object key to retrieve the
+     * object.</p>
      */
     inline Object& WithKey(const char* value) { SetKey(value); return *this;}
 
 
     /**
-     * <p/>
+     * <p>Creation date of the object.</p>
      */
     inline const Aws::Utils::DateTime& GetLastModified() const{ return m_lastModified; }
 
     /**
-     * <p/>
+     * <p>Creation date of the object.</p>
      */
     inline bool LastModifiedHasBeenSet() const { return m_lastModifiedHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>Creation date of the object.</p>
      */
     inline void SetLastModified(const Aws::Utils::DateTime& value) { m_lastModifiedHasBeenSet = true; m_lastModified = value; }
 
     /**
-     * <p/>
+     * <p>Creation date of the object.</p>
      */
     inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Creation date of the object.</p>
      */
     inline Object& WithLastModified(const Aws::Utils::DateTime& value) { SetLastModified(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Creation date of the object.</p>
      */
     inline Object& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
 
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline const Aws::String& GetETag() const{ return m_eTag; }
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline bool ETagHasBeenSet() const { return m_eTagHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline void SetETag(const Aws::String& value) { m_eTagHasBeenSet = true; m_eTag = value; }
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline void SetETag(Aws::String&& value) { m_eTagHasBeenSet = true; m_eTag = std::move(value); }
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline void SetETag(const char* value) { m_eTagHasBeenSet = true; m_eTag.assign(value); }
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline Object& WithETag(const Aws::String& value) { SetETag(value); return *this;}
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline Object& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>The entity tag is a hash of the object. The ETag reflects changes only to the
+     * contents of an object, not its metadata. The ETag may or may not be an MD5
+     * digest of the object data. Whether or not it is depends on how the object was
+     * created and how it is encrypted as described below:</p> <ul> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-S3 or plaintext, have
+     * ETags that are an MD5 digest of their object data.</p> </li> <li> <p>Objects
+     * created by the PUT Object, POST Object, or Copy operation, or through the Amazon
+     * Web Services Management Console, and are encrypted by SSE-C or SSE-KMS, have
+     * ETags that are not an MD5 digest of their object data.</p> </li> <li> <p>If an
+     * object is created by either the Multipart Upload or Part Copy operation, the
+     * ETag is not an MD5 digest, regardless of the method of encryption. If an object
+     * is larger than 16 MB, the Amazon Web Services Management Console will upload or
+     * copy that object as a Multipart Upload, and therefore the ETag will not be an
+     * MD5 digest.</p> </li> </ul>
      */
     inline Object& WithETag(const char* value) { SetETag(value); return *this;}
 
 
     /**
-     * <p/>
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline const Aws::Vector<ChecksumAlgorithm>& GetChecksumAlgorithm() const{ return m_checksumAlgorithm; }
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline bool ChecksumAlgorithmHasBeenSet() const { return m_checksumAlgorithmHasBeenSet; }
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline void SetChecksumAlgorithm(const Aws::Vector<ChecksumAlgorithm>& value) { m_checksumAlgorithmHasBeenSet = true; m_checksumAlgorithm = value; }
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline void SetChecksumAlgorithm(Aws::Vector<ChecksumAlgorithm>&& value) { m_checksumAlgorithmHasBeenSet = true; m_checksumAlgorithm = std::move(value); }
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline Object& WithChecksumAlgorithm(const Aws::Vector<ChecksumAlgorithm>& value) { SetChecksumAlgorithm(value); return *this;}
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline Object& WithChecksumAlgorithm(Aws::Vector<ChecksumAlgorithm>&& value) { SetChecksumAlgorithm(std::move(value)); return *this;}
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline Object& AddChecksumAlgorithm(const ChecksumAlgorithm& value) { m_checksumAlgorithmHasBeenSet = true; m_checksumAlgorithm.push_back(value); return *this; }
+
+    /**
+     * <p>The algorithm that was used to create a checksum of the object.</p>
+     */
+    inline Object& AddChecksumAlgorithm(ChecksumAlgorithm&& value) { m_checksumAlgorithmHasBeenSet = true; m_checksumAlgorithm.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>Size in bytes of the object</p>
      */
     inline long long GetSize() const{ return m_size; }
 
     /**
-     * <p/>
+     * <p>Size in bytes of the object</p>
      */
     inline bool SizeHasBeenSet() const { return m_sizeHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>Size in bytes of the object</p>
      */
     inline void SetSize(long long value) { m_sizeHasBeenSet = true; m_size = value; }
 
     /**
-     * <p/>
+     * <p>Size in bytes of the object</p>
      */
     inline Object& WithSize(long long value) { SetSize(value); return *this;}
 
@@ -216,32 +370,32 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>The owner of the object</p>
      */
     inline const Owner& GetOwner() const{ return m_owner; }
 
     /**
-     * <p/>
+     * <p>The owner of the object</p>
      */
     inline bool OwnerHasBeenSet() const { return m_ownerHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>The owner of the object</p>
      */
     inline void SetOwner(const Owner& value) { m_ownerHasBeenSet = true; m_owner = value; }
 
     /**
-     * <p/>
+     * <p>The owner of the object</p>
      */
     inline void SetOwner(Owner&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
 
     /**
-     * <p/>
+     * <p>The owner of the object</p>
      */
     inline Object& WithOwner(const Owner& value) { SetOwner(value); return *this;}
 
     /**
-     * <p/>
+     * <p>The owner of the object</p>
      */
     inline Object& WithOwner(Owner&& value) { SetOwner(std::move(value)); return *this;}
 
@@ -255,6 +409,9 @@ namespace Model
 
     Aws::String m_eTag;
     bool m_eTagHasBeenSet;
+
+    Aws::Vector<ChecksumAlgorithm> m_checksumAlgorithm;
+    bool m_checksumAlgorithmHasBeenSet;
 
     long long m_size;
     bool m_sizeHasBeenSet;

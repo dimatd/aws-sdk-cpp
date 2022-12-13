@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/kafka/model/ClusterInfo.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -40,12 +30,16 @@ ClusterInfo::ClusterInfo() :
     m_encryptionInfoHasBeenSet(false),
     m_enhancedMonitoring(EnhancedMonitoring::NOT_SET),
     m_enhancedMonitoringHasBeenSet(false),
+    m_openMonitoringHasBeenSet(false),
+    m_loggingInfoHasBeenSet(false),
     m_numberOfBrokerNodes(0),
     m_numberOfBrokerNodesHasBeenSet(false),
     m_state(ClusterState::NOT_SET),
     m_stateHasBeenSet(false),
+    m_stateInfoHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_zookeeperConnectStringHasBeenSet(false)
+    m_zookeeperConnectStringHasBeenSet(false),
+    m_zookeeperConnectStringTlsHasBeenSet(false)
 {
 }
 
@@ -61,12 +55,16 @@ ClusterInfo::ClusterInfo(JsonView jsonValue) :
     m_encryptionInfoHasBeenSet(false),
     m_enhancedMonitoring(EnhancedMonitoring::NOT_SET),
     m_enhancedMonitoringHasBeenSet(false),
+    m_openMonitoringHasBeenSet(false),
+    m_loggingInfoHasBeenSet(false),
     m_numberOfBrokerNodes(0),
     m_numberOfBrokerNodesHasBeenSet(false),
     m_state(ClusterState::NOT_SET),
     m_stateHasBeenSet(false),
+    m_stateInfoHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_zookeeperConnectStringHasBeenSet(false)
+    m_zookeeperConnectStringHasBeenSet(false),
+    m_zookeeperConnectStringTlsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -143,6 +141,20 @@ ClusterInfo& ClusterInfo::operator =(JsonView jsonValue)
     m_enhancedMonitoringHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("openMonitoring"))
+  {
+    m_openMonitoring = jsonValue.GetObject("openMonitoring");
+
+    m_openMonitoringHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("loggingInfo"))
+  {
+    m_loggingInfo = jsonValue.GetObject("loggingInfo");
+
+    m_loggingInfoHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("numberOfBrokerNodes"))
   {
     m_numberOfBrokerNodes = jsonValue.GetInteger("numberOfBrokerNodes");
@@ -155,6 +167,13 @@ ClusterInfo& ClusterInfo::operator =(JsonView jsonValue)
     m_state = ClusterStateMapper::GetClusterStateForName(jsonValue.GetString("state"));
 
     m_stateHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("stateInfo"))
+  {
+    m_stateInfo = jsonValue.GetObject("stateInfo");
+
+    m_stateInfoHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("tags"))
@@ -172,6 +191,13 @@ ClusterInfo& ClusterInfo::operator =(JsonView jsonValue)
     m_zookeeperConnectString = jsonValue.GetString("zookeeperConnectString");
 
     m_zookeeperConnectStringHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("zookeeperConnectStringTls"))
+  {
+    m_zookeeperConnectStringTls = jsonValue.GetString("zookeeperConnectStringTls");
+
+    m_zookeeperConnectStringTlsHasBeenSet = true;
   }
 
   return *this;
@@ -239,6 +265,18 @@ JsonValue ClusterInfo::Jsonize() const
    payload.WithString("enhancedMonitoring", EnhancedMonitoringMapper::GetNameForEnhancedMonitoring(m_enhancedMonitoring));
   }
 
+  if(m_openMonitoringHasBeenSet)
+  {
+   payload.WithObject("openMonitoring", m_openMonitoring.Jsonize());
+
+  }
+
+  if(m_loggingInfoHasBeenSet)
+  {
+   payload.WithObject("loggingInfo", m_loggingInfo.Jsonize());
+
+  }
+
   if(m_numberOfBrokerNodesHasBeenSet)
   {
    payload.WithInteger("numberOfBrokerNodes", m_numberOfBrokerNodes);
@@ -248,6 +286,12 @@ JsonValue ClusterInfo::Jsonize() const
   if(m_stateHasBeenSet)
   {
    payload.WithString("state", ClusterStateMapper::GetNameForClusterState(m_state));
+  }
+
+  if(m_stateInfoHasBeenSet)
+  {
+   payload.WithObject("stateInfo", m_stateInfo.Jsonize());
+
   }
 
   if(m_tagsHasBeenSet)
@@ -264,6 +308,12 @@ JsonValue ClusterInfo::Jsonize() const
   if(m_zookeeperConnectStringHasBeenSet)
   {
    payload.WithString("zookeeperConnectString", m_zookeeperConnectString);
+
+  }
+
+  if(m_zookeeperConnectStringTlsHasBeenSet)
+  {
+   payload.WithString("zookeeperConnectStringTls", m_zookeeperConnectStringTls);
 
   }
 

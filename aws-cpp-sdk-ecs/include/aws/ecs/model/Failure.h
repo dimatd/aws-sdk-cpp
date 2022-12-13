@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
@@ -34,7 +24,10 @@ namespace Model
 {
 
   /**
-   * <p>A failed resource.</p><p><h3>See Also:</h3>   <a
+   * <p>A failed resource. For a list of common causes, see <a
+   * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/api_failures_messages.html">API
+   * failure reasons</a> in the <i>Amazon Elastic Container Service Developer
+   * Guide</i>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Failure">AWS API
    * Reference</a></p>
    */
@@ -128,6 +121,47 @@ namespace Model
      */
     inline Failure& WithReason(const char* value) { SetReason(value); return *this;}
 
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline const Aws::String& GetDetail() const{ return m_detail; }
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline bool DetailHasBeenSet() const { return m_detailHasBeenSet; }
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline void SetDetail(const Aws::String& value) { m_detailHasBeenSet = true; m_detail = value; }
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline void SetDetail(Aws::String&& value) { m_detailHasBeenSet = true; m_detail = std::move(value); }
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline void SetDetail(const char* value) { m_detailHasBeenSet = true; m_detail.assign(value); }
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline Failure& WithDetail(const Aws::String& value) { SetDetail(value); return *this;}
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline Failure& WithDetail(Aws::String&& value) { SetDetail(std::move(value)); return *this;}
+
+    /**
+     * <p>The details of the failure.</p>
+     */
+    inline Failure& WithDetail(const char* value) { SetDetail(value); return *this;}
+
   private:
 
     Aws::String m_arn;
@@ -135,6 +169,9 @@ namespace Model
 
     Aws::String m_reason;
     bool m_reasonHasBeenSet;
+
+    Aws::String m_detail;
+    bool m_detailHasBeenSet;
   };
 
 } // namespace Model

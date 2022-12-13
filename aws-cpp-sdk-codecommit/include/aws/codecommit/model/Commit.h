@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -50,42 +40,42 @@ namespace Model
 
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline const Aws::String& GetCommitId() const{ return m_commitId; }
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline bool CommitIdHasBeenSet() const { return m_commitIdHasBeenSet; }
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline void SetCommitId(const Aws::String& value) { m_commitIdHasBeenSet = true; m_commitId = value; }
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline void SetCommitId(Aws::String&& value) { m_commitIdHasBeenSet = true; m_commitId = std::move(value); }
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline void SetCommitId(const char* value) { m_commitIdHasBeenSet = true; m_commitId.assign(value); }
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline Commit& WithCommitId(const Aws::String& value) { SetCommitId(value); return *this;}
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline Commit& WithCommitId(Aws::String&& value) { SetCommitId(std::move(value)); return *this;}
 
     /**
-     * <p>The full SHA of the specified commit. </p>
+     * <p>The full SHA ID of the specified commit. </p>
      */
     inline Commit& WithCommitId(const char* value) { SetCommitId(value); return *this;}
 
@@ -338,42 +328,42 @@ namespace Model
 
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline const Aws::String& GetAdditionalData() const{ return m_additionalData; }
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline bool AdditionalDataHasBeenSet() const { return m_additionalDataHasBeenSet; }
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline void SetAdditionalData(const Aws::String& value) { m_additionalDataHasBeenSet = true; m_additionalData = value; }
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline void SetAdditionalData(Aws::String&& value) { m_additionalDataHasBeenSet = true; m_additionalData = std::move(value); }
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline void SetAdditionalData(const char* value) { m_additionalDataHasBeenSet = true; m_additionalData.assign(value); }
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline Commit& WithAdditionalData(const Aws::String& value) { SetAdditionalData(value); return *this;}
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline Commit& WithAdditionalData(Aws::String&& value) { SetAdditionalData(std::move(value)); return *this;}
 
     /**
-     * <p>Any additional data associated with the specified commit.</p>
+     * <p>Any other data associated with the specified commit.</p>
      */
     inline Commit& WithAdditionalData(const char* value) { SetAdditionalData(value); return *this;}
 

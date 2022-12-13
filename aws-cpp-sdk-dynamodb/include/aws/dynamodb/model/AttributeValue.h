@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
@@ -60,6 +50,18 @@ public:
     /// if uninitialized, specializes the type to a Number with specified value
     /// if already specialized to another type then the behavior is undefined
     AttributeValue& SetN(const char* n) { return SetN(Aws::String(n)); }
+    /// if already specialized to a Number, sets the value to this Number
+    /// if uninitialized, specializes the type to a Number with specified value
+    /// if already specialized to another type then the behavior is undefined
+    AttributeValue& SetN(const int nItem) { return SetN(Aws::String(std::to_string(nItem).c_str())); }
+    /// if already specialized to a Number, sets the value to this Number
+    /// if uninitialized, specializes the type to a Number with specified value
+    /// if already specialized to another type then the behavior is undefined
+    AttributeValue& SetN(const float nItem) { return SetN(Aws::String(std::to_string(nItem).c_str())); }
+    /// if already specialized to a Number, sets the value to this Number
+    /// if uninitialized, specializes the type to a Number with specified value
+    /// if already specialized to another type then the behavior is undefined
+    AttributeValue& SetN(const double nItem) { return SetN(Aws::String(std::to_string(nItem).c_str())); }
 
     /// returns the ByteBuffer if the value is specialized to this type, otherwise an empty Buffer
     const Aws::Utils::ByteBuffer GetB() const;

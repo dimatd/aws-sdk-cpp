@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/autoscaling/model/ScalingPolicy.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -49,7 +39,10 @@ ScalingPolicy::ScalingPolicy() :
     m_estimatedInstanceWarmup(0),
     m_estimatedInstanceWarmupHasBeenSet(false),
     m_alarmsHasBeenSet(false),
-    m_targetTrackingConfigurationHasBeenSet(false)
+    m_targetTrackingConfigurationHasBeenSet(false),
+    m_enabled(false),
+    m_enabledHasBeenSet(false),
+    m_predictiveScalingConfigurationHasBeenSet(false)
 {
 }
 
@@ -72,7 +65,10 @@ ScalingPolicy::ScalingPolicy(const XmlNode& xmlNode) :
     m_estimatedInstanceWarmup(0),
     m_estimatedInstanceWarmupHasBeenSet(false),
     m_alarmsHasBeenSet(false),
-    m_targetTrackingConfigurationHasBeenSet(false)
+    m_targetTrackingConfigurationHasBeenSet(false),
+    m_enabled(false),
+    m_enabledHasBeenSet(false),
+    m_predictiveScalingConfigurationHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -179,6 +175,18 @@ ScalingPolicy& ScalingPolicy::operator =(const XmlNode& xmlNode)
       m_targetTrackingConfiguration = targetTrackingConfigurationNode;
       m_targetTrackingConfigurationHasBeenSet = true;
     }
+    XmlNode enabledNode = resultNode.FirstChild("Enabled");
+    if(!enabledNode.IsNull())
+    {
+      m_enabled = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enabledNode.GetText()).c_str()).c_str());
+      m_enabledHasBeenSet = true;
+    }
+    XmlNode predictiveScalingConfigurationNode = resultNode.FirstChild("PredictiveScalingConfiguration");
+    if(!predictiveScalingConfigurationNode.IsNull())
+    {
+      m_predictiveScalingConfiguration = predictiveScalingConfigurationNode;
+      m_predictiveScalingConfigurationHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -270,6 +278,18 @@ void ScalingPolicy::OutputToStream(Aws::OStream& oStream, const char* location, 
       m_targetTrackingConfiguration.OutputToStream(oStream, targetTrackingConfigurationLocationAndMemberSs.str().c_str());
   }
 
+  if(m_enabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Enabled=" << std::boolalpha << m_enabled << "&";
+  }
+
+  if(m_predictiveScalingConfigurationHasBeenSet)
+  {
+      Aws::StringStream predictiveScalingConfigurationLocationAndMemberSs;
+      predictiveScalingConfigurationLocationAndMemberSs << location << index << locationValue << ".PredictiveScalingConfiguration";
+      m_predictiveScalingConfiguration.OutputToStream(oStream, predictiveScalingConfigurationLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void ScalingPolicy::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -343,6 +363,16 @@ void ScalingPolicy::OutputToStream(Aws::OStream& oStream, const char* location) 
       Aws::String targetTrackingConfigurationLocationAndMember(location);
       targetTrackingConfigurationLocationAndMember += ".TargetTrackingConfiguration";
       m_targetTrackingConfiguration.OutputToStream(oStream, targetTrackingConfigurationLocationAndMember.c_str());
+  }
+  if(m_enabledHasBeenSet)
+  {
+      oStream << location << ".Enabled=" << std::boolalpha << m_enabled << "&";
+  }
+  if(m_predictiveScalingConfigurationHasBeenSet)
+  {
+      Aws::String predictiveScalingConfigurationLocationAndMember(location);
+      predictiveScalingConfigurationLocationAndMember += ".PredictiveScalingConfiguration";
+      m_predictiveScalingConfiguration.OutputToStream(oStream, predictiveScalingConfigurationLocationAndMember.c_str());
   }
 }
 

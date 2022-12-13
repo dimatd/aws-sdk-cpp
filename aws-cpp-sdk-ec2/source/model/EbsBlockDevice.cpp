@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/EbsBlockDevice.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -40,9 +30,12 @@ EbsBlockDevice::EbsBlockDevice() :
     m_volumeSizeHasBeenSet(false),
     m_volumeType(VolumeType::NOT_SET),
     m_volumeTypeHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_throughput(0),
+    m_throughputHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_encryptedHasBeenSet(false)
 {
 }
 
@@ -56,9 +49,12 @@ EbsBlockDevice::EbsBlockDevice(const XmlNode& xmlNode) :
     m_volumeSizeHasBeenSet(false),
     m_volumeType(VolumeType::NOT_SET),
     m_volumeTypeHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_throughput(0),
+    m_throughputHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_encryptedHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -99,17 +95,29 @@ EbsBlockDevice& EbsBlockDevice::operator =(const XmlNode& xmlNode)
       m_volumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(volumeTypeNode.GetText()).c_str()).c_str());
       m_volumeTypeHasBeenSet = true;
     }
-    XmlNode encryptedNode = resultNode.FirstChild("encrypted");
-    if(!encryptedNode.IsNull())
-    {
-      m_encrypted = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(encryptedNode.GetText()).c_str()).c_str());
-      m_encryptedHasBeenSet = true;
-    }
     XmlNode kmsKeyIdNode = resultNode.FirstChild("KmsKeyId");
     if(!kmsKeyIdNode.IsNull())
     {
       m_kmsKeyId = Aws::Utils::Xml::DecodeEscapedXmlText(kmsKeyIdNode.GetText());
       m_kmsKeyIdHasBeenSet = true;
+    }
+    XmlNode throughputNode = resultNode.FirstChild("throughput");
+    if(!throughputNode.IsNull())
+    {
+      m_throughput = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(throughputNode.GetText()).c_str()).c_str());
+      m_throughputHasBeenSet = true;
+    }
+    XmlNode outpostArnNode = resultNode.FirstChild("outpostArn");
+    if(!outpostArnNode.IsNull())
+    {
+      m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
+      m_outpostArnHasBeenSet = true;
+    }
+    XmlNode encryptedNode = resultNode.FirstChild("encrypted");
+    if(!encryptedNode.IsNull())
+    {
+      m_encrypted = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(encryptedNode.GetText()).c_str()).c_str());
+      m_encryptedHasBeenSet = true;
     }
   }
 
@@ -143,14 +151,24 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".VolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_volumeType) << "&";
   }
 
-  if(m_encryptedHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
-  }
-
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+
+  if(m_throughputHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Throughput=" << m_throughput << "&";
+  }
+
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+
+  if(m_encryptedHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
 }
@@ -177,13 +195,21 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location)
   {
       oStream << location << ".VolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_volumeType) << "&";
   }
-  if(m_encryptedHasBeenSet)
-  {
-      oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
-  }
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_throughputHasBeenSet)
+  {
+      oStream << location << ".Throughput=" << m_throughput << "&";
+  }
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+  if(m_encryptedHasBeenSet)
+  {
+      oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 }
 

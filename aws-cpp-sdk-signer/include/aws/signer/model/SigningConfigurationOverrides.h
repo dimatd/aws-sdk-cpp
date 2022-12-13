@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/signer/Signer_EXPORTS.h>
@@ -50,75 +40,75 @@ namespace Model
 
 
     /**
-     * <p>A specified override of the default encryption algorithm that is used in an
-     * AWS Signer job.</p>
+     * <p>A specified override of the default encryption algorithm that is used in a
+     * code signing job.</p>
      */
     inline const EncryptionAlgorithm& GetEncryptionAlgorithm() const{ return m_encryptionAlgorithm; }
 
     /**
-     * <p>A specified override of the default encryption algorithm that is used in an
-     * AWS Signer job.</p>
+     * <p>A specified override of the default encryption algorithm that is used in a
+     * code signing job.</p>
      */
     inline bool EncryptionAlgorithmHasBeenSet() const { return m_encryptionAlgorithmHasBeenSet; }
 
     /**
-     * <p>A specified override of the default encryption algorithm that is used in an
-     * AWS Signer job.</p>
+     * <p>A specified override of the default encryption algorithm that is used in a
+     * code signing job.</p>
      */
     inline void SetEncryptionAlgorithm(const EncryptionAlgorithm& value) { m_encryptionAlgorithmHasBeenSet = true; m_encryptionAlgorithm = value; }
 
     /**
-     * <p>A specified override of the default encryption algorithm that is used in an
-     * AWS Signer job.</p>
+     * <p>A specified override of the default encryption algorithm that is used in a
+     * code signing job.</p>
      */
     inline void SetEncryptionAlgorithm(EncryptionAlgorithm&& value) { m_encryptionAlgorithmHasBeenSet = true; m_encryptionAlgorithm = std::move(value); }
 
     /**
-     * <p>A specified override of the default encryption algorithm that is used in an
-     * AWS Signer job.</p>
+     * <p>A specified override of the default encryption algorithm that is used in a
+     * code signing job.</p>
      */
     inline SigningConfigurationOverrides& WithEncryptionAlgorithm(const EncryptionAlgorithm& value) { SetEncryptionAlgorithm(value); return *this;}
 
     /**
-     * <p>A specified override of the default encryption algorithm that is used in an
-     * AWS Signer job.</p>
+     * <p>A specified override of the default encryption algorithm that is used in a
+     * code signing job.</p>
      */
     inline SigningConfigurationOverrides& WithEncryptionAlgorithm(EncryptionAlgorithm&& value) { SetEncryptionAlgorithm(std::move(value)); return *this;}
 
 
     /**
-     * <p>A specified override of the default hash algorithm that is used in an AWS
-     * Signer job.</p>
+     * <p>A specified override of the default hash algorithm that is used in a code
+     * signing job.</p>
      */
     inline const HashAlgorithm& GetHashAlgorithm() const{ return m_hashAlgorithm; }
 
     /**
-     * <p>A specified override of the default hash algorithm that is used in an AWS
-     * Signer job.</p>
+     * <p>A specified override of the default hash algorithm that is used in a code
+     * signing job.</p>
      */
     inline bool HashAlgorithmHasBeenSet() const { return m_hashAlgorithmHasBeenSet; }
 
     /**
-     * <p>A specified override of the default hash algorithm that is used in an AWS
-     * Signer job.</p>
+     * <p>A specified override of the default hash algorithm that is used in a code
+     * signing job.</p>
      */
     inline void SetHashAlgorithm(const HashAlgorithm& value) { m_hashAlgorithmHasBeenSet = true; m_hashAlgorithm = value; }
 
     /**
-     * <p>A specified override of the default hash algorithm that is used in an AWS
-     * Signer job.</p>
+     * <p>A specified override of the default hash algorithm that is used in a code
+     * signing job.</p>
      */
     inline void SetHashAlgorithm(HashAlgorithm&& value) { m_hashAlgorithmHasBeenSet = true; m_hashAlgorithm = std::move(value); }
 
     /**
-     * <p>A specified override of the default hash algorithm that is used in an AWS
-     * Signer job.</p>
+     * <p>A specified override of the default hash algorithm that is used in a code
+     * signing job.</p>
      */
     inline SigningConfigurationOverrides& WithHashAlgorithm(const HashAlgorithm& value) { SetHashAlgorithm(value); return *this;}
 
     /**
-     * <p>A specified override of the default hash algorithm that is used in an AWS
-     * Signer job.</p>
+     * <p>A specified override of the default hash algorithm that is used in a code
+     * signing job.</p>
      */
     inline SigningConfigurationOverrides& WithHashAlgorithm(HashAlgorithm&& value) { SetHashAlgorithm(std::move(value)); return *this;}
 

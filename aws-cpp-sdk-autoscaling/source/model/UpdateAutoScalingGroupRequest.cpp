@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/autoscaling/model/UpdateAutoScalingGroupRequest.h>
 #include <aws/core/utils/StringUtils.h>
@@ -42,7 +32,15 @@ UpdateAutoScalingGroupRequest::UpdateAutoScalingGroupRequest() :
     m_terminationPoliciesHasBeenSet(false),
     m_newInstancesProtectedFromScaleIn(false),
     m_newInstancesProtectedFromScaleInHasBeenSet(false),
-    m_serviceLinkedRoleARNHasBeenSet(false)
+    m_serviceLinkedRoleARNHasBeenSet(false),
+    m_maxInstanceLifetime(0),
+    m_maxInstanceLifetimeHasBeenSet(false),
+    m_capacityRebalance(false),
+    m_capacityRebalanceHasBeenSet(false),
+    m_contextHasBeenSet(false),
+    m_desiredCapacityTypeHasBeenSet(false),
+    m_defaultInstanceWarmup(0),
+    m_defaultInstanceWarmupHasBeenSet(false)
 {
 }
 
@@ -140,6 +138,31 @@ Aws::String UpdateAutoScalingGroupRequest::SerializePayload() const
   if(m_serviceLinkedRoleARNHasBeenSet)
   {
     ss << "ServiceLinkedRoleARN=" << StringUtils::URLEncode(m_serviceLinkedRoleARN.c_str()) << "&";
+  }
+
+  if(m_maxInstanceLifetimeHasBeenSet)
+  {
+    ss << "MaxInstanceLifetime=" << m_maxInstanceLifetime << "&";
+  }
+
+  if(m_capacityRebalanceHasBeenSet)
+  {
+    ss << "CapacityRebalance=" << std::boolalpha << m_capacityRebalance << "&";
+  }
+
+  if(m_contextHasBeenSet)
+  {
+    ss << "Context=" << StringUtils::URLEncode(m_context.c_str()) << "&";
+  }
+
+  if(m_desiredCapacityTypeHasBeenSet)
+  {
+    ss << "DesiredCapacityType=" << StringUtils::URLEncode(m_desiredCapacityType.c_str()) << "&";
+  }
+
+  if(m_defaultInstanceWarmupHasBeenSet)
+  {
+    ss << "DefaultInstanceWarmup=" << m_defaultInstanceWarmup << "&";
   }
 
   ss << "Version=2011-01-01";

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/connect/model/User.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -37,7 +27,8 @@ User::User() :
     m_directoryUserIdHasBeenSet(false),
     m_securityProfileIdsHasBeenSet(false),
     m_routingProfileIdHasBeenSet(false),
-    m_hierarchyGroupIdHasBeenSet(false)
+    m_hierarchyGroupIdHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
 }
 
@@ -50,7 +41,8 @@ User::User(JsonView jsonValue) :
     m_directoryUserIdHasBeenSet(false),
     m_securityProfileIdsHasBeenSet(false),
     m_routingProfileIdHasBeenSet(false),
-    m_hierarchyGroupIdHasBeenSet(false)
+    m_hierarchyGroupIdHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -123,6 +115,16 @@ User& User::operator =(JsonView jsonValue)
     m_hierarchyGroupIdHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("Tags"))
+  {
+    Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
+    for(auto& tagsItem : tagsJsonMap)
+    {
+      m_tags[tagsItem.first] = tagsItem.second.AsString();
+    }
+    m_tagsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -186,6 +188,17 @@ JsonValue User::Jsonize() const
   if(m_hierarchyGroupIdHasBeenSet)
   {
    payload.WithString("HierarchyGroupId", m_hierarchyGroupId);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

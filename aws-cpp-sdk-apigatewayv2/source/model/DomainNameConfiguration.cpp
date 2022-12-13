@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/DomainNameConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,14 +23,15 @@ DomainNameConfiguration::DomainNameConfiguration() :
     m_certificateArnHasBeenSet(false),
     m_certificateNameHasBeenSet(false),
     m_certificateUploadDateHasBeenSet(false),
+    m_domainNameStatus(DomainNameStatus::NOT_SET),
+    m_domainNameStatusHasBeenSet(false),
+    m_domainNameStatusMessageHasBeenSet(false),
     m_endpointType(EndpointType::NOT_SET),
     m_endpointTypeHasBeenSet(false),
     m_hostedZoneIdHasBeenSet(false),
     m_securityPolicy(SecurityPolicy::NOT_SET),
     m_securityPolicyHasBeenSet(false),
-    m_domainNameStatus(DomainNameStatus::NOT_SET),
-    m_domainNameStatusHasBeenSet(false),
-    m_domainNameStatusMessageHasBeenSet(false)
+    m_ownershipVerificationCertificateArnHasBeenSet(false)
 {
 }
 
@@ -49,14 +40,15 @@ DomainNameConfiguration::DomainNameConfiguration(JsonView jsonValue) :
     m_certificateArnHasBeenSet(false),
     m_certificateNameHasBeenSet(false),
     m_certificateUploadDateHasBeenSet(false),
+    m_domainNameStatus(DomainNameStatus::NOT_SET),
+    m_domainNameStatusHasBeenSet(false),
+    m_domainNameStatusMessageHasBeenSet(false),
     m_endpointType(EndpointType::NOT_SET),
     m_endpointTypeHasBeenSet(false),
     m_hostedZoneIdHasBeenSet(false),
     m_securityPolicy(SecurityPolicy::NOT_SET),
     m_securityPolicyHasBeenSet(false),
-    m_domainNameStatus(DomainNameStatus::NOT_SET),
-    m_domainNameStatusHasBeenSet(false),
-    m_domainNameStatusMessageHasBeenSet(false)
+    m_ownershipVerificationCertificateArnHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -91,6 +83,20 @@ DomainNameConfiguration& DomainNameConfiguration::operator =(JsonView jsonValue)
     m_certificateUploadDateHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("domainNameStatus"))
+  {
+    m_domainNameStatus = DomainNameStatusMapper::GetDomainNameStatusForName(jsonValue.GetString("domainNameStatus"));
+
+    m_domainNameStatusHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("domainNameStatusMessage"))
+  {
+    m_domainNameStatusMessage = jsonValue.GetString("domainNameStatusMessage");
+
+    m_domainNameStatusMessageHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("endpointType"))
   {
     m_endpointType = EndpointTypeMapper::GetEndpointTypeForName(jsonValue.GetString("endpointType"));
@@ -112,18 +118,11 @@ DomainNameConfiguration& DomainNameConfiguration::operator =(JsonView jsonValue)
     m_securityPolicyHasBeenSet = true;
   }
 
-  if(jsonValue.ValueExists("domainNameStatus"))
+  if(jsonValue.ValueExists("ownershipVerificationCertificateArn"))
   {
-    m_domainNameStatus = DomainNameStatusMapper::GetDomainNameStatusForName(jsonValue.GetString("domainNameStatus"));
+    m_ownershipVerificationCertificateArn = jsonValue.GetString("ownershipVerificationCertificateArn");
 
-    m_domainNameStatusHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("domainNameStatusMessage"))
-  {
-    m_domainNameStatusMessage = jsonValue.GetString("domainNameStatusMessage");
-
-    m_domainNameStatusMessageHasBeenSet = true;
+    m_ownershipVerificationCertificateArnHasBeenSet = true;
   }
 
   return *this;
@@ -156,6 +155,17 @@ JsonValue DomainNameConfiguration::Jsonize() const
    payload.WithString("certificateUploadDate", m_certificateUploadDate.ToGmtString(DateFormat::ISO_8601));
   }
 
+  if(m_domainNameStatusHasBeenSet)
+  {
+   payload.WithString("domainNameStatus", DomainNameStatusMapper::GetNameForDomainNameStatus(m_domainNameStatus));
+  }
+
+  if(m_domainNameStatusMessageHasBeenSet)
+  {
+   payload.WithString("domainNameStatusMessage", m_domainNameStatusMessage);
+
+  }
+
   if(m_endpointTypeHasBeenSet)
   {
    payload.WithString("endpointType", EndpointTypeMapper::GetNameForEndpointType(m_endpointType));
@@ -172,14 +182,9 @@ JsonValue DomainNameConfiguration::Jsonize() const
    payload.WithString("securityPolicy", SecurityPolicyMapper::GetNameForSecurityPolicy(m_securityPolicy));
   }
 
-  if(m_domainNameStatusHasBeenSet)
+  if(m_ownershipVerificationCertificateArnHasBeenSet)
   {
-   payload.WithString("domainNameStatus", DomainNameStatusMapper::GetNameForDomainNameStatus(m_domainNameStatus));
-  }
-
-  if(m_domainNameStatusMessageHasBeenSet)
-  {
-   payload.WithString("domainNameStatusMessage", m_domainNameStatusMessage);
+   payload.WithString("ownershipVerificationCertificateArn", m_ownershipVerificationCertificateArn);
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/acm/ACM_EXPORTS.h>
@@ -135,41 +125,89 @@ namespace Model
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline const Aws::Vector<KeyAlgorithm>& GetKeyTypes() const{ return m_keyTypes; }
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline bool KeyTypesHasBeenSet() const { return m_keyTypesHasBeenSet; }
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline void SetKeyTypes(const Aws::Vector<KeyAlgorithm>& value) { m_keyTypesHasBeenSet = true; m_keyTypes = value; }
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline void SetKeyTypes(Aws::Vector<KeyAlgorithm>&& value) { m_keyTypesHasBeenSet = true; m_keyTypes = std::move(value); }
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline Filters& WithKeyTypes(const Aws::Vector<KeyAlgorithm>& value) { SetKeyTypes(value); return *this;}
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline Filters& WithKeyTypes(Aws::Vector<KeyAlgorithm>&& value) { SetKeyTypes(std::move(value)); return *this;}
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline Filters& AddKeyTypes(const KeyAlgorithm& value) { m_keyTypesHasBeenSet = true; m_keyTypes.push_back(value); return *this; }
 
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
+     * <p>Default filtering returns only <code>RSA_1024</code> and
+     * <code>RSA_2048</code> certificates that have at least one domain. To return
+     * other certificate types, provide the desired type signatures in a
+     * comma-separated list. For example, <code>"keyTypes":
+     * ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and
+     * <code>RSA_4096</code> certificates.</p>
      */
     inline Filters& AddKeyTypes(KeyAlgorithm&& value) { m_keyTypesHasBeenSet = true; m_keyTypes.push_back(std::move(value)); return *this; }
 

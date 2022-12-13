@@ -1,20 +1,11 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
+#include <aws/core/client/AWSError.h>
 #include <aws/core/client/CoreErrors.h>
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 
@@ -52,7 +43,7 @@ enum class CodePipelineErrors
   INVALID_ACCESS_KEY_ID = 23,
   REQUEST_TIMEOUT = 24,
   NETWORK_CONNECTION = 99,
-  
+
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,6 +51,8 @@ enum class CodePipelineErrors
   ACTION_TYPE_NOT_FOUND,
   APPROVAL_ALREADY_COMPLETED,
   CONCURRENT_MODIFICATION,
+  CONFLICT,
+  DUPLICATED_STOP_REQUEST,
   INVALID_ACTION_DECLARATION,
   INVALID_APPROVAL_TOKEN,
   INVALID_ARN,
@@ -77,15 +70,32 @@ enum class CodePipelineErrors
   JOB_NOT_FOUND,
   LIMIT_EXCEEDED,
   NOT_LATEST_PIPELINE_EXECUTION,
+  OUTPUT_VARIABLES_SIZE_EXCEEDED,
   PIPELINE_EXECUTION_NOT_FOUND,
+  PIPELINE_EXECUTION_NOT_STOPPABLE,
   PIPELINE_NAME_IN_USE,
   PIPELINE_NOT_FOUND,
   PIPELINE_VERSION_NOT_FOUND,
+  REQUEST_FAILED,
   STAGE_NOT_FOUND,
   STAGE_NOT_RETRYABLE,
   TOO_MANY_TAGS,
   WEBHOOK_NOT_FOUND
 };
+
+class AWS_CODEPIPELINE_API CodePipelineError : public Aws::Client::AWSError<CodePipelineErrors>
+{
+public:
+  CodePipelineError() {}
+  CodePipelineError(const Aws::Client::AWSError<Aws::Client::CoreErrors>& rhs) : Aws::Client::AWSError<CodePipelineErrors>(rhs) {}
+  CodePipelineError(Aws::Client::AWSError<Aws::Client::CoreErrors>&& rhs) : Aws::Client::AWSError<CodePipelineErrors>(rhs) {}
+  CodePipelineError(const Aws::Client::AWSError<CodePipelineErrors>& rhs) : Aws::Client::AWSError<CodePipelineErrors>(rhs) {}
+  CodePipelineError(Aws::Client::AWSError<CodePipelineErrors>&& rhs) : Aws::Client::AWSError<CodePipelineErrors>(rhs) {}
+
+  template <typename T>
+  T GetModeledError();
+};
+
 namespace CodePipelineErrorMapper
 {
   AWS_CODEPIPELINE_API Aws::Client::AWSError<Aws::Client::CoreErrors> GetErrorForName(const char* errorName);

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -57,43 +47,43 @@ namespace Model
 
     /**
      * <p>The launch templates and overrides that were used for launching the
-     * instances. Any parameters that you specify in the Overrides override the same
-     * parameters in the launch template.</p>
+     * instances. The values that you specify in the Overrides replace the values in
+     * the launch template.</p>
      */
     inline const LaunchTemplateAndOverridesResponse& GetLaunchTemplateAndOverrides() const{ return m_launchTemplateAndOverrides; }
 
     /**
      * <p>The launch templates and overrides that were used for launching the
-     * instances. Any parameters that you specify in the Overrides override the same
-     * parameters in the launch template.</p>
+     * instances. The values that you specify in the Overrides replace the values in
+     * the launch template.</p>
      */
     inline bool LaunchTemplateAndOverridesHasBeenSet() const { return m_launchTemplateAndOverridesHasBeenSet; }
 
     /**
      * <p>The launch templates and overrides that were used for launching the
-     * instances. Any parameters that you specify in the Overrides override the same
-     * parameters in the launch template.</p>
+     * instances. The values that you specify in the Overrides replace the values in
+     * the launch template.</p>
      */
     inline void SetLaunchTemplateAndOverrides(const LaunchTemplateAndOverridesResponse& value) { m_launchTemplateAndOverridesHasBeenSet = true; m_launchTemplateAndOverrides = value; }
 
     /**
      * <p>The launch templates and overrides that were used for launching the
-     * instances. Any parameters that you specify in the Overrides override the same
-     * parameters in the launch template.</p>
+     * instances. The values that you specify in the Overrides replace the values in
+     * the launch template.</p>
      */
     inline void SetLaunchTemplateAndOverrides(LaunchTemplateAndOverridesResponse&& value) { m_launchTemplateAndOverridesHasBeenSet = true; m_launchTemplateAndOverrides = std::move(value); }
 
     /**
      * <p>The launch templates and overrides that were used for launching the
-     * instances. Any parameters that you specify in the Overrides override the same
-     * parameters in the launch template.</p>
+     * instances. The values that you specify in the Overrides replace the values in
+     * the launch template.</p>
      */
     inline CreateFleetInstance& WithLaunchTemplateAndOverrides(const LaunchTemplateAndOverridesResponse& value) { SetLaunchTemplateAndOverrides(value); return *this;}
 
     /**
      * <p>The launch templates and overrides that were used for launching the
-     * instances. Any parameters that you specify in the Overrides override the same
-     * parameters in the launch template.</p>
+     * instances. The values that you specify in the Overrides replace the values in
+     * the launch template.</p>
      */
     inline CreateFleetInstance& WithLaunchTemplateAndOverrides(LaunchTemplateAndOverridesResponse&& value) { SetLaunchTemplateAndOverrides(std::move(value)); return *this;}
 
@@ -213,32 +203,38 @@ namespace Model
 
 
     /**
-     * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
+     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
+     * is blank.</p>
      */
     inline const PlatformValues& GetPlatform() const{ return m_platform; }
 
     /**
-     * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
+     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
+     * is blank.</p>
      */
     inline bool PlatformHasBeenSet() const { return m_platformHasBeenSet; }
 
     /**
-     * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
+     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
+     * is blank.</p>
      */
     inline void SetPlatform(const PlatformValues& value) { m_platformHasBeenSet = true; m_platform = value; }
 
     /**
-     * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
+     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
+     * is blank.</p>
      */
     inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
 
     /**
-     * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
+     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
+     * is blank.</p>
      */
     inline CreateFleetInstance& WithPlatform(const PlatformValues& value) { SetPlatform(value); return *this;}
 
     /**
-     * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
+     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
+     * is blank.</p>
      */
     inline CreateFleetInstance& WithPlatform(PlatformValues&& value) { SetPlatform(std::move(value)); return *this;}
 

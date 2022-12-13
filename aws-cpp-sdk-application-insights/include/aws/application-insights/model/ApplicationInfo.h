@@ -1,21 +1,12 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/application-insights/ApplicationInsights_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/application-insights/model/DiscoveryType.h>
 #include <utility>
 
 namespace Aws
@@ -204,52 +195,149 @@ namespace Model
 
 
     /**
+     * <p> Indicates whether Application Insights can listen to CloudWatch events for
+     * the application resources, such as <code>instance terminated</code>,
+     * <code>failed deployment</code>, and others. </p>
+     */
+    inline bool GetCWEMonitorEnabled() const{ return m_cWEMonitorEnabled; }
+
+    /**
+     * <p> Indicates whether Application Insights can listen to CloudWatch events for
+     * the application resources, such as <code>instance terminated</code>,
+     * <code>failed deployment</code>, and others. </p>
+     */
+    inline bool CWEMonitorEnabledHasBeenSet() const { return m_cWEMonitorEnabledHasBeenSet; }
+
+    /**
+     * <p> Indicates whether Application Insights can listen to CloudWatch events for
+     * the application resources, such as <code>instance terminated</code>,
+     * <code>failed deployment</code>, and others. </p>
+     */
+    inline void SetCWEMonitorEnabled(bool value) { m_cWEMonitorEnabledHasBeenSet = true; m_cWEMonitorEnabled = value; }
+
+    /**
+     * <p> Indicates whether Application Insights can listen to CloudWatch events for
+     * the application resources, such as <code>instance terminated</code>,
+     * <code>failed deployment</code>, and others. </p>
+     */
+    inline ApplicationInfo& WithCWEMonitorEnabled(bool value) { SetCWEMonitorEnabled(value); return *this;}
+
+
+    /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline const Aws::String& GetRemarks() const{ return m_remarks; }
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline bool RemarksHasBeenSet() const { return m_remarksHasBeenSet; }
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline void SetRemarks(const Aws::String& value) { m_remarksHasBeenSet = true; m_remarks = value; }
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline void SetRemarks(Aws::String&& value) { m_remarksHasBeenSet = true; m_remarks = std::move(value); }
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline void SetRemarks(const char* value) { m_remarksHasBeenSet = true; m_remarks.assign(value); }
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline ApplicationInfo& WithRemarks(const Aws::String& value) { SetRemarks(value); return *this;}
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline ApplicationInfo& WithRemarks(Aws::String&& value) { SetRemarks(std::move(value)); return *this;}
 
     /**
      * <p>The issues on the user side that block Application Insights from successfully
-     * monitoring an application.</p>
+     * monitoring an application. Example remarks include:</p> <ul> <li>
+     * <p>“Configuring application, detected 1 Errors, 3 Warnings”</p> </li> <li>
+     * <p>“Configuring application, detected 1 Unconfigured Components”</p> </li> </ul>
      */
     inline ApplicationInfo& WithRemarks(const char* value) { SetRemarks(value); return *this;}
+
+
+    /**
+     * <p> Indicates whether auto-configuration is turned on for this application. </p>
+     */
+    inline bool GetAutoConfigEnabled() const{ return m_autoConfigEnabled; }
+
+    /**
+     * <p> Indicates whether auto-configuration is turned on for this application. </p>
+     */
+    inline bool AutoConfigEnabledHasBeenSet() const { return m_autoConfigEnabledHasBeenSet; }
+
+    /**
+     * <p> Indicates whether auto-configuration is turned on for this application. </p>
+     */
+    inline void SetAutoConfigEnabled(bool value) { m_autoConfigEnabledHasBeenSet = true; m_autoConfigEnabled = value; }
+
+    /**
+     * <p> Indicates whether auto-configuration is turned on for this application. </p>
+     */
+    inline ApplicationInfo& WithAutoConfigEnabled(bool value) { SetAutoConfigEnabled(value); return *this;}
+
+
+    /**
+     * <p> The method used by Application Insights to onboard your resources. </p>
+     */
+    inline const DiscoveryType& GetDiscoveryType() const{ return m_discoveryType; }
+
+    /**
+     * <p> The method used by Application Insights to onboard your resources. </p>
+     */
+    inline bool DiscoveryTypeHasBeenSet() const { return m_discoveryTypeHasBeenSet; }
+
+    /**
+     * <p> The method used by Application Insights to onboard your resources. </p>
+     */
+    inline void SetDiscoveryType(const DiscoveryType& value) { m_discoveryTypeHasBeenSet = true; m_discoveryType = value; }
+
+    /**
+     * <p> The method used by Application Insights to onboard your resources. </p>
+     */
+    inline void SetDiscoveryType(DiscoveryType&& value) { m_discoveryTypeHasBeenSet = true; m_discoveryType = std::move(value); }
+
+    /**
+     * <p> The method used by Application Insights to onboard your resources. </p>
+     */
+    inline ApplicationInfo& WithDiscoveryType(const DiscoveryType& value) { SetDiscoveryType(value); return *this;}
+
+    /**
+     * <p> The method used by Application Insights to onboard your resources. </p>
+     */
+    inline ApplicationInfo& WithDiscoveryType(DiscoveryType&& value) { SetDiscoveryType(std::move(value)); return *this;}
 
   private:
 
@@ -265,8 +353,17 @@ namespace Model
     bool m_opsCenterEnabled;
     bool m_opsCenterEnabledHasBeenSet;
 
+    bool m_cWEMonitorEnabled;
+    bool m_cWEMonitorEnabledHasBeenSet;
+
     Aws::String m_remarks;
     bool m_remarksHasBeenSet;
+
+    bool m_autoConfigEnabled;
+    bool m_autoConfigEnabledHasBeenSet;
+
+    DiscoveryType m_discoveryType;
+    bool m_discoveryTypeHasBeenSet;
   };
 
 } // namespace Model

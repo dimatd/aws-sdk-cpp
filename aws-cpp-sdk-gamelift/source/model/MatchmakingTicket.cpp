@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/gamelift/model/MatchmakingTicket.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,6 +21,7 @@ namespace Model
 MatchmakingTicket::MatchmakingTicket() : 
     m_ticketIdHasBeenSet(false),
     m_configurationNameHasBeenSet(false),
+    m_configurationArnHasBeenSet(false),
     m_status(MatchmakingConfigurationStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_statusReasonHasBeenSet(false),
@@ -47,6 +38,7 @@ MatchmakingTicket::MatchmakingTicket() :
 MatchmakingTicket::MatchmakingTicket(JsonView jsonValue) : 
     m_ticketIdHasBeenSet(false),
     m_configurationNameHasBeenSet(false),
+    m_configurationArnHasBeenSet(false),
     m_status(MatchmakingConfigurationStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_statusReasonHasBeenSet(false),
@@ -75,6 +67,13 @@ MatchmakingTicket& MatchmakingTicket::operator =(JsonView jsonValue)
     m_configurationName = jsonValue.GetString("ConfigurationName");
 
     m_configurationNameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ConfigurationArn"))
+  {
+    m_configurationArn = jsonValue.GetString("ConfigurationArn");
+
+    m_configurationArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("Status"))
@@ -152,6 +151,12 @@ JsonValue MatchmakingTicket::Jsonize() const
   if(m_configurationNameHasBeenSet)
   {
    payload.WithString("ConfigurationName", m_configurationName);
+
+  }
+
+  if(m_configurationArnHasBeenSet)
+  {
+   payload.WithString("ConfigurationArn", m_configurationArn);
 
   }
 

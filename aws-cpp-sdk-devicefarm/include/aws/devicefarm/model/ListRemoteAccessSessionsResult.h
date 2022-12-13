@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -52,43 +42,43 @@ namespace Model
 
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline const Aws::Vector<RemoteAccessSession>& GetRemoteAccessSessions() const{ return m_remoteAccessSessions; }
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline void SetRemoteAccessSessions(const Aws::Vector<RemoteAccessSession>& value) { m_remoteAccessSessions = value; }
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline void SetRemoteAccessSessions(Aws::Vector<RemoteAccessSession>&& value) { m_remoteAccessSessions = std::move(value); }
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline ListRemoteAccessSessionsResult& WithRemoteAccessSessions(const Aws::Vector<RemoteAccessSession>& value) { SetRemoteAccessSessions(value); return *this;}
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline ListRemoteAccessSessionsResult& WithRemoteAccessSessions(Aws::Vector<RemoteAccessSession>&& value) { SetRemoteAccessSessions(std::move(value)); return *this;}
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline ListRemoteAccessSessionsResult& AddRemoteAccessSessions(const RemoteAccessSession& value) { m_remoteAccessSessions.push_back(value); return *this; }
 
     /**
-     * <p>A container representing the metadata from the service about each remote
+     * <p>A container that represents the metadata from the service about each remote
      * access session you are requesting.</p>
      */
     inline ListRemoteAccessSessionsResult& AddRemoteAccessSessions(RemoteAccessSession&& value) { m_remoteAccessSessions.push_back(std::move(value)); return *this; }

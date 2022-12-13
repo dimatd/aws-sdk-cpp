@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -225,42 +215,42 @@ namespace Model
 
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline const Aws::String& GetCreationDate() const{ return m_creationDate; }
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline void SetCreationDate(const Aws::String& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline void SetCreationDate(Aws::String&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline void SetCreationDate(const char* value) { m_creationDateHasBeenSet = true; m_creationDate.assign(value); }
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline PushNotificationTemplateResponse& WithCreationDate(const Aws::String& value) { SetCreationDate(value); return *this;}
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline PushNotificationTemplateResponse& WithCreationDate(Aws::String&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
-     * <p>The date when the message template was created.</p>
+     * <p>The date, in ISO 8601 format, when the message template was created.</p>
      */
     inline PushNotificationTemplateResponse& WithCreationDate(const char* value) { SetCreationDate(value); return *this;}
 
@@ -294,6 +284,71 @@ namespace Model
      * <p>The default message template that's used for push notification channels.</p>
      */
     inline PushNotificationTemplateResponse& WithDefault(DefaultPushNotificationTemplate&& value) { SetDefault(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline const Aws::String& GetDefaultSubstitutions() const{ return m_defaultSubstitutions; }
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline bool DefaultSubstitutionsHasBeenSet() const { return m_defaultSubstitutionsHasBeenSet; }
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline void SetDefaultSubstitutions(const Aws::String& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = value; }
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline void SetDefaultSubstitutions(Aws::String&& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = std::move(value); }
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline void SetDefaultSubstitutions(const char* value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions.assign(value); }
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline PushNotificationTemplateResponse& WithDefaultSubstitutions(const Aws::String& value) { SetDefaultSubstitutions(value); return *this;}
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline PushNotificationTemplateResponse& WithDefaultSubstitutions(Aws::String&& value) { SetDefaultSubstitutions(std::move(value)); return *this;}
+
+    /**
+     * <p>The JSON object that specifies the default values that are used for message
+     * variables in the message template. This object is a set of key-value pairs. Each
+     * key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable.</p>
+     */
+    inline PushNotificationTemplateResponse& WithDefaultSubstitutions(const char* value) { SetDefaultSubstitutions(value); return *this;}
 
 
     /**
@@ -346,44 +401,101 @@ namespace Model
 
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline const Aws::String& GetLastModifiedDate() const{ return m_lastModifiedDate; }
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline void SetLastModifiedDate(const Aws::String& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline void SetLastModifiedDate(Aws::String&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline void SetLastModifiedDate(const char* value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate.assign(value); }
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline PushNotificationTemplateResponse& WithLastModifiedDate(const Aws::String& value) { SetLastModifiedDate(value); return *this;}
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline PushNotificationTemplateResponse& WithLastModifiedDate(Aws::String&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
-     * <p>The date when the message template was last modified.</p>
+     * <p>The date, in ISO 8601 format, when the message template was last
+     * modified.</p>
      */
     inline PushNotificationTemplateResponse& WithLastModifiedDate(const char* value) { SetLastModifiedDate(value); return *this;}
+
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline const Aws::String& GetRecommenderId() const{ return m_recommenderId; }
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline bool RecommenderIdHasBeenSet() const { return m_recommenderIdHasBeenSet; }
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline void SetRecommenderId(const Aws::String& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = value; }
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline void SetRecommenderId(Aws::String&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::move(value); }
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline void SetRecommenderId(const char* value) { m_recommenderIdHasBeenSet = true; m_recommenderId.assign(value); }
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline PushNotificationTemplateResponse& WithRecommenderId(const Aws::String& value) { SetRecommenderId(value); return *this;}
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline PushNotificationTemplateResponse& WithRecommenderId(Aws::String&& value) { SetRecommenderId(std::move(value)); return *this;}
+
+    /**
+     * <p>The unique identifier for the recommender model that's used by the message
+     * template.</p>
+     */
+    inline PushNotificationTemplateResponse& WithRecommenderId(const char* value) { SetRecommenderId(value); return *this;}
 
 
     /**
@@ -479,6 +591,47 @@ namespace Model
 
 
     /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline const Aws::String& GetTemplateDescription() const{ return m_templateDescription; }
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline bool TemplateDescriptionHasBeenSet() const { return m_templateDescriptionHasBeenSet; }
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(const Aws::String& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = value; }
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(Aws::String&& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = std::move(value); }
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(const char* value) { m_templateDescriptionHasBeenSet = true; m_templateDescription.assign(value); }
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline PushNotificationTemplateResponse& WithTemplateDescription(const Aws::String& value) { SetTemplateDescription(value); return *this;}
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline PushNotificationTemplateResponse& WithTemplateDescription(Aws::String&& value) { SetTemplateDescription(std::move(value)); return *this;}
+
+    /**
+     * <p>The custom description of the message template.</p>
+     */
+    inline PushNotificationTemplateResponse& WithTemplateDescription(const char* value) { SetTemplateDescription(value); return *this;}
+
+
+    /**
      * <p>The name of the message template.</p>
      */
     inline const Aws::String& GetTemplateName() const{ return m_templateName; }
@@ -555,6 +708,63 @@ namespace Model
      */
     inline PushNotificationTemplateResponse& WithTemplateType(TemplateType&& value) { SetTemplateType(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline const Aws::String& GetVersion() const{ return m_version; }
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline PushNotificationTemplateResponse& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline PushNotificationTemplateResponse& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The unique identifier, as an integer, for the active version of the message
+     * template, or the version of the template that you specified by using the version
+     * parameter in your request.</p>
+     */
+    inline PushNotificationTemplateResponse& WithVersion(const char* value) { SetVersion(value); return *this;}
+
   private:
 
     AndroidPushNotificationTemplate m_aDM;
@@ -575,20 +785,32 @@ namespace Model
     DefaultPushNotificationTemplate m_default;
     bool m_defaultHasBeenSet;
 
+    Aws::String m_defaultSubstitutions;
+    bool m_defaultSubstitutionsHasBeenSet;
+
     AndroidPushNotificationTemplate m_gCM;
     bool m_gCMHasBeenSet;
 
     Aws::String m_lastModifiedDate;
     bool m_lastModifiedDateHasBeenSet;
 
+    Aws::String m_recommenderId;
+    bool m_recommenderIdHasBeenSet;
+
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet;
+
+    Aws::String m_templateDescription;
+    bool m_templateDescriptionHasBeenSet;
 
     Aws::String m_templateName;
     bool m_templateNameHasBeenSet;
 
     TemplateType m_templateType;
     bool m_templateTypeHasBeenSet;
+
+    Aws::String m_version;
+    bool m_versionHasBeenSet;
   };
 
 } // namespace Model

@@ -1,21 +1,12 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/mediapackage/MediaPackage_EXPORTS.h>
 #include <aws/mediapackage/MediaPackageRequest.h>
+#include <aws/mediapackage/model/Authorization.h>
 #include <aws/mediapackage/model/CmafPackageCreateOrUpdateParameters.h>
 #include <aws/mediapackage/model/DashPackage.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -50,6 +41,25 @@ namespace Model
     inline virtual const char* GetServiceRequestName() const override { return "UpdateOriginEndpoint"; }
 
     Aws::String SerializePayload() const override;
+
+
+    
+    inline const Authorization& GetAuthorization() const{ return m_authorization; }
+
+    
+    inline bool AuthorizationHasBeenSet() const { return m_authorizationHasBeenSet; }
+
+    
+    inline void SetAuthorization(const Authorization& value) { m_authorizationHasBeenSet = true; m_authorization = value; }
+
+    
+    inline void SetAuthorization(Authorization&& value) { m_authorizationHasBeenSet = true; m_authorization = std::move(value); }
+
+    
+    inline UpdateOriginEndpointRequest& WithAuthorization(const Authorization& value) { SetAuthorization(value); return *this;}
+
+    
+    inline UpdateOriginEndpointRequest& WithAuthorization(Authorization&& value) { SetAuthorization(std::move(value)); return *this;}
 
 
     
@@ -445,6 +455,9 @@ If not
     inline UpdateOriginEndpointRequest& AddWhitelist(const char* value) { m_whitelistHasBeenSet = true; m_whitelist.push_back(value); return *this; }
 
   private:
+
+    Authorization m_authorization;
+    bool m_authorizationHasBeenSet;
 
     CmafPackageCreateOrUpdateParameters m_cmafPackage;
     bool m_cmafPackageHasBeenSet;

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/chime/model/Account.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -37,7 +27,10 @@ Account::Account() :
     m_createdTimestampHasBeenSet(false),
     m_defaultLicense(License::NOT_SET),
     m_defaultLicenseHasBeenSet(false),
-    m_supportedLicensesHasBeenSet(false)
+    m_supportedLicensesHasBeenSet(false),
+    m_accountStatus(AccountStatus::NOT_SET),
+    m_accountStatusHasBeenSet(false),
+    m_signinDelegateGroupsHasBeenSet(false)
 {
 }
 
@@ -50,7 +43,10 @@ Account::Account(JsonView jsonValue) :
     m_createdTimestampHasBeenSet(false),
     m_defaultLicense(License::NOT_SET),
     m_defaultLicenseHasBeenSet(false),
-    m_supportedLicensesHasBeenSet(false)
+    m_supportedLicensesHasBeenSet(false),
+    m_accountStatus(AccountStatus::NOT_SET),
+    m_accountStatusHasBeenSet(false),
+    m_signinDelegateGroupsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -109,6 +105,23 @@ Account& Account::operator =(JsonView jsonValue)
     m_supportedLicensesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("AccountStatus"))
+  {
+    m_accountStatus = AccountStatusMapper::GetAccountStatusForName(jsonValue.GetString("AccountStatus"));
+
+    m_accountStatusHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("SigninDelegateGroups"))
+  {
+    Array<JsonView> signinDelegateGroupsJsonList = jsonValue.GetArray("SigninDelegateGroups");
+    for(unsigned signinDelegateGroupsIndex = 0; signinDelegateGroupsIndex < signinDelegateGroupsJsonList.GetLength(); ++signinDelegateGroupsIndex)
+    {
+      m_signinDelegateGroups.push_back(signinDelegateGroupsJsonList[signinDelegateGroupsIndex].AsObject());
+    }
+    m_signinDelegateGroupsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -157,6 +170,22 @@ JsonValue Account::Jsonize() const
      supportedLicensesJsonList[supportedLicensesIndex].AsString(LicenseMapper::GetNameForLicense(m_supportedLicenses[supportedLicensesIndex]));
    }
    payload.WithArray("SupportedLicenses", std::move(supportedLicensesJsonList));
+
+  }
+
+  if(m_accountStatusHasBeenSet)
+  {
+   payload.WithString("AccountStatus", AccountStatusMapper::GetNameForAccountStatus(m_accountStatus));
+  }
+
+  if(m_signinDelegateGroupsHasBeenSet)
+  {
+   Array<JsonValue> signinDelegateGroupsJsonList(m_signinDelegateGroups.size());
+   for(unsigned signinDelegateGroupsIndex = 0; signinDelegateGroupsIndex < signinDelegateGroupsJsonList.GetLength(); ++signinDelegateGroupsIndex)
+   {
+     signinDelegateGroupsJsonList[signinDelegateGroupsIndex].AsObject(m_signinDelegateGroups[signinDelegateGroupsIndex].Jsonize());
+   }
+   payload.WithArray("SigninDelegateGroups", std::move(signinDelegateGroupsJsonList));
 
   }
 

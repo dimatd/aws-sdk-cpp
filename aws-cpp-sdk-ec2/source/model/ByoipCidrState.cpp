@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/ByoipCidrState.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -37,6 +27,7 @@ namespace Aws
         static const int pending_deprovision_HASH = HashingUtils::HashString("pending-deprovision");
         static const int pending_provision_HASH = HashingUtils::HashString("pending-provision");
         static const int provisioned_HASH = HashingUtils::HashString("provisioned");
+        static const int provisioned_not_publicly_advertisable_HASH = HashingUtils::HashString("provisioned-not-publicly-advertisable");
 
 
         ByoipCidrState GetByoipCidrStateForName(const Aws::String& name)
@@ -70,6 +61,10 @@ namespace Aws
           {
             return ByoipCidrState::provisioned;
           }
+          else if (hashCode == provisioned_not_publicly_advertisable_HASH)
+          {
+            return ByoipCidrState::provisioned_not_publicly_advertisable;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -98,6 +93,8 @@ namespace Aws
             return "pending-provision";
           case ByoipCidrState::provisioned:
             return "provisioned";
+          case ByoipCidrState::provisioned_not_publicly_advertisable:
+            return "provisioned-not-publicly-advertisable";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

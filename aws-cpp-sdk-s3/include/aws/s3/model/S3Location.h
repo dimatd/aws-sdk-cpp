@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -40,7 +30,7 @@ namespace Model
 {
 
   /**
-   * <p>Describes an S3 location that will receive the results of the restore
+   * <p>Describes an Amazon S3 location that will receive the results of the restore
    * request.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/S3Location">AWS API
    * Reference</a></p>
@@ -137,34 +127,22 @@ namespace Model
     inline S3Location& WithPrefix(const char* value) { SetPrefix(value); return *this;}
 
 
-    /**
-     * <p/>
-     */
+    
     inline const Encryption& GetEncryption() const{ return m_encryption; }
 
-    /**
-     * <p/>
-     */
+    
     inline bool EncryptionHasBeenSet() const { return m_encryptionHasBeenSet; }
 
-    /**
-     * <p/>
-     */
+    
     inline void SetEncryption(const Encryption& value) { m_encryptionHasBeenSet = true; m_encryption = value; }
 
-    /**
-     * <p/>
-     */
+    
     inline void SetEncryption(Encryption&& value) { m_encryptionHasBeenSet = true; m_encryption = std::move(value); }
 
-    /**
-     * <p/>
-     */
+    
     inline S3Location& WithEncryption(const Encryption& value) { SetEncryption(value); return *this;}
 
-    /**
-     * <p/>
-     */
+    
     inline S3Location& WithEncryption(Encryption&& value) { SetEncryption(std::move(value)); return *this;}
 
 

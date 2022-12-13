@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/firehose/model/DeliveryStreamEncryptionStatus.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -32,8 +22,10 @@ namespace Aws
 
         static const int ENABLED_HASH = HashingUtils::HashString("ENABLED");
         static const int ENABLING_HASH = HashingUtils::HashString("ENABLING");
+        static const int ENABLING_FAILED_HASH = HashingUtils::HashString("ENABLING_FAILED");
         static const int DISABLED_HASH = HashingUtils::HashString("DISABLED");
         static const int DISABLING_HASH = HashingUtils::HashString("DISABLING");
+        static const int DISABLING_FAILED_HASH = HashingUtils::HashString("DISABLING_FAILED");
 
 
         DeliveryStreamEncryptionStatus GetDeliveryStreamEncryptionStatusForName(const Aws::String& name)
@@ -47,6 +39,10 @@ namespace Aws
           {
             return DeliveryStreamEncryptionStatus::ENABLING;
           }
+          else if (hashCode == ENABLING_FAILED_HASH)
+          {
+            return DeliveryStreamEncryptionStatus::ENABLING_FAILED;
+          }
           else if (hashCode == DISABLED_HASH)
           {
             return DeliveryStreamEncryptionStatus::DISABLED;
@@ -54,6 +50,10 @@ namespace Aws
           else if (hashCode == DISABLING_HASH)
           {
             return DeliveryStreamEncryptionStatus::DISABLING;
+          }
+          else if (hashCode == DISABLING_FAILED_HASH)
+          {
+            return DeliveryStreamEncryptionStatus::DISABLING_FAILED;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -73,10 +73,14 @@ namespace Aws
             return "ENABLED";
           case DeliveryStreamEncryptionStatus::ENABLING:
             return "ENABLING";
+          case DeliveryStreamEncryptionStatus::ENABLING_FAILED:
+            return "ENABLING_FAILED";
           case DeliveryStreamEncryptionStatus::DISABLED:
             return "DISABLED";
           case DeliveryStreamEncryptionStatus::DISABLING:
             return "DISABLING";
+          case DeliveryStreamEncryptionStatus::DISABLING_FAILED:
+            return "DISABLING_FAILED";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

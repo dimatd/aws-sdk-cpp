@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/ec2/model/DnsSupportValue.h>
 #include <aws/ec2/model/Ipv6SupportValue.h>
+#include <aws/ec2/model/ApplianceModeSupportValue.h>
 #include <utility>
 
 namespace Aws
@@ -82,34 +73,65 @@ namespace Model
 
 
     /**
-     * <p>Indicates whether IPv6 support is enabled.</p>
+     * <p>Indicates whether IPv6 support is disabled.</p>
      */
     inline const Ipv6SupportValue& GetIpv6Support() const{ return m_ipv6Support; }
 
     /**
-     * <p>Indicates whether IPv6 support is enabled.</p>
+     * <p>Indicates whether IPv6 support is disabled.</p>
      */
     inline bool Ipv6SupportHasBeenSet() const { return m_ipv6SupportHasBeenSet; }
 
     /**
-     * <p>Indicates whether IPv6 support is enabled.</p>
+     * <p>Indicates whether IPv6 support is disabled.</p>
      */
     inline void SetIpv6Support(const Ipv6SupportValue& value) { m_ipv6SupportHasBeenSet = true; m_ipv6Support = value; }
 
     /**
-     * <p>Indicates whether IPv6 support is enabled.</p>
+     * <p>Indicates whether IPv6 support is disabled.</p>
      */
     inline void SetIpv6Support(Ipv6SupportValue&& value) { m_ipv6SupportHasBeenSet = true; m_ipv6Support = std::move(value); }
 
     /**
-     * <p>Indicates whether IPv6 support is enabled.</p>
+     * <p>Indicates whether IPv6 support is disabled.</p>
      */
     inline TransitGatewayVpcAttachmentOptions& WithIpv6Support(const Ipv6SupportValue& value) { SetIpv6Support(value); return *this;}
 
     /**
-     * <p>Indicates whether IPv6 support is enabled.</p>
+     * <p>Indicates whether IPv6 support is disabled.</p>
      */
     inline TransitGatewayVpcAttachmentOptions& WithIpv6Support(Ipv6SupportValue&& value) { SetIpv6Support(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Indicates whether appliance mode support is enabled.</p>
+     */
+    inline const ApplianceModeSupportValue& GetApplianceModeSupport() const{ return m_applianceModeSupport; }
+
+    /**
+     * <p>Indicates whether appliance mode support is enabled.</p>
+     */
+    inline bool ApplianceModeSupportHasBeenSet() const { return m_applianceModeSupportHasBeenSet; }
+
+    /**
+     * <p>Indicates whether appliance mode support is enabled.</p>
+     */
+    inline void SetApplianceModeSupport(const ApplianceModeSupportValue& value) { m_applianceModeSupportHasBeenSet = true; m_applianceModeSupport = value; }
+
+    /**
+     * <p>Indicates whether appliance mode support is enabled.</p>
+     */
+    inline void SetApplianceModeSupport(ApplianceModeSupportValue&& value) { m_applianceModeSupportHasBeenSet = true; m_applianceModeSupport = std::move(value); }
+
+    /**
+     * <p>Indicates whether appliance mode support is enabled.</p>
+     */
+    inline TransitGatewayVpcAttachmentOptions& WithApplianceModeSupport(const ApplianceModeSupportValue& value) { SetApplianceModeSupport(value); return *this;}
+
+    /**
+     * <p>Indicates whether appliance mode support is enabled.</p>
+     */
+    inline TransitGatewayVpcAttachmentOptions& WithApplianceModeSupport(ApplianceModeSupportValue&& value) { SetApplianceModeSupport(std::move(value)); return *this;}
 
   private:
 
@@ -118,6 +140,9 @@ namespace Model
 
     Ipv6SupportValue m_ipv6Support;
     bool m_ipv6SupportHasBeenSet;
+
+    ApplianceModeSupportValue m_applianceModeSupport;
+    bool m_applianceModeSupportHasBeenSet;
   };
 
 } // namespace Model

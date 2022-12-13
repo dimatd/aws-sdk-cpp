@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/license-manager/LicenseManager_EXPORTS.h>
@@ -19,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/license-manager/model/LicenseConfigurationStatus.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/license-manager/model/ProductInformation.h>
 #include <utility>
 
 namespace Aws
@@ -47,125 +38,128 @@ namespace Model
 
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline const Aws::String& GetLicenseConfigurationArn() const{ return m_licenseConfigurationArn; }
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline bool LicenseConfigurationArnHasBeenSet() const { return m_licenseConfigurationArnHasBeenSet; }
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline void SetLicenseConfigurationArn(const Aws::String& value) { m_licenseConfigurationArnHasBeenSet = true; m_licenseConfigurationArn = value; }
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline void SetLicenseConfigurationArn(Aws::String&& value) { m_licenseConfigurationArnHasBeenSet = true; m_licenseConfigurationArn = std::move(value); }
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline void SetLicenseConfigurationArn(const char* value) { m_licenseConfigurationArnHasBeenSet = true; m_licenseConfigurationArn.assign(value); }
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseConfigurationArn(const Aws::String& value) { SetLicenseConfigurationArn(value); return *this;}
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseConfigurationArn(Aws::String&& value) { SetLicenseConfigurationArn(std::move(value)); return *this;}
 
     /**
-     * <p>ARN for a license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseConfigurationArn(const char* value) { SetLicenseConfigurationArn(value); return *this;}
 
 
     /**
-     * <p>New status of the license configuration (<code>ACTIVE</code> or
-     * <code>INACTIVE</code>).</p>
+     * <p>New status of the license configuration.</p>
      */
     inline const LicenseConfigurationStatus& GetLicenseConfigurationStatus() const{ return m_licenseConfigurationStatus; }
 
     /**
-     * <p>New status of the license configuration (<code>ACTIVE</code> or
-     * <code>INACTIVE</code>).</p>
+     * <p>New status of the license configuration.</p>
      */
     inline bool LicenseConfigurationStatusHasBeenSet() const { return m_licenseConfigurationStatusHasBeenSet; }
 
     /**
-     * <p>New status of the license configuration (<code>ACTIVE</code> or
-     * <code>INACTIVE</code>).</p>
+     * <p>New status of the license configuration.</p>
      */
     inline void SetLicenseConfigurationStatus(const LicenseConfigurationStatus& value) { m_licenseConfigurationStatusHasBeenSet = true; m_licenseConfigurationStatus = value; }
 
     /**
-     * <p>New status of the license configuration (<code>ACTIVE</code> or
-     * <code>INACTIVE</code>).</p>
+     * <p>New status of the license configuration.</p>
      */
     inline void SetLicenseConfigurationStatus(LicenseConfigurationStatus&& value) { m_licenseConfigurationStatusHasBeenSet = true; m_licenseConfigurationStatus = std::move(value); }
 
     /**
-     * <p>New status of the license configuration (<code>ACTIVE</code> or
-     * <code>INACTIVE</code>).</p>
+     * <p>New status of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseConfigurationStatus(const LicenseConfigurationStatus& value) { SetLicenseConfigurationStatus(value); return *this;}
 
     /**
-     * <p>New status of the license configuration (<code>ACTIVE</code> or
-     * <code>INACTIVE</code>).</p>
+     * <p>New status of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseConfigurationStatus(LicenseConfigurationStatus&& value) { SetLicenseConfigurationStatus(std::move(value)); return *this;}
 
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline const Aws::Vector<Aws::String>& GetLicenseRules() const{ return m_licenseRules; }
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline bool LicenseRulesHasBeenSet() const { return m_licenseRulesHasBeenSet; }
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline void SetLicenseRules(const Aws::Vector<Aws::String>& value) { m_licenseRulesHasBeenSet = true; m_licenseRules = value; }
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline void SetLicenseRules(Aws::Vector<Aws::String>&& value) { m_licenseRulesHasBeenSet = true; m_licenseRules = std::move(value); }
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseRules(const Aws::Vector<Aws::String>& value) { SetLicenseRules(value); return *this;}
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseRules(Aws::Vector<Aws::String>&& value) { SetLicenseRules(std::move(value)); return *this;}
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline UpdateLicenseConfigurationRequest& AddLicenseRules(const Aws::String& value) { m_licenseRulesHasBeenSet = true; m_licenseRules.push_back(value); return *this; }
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline UpdateLicenseConfigurationRequest& AddLicenseRules(Aws::String&& value) { m_licenseRulesHasBeenSet = true; m_licenseRules.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>List of flexible text strings designating license rules.</p>
+     * <p>New license rule. The only rule that you can add after you create a license
+     * configuration is licenseAffinityToHost.</p>
      */
     inline UpdateLicenseConfigurationRequest& AddLicenseRules(const char* value) { m_licenseRulesHasBeenSet = true; m_licenseRules.push_back(value); return *this; }
 
@@ -192,22 +186,22 @@ namespace Model
 
 
     /**
-     * <p>Sets the number of available licenses as a hard limit.</p>
+     * <p>New hard limit of the number of available licenses.</p>
      */
     inline bool GetLicenseCountHardLimit() const{ return m_licenseCountHardLimit; }
 
     /**
-     * <p>Sets the number of available licenses as a hard limit.</p>
+     * <p>New hard limit of the number of available licenses.</p>
      */
     inline bool LicenseCountHardLimitHasBeenSet() const { return m_licenseCountHardLimitHasBeenSet; }
 
     /**
-     * <p>Sets the number of available licenses as a hard limit.</p>
+     * <p>New hard limit of the number of available licenses.</p>
      */
     inline void SetLicenseCountHardLimit(bool value) { m_licenseCountHardLimitHasBeenSet = true; m_licenseCountHardLimit = value; }
 
     /**
-     * <p>Sets the number of available licenses as a hard limit.</p>
+     * <p>New hard limit of the number of available licenses.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithLicenseCountHardLimit(bool value) { SetLicenseCountHardLimit(value); return *this;}
 
@@ -254,44 +248,106 @@ namespace Model
 
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline const Aws::String& GetDescription() const{ return m_description; }
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
-     * <p>New human-friendly description of the license configuration.</p>
+     * <p>New description of the license configuration.</p>
      */
     inline UpdateLicenseConfigurationRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
+
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline const Aws::Vector<ProductInformation>& GetProductInformationList() const{ return m_productInformationList; }
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline bool ProductInformationListHasBeenSet() const { return m_productInformationListHasBeenSet; }
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline void SetProductInformationList(const Aws::Vector<ProductInformation>& value) { m_productInformationListHasBeenSet = true; m_productInformationList = value; }
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline void SetProductInformationList(Aws::Vector<ProductInformation>&& value) { m_productInformationListHasBeenSet = true; m_productInformationList = std::move(value); }
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline UpdateLicenseConfigurationRequest& WithProductInformationList(const Aws::Vector<ProductInformation>& value) { SetProductInformationList(value); return *this;}
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline UpdateLicenseConfigurationRequest& WithProductInformationList(Aws::Vector<ProductInformation>&& value) { SetProductInformationList(std::move(value)); return *this;}
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline UpdateLicenseConfigurationRequest& AddProductInformationList(const ProductInformation& value) { m_productInformationListHasBeenSet = true; m_productInformationList.push_back(value); return *this; }
+
+    /**
+     * <p>New product information.</p>
+     */
+    inline UpdateLicenseConfigurationRequest& AddProductInformationList(ProductInformation&& value) { m_productInformationListHasBeenSet = true; m_productInformationList.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>When true, disassociates a resource when software is uninstalled.</p>
+     */
+    inline bool GetDisassociateWhenNotFound() const{ return m_disassociateWhenNotFound; }
+
+    /**
+     * <p>When true, disassociates a resource when software is uninstalled.</p>
+     */
+    inline bool DisassociateWhenNotFoundHasBeenSet() const { return m_disassociateWhenNotFoundHasBeenSet; }
+
+    /**
+     * <p>When true, disassociates a resource when software is uninstalled.</p>
+     */
+    inline void SetDisassociateWhenNotFound(bool value) { m_disassociateWhenNotFoundHasBeenSet = true; m_disassociateWhenNotFound = value; }
+
+    /**
+     * <p>When true, disassociates a resource when software is uninstalled.</p>
+     */
+    inline UpdateLicenseConfigurationRequest& WithDisassociateWhenNotFound(bool value) { SetDisassociateWhenNotFound(value); return *this;}
 
   private:
 
@@ -315,6 +371,12 @@ namespace Model
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet;
+
+    Aws::Vector<ProductInformation> m_productInformationList;
+    bool m_productInformationListHasBeenSet;
+
+    bool m_disassociateWhenNotFound;
+    bool m_disassociateWhenNotFoundHasBeenSet;
   };
 
 } // namespace Model

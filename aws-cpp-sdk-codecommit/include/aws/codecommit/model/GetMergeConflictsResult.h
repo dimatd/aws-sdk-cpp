@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -187,43 +177,43 @@ namespace Model
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline const Aws::Vector<ConflictMetadata>& GetConflictMetadataList() const{ return m_conflictMetadataList; }
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline void SetConflictMetadataList(const Aws::Vector<ConflictMetadata>& value) { m_conflictMetadataList = value; }
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline void SetConflictMetadataList(Aws::Vector<ConflictMetadata>&& value) { m_conflictMetadataList = std::move(value); }
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline GetMergeConflictsResult& WithConflictMetadataList(const Aws::Vector<ConflictMetadata>& value) { SetConflictMetadataList(value); return *this;}
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline GetMergeConflictsResult& WithConflictMetadataList(Aws::Vector<ConflictMetadata>&& value) { SetConflictMetadataList(std::move(value)); return *this;}
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline GetMergeConflictsResult& AddConflictMetadataList(const ConflictMetadata& value) { m_conflictMetadataList.push_back(value); return *this; }
 
     /**
      * <p>A list of metadata for any conflicting files. If the specified merge strategy
-     * is FAST_FORWARD_MERGE, this list will always be empty.</p>
+     * is FAST_FORWARD_MERGE, this list is always empty.</p>
      */
     inline GetMergeConflictsResult& AddConflictMetadataList(ConflictMetadata&& value) { m_conflictMetadataList.push_back(std::move(value)); return *this; }
 

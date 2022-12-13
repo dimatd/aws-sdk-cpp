@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  *
-  *  http://aws.amazon.com/apache2.0
-  *
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
@@ -19,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/auth/AWSCredentials.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/core/utils/threading/ReaderWriterLock.h>
 
 namespace Aws
 {
@@ -45,6 +36,16 @@ namespace Aws
             inline void SetRoleArn(const Aws::String& value) { m_roleArn = value; }
             inline const Aws::String& GetExternalId() const { return m_externalId; }
             inline void SetExternalId(const Aws::String& value) { m_externalId = value; }
+            inline const Aws::String& GetSsoStartUrl() const { return m_ssoStartUrl; }
+            inline void SetSsoStartUrl(const Aws::String& value) { m_ssoStartUrl = value; }
+            inline const Aws::String& GetSsoRegion() const { return m_ssoRegion; }
+            inline void SetSsoRegion(const Aws::String& value) { m_ssoRegion = value; }
+            inline const Aws::String& GetSsoAccountId() const { return m_ssoAccountId; }
+            inline void SetSsoAccountId(const Aws::String& value) { m_ssoAccountId = value; }
+            inline const Aws::String& GetSsoRoleName() const { return m_ssoRoleName; }
+            inline void SetSsoRoleName(const Aws::String& value) { m_ssoRoleName = value; }
+            inline const Aws::String& GetDefaultsMode() const { return m_defaultsMode; }
+            inline void SetDefaultsMode(const Aws::String& value) { m_defaultsMode = value; }
             inline const Aws::String& GetSourceProfile() const { return m_sourceProfile; }
             inline void SetSourceProfile(const Aws::String& value ) { m_sourceProfile = value; }
             inline const Aws::String& GetCredentialProcess() const { return m_credentialProcess; }
@@ -65,6 +66,11 @@ namespace Aws
             Aws::String m_externalId;
             Aws::String m_sourceProfile;
             Aws::String m_credentialProcess;
+            Aws::String m_ssoStartUrl;
+            Aws::String m_ssoRegion;
+            Aws::String m_ssoAccountId;
+            Aws::String m_ssoRoleName;
+            Aws::String m_defaultsMode;
             Aws::Map<Aws::String, Aws::String> m_allKeyValPairs;
         };
 
@@ -98,6 +104,10 @@ namespace Aws
 
             using ProfilesContainer = Aws::Map<Aws::String, Aws::Config::Profile>;
 
+            // Delete copy c-tor and assignment operator
+            AWSProfileConfigLoader() = default;
+            AWSProfileConfigLoader(const AWSProfileConfigLoader&) = delete;
+            const AWSProfileConfigLoader& operator=(AWSProfileConfigLoader&) = delete;
         protected:
             /**
              * Subclasses override this method to implement fetching the profiles.
@@ -133,6 +143,12 @@ namespace Aws
              */
             const Aws::String& GetFileName() const { return m_fileName; }
 
+            /**
+             * Give loader the ability to change the file path to load config from.
+             * This can avoid creating new loader object if the file changed.
+             */
+            void SetFileName(const Aws::String& fileName) { m_fileName = fileName; }
+
         protected:
             virtual bool LoadInternal() override;
             virtual bool PersistInternal(const Aws::Map<Aws::String, Aws::Config::Profile>&) override;
@@ -159,9 +175,96 @@ namespace Aws
 
         protected:
             virtual bool LoadInternal() override;
-
         private:
             std::shared_ptr<Aws::Internal::EC2MetadataClient> m_ec2metadataClient;
+            int64_t credentialsValidUntilMillis = 0;
+            int64_t calculateRetryTime() const;
         };
+
+        /**
+         * Stores the contents of config file and credentials file to avoid multiple file readings.
+         * At the same time provides the flexibility to reload from file.
+         */
+        class AWS_CORE_API ConfigAndCredentialsCacheManager
+        {
+        public:
+            ConfigAndCredentialsCacheManager();
+
+            void ReloadConfigFile();
+
+            void ReloadCredentialsFile();
+
+            bool HasConfigProfile(const Aws::String& profileName) const;
+
+            /**
+             * Returns cached config profile with the specified profile name.
+             * Using copy instead of const reference to avoid reading bad contents due to thread contention.
+             */
+            Aws::Config::Profile GetConfigProfile(const Aws::String& profileName) const;
+
+            /**
+             * Returns cached config profiles
+             * Using copy instead of const reference to avoid reading bad contents due to thread contention.
+             */
+            Aws::Map<Aws::String, Aws::Config::Profile> GetConfigProfiles() const;
+
+            /**
+             * Returns cached config value with the specified profile name and key.
+             * Using copy instead of const reference to avoid reading bad contents due to thread contention.
+             */
+            Aws::String GetConfig(const Aws::String& profileName, const Aws::String& key) const;
+
+            bool HasCredentialsProfile(const Aws::String& profileName) const;
+            /**
+             * Returns cached credentials profile with the specified profile name.
+             * Using copy instead of const reference to avoid reading bad contents due to thread contention.
+             */
+            Aws::Config::Profile GetCredentialsProfile(const Aws::String& profileName) const;
+
+            /**
+             * Returns cached credentials profiles.
+             * Using copy instead of const reference to avoid reading bad contents due to thread contention.
+             */
+            Aws::Map<Aws::String, Aws::Config::Profile> GetCredentialsProfiles() const;
+
+            /**
+             * Returns cached credentials with the specified profile name.
+             * Using copy instead of const reference to avoid reading bad contents due to thread contention.
+             */
+            Aws::Auth::AWSCredentials GetCredentials(const Aws::String& profileName) const;
+
+        private:
+            mutable Aws::Utils::Threading::ReaderWriterLock m_credentialsLock;
+            Aws::Config::AWSConfigFileProfileConfigLoader m_credentialsFileLoader;
+            mutable Aws::Utils::Threading::ReaderWriterLock m_configLock;
+            Aws::Config::AWSConfigFileProfileConfigLoader m_configFileLoader;
+        };
+
+        AWS_CORE_API void InitConfigAndCredentialsCacheManager();
+
+        AWS_CORE_API void CleanupConfigAndCredentialsCacheManager();
+
+        AWS_CORE_API void ReloadCachedConfigFile();
+
+        AWS_CORE_API void ReloadCachedCredentialsFile();
+
+        AWS_CORE_API bool HasCachedConfigProfile(const Aws::String& profileName);
+
+        AWS_CORE_API Aws::Config::Profile GetCachedConfigProfile(const Aws::String& profileName);
+
+        AWS_CORE_API Aws::Map<Aws::String, Aws::Config::Profile> GetCachedConfigProfiles();
+
+        AWS_CORE_API Aws::String GetCachedConfigValue(const Aws::String& profileName, const Aws::String& key);
+
+        AWS_CORE_API Aws::String GetCachedConfigValue(const Aws::String& key);
+
+        AWS_CORE_API bool HasCachedCredentialsProfile(const Aws::String &profileName);
+
+        AWS_CORE_API Aws::Config::Profile GetCachedCredentialsProfile(const Aws::String& profileName);
+
+        AWS_CORE_API Aws::Auth::AWSCredentials GetCachedCredentials(const Aws::String& profileName);
+
+        AWS_CORE_API Aws::Map<Aws::String, Aws::Config::Profile> GetCachedCredentialsProfiles();
+
     }
 }

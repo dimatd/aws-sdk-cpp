@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/iot/model/ResourceType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -36,6 +26,8 @@ namespace Aws
         static const int COGNITO_IDENTITY_POOL_HASH = HashingUtils::HashString("COGNITO_IDENTITY_POOL");
         static const int CLIENT_ID_HASH = HashingUtils::HashString("CLIENT_ID");
         static const int ACCOUNT_SETTINGS_HASH = HashingUtils::HashString("ACCOUNT_SETTINGS");
+        static const int ROLE_ALIAS_HASH = HashingUtils::HashString("ROLE_ALIAS");
+        static const int IAM_ROLE_HASH = HashingUtils::HashString("IAM_ROLE");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -65,6 +57,14 @@ namespace Aws
           {
             return ResourceType::ACCOUNT_SETTINGS;
           }
+          else if (hashCode == ROLE_ALIAS_HASH)
+          {
+            return ResourceType::ROLE_ALIAS;
+          }
+          else if (hashCode == IAM_ROLE_HASH)
+          {
+            return ResourceType::IAM_ROLE;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -91,6 +91,10 @@ namespace Aws
             return "CLIENT_ID";
           case ResourceType::ACCOUNT_SETTINGS:
             return "ACCOUNT_SETTINGS";
+          case ResourceType::ROLE_ALIAS:
+            return "ROLE_ALIAS";
+          case ResourceType::IAM_ROLE:
+            return "IAM_ROLE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

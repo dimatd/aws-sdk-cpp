@@ -1,26 +1,20 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/mediaconnect/MediaConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/mediaconnect/model/Source.h>
+#include <aws/mediaconnect/model/FailoverConfig.h>
 #include <aws/mediaconnect/model/Status.h>
+#include <aws/mediaconnect/model/Maintenance.h>
 #include <aws/mediaconnect/model/Entitlement.h>
+#include <aws/mediaconnect/model/MediaStream.h>
 #include <aws/mediaconnect/model/Output.h>
+#include <aws/mediaconnect/model/VpcInterface.h>
 #include <utility>
 
 namespace Aws
@@ -283,6 +277,55 @@ namespace Model
 
 
     /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline const Aws::Vector<MediaStream>& GetMediaStreams() const{ return m_mediaStreams; }
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline bool MediaStreamsHasBeenSet() const { return m_mediaStreamsHasBeenSet; }
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline void SetMediaStreams(const Aws::Vector<MediaStream>& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = value; }
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline void SetMediaStreams(Aws::Vector<MediaStream>&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = std::move(value); }
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline Flow& WithMediaStreams(const Aws::Vector<MediaStream>& value) { SetMediaStreams(value); return *this;}
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline Flow& WithMediaStreams(Aws::Vector<MediaStream>&& value) { SetMediaStreams(std::move(value)); return *this;}
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline Flow& AddMediaStreams(const MediaStream& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.push_back(value); return *this; }
+
+    /**
+     * The media streams that are associated with the flow. After you associate a media
+     * stream with a source, you can also associate it with outputs on the flow.
+     */
+    inline Flow& AddMediaStreams(MediaStream&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.push_back(std::move(value)); return *this; }
+
+
+    /**
      * The name of the flow.
      */
     inline const Aws::String& GetName() const{ return m_name; }
@@ -383,6 +426,50 @@ namespace Model
     inline Flow& WithSource(Source&& value) { SetSource(std::move(value)); return *this;}
 
 
+    
+    inline const FailoverConfig& GetSourceFailoverConfig() const{ return m_sourceFailoverConfig; }
+
+    
+    inline bool SourceFailoverConfigHasBeenSet() const { return m_sourceFailoverConfigHasBeenSet; }
+
+    
+    inline void SetSourceFailoverConfig(const FailoverConfig& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = value; }
+
+    
+    inline void SetSourceFailoverConfig(FailoverConfig&& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = std::move(value); }
+
+    
+    inline Flow& WithSourceFailoverConfig(const FailoverConfig& value) { SetSourceFailoverConfig(value); return *this;}
+
+    
+    inline Flow& WithSourceFailoverConfig(FailoverConfig&& value) { SetSourceFailoverConfig(std::move(value)); return *this;}
+
+
+    
+    inline const Aws::Vector<Source>& GetSources() const{ return m_sources; }
+
+    
+    inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+
+    
+    inline void SetSources(const Aws::Vector<Source>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
+
+    
+    inline void SetSources(Aws::Vector<Source>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
+
+    
+    inline Flow& WithSources(const Aws::Vector<Source>& value) { SetSources(value); return *this;}
+
+    
+    inline Flow& WithSources(Aws::Vector<Source>&& value) { SetSources(std::move(value)); return *this;}
+
+    
+    inline Flow& AddSources(const Source& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
+
+    
+    inline Flow& AddSources(Source&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
+
+
     /**
      * The current status of the flow.
      */
@@ -413,6 +500,66 @@ namespace Model
      */
     inline Flow& WithStatus(Status&& value) { SetStatus(std::move(value)); return *this;}
 
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline const Aws::Vector<VpcInterface>& GetVpcInterfaces() const{ return m_vpcInterfaces; }
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline bool VpcInterfacesHasBeenSet() const { return m_vpcInterfacesHasBeenSet; }
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline void SetVpcInterfaces(const Aws::Vector<VpcInterface>& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = value; }
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline void SetVpcInterfaces(Aws::Vector<VpcInterface>&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = std::move(value); }
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline Flow& WithVpcInterfaces(const Aws::Vector<VpcInterface>& value) { SetVpcInterfaces(value); return *this;}
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline Flow& WithVpcInterfaces(Aws::Vector<VpcInterface>&& value) { SetVpcInterfaces(std::move(value)); return *this;}
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline Flow& AddVpcInterfaces(const VpcInterface& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.push_back(value); return *this; }
+
+    /**
+     * The VPC Interfaces for this flow.
+     */
+    inline Flow& AddVpcInterfaces(VpcInterface&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.push_back(std::move(value)); return *this; }
+
+
+    
+    inline const Maintenance& GetMaintenance() const{ return m_maintenance; }
+
+    
+    inline bool MaintenanceHasBeenSet() const { return m_maintenanceHasBeenSet; }
+
+    
+    inline void SetMaintenance(const Maintenance& value) { m_maintenanceHasBeenSet = true; m_maintenance = value; }
+
+    
+    inline void SetMaintenance(Maintenance&& value) { m_maintenanceHasBeenSet = true; m_maintenance = std::move(value); }
+
+    
+    inline Flow& WithMaintenance(const Maintenance& value) { SetMaintenance(value); return *this;}
+
+    
+    inline Flow& WithMaintenance(Maintenance&& value) { SetMaintenance(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_availabilityZone;
@@ -430,6 +577,9 @@ namespace Model
     Aws::String m_flowArn;
     bool m_flowArnHasBeenSet;
 
+    Aws::Vector<MediaStream> m_mediaStreams;
+    bool m_mediaStreamsHasBeenSet;
+
     Aws::String m_name;
     bool m_nameHasBeenSet;
 
@@ -439,8 +589,20 @@ namespace Model
     Source m_source;
     bool m_sourceHasBeenSet;
 
+    FailoverConfig m_sourceFailoverConfig;
+    bool m_sourceFailoverConfigHasBeenSet;
+
+    Aws::Vector<Source> m_sources;
+    bool m_sourcesHasBeenSet;
+
     Status m_status;
     bool m_statusHasBeenSet;
+
+    Aws::Vector<VpcInterface> m_vpcInterfaces;
+    bool m_vpcInterfacesHasBeenSet;
+
+    Maintenance m_maintenance;
+    bool m_maintenanceHasBeenSet;
   };
 
 } // namespace Model

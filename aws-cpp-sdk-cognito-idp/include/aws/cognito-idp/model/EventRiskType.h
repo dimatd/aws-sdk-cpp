@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
@@ -109,6 +99,31 @@ namespace Model
      */
     inline EventRiskType& WithRiskLevel(RiskLevelType&& value) { SetRiskLevel(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Indicates whether compromised credentials were detected during an
+     * authentication event.</p>
+     */
+    inline bool GetCompromisedCredentialsDetected() const{ return m_compromisedCredentialsDetected; }
+
+    /**
+     * <p>Indicates whether compromised credentials were detected during an
+     * authentication event.</p>
+     */
+    inline bool CompromisedCredentialsDetectedHasBeenSet() const { return m_compromisedCredentialsDetectedHasBeenSet; }
+
+    /**
+     * <p>Indicates whether compromised credentials were detected during an
+     * authentication event.</p>
+     */
+    inline void SetCompromisedCredentialsDetected(bool value) { m_compromisedCredentialsDetectedHasBeenSet = true; m_compromisedCredentialsDetected = value; }
+
+    /**
+     * <p>Indicates whether compromised credentials were detected during an
+     * authentication event.</p>
+     */
+    inline EventRiskType& WithCompromisedCredentialsDetected(bool value) { SetCompromisedCredentialsDetected(value); return *this;}
+
   private:
 
     RiskDecisionType m_riskDecision;
@@ -116,6 +131,9 @@ namespace Model
 
     RiskLevelType m_riskLevel;
     bool m_riskLevelHasBeenSet;
+
+    bool m_compromisedCredentialsDetected;
+    bool m_compromisedCredentialsDetectedHasBeenSet;
   };
 
 } // namespace Model

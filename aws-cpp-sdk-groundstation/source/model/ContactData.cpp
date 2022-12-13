@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/groundstation/model/ContactData.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -39,6 +29,7 @@ ContactData::ContactData() :
     m_missionProfileArnHasBeenSet(false),
     m_postPassEndTimeHasBeenSet(false),
     m_prePassStartTimeHasBeenSet(false),
+    m_regionHasBeenSet(false),
     m_satelliteArnHasBeenSet(false),
     m_startTimeHasBeenSet(false),
     m_tagsHasBeenSet(false)
@@ -56,6 +47,7 @@ ContactData::ContactData(JsonView jsonValue) :
     m_missionProfileArnHasBeenSet(false),
     m_postPassEndTimeHasBeenSet(false),
     m_prePassStartTimeHasBeenSet(false),
+    m_regionHasBeenSet(false),
     m_satelliteArnHasBeenSet(false),
     m_startTimeHasBeenSet(false),
     m_tagsHasBeenSet(false)
@@ -126,6 +118,13 @@ ContactData& ContactData::operator =(JsonView jsonValue)
     m_prePassStartTime = jsonValue.GetDouble("prePassStartTime");
 
     m_prePassStartTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("region"))
+  {
+    m_region = jsonValue.GetString("region");
+
+    m_regionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("satelliteArn"))
@@ -207,6 +206,12 @@ JsonValue ContactData::Jsonize() const
   if(m_prePassStartTimeHasBeenSet)
   {
    payload.WithDouble("prePassStartTime", m_prePassStartTime.SecondsWithMSPrecision());
+  }
+
+  if(m_regionHasBeenSet)
+  {
+   payload.WithString("region", m_region);
+
   }
 
   if(m_satelliteArnHasBeenSet)

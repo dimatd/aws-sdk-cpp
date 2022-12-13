@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
@@ -48,6 +38,7 @@ namespace Model
     AWS_EC2_VPCEndpointService,
     AWS_EC2_FlowLog,
     AWS_EC2_VPCPeeringConnection,
+    AWS_Elasticsearch_Domain,
     AWS_IAM_Group,
     AWS_IAM_Policy,
     AWS_IAM_Role,
@@ -55,13 +46,10 @@ namespace Model
     AWS_ElasticLoadBalancingV2_LoadBalancer,
     AWS_ACM_Certificate,
     AWS_RDS_DBInstance,
-    AWS_RDS_DBParameterGroup,
-    AWS_RDS_DBOptionGroup,
     AWS_RDS_DBSubnetGroup,
     AWS_RDS_DBSecurityGroup,
     AWS_RDS_DBSnapshot,
     AWS_RDS_DBCluster,
-    AWS_RDS_DBClusterParameterGroup,
     AWS_RDS_DBClusterSnapshot,
     AWS_RDS_EventSubscription,
     AWS_S3_Bucket,
@@ -92,30 +80,62 @@ namespace Model
     AWS_WAFRegional_WebACL,
     AWS_CloudFront_Distribution,
     AWS_CloudFront_StreamingDistribution,
-    AWS_Lambda_Alias,
     AWS_Lambda_Function,
+    AWS_NetworkFirewall_Firewall,
+    AWS_NetworkFirewall_FirewallPolicy,
+    AWS_NetworkFirewall_RuleGroup,
     AWS_ElasticBeanstalk_Application,
     AWS_ElasticBeanstalk_ApplicationVersion,
     AWS_ElasticBeanstalk_Environment,
-    AWS_MobileHub_Project,
+    AWS_WAFv2_WebACL,
+    AWS_WAFv2_RuleGroup,
+    AWS_WAFv2_IPSet,
+    AWS_WAFv2_RegexPatternSet,
+    AWS_WAFv2_ManagedRuleSet,
     AWS_XRay_EncryptionConfig,
     AWS_SSM_AssociationCompliance,
     AWS_SSM_PatchCompliance,
     AWS_Shield_Protection,
     AWS_ShieldRegional_Protection,
+    AWS_Config_ConformancePackCompliance,
     AWS_Config_ResourceCompliance,
-    AWS_LicenseManager_LicenseConfiguration,
-    AWS_ApiGateway_DomainName,
-    AWS_ApiGateway_Method,
     AWS_ApiGateway_Stage,
     AWS_ApiGateway_RestApi,
-    AWS_ApiGatewayV2_DomainName,
     AWS_ApiGatewayV2_Stage,
     AWS_ApiGatewayV2_Api,
     AWS_CodePipeline_Pipeline,
     AWS_ServiceCatalog_CloudFormationProvisionedProduct,
     AWS_ServiceCatalog_CloudFormationProduct,
-    AWS_ServiceCatalog_Portfolio
+    AWS_ServiceCatalog_Portfolio,
+    AWS_SQS_Queue,
+    AWS_KMS_Key,
+    AWS_QLDB_Ledger,
+    AWS_SecretsManager_Secret,
+    AWS_SNS_Topic,
+    AWS_SSM_FileData,
+    AWS_Backup_BackupPlan,
+    AWS_Backup_BackupSelection,
+    AWS_Backup_BackupVault,
+    AWS_Backup_RecoveryPoint,
+    AWS_ECR_Repository,
+    AWS_ECS_Cluster,
+    AWS_ECS_Service,
+    AWS_ECS_TaskDefinition,
+    AWS_EFS_AccessPoint,
+    AWS_EFS_FileSystem,
+    AWS_EKS_Cluster,
+    AWS_OpenSearch_Domain,
+    AWS_EC2_TransitGateway,
+    AWS_Kinesis_Stream,
+    AWS_Kinesis_StreamConsumer,
+    AWS_CodeDeploy_Application,
+    AWS_CodeDeploy_DeploymentConfig,
+    AWS_CodeDeploy_DeploymentGroup,
+    AWS_EC2_LaunchTemplate,
+    AWS_ECR_PublicRepository,
+    AWS_GuardDuty_Detector,
+    AWS_EMR_SecurityConfiguration,
+    AWS_SageMaker_CodeRepository
   };
 
 namespace ResourceTypeMapper

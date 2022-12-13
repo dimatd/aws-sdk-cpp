@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/sagemaker-runtime/SageMakerRuntime_EXPORTS.h>
@@ -50,16 +40,16 @@ namespace Model
     /**
      * <p>Includes the inference provided by the model.</p> <p>For information about
      * the format of the response body, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html">Common
-     * Data Formats—Inference</a>.</p>
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html">Common
+     * Data Formats-Inference</a>.</p>
      */
     inline Aws::IOStream& GetBody() { return m_body.GetUnderlyingStream(); }
 
     /**
      * <p>Includes the inference provided by the model.</p> <p>For information about
      * the format of the response body, see <a
-     * href="http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html">Common
-     * Data Formats—Inference</a>.</p>
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html">Common
+     * Data Formats-Inference</a>.</p>
      */
     inline void ReplaceBody(Aws::IOStream* body) { m_body = Aws::Utils::Stream::ResponseStream(body); }
 
@@ -137,37 +127,142 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline const Aws::String& GetCustomAttributes() const{ return m_customAttributes; }
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline void SetCustomAttributes(const Aws::String& value) { m_customAttributes = value; }
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline void SetCustomAttributes(Aws::String&& value) { m_customAttributes = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline void SetCustomAttributes(const char* value) { m_customAttributes.assign(value); }
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline InvokeEndpointResult& WithCustomAttributes(const Aws::String& value) { SetCustomAttributes(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline InvokeEndpointResult& WithCustomAttributes(Aws::String&& value) { SetCustomAttributes(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>Provides additional information in the response about the inference returned
+     * by a model hosted at an Amazon SageMaker endpoint. The information is an opaque
+     * value that is forwarded verbatim. You could use this value, for example, to
+     * return an ID received in the <code>CustomAttributes</code> header of a request
+     * or other metadata that a service endpoint was programmed to produce. The value
+     * must consist of no more than 1024 visible US-ASCII characters as specified in <a
+     * href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field
+     * Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the
+     * customer wants the custom attribute returned, the model must set the custom
+     * attribute to be included on the way back. </p> <p>The code in your model is
+     * responsible for setting or updating any custom attributes in the response. If
+     * your code does not set this value in the response, an empty value is returned.
+     * For example, if a custom attribute represents the trace ID, your model can
+     * prepend the custom attribute with <code>Trace ID:</code> in your post-processing
+     * function.</p> <p>This feature is currently supported in the Amazon Web Services
+     * SDKs but not in the Amazon SageMaker Python SDK.</p>
      */
     inline InvokeEndpointResult& WithCustomAttributes(const char* value) { SetCustomAttributes(value); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -35,8 +25,8 @@ namespace Model
 {
 
   /**
-   * <p>Describes the T2 or T3 instance whose credit option for CPU usage was not
-   * modified.</p><p><h3>See Also:</h3>   <a
+   * <p>Describes the burstable performance instance whose credit option for CPU
+   * usage was not modified.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnsuccessfulInstanceCreditSpecificationItem">AWS
    * API Reference</a></p>
    */
@@ -93,38 +83,38 @@ namespace Model
 
 
     /**
-     * <p>The applicable error for the T2 or T3 instance whose credit option for CPU
-     * usage was not modified.</p>
+     * <p>The applicable error for the burstable performance instance whose credit
+     * option for CPU usage was not modified.</p>
      */
     inline const UnsuccessfulInstanceCreditSpecificationItemError& GetError() const{ return m_error; }
 
     /**
-     * <p>The applicable error for the T2 or T3 instance whose credit option for CPU
-     * usage was not modified.</p>
+     * <p>The applicable error for the burstable performance instance whose credit
+     * option for CPU usage was not modified.</p>
      */
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
 
     /**
-     * <p>The applicable error for the T2 or T3 instance whose credit option for CPU
-     * usage was not modified.</p>
+     * <p>The applicable error for the burstable performance instance whose credit
+     * option for CPU usage was not modified.</p>
      */
     inline void SetError(const UnsuccessfulInstanceCreditSpecificationItemError& value) { m_errorHasBeenSet = true; m_error = value; }
 
     /**
-     * <p>The applicable error for the T2 or T3 instance whose credit option for CPU
-     * usage was not modified.</p>
+     * <p>The applicable error for the burstable performance instance whose credit
+     * option for CPU usage was not modified.</p>
      */
     inline void SetError(UnsuccessfulInstanceCreditSpecificationItemError&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
 
     /**
-     * <p>The applicable error for the T2 or T3 instance whose credit option for CPU
-     * usage was not modified.</p>
+     * <p>The applicable error for the burstable performance instance whose credit
+     * option for CPU usage was not modified.</p>
      */
     inline UnsuccessfulInstanceCreditSpecificationItem& WithError(const UnsuccessfulInstanceCreditSpecificationItemError& value) { SetError(value); return *this;}
 
     /**
-     * <p>The applicable error for the T2 or T3 instance whose credit option for CPU
-     * usage was not modified.</p>
+     * <p>The applicable error for the burstable performance instance whose credit
+     * option for CPU usage was not modified.</p>
      */
     inline UnsuccessfulInstanceCreditSpecificationItem& WithError(UnsuccessfulInstanceCreditSpecificationItemError&& value) { SetError(std::move(value)); return *this;}
 

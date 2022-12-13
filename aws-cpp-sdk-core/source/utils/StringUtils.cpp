@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  *
-  *  http://aws.amazon.com/apache2.0
-  *
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 
 #include <aws/core/utils/StringUtils.h>
@@ -85,10 +75,20 @@ bool StringUtils::CaselessCompare(const char* value1, const char* value2)
 
 Aws::Vector<Aws::String> StringUtils::Split(const Aws::String& toSplit, char splitOn)
 {
-    return Split(toSplit, splitOn, SIZE_MAX);
+    return Split(toSplit, splitOn, SIZE_MAX, SplitOptions::NOT_SET);
+}
+
+Aws::Vector<Aws::String> StringUtils::Split(const Aws::String& toSplit, char splitOn, SplitOptions option)
+{
+    return Split(toSplit, splitOn, SIZE_MAX, option);
 }
 
 Aws::Vector<Aws::String> StringUtils::Split(const Aws::String& toSplit, char splitOn, size_t numOfTargetParts)
+{
+    return Split(toSplit, splitOn, numOfTargetParts, SplitOptions::NOT_SET);
+}
+
+Aws::Vector<Aws::String> StringUtils::Split(const Aws::String& toSplit, char splitOn, size_t numOfTargetParts, SplitOptions option)
 {
     Aws::Vector<Aws::String> returnValues;
     Aws::StringStream input(toSplit);
@@ -96,16 +96,35 @@ Aws::Vector<Aws::String> StringUtils::Split(const Aws::String& toSplit, char spl
 
     while(returnValues.size() < numOfTargetParts - 1 && std::getline(input, item, splitOn))
     {
-        if (item.size())
+        if (!item.empty() || option == SplitOptions::INCLUDE_EMPTY_ENTRIES)
         {
             returnValues.emplace_back(std::move(item));
         }
     }
 
-    if (std::getline(input, item, static_cast<char>(EOF)) && item.size())
+    if (std::getline(input, item, static_cast<char>(EOF)))
     {
-        returnValues.emplace_back(std::move(item));
+        if (option != SplitOptions::INCLUDE_EMPTY_ENTRIES)
+        {
+            // Trim all leading delimiters.
+            item.erase(item.begin(), std::find_if(item.begin(), item.end(), [splitOn](int ch) { return ch != splitOn; }));
+            if (!item.empty())
+            {
+                returnValues.emplace_back(std::move(item));
+            }
+        }
+        else
+        {
+            returnValues.emplace_back(std::move(item));
+        }
+
     }
+    // To handle the case when there are trailing delimiters.
+    else if (!toSplit.empty() && toSplit.back() == splitOn && option == SplitOptions::INCLUDE_EMPTY_ENTRIES)
+    {
+        returnValues.emplace_back();
+    }
+
     return returnValues;
 }
 

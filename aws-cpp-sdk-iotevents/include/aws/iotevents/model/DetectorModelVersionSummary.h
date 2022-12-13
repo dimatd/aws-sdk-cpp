@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iotevents/IoTEvents_EXPORTS.h>
@@ -316,50 +306,38 @@ namespace Model
 
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline const EvaluationMethod& GetEvaluationMethod() const{ return m_evaluationMethod; }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline bool EvaluationMethodHasBeenSet() const { return m_evaluationMethodHasBeenSet; }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline void SetEvaluationMethod(const EvaluationMethod& value) { m_evaluationMethodHasBeenSet = true; m_evaluationMethod = value; }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline void SetEvaluationMethod(EvaluationMethod&& value) { m_evaluationMethodHasBeenSet = true; m_evaluationMethod = std::move(value); }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline DetectorModelVersionSummary& WithEvaluationMethod(const EvaluationMethod& value) { SetEvaluationMethod(value); return *this;}
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline DetectorModelVersionSummary& WithEvaluationMethod(EvaluationMethod&& value) { SetEvaluationMethod(std::move(value)); return *this;}
 

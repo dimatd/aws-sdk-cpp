@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ecs/model/RunTaskRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -23,24 +13,28 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 RunTaskRequest::RunTaskRequest() : 
+    m_capacityProviderStrategyHasBeenSet(false),
     m_clusterHasBeenSet(false),
-    m_taskDefinitionHasBeenSet(false),
-    m_overridesHasBeenSet(false),
     m_count(0),
     m_countHasBeenSet(false),
-    m_startedByHasBeenSet(false),
-    m_groupHasBeenSet(false),
-    m_placementConstraintsHasBeenSet(false),
-    m_placementStrategyHasBeenSet(false),
-    m_launchType(LaunchType::NOT_SET),
-    m_launchTypeHasBeenSet(false),
-    m_platformVersionHasBeenSet(false),
-    m_networkConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false),
     m_enableECSManagedTags(false),
     m_enableECSManagedTagsHasBeenSet(false),
+    m_enableExecuteCommand(false),
+    m_enableExecuteCommandHasBeenSet(false),
+    m_groupHasBeenSet(false),
+    m_launchType(LaunchType::NOT_SET),
+    m_launchTypeHasBeenSet(false),
+    m_networkConfigurationHasBeenSet(false),
+    m_overridesHasBeenSet(false),
+    m_placementConstraintsHasBeenSet(false),
+    m_placementStrategyHasBeenSet(false),
+    m_platformVersionHasBeenSet(false),
     m_propagateTags(PropagateTags::NOT_SET),
-    m_propagateTagsHasBeenSet(false)
+    m_propagateTagsHasBeenSet(false),
+    m_referenceIdHasBeenSet(false),
+    m_startedByHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_taskDefinitionHasBeenSet(false)
 {
 }
 
@@ -48,21 +42,20 @@ Aws::String RunTaskRequest::SerializePayload() const
 {
   JsonValue payload;
 
+  if(m_capacityProviderStrategyHasBeenSet)
+  {
+   Array<JsonValue> capacityProviderStrategyJsonList(m_capacityProviderStrategy.size());
+   for(unsigned capacityProviderStrategyIndex = 0; capacityProviderStrategyIndex < capacityProviderStrategyJsonList.GetLength(); ++capacityProviderStrategyIndex)
+   {
+     capacityProviderStrategyJsonList[capacityProviderStrategyIndex].AsObject(m_capacityProviderStrategy[capacityProviderStrategyIndex].Jsonize());
+   }
+   payload.WithArray("capacityProviderStrategy", std::move(capacityProviderStrategyJsonList));
+
+  }
+
   if(m_clusterHasBeenSet)
   {
    payload.WithString("cluster", m_cluster);
-
-  }
-
-  if(m_taskDefinitionHasBeenSet)
-  {
-   payload.WithString("taskDefinition", m_taskDefinition);
-
-  }
-
-  if(m_overridesHasBeenSet)
-  {
-   payload.WithObject("overrides", m_overrides.Jsonize());
 
   }
 
@@ -72,15 +65,38 @@ Aws::String RunTaskRequest::SerializePayload() const
 
   }
 
-  if(m_startedByHasBeenSet)
+  if(m_enableECSManagedTagsHasBeenSet)
   {
-   payload.WithString("startedBy", m_startedBy);
+   payload.WithBool("enableECSManagedTags", m_enableECSManagedTags);
+
+  }
+
+  if(m_enableExecuteCommandHasBeenSet)
+  {
+   payload.WithBool("enableExecuteCommand", m_enableExecuteCommand);
 
   }
 
   if(m_groupHasBeenSet)
   {
    payload.WithString("group", m_group);
+
+  }
+
+  if(m_launchTypeHasBeenSet)
+  {
+   payload.WithString("launchType", LaunchTypeMapper::GetNameForLaunchType(m_launchType));
+  }
+
+  if(m_networkConfigurationHasBeenSet)
+  {
+   payload.WithObject("networkConfiguration", m_networkConfiguration.Jsonize());
+
+  }
+
+  if(m_overridesHasBeenSet)
+  {
+   payload.WithObject("overrides", m_overrides.Jsonize());
 
   }
 
@@ -106,20 +122,26 @@ Aws::String RunTaskRequest::SerializePayload() const
 
   }
 
-  if(m_launchTypeHasBeenSet)
-  {
-   payload.WithString("launchType", LaunchTypeMapper::GetNameForLaunchType(m_launchType));
-  }
-
   if(m_platformVersionHasBeenSet)
   {
    payload.WithString("platformVersion", m_platformVersion);
 
   }
 
-  if(m_networkConfigurationHasBeenSet)
+  if(m_propagateTagsHasBeenSet)
   {
-   payload.WithObject("networkConfiguration", m_networkConfiguration.Jsonize());
+   payload.WithString("propagateTags", PropagateTagsMapper::GetNameForPropagateTags(m_propagateTags));
+  }
+
+  if(m_referenceIdHasBeenSet)
+  {
+   payload.WithString("referenceId", m_referenceId);
+
+  }
+
+  if(m_startedByHasBeenSet)
+  {
+   payload.WithString("startedBy", m_startedBy);
 
   }
 
@@ -134,15 +156,10 @@ Aws::String RunTaskRequest::SerializePayload() const
 
   }
 
-  if(m_enableECSManagedTagsHasBeenSet)
+  if(m_taskDefinitionHasBeenSet)
   {
-   payload.WithBool("enableECSManagedTags", m_enableECSManagedTags);
+   payload.WithString("taskDefinition", m_taskDefinition);
 
-  }
-
-  if(m_propagateTagsHasBeenSet)
-  {
-   payload.WithString("propagateTags", PropagateTagsMapper::GetNameForPropagateTags(m_propagateTags));
   }
 
   return payload.View().WriteReadable();

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
@@ -46,87 +36,80 @@ namespace Model
 
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline const Aws::Vector<PlatformSummary>& GetPlatformSummaryList() const{ return m_platformSummaryList; }
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline void SetPlatformSummaryList(const Aws::Vector<PlatformSummary>& value) { m_platformSummaryList = value; }
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline void SetPlatformSummaryList(Aws::Vector<PlatformSummary>&& value) { m_platformSummaryList = std::move(value); }
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline ListPlatformVersionsResult& WithPlatformSummaryList(const Aws::Vector<PlatformSummary>& value) { SetPlatformSummaryList(value); return *this;}
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline ListPlatformVersionsResult& WithPlatformSummaryList(Aws::Vector<PlatformSummary>&& value) { SetPlatformSummaryList(std::move(value)); return *this;}
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline ListPlatformVersionsResult& AddPlatformSummaryList(const PlatformSummary& value) { m_platformSummaryList.push_back(value); return *this; }
 
     /**
-     * <p>Detailed information about the platforms.</p>
+     * <p>Summary information about the platform versions.</p>
      */
     inline ListPlatformVersionsResult& AddPlatformSummaryList(PlatformSummary&& value) { m_platformSummaryList.push_back(std::move(value)); return *this; }
 
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline ListPlatformVersionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline ListPlatformVersionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>The starting index into the remaining list of platforms. if this value is not
-     * <code>null</code>, you can use it in a subsequent
-     * <code>ListPlatformVersion</code> call. </p>
+     * <p>In a paginated request, if this value isn't <code>null</code>, it's the token
+     * that you can pass in a subsequent request to get the next response page.</p>
      */
     inline ListPlatformVersionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 

@@ -1,22 +1,19 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/kafka/Kafka_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/kafka/model/ConfigurationInfo.h>
+#include <aws/kafka/model/EnhancedMonitoring.h>
+#include <aws/kafka/model/OpenMonitoring.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/kafka/model/LoggingInfo.h>
+#include <aws/kafka/model/ClientAuthentication.h>
+#include <aws/kafka/model/EncryptionInfo.h>
+#include <aws/kafka/model/ConnectivityInfo.h>
 #include <aws/kafka/model/BrokerEBSVolumeInfo.h>
 #include <utility>
 
@@ -194,6 +191,396 @@ namespace Model
      */
     inline MutableClusterInfo& WithNumberOfBrokerNodes(int value) { SetNumberOfBrokerNodes(value); return *this;}
 
+
+    /**
+     * 
+            <p>Specifies which Apache Kafka metrics Amazon MSK gathers and
+     * sends to Amazon CloudWatch for this cluster.</p>
+         
+     */
+    inline const EnhancedMonitoring& GetEnhancedMonitoring() const{ return m_enhancedMonitoring; }
+
+    /**
+     * 
+            <p>Specifies which Apache Kafka metrics Amazon MSK gathers and
+     * sends to Amazon CloudWatch for this cluster.</p>
+         
+     */
+    inline bool EnhancedMonitoringHasBeenSet() const { return m_enhancedMonitoringHasBeenSet; }
+
+    /**
+     * 
+            <p>Specifies which Apache Kafka metrics Amazon MSK gathers and
+     * sends to Amazon CloudWatch for this cluster.</p>
+         
+     */
+    inline void SetEnhancedMonitoring(const EnhancedMonitoring& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = value; }
+
+    /**
+     * 
+            <p>Specifies which Apache Kafka metrics Amazon MSK gathers and
+     * sends to Amazon CloudWatch for this cluster.</p>
+         
+     */
+    inline void SetEnhancedMonitoring(EnhancedMonitoring&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = std::move(value); }
+
+    /**
+     * 
+            <p>Specifies which Apache Kafka metrics Amazon MSK gathers and
+     * sends to Amazon CloudWatch for this cluster.</p>
+         
+     */
+    inline MutableClusterInfo& WithEnhancedMonitoring(const EnhancedMonitoring& value) { SetEnhancedMonitoring(value); return *this;}
+
+    /**
+     * 
+            <p>Specifies which Apache Kafka metrics Amazon MSK gathers and
+     * sends to Amazon CloudWatch for this cluster.</p>
+         
+     */
+    inline MutableClusterInfo& WithEnhancedMonitoring(EnhancedMonitoring&& value) { SetEnhancedMonitoring(std::move(value)); return *this;}
+
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline const OpenMonitoring& GetOpenMonitoring() const{ return m_openMonitoring; }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline bool OpenMonitoringHasBeenSet() const { return m_openMonitoringHasBeenSet; }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline void SetOpenMonitoring(const OpenMonitoring& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = value; }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline void SetOpenMonitoring(OpenMonitoring&& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = std::move(value); }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline MutableClusterInfo& WithOpenMonitoring(const OpenMonitoring& value) { SetOpenMonitoring(value); return *this;}
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline MutableClusterInfo& WithOpenMonitoring(OpenMonitoring&& value) { SetOpenMonitoring(std::move(value)); return *this;}
+
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline const Aws::String& GetKafkaVersion() const{ return m_kafkaVersion; }
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline bool KafkaVersionHasBeenSet() const { return m_kafkaVersionHasBeenSet; }
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline void SetKafkaVersion(const Aws::String& value) { m_kafkaVersionHasBeenSet = true; m_kafkaVersion = value; }
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline void SetKafkaVersion(Aws::String&& value) { m_kafkaVersionHasBeenSet = true; m_kafkaVersion = std::move(value); }
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline void SetKafkaVersion(const char* value) { m_kafkaVersionHasBeenSet = true; m_kafkaVersion.assign(value); }
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline MutableClusterInfo& WithKafkaVersion(const Aws::String& value) { SetKafkaVersion(value); return *this;}
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline MutableClusterInfo& WithKafkaVersion(Aws::String&& value) { SetKafkaVersion(std::move(value)); return *this;}
+
+    /**
+     * 
+            <p>The Apache Kafka version.</p>
+            
+     */
+    inline MutableClusterInfo& WithKafkaVersion(const char* value) { SetKafkaVersion(value); return *this;}
+
+
+    /**
+     * 
+            <p>You can configure your MSK cluster to send broker logs to
+     * different destination types. This is a container for the configuration details
+     * related to broker logs.</p>
+            
+     */
+    inline const LoggingInfo& GetLoggingInfo() const{ return m_loggingInfo; }
+
+    /**
+     * 
+            <p>You can configure your MSK cluster to send broker logs to
+     * different destination types. This is a container for the configuration details
+     * related to broker logs.</p>
+            
+     */
+    inline bool LoggingInfoHasBeenSet() const { return m_loggingInfoHasBeenSet; }
+
+    /**
+     * 
+            <p>You can configure your MSK cluster to send broker logs to
+     * different destination types. This is a container for the configuration details
+     * related to broker logs.</p>
+            
+     */
+    inline void SetLoggingInfo(const LoggingInfo& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = value; }
+
+    /**
+     * 
+            <p>You can configure your MSK cluster to send broker logs to
+     * different destination types. This is a container for the configuration details
+     * related to broker logs.</p>
+            
+     */
+    inline void SetLoggingInfo(LoggingInfo&& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = std::move(value); }
+
+    /**
+     * 
+            <p>You can configure your MSK cluster to send broker logs to
+     * different destination types. This is a container for the configuration details
+     * related to broker logs.</p>
+            
+     */
+    inline MutableClusterInfo& WithLoggingInfo(const LoggingInfo& value) { SetLoggingInfo(value); return *this;}
+
+    /**
+     * 
+            <p>You can configure your MSK cluster to send broker logs to
+     * different destination types. This is a container for the configuration details
+     * related to broker logs.</p>
+            
+     */
+    inline MutableClusterInfo& WithLoggingInfo(LoggingInfo&& value) { SetLoggingInfo(std::move(value)); return *this;}
+
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline MutableClusterInfo& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline MutableClusterInfo& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
+
+    /**
+     * 
+            <p>Information about the Amazon MSK broker type.</p>
+            
+     */
+    inline MutableClusterInfo& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
+
+
+    /**
+     * 
+            <p>Includes all client authentication information.</p>
+         
+     */
+    inline const ClientAuthentication& GetClientAuthentication() const{ return m_clientAuthentication; }
+
+    /**
+     * 
+            <p>Includes all client authentication information.</p>
+         
+     */
+    inline bool ClientAuthenticationHasBeenSet() const { return m_clientAuthenticationHasBeenSet; }
+
+    /**
+     * 
+            <p>Includes all client authentication information.</p>
+         
+     */
+    inline void SetClientAuthentication(const ClientAuthentication& value) { m_clientAuthenticationHasBeenSet = true; m_clientAuthentication = value; }
+
+    /**
+     * 
+            <p>Includes all client authentication information.</p>
+         
+     */
+    inline void SetClientAuthentication(ClientAuthentication&& value) { m_clientAuthenticationHasBeenSet = true; m_clientAuthentication = std::move(value); }
+
+    /**
+     * 
+            <p>Includes all client authentication information.</p>
+         
+     */
+    inline MutableClusterInfo& WithClientAuthentication(const ClientAuthentication& value) { SetClientAuthentication(value); return *this;}
+
+    /**
+     * 
+            <p>Includes all client authentication information.</p>
+         
+     */
+    inline MutableClusterInfo& WithClientAuthentication(ClientAuthentication&& value) { SetClientAuthentication(std::move(value)); return *this;}
+
+
+    /**
+     * 
+            <p>Includes all encryption-related information.</p>
+         
+     */
+    inline const EncryptionInfo& GetEncryptionInfo() const{ return m_encryptionInfo; }
+
+    /**
+     * 
+            <p>Includes all encryption-related information.</p>
+         
+     */
+    inline bool EncryptionInfoHasBeenSet() const { return m_encryptionInfoHasBeenSet; }
+
+    /**
+     * 
+            <p>Includes all encryption-related information.</p>
+         
+     */
+    inline void SetEncryptionInfo(const EncryptionInfo& value) { m_encryptionInfoHasBeenSet = true; m_encryptionInfo = value; }
+
+    /**
+     * 
+            <p>Includes all encryption-related information.</p>
+         
+     */
+    inline void SetEncryptionInfo(EncryptionInfo&& value) { m_encryptionInfoHasBeenSet = true; m_encryptionInfo = std::move(value); }
+
+    /**
+     * 
+            <p>Includes all encryption-related information.</p>
+         
+     */
+    inline MutableClusterInfo& WithEncryptionInfo(const EncryptionInfo& value) { SetEncryptionInfo(value); return *this;}
+
+    /**
+     * 
+            <p>Includes all encryption-related information.</p>
+         
+     */
+    inline MutableClusterInfo& WithEncryptionInfo(EncryptionInfo&& value) { SetEncryptionInfo(std::move(value)); return *this;}
+
+
+    /**
+     * 
+            <p>Information about the broker access configuration.</p>
+         
+     */
+    inline const ConnectivityInfo& GetConnectivityInfo() const{ return m_connectivityInfo; }
+
+    /**
+     * 
+            <p>Information about the broker access configuration.</p>
+         
+     */
+    inline bool ConnectivityInfoHasBeenSet() const { return m_connectivityInfoHasBeenSet; }
+
+    /**
+     * 
+            <p>Information about the broker access configuration.</p>
+         
+     */
+    inline void SetConnectivityInfo(const ConnectivityInfo& value) { m_connectivityInfoHasBeenSet = true; m_connectivityInfo = value; }
+
+    /**
+     * 
+            <p>Information about the broker access configuration.</p>
+         
+     */
+    inline void SetConnectivityInfo(ConnectivityInfo&& value) { m_connectivityInfoHasBeenSet = true; m_connectivityInfo = std::move(value); }
+
+    /**
+     * 
+            <p>Information about the broker access configuration.</p>
+         
+     */
+    inline MutableClusterInfo& WithConnectivityInfo(const ConnectivityInfo& value) { SetConnectivityInfo(value); return *this;}
+
+    /**
+     * 
+            <p>Information about the broker access configuration.</p>
+         
+     */
+    inline MutableClusterInfo& WithConnectivityInfo(ConnectivityInfo&& value) { SetConnectivityInfo(std::move(value)); return *this;}
+
   private:
 
     Aws::Vector<BrokerEBSVolumeInfo> m_brokerEBSVolumeInfo;
@@ -204,6 +591,30 @@ namespace Model
 
     int m_numberOfBrokerNodes;
     bool m_numberOfBrokerNodesHasBeenSet;
+
+    EnhancedMonitoring m_enhancedMonitoring;
+    bool m_enhancedMonitoringHasBeenSet;
+
+    OpenMonitoring m_openMonitoring;
+    bool m_openMonitoringHasBeenSet;
+
+    Aws::String m_kafkaVersion;
+    bool m_kafkaVersionHasBeenSet;
+
+    LoggingInfo m_loggingInfo;
+    bool m_loggingInfoHasBeenSet;
+
+    Aws::String m_instanceType;
+    bool m_instanceTypeHasBeenSet;
+
+    ClientAuthentication m_clientAuthentication;
+    bool m_clientAuthenticationHasBeenSet;
+
+    EncryptionInfo m_encryptionInfo;
+    bool m_encryptionInfoHasBeenSet;
+
+    ConnectivityInfo m_connectivityInfo;
+    bool m_connectivityInfoHasBeenSet;
   };
 
 } // namespace Model

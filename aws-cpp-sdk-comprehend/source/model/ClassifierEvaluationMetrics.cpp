@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/comprehend/model/ClassifierEvaluationMetrics.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -36,7 +26,15 @@ ClassifierEvaluationMetrics::ClassifierEvaluationMetrics() :
     m_recall(0.0),
     m_recallHasBeenSet(false),
     m_f1Score(0.0),
-    m_f1ScoreHasBeenSet(false)
+    m_f1ScoreHasBeenSet(false),
+    m_microPrecision(0.0),
+    m_microPrecisionHasBeenSet(false),
+    m_microRecall(0.0),
+    m_microRecallHasBeenSet(false),
+    m_microF1Score(0.0),
+    m_microF1ScoreHasBeenSet(false),
+    m_hammingLoss(0.0),
+    m_hammingLossHasBeenSet(false)
 {
 }
 
@@ -48,7 +46,15 @@ ClassifierEvaluationMetrics::ClassifierEvaluationMetrics(JsonView jsonValue) :
     m_recall(0.0),
     m_recallHasBeenSet(false),
     m_f1Score(0.0),
-    m_f1ScoreHasBeenSet(false)
+    m_f1ScoreHasBeenSet(false),
+    m_microPrecision(0.0),
+    m_microPrecisionHasBeenSet(false),
+    m_microRecall(0.0),
+    m_microRecallHasBeenSet(false),
+    m_microF1Score(0.0),
+    m_microF1ScoreHasBeenSet(false),
+    m_hammingLoss(0.0),
+    m_hammingLossHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -83,6 +89,34 @@ ClassifierEvaluationMetrics& ClassifierEvaluationMetrics::operator =(JsonView js
     m_f1ScoreHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("MicroPrecision"))
+  {
+    m_microPrecision = jsonValue.GetDouble("MicroPrecision");
+
+    m_microPrecisionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("MicroRecall"))
+  {
+    m_microRecall = jsonValue.GetDouble("MicroRecall");
+
+    m_microRecallHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("MicroF1Score"))
+  {
+    m_microF1Score = jsonValue.GetDouble("MicroF1Score");
+
+    m_microF1ScoreHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("HammingLoss"))
+  {
+    m_hammingLoss = jsonValue.GetDouble("HammingLoss");
+
+    m_hammingLossHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -111,6 +145,30 @@ JsonValue ClassifierEvaluationMetrics::Jsonize() const
   if(m_f1ScoreHasBeenSet)
   {
    payload.WithDouble("F1Score", m_f1Score);
+
+  }
+
+  if(m_microPrecisionHasBeenSet)
+  {
+   payload.WithDouble("MicroPrecision", m_microPrecision);
+
+  }
+
+  if(m_microRecallHasBeenSet)
+  {
+   payload.WithDouble("MicroRecall", m_microRecall);
+
+  }
+
+  if(m_microF1ScoreHasBeenSet)
+  {
+   payload.WithDouble("MicroF1Score", m_microF1Score);
+
+  }
+
+  if(m_hammingLossHasBeenSet)
+  {
+   payload.WithDouble("HammingLoss", m_hammingLoss);
 
   }
 

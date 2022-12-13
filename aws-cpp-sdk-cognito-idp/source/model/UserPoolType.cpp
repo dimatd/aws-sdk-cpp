@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/cognito-idp/model/UserPoolType.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -46,6 +36,7 @@ UserPoolType::UserPoolType() :
     m_emailVerificationSubjectHasBeenSet(false),
     m_verificationMessageTemplateHasBeenSet(false),
     m_smsAuthenticationMessageHasBeenSet(false),
+    m_userAttributeUpdateSettingsHasBeenSet(false),
     m_mfaConfiguration(UserPoolMfaType::NOT_SET),
     m_mfaConfigurationHasBeenSet(false),
     m_deviceConfigurationHasBeenSet(false),
@@ -60,7 +51,9 @@ UserPoolType::UserPoolType() :
     m_customDomainHasBeenSet(false),
     m_adminCreateUserConfigHasBeenSet(false),
     m_userPoolAddOnsHasBeenSet(false),
-    m_arnHasBeenSet(false)
+    m_usernameConfigurationHasBeenSet(false),
+    m_arnHasBeenSet(false),
+    m_accountRecoverySettingHasBeenSet(false)
 {
 }
 
@@ -82,6 +75,7 @@ UserPoolType::UserPoolType(JsonView jsonValue) :
     m_emailVerificationSubjectHasBeenSet(false),
     m_verificationMessageTemplateHasBeenSet(false),
     m_smsAuthenticationMessageHasBeenSet(false),
+    m_userAttributeUpdateSettingsHasBeenSet(false),
     m_mfaConfiguration(UserPoolMfaType::NOT_SET),
     m_mfaConfigurationHasBeenSet(false),
     m_deviceConfigurationHasBeenSet(false),
@@ -96,7 +90,9 @@ UserPoolType::UserPoolType(JsonView jsonValue) :
     m_customDomainHasBeenSet(false),
     m_adminCreateUserConfigHasBeenSet(false),
     m_userPoolAddOnsHasBeenSet(false),
-    m_arnHasBeenSet(false)
+    m_usernameConfigurationHasBeenSet(false),
+    m_arnHasBeenSet(false),
+    m_accountRecoverySettingHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -227,6 +223,13 @@ UserPoolType& UserPoolType::operator =(JsonView jsonValue)
     m_smsAuthenticationMessageHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("UserAttributeUpdateSettings"))
+  {
+    m_userAttributeUpdateSettings = jsonValue.GetObject("UserAttributeUpdateSettings");
+
+    m_userAttributeUpdateSettingsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("MfaConfiguration"))
   {
     m_mfaConfiguration = UserPoolMfaTypeMapper::GetUserPoolMfaTypeForName(jsonValue.GetString("MfaConfiguration"));
@@ -314,11 +317,25 @@ UserPoolType& UserPoolType::operator =(JsonView jsonValue)
     m_userPoolAddOnsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("UsernameConfiguration"))
+  {
+    m_usernameConfiguration = jsonValue.GetObject("UsernameConfiguration");
+
+    m_usernameConfigurationHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
 
     m_arnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("AccountRecoverySetting"))
+  {
+    m_accountRecoverySetting = jsonValue.GetObject("AccountRecoverySetting");
+
+    m_accountRecoverySettingHasBeenSet = true;
   }
 
   return *this;
@@ -441,6 +458,12 @@ JsonValue UserPoolType::Jsonize() const
 
   }
 
+  if(m_userAttributeUpdateSettingsHasBeenSet)
+  {
+   payload.WithObject("UserAttributeUpdateSettings", m_userAttributeUpdateSettings.Jsonize());
+
+  }
+
   if(m_mfaConfigurationHasBeenSet)
   {
    payload.WithString("MfaConfiguration", UserPoolMfaTypeMapper::GetNameForUserPoolMfaType(m_mfaConfiguration));
@@ -517,9 +540,21 @@ JsonValue UserPoolType::Jsonize() const
 
   }
 
+  if(m_usernameConfigurationHasBeenSet)
+  {
+   payload.WithObject("UsernameConfiguration", m_usernameConfiguration.Jsonize());
+
+  }
+
   if(m_arnHasBeenSet)
   {
    payload.WithString("Arn", m_arn);
+
+  }
+
+  if(m_accountRecoverySettingHasBeenSet)
+  {
+   payload.WithObject("AccountRecoverySetting", m_accountRecoverySetting.Jsonize());
 
   }
 

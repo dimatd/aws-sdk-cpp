@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/dlm/model/LifecyclePolicy.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,10 +23,13 @@ LifecyclePolicy::LifecyclePolicy() :
     m_descriptionHasBeenSet(false),
     m_state(GettablePolicyStateValues::NOT_SET),
     m_stateHasBeenSet(false),
+    m_statusMessageHasBeenSet(false),
     m_executionRoleArnHasBeenSet(false),
     m_dateCreatedHasBeenSet(false),
     m_dateModifiedHasBeenSet(false),
-    m_policyDetailsHasBeenSet(false)
+    m_policyDetailsHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_policyArnHasBeenSet(false)
 {
 }
 
@@ -45,10 +38,13 @@ LifecyclePolicy::LifecyclePolicy(JsonView jsonValue) :
     m_descriptionHasBeenSet(false),
     m_state(GettablePolicyStateValues::NOT_SET),
     m_stateHasBeenSet(false),
+    m_statusMessageHasBeenSet(false),
     m_executionRoleArnHasBeenSet(false),
     m_dateCreatedHasBeenSet(false),
     m_dateModifiedHasBeenSet(false),
-    m_policyDetailsHasBeenSet(false)
+    m_policyDetailsHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_policyArnHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -74,6 +70,13 @@ LifecyclePolicy& LifecyclePolicy::operator =(JsonView jsonValue)
     m_state = GettablePolicyStateValuesMapper::GetGettablePolicyStateValuesForName(jsonValue.GetString("State"));
 
     m_stateHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StatusMessage"))
+  {
+    m_statusMessage = jsonValue.GetString("StatusMessage");
+
+    m_statusMessageHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("ExecutionRoleArn"))
@@ -104,6 +107,23 @@ LifecyclePolicy& LifecyclePolicy::operator =(JsonView jsonValue)
     m_policyDetailsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("Tags"))
+  {
+    Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
+    for(auto& tagsItem : tagsJsonMap)
+    {
+      m_tags[tagsItem.first] = tagsItem.second.AsString();
+    }
+    m_tagsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("PolicyArn"))
+  {
+    m_policyArn = jsonValue.GetString("PolicyArn");
+
+    m_policyArnHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -128,6 +148,12 @@ JsonValue LifecyclePolicy::Jsonize() const
    payload.WithString("State", GettablePolicyStateValuesMapper::GetNameForGettablePolicyStateValues(m_state));
   }
 
+  if(m_statusMessageHasBeenSet)
+  {
+   payload.WithString("StatusMessage", m_statusMessage);
+
+  }
+
   if(m_executionRoleArnHasBeenSet)
   {
    payload.WithString("ExecutionRoleArn", m_executionRoleArn);
@@ -147,6 +173,23 @@ JsonValue LifecyclePolicy::Jsonize() const
   if(m_policyDetailsHasBeenSet)
   {
    payload.WithObject("PolicyDetails", m_policyDetails.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_policyArnHasBeenSet)
+  {
+   payload.WithString("PolicyArn", m_policyArn);
 
   }
 

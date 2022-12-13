@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
@@ -38,6 +28,9 @@
 #include <aws/cloud9/model/DescribeEnvironmentStatusRequest.h>
 #include <aws/cloud9/model/DescribeEnvironmentsRequest.h>
 #include <aws/cloud9/model/ListEnvironmentsRequest.h>
+#include <aws/cloud9/model/ListTagsForResourceRequest.h>
+#include <aws/cloud9/model/TagResourceRequest.h>
+#include <aws/cloud9/model/UntagResourceRequest.h>
 #include <aws/cloud9/model/UpdateEnvironmentRequest.h>
 #include <aws/cloud9/model/UpdateEnvironmentMembershipRequest.h>
 
@@ -56,7 +49,7 @@ static const char* ALLOCATION_TAG = "Cloud9Client";
 Cloud9Client::Cloud9Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-        SERVICE_NAME, clientConfiguration.region),
+        SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<Cloud9ErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -66,7 +59,7 @@ Cloud9Client::Cloud9Client(const Client::ClientConfiguration& clientConfiguratio
 Cloud9Client::Cloud9Client(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
-         SERVICE_NAME, clientConfiguration.region),
+         SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<Cloud9ErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -77,7 +70,7 @@ Cloud9Client::Cloud9Client(const std::shared_ptr<AWSCredentialsProvider>& creden
   const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
-         SERVICE_NAME, clientConfiguration.region),
+         SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<Cloud9ErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -88,8 +81,9 @@ Cloud9Client::~Cloud9Client()
 {
 }
 
-void Cloud9Client::init(const ClientConfiguration& config)
+void Cloud9Client::init(const Client::ClientConfiguration& config)
 {
+  SetServiceClientName("Cloud9");
   m_configScheme = SchemeMapper::ToString(config.scheme);
   if (config.endpointOverride.empty())
   {
@@ -116,18 +110,7 @@ void Cloud9Client::OverrideEndpoint(const Aws::String& endpoint)
 CreateEnvironmentEC2Outcome Cloud9Client::CreateEnvironmentEC2(const CreateEnvironmentEC2Request& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return CreateEnvironmentEC2Outcome(CreateEnvironmentEC2Result(outcome.GetResult()));
-  }
-  else
-  {
-    return CreateEnvironmentEC2Outcome(outcome.GetError());
-  }
+  return CreateEnvironmentEC2Outcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 CreateEnvironmentEC2OutcomeCallable Cloud9Client::CreateEnvironmentEC2Callable(const CreateEnvironmentEC2Request& request) const
@@ -151,18 +134,7 @@ void Cloud9Client::CreateEnvironmentEC2AsyncHelper(const CreateEnvironmentEC2Req
 CreateEnvironmentMembershipOutcome Cloud9Client::CreateEnvironmentMembership(const CreateEnvironmentMembershipRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return CreateEnvironmentMembershipOutcome(CreateEnvironmentMembershipResult(outcome.GetResult()));
-  }
-  else
-  {
-    return CreateEnvironmentMembershipOutcome(outcome.GetError());
-  }
+  return CreateEnvironmentMembershipOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 CreateEnvironmentMembershipOutcomeCallable Cloud9Client::CreateEnvironmentMembershipCallable(const CreateEnvironmentMembershipRequest& request) const
@@ -186,18 +158,7 @@ void Cloud9Client::CreateEnvironmentMembershipAsyncHelper(const CreateEnvironmen
 DeleteEnvironmentOutcome Cloud9Client::DeleteEnvironment(const DeleteEnvironmentRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DeleteEnvironmentOutcome(DeleteEnvironmentResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteEnvironmentOutcome(outcome.GetError());
-  }
+  return DeleteEnvironmentOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 DeleteEnvironmentOutcomeCallable Cloud9Client::DeleteEnvironmentCallable(const DeleteEnvironmentRequest& request) const
@@ -221,18 +182,7 @@ void Cloud9Client::DeleteEnvironmentAsyncHelper(const DeleteEnvironmentRequest& 
 DeleteEnvironmentMembershipOutcome Cloud9Client::DeleteEnvironmentMembership(const DeleteEnvironmentMembershipRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DeleteEnvironmentMembershipOutcome(DeleteEnvironmentMembershipResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteEnvironmentMembershipOutcome(outcome.GetError());
-  }
+  return DeleteEnvironmentMembershipOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 DeleteEnvironmentMembershipOutcomeCallable Cloud9Client::DeleteEnvironmentMembershipCallable(const DeleteEnvironmentMembershipRequest& request) const
@@ -256,18 +206,7 @@ void Cloud9Client::DeleteEnvironmentMembershipAsyncHelper(const DeleteEnvironmen
 DescribeEnvironmentMembershipsOutcome Cloud9Client::DescribeEnvironmentMemberships(const DescribeEnvironmentMembershipsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DescribeEnvironmentMembershipsOutcome(DescribeEnvironmentMembershipsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeEnvironmentMembershipsOutcome(outcome.GetError());
-  }
+  return DescribeEnvironmentMembershipsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 DescribeEnvironmentMembershipsOutcomeCallable Cloud9Client::DescribeEnvironmentMembershipsCallable(const DescribeEnvironmentMembershipsRequest& request) const
@@ -291,18 +230,7 @@ void Cloud9Client::DescribeEnvironmentMembershipsAsyncHelper(const DescribeEnvir
 DescribeEnvironmentStatusOutcome Cloud9Client::DescribeEnvironmentStatus(const DescribeEnvironmentStatusRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DescribeEnvironmentStatusOutcome(DescribeEnvironmentStatusResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeEnvironmentStatusOutcome(outcome.GetError());
-  }
+  return DescribeEnvironmentStatusOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 DescribeEnvironmentStatusOutcomeCallable Cloud9Client::DescribeEnvironmentStatusCallable(const DescribeEnvironmentStatusRequest& request) const
@@ -326,18 +254,7 @@ void Cloud9Client::DescribeEnvironmentStatusAsyncHelper(const DescribeEnvironmen
 DescribeEnvironmentsOutcome Cloud9Client::DescribeEnvironments(const DescribeEnvironmentsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DescribeEnvironmentsOutcome(DescribeEnvironmentsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeEnvironmentsOutcome(outcome.GetError());
-  }
+  return DescribeEnvironmentsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 DescribeEnvironmentsOutcomeCallable Cloud9Client::DescribeEnvironmentsCallable(const DescribeEnvironmentsRequest& request) const
@@ -361,18 +278,7 @@ void Cloud9Client::DescribeEnvironmentsAsyncHelper(const DescribeEnvironmentsReq
 ListEnvironmentsOutcome Cloud9Client::ListEnvironments(const ListEnvironmentsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListEnvironmentsOutcome(ListEnvironmentsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListEnvironmentsOutcome(outcome.GetError());
-  }
+  return ListEnvironmentsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListEnvironmentsOutcomeCallable Cloud9Client::ListEnvironmentsCallable(const ListEnvironmentsRequest& request) const
@@ -393,21 +299,82 @@ void Cloud9Client::ListEnvironmentsAsyncHelper(const ListEnvironmentsRequest& re
   handler(this, request, ListEnvironments(request), context);
 }
 
+ListTagsForResourceOutcome Cloud9Client::ListTagsForResource(const ListTagsForResourceRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  return ListTagsForResourceOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+}
+
+ListTagsForResourceOutcomeCallable Cloud9Client::ListTagsForResourceCallable(const ListTagsForResourceRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListTagsForResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTagsForResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void Cloud9Client::ListTagsForResourceAsync(const ListTagsForResourceRequest& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListTagsForResourceAsyncHelper( request, handler, context ); } );
+}
+
+void Cloud9Client::ListTagsForResourceAsyncHelper(const ListTagsForResourceRequest& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListTagsForResource(request), context);
+}
+
+TagResourceOutcome Cloud9Client::TagResource(const TagResourceRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  return TagResourceOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+}
+
+TagResourceOutcomeCallable Cloud9Client::TagResourceCallable(const TagResourceRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< TagResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->TagResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void Cloud9Client::TagResourceAsync(const TagResourceRequest& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->TagResourceAsyncHelper( request, handler, context ); } );
+}
+
+void Cloud9Client::TagResourceAsyncHelper(const TagResourceRequest& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, TagResource(request), context);
+}
+
+UntagResourceOutcome Cloud9Client::UntagResource(const UntagResourceRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  return UntagResourceOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+}
+
+UntagResourceOutcomeCallable Cloud9Client::UntagResourceCallable(const UntagResourceRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UntagResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UntagResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void Cloud9Client::UntagResourceAsync(const UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UntagResourceAsyncHelper( request, handler, context ); } );
+}
+
+void Cloud9Client::UntagResourceAsyncHelper(const UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UntagResource(request), context);
+}
+
 UpdateEnvironmentOutcome Cloud9Client::UpdateEnvironment(const UpdateEnvironmentRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return UpdateEnvironmentOutcome(UpdateEnvironmentResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateEnvironmentOutcome(outcome.GetError());
-  }
+  return UpdateEnvironmentOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 UpdateEnvironmentOutcomeCallable Cloud9Client::UpdateEnvironmentCallable(const UpdateEnvironmentRequest& request) const
@@ -431,18 +398,7 @@ void Cloud9Client::UpdateEnvironmentAsyncHelper(const UpdateEnvironmentRequest& 
 UpdateEnvironmentMembershipOutcome Cloud9Client::UpdateEnvironmentMembership(const UpdateEnvironmentMembershipRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return UpdateEnvironmentMembershipOutcome(UpdateEnvironmentMembershipResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateEnvironmentMembershipOutcome(outcome.GetError());
-  }
+  return UpdateEnvironmentMembershipOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 UpdateEnvironmentMembershipOutcomeCallable Cloud9Client::UpdateEnvironmentMembershipCallable(const UpdateEnvironmentMembershipRequest& request) const

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -21,6 +11,7 @@
 #include <aws/ec2/model/VolumeStatusInfo.h>
 #include <aws/ec2/model/VolumeStatusAction.h>
 #include <aws/ec2/model/VolumeStatusEvent.h>
+#include <aws/ec2/model/VolumeStatusAttachmentStatus.h>
 #include <utility>
 
 namespace Aws
@@ -136,6 +127,47 @@ namespace Model
 
 
     /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline const Aws::String& GetOutpostArn() const{ return m_outpostArn; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline bool OutpostArnHasBeenSet() const { return m_outpostArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline void SetOutpostArn(const Aws::String& value) { m_outpostArnHasBeenSet = true; m_outpostArn = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline void SetOutpostArn(Aws::String&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline void SetOutpostArn(const char* value) { m_outpostArnHasBeenSet = true; m_outpostArn.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline VolumeStatusItem& WithOutpostArn(const Aws::String& value) { SetOutpostArn(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline VolumeStatusItem& WithOutpostArn(Aws::String&& value) { SetOutpostArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline VolumeStatusItem& WithOutpostArn(const char* value) { SetOutpostArn(value); return *this;}
+
+
+    /**
      * <p>A list of events associated with the volume.</p>
      */
     inline const Aws::Vector<VolumeStatusEvent>& GetEvents() const{ return m_events; }
@@ -247,6 +279,47 @@ namespace Model
      */
     inline VolumeStatusItem& WithVolumeStatus(VolumeStatusInfo&& value) { SetVolumeStatus(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline const Aws::Vector<VolumeStatusAttachmentStatus>& GetAttachmentStatuses() const{ return m_attachmentStatuses; }
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline bool AttachmentStatusesHasBeenSet() const { return m_attachmentStatusesHasBeenSet; }
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline void SetAttachmentStatuses(const Aws::Vector<VolumeStatusAttachmentStatus>& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses = value; }
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline void SetAttachmentStatuses(Aws::Vector<VolumeStatusAttachmentStatus>&& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses = std::move(value); }
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline VolumeStatusItem& WithAttachmentStatuses(const Aws::Vector<VolumeStatusAttachmentStatus>& value) { SetAttachmentStatuses(value); return *this;}
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline VolumeStatusItem& WithAttachmentStatuses(Aws::Vector<VolumeStatusAttachmentStatus>&& value) { SetAttachmentStatuses(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline VolumeStatusItem& AddAttachmentStatuses(const VolumeStatusAttachmentStatus& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses.push_back(value); return *this; }
+
+    /**
+     * <p>Information about the instances to which the volume is attached.</p>
+     */
+    inline VolumeStatusItem& AddAttachmentStatuses(VolumeStatusAttachmentStatus&& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses.push_back(std::move(value)); return *this; }
+
   private:
 
     Aws::Vector<VolumeStatusAction> m_actions;
@@ -254,6 +327,9 @@ namespace Model
 
     Aws::String m_availabilityZone;
     bool m_availabilityZoneHasBeenSet;
+
+    Aws::String m_outpostArn;
+    bool m_outpostArnHasBeenSet;
 
     Aws::Vector<VolumeStatusEvent> m_events;
     bool m_eventsHasBeenSet;
@@ -263,6 +339,9 @@ namespace Model
 
     VolumeStatusInfo m_volumeStatus;
     bool m_volumeStatusHasBeenSet;
+
+    Aws::Vector<VolumeStatusAttachmentStatus> m_attachmentStatuses;
+    bool m_attachmentStatusesHasBeenSet;
   };
 
 } // namespace Model

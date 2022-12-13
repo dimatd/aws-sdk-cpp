@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sagemaker/model/HyperParameterTuningJobConfig.h>
 #include <aws/sagemaker/model/HyperParameterTrainingJobDefinition.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/model/HyperParameterTuningJobStatus.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/sagemaker/model/TrainingJobStatusCounters.h>
@@ -182,6 +173,49 @@ namespace Model
      * definition of the training jobs that this tuning job launches.</p>
      */
     inline DescribeHyperParameterTuningJobResult& WithTrainingJobDefinition(HyperParameterTrainingJobDefinition&& value) { SetTrainingJobDefinition(std::move(value)); return *this;}
+
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline const Aws::Vector<HyperParameterTrainingJobDefinition>& GetTrainingJobDefinitions() const{ return m_trainingJobDefinitions; }
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline void SetTrainingJobDefinitions(const Aws::Vector<HyperParameterTrainingJobDefinition>& value) { m_trainingJobDefinitions = value; }
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline void SetTrainingJobDefinitions(Aws::Vector<HyperParameterTrainingJobDefinition>&& value) { m_trainingJobDefinitions = std::move(value); }
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline DescribeHyperParameterTuningJobResult& WithTrainingJobDefinitions(const Aws::Vector<HyperParameterTrainingJobDefinition>& value) { SetTrainingJobDefinitions(value); return *this;}
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline DescribeHyperParameterTuningJobResult& WithTrainingJobDefinitions(Aws::Vector<HyperParameterTrainingJobDefinition>&& value) { SetTrainingJobDefinitions(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline DescribeHyperParameterTuningJobResult& AddTrainingJobDefinitions(const HyperParameterTrainingJobDefinition& value) { m_trainingJobDefinitions.push_back(value); return *this; }
+
+    /**
+     * <p>A list of the <a>HyperParameterTrainingJobDefinition</a> objects launched for
+     * this tuning job.</p>
+     */
+    inline DescribeHyperParameterTuningJobResult& AddTrainingJobDefinitions(HyperParameterTrainingJobDefinition&& value) { m_trainingJobDefinitions.push_back(std::move(value)); return *this; }
 
 
     /**
@@ -522,6 +556,8 @@ namespace Model
     HyperParameterTuningJobConfig m_hyperParameterTuningJobConfig;
 
     HyperParameterTrainingJobDefinition m_trainingJobDefinition;
+
+    Aws::Vector<HyperParameterTrainingJobDefinition> m_trainingJobDefinitions;
 
     HyperParameterTuningJobStatus m_hyperParameterTuningJobStatus;
 

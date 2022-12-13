@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/cloudformation/model/StackSet.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -42,7 +32,13 @@ StackSet::StackSet() :
     m_tagsHasBeenSet(false),
     m_stackSetARNHasBeenSet(false),
     m_administrationRoleARNHasBeenSet(false),
-    m_executionRoleNameHasBeenSet(false)
+    m_executionRoleNameHasBeenSet(false),
+    m_stackSetDriftDetectionDetailsHasBeenSet(false),
+    m_autoDeploymentHasBeenSet(false),
+    m_permissionModel(PermissionModels::NOT_SET),
+    m_permissionModelHasBeenSet(false),
+    m_organizationalUnitIdsHasBeenSet(false),
+    m_managedExecutionHasBeenSet(false)
 {
 }
 
@@ -58,7 +54,13 @@ StackSet::StackSet(const XmlNode& xmlNode) :
     m_tagsHasBeenSet(false),
     m_stackSetARNHasBeenSet(false),
     m_administrationRoleARNHasBeenSet(false),
-    m_executionRoleNameHasBeenSet(false)
+    m_executionRoleNameHasBeenSet(false),
+    m_stackSetDriftDetectionDetailsHasBeenSet(false),
+    m_autoDeploymentHasBeenSet(false),
+    m_permissionModel(PermissionModels::NOT_SET),
+    m_permissionModelHasBeenSet(false),
+    m_organizationalUnitIdsHasBeenSet(false),
+    m_managedExecutionHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -153,6 +155,42 @@ StackSet& StackSet::operator =(const XmlNode& xmlNode)
       m_executionRoleName = Aws::Utils::Xml::DecodeEscapedXmlText(executionRoleNameNode.GetText());
       m_executionRoleNameHasBeenSet = true;
     }
+    XmlNode stackSetDriftDetectionDetailsNode = resultNode.FirstChild("StackSetDriftDetectionDetails");
+    if(!stackSetDriftDetectionDetailsNode.IsNull())
+    {
+      m_stackSetDriftDetectionDetails = stackSetDriftDetectionDetailsNode;
+      m_stackSetDriftDetectionDetailsHasBeenSet = true;
+    }
+    XmlNode autoDeploymentNode = resultNode.FirstChild("AutoDeployment");
+    if(!autoDeploymentNode.IsNull())
+    {
+      m_autoDeployment = autoDeploymentNode;
+      m_autoDeploymentHasBeenSet = true;
+    }
+    XmlNode permissionModelNode = resultNode.FirstChild("PermissionModel");
+    if(!permissionModelNode.IsNull())
+    {
+      m_permissionModel = PermissionModelsMapper::GetPermissionModelsForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(permissionModelNode.GetText()).c_str()).c_str());
+      m_permissionModelHasBeenSet = true;
+    }
+    XmlNode organizationalUnitIdsNode = resultNode.FirstChild("OrganizationalUnitIds");
+    if(!organizationalUnitIdsNode.IsNull())
+    {
+      XmlNode organizationalUnitIdsMember = organizationalUnitIdsNode.FirstChild("member");
+      while(!organizationalUnitIdsMember.IsNull())
+      {
+        m_organizationalUnitIds.push_back(organizationalUnitIdsMember.GetText());
+        organizationalUnitIdsMember = organizationalUnitIdsMember.NextNode("member");
+      }
+
+      m_organizationalUnitIdsHasBeenSet = true;
+    }
+    XmlNode managedExecutionNode = resultNode.FirstChild("ManagedExecution");
+    if(!managedExecutionNode.IsNull())
+    {
+      m_managedExecution = managedExecutionNode;
+      m_managedExecutionHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -231,6 +269,41 @@ void StackSet::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       oStream << location << index << locationValue << ".ExecutionRoleName=" << StringUtils::URLEncode(m_executionRoleName.c_str()) << "&";
   }
 
+  if(m_stackSetDriftDetectionDetailsHasBeenSet)
+  {
+      Aws::StringStream stackSetDriftDetectionDetailsLocationAndMemberSs;
+      stackSetDriftDetectionDetailsLocationAndMemberSs << location << index << locationValue << ".StackSetDriftDetectionDetails";
+      m_stackSetDriftDetectionDetails.OutputToStream(oStream, stackSetDriftDetectionDetailsLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_autoDeploymentHasBeenSet)
+  {
+      Aws::StringStream autoDeploymentLocationAndMemberSs;
+      autoDeploymentLocationAndMemberSs << location << index << locationValue << ".AutoDeployment";
+      m_autoDeployment.OutputToStream(oStream, autoDeploymentLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_permissionModelHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PermissionModel=" << PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel) << "&";
+  }
+
+  if(m_organizationalUnitIdsHasBeenSet)
+  {
+      unsigned organizationalUnitIdsIdx = 1;
+      for(auto& item : m_organizationalUnitIds)
+      {
+        oStream << location << index << locationValue << ".OrganizationalUnitIds.member." << organizationalUnitIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
+  if(m_managedExecutionHasBeenSet)
+  {
+      Aws::StringStream managedExecutionLocationAndMemberSs;
+      managedExecutionLocationAndMemberSs << location << index << locationValue << ".ManagedExecution";
+      m_managedExecution.OutputToStream(oStream, managedExecutionLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void StackSet::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -294,6 +367,36 @@ void StackSet::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_executionRoleNameHasBeenSet)
   {
       oStream << location << ".ExecutionRoleName=" << StringUtils::URLEncode(m_executionRoleName.c_str()) << "&";
+  }
+  if(m_stackSetDriftDetectionDetailsHasBeenSet)
+  {
+      Aws::String stackSetDriftDetectionDetailsLocationAndMember(location);
+      stackSetDriftDetectionDetailsLocationAndMember += ".StackSetDriftDetectionDetails";
+      m_stackSetDriftDetectionDetails.OutputToStream(oStream, stackSetDriftDetectionDetailsLocationAndMember.c_str());
+  }
+  if(m_autoDeploymentHasBeenSet)
+  {
+      Aws::String autoDeploymentLocationAndMember(location);
+      autoDeploymentLocationAndMember += ".AutoDeployment";
+      m_autoDeployment.OutputToStream(oStream, autoDeploymentLocationAndMember.c_str());
+  }
+  if(m_permissionModelHasBeenSet)
+  {
+      oStream << location << ".PermissionModel=" << PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel) << "&";
+  }
+  if(m_organizationalUnitIdsHasBeenSet)
+  {
+      unsigned organizationalUnitIdsIdx = 1;
+      for(auto& item : m_organizationalUnitIds)
+      {
+        oStream << location << ".OrganizationalUnitIds.member." << organizationalUnitIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+  if(m_managedExecutionHasBeenSet)
+  {
+      Aws::String managedExecutionLocationAndMember(location);
+      managedExecutionLocationAndMember += ".ManagedExecution";
+      m_managedExecution.OutputToStream(oStream, managedExecutionLocationAndMember.c_str());
   }
 }
 

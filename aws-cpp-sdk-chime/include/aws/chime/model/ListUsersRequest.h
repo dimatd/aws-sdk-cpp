@@ -1,22 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/chime/Chime_EXPORTS.h>
 #include <aws/chime/ChimeRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/chime/model/UserType.h>
 #include <utility>
 
 namespace Aws
@@ -131,6 +122,37 @@ namespace Model
 
 
     /**
+     * <p>The user type.</p>
+     */
+    inline const UserType& GetUserType() const{ return m_userType; }
+
+    /**
+     * <p>The user type.</p>
+     */
+    inline bool UserTypeHasBeenSet() const { return m_userTypeHasBeenSet; }
+
+    /**
+     * <p>The user type.</p>
+     */
+    inline void SetUserType(const UserType& value) { m_userTypeHasBeenSet = true; m_userType = value; }
+
+    /**
+     * <p>The user type.</p>
+     */
+    inline void SetUserType(UserType&& value) { m_userTypeHasBeenSet = true; m_userType = std::move(value); }
+
+    /**
+     * <p>The user type.</p>
+     */
+    inline ListUsersRequest& WithUserType(const UserType& value) { SetUserType(value); return *this;}
+
+    /**
+     * <p>The user type.</p>
+     */
+    inline ListUsersRequest& WithUserType(UserType&& value) { SetUserType(std::move(value)); return *this;}
+
+
+    /**
      * <p>The maximum number of results to return in a single call. Defaults to
      * 100.</p>
      */
@@ -202,6 +224,9 @@ namespace Model
 
     Aws::String m_userEmail;
     bool m_userEmailHasBeenSet;
+
+    UserType m_userType;
+    bool m_userTypeHasBeenSet;
 
     int m_maxResults;
     bool m_maxResultsHasBeenSet;

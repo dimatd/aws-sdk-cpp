@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
@@ -52,7 +42,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline const Aws::String& GetPolicyArn() const{ return m_policyArn; }
@@ -61,7 +51,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline bool PolicyArnHasBeenSet() const { return m_policyArnHasBeenSet; }
@@ -70,7 +60,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline void SetPolicyArn(const Aws::String& value) { m_policyArnHasBeenSet = true; m_policyArn = value; }
@@ -79,7 +69,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = std::move(value); }
@@ -88,7 +78,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline void SetPolicyArn(const char* value) { m_policyArnHasBeenSet = true; m_policyArn.assign(value); }
@@ -97,7 +87,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPolicyArn(const Aws::String& value) { SetPolicyArn(value); return *this;}
@@ -106,7 +96,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPolicyArn(Aws::String&& value) { SetPolicyArn(std::move(value)); return *this;}
@@ -115,7 +105,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
+     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPolicyArn(const char* value) { SetPolicyArn(value); return *this;}
@@ -182,9 +172,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline const Aws::String& GetPathPrefix() const{ return m_pathPrefix; }
 
@@ -194,9 +184,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline bool PathPrefixHasBeenSet() const { return m_pathPrefixHasBeenSet; }
 
@@ -206,9 +196,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline void SetPathPrefix(const Aws::String& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = value; }
 
@@ -218,9 +208,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline void SetPathPrefix(Aws::String&& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = std::move(value); }
 
@@ -230,9 +220,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline void SetPathPrefix(const char* value) { m_pathPrefixHasBeenSet = true; m_pathPrefix.assign(value); }
 
@@ -242,9 +232,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPathPrefix(const Aws::String& value) { SetPathPrefix(value); return *this;}
 
@@ -254,9 +244,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPathPrefix(Aws::String&& value) { SetPathPrefix(std::move(value)); return *this;}
 
@@ -266,9 +256,9 @@ namespace Model
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a>) a string of characters consisting of either a forward slash (/) by
      * itself or a string that must begin and end with forward slashes. In addition, it
-     * can contain any ASCII character from the ! (\u0021) through the DEL character
-     * (\u007F), including most punctuation characters, digits, and upper and
-     * lowercased letters.</p>
+     * can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits,
+     * and upper and lowercased letters.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPathPrefix(const char* value) { SetPathPrefix(value); return *this;}
 

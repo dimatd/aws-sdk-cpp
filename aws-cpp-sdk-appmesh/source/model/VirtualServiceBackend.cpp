@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/appmesh/model/VirtualServiceBackend.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -29,11 +19,13 @@ namespace Model
 {
 
 VirtualServiceBackend::VirtualServiceBackend() : 
+    m_clientPolicyHasBeenSet(false),
     m_virtualServiceNameHasBeenSet(false)
 {
 }
 
 VirtualServiceBackend::VirtualServiceBackend(JsonView jsonValue) : 
+    m_clientPolicyHasBeenSet(false),
     m_virtualServiceNameHasBeenSet(false)
 {
   *this = jsonValue;
@@ -41,6 +33,13 @@ VirtualServiceBackend::VirtualServiceBackend(JsonView jsonValue) :
 
 VirtualServiceBackend& VirtualServiceBackend::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("clientPolicy"))
+  {
+    m_clientPolicy = jsonValue.GetObject("clientPolicy");
+
+    m_clientPolicyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("virtualServiceName"))
   {
     m_virtualServiceName = jsonValue.GetString("virtualServiceName");
@@ -54,6 +53,12 @@ VirtualServiceBackend& VirtualServiceBackend::operator =(JsonView jsonValue)
 JsonValue VirtualServiceBackend::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_clientPolicyHasBeenSet)
+  {
+   payload.WithObject("clientPolicy", m_clientPolicy.Jsonize());
+
+  }
 
   if(m_virtualServiceNameHasBeenSet)
   {

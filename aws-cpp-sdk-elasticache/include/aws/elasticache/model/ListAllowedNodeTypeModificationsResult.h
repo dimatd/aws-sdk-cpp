@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
@@ -125,73 +115,65 @@ namespace Model
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline const Aws::Vector<Aws::String>& GetScaleDownModifications() const{ return m_scaleDownModifications; }
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline void SetScaleDownModifications(const Aws::Vector<Aws::String>& value) { m_scaleDownModifications = value; }
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline void SetScaleDownModifications(Aws::Vector<Aws::String>&& value) { m_scaleDownModifications = std::move(value); }
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline ListAllowedNodeTypeModificationsResult& WithScaleDownModifications(const Aws::Vector<Aws::String>& value) { SetScaleDownModifications(value); return *this;}
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline ListAllowedNodeTypeModificationsResult& WithScaleDownModifications(Aws::Vector<Aws::String>&& value) { SetScaleDownModifications(std::move(value)); return *this;}
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline ListAllowedNodeTypeModificationsResult& AddScaleDownModifications(const Aws::String& value) { m_scaleDownModifications.push_back(value); return *this; }
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline ListAllowedNodeTypeModificationsResult& AddScaleDownModifications(Aws::String&& value) { m_scaleDownModifications.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A string list, each element of which specifies a cache node type which you
-     * can use to scale your cluster or replication group.</p> <p>When scaling down on
-     * a Redis cluster or replication group using <code>ModifyCacheCluster</code> or
-     * <code>ModifyReplicationGroup</code>, use a value from this list for the
-     * <code>CacheNodeType</code> parameter.</p>
+     * can use to scale your cluster or replication group. When scaling down a Redis
+     * cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup,
+     * use a value from this list for the CacheNodeType parameter. </p>
      */
     inline ListAllowedNodeTypeModificationsResult& AddScaleDownModifications(const char* value) { m_scaleDownModifications.push_back(value); return *this; }
 

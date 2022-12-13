@@ -1,18 +1,7 @@
-/*
-* Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
-#define AWS_DISABLE_DEPRECATION
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/external/gtest.h>
 #include <aws/testing/mocks/aws/client/MockAWSClient.h>
@@ -22,6 +11,9 @@
 #include <aws/core/monitoring/MonitoringManager.h>
 #include <aws/core/monitoring/DefaultMonitoring.h>
 
+using namespace Aws::Client;
+using namespace Aws::Http;
+using namespace Aws::Http::Standard;
 using namespace Aws::Monitoring;
 
 static const char ALLOCATION_TAG[] = "MonitoringTest";
@@ -86,7 +78,7 @@ public:
         MonitorOneAPICalledCounter[3] ++;
     }
 
-    void OnFinish(const Aws::String& serviceName, const Aws::String& requestName, 
+    void OnFinish(const Aws::String& serviceName, const Aws::String& requestName,
         const std::shared_ptr<const Aws::Http::HttpRequest>& request, void* context) const override
     {
         ASSERT_STREQ("MockAWSClient", serviceName.c_str());
@@ -153,7 +145,7 @@ public:
         MonitorTwoAPICalledCounter[2] ++;
     }
 
-    void OnRequestRetry(const Aws::String& serviceName, const Aws::String& requestName, 
+    void OnRequestRetry(const Aws::String& serviceName, const Aws::String& requestName,
         const std::shared_ptr<const Aws::Http::HttpRequest>& request, void* context) const override
     {
         ASSERT_STREQ("MockAWSClient", serviceName.c_str());
@@ -164,7 +156,7 @@ public:
         MonitorTwoAPICalledCounter[3] ++;
     }
 
-    void OnFinish(const Aws::String& serviceName, const Aws::String& requestName, 
+    void OnFinish(const Aws::String& serviceName, const Aws::String& requestName,
         const std::shared_ptr<const Aws::Http::HttpRequest>& request, void* context) const override
     {
         ASSERT_STREQ("MockAWSClient", serviceName.c_str());
@@ -202,7 +194,7 @@ protected:
         ClientConfiguration config;
         config.scheme = Scheme::HTTP;
         config.connectTimeoutMs = 30000;
-        config.requestTimeoutMs = 30000;           
+        config.requestTimeoutMs = 30000;
         auto countedRetryStrategy = Aws::MakeShared<CountedRetryStrategy>(ALLOCATION_TAG);
         config.retryStrategy = std::static_pointer_cast<DefaultRetryStrategy>(countedRetryStrategy);
 
@@ -230,8 +222,10 @@ protected:
         mockHttpClient = nullptr;
         mockHttpClientFactory = nullptr;
 
+        CleanupMonitoring();
         CleanupHttp();
         InitHttp();
+        InitMonitoring(std::vector<Aws::Monitoring::MonitoringFactoryCreateFunction>());
     }
 
     void QueueMockResponse(HttpResponseCode code, const HeaderValueCollection& headers)

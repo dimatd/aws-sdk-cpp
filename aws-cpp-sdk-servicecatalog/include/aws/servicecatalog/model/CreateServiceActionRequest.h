@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
@@ -128,181 +118,229 @@ namespace Model
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline const Aws::Map<ServiceActionDefinitionKey, Aws::String>& GetDefinition() const{ return m_definition; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline void SetDefinition(const Aws::Map<ServiceActionDefinitionKey, Aws::String>& value) { m_definitionHasBeenSet = true; m_definition = value; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline void SetDefinition(Aws::Map<ServiceActionDefinitionKey, Aws::String>&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& WithDefinition(const Aws::Map<ServiceActionDefinitionKey, Aws::String>& value) { SetDefinition(value); return *this;}
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& WithDefinition(Aws::Map<ServiceActionDefinitionKey, Aws::String>&& value) { SetDefinition(std::move(value)); return *this;}
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& AddDefinition(const ServiceActionDefinitionKey& key, const Aws::String& value) { m_definitionHasBeenSet = true; m_definition.emplace(key, value); return *this; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& AddDefinition(ServiceActionDefinitionKey&& key, const Aws::String& value) { m_definitionHasBeenSet = true; m_definition.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& AddDefinition(const ServiceActionDefinitionKey& key, Aws::String&& value) { m_definitionHasBeenSet = true; m_definition.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& AddDefinition(ServiceActionDefinitionKey&& key, Aws::String&& value) { m_definitionHasBeenSet = true; m_definition.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& AddDefinition(ServiceActionDefinitionKey&& key, const char* value) { m_definitionHasBeenSet = true; m_definition.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The self-service action definition. Can be one of the following:</p> <dl>
-     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager Document. For example,
-     * <code>AWS-RestartEC2Instance</code>.</p> </dd> <dt>Version</dt> <dd> <p>The AWS
-     * Systems Manager automation document version. For example, <code>"Version":
-     * "1"</code> </p> </dd> <dt>AssumeRole</dt> <dd> <p>The Amazon Resource Name (ARN)
-     * of the role that performs the self-service actions on your behalf. For example,
-     * <code>"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To
-     * reuse the provisioned product launch role, set to <code>"AssumeRole":
+     * <dt>Name</dt> <dd> <p>The name of the AWS Systems Manager document (SSM
+     * document). For example, <code>AWS-RestartEC2Instance</code>.</p> <p>If you are
+     * using a shared SSM document, you must provide the ARN instead of the name.</p>
+     * </dd> <dt>Version</dt> <dd> <p>The AWS Systems Manager automation document
+     * version. For example, <code>"Version": "1"</code> </p> </dd> <dt>AssumeRole</dt>
+     * <dd> <p>The Amazon Resource Name (ARN) of the role that performs the
+     * self-service actions on your behalf. For example, <code>"AssumeRole":
+     * "arn:aws:iam::12345678910:role/ActionRole"</code>.</p> <p>To reuse the
+     * provisioned product launch role, set to <code>"AssumeRole":
      * "LAUNCH_ROLE"</code>.</p> </dd> <dt>Parameters</dt> <dd> <p>The list of
      * parameters in JSON format.</p> <p>For example:
-     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.</p> </dd> </dl>
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.</p> </dd>
+     * </dl>
      */
     inline CreateServiceActionRequest& AddDefinition(const ServiceActionDefinitionKey& key, const char* value) { m_definitionHasBeenSet = true; m_definition.emplace(key, value); return *this; }
 

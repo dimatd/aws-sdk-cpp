@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/HostInstance.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -32,13 +22,15 @@ namespace Model
 
 HostInstance::HostInstance() : 
     m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false)
+    m_instanceTypeHasBeenSet(false),
+    m_ownerIdHasBeenSet(false)
 {
 }
 
 HostInstance::HostInstance(const XmlNode& xmlNode) : 
     m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false)
+    m_instanceTypeHasBeenSet(false),
+    m_ownerIdHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -61,6 +53,12 @@ HostInstance& HostInstance::operator =(const XmlNode& xmlNode)
       m_instanceType = Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText());
       m_instanceTypeHasBeenSet = true;
     }
+    XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
+    if(!ownerIdNode.IsNull())
+    {
+      m_ownerId = Aws::Utils::Xml::DecodeEscapedXmlText(ownerIdNode.GetText());
+      m_ownerIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -78,6 +76,11 @@ void HostInstance::OutputToStream(Aws::OStream& oStream, const char* location, u
       oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
 
+  if(m_ownerIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
+  }
+
 }
 
 void HostInstance::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -89,6 +92,10 @@ void HostInstance::OutputToStream(Aws::OStream& oStream, const char* location) c
   if(m_instanceTypeHasBeenSet)
   {
       oStream << location << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
+  }
+  if(m_ownerIdHasBeenSet)
+  {
+      oStream << location << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
   }
 }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/neptune/Neptune_EXPORTS.h>
@@ -483,42 +473,42 @@ namespace Model
 
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline const Aws::String& GetOptionGroupName() const{ return m_optionGroupName; }
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline bool OptionGroupNameHasBeenSet() const { return m_optionGroupNameHasBeenSet; }
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetOptionGroupName(const Aws::String& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetOptionGroupName(const char* value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName.assign(value); }
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline RestoreDBClusterFromSnapshotRequest& WithOptionGroupName(const Aws::String& value) { SetOptionGroupName(value); return *this;}
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline RestoreDBClusterFromSnapshotRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the option group to use for the restored DB cluster.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline RestoreDBClusterFromSnapshotRequest& WithOptionGroupName(const char* value) { SetOptionGroupName(value); return *this;}
 
@@ -611,10 +601,10 @@ namespace Model
 
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -627,10 +617,10 @@ namespace Model
     inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -643,10 +633,10 @@ namespace Model
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -659,10 +649,10 @@ namespace Model
     inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -675,10 +665,10 @@ namespace Model
     inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -691,10 +681,10 @@ namespace Model
     inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -707,10 +697,10 @@ namespace Model
     inline RestoreDBClusterFromSnapshotRequest& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -723,10 +713,10 @@ namespace Model
     inline RestoreDBClusterFromSnapshotRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
-     * <p>The AWS KMS key identifier to use when restoring an encrypted DB cluster from
-     * a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
+     * <p>The Amazon KMS key identifier to use when restoring an encrypted DB cluster
+     * from a DB snapshot or DB cluster snapshot.</p> <p>The KMS key identifier is the
      * Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
-     * cluster with the same AWS account that owns the KMS encryption key used to
+     * cluster with the same Amazon account that owns the KMS encryption key used to
      * encrypt the new DB cluster, then you can use the KMS key alias instead of the
      * ARN for the KMS encryption key.</p> <p>If you do not specify a value for the
      * <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li>
@@ -740,30 +730,30 @@ namespace Model
 
 
     /**
-     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
-     * to database accounts, and otherwise false.</p> <p>Default: <code>false</code>
-     * </p>
+     * <p>True to enable mapping of Amazon Identity and Access Management (IAM)
+     * accounts to database accounts, and otherwise false.</p> <p>Default:
+     * <code>false</code> </p>
      */
     inline bool GetEnableIAMDatabaseAuthentication() const{ return m_enableIAMDatabaseAuthentication; }
 
     /**
-     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
-     * to database accounts, and otherwise false.</p> <p>Default: <code>false</code>
-     * </p>
+     * <p>True to enable mapping of Amazon Identity and Access Management (IAM)
+     * accounts to database accounts, and otherwise false.</p> <p>Default:
+     * <code>false</code> </p>
      */
     inline bool EnableIAMDatabaseAuthenticationHasBeenSet() const { return m_enableIAMDatabaseAuthenticationHasBeenSet; }
 
     /**
-     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
-     * to database accounts, and otherwise false.</p> <p>Default: <code>false</code>
-     * </p>
+     * <p>True to enable mapping of Amazon Identity and Access Management (IAM)
+     * accounts to database accounts, and otherwise false.</p> <p>Default:
+     * <code>false</code> </p>
      */
     inline void SetEnableIAMDatabaseAuthentication(bool value) { m_enableIAMDatabaseAuthenticationHasBeenSet = true; m_enableIAMDatabaseAuthentication = value; }
 
     /**
-     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
-     * to database accounts, and otherwise false.</p> <p>Default: <code>false</code>
-     * </p>
+     * <p>True to enable mapping of Amazon Identity and Access Management (IAM)
+     * accounts to database accounts, and otherwise false.</p> <p>Default:
+     * <code>false</code> </p>
      */
     inline RestoreDBClusterFromSnapshotRequest& WithEnableIAMDatabaseAuthentication(bool value) { SetEnableIAMDatabaseAuthentication(value); return *this;}
 
@@ -879,6 +869,60 @@ namespace Model
      */
     inline RestoreDBClusterFromSnapshotRequest& WithDBClusterParameterGroupName(const char* value) { SetDBClusterParameterGroupName(value); return *this;}
 
+
+    /**
+     * <p>A value that indicates whether the DB cluster has deletion protection
+     * enabled. The database can't be deleted when deletion protection is enabled. By
+     * default, deletion protection is disabled. </p>
+     */
+    inline bool GetDeletionProtection() const{ return m_deletionProtection; }
+
+    /**
+     * <p>A value that indicates whether the DB cluster has deletion protection
+     * enabled. The database can't be deleted when deletion protection is enabled. By
+     * default, deletion protection is disabled. </p>
+     */
+    inline bool DeletionProtectionHasBeenSet() const { return m_deletionProtectionHasBeenSet; }
+
+    /**
+     * <p>A value that indicates whether the DB cluster has deletion protection
+     * enabled. The database can't be deleted when deletion protection is enabled. By
+     * default, deletion protection is disabled. </p>
+     */
+    inline void SetDeletionProtection(bool value) { m_deletionProtectionHasBeenSet = true; m_deletionProtection = value; }
+
+    /**
+     * <p>A value that indicates whether the DB cluster has deletion protection
+     * enabled. The database can't be deleted when deletion protection is enabled. By
+     * default, deletion protection is disabled. </p>
+     */
+    inline RestoreDBClusterFromSnapshotRequest& WithDeletionProtection(bool value) { SetDeletionProtection(value); return *this;}
+
+
+    /**
+     * <p> <i>If set to <code>true</code>, tags are copied to any snapshot of the
+     * restored DB cluster that is created.</i> </p>
+     */
+    inline bool GetCopyTagsToSnapshot() const{ return m_copyTagsToSnapshot; }
+
+    /**
+     * <p> <i>If set to <code>true</code>, tags are copied to any snapshot of the
+     * restored DB cluster that is created.</i> </p>
+     */
+    inline bool CopyTagsToSnapshotHasBeenSet() const { return m_copyTagsToSnapshotHasBeenSet; }
+
+    /**
+     * <p> <i>If set to <code>true</code>, tags are copied to any snapshot of the
+     * restored DB cluster that is created.</i> </p>
+     */
+    inline void SetCopyTagsToSnapshot(bool value) { m_copyTagsToSnapshotHasBeenSet = true; m_copyTagsToSnapshot = value; }
+
+    /**
+     * <p> <i>If set to <code>true</code>, tags are copied to any snapshot of the
+     * restored DB cluster that is created.</i> </p>
+     */
+    inline RestoreDBClusterFromSnapshotRequest& WithCopyTagsToSnapshot(bool value) { SetCopyTagsToSnapshot(value); return *this;}
+
   private:
 
     Aws::Vector<Aws::String> m_availabilityZones;
@@ -925,6 +969,12 @@ namespace Model
 
     Aws::String m_dBClusterParameterGroupName;
     bool m_dBClusterParameterGroupNameHasBeenSet;
+
+    bool m_deletionProtection;
+    bool m_deletionProtectionHasBeenSet;
+
+    bool m_copyTagsToSnapshot;
+    bool m_copyTagsToSnapshotHasBeenSet;
   };
 
 } // namespace Model

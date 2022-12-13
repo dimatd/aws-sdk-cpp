@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/appsync/model/DynamodbDataSourceConfig.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -32,7 +22,10 @@ DynamodbDataSourceConfig::DynamodbDataSourceConfig() :
     m_tableNameHasBeenSet(false),
     m_awsRegionHasBeenSet(false),
     m_useCallerCredentials(false),
-    m_useCallerCredentialsHasBeenSet(false)
+    m_useCallerCredentialsHasBeenSet(false),
+    m_deltaSyncConfigHasBeenSet(false),
+    m_versioned(false),
+    m_versionedHasBeenSet(false)
 {
 }
 
@@ -40,7 +33,10 @@ DynamodbDataSourceConfig::DynamodbDataSourceConfig(JsonView jsonValue) :
     m_tableNameHasBeenSet(false),
     m_awsRegionHasBeenSet(false),
     m_useCallerCredentials(false),
-    m_useCallerCredentialsHasBeenSet(false)
+    m_useCallerCredentialsHasBeenSet(false),
+    m_deltaSyncConfigHasBeenSet(false),
+    m_versioned(false),
+    m_versionedHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -68,6 +64,20 @@ DynamodbDataSourceConfig& DynamodbDataSourceConfig::operator =(JsonView jsonValu
     m_useCallerCredentialsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("deltaSyncConfig"))
+  {
+    m_deltaSyncConfig = jsonValue.GetObject("deltaSyncConfig");
+
+    m_deltaSyncConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("versioned"))
+  {
+    m_versioned = jsonValue.GetBool("versioned");
+
+    m_versionedHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -90,6 +100,18 @@ JsonValue DynamodbDataSourceConfig::Jsonize() const
   if(m_useCallerCredentialsHasBeenSet)
   {
    payload.WithBool("useCallerCredentials", m_useCallerCredentials);
+
+  }
+
+  if(m_deltaSyncConfigHasBeenSet)
+  {
+   payload.WithObject("deltaSyncConfig", m_deltaSyncConfig.Jsonize());
+
+  }
+
+  if(m_versionedHasBeenSet)
+  {
+   payload.WithBool("versioned", m_versioned);
 
   }
 

@@ -1,22 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/comprehendmedical/ComprehendMedical_EXPORTS.h>
 #include <aws/comprehendmedical/model/EntitySubType.h>
+#include <aws/comprehendmedical/model/RelationshipType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/comprehendmedical/model/EntityType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/comprehendmedical/model/Trait.h>
 #include <utility>
@@ -86,53 +78,96 @@ namespace Model
 
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that the segment
-     * of text is correctly recognized as an attribute. </p>
+     * <p> The level of confidence that Comprehend Medical; has that the segment of
+     * text is correctly recognized as an attribute. </p>
      */
     inline double GetScore() const{ return m_score; }
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that the segment
-     * of text is correctly recognized as an attribute. </p>
+     * <p> The level of confidence that Comprehend Medical; has that the segment of
+     * text is correctly recognized as an attribute. </p>
      */
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that the segment
-     * of text is correctly recognized as an attribute. </p>
+     * <p> The level of confidence that Comprehend Medical; has that the segment of
+     * text is correctly recognized as an attribute. </p>
      */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that the segment
-     * of text is correctly recognized as an attribute. </p>
+     * <p> The level of confidence that Comprehend Medical; has that the segment of
+     * text is correctly recognized as an attribute. </p>
      */
     inline Attribute& WithScore(double value) { SetScore(value); return *this;}
 
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that this
-     * attribute is correctly related to this entity. </p>
+     * <p> The level of confidence that Comprehend Medical; has that this attribute is
+     * correctly related to this entity. </p>
      */
     inline double GetRelationshipScore() const{ return m_relationshipScore; }
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that this
-     * attribute is correctly related to this entity. </p>
+     * <p> The level of confidence that Comprehend Medical; has that this attribute is
+     * correctly related to this entity. </p>
      */
     inline bool RelationshipScoreHasBeenSet() const { return m_relationshipScoreHasBeenSet; }
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that this
-     * attribute is correctly related to this entity. </p>
+     * <p> The level of confidence that Comprehend Medical; has that this attribute is
+     * correctly related to this entity. </p>
      */
     inline void SetRelationshipScore(double value) { m_relationshipScoreHasBeenSet = true; m_relationshipScore = value; }
 
     /**
-     * <p> The level of confidence that Amazon Comprehend Medical has that this
-     * attribute is correctly related to this entity. </p>
+     * <p> The level of confidence that Comprehend Medical; has that this attribute is
+     * correctly related to this entity. </p>
      */
     inline Attribute& WithRelationshipScore(double value) { SetRelationshipScore(value); return *this;}
+
+
+    /**
+     * <p>The type of relationship between the entity and attribute. Type for the
+     * relationship is <code>OVERLAP</code>, indicating that the entity occurred at the
+     * same time as the <code>Date_Expression</code>. </p>
+     */
+    inline const RelationshipType& GetRelationshipType() const{ return m_relationshipType; }
+
+    /**
+     * <p>The type of relationship between the entity and attribute. Type for the
+     * relationship is <code>OVERLAP</code>, indicating that the entity occurred at the
+     * same time as the <code>Date_Expression</code>. </p>
+     */
+    inline bool RelationshipTypeHasBeenSet() const { return m_relationshipTypeHasBeenSet; }
+
+    /**
+     * <p>The type of relationship between the entity and attribute. Type for the
+     * relationship is <code>OVERLAP</code>, indicating that the entity occurred at the
+     * same time as the <code>Date_Expression</code>. </p>
+     */
+    inline void SetRelationshipType(const RelationshipType& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = value; }
+
+    /**
+     * <p>The type of relationship between the entity and attribute. Type for the
+     * relationship is <code>OVERLAP</code>, indicating that the entity occurred at the
+     * same time as the <code>Date_Expression</code>. </p>
+     */
+    inline void SetRelationshipType(RelationshipType&& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = std::move(value); }
+
+    /**
+     * <p>The type of relationship between the entity and attribute. Type for the
+     * relationship is <code>OVERLAP</code>, indicating that the entity occurred at the
+     * same time as the <code>Date_Expression</code>. </p>
+     */
+    inline Attribute& WithRelationshipType(const RelationshipType& value) { SetRelationshipType(value); return *this;}
+
+    /**
+     * <p>The type of relationship between the entity and attribute. Type for the
+     * relationship is <code>OVERLAP</code>, indicating that the entity occurred at the
+     * same time as the <code>Date_Expression</code>. </p>
+     */
+    inline Attribute& WithRelationshipType(RelationshipType&& value) { SetRelationshipType(std::move(value)); return *this;}
 
 
     /**
@@ -191,25 +226,25 @@ namespace Model
 
     /**
      * <p> The 0-based character offset in the input text that shows where the
-     * attribute ends. The offset returns the UTF-8 code point in the string. </p>
+     * attribute ends. The offset returns the UTF-8 code point in the string.</p>
      */
     inline int GetEndOffset() const{ return m_endOffset; }
 
     /**
      * <p> The 0-based character offset in the input text that shows where the
-     * attribute ends. The offset returns the UTF-8 code point in the string. </p>
+     * attribute ends. The offset returns the UTF-8 code point in the string.</p>
      */
     inline bool EndOffsetHasBeenSet() const { return m_endOffsetHasBeenSet; }
 
     /**
      * <p> The 0-based character offset in the input text that shows where the
-     * attribute ends. The offset returns the UTF-8 code point in the string. </p>
+     * attribute ends. The offset returns the UTF-8 code point in the string.</p>
      */
     inline void SetEndOffset(int value) { m_endOffsetHasBeenSet = true; m_endOffset = value; }
 
     /**
      * <p> The 0-based character offset in the input text that shows where the
-     * attribute ends. The offset returns the UTF-8 code point in the string. </p>
+     * attribute ends. The offset returns the UTF-8 code point in the string.</p>
      */
     inline Attribute& WithEndOffset(int value) { SetEndOffset(value); return *this;}
 
@@ -253,6 +288,37 @@ namespace Model
      * <p> The segment of input text extracted as this attribute.</p>
      */
     inline Attribute& WithText(const char* value) { SetText(value); return *this;}
+
+
+    /**
+     * <p> The category of attribute. </p>
+     */
+    inline const EntityType& GetCategory() const{ return m_category; }
+
+    /**
+     * <p> The category of attribute. </p>
+     */
+    inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+
+    /**
+     * <p> The category of attribute. </p>
+     */
+    inline void SetCategory(const EntityType& value) { m_categoryHasBeenSet = true; m_category = value; }
+
+    /**
+     * <p> The category of attribute. </p>
+     */
+    inline void SetCategory(EntityType&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
+
+    /**
+     * <p> The category of attribute. </p>
+     */
+    inline Attribute& WithCategory(const EntityType& value) { SetCategory(value); return *this;}
+
+    /**
+     * <p> The category of attribute. </p>
+     */
+    inline Attribute& WithCategory(EntityType&& value) { SetCategory(std::move(value)); return *this;}
 
 
     /**
@@ -306,6 +372,9 @@ namespace Model
     double m_relationshipScore;
     bool m_relationshipScoreHasBeenSet;
 
+    RelationshipType m_relationshipType;
+    bool m_relationshipTypeHasBeenSet;
+
     int m_id;
     bool m_idHasBeenSet;
 
@@ -317,6 +386,9 @@ namespace Model
 
     Aws::String m_text;
     bool m_textHasBeenSet;
+
+    EntityType m_category;
+    bool m_categoryHasBeenSet;
 
     Aws::Vector<Trait> m_traits;
     bool m_traitsHasBeenSet;

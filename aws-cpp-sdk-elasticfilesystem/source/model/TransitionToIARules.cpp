@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/elasticfilesystem/model/TransitionToIARules.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -30,6 +20,7 @@ namespace Aws
       namespace TransitionToIARulesMapper
       {
 
+        static const int AFTER_7_DAYS_HASH = HashingUtils::HashString("AFTER_7_DAYS");
         static const int AFTER_14_DAYS_HASH = HashingUtils::HashString("AFTER_14_DAYS");
         static const int AFTER_30_DAYS_HASH = HashingUtils::HashString("AFTER_30_DAYS");
         static const int AFTER_60_DAYS_HASH = HashingUtils::HashString("AFTER_60_DAYS");
@@ -39,7 +30,11 @@ namespace Aws
         TransitionToIARules GetTransitionToIARulesForName(const Aws::String& name)
         {
           int hashCode = HashingUtils::HashString(name.c_str());
-          if (hashCode == AFTER_14_DAYS_HASH)
+          if (hashCode == AFTER_7_DAYS_HASH)
+          {
+            return TransitionToIARules::AFTER_7_DAYS;
+          }
+          else if (hashCode == AFTER_14_DAYS_HASH)
           {
             return TransitionToIARules::AFTER_14_DAYS;
           }
@@ -69,6 +64,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case TransitionToIARules::AFTER_7_DAYS:
+            return "AFTER_7_DAYS";
           case TransitionToIARules::AFTER_14_DAYS:
             return "AFTER_14_DAYS";
           case TransitionToIARules::AFTER_30_DAYS:

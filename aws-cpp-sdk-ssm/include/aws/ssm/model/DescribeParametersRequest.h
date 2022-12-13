@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
@@ -48,50 +38,42 @@ namespace Model
 
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline const Aws::Vector<ParametersFilter>& GetFilters() const{ return m_filters; }
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline void SetFilters(const Aws::Vector<ParametersFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline void SetFilters(Aws::Vector<ParametersFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline DescribeParametersRequest& WithFilters(const Aws::Vector<ParametersFilter>& value) { SetFilters(value); return *this;}
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline DescribeParametersRequest& WithFilters(Aws::Vector<ParametersFilter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline DescribeParametersRequest& AddFilters(const ParametersFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters. Use a filter to return a more specific list of
-     * results.</p>
+     * <p>This data type is deprecated. Instead, use <code>ParameterFilters</code>.</p>
      */
     inline DescribeParametersRequest& AddFilters(ParametersFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 

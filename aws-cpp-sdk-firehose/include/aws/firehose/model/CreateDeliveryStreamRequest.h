@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
@@ -19,10 +9,13 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/firehose/model/DeliveryStreamType.h>
 #include <aws/firehose/model/KinesisStreamSourceConfiguration.h>
+#include <aws/firehose/model/DeliveryStreamEncryptionConfigurationInput.h>
 #include <aws/firehose/model/ExtendedS3DestinationConfiguration.h>
 #include <aws/firehose/model/RedshiftDestinationConfiguration.h>
 #include <aws/firehose/model/ElasticsearchDestinationConfiguration.h>
+#include <aws/firehose/model/AmazonopensearchserviceDestinationConfiguration.h>
 #include <aws/firehose/model/SplunkDestinationConfiguration.h>
+#include <aws/firehose/model/HttpEndpointDestinationConfiguration.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/firehose/model/Tag.h>
 #include <utility>
@@ -216,6 +209,43 @@ namespace Model
 
 
     /**
+     * <p>Used to specify the type and Amazon Resource Name (ARN) of the KMS key needed
+     * for Server-Side Encryption (SSE).</p>
+     */
+    inline const DeliveryStreamEncryptionConfigurationInput& GetDeliveryStreamEncryptionConfigurationInput() const{ return m_deliveryStreamEncryptionConfigurationInput; }
+
+    /**
+     * <p>Used to specify the type and Amazon Resource Name (ARN) of the KMS key needed
+     * for Server-Side Encryption (SSE).</p>
+     */
+    inline bool DeliveryStreamEncryptionConfigurationInputHasBeenSet() const { return m_deliveryStreamEncryptionConfigurationInputHasBeenSet; }
+
+    /**
+     * <p>Used to specify the type and Amazon Resource Name (ARN) of the KMS key needed
+     * for Server-Side Encryption (SSE).</p>
+     */
+    inline void SetDeliveryStreamEncryptionConfigurationInput(const DeliveryStreamEncryptionConfigurationInput& value) { m_deliveryStreamEncryptionConfigurationInputHasBeenSet = true; m_deliveryStreamEncryptionConfigurationInput = value; }
+
+    /**
+     * <p>Used to specify the type and Amazon Resource Name (ARN) of the KMS key needed
+     * for Server-Side Encryption (SSE).</p>
+     */
+    inline void SetDeliveryStreamEncryptionConfigurationInput(DeliveryStreamEncryptionConfigurationInput&& value) { m_deliveryStreamEncryptionConfigurationInputHasBeenSet = true; m_deliveryStreamEncryptionConfigurationInput = std::move(value); }
+
+    /**
+     * <p>Used to specify the type and Amazon Resource Name (ARN) of the KMS key needed
+     * for Server-Side Encryption (SSE).</p>
+     */
+    inline CreateDeliveryStreamRequest& WithDeliveryStreamEncryptionConfigurationInput(const DeliveryStreamEncryptionConfigurationInput& value) { SetDeliveryStreamEncryptionConfigurationInput(value); return *this;}
+
+    /**
+     * <p>Used to specify the type and Amazon Resource Name (ARN) of the KMS key needed
+     * for Server-Side Encryption (SSE).</p>
+     */
+    inline CreateDeliveryStreamRequest& WithDeliveryStreamEncryptionConfigurationInput(DeliveryStreamEncryptionConfigurationInput&& value) { SetDeliveryStreamEncryptionConfigurationInput(std::move(value)); return *this;}
+
+
+    /**
      * <p>The destination in Amazon S3. You can specify only one destination.</p>
      */
     inline const ExtendedS3DestinationConfiguration& GetExtendedS3DestinationConfiguration() const{ return m_extendedS3DestinationConfiguration; }
@@ -308,6 +338,25 @@ namespace Model
     inline CreateDeliveryStreamRequest& WithElasticsearchDestinationConfiguration(ElasticsearchDestinationConfiguration&& value) { SetElasticsearchDestinationConfiguration(std::move(value)); return *this;}
 
 
+    
+    inline const AmazonopensearchserviceDestinationConfiguration& GetAmazonopensearchserviceDestinationConfiguration() const{ return m_amazonopensearchserviceDestinationConfiguration; }
+
+    
+    inline bool AmazonopensearchserviceDestinationConfigurationHasBeenSet() const { return m_amazonopensearchserviceDestinationConfigurationHasBeenSet; }
+
+    
+    inline void SetAmazonopensearchserviceDestinationConfiguration(const AmazonopensearchserviceDestinationConfiguration& value) { m_amazonopensearchserviceDestinationConfigurationHasBeenSet = true; m_amazonopensearchserviceDestinationConfiguration = value; }
+
+    
+    inline void SetAmazonopensearchserviceDestinationConfiguration(AmazonopensearchserviceDestinationConfiguration&& value) { m_amazonopensearchserviceDestinationConfigurationHasBeenSet = true; m_amazonopensearchserviceDestinationConfiguration = std::move(value); }
+
+    
+    inline CreateDeliveryStreamRequest& WithAmazonopensearchserviceDestinationConfiguration(const AmazonopensearchserviceDestinationConfiguration& value) { SetAmazonopensearchserviceDestinationConfiguration(value); return *this;}
+
+    
+    inline CreateDeliveryStreamRequest& WithAmazonopensearchserviceDestinationConfiguration(AmazonopensearchserviceDestinationConfiguration&& value) { SetAmazonopensearchserviceDestinationConfiguration(std::move(value)); return *this;}
+
+
     /**
      * <p>The destination in Splunk. You can specify only one destination.</p>
      */
@@ -337,6 +386,43 @@ namespace Model
      * <p>The destination in Splunk. You can specify only one destination.</p>
      */
     inline CreateDeliveryStreamRequest& WithSplunkDestinationConfiguration(SplunkDestinationConfiguration&& value) { SetSplunkDestinationConfiguration(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Enables configuring Kinesis Firehose to deliver data to any HTTP endpoint
+     * destination. You can specify only one destination.</p>
+     */
+    inline const HttpEndpointDestinationConfiguration& GetHttpEndpointDestinationConfiguration() const{ return m_httpEndpointDestinationConfiguration; }
+
+    /**
+     * <p>Enables configuring Kinesis Firehose to deliver data to any HTTP endpoint
+     * destination. You can specify only one destination.</p>
+     */
+    inline bool HttpEndpointDestinationConfigurationHasBeenSet() const { return m_httpEndpointDestinationConfigurationHasBeenSet; }
+
+    /**
+     * <p>Enables configuring Kinesis Firehose to deliver data to any HTTP endpoint
+     * destination. You can specify only one destination.</p>
+     */
+    inline void SetHttpEndpointDestinationConfiguration(const HttpEndpointDestinationConfiguration& value) { m_httpEndpointDestinationConfigurationHasBeenSet = true; m_httpEndpointDestinationConfiguration = value; }
+
+    /**
+     * <p>Enables configuring Kinesis Firehose to deliver data to any HTTP endpoint
+     * destination. You can specify only one destination.</p>
+     */
+    inline void SetHttpEndpointDestinationConfiguration(HttpEndpointDestinationConfiguration&& value) { m_httpEndpointDestinationConfigurationHasBeenSet = true; m_httpEndpointDestinationConfiguration = std::move(value); }
+
+    /**
+     * <p>Enables configuring Kinesis Firehose to deliver data to any HTTP endpoint
+     * destination. You can specify only one destination.</p>
+     */
+    inline CreateDeliveryStreamRequest& WithHttpEndpointDestinationConfiguration(const HttpEndpointDestinationConfiguration& value) { SetHttpEndpointDestinationConfiguration(value); return *this;}
+
+    /**
+     * <p>Enables configuring Kinesis Firehose to deliver data to any HTTP endpoint
+     * destination. You can specify only one destination.</p>
+     */
+    inline CreateDeliveryStreamRequest& WithHttpEndpointDestinationConfiguration(HttpEndpointDestinationConfiguration&& value) { SetHttpEndpointDestinationConfiguration(std::move(value)); return *this;}
 
 
     /**
@@ -446,6 +532,9 @@ namespace Model
     KinesisStreamSourceConfiguration m_kinesisStreamSourceConfiguration;
     bool m_kinesisStreamSourceConfigurationHasBeenSet;
 
+    DeliveryStreamEncryptionConfigurationInput m_deliveryStreamEncryptionConfigurationInput;
+    bool m_deliveryStreamEncryptionConfigurationInputHasBeenSet;
+
     ExtendedS3DestinationConfiguration m_extendedS3DestinationConfiguration;
     bool m_extendedS3DestinationConfigurationHasBeenSet;
 
@@ -455,8 +544,14 @@ namespace Model
     ElasticsearchDestinationConfiguration m_elasticsearchDestinationConfiguration;
     bool m_elasticsearchDestinationConfigurationHasBeenSet;
 
+    AmazonopensearchserviceDestinationConfiguration m_amazonopensearchserviceDestinationConfiguration;
+    bool m_amazonopensearchserviceDestinationConfigurationHasBeenSet;
+
     SplunkDestinationConfiguration m_splunkDestinationConfiguration;
     bool m_splunkDestinationConfigurationHasBeenSet;
+
+    HttpEndpointDestinationConfiguration m_httpEndpointDestinationConfiguration;
+    bool m_httpEndpointDestinationConfigurationHasBeenSet;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet;

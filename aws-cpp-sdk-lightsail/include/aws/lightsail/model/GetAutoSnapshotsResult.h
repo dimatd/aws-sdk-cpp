@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lightsail/Lightsail_EXPORTS.h>
@@ -46,37 +36,37 @@ namespace Model
 
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline const Aws::String& GetResourceName() const{ return m_resourceName; }
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline void SetResourceName(const Aws::String& value) { m_resourceName = value; }
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline void SetResourceName(Aws::String&& value) { m_resourceName = std::move(value); }
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline void SetResourceName(const char* value) { m_resourceName.assign(value); }
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline GetAutoSnapshotsResult& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline GetAutoSnapshotsResult& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the source resource for the automatic snapshots.</p>
+     * <p>The name of the source instance or disk for the automatic snapshots.</p>
      */
     inline GetAutoSnapshotsResult& WithResourceName(const char* value) { SetResourceName(value); return *this;}
 
@@ -109,43 +99,43 @@ namespace Model
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline const Aws::Vector<AutoSnapshotDetails>& GetAutoSnapshots() const{ return m_autoSnapshots; }
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline void SetAutoSnapshots(const Aws::Vector<AutoSnapshotDetails>& value) { m_autoSnapshots = value; }
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline void SetAutoSnapshots(Aws::Vector<AutoSnapshotDetails>&& value) { m_autoSnapshots = std::move(value); }
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline GetAutoSnapshotsResult& WithAutoSnapshots(const Aws::Vector<AutoSnapshotDetails>& value) { SetAutoSnapshots(value); return *this;}
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline GetAutoSnapshotsResult& WithAutoSnapshots(Aws::Vector<AutoSnapshotDetails>&& value) { SetAutoSnapshots(std::move(value)); return *this;}
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline GetAutoSnapshotsResult& AddAutoSnapshots(const AutoSnapshotDetails& value) { m_autoSnapshots.push_back(value); return *this; }
 
     /**
      * <p>An array of objects that describe the automatic snapshots that are available
-     * for the specified source resource.asdf</p>
+     * for the specified source instance or disk.</p>
      */
     inline GetAutoSnapshotsResult& AddAutoSnapshots(AutoSnapshotDetails&& value) { m_autoSnapshots.push_back(std::move(value)); return *this; }
 

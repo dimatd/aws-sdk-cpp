@@ -1,22 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/ec2/model/DefaultTargetCapacityType.h>
+#include <aws/ec2/model/TargetCapacityUnitType.h>
 #include <utility>
 
 namespace Aws
@@ -39,13 +30,16 @@ namespace Model
    * application workload, such as vCPUs, memory, or I/O. If the request type is
    * <code>maintain</code>, you can specify a target capacity of 0 and add capacity
    * later.</p> <p>You can use the On-Demand Instance <code>MaxTotalPrice</code>
-   * parameter, the Spot Instance <code>MaxTotalPrice</code>, or both to ensure your
-   * fleet cost does not exceed your budget. If you set a maximum price per hour for
-   * the On-Demand Instances and Spot Instances in your request, EC2 Fleet will
-   * launch instances until it reaches the maximum amount you're willing to pay. When
-   * the maximum amount you're willing to pay is reached, the fleet stops launching
-   * instances even if it hasn’t met the target capacity. The
-   * <code>MaxTotalPrice</code> parameters are located in and </p><p><h3>See
+   * parameter, the Spot Instance <code>MaxTotalPrice</code>, or both to ensure that
+   * your fleet cost does not exceed your budget. If you set a maximum price per hour
+   * for the On-Demand Instances and Spot Instances in your request, EC2 Fleet will
+   * launch instances until it reaches the maximum amount that you're willing to pay.
+   * When the maximum amount you're willing to pay is reached, the fleet stops
+   * launching instances even if it hasn’t met the target capacity. The
+   * <code>MaxTotalPrice</code> parameters are located in <a
+   * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OnDemandOptions.html">OnDemandOptions</a>
+   * and <a
+   * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotOptions">SpotOptions</a>.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TargetCapacitySpecification">AWS
    * API Reference</a></p>
@@ -172,6 +166,43 @@ namespace Model
      */
     inline TargetCapacitySpecification& WithDefaultTargetCapacityType(DefaultTargetCapacityType&& value) { SetDefaultTargetCapacityType(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline const TargetCapacityUnitType& GetTargetCapacityUnitType() const{ return m_targetCapacityUnitType; }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline bool TargetCapacityUnitTypeHasBeenSet() const { return m_targetCapacityUnitTypeHasBeenSet; }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline void SetTargetCapacityUnitType(const TargetCapacityUnitType& value) { m_targetCapacityUnitTypeHasBeenSet = true; m_targetCapacityUnitType = value; }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline void SetTargetCapacityUnitType(TargetCapacityUnitType&& value) { m_targetCapacityUnitTypeHasBeenSet = true; m_targetCapacityUnitType = std::move(value); }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline TargetCapacitySpecification& WithTargetCapacityUnitType(const TargetCapacityUnitType& value) { SetTargetCapacityUnitType(value); return *this;}
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline TargetCapacitySpecification& WithTargetCapacityUnitType(TargetCapacityUnitType&& value) { SetTargetCapacityUnitType(std::move(value)); return *this;}
+
   private:
 
     int m_totalTargetCapacity;
@@ -185,6 +216,9 @@ namespace Model
 
     DefaultTargetCapacityType m_defaultTargetCapacityType;
     bool m_defaultTargetCapacityTypeHasBeenSet;
+
+    TargetCapacityUnitType m_targetCapacityUnitType;
+    bool m_targetCapacityUnitTypeHasBeenSet;
   };
 
 } // namespace Model

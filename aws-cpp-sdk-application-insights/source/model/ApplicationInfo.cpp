@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/application-insights/model/ApplicationInfo.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,7 +24,13 @@ ApplicationInfo::ApplicationInfo() :
     m_opsItemSNSTopicArnHasBeenSet(false),
     m_opsCenterEnabled(false),
     m_opsCenterEnabledHasBeenSet(false),
-    m_remarksHasBeenSet(false)
+    m_cWEMonitorEnabled(false),
+    m_cWEMonitorEnabledHasBeenSet(false),
+    m_remarksHasBeenSet(false),
+    m_autoConfigEnabled(false),
+    m_autoConfigEnabledHasBeenSet(false),
+    m_discoveryType(DiscoveryType::NOT_SET),
+    m_discoveryTypeHasBeenSet(false)
 {
 }
 
@@ -44,7 +40,13 @@ ApplicationInfo::ApplicationInfo(JsonView jsonValue) :
     m_opsItemSNSTopicArnHasBeenSet(false),
     m_opsCenterEnabled(false),
     m_opsCenterEnabledHasBeenSet(false),
-    m_remarksHasBeenSet(false)
+    m_cWEMonitorEnabled(false),
+    m_cWEMonitorEnabledHasBeenSet(false),
+    m_remarksHasBeenSet(false),
+    m_autoConfigEnabled(false),
+    m_autoConfigEnabledHasBeenSet(false),
+    m_discoveryType(DiscoveryType::NOT_SET),
+    m_discoveryTypeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -79,11 +81,32 @@ ApplicationInfo& ApplicationInfo::operator =(JsonView jsonValue)
     m_opsCenterEnabledHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("CWEMonitorEnabled"))
+  {
+    m_cWEMonitorEnabled = jsonValue.GetBool("CWEMonitorEnabled");
+
+    m_cWEMonitorEnabledHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("Remarks"))
   {
     m_remarks = jsonValue.GetString("Remarks");
 
     m_remarksHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("AutoConfigEnabled"))
+  {
+    m_autoConfigEnabled = jsonValue.GetBool("AutoConfigEnabled");
+
+    m_autoConfigEnabledHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("DiscoveryType"))
+  {
+    m_discoveryType = DiscoveryTypeMapper::GetDiscoveryTypeForName(jsonValue.GetString("DiscoveryType"));
+
+    m_discoveryTypeHasBeenSet = true;
   }
 
   return *this;
@@ -117,10 +140,27 @@ JsonValue ApplicationInfo::Jsonize() const
 
   }
 
+  if(m_cWEMonitorEnabledHasBeenSet)
+  {
+   payload.WithBool("CWEMonitorEnabled", m_cWEMonitorEnabled);
+
+  }
+
   if(m_remarksHasBeenSet)
   {
    payload.WithString("Remarks", m_remarks);
 
+  }
+
+  if(m_autoConfigEnabledHasBeenSet)
+  {
+   payload.WithBool("AutoConfigEnabled", m_autoConfigEnabled);
+
+  }
+
+  if(m_discoveryTypeHasBeenSet)
+  {
+   payload.WithString("DiscoveryType", DiscoveryTypeMapper::GetNameForDiscoveryType(m_discoveryType));
   }
 
   return payload;

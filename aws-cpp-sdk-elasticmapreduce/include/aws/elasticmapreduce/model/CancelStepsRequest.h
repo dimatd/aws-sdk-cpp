@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/EMRRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/elasticmapreduce/model/StepCancellationOption.h>
 #include <utility>
 
 namespace Aws
@@ -50,49 +41,49 @@ namespace Model
 
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline const Aws::String& GetClusterId() const{ return m_clusterId; }
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline CancelStepsRequest& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline CancelStepsRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
 
     /**
-     * <p>The <code>ClusterID</code> for which specified steps will be canceled. Use
+     * <p>The <code>ClusterID</code> for the specified steps that will be canceled. Use
      * <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
      */
     inline CancelStepsRequest& WithClusterId(const char* value) { SetClusterId(value); return *this;}
@@ -152,6 +143,43 @@ namespace Model
      */
     inline CancelStepsRequest& AddStepIds(const char* value) { m_stepIdsHasBeenSet = true; m_stepIds.push_back(value); return *this; }
 
+
+    /**
+     * <p>The option to choose to cancel <code>RUNNING</code> steps. By default, the
+     * value is <code>SEND_INTERRUPT</code>.</p>
+     */
+    inline const StepCancellationOption& GetStepCancellationOption() const{ return m_stepCancellationOption; }
+
+    /**
+     * <p>The option to choose to cancel <code>RUNNING</code> steps. By default, the
+     * value is <code>SEND_INTERRUPT</code>.</p>
+     */
+    inline bool StepCancellationOptionHasBeenSet() const { return m_stepCancellationOptionHasBeenSet; }
+
+    /**
+     * <p>The option to choose to cancel <code>RUNNING</code> steps. By default, the
+     * value is <code>SEND_INTERRUPT</code>.</p>
+     */
+    inline void SetStepCancellationOption(const StepCancellationOption& value) { m_stepCancellationOptionHasBeenSet = true; m_stepCancellationOption = value; }
+
+    /**
+     * <p>The option to choose to cancel <code>RUNNING</code> steps. By default, the
+     * value is <code>SEND_INTERRUPT</code>.</p>
+     */
+    inline void SetStepCancellationOption(StepCancellationOption&& value) { m_stepCancellationOptionHasBeenSet = true; m_stepCancellationOption = std::move(value); }
+
+    /**
+     * <p>The option to choose to cancel <code>RUNNING</code> steps. By default, the
+     * value is <code>SEND_INTERRUPT</code>.</p>
+     */
+    inline CancelStepsRequest& WithStepCancellationOption(const StepCancellationOption& value) { SetStepCancellationOption(value); return *this;}
+
+    /**
+     * <p>The option to choose to cancel <code>RUNNING</code> steps. By default, the
+     * value is <code>SEND_INTERRUPT</code>.</p>
+     */
+    inline CancelStepsRequest& WithStepCancellationOption(StepCancellationOption&& value) { SetStepCancellationOption(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_clusterId;
@@ -159,6 +187,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_stepIds;
     bool m_stepIdsHasBeenSet;
+
+    StepCancellationOption m_stepCancellationOption;
+    bool m_stepCancellationOptionHasBeenSet;
   };
 
 } // namespace Model

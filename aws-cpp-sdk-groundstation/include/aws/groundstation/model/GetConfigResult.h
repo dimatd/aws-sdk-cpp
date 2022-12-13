@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/groundstation/GroundStation_EXPORTS.h>
@@ -51,44 +41,37 @@ namespace Model
 
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline const Aws::String& GetConfigArn() const{ return m_configArn; }
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline void SetConfigArn(const Aws::String& value) { m_configArn = value; }
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline void SetConfigArn(Aws::String&& value) { m_configArn = std::move(value); }
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline void SetConfigArn(const char* value) { m_configArn.assign(value); }
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline GetConfigResult& WithConfigArn(const Aws::String& value) { SetConfigArn(value); return *this;}
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline GetConfigResult& WithConfigArn(Aws::String&& value) { SetConfigArn(std::move(value)); return *this;}
 
     /**
-     * <p>ARN of a <code>Config</code>
-         </p>
+     * <p>ARN of a <code>Config</code> </p>
      */
     inline GetConfigResult& WithConfigArn(const char* value) { SetConfigArn(value); return *this;}
 

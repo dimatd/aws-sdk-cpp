@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/eventbridge/EventBridge_EXPORTS.h>
@@ -36,9 +26,9 @@ namespace Model
 {
 
   /**
-   * <p>This structure specifies the VPC subnets and security groups for the task and
-   * whether a public IP address is to be used. This structure is relevant only for
-   * ECS tasks that use the <code>awsvpc</code> network mode.</p><p><h3>See
+   * <p>This structure specifies the VPC subnets and security groups for the task,
+   * and whether a public IP address is to be used. This structure is relevant only
+   * for ECS tasks that use the <code>awsvpc</code> network mode.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/eventbridge-2015-10-07/AwsVpcConfiguration">AWS
    * API Reference</a></p>
@@ -110,7 +100,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline const Aws::Vector<Aws::String>& GetSecurityGroups() const{ return m_securityGroups; }
@@ -118,7 +108,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline bool SecurityGroupsHasBeenSet() const { return m_securityGroupsHasBeenSet; }
@@ -126,7 +116,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline void SetSecurityGroups(const Aws::Vector<Aws::String>& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
@@ -134,7 +124,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
@@ -142,7 +132,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline AwsVpcConfiguration& WithSecurityGroups(const Aws::Vector<Aws::String>& value) { SetSecurityGroups(value); return *this;}
@@ -150,7 +140,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline AwsVpcConfiguration& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
@@ -158,7 +148,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline AwsVpcConfiguration& AddSecurityGroups(const Aws::String& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
@@ -166,7 +156,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline AwsVpcConfiguration& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
@@ -174,7 +164,7 @@ namespace Model
     /**
      * <p>Specifies the security groups associated with the task. These security groups
      * must all be in the same VPC. You can specify as many as five security groups. If
-     * you don't specify a security group, the default security group for the VPC is
+     * you do not specify a security group, the default security group for the VPC is
      * used.</p>
      */
     inline AwsVpcConfiguration& AddSecurityGroups(const char* value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }

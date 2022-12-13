@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/InstanceStatus.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -32,6 +22,7 @@ namespace Model
 
 InstanceStatus::InstanceStatus() : 
     m_availabilityZoneHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_eventsHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
     m_instanceStateHasBeenSet(false),
@@ -42,6 +33,7 @@ InstanceStatus::InstanceStatus() :
 
 InstanceStatus::InstanceStatus(const XmlNode& xmlNode) : 
     m_availabilityZoneHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_eventsHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
     m_instanceStateHasBeenSet(false),
@@ -62,6 +54,12 @@ InstanceStatus& InstanceStatus::operator =(const XmlNode& xmlNode)
     {
       m_availabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneNode.GetText());
       m_availabilityZoneHasBeenSet = true;
+    }
+    XmlNode outpostArnNode = resultNode.FirstChild("outpostArn");
+    if(!outpostArnNode.IsNull())
+    {
+      m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
+      m_outpostArnHasBeenSet = true;
     }
     XmlNode eventsNode = resultNode.FirstChild("eventsSet");
     if(!eventsNode.IsNull())
@@ -111,6 +109,11 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
 
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+
   if(m_eventsHasBeenSet)
   {
       unsigned eventsIdx = 1;
@@ -155,6 +158,10 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location)
   if(m_availabilityZoneHasBeenSet)
   {
       oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
   }
   if(m_eventsHasBeenSet)
   {

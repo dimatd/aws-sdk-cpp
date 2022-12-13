@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalytics_EXPORTS.h>
@@ -54,499 +44,421 @@ namespace Model
     /**
      * <p>The desired data set type.</p> <p> <ul> <li>
      * <strong>customer_subscriber_hourly_monthly_subscriptions</strong> <p>From
-     * 2014-07-21 to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2014-07-21 to
+     * 2017-09-15 to present: Available daily by 24:00 UTC.</p> </li> <li>
+     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_fees</strong> <p>From 2015-01-26 to present: Available
+     * <strong>daily_business_fees</strong> <p>From 2017-09-15 to present: Available
      * daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_free_trial_conversions</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_free_trial_conversions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_instances</strong> <p>From 2015-01-26 to present:
+     * <strong>daily_business_new_instances</strong> <p>From 2017-09-15 to present:
      * Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_product_subscribers</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_new_product_subscribers</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2015-01-26
+     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2017-09-15
      * to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes metered transactions (e.g. hourly) from two months prior.</p> <p>From
-     * 2017-07 to present: Available monthly on the 15th day of the month by 24:00 UTC.
-     * Data includes metered transactions (e.g. hourly) from one month prior.</p> </li>
-     * <li> <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes up-front software charges (e.g. annual) from one month prior.</p>
-     * <p>From 2017-07 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC. Data includes up-front software charges (e.g. annual) from one month
-     * prior.</p> </li> <li> <strong>monthly_revenue_field_demonstration_usage</strong>
-     * <p>From 2018-03-15 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_flexible_payment_schedule</strong> <p>From 2018-11-15 to
-     * present: Available monthly on the 15th day of the month by 24:00 UTC.</p> </li>
-     * <li> <strong>disbursed_amount_by_product</strong> <p>From 2015-01-26 to present:
-     * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>From
-     * 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.</p> <p>From
-     * 2015-01-26 to present: This data set was split into three data sets:
-     * disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
-     * disbursed_amount_by_age_of_disbursed_funds.</p> </li> <li>
-     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2012-09-04 to
+     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior.</p> </li> <li>
+     * <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes up-front software charges (e.g. annual) from one month prior.</p> </li>
+     * <li> <strong>monthly_revenue_field_demonstration_usage</strong> <p>From
+     * 2018-03-15 to present: Available monthly on the 15th day of the month by 24:00
+     * UTC.</p> </li> <li> <strong>monthly_revenue_flexible_payment_schedule</strong>
+     * <p>From 2018-11-15 to present: Available monthly on the 15th day of the month by
+     * 24:00 UTC.</p> </li> <li> <strong>disbursed_amount_by_product</strong> <p>From
+     * 2017-09-15 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2017-09-15 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2012-04-19 to present:
+     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2017-09-15 to present:
      * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_age_of_past_due_funds</strong> <p>From 2018-04-07 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_uncollected_funds_breakdown</strong> <p>From
      * 2019-10-04 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_profile_by_industry</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_revenue</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_geography</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>sales_compensation_billed_revenue</strong> <p>From 2016-12 to 2017-06:
-     * Available monthly on the 4th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from two months prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> <p>From 2017-06 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from one month prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> </li> <li>
-     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-02-15 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> </ul>
-     * </p>
+     * <strong>sales_compensation_billed_revenue</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior, and up-front
+     * software charges (e.g. annual) from one month prior.</p> </li> <li>
+     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-09-15 to present:
+     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>This data
+     * set is deprecated. Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_industry</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_revenue</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_geography</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> </ul> </p>
      */
     inline const DataSetType& GetDataSetType() const{ return m_dataSetType; }
 
     /**
      * <p>The desired data set type.</p> <p> <ul> <li>
      * <strong>customer_subscriber_hourly_monthly_subscriptions</strong> <p>From
-     * 2014-07-21 to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2014-07-21 to
+     * 2017-09-15 to present: Available daily by 24:00 UTC.</p> </li> <li>
+     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_fees</strong> <p>From 2015-01-26 to present: Available
+     * <strong>daily_business_fees</strong> <p>From 2017-09-15 to present: Available
      * daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_free_trial_conversions</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_free_trial_conversions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_instances</strong> <p>From 2015-01-26 to present:
+     * <strong>daily_business_new_instances</strong> <p>From 2017-09-15 to present:
      * Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_product_subscribers</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_new_product_subscribers</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2015-01-26
+     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2017-09-15
      * to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes metered transactions (e.g. hourly) from two months prior.</p> <p>From
-     * 2017-07 to present: Available monthly on the 15th day of the month by 24:00 UTC.
-     * Data includes metered transactions (e.g. hourly) from one month prior.</p> </li>
-     * <li> <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes up-front software charges (e.g. annual) from one month prior.</p>
-     * <p>From 2017-07 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC. Data includes up-front software charges (e.g. annual) from one month
-     * prior.</p> </li> <li> <strong>monthly_revenue_field_demonstration_usage</strong>
-     * <p>From 2018-03-15 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_flexible_payment_schedule</strong> <p>From 2018-11-15 to
-     * present: Available monthly on the 15th day of the month by 24:00 UTC.</p> </li>
-     * <li> <strong>disbursed_amount_by_product</strong> <p>From 2015-01-26 to present:
-     * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>From
-     * 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.</p> <p>From
-     * 2015-01-26 to present: This data set was split into three data sets:
-     * disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
-     * disbursed_amount_by_age_of_disbursed_funds.</p> </li> <li>
-     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2012-09-04 to
+     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior.</p> </li> <li>
+     * <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes up-front software charges (e.g. annual) from one month prior.</p> </li>
+     * <li> <strong>monthly_revenue_field_demonstration_usage</strong> <p>From
+     * 2018-03-15 to present: Available monthly on the 15th day of the month by 24:00
+     * UTC.</p> </li> <li> <strong>monthly_revenue_flexible_payment_schedule</strong>
+     * <p>From 2018-11-15 to present: Available monthly on the 15th day of the month by
+     * 24:00 UTC.</p> </li> <li> <strong>disbursed_amount_by_product</strong> <p>From
+     * 2017-09-15 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2017-09-15 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2012-04-19 to present:
+     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2017-09-15 to present:
      * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_age_of_past_due_funds</strong> <p>From 2018-04-07 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_uncollected_funds_breakdown</strong> <p>From
      * 2019-10-04 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_profile_by_industry</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_revenue</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_geography</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>sales_compensation_billed_revenue</strong> <p>From 2016-12 to 2017-06:
-     * Available monthly on the 4th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from two months prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> <p>From 2017-06 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from one month prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> </li> <li>
-     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-02-15 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> </ul>
-     * </p>
+     * <strong>sales_compensation_billed_revenue</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior, and up-front
+     * software charges (e.g. annual) from one month prior.</p> </li> <li>
+     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-09-15 to present:
+     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>This data
+     * set is deprecated. Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_industry</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_revenue</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_geography</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> </ul> </p>
      */
     inline bool DataSetTypeHasBeenSet() const { return m_dataSetTypeHasBeenSet; }
 
     /**
      * <p>The desired data set type.</p> <p> <ul> <li>
      * <strong>customer_subscriber_hourly_monthly_subscriptions</strong> <p>From
-     * 2014-07-21 to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2014-07-21 to
+     * 2017-09-15 to present: Available daily by 24:00 UTC.</p> </li> <li>
+     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_fees</strong> <p>From 2015-01-26 to present: Available
+     * <strong>daily_business_fees</strong> <p>From 2017-09-15 to present: Available
      * daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_free_trial_conversions</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_free_trial_conversions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_instances</strong> <p>From 2015-01-26 to present:
+     * <strong>daily_business_new_instances</strong> <p>From 2017-09-15 to present:
      * Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_product_subscribers</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_new_product_subscribers</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2015-01-26
+     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2017-09-15
      * to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes metered transactions (e.g. hourly) from two months prior.</p> <p>From
-     * 2017-07 to present: Available monthly on the 15th day of the month by 24:00 UTC.
-     * Data includes metered transactions (e.g. hourly) from one month prior.</p> </li>
-     * <li> <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes up-front software charges (e.g. annual) from one month prior.</p>
-     * <p>From 2017-07 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC. Data includes up-front software charges (e.g. annual) from one month
-     * prior.</p> </li> <li> <strong>monthly_revenue_field_demonstration_usage</strong>
-     * <p>From 2018-03-15 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_flexible_payment_schedule</strong> <p>From 2018-11-15 to
-     * present: Available monthly on the 15th day of the month by 24:00 UTC.</p> </li>
-     * <li> <strong>disbursed_amount_by_product</strong> <p>From 2015-01-26 to present:
-     * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>From
-     * 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.</p> <p>From
-     * 2015-01-26 to present: This data set was split into three data sets:
-     * disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
-     * disbursed_amount_by_age_of_disbursed_funds.</p> </li> <li>
-     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2012-09-04 to
+     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior.</p> </li> <li>
+     * <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes up-front software charges (e.g. annual) from one month prior.</p> </li>
+     * <li> <strong>monthly_revenue_field_demonstration_usage</strong> <p>From
+     * 2018-03-15 to present: Available monthly on the 15th day of the month by 24:00
+     * UTC.</p> </li> <li> <strong>monthly_revenue_flexible_payment_schedule</strong>
+     * <p>From 2018-11-15 to present: Available monthly on the 15th day of the month by
+     * 24:00 UTC.</p> </li> <li> <strong>disbursed_amount_by_product</strong> <p>From
+     * 2017-09-15 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2017-09-15 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2012-04-19 to present:
+     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2017-09-15 to present:
      * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_age_of_past_due_funds</strong> <p>From 2018-04-07 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_uncollected_funds_breakdown</strong> <p>From
      * 2019-10-04 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_profile_by_industry</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_revenue</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_geography</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>sales_compensation_billed_revenue</strong> <p>From 2016-12 to 2017-06:
-     * Available monthly on the 4th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from two months prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> <p>From 2017-06 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from one month prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> </li> <li>
-     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-02-15 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> </ul>
-     * </p>
+     * <strong>sales_compensation_billed_revenue</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior, and up-front
+     * software charges (e.g. annual) from one month prior.</p> </li> <li>
+     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-09-15 to present:
+     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>This data
+     * set is deprecated. Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_industry</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_revenue</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_geography</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> </ul> </p>
      */
     inline void SetDataSetType(const DataSetType& value) { m_dataSetTypeHasBeenSet = true; m_dataSetType = value; }
 
     /**
      * <p>The desired data set type.</p> <p> <ul> <li>
      * <strong>customer_subscriber_hourly_monthly_subscriptions</strong> <p>From
-     * 2014-07-21 to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2014-07-21 to
+     * 2017-09-15 to present: Available daily by 24:00 UTC.</p> </li> <li>
+     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_fees</strong> <p>From 2015-01-26 to present: Available
+     * <strong>daily_business_fees</strong> <p>From 2017-09-15 to present: Available
      * daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_free_trial_conversions</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_free_trial_conversions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_instances</strong> <p>From 2015-01-26 to present:
+     * <strong>daily_business_new_instances</strong> <p>From 2017-09-15 to present:
      * Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_product_subscribers</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_new_product_subscribers</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2015-01-26
+     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2017-09-15
      * to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes metered transactions (e.g. hourly) from two months prior.</p> <p>From
-     * 2017-07 to present: Available monthly on the 15th day of the month by 24:00 UTC.
-     * Data includes metered transactions (e.g. hourly) from one month prior.</p> </li>
-     * <li> <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes up-front software charges (e.g. annual) from one month prior.</p>
-     * <p>From 2017-07 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC. Data includes up-front software charges (e.g. annual) from one month
-     * prior.</p> </li> <li> <strong>monthly_revenue_field_demonstration_usage</strong>
-     * <p>From 2018-03-15 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_flexible_payment_schedule</strong> <p>From 2018-11-15 to
-     * present: Available monthly on the 15th day of the month by 24:00 UTC.</p> </li>
-     * <li> <strong>disbursed_amount_by_product</strong> <p>From 2015-01-26 to present:
-     * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>From
-     * 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.</p> <p>From
-     * 2015-01-26 to present: This data set was split into three data sets:
-     * disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
-     * disbursed_amount_by_age_of_disbursed_funds.</p> </li> <li>
-     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2012-09-04 to
+     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior.</p> </li> <li>
+     * <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes up-front software charges (e.g. annual) from one month prior.</p> </li>
+     * <li> <strong>monthly_revenue_field_demonstration_usage</strong> <p>From
+     * 2018-03-15 to present: Available monthly on the 15th day of the month by 24:00
+     * UTC.</p> </li> <li> <strong>monthly_revenue_flexible_payment_schedule</strong>
+     * <p>From 2018-11-15 to present: Available monthly on the 15th day of the month by
+     * 24:00 UTC.</p> </li> <li> <strong>disbursed_amount_by_product</strong> <p>From
+     * 2017-09-15 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2017-09-15 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2012-04-19 to present:
+     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2017-09-15 to present:
      * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_age_of_past_due_funds</strong> <p>From 2018-04-07 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_uncollected_funds_breakdown</strong> <p>From
      * 2019-10-04 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_profile_by_industry</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_revenue</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_geography</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>sales_compensation_billed_revenue</strong> <p>From 2016-12 to 2017-06:
-     * Available monthly on the 4th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from two months prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> <p>From 2017-06 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from one month prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> </li> <li>
-     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-02-15 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> </ul>
-     * </p>
+     * <strong>sales_compensation_billed_revenue</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior, and up-front
+     * software charges (e.g. annual) from one month prior.</p> </li> <li>
+     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-09-15 to present:
+     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>This data
+     * set is deprecated. Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_industry</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_revenue</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_geography</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> </ul> </p>
      */
     inline void SetDataSetType(DataSetType&& value) { m_dataSetTypeHasBeenSet = true; m_dataSetType = std::move(value); }
 
     /**
      * <p>The desired data set type.</p> <p> <ul> <li>
      * <strong>customer_subscriber_hourly_monthly_subscriptions</strong> <p>From
-     * 2014-07-21 to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2014-07-21 to
+     * 2017-09-15 to present: Available daily by 24:00 UTC.</p> </li> <li>
+     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_fees</strong> <p>From 2015-01-26 to present: Available
+     * <strong>daily_business_fees</strong> <p>From 2017-09-15 to present: Available
      * daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_free_trial_conversions</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_free_trial_conversions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_instances</strong> <p>From 2015-01-26 to present:
+     * <strong>daily_business_new_instances</strong> <p>From 2017-09-15 to present:
      * Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_product_subscribers</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_new_product_subscribers</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2015-01-26
+     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2017-09-15
      * to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes metered transactions (e.g. hourly) from two months prior.</p> <p>From
-     * 2017-07 to present: Available monthly on the 15th day of the month by 24:00 UTC.
-     * Data includes metered transactions (e.g. hourly) from one month prior.</p> </li>
-     * <li> <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes up-front software charges (e.g. annual) from one month prior.</p>
-     * <p>From 2017-07 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC. Data includes up-front software charges (e.g. annual) from one month
-     * prior.</p> </li> <li> <strong>monthly_revenue_field_demonstration_usage</strong>
-     * <p>From 2018-03-15 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_flexible_payment_schedule</strong> <p>From 2018-11-15 to
-     * present: Available monthly on the 15th day of the month by 24:00 UTC.</p> </li>
-     * <li> <strong>disbursed_amount_by_product</strong> <p>From 2015-01-26 to present:
-     * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>From
-     * 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.</p> <p>From
-     * 2015-01-26 to present: This data set was split into three data sets:
-     * disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
-     * disbursed_amount_by_age_of_disbursed_funds.</p> </li> <li>
-     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2012-09-04 to
+     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior.</p> </li> <li>
+     * <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes up-front software charges (e.g. annual) from one month prior.</p> </li>
+     * <li> <strong>monthly_revenue_field_demonstration_usage</strong> <p>From
+     * 2018-03-15 to present: Available monthly on the 15th day of the month by 24:00
+     * UTC.</p> </li> <li> <strong>monthly_revenue_flexible_payment_schedule</strong>
+     * <p>From 2018-11-15 to present: Available monthly on the 15th day of the month by
+     * 24:00 UTC.</p> </li> <li> <strong>disbursed_amount_by_product</strong> <p>From
+     * 2017-09-15 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2017-09-15 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2012-04-19 to present:
+     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2017-09-15 to present:
      * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_age_of_past_due_funds</strong> <p>From 2018-04-07 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_uncollected_funds_breakdown</strong> <p>From
      * 2019-10-04 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_profile_by_industry</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_revenue</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_geography</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>sales_compensation_billed_revenue</strong> <p>From 2016-12 to 2017-06:
-     * Available monthly on the 4th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from two months prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> <p>From 2017-06 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from one month prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> </li> <li>
-     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-02-15 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> </ul>
-     * </p>
+     * <strong>sales_compensation_billed_revenue</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior, and up-front
+     * software charges (e.g. annual) from one month prior.</p> </li> <li>
+     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-09-15 to present:
+     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>This data
+     * set is deprecated. Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_industry</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_revenue</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_geography</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> </ul> </p>
      */
     inline GenerateDataSetRequest& WithDataSetType(const DataSetType& value) { SetDataSetType(value); return *this;}
 
     /**
      * <p>The desired data set type.</p> <p> <ul> <li>
      * <strong>customer_subscriber_hourly_monthly_subscriptions</strong> <p>From
-     * 2014-07-21 to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2014-07-21 to
+     * 2017-09-15 to present: Available daily by 24:00 UTC.</p> </li> <li>
+     * <strong>customer_subscriber_annual_subscriptions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_usage_by_instance_type</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_fees</strong> <p>From 2015-01-26 to present: Available
+     * <strong>daily_business_fees</strong> <p>From 2017-09-15 to present: Available
      * daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_free_trial_conversions</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_free_trial_conversions</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_instances</strong> <p>From 2015-01-26 to present:
+     * <strong>daily_business_new_instances</strong> <p>From 2017-09-15 to present:
      * Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_new_product_subscribers</strong> <p>From 2015-01-26 to
+     * <strong>daily_business_new_product_subscribers</strong> <p>From 2017-09-15 to
      * present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2015-01-26
+     * <strong>daily_business_canceled_product_subscribers</strong> <p>From 2017-09-15
      * to present: Available daily by 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes metered transactions (e.g. hourly) from two months prior.</p> <p>From
-     * 2017-07 to present: Available monthly on the 15th day of the month by 24:00 UTC.
-     * Data includes metered transactions (e.g. hourly) from one month prior.</p> </li>
-     * <li> <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2015-02 to
-     * 2017-06: Available monthly on the 4th day of the month by 24:00 UTC. Data
-     * includes up-front software charges (e.g. annual) from one month prior.</p>
-     * <p>From 2017-07 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC. Data includes up-front software charges (e.g. annual) from one month
-     * prior.</p> </li> <li> <strong>monthly_revenue_field_demonstration_usage</strong>
-     * <p>From 2018-03-15 to present: Available monthly on the 15th day of the month by
-     * 24:00 UTC.</p> </li> <li>
-     * <strong>monthly_revenue_flexible_payment_schedule</strong> <p>From 2018-11-15 to
-     * present: Available monthly on the 15th day of the month by 24:00 UTC.</p> </li>
-     * <li> <strong>disbursed_amount_by_product</strong> <p>From 2015-01-26 to present:
-     * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>From
-     * 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.</p> <p>From
-     * 2015-01-26 to present: This data set was split into three data sets:
-     * disbursed_amount_by_product, disbursed_amount_by_age_of_uncollected_funds, and
-     * disbursed_amount_by_age_of_disbursed_funds.</p> </li> <li>
-     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2012-09-04 to
+     * <strong>monthly_revenue_billing_and_revenue_data</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior.</p> </li> <li>
+     * <strong>monthly_revenue_annual_subscriptions</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes up-front software charges (e.g. annual) from one month prior.</p> </li>
+     * <li> <strong>monthly_revenue_field_demonstration_usage</strong> <p>From
+     * 2018-03-15 to present: Available monthly on the 15th day of the month by 24:00
+     * UTC.</p> </li> <li> <strong>monthly_revenue_flexible_payment_schedule</strong>
+     * <p>From 2018-11-15 to present: Available monthly on the 15th day of the month by
+     * 24:00 UTC.</p> </li> <li> <strong>disbursed_amount_by_product</strong> <p>From
+     * 2017-09-15 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_instance_hours</strong> <p>From 2017-09-15 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2012-04-19 to present:
+     * <strong>disbursed_amount_by_customer_geo</strong> <p>From 2017-09-15 to present:
      * Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_uncollected_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2015-01-26
+     * <strong>disbursed_amount_by_age_of_disbursed_funds</strong> <p>From 2017-09-15
      * to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_age_of_past_due_funds</strong> <p>From 2018-04-07 to
      * present: Available every 30 days by 24:00 UTC.</p> </li> <li>
      * <strong>disbursed_amount_by_uncollected_funds_breakdown</strong> <p>From
      * 2019-10-04 to present: Available every 30 days by 24:00 UTC.</p> </li> <li>
-     * <strong>customer_profile_by_industry</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_revenue</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>customer_profile_by_geography</strong> <p>From 2015-10-01 to 2017-06-29:
-     * Available daily by 24:00 UTC.</p> <p>From 2017-06-30 to present: This data set
-     * is no longer available.</p> </li> <li>
-     * <strong>sales_compensation_billed_revenue</strong> <p>From 2016-12 to 2017-06:
-     * Available monthly on the 4th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from two months prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> <p>From 2017-06 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC. Data includes
-     * metered transactions (e.g. hourly) from one month prior, and up-front software
-     * charges (e.g. annual) from one month prior.</p> </li> <li>
-     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-02-15 to present:
-     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> </ul>
-     * </p>
+     * <strong>sales_compensation_billed_revenue</strong> <p>From 2017-09-15 to
+     * present: Available monthly on the 15th day of the month by 24:00 UTC. Data
+     * includes metered transactions (e.g. hourly) from one month prior, and up-front
+     * software charges (e.g. annual) from one month prior.</p> </li> <li>
+     * <strong>us_sales_and_use_tax_records</strong> <p>From 2017-09-15 to present:
+     * Available monthly on the 15th day of the month by 24:00 UTC.</p> </li> <li>
+     * <strong>disbursed_amount_by_product_with_uncollected_funds</strong> <p>This data
+     * set is deprecated. Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_industry</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_revenue</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> <li>
+     * <strong>customer_profile_by_geography</strong> <p>This data set is deprecated.
+     * Download related reports from AMMP instead!</p> </li> </ul> </p>
      */
     inline GenerateDataSetRequest& WithDataSetType(DataSetType&& value) { SetDataSetType(std::move(value)); return *this;}
 
 
     /**
      * The date a data set was published. For daily data sets, provide a date with
-     * day-level granularity for the desired day. For weekly data sets, provide a date
-     * with day-level granularity within the desired week (the day value will be
-     * ignored). For monthly data sets, provide a date with month-level granularity for
-     * the desired month (the day value will be ignored).
+     * day-level granularity for the desired day. For monthly data sets except those
+     * with prefix disbursed_amount, provide a date with month-level granularity for
+     * the desired month (the day value will be ignored). For data sets with prefix
+     * disbursed_amount, provide a date with day-level granularity for the desired day.
+     * For these data sets we will look backwards in time over the range of 31 days
+     * until the first data set is found (the latest one).
      */
     inline const Aws::Utils::DateTime& GetDataSetPublicationDate() const{ return m_dataSetPublicationDate; }
 
     /**
      * The date a data set was published. For daily data sets, provide a date with
-     * day-level granularity for the desired day. For weekly data sets, provide a date
-     * with day-level granularity within the desired week (the day value will be
-     * ignored). For monthly data sets, provide a date with month-level granularity for
-     * the desired month (the day value will be ignored).
+     * day-level granularity for the desired day. For monthly data sets except those
+     * with prefix disbursed_amount, provide a date with month-level granularity for
+     * the desired month (the day value will be ignored). For data sets with prefix
+     * disbursed_amount, provide a date with day-level granularity for the desired day.
+     * For these data sets we will look backwards in time over the range of 31 days
+     * until the first data set is found (the latest one).
      */
     inline bool DataSetPublicationDateHasBeenSet() const { return m_dataSetPublicationDateHasBeenSet; }
 
     /**
      * The date a data set was published. For daily data sets, provide a date with
-     * day-level granularity for the desired day. For weekly data sets, provide a date
-     * with day-level granularity within the desired week (the day value will be
-     * ignored). For monthly data sets, provide a date with month-level granularity for
-     * the desired month (the day value will be ignored).
+     * day-level granularity for the desired day. For monthly data sets except those
+     * with prefix disbursed_amount, provide a date with month-level granularity for
+     * the desired month (the day value will be ignored). For data sets with prefix
+     * disbursed_amount, provide a date with day-level granularity for the desired day.
+     * For these data sets we will look backwards in time over the range of 31 days
+     * until the first data set is found (the latest one).
      */
     inline void SetDataSetPublicationDate(const Aws::Utils::DateTime& value) { m_dataSetPublicationDateHasBeenSet = true; m_dataSetPublicationDate = value; }
 
     /**
      * The date a data set was published. For daily data sets, provide a date with
-     * day-level granularity for the desired day. For weekly data sets, provide a date
-     * with day-level granularity within the desired week (the day value will be
-     * ignored). For monthly data sets, provide a date with month-level granularity for
-     * the desired month (the day value will be ignored).
+     * day-level granularity for the desired day. For monthly data sets except those
+     * with prefix disbursed_amount, provide a date with month-level granularity for
+     * the desired month (the day value will be ignored). For data sets with prefix
+     * disbursed_amount, provide a date with day-level granularity for the desired day.
+     * For these data sets we will look backwards in time over the range of 31 days
+     * until the first data set is found (the latest one).
      */
     inline void SetDataSetPublicationDate(Aws::Utils::DateTime&& value) { m_dataSetPublicationDateHasBeenSet = true; m_dataSetPublicationDate = std::move(value); }
 
     /**
      * The date a data set was published. For daily data sets, provide a date with
-     * day-level granularity for the desired day. For weekly data sets, provide a date
-     * with day-level granularity within the desired week (the day value will be
-     * ignored). For monthly data sets, provide a date with month-level granularity for
-     * the desired month (the day value will be ignored).
+     * day-level granularity for the desired day. For monthly data sets except those
+     * with prefix disbursed_amount, provide a date with month-level granularity for
+     * the desired month (the day value will be ignored). For data sets with prefix
+     * disbursed_amount, provide a date with day-level granularity for the desired day.
+     * For these data sets we will look backwards in time over the range of 31 days
+     * until the first data set is found (the latest one).
      */
     inline GenerateDataSetRequest& WithDataSetPublicationDate(const Aws::Utils::DateTime& value) { SetDataSetPublicationDate(value); return *this;}
 
     /**
      * The date a data set was published. For daily data sets, provide a date with
-     * day-level granularity for the desired day. For weekly data sets, provide a date
-     * with day-level granularity within the desired week (the day value will be
-     * ignored). For monthly data sets, provide a date with month-level granularity for
-     * the desired month (the day value will be ignored).
+     * day-level granularity for the desired day. For monthly data sets except those
+     * with prefix disbursed_amount, provide a date with month-level granularity for
+     * the desired month (the day value will be ignored). For data sets with prefix
+     * disbursed_amount, provide a date with day-level granularity for the desired day.
+     * For these data sets we will look backwards in time over the range of 31 days
+     * until the first data set is found (the latest one).
      */
     inline GenerateDataSetRequest& WithDataSetPublicationDate(Aws::Utils::DateTime&& value) { SetDataSetPublicationDate(std::move(value)); return *this;}
 

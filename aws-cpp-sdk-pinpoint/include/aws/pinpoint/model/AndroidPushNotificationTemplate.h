@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -272,6 +262,63 @@ namespace Model
 
 
     /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline const Aws::String& GetRawContent() const{ return m_rawContent; }
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline bool RawContentHasBeenSet() const { return m_rawContentHasBeenSet; }
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline void SetRawContent(const Aws::String& value) { m_rawContentHasBeenSet = true; m_rawContent = value; }
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline void SetRawContent(Aws::String&& value) { m_rawContentHasBeenSet = true; m_rawContent = std::move(value); }
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline void SetRawContent(const char* value) { m_rawContentHasBeenSet = true; m_rawContent.assign(value); }
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline AndroidPushNotificationTemplate& WithRawContent(const Aws::String& value) { SetRawContent(value); return *this;}
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline AndroidPushNotificationTemplate& WithRawContent(Aws::String&& value) { SetRawContent(std::move(value)); return *this;}
+
+    /**
+     * <p>The raw, JSON-formatted string to use as the payload for a push notification
+     * that's based on the message template. If specified, this value overrides all
+     * other content for the message template.</p>
+     */
+    inline AndroidPushNotificationTemplate& WithRawContent(const char* value) { SetRawContent(value); return *this;}
+
+
+    /**
      * <p>The URL of the small icon image to display in the status bar and the content
      * view of a push notification that's based on the message template.</p>
      */
@@ -436,56 +483,56 @@ namespace Model
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline const Aws::String& GetUrl() const{ return m_url; }
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline AndroidPushNotificationTemplate& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline AndroidPushNotificationTemplate& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
 
     /**
      * <p>The URL to open in a recipient's default mobile browser, if a recipient taps
-     * a a push notification that's based on the message template and the value of the
+     * a push notification that's based on the message template and the value of the
      * Action property is URL.</p>
      */
     inline AndroidPushNotificationTemplate& WithUrl(const char* value) { SetUrl(value); return *this;}
@@ -503,6 +550,9 @@ namespace Model
 
     Aws::String m_imageUrl;
     bool m_imageUrlHasBeenSet;
+
+    Aws::String m_rawContent;
+    bool m_rawContentHasBeenSet;
 
     Aws::String m_smallImageIconUrl;
     bool m_smallImageIconUrlHasBeenSet;

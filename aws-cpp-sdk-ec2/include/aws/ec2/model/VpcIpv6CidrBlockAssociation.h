@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -163,6 +153,112 @@ namespace Model
      */
     inline VpcIpv6CidrBlockAssociation& WithIpv6CidrBlockState(VpcCidrBlockState&& value) { SetIpv6CidrBlockState(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline const Aws::String& GetNetworkBorderGroup() const{ return m_networkBorderGroup; }
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline bool NetworkBorderGroupHasBeenSet() const { return m_networkBorderGroupHasBeenSet; }
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline void SetNetworkBorderGroup(const Aws::String& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = value; }
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline void SetNetworkBorderGroup(Aws::String&& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = std::move(value); }
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline void SetNetworkBorderGroup(const char* value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup.assign(value); }
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline VpcIpv6CidrBlockAssociation& WithNetworkBorderGroup(const Aws::String& value) { SetNetworkBorderGroup(value); return *this;}
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline VpcIpv6CidrBlockAssociation& WithNetworkBorderGroup(Aws::String&& value) { SetNetworkBorderGroup(std::move(value)); return *this;}
+
+    /**
+     * <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength
+     * Zones from which Amazon Web Services advertises IP addresses, for example,
+     * <code>us-east-1-wl1-bos-wlz-1</code>.</p>
+     */
+    inline VpcIpv6CidrBlockAssociation& WithNetworkBorderGroup(const char* value) { SetNetworkBorderGroup(value); return *this;}
+
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline const Aws::String& GetIpv6Pool() const{ return m_ipv6Pool; }
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline bool Ipv6PoolHasBeenSet() const { return m_ipv6PoolHasBeenSet; }
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline void SetIpv6Pool(const Aws::String& value) { m_ipv6PoolHasBeenSet = true; m_ipv6Pool = value; }
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline void SetIpv6Pool(Aws::String&& value) { m_ipv6PoolHasBeenSet = true; m_ipv6Pool = std::move(value); }
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline void SetIpv6Pool(const char* value) { m_ipv6PoolHasBeenSet = true; m_ipv6Pool.assign(value); }
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline VpcIpv6CidrBlockAssociation& WithIpv6Pool(const Aws::String& value) { SetIpv6Pool(value); return *this;}
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline VpcIpv6CidrBlockAssociation& WithIpv6Pool(Aws::String&& value) { SetIpv6Pool(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of the IPv6 address pool from which the IPv6 CIDR block is
+     * allocated.</p>
+     */
+    inline VpcIpv6CidrBlockAssociation& WithIpv6Pool(const char* value) { SetIpv6Pool(value); return *this;}
+
   private:
 
     Aws::String m_associationId;
@@ -173,6 +269,12 @@ namespace Model
 
     VpcCidrBlockState m_ipv6CidrBlockState;
     bool m_ipv6CidrBlockStateHasBeenSet;
+
+    Aws::String m_networkBorderGroup;
+    bool m_networkBorderGroupHasBeenSet;
+
+    Aws::String m_ipv6Pool;
+    bool m_ipv6PoolHasBeenSet;
   };
 
 } // namespace Model

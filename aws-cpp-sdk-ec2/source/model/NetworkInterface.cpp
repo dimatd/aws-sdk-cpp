@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/NetworkInterface.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -41,10 +31,13 @@ NetworkInterface::NetworkInterface() :
     m_ipv6AddressesHasBeenSet(false),
     m_macAddressHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_ownerIdHasBeenSet(false),
     m_privateDnsNameHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
     m_privateIpAddressesHasBeenSet(false),
+    m_ipv4PrefixesHasBeenSet(false),
+    m_ipv6PrefixesHasBeenSet(false),
     m_requesterIdHasBeenSet(false),
     m_requesterManaged(false),
     m_requesterManagedHasBeenSet(false),
@@ -54,7 +47,12 @@ NetworkInterface::NetworkInterface() :
     m_statusHasBeenSet(false),
     m_subnetIdHasBeenSet(false),
     m_tagSetHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+    m_vpcIdHasBeenSet(false),
+    m_denyAllIgwTraffic(false),
+    m_denyAllIgwTrafficHasBeenSet(false),
+    m_ipv6Native(false),
+    m_ipv6NativeHasBeenSet(false),
+    m_ipv6AddressHasBeenSet(false)
 {
 }
 
@@ -69,10 +67,13 @@ NetworkInterface::NetworkInterface(const XmlNode& xmlNode) :
     m_ipv6AddressesHasBeenSet(false),
     m_macAddressHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_ownerIdHasBeenSet(false),
     m_privateDnsNameHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
     m_privateIpAddressesHasBeenSet(false),
+    m_ipv4PrefixesHasBeenSet(false),
+    m_ipv6PrefixesHasBeenSet(false),
     m_requesterIdHasBeenSet(false),
     m_requesterManaged(false),
     m_requesterManagedHasBeenSet(false),
@@ -82,7 +83,12 @@ NetworkInterface::NetworkInterface(const XmlNode& xmlNode) :
     m_statusHasBeenSet(false),
     m_subnetIdHasBeenSet(false),
     m_tagSetHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+    m_vpcIdHasBeenSet(false),
+    m_denyAllIgwTraffic(false),
+    m_denyAllIgwTrafficHasBeenSet(false),
+    m_ipv6Native(false),
+    m_ipv6NativeHasBeenSet(false),
+    m_ipv6AddressHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -159,6 +165,12 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
       m_networkInterfaceId = Aws::Utils::Xml::DecodeEscapedXmlText(networkInterfaceIdNode.GetText());
       m_networkInterfaceIdHasBeenSet = true;
     }
+    XmlNode outpostArnNode = resultNode.FirstChild("outpostArn");
+    if(!outpostArnNode.IsNull())
+    {
+      m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
+      m_outpostArnHasBeenSet = true;
+    }
     XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
     if(!ownerIdNode.IsNull())
     {
@@ -188,6 +200,30 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
       }
 
       m_privateIpAddressesHasBeenSet = true;
+    }
+    XmlNode ipv4PrefixesNode = resultNode.FirstChild("ipv4PrefixSet");
+    if(!ipv4PrefixesNode.IsNull())
+    {
+      XmlNode ipv4PrefixesMember = ipv4PrefixesNode.FirstChild("item");
+      while(!ipv4PrefixesMember.IsNull())
+      {
+        m_ipv4Prefixes.push_back(ipv4PrefixesMember);
+        ipv4PrefixesMember = ipv4PrefixesMember.NextNode("item");
+      }
+
+      m_ipv4PrefixesHasBeenSet = true;
+    }
+    XmlNode ipv6PrefixesNode = resultNode.FirstChild("ipv6PrefixSet");
+    if(!ipv6PrefixesNode.IsNull())
+    {
+      XmlNode ipv6PrefixesMember = ipv6PrefixesNode.FirstChild("item");
+      while(!ipv6PrefixesMember.IsNull())
+      {
+        m_ipv6Prefixes.push_back(ipv6PrefixesMember);
+        ipv6PrefixesMember = ipv6PrefixesMember.NextNode("item");
+      }
+
+      m_ipv6PrefixesHasBeenSet = true;
     }
     XmlNode requesterIdNode = resultNode.FirstChild("requesterId");
     if(!requesterIdNode.IsNull())
@@ -236,6 +272,24 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
     {
       m_vpcId = Aws::Utils::Xml::DecodeEscapedXmlText(vpcIdNode.GetText());
       m_vpcIdHasBeenSet = true;
+    }
+    XmlNode denyAllIgwTrafficNode = resultNode.FirstChild("denyAllIgwTraffic");
+    if(!denyAllIgwTrafficNode.IsNull())
+    {
+      m_denyAllIgwTraffic = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(denyAllIgwTrafficNode.GetText()).c_str()).c_str());
+      m_denyAllIgwTrafficHasBeenSet = true;
+    }
+    XmlNode ipv6NativeNode = resultNode.FirstChild("ipv6Native");
+    if(!ipv6NativeNode.IsNull())
+    {
+      m_ipv6Native = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipv6NativeNode.GetText()).c_str()).c_str());
+      m_ipv6NativeHasBeenSet = true;
+    }
+    XmlNode ipv6AddressNode = resultNode.FirstChild("ipv6Address");
+    if(!ipv6AddressNode.IsNull())
+    {
+      m_ipv6Address = Aws::Utils::Xml::DecodeEscapedXmlText(ipv6AddressNode.GetText());
+      m_ipv6AddressHasBeenSet = true;
     }
   }
 
@@ -305,6 +359,11 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
 
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+
   if(m_ownerIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
@@ -328,6 +387,28 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
         Aws::StringStream privateIpAddressesSs;
         privateIpAddressesSs << location << index << locationValue << ".PrivateIpAddressesSet." << privateIpAddressesIdx++;
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
+      }
+  }
+
+  if(m_ipv4PrefixesHasBeenSet)
+  {
+      unsigned ipv4PrefixesIdx = 1;
+      for(auto& item : m_ipv4Prefixes)
+      {
+        Aws::StringStream ipv4PrefixesSs;
+        ipv4PrefixesSs << location << index << locationValue << ".Ipv4PrefixSet." << ipv4PrefixesIdx++;
+        item.OutputToStream(oStream, ipv4PrefixesSs.str().c_str());
+      }
+  }
+
+  if(m_ipv6PrefixesHasBeenSet)
+  {
+      unsigned ipv6PrefixesIdx = 1;
+      for(auto& item : m_ipv6Prefixes)
+      {
+        Aws::StringStream ipv6PrefixesSs;
+        ipv6PrefixesSs << location << index << locationValue << ".Ipv6PrefixSet." << ipv6PrefixesIdx++;
+        item.OutputToStream(oStream, ipv6PrefixesSs.str().c_str());
       }
   }
 
@@ -370,6 +451,21 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+
+  if(m_denyAllIgwTrafficHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DenyAllIgwTraffic=" << std::boolalpha << m_denyAllIgwTraffic << "&";
+  }
+
+  if(m_ipv6NativeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Ipv6Native=" << std::boolalpha << m_ipv6Native << "&";
+  }
+
+  if(m_ipv6AddressHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Ipv6Address=" << StringUtils::URLEncode(m_ipv6Address.c_str()) << "&";
   }
 
 }
@@ -428,6 +524,10 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
   if(m_ownerIdHasBeenSet)
   {
       oStream << location << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
@@ -448,6 +548,26 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
         Aws::StringStream privateIpAddressesSs;
         privateIpAddressesSs << location <<  ".PrivateIpAddressesSet." << privateIpAddressesIdx++;
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
+      }
+  }
+  if(m_ipv4PrefixesHasBeenSet)
+  {
+      unsigned ipv4PrefixesIdx = 1;
+      for(auto& item : m_ipv4Prefixes)
+      {
+        Aws::StringStream ipv4PrefixesSs;
+        ipv4PrefixesSs << location <<  ".Ipv4PrefixSet." << ipv4PrefixesIdx++;
+        item.OutputToStream(oStream, ipv4PrefixesSs.str().c_str());
+      }
+  }
+  if(m_ipv6PrefixesHasBeenSet)
+  {
+      unsigned ipv6PrefixesIdx = 1;
+      for(auto& item : m_ipv6Prefixes)
+      {
+        Aws::StringStream ipv6PrefixesSs;
+        ipv6PrefixesSs << location <<  ".Ipv6PrefixSet." << ipv6PrefixesIdx++;
+        item.OutputToStream(oStream, ipv6PrefixesSs.str().c_str());
       }
   }
   if(m_requesterIdHasBeenSet)
@@ -483,6 +603,18 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+  if(m_denyAllIgwTrafficHasBeenSet)
+  {
+      oStream << location << ".DenyAllIgwTraffic=" << std::boolalpha << m_denyAllIgwTraffic << "&";
+  }
+  if(m_ipv6NativeHasBeenSet)
+  {
+      oStream << location << ".Ipv6Native=" << std::boolalpha << m_ipv6Native << "&";
+  }
+  if(m_ipv6AddressHasBeenSet)
+  {
+      oStream << location << ".Ipv6Address=" << StringUtils::URLEncode(m_ipv6Address.c_str()) << "&";
   }
 }
 

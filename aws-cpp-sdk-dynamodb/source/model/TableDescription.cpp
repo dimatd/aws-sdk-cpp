@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/dynamodb/model/TableDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -48,8 +38,12 @@ TableDescription::TableDescription() :
     m_streamSpecificationHasBeenSet(false),
     m_latestStreamLabelHasBeenSet(false),
     m_latestStreamArnHasBeenSet(false),
+    m_globalTableVersionHasBeenSet(false),
+    m_replicasHasBeenSet(false),
     m_restoreSummaryHasBeenSet(false),
-    m_sSEDescriptionHasBeenSet(false)
+    m_sSEDescriptionHasBeenSet(false),
+    m_archivalSummaryHasBeenSet(false),
+    m_tableClassSummaryHasBeenSet(false)
 {
 }
 
@@ -73,8 +67,12 @@ TableDescription::TableDescription(JsonView jsonValue) :
     m_streamSpecificationHasBeenSet(false),
     m_latestStreamLabelHasBeenSet(false),
     m_latestStreamArnHasBeenSet(false),
+    m_globalTableVersionHasBeenSet(false),
+    m_replicasHasBeenSet(false),
     m_restoreSummaryHasBeenSet(false),
-    m_sSEDescriptionHasBeenSet(false)
+    m_sSEDescriptionHasBeenSet(false),
+    m_archivalSummaryHasBeenSet(false),
+    m_tableClassSummaryHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -205,6 +203,23 @@ TableDescription& TableDescription::operator =(JsonView jsonValue)
     m_latestStreamArnHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("GlobalTableVersion"))
+  {
+    m_globalTableVersion = jsonValue.GetString("GlobalTableVersion");
+
+    m_globalTableVersionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Replicas"))
+  {
+    Array<JsonView> replicasJsonList = jsonValue.GetArray("Replicas");
+    for(unsigned replicasIndex = 0; replicasIndex < replicasJsonList.GetLength(); ++replicasIndex)
+    {
+      m_replicas.push_back(replicasJsonList[replicasIndex].AsObject());
+    }
+    m_replicasHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("RestoreSummary"))
   {
     m_restoreSummary = jsonValue.GetObject("RestoreSummary");
@@ -217,6 +232,20 @@ TableDescription& TableDescription::operator =(JsonView jsonValue)
     m_sSEDescription = jsonValue.GetObject("SSEDescription");
 
     m_sSEDescriptionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ArchivalSummary"))
+  {
+    m_archivalSummary = jsonValue.GetObject("ArchivalSummary");
+
+    m_archivalSummaryHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TableClassSummary"))
+  {
+    m_tableClassSummary = jsonValue.GetObject("TableClassSummary");
+
+    m_tableClassSummaryHasBeenSet = true;
   }
 
   return *this;
@@ -340,6 +369,23 @@ JsonValue TableDescription::Jsonize() const
 
   }
 
+  if(m_globalTableVersionHasBeenSet)
+  {
+   payload.WithString("GlobalTableVersion", m_globalTableVersion);
+
+  }
+
+  if(m_replicasHasBeenSet)
+  {
+   Array<JsonValue> replicasJsonList(m_replicas.size());
+   for(unsigned replicasIndex = 0; replicasIndex < replicasJsonList.GetLength(); ++replicasIndex)
+   {
+     replicasJsonList[replicasIndex].AsObject(m_replicas[replicasIndex].Jsonize());
+   }
+   payload.WithArray("Replicas", std::move(replicasJsonList));
+
+  }
+
   if(m_restoreSummaryHasBeenSet)
   {
    payload.WithObject("RestoreSummary", m_restoreSummary.Jsonize());
@@ -349,6 +395,18 @@ JsonValue TableDescription::Jsonize() const
   if(m_sSEDescriptionHasBeenSet)
   {
    payload.WithObject("SSEDescription", m_sSEDescription.Jsonize());
+
+  }
+
+  if(m_archivalSummaryHasBeenSet)
+  {
+   payload.WithObject("ArchivalSummary", m_archivalSummary.Jsonize());
+
+  }
+
+  if(m_tableClassSummaryHasBeenSet)
+  {
+   payload.WithObject("TableClassSummary", m_tableClassSummary.Jsonize());
 
   }
 

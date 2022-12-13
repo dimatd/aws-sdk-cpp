@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/medialive/model/OutputGroupSettings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,6 +24,7 @@ OutputGroupSettings::OutputGroupSettings() :
     m_hlsGroupSettingsHasBeenSet(false),
     m_mediaPackageGroupSettingsHasBeenSet(false),
     m_msSmoothGroupSettingsHasBeenSet(false),
+    m_multiplexGroupSettingsHasBeenSet(false),
     m_rtmpGroupSettingsHasBeenSet(false),
     m_udpGroupSettingsHasBeenSet(false)
 {
@@ -45,6 +36,7 @@ OutputGroupSettings::OutputGroupSettings(JsonView jsonValue) :
     m_hlsGroupSettingsHasBeenSet(false),
     m_mediaPackageGroupSettingsHasBeenSet(false),
     m_msSmoothGroupSettingsHasBeenSet(false),
+    m_multiplexGroupSettingsHasBeenSet(false),
     m_rtmpGroupSettingsHasBeenSet(false),
     m_udpGroupSettingsHasBeenSet(false)
 {
@@ -86,6 +78,13 @@ OutputGroupSettings& OutputGroupSettings::operator =(JsonView jsonValue)
     m_msSmoothGroupSettings = jsonValue.GetObject("msSmoothGroupSettings");
 
     m_msSmoothGroupSettingsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("multiplexGroupSettings"))
+  {
+    m_multiplexGroupSettings = jsonValue.GetObject("multiplexGroupSettings");
+
+    m_multiplexGroupSettingsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("rtmpGroupSettings"))
@@ -136,6 +135,12 @@ JsonValue OutputGroupSettings::Jsonize() const
   if(m_msSmoothGroupSettingsHasBeenSet)
   {
    payload.WithObject("msSmoothGroupSettings", m_msSmoothGroupSettings.Jsonize());
+
+  }
+
+  if(m_multiplexGroupSettingsHasBeenSet)
+  {
+   payload.WithObject("multiplexGroupSettings", m_multiplexGroupSettings.Jsonize());
 
   }
 

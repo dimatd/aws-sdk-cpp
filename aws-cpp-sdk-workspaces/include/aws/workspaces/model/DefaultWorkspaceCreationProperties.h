@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
@@ -34,8 +24,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the default values used to create a WorkSpace.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Describes the default values that are used to create WorkSpaces. For more
+   * information, see <a
+   * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html">Update
+   * Directory Details for Your WorkSpaces</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DefaultWorkspaceCreationProperties">AWS
    * API Reference</a></p>
    */
@@ -70,60 +62,60 @@ namespace Model
 
 
     /**
-     * <p>Specifies whether to automatically assign a public IP address to WorkSpaces
-     * in this directory by default. If enabled, the public IP address allows outbound
-     * internet access from your WorkSpaces when you’re using an internet gateway in
-     * the Amazon VPC in which your WorkSpaces are located. If you're using a Network
-     * Address Translation (NAT) gateway for outbound internet access from your VPC, or
-     * if your WorkSpaces are in public subnets and you manually assign them Elastic IP
-     * addresses, you should disable this setting. This setting applies to new
-     * WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
-     * information, see <a
+     * <p>Specifies whether to automatically assign an Elastic public IP address to
+     * WorkSpaces in this directory by default. If enabled, the Elastic public IP
+     * address allows outbound internet access from your WorkSpaces when you’re using
+     * an internet gateway in the Amazon VPC in which your WorkSpaces are located. If
+     * you're using a Network Address Translation (NAT) gateway for outbound internet
+     * access from your VPC, or if your WorkSpaces are in public subnets and you
+     * manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that
+     * you rebuild. For more information, see <a
      * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
      * Configure a VPC for Amazon WorkSpaces</a>.</p>
      */
     inline bool GetEnableInternetAccess() const{ return m_enableInternetAccess; }
 
     /**
-     * <p>Specifies whether to automatically assign a public IP address to WorkSpaces
-     * in this directory by default. If enabled, the public IP address allows outbound
-     * internet access from your WorkSpaces when you’re using an internet gateway in
-     * the Amazon VPC in which your WorkSpaces are located. If you're using a Network
-     * Address Translation (NAT) gateway for outbound internet access from your VPC, or
-     * if your WorkSpaces are in public subnets and you manually assign them Elastic IP
-     * addresses, you should disable this setting. This setting applies to new
-     * WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
-     * information, see <a
+     * <p>Specifies whether to automatically assign an Elastic public IP address to
+     * WorkSpaces in this directory by default. If enabled, the Elastic public IP
+     * address allows outbound internet access from your WorkSpaces when you’re using
+     * an internet gateway in the Amazon VPC in which your WorkSpaces are located. If
+     * you're using a Network Address Translation (NAT) gateway for outbound internet
+     * access from your VPC, or if your WorkSpaces are in public subnets and you
+     * manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that
+     * you rebuild. For more information, see <a
      * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
      * Configure a VPC for Amazon WorkSpaces</a>.</p>
      */
     inline bool EnableInternetAccessHasBeenSet() const { return m_enableInternetAccessHasBeenSet; }
 
     /**
-     * <p>Specifies whether to automatically assign a public IP address to WorkSpaces
-     * in this directory by default. If enabled, the public IP address allows outbound
-     * internet access from your WorkSpaces when you’re using an internet gateway in
-     * the Amazon VPC in which your WorkSpaces are located. If you're using a Network
-     * Address Translation (NAT) gateway for outbound internet access from your VPC, or
-     * if your WorkSpaces are in public subnets and you manually assign them Elastic IP
-     * addresses, you should disable this setting. This setting applies to new
-     * WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
-     * information, see <a
+     * <p>Specifies whether to automatically assign an Elastic public IP address to
+     * WorkSpaces in this directory by default. If enabled, the Elastic public IP
+     * address allows outbound internet access from your WorkSpaces when you’re using
+     * an internet gateway in the Amazon VPC in which your WorkSpaces are located. If
+     * you're using a Network Address Translation (NAT) gateway for outbound internet
+     * access from your VPC, or if your WorkSpaces are in public subnets and you
+     * manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that
+     * you rebuild. For more information, see <a
      * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
      * Configure a VPC for Amazon WorkSpaces</a>.</p>
      */
     inline void SetEnableInternetAccess(bool value) { m_enableInternetAccessHasBeenSet = true; m_enableInternetAccess = value; }
 
     /**
-     * <p>Specifies whether to automatically assign a public IP address to WorkSpaces
-     * in this directory by default. If enabled, the public IP address allows outbound
-     * internet access from your WorkSpaces when you’re using an internet gateway in
-     * the Amazon VPC in which your WorkSpaces are located. If you're using a Network
-     * Address Translation (NAT) gateway for outbound internet access from your VPC, or
-     * if your WorkSpaces are in public subnets and you manually assign them Elastic IP
-     * addresses, you should disable this setting. This setting applies to new
-     * WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
-     * information, see <a
+     * <p>Specifies whether to automatically assign an Elastic public IP address to
+     * WorkSpaces in this directory by default. If enabled, the Elastic public IP
+     * address allows outbound internet access from your WorkSpaces when you’re using
+     * an internet gateway in the Amazon VPC in which your WorkSpaces are located. If
+     * you're using a Network Address Translation (NAT) gateway for outbound internet
+     * access from your VPC, or if your WorkSpaces are in public subnets and you
+     * manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that
+     * you rebuild. For more information, see <a
      * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
      * Configure a VPC for Amazon WorkSpaces</a>.</p>
      */
@@ -180,77 +172,126 @@ namespace Model
 
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline const Aws::String& GetCustomSecurityGroupId() const{ return m_customSecurityGroupId; }
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline bool CustomSecurityGroupIdHasBeenSet() const { return m_customSecurityGroupIdHasBeenSet; }
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline void SetCustomSecurityGroupId(const Aws::String& value) { m_customSecurityGroupIdHasBeenSet = true; m_customSecurityGroupId = value; }
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline void SetCustomSecurityGroupId(Aws::String&& value) { m_customSecurityGroupIdHasBeenSet = true; m_customSecurityGroupId = std::move(value); }
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline void SetCustomSecurityGroupId(const char* value) { m_customSecurityGroupIdHasBeenSet = true; m_customSecurityGroupId.assign(value); }
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline DefaultWorkspaceCreationProperties& WithCustomSecurityGroupId(const Aws::String& value) { SetCustomSecurityGroupId(value); return *this;}
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline DefaultWorkspaceCreationProperties& WithCustomSecurityGroupId(Aws::String&& value) { SetCustomSecurityGroupId(std::move(value)); return *this;}
 
     /**
-     * <p>The identifier of any security groups to apply to WorkSpaces when they are
-     * created.</p>
+     * <p>The identifier of the default security group to apply to WorkSpaces when they
+     * are created. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html">
+     * Security Groups for Your WorkSpaces</a>.</p>
      */
     inline DefaultWorkspaceCreationProperties& WithCustomSecurityGroupId(const char* value) { SetCustomSecurityGroupId(value); return *this;}
 
 
     /**
-     * <p>Specifies whether the WorkSpace user is an administrator on the
-     * WorkSpace.</p>
+     * <p>Specifies whether WorkSpace users are local administrators on their
+     * WorkSpaces.</p>
      */
     inline bool GetUserEnabledAsLocalAdministrator() const{ return m_userEnabledAsLocalAdministrator; }
 
     /**
-     * <p>Specifies whether the WorkSpace user is an administrator on the
-     * WorkSpace.</p>
+     * <p>Specifies whether WorkSpace users are local administrators on their
+     * WorkSpaces.</p>
      */
     inline bool UserEnabledAsLocalAdministratorHasBeenSet() const { return m_userEnabledAsLocalAdministratorHasBeenSet; }
 
     /**
-     * <p>Specifies whether the WorkSpace user is an administrator on the
-     * WorkSpace.</p>
+     * <p>Specifies whether WorkSpace users are local administrators on their
+     * WorkSpaces.</p>
      */
     inline void SetUserEnabledAsLocalAdministrator(bool value) { m_userEnabledAsLocalAdministratorHasBeenSet = true; m_userEnabledAsLocalAdministrator = value; }
 
     /**
-     * <p>Specifies whether the WorkSpace user is an administrator on the
-     * WorkSpace.</p>
+     * <p>Specifies whether WorkSpace users are local administrators on their
+     * WorkSpaces.</p>
      */
     inline DefaultWorkspaceCreationProperties& WithUserEnabledAsLocalAdministrator(bool value) { SetUserEnabledAsLocalAdministrator(value); return *this;}
+
+
+    /**
+     * <p>Specifies whether maintenance mode is enabled for WorkSpaces. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.</p>
+     */
+    inline bool GetEnableMaintenanceMode() const{ return m_enableMaintenanceMode; }
+
+    /**
+     * <p>Specifies whether maintenance mode is enabled for WorkSpaces. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.</p>
+     */
+    inline bool EnableMaintenanceModeHasBeenSet() const { return m_enableMaintenanceModeHasBeenSet; }
+
+    /**
+     * <p>Specifies whether maintenance mode is enabled for WorkSpaces. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.</p>
+     */
+    inline void SetEnableMaintenanceMode(bool value) { m_enableMaintenanceModeHasBeenSet = true; m_enableMaintenanceMode = value; }
+
+    /**
+     * <p>Specifies whether maintenance mode is enabled for WorkSpaces. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.</p>
+     */
+    inline DefaultWorkspaceCreationProperties& WithEnableMaintenanceMode(bool value) { SetEnableMaintenanceMode(value); return *this;}
 
   private:
 
@@ -268,6 +309,9 @@ namespace Model
 
     bool m_userEnabledAsLocalAdministrator;
     bool m_userEnabledAsLocalAdministratorHasBeenSet;
+
+    bool m_enableMaintenanceMode;
+    bool m_enableMaintenanceModeHasBeenSet;
   };
 
 } // namespace Model

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -91,29 +81,29 @@ namespace Model
 
     /**
      * <p>Sets the execution timeout value (in minutes) for a project. All test runs in
-     * this project will use the specified execution timeout value unless overridden
-     * when scheduling a run.</p>
+     * this project use the specified execution timeout value unless overridden when
+     * scheduling a run.</p>
      */
     inline int GetDefaultJobTimeoutMinutes() const{ return m_defaultJobTimeoutMinutes; }
 
     /**
      * <p>Sets the execution timeout value (in minutes) for a project. All test runs in
-     * this project will use the specified execution timeout value unless overridden
-     * when scheduling a run.</p>
+     * this project use the specified execution timeout value unless overridden when
+     * scheduling a run.</p>
      */
     inline bool DefaultJobTimeoutMinutesHasBeenSet() const { return m_defaultJobTimeoutMinutesHasBeenSet; }
 
     /**
      * <p>Sets the execution timeout value (in minutes) for a project. All test runs in
-     * this project will use the specified execution timeout value unless overridden
-     * when scheduling a run.</p>
+     * this project use the specified execution timeout value unless overridden when
+     * scheduling a run.</p>
      */
     inline void SetDefaultJobTimeoutMinutes(int value) { m_defaultJobTimeoutMinutesHasBeenSet = true; m_defaultJobTimeoutMinutes = value; }
 
     /**
      * <p>Sets the execution timeout value (in minutes) for a project. All test runs in
-     * this project will use the specified execution timeout value unless overridden
-     * when scheduling a run.</p>
+     * this project use the specified execution timeout value unless overridden when
+     * scheduling a run.</p>
      */
     inline CreateProjectRequest& WithDefaultJobTimeoutMinutes(int value) { SetDefaultJobTimeoutMinutes(value); return *this;}
 

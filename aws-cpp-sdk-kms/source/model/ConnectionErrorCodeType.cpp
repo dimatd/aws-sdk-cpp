@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/kms/model/ConnectionErrorCodeType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -36,6 +26,9 @@ namespace Aws
         static const int INTERNAL_ERROR_HASH = HashingUtils::HashString("INTERNAL_ERROR");
         static const int INSUFFICIENT_CLOUDHSM_HSMS_HASH = HashingUtils::HashString("INSUFFICIENT_CLOUDHSM_HSMS");
         static const int USER_LOCKED_OUT_HASH = HashingUtils::HashString("USER_LOCKED_OUT");
+        static const int USER_NOT_FOUND_HASH = HashingUtils::HashString("USER_NOT_FOUND");
+        static const int USER_LOGGED_IN_HASH = HashingUtils::HashString("USER_LOGGED_IN");
+        static const int SUBNET_NOT_FOUND_HASH = HashingUtils::HashString("SUBNET_NOT_FOUND");
 
 
         ConnectionErrorCodeType GetConnectionErrorCodeTypeForName(const Aws::String& name)
@@ -65,6 +58,18 @@ namespace Aws
           {
             return ConnectionErrorCodeType::USER_LOCKED_OUT;
           }
+          else if (hashCode == USER_NOT_FOUND_HASH)
+          {
+            return ConnectionErrorCodeType::USER_NOT_FOUND;
+          }
+          else if (hashCode == USER_LOGGED_IN_HASH)
+          {
+            return ConnectionErrorCodeType::USER_LOGGED_IN;
+          }
+          else if (hashCode == SUBNET_NOT_FOUND_HASH)
+          {
+            return ConnectionErrorCodeType::SUBNET_NOT_FOUND;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -91,6 +96,12 @@ namespace Aws
             return "INSUFFICIENT_CLOUDHSM_HSMS";
           case ConnectionErrorCodeType::USER_LOCKED_OUT:
             return "USER_LOCKED_OUT";
+          case ConnectionErrorCodeType::USER_NOT_FOUND:
+            return "USER_NOT_FOUND";
+          case ConnectionErrorCodeType::USER_LOGGED_IN:
+            return "USER_LOGGED_IN";
+          case ConnectionErrorCodeType::SUBNET_NOT_FOUND:
+            return "SUBNET_NOT_FOUND";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

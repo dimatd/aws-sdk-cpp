@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lex-models/LexModelBuildingService_EXPORTS.h>
@@ -20,6 +10,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/lex-models/model/SlotValueSelectionStrategy.h>
 #include <aws/lex-models/model/EnumerationValue.h>
+#include <aws/lex-models/model/SlotTypeConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -179,13 +170,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline const Aws::Vector<EnumerationValue>& GetEnumerationValues() const{ return m_enumerationValues; }
 
@@ -193,13 +185,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline bool EnumerationValuesHasBeenSet() const { return m_enumerationValuesHasBeenSet; }
 
@@ -207,13 +200,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline void SetEnumerationValues(const Aws::Vector<EnumerationValue>& value) { m_enumerationValuesHasBeenSet = true; m_enumerationValues = value; }
 
@@ -221,13 +215,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline void SetEnumerationValues(Aws::Vector<EnumerationValue>&& value) { m_enumerationValuesHasBeenSet = true; m_enumerationValues = std::move(value); }
 
@@ -235,13 +230,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline PutSlotTypeRequest& WithEnumerationValues(const Aws::Vector<EnumerationValue>& value) { SetEnumerationValues(value); return *this;}
 
@@ -249,13 +245,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline PutSlotTypeRequest& WithEnumerationValues(Aws::Vector<EnumerationValue>&& value) { SetEnumerationValues(std::move(value)); return *this;}
 
@@ -263,13 +260,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline PutSlotTypeRequest& AddEnumerationValues(const EnumerationValue& value) { m_enumerationValuesHasBeenSet = true; m_enumerationValues.push_back(value); return *this; }
 
@@ -277,13 +275,14 @@ namespace Model
      * <p>A list of <code>EnumerationValue</code> objects that defines the values that
      * the slot type can take. Each value can have a list of <code>synonyms</code>,
      * which are additional values that help train the machine learning model about the
-     * values that it resolves for a slot. </p> <p>When Amazon Lex resolves a slot
-     * value, it generates a resolution list that contains up to five possible values
-     * for the slot. If you are using a Lambda function, this resolution list is passed
-     * to the function. If you are not using a Lambda function you can choose to return
-     * the value that the user entered or the first value in the resolution list as the
-     * slot value. The <code>valueSelectionStrategy</code> field indicates the option
-     * to use. </p>
+     * values that it resolves for a slot. </p> <p>A regular expression slot type
+     * doesn't require enumeration values. All other slot types require a list of
+     * enumeration values.</p> <p>When Amazon Lex resolves a slot value, it generates a
+     * resolution list that contains up to five possible values for the slot. If you
+     * are using a Lambda function, this resolution list is passed to the function. If
+     * you are not using a Lambda function you can choose to return the value that the
+     * user entered or the first value in the resolution list as the slot value. The
+     * <code>valueSelectionStrategy</code> field indicates the option to use. </p>
      */
     inline PutSlotTypeRequest& AddEnumerationValues(EnumerationValue&& value) { m_enumerationValuesHasBeenSet = true; m_enumerationValues.push_back(std::move(value)); return *this; }
 
@@ -464,17 +463,143 @@ namespace Model
     inline PutSlotTypeRequest& WithValueSelectionStrategy(SlotValueSelectionStrategy&& value) { SetValueSelectionStrategy(std::move(value)); return *this;}
 
 
-    
+    /**
+     * <p>When set to <code>true</code> a new numbered version of the slot type is
+     * created. This is the same as calling the <code>CreateSlotTypeVersion</code>
+     * operation. If you do not specify <code>createVersion</code>, the default is
+     * <code>false</code>.</p>
+     */
     inline bool GetCreateVersion() const{ return m_createVersion; }
 
-    
+    /**
+     * <p>When set to <code>true</code> a new numbered version of the slot type is
+     * created. This is the same as calling the <code>CreateSlotTypeVersion</code>
+     * operation. If you do not specify <code>createVersion</code>, the default is
+     * <code>false</code>.</p>
+     */
     inline bool CreateVersionHasBeenSet() const { return m_createVersionHasBeenSet; }
 
-    
+    /**
+     * <p>When set to <code>true</code> a new numbered version of the slot type is
+     * created. This is the same as calling the <code>CreateSlotTypeVersion</code>
+     * operation. If you do not specify <code>createVersion</code>, the default is
+     * <code>false</code>.</p>
+     */
     inline void SetCreateVersion(bool value) { m_createVersionHasBeenSet = true; m_createVersion = value; }
 
-    
+    /**
+     * <p>When set to <code>true</code> a new numbered version of the slot type is
+     * created. This is the same as calling the <code>CreateSlotTypeVersion</code>
+     * operation. If you do not specify <code>createVersion</code>, the default is
+     * <code>false</code>.</p>
+     */
     inline PutSlotTypeRequest& WithCreateVersion(bool value) { SetCreateVersion(value); return *this;}
+
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline const Aws::String& GetParentSlotTypeSignature() const{ return m_parentSlotTypeSignature; }
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline bool ParentSlotTypeSignatureHasBeenSet() const { return m_parentSlotTypeSignatureHasBeenSet; }
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline void SetParentSlotTypeSignature(const Aws::String& value) { m_parentSlotTypeSignatureHasBeenSet = true; m_parentSlotTypeSignature = value; }
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline void SetParentSlotTypeSignature(Aws::String&& value) { m_parentSlotTypeSignatureHasBeenSet = true; m_parentSlotTypeSignature = std::move(value); }
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline void SetParentSlotTypeSignature(const char* value) { m_parentSlotTypeSignatureHasBeenSet = true; m_parentSlotTypeSignature.assign(value); }
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline PutSlotTypeRequest& WithParentSlotTypeSignature(const Aws::String& value) { SetParentSlotTypeSignature(value); return *this;}
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline PutSlotTypeRequest& WithParentSlotTypeSignature(Aws::String&& value) { SetParentSlotTypeSignature(std::move(value)); return *this;}
+
+    /**
+     * <p>The built-in slot type used as the parent of the slot type. When you define a
+     * parent slot type, the new slot type has all of the same configuration as the
+     * parent.</p> <p>Only <code>AMAZON.AlphaNumeric</code> is supported.</p>
+     */
+    inline PutSlotTypeRequest& WithParentSlotTypeSignature(const char* value) { SetParentSlotTypeSignature(value); return *this;}
+
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline const Aws::Vector<SlotTypeConfiguration>& GetSlotTypeConfigurations() const{ return m_slotTypeConfigurations; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline bool SlotTypeConfigurationsHasBeenSet() const { return m_slotTypeConfigurationsHasBeenSet; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline void SetSlotTypeConfigurations(const Aws::Vector<SlotTypeConfiguration>& value) { m_slotTypeConfigurationsHasBeenSet = true; m_slotTypeConfigurations = value; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline void SetSlotTypeConfigurations(Aws::Vector<SlotTypeConfiguration>&& value) { m_slotTypeConfigurationsHasBeenSet = true; m_slotTypeConfigurations = std::move(value); }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline PutSlotTypeRequest& WithSlotTypeConfigurations(const Aws::Vector<SlotTypeConfiguration>& value) { SetSlotTypeConfigurations(value); return *this;}
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline PutSlotTypeRequest& WithSlotTypeConfigurations(Aws::Vector<SlotTypeConfiguration>&& value) { SetSlotTypeConfigurations(std::move(value)); return *this;}
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline PutSlotTypeRequest& AddSlotTypeConfigurations(const SlotTypeConfiguration& value) { m_slotTypeConfigurationsHasBeenSet = true; m_slotTypeConfigurations.push_back(value); return *this; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type. The
+     * configuration is added to the settings for the parent slot type.</p>
+     */
+    inline PutSlotTypeRequest& AddSlotTypeConfigurations(SlotTypeConfiguration&& value) { m_slotTypeConfigurationsHasBeenSet = true; m_slotTypeConfigurations.push_back(std::move(value)); return *this; }
 
   private:
 
@@ -495,6 +620,12 @@ namespace Model
 
     bool m_createVersion;
     bool m_createVersionHasBeenSet;
+
+    Aws::String m_parentSlotTypeSignature;
+    bool m_parentSlotTypeSignatureHasBeenSet;
+
+    Aws::Vector<SlotTypeConfiguration> m_slotTypeConfigurations;
+    bool m_slotTypeConfigurationsHasBeenSet;
   };
 
 } // namespace Model

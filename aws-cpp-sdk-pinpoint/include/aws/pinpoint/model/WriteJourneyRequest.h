@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -22,6 +12,7 @@
 #include <aws/pinpoint/model/JourneySchedule.h>
 #include <aws/pinpoint/model/StartCondition.h>
 #include <aws/pinpoint/model/State.h>
+#include <aws/pinpoint/model/JourneyChannelSettings.h>
 #include <aws/pinpoint/model/Activity.h>
 #include <utility>
 
@@ -56,74 +47,110 @@ namespace Model
 
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline const Aws::Map<Aws::String, Activity>& GetActivities() const{ return m_activities; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline bool ActivitiesHasBeenSet() const { return m_activitiesHasBeenSet; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline void SetActivities(const Aws::Map<Aws::String, Activity>& value) { m_activitiesHasBeenSet = true; m_activities = value; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline void SetActivities(Aws::Map<Aws::String, Activity>&& value) { m_activitiesHasBeenSet = true; m_activities = std::move(value); }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& WithActivities(const Aws::Map<Aws::String, Activity>& value) { SetActivities(value); return *this;}
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& WithActivities(Aws::Map<Aws::String, Activity>&& value) { SetActivities(std::move(value)); return *this;}
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& AddActivities(const Aws::String& key, const Activity& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, value); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& AddActivities(Aws::String&& key, const Activity& value) { m_activitiesHasBeenSet = true; m_activities.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& AddActivities(const Aws::String& key, Activity&& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& AddActivities(Aws::String&& key, Activity&& value) { m_activitiesHasBeenSet = true; m_activities.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& AddActivities(const char* key, Activity&& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity. An
+     * activity identifier can contain a maximum of 100 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& AddActivities(const char* key, const Activity& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, value); return *this; }
 
@@ -493,42 +520,58 @@ namespace Model
 
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline const Aws::String& GetStartActivity() const{ return m_startActivity; }
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline bool StartActivityHasBeenSet() const { return m_startActivityHasBeenSet; }
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline void SetStartActivity(const Aws::String& value) { m_startActivityHasBeenSet = true; m_startActivity = value; }
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline void SetStartActivity(Aws::String&& value) { m_startActivityHasBeenSet = true; m_startActivity = std::move(value); }
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline void SetStartActivity(const char* value) { m_startActivityHasBeenSet = true; m_startActivity.assign(value); }
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& WithStartActivity(const Aws::String& value) { SetStartActivity(value); return *this;}
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& WithStartActivity(Aws::String&& value) { SetStartActivity(std::move(value)); return *this;}
 
     /**
-     * <p>The unique identifier for the first activity in the journey.</p>
+     * <p>The unique identifier for the first activity in the journey. The identifier
+     * for this activity can contain a maximum of 128 characters. The characters must
+     * be alphanumeric characters.</p>
      */
     inline WriteJourneyRequest& WithStartActivity(const char* value) { SetStartActivity(value); return *this;}
 
@@ -569,9 +612,9 @@ namespace Model
      * journey and doesn't publish it.</p></li> <li><p>ACTIVE - Saves and publishes the
      * journey. Depending on the journey's schedule, the journey starts running
      * immediately or at the scheduled start time. If a journey's status is ACTIVE, you
-     * can't add, change, or remove activities from it.</p></li></ul> <p>The CANCELLED,
-     * COMPLETED, and CLOSED values are not supported in requests to create or update a
-     * journey. To cancel a journey, use the <link 
+     * can't add, change, or remove activities from it.</p></li></ul> <p>PAUSED,
+     * CANCELLED, COMPLETED, and CLOSED states are not supported in requests to create
+     * or update a journey. To cancel, pause, or resume a journey, use the <link 
      * linkend="apps-application-id-journeys-journey-id-state">Journey State</link>
      * resource.</p>
      */
@@ -582,9 +625,9 @@ namespace Model
      * journey and doesn't publish it.</p></li> <li><p>ACTIVE - Saves and publishes the
      * journey. Depending on the journey's schedule, the journey starts running
      * immediately or at the scheduled start time. If a journey's status is ACTIVE, you
-     * can't add, change, or remove activities from it.</p></li></ul> <p>The CANCELLED,
-     * COMPLETED, and CLOSED values are not supported in requests to create or update a
-     * journey. To cancel a journey, use the <link 
+     * can't add, change, or remove activities from it.</p></li></ul> <p>PAUSED,
+     * CANCELLED, COMPLETED, and CLOSED states are not supported in requests to create
+     * or update a journey. To cancel, pause, or resume a journey, use the <link 
      * linkend="apps-application-id-journeys-journey-id-state">Journey State</link>
      * resource.</p>
      */
@@ -595,9 +638,9 @@ namespace Model
      * journey and doesn't publish it.</p></li> <li><p>ACTIVE - Saves and publishes the
      * journey. Depending on the journey's schedule, the journey starts running
      * immediately or at the scheduled start time. If a journey's status is ACTIVE, you
-     * can't add, change, or remove activities from it.</p></li></ul> <p>The CANCELLED,
-     * COMPLETED, and CLOSED values are not supported in requests to create or update a
-     * journey. To cancel a journey, use the <link 
+     * can't add, change, or remove activities from it.</p></li></ul> <p>PAUSED,
+     * CANCELLED, COMPLETED, and CLOSED states are not supported in requests to create
+     * or update a journey. To cancel, pause, or resume a journey, use the <link 
      * linkend="apps-application-id-journeys-journey-id-state">Journey State</link>
      * resource.</p>
      */
@@ -608,9 +651,9 @@ namespace Model
      * journey and doesn't publish it.</p></li> <li><p>ACTIVE - Saves and publishes the
      * journey. Depending on the journey's schedule, the journey starts running
      * immediately or at the scheduled start time. If a journey's status is ACTIVE, you
-     * can't add, change, or remove activities from it.</p></li></ul> <p>The CANCELLED,
-     * COMPLETED, and CLOSED values are not supported in requests to create or update a
-     * journey. To cancel a journey, use the <link 
+     * can't add, change, or remove activities from it.</p></li></ul> <p>PAUSED,
+     * CANCELLED, COMPLETED, and CLOSED states are not supported in requests to create
+     * or update a journey. To cancel, pause, or resume a journey, use the <link 
      * linkend="apps-application-id-journeys-journey-id-state">Journey State</link>
      * resource.</p>
      */
@@ -621,9 +664,9 @@ namespace Model
      * journey and doesn't publish it.</p></li> <li><p>ACTIVE - Saves and publishes the
      * journey. Depending on the journey's schedule, the journey starts running
      * immediately or at the scheduled start time. If a journey's status is ACTIVE, you
-     * can't add, change, or remove activities from it.</p></li></ul> <p>The CANCELLED,
-     * COMPLETED, and CLOSED values are not supported in requests to create or update a
-     * journey. To cancel a journey, use the <link 
+     * can't add, change, or remove activities from it.</p></li></ul> <p>PAUSED,
+     * CANCELLED, COMPLETED, and CLOSED states are not supported in requests to create
+     * or update a journey. To cancel, pause, or resume a journey, use the <link 
      * linkend="apps-application-id-journeys-journey-id-state">Journey State</link>
      * resource.</p>
      */
@@ -634,13 +677,90 @@ namespace Model
      * journey and doesn't publish it.</p></li> <li><p>ACTIVE - Saves and publishes the
      * journey. Depending on the journey's schedule, the journey starts running
      * immediately or at the scheduled start time. If a journey's status is ACTIVE, you
-     * can't add, change, or remove activities from it.</p></li></ul> <p>The CANCELLED,
-     * COMPLETED, and CLOSED values are not supported in requests to create or update a
-     * journey. To cancel a journey, use the <link 
+     * can't add, change, or remove activities from it.</p></li></ul> <p>PAUSED,
+     * CANCELLED, COMPLETED, and CLOSED states are not supported in requests to create
+     * or update a journey. To cancel, pause, or resume a journey, use the <link 
      * linkend="apps-application-id-journeys-journey-id-state">Journey State</link>
      * resource.</p>
      */
     inline WriteJourneyRequest& WithState(State&& value) { SetState(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline bool GetWaitForQuietTime() const{ return m_waitForQuietTime; }
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline bool WaitForQuietTimeHasBeenSet() const { return m_waitForQuietTimeHasBeenSet; }
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline void SetWaitForQuietTime(bool value) { m_waitForQuietTimeHasBeenSet = true; m_waitForQuietTime = value; }
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline WriteJourneyRequest& WithWaitForQuietTime(bool value) { SetWaitForQuietTime(value); return *this;}
+
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline bool GetRefreshOnSegmentUpdate() const{ return m_refreshOnSegmentUpdate; }
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline bool RefreshOnSegmentUpdateHasBeenSet() const { return m_refreshOnSegmentUpdateHasBeenSet; }
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline void SetRefreshOnSegmentUpdate(bool value) { m_refreshOnSegmentUpdateHasBeenSet = true; m_refreshOnSegmentUpdate = value; }
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline WriteJourneyRequest& WithRefreshOnSegmentUpdate(bool value) { SetRefreshOnSegmentUpdate(value); return *this;}
+
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline const JourneyChannelSettings& GetJourneyChannelSettings() const{ return m_journeyChannelSettings; }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline bool JourneyChannelSettingsHasBeenSet() const { return m_journeyChannelSettingsHasBeenSet; }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline void SetJourneyChannelSettings(const JourneyChannelSettings& value) { m_journeyChannelSettingsHasBeenSet = true; m_journeyChannelSettings = value; }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline void SetJourneyChannelSettings(JourneyChannelSettings&& value) { m_journeyChannelSettingsHasBeenSet = true; m_journeyChannelSettings = std::move(value); }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline WriteJourneyRequest& WithJourneyChannelSettings(const JourneyChannelSettings& value) { SetJourneyChannelSettings(value); return *this;}
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline WriteJourneyRequest& WithJourneyChannelSettings(JourneyChannelSettings&& value) { SetJourneyChannelSettings(std::move(value)); return *this;}
 
   private:
 
@@ -679,6 +799,15 @@ namespace Model
 
     State m_state;
     bool m_stateHasBeenSet;
+
+    bool m_waitForQuietTime;
+    bool m_waitForQuietTimeHasBeenSet;
+
+    bool m_refreshOnSegmentUpdate;
+    bool m_refreshOnSegmentUpdateHasBeenSet;
+
+    JourneyChannelSettings m_journeyChannelSettings;
+    bool m_journeyChannelSettingsHasBeenSet;
   };
 
 } // namespace Model

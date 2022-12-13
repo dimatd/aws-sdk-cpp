@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iotevents/IoTEvents_EXPORTS.h>
@@ -89,36 +79,92 @@ namespace Model
 
 
     /**
-     * <p>The number of seconds until the timer expires. The minimum value is 60
-     * seconds to ensure accuracy.</p>
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
      */
-    inline int GetSeconds() const{ return m_seconds; }
+    inline const Aws::String& GetDurationExpression() const{ return m_durationExpression; }
 
     /**
-     * <p>The number of seconds until the timer expires. The minimum value is 60
-     * seconds to ensure accuracy.</p>
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
      */
-    inline bool SecondsHasBeenSet() const { return m_secondsHasBeenSet; }
+    inline bool DurationExpressionHasBeenSet() const { return m_durationExpressionHasBeenSet; }
 
     /**
-     * <p>The number of seconds until the timer expires. The minimum value is 60
-     * seconds to ensure accuracy.</p>
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
      */
-    inline void SetSeconds(int value) { m_secondsHasBeenSet = true; m_seconds = value; }
+    inline void SetDurationExpression(const Aws::String& value) { m_durationExpressionHasBeenSet = true; m_durationExpression = value; }
 
     /**
-     * <p>The number of seconds until the timer expires. The minimum value is 60
-     * seconds to ensure accuracy.</p>
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
      */
-    inline SetTimerAction& WithSeconds(int value) { SetSeconds(value); return *this;}
+    inline void SetDurationExpression(Aws::String&& value) { m_durationExpressionHasBeenSet = true; m_durationExpression = std::move(value); }
+
+    /**
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
+     */
+    inline void SetDurationExpression(const char* value) { m_durationExpressionHasBeenSet = true; m_durationExpression.assign(value); }
+
+    /**
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
+     */
+    inline SetTimerAction& WithDurationExpression(const Aws::String& value) { SetDurationExpression(value); return *this;}
+
+    /**
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
+     */
+    inline SetTimerAction& WithDurationExpression(Aws::String&& value) { SetDurationExpression(std::move(value)); return *this;}
+
+    /**
+     * <p>The duration of the timer, in seconds. You can use a string expression that
+     * includes numbers, variables (<code>$variable.&lt;variable-name&gt;</code>), and
+     * input values (<code>$input.&lt;input-name&gt;.&lt;path-to-datum&gt;</code>) as
+     * the duration. The range of the duration is 1-31622400 seconds. To ensure
+     * accuracy, the minimum duration is 60 seconds. The evaluated result of the
+     * duration is rounded down to the nearest whole number. </p>
+     */
+    inline SetTimerAction& WithDurationExpression(const char* value) { SetDurationExpression(value); return *this;}
 
   private:
 
     Aws::String m_timerName;
     bool m_timerNameHasBeenSet;
 
-    int m_seconds;
-    bool m_secondsHasBeenSet;
+    Aws::String m_durationExpression;
+    bool m_durationExpressionHasBeenSet;
   };
 
 } // namespace Model

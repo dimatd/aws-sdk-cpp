@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/UpdateStageRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -25,6 +15,8 @@ using namespace Aws::Utils;
 UpdateStageRequest::UpdateStageRequest() : 
     m_accessLogSettingsHasBeenSet(false),
     m_apiIdHasBeenSet(false),
+    m_autoDeploy(false),
+    m_autoDeployHasBeenSet(false),
     m_clientCertificateIdHasBeenSet(false),
     m_defaultRouteSettingsHasBeenSet(false),
     m_deploymentIdHasBeenSet(false),
@@ -42,6 +34,12 @@ Aws::String UpdateStageRequest::SerializePayload() const
   if(m_accessLogSettingsHasBeenSet)
   {
    payload.WithObject("accessLogSettings", m_accessLogSettings.Jsonize());
+
+  }
+
+  if(m_autoDeployHasBeenSet)
+  {
+   payload.WithBool("autoDeploy", m_autoDeploy);
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/transcribe/model/Settings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -35,7 +25,14 @@ Settings::Settings() :
     m_maxSpeakerLabels(0),
     m_maxSpeakerLabelsHasBeenSet(false),
     m_channelIdentification(false),
-    m_channelIdentificationHasBeenSet(false)
+    m_channelIdentificationHasBeenSet(false),
+    m_showAlternatives(false),
+    m_showAlternativesHasBeenSet(false),
+    m_maxAlternatives(0),
+    m_maxAlternativesHasBeenSet(false),
+    m_vocabularyFilterNameHasBeenSet(false),
+    m_vocabularyFilterMethod(VocabularyFilterMethod::NOT_SET),
+    m_vocabularyFilterMethodHasBeenSet(false)
 {
 }
 
@@ -46,7 +43,14 @@ Settings::Settings(JsonView jsonValue) :
     m_maxSpeakerLabels(0),
     m_maxSpeakerLabelsHasBeenSet(false),
     m_channelIdentification(false),
-    m_channelIdentificationHasBeenSet(false)
+    m_channelIdentificationHasBeenSet(false),
+    m_showAlternatives(false),
+    m_showAlternativesHasBeenSet(false),
+    m_maxAlternatives(0),
+    m_maxAlternativesHasBeenSet(false),
+    m_vocabularyFilterNameHasBeenSet(false),
+    m_vocabularyFilterMethod(VocabularyFilterMethod::NOT_SET),
+    m_vocabularyFilterMethodHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -81,6 +85,34 @@ Settings& Settings::operator =(JsonView jsonValue)
     m_channelIdentificationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("ShowAlternatives"))
+  {
+    m_showAlternatives = jsonValue.GetBool("ShowAlternatives");
+
+    m_showAlternativesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("MaxAlternatives"))
+  {
+    m_maxAlternatives = jsonValue.GetInteger("MaxAlternatives");
+
+    m_maxAlternativesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("VocabularyFilterName"))
+  {
+    m_vocabularyFilterName = jsonValue.GetString("VocabularyFilterName");
+
+    m_vocabularyFilterNameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("VocabularyFilterMethod"))
+  {
+    m_vocabularyFilterMethod = VocabularyFilterMethodMapper::GetVocabularyFilterMethodForName(jsonValue.GetString("VocabularyFilterMethod"));
+
+    m_vocabularyFilterMethodHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -110,6 +142,29 @@ JsonValue Settings::Jsonize() const
   {
    payload.WithBool("ChannelIdentification", m_channelIdentification);
 
+  }
+
+  if(m_showAlternativesHasBeenSet)
+  {
+   payload.WithBool("ShowAlternatives", m_showAlternatives);
+
+  }
+
+  if(m_maxAlternativesHasBeenSet)
+  {
+   payload.WithInteger("MaxAlternatives", m_maxAlternatives);
+
+  }
+
+  if(m_vocabularyFilterNameHasBeenSet)
+  {
+   payload.WithString("VocabularyFilterName", m_vocabularyFilterName);
+
+  }
+
+  if(m_vocabularyFilterMethodHasBeenSet)
+  {
+   payload.WithString("VocabularyFilterMethod", VocabularyFilterMethodMapper::GetNameForVocabularyFilterMethod(m_vocabularyFilterMethod));
   }
 
   return payload;

@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  * 
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  * 
-  *  http://aws.amazon.com/apache2.0
-  * 
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 
 #include <aws/core/auth/AWSCredentialsProvider.h>
@@ -278,7 +268,7 @@ void InstanceProfileCredentialsProvider::RefreshIfExpired()
     guard.UpgradeToWriterLock();
     if (!IsTimeToRefresh(m_loadFrequencyMs)) // double-checked lock to avoid refreshing twice
     {
-        return; 
+        return;
     }
     Reload();
 }
@@ -327,7 +317,7 @@ void TaskRoleCredentialsProvider::Reload()
     if (credentialsStr.empty()) return;
 
     Json::JsonValue credentialsDoc(credentialsStr);
-    if (!credentialsDoc.WasParseSuccessful()) 
+    if (!credentialsDoc.WasParseSuccessful())
     {
         AWS_LOGSTREAM_ERROR(TASK_ROLE_LOG_TAG, "Failed to parse output from ECSCredentialService.");
         return;
@@ -368,15 +358,13 @@ void TaskRoleCredentialsProvider::RefreshIfExpired()
 
 static const char PROCESS_LOG_TAG[] = "ProcessCredentialsProvider";
 ProcessCredentialsProvider::ProcessCredentialsProvider() :
-    m_profileToUse(Aws::Auth::GetConfigProfileName()),
-    m_configFileLoader(GetConfigProfileFilename(), true)
+    m_profileToUse(Aws::Auth::GetConfigProfileName())
 {
     AWS_LOGSTREAM_INFO(PROCESS_LOG_TAG, "Setting process credentials provider to read config from " <<  m_profileToUse);
 }
 
 ProcessCredentialsProvider::ProcessCredentialsProvider(const Aws::String& profile) :
-    m_profileToUse(profile),
-    m_configFileLoader(GetConfigProfileFilename(), true)
+    m_profileToUse(profile)
 {
     AWS_LOGSTREAM_INFO(PROCESS_LOG_TAG, "Setting process credentials provider to read config from " <<  m_profileToUse);
 }
@@ -391,15 +379,13 @@ AWSCredentials ProcessCredentialsProvider::GetAWSCredentials()
 
 void ProcessCredentialsProvider::Reload()
 {
-    m_configFileLoader.Load();
-    auto configFileProfileIter = m_configFileLoader.GetProfiles().find(m_profileToUse);
-    if(configFileProfileIter == m_configFileLoader.GetProfiles().end())
+    auto profile = Aws::Config::GetCachedConfigProfile(m_profileToUse);
+    const Aws::String &command = profile.GetCredentialProcess();
+    if (command.empty())
     {
-        AWS_LOGSTREAM_ERROR(PROCESS_LOG_TAG, "Failed to find credential process's profile: " << m_profileToUse);
+        AWS_LOGSTREAM_INFO(PROCESS_LOG_TAG, "Failed to find credential process's profile: " << m_profileToUse);
         return;
     }
-
-    const Aws::String& command = configFileProfileIter->second.GetCredentialProcess();
     m_credentials = GetCredentialsFromProcess(command);
 }
 
@@ -471,7 +457,7 @@ AWSCredentials Aws::Auth::GetCredentialsFromProcess(const Aws::String& process)
     }
     else
     {
-        credentials.SetExpiration(std::chrono::time_point<std::chrono::system_clock>::max());
+        credentials.SetExpiration((std::chrono::time_point<std::chrono::system_clock>::max)());
     }
 
     AWS_LOGSTREAM_DEBUG(PROFILE_LOG_TAG, "Successfully pulled credentials from process credential with AccessKey: " << accessKey << ", Expiration:" << credentialsView.GetString("Expiration"));

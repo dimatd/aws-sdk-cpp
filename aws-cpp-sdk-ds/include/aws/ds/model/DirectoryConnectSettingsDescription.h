@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
@@ -91,88 +81,88 @@ namespace Model
 
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline DirectoryConnectSettingsDescription& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline DirectoryConnectSettingsDescription& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline DirectoryConnectSettingsDescription& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline DirectoryConnectSettingsDescription& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+     * <p>A list of subnet identifiers in the VPC that the AD Connector is in.</p>
      */
     inline DirectoryConnectSettingsDescription& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
 
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline const Aws::String& GetCustomerUserName() const{ return m_customerUserName; }
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline bool CustomerUserNameHasBeenSet() const { return m_customerUserNameHasBeenSet; }
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline void SetCustomerUserName(const Aws::String& value) { m_customerUserNameHasBeenSet = true; m_customerUserName = value; }
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline void SetCustomerUserName(Aws::String&& value) { m_customerUserNameHasBeenSet = true; m_customerUserName = std::move(value); }
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline void SetCustomerUserName(const char* value) { m_customerUserNameHasBeenSet = true; m_customerUserName.assign(value); }
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline DirectoryConnectSettingsDescription& WithCustomerUserName(const Aws::String& value) { SetCustomerUserName(value); return *this;}
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline DirectoryConnectSettingsDescription& WithCustomerUserName(Aws::String&& value) { SetCustomerUserName(std::move(value)); return *this;}
 
     /**
-     * <p>The user name of the service account in the on-premises directory.</p>
+     * <p>The user name of the service account in your self-managed directory.</p>
      */
     inline DirectoryConnectSettingsDescription& WithCustomerUserName(const char* value) { SetCustomerUserName(value); return *this;}
 

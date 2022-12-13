@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/cognito-identity/CognitoIdentity_EXPORTS.h>
@@ -110,6 +100,43 @@ namespace Model
      * <p>TRUE if the identity pool supports unauthenticated logins.</p>
      */
     inline CreateIdentityPoolRequest& WithAllowUnauthenticatedIdentities(bool value) { SetAllowUnauthenticatedIdentities(value); return *this;}
+
+
+    /**
+     * <p>Enables or disables the Basic (Classic) authentication flow. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity
+     * Pools (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito
+     * Developer Guide</i>.</p>
+     */
+    inline bool GetAllowClassicFlow() const{ return m_allowClassicFlow; }
+
+    /**
+     * <p>Enables or disables the Basic (Classic) authentication flow. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity
+     * Pools (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito
+     * Developer Guide</i>.</p>
+     */
+    inline bool AllowClassicFlowHasBeenSet() const { return m_allowClassicFlowHasBeenSet; }
+
+    /**
+     * <p>Enables or disables the Basic (Classic) authentication flow. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity
+     * Pools (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito
+     * Developer Guide</i>.</p>
+     */
+    inline void SetAllowClassicFlow(bool value) { m_allowClassicFlowHasBeenSet = true; m_allowClassicFlow = value; }
+
+    /**
+     * <p>Enables or disables the Basic (Classic) authentication flow. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity
+     * Pools (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito
+     * Developer Guide</i>.</p>
+     */
+    inline CreateIdentityPoolRequest& WithAllowClassicFlow(bool value) { SetAllowClassicFlow(value); return *this;}
 
 
     /**
@@ -260,47 +287,47 @@ namespace Model
 
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline const Aws::Vector<Aws::String>& GetOpenIdConnectProviderARNs() const{ return m_openIdConnectProviderARNs; }
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline bool OpenIdConnectProviderARNsHasBeenSet() const { return m_openIdConnectProviderARNsHasBeenSet; }
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline void SetOpenIdConnectProviderARNs(const Aws::Vector<Aws::String>& value) { m_openIdConnectProviderARNsHasBeenSet = true; m_openIdConnectProviderARNs = value; }
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline void SetOpenIdConnectProviderARNs(Aws::Vector<Aws::String>&& value) { m_openIdConnectProviderARNsHasBeenSet = true; m_openIdConnectProviderARNs = std::move(value); }
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline CreateIdentityPoolRequest& WithOpenIdConnectProviderARNs(const Aws::Vector<Aws::String>& value) { SetOpenIdConnectProviderARNs(value); return *this;}
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline CreateIdentityPoolRequest& WithOpenIdConnectProviderARNs(Aws::Vector<Aws::String>&& value) { SetOpenIdConnectProviderARNs(std::move(value)); return *this;}
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline CreateIdentityPoolRequest& AddOpenIdConnectProviderARNs(const Aws::String& value) { m_openIdConnectProviderARNsHasBeenSet = true; m_openIdConnectProviderARNs.push_back(value); return *this; }
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline CreateIdentityPoolRequest& AddOpenIdConnectProviderARNs(Aws::String&& value) { m_openIdConnectProviderARNsHasBeenSet = true; m_openIdConnectProviderARNs.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>A list of OpendID Connect provider ARNs.</p>
+     * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
      */
     inline CreateIdentityPoolRequest& AddOpenIdConnectProviderARNs(const char* value) { m_openIdConnectProviderARNsHasBeenSet = true; m_openIdConnectProviderARNs.push_back(value); return *this; }
 
@@ -499,6 +526,9 @@ namespace Model
 
     bool m_allowUnauthenticatedIdentities;
     bool m_allowUnauthenticatedIdentitiesHasBeenSet;
+
+    bool m_allowClassicFlow;
+    bool m_allowClassicFlowHasBeenSet;
 
     Aws::Map<Aws::String, Aws::String> m_supportedLoginProviders;
     bool m_supportedLoginProvidersHasBeenSet;

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/pinpoint/model/APNSPushNotificationTemplate.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,6 +23,7 @@ APNSPushNotificationTemplate::APNSPushNotificationTemplate() :
     m_actionHasBeenSet(false),
     m_bodyHasBeenSet(false),
     m_mediaUrlHasBeenSet(false),
+    m_rawContentHasBeenSet(false),
     m_soundHasBeenSet(false),
     m_titleHasBeenSet(false),
     m_urlHasBeenSet(false)
@@ -44,6 +35,7 @@ APNSPushNotificationTemplate::APNSPushNotificationTemplate(JsonView jsonValue) :
     m_actionHasBeenSet(false),
     m_bodyHasBeenSet(false),
     m_mediaUrlHasBeenSet(false),
+    m_rawContentHasBeenSet(false),
     m_soundHasBeenSet(false),
     m_titleHasBeenSet(false),
     m_urlHasBeenSet(false)
@@ -72,6 +64,13 @@ APNSPushNotificationTemplate& APNSPushNotificationTemplate::operator =(JsonView 
     m_mediaUrl = jsonValue.GetString("MediaUrl");
 
     m_mediaUrlHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RawContent"))
+  {
+    m_rawContent = jsonValue.GetString("RawContent");
+
+    m_rawContentHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("Sound"))
@@ -116,6 +115,12 @@ JsonValue APNSPushNotificationTemplate::Jsonize() const
   if(m_mediaUrlHasBeenSet)
   {
    payload.WithString("MediaUrl", m_mediaUrl);
+
+  }
+
+  if(m_rawContentHasBeenSet)
+  {
+   payload.WithString("RawContent", m_rawContent);
 
   }
 

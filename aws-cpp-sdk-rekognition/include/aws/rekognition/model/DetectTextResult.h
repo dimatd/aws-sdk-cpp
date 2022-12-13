@@ -1,21 +1,12 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/rekognition/Rekognition_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rekognition/model/TextDetection.h>
 #include <utility>
 
@@ -78,9 +69,47 @@ namespace Model
      */
     inline DetectTextResult& AddTextDetections(TextDetection&& value) { m_textDetections.push_back(std::move(value)); return *this; }
 
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline const Aws::String& GetTextModelVersion() const{ return m_textModelVersion; }
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline void SetTextModelVersion(const Aws::String& value) { m_textModelVersion = value; }
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline void SetTextModelVersion(Aws::String&& value) { m_textModelVersion = std::move(value); }
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline void SetTextModelVersion(const char* value) { m_textModelVersion.assign(value); }
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline DetectTextResult& WithTextModelVersion(const Aws::String& value) { SetTextModelVersion(value); return *this;}
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline DetectTextResult& WithTextModelVersion(Aws::String&& value) { SetTextModelVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The model version used to detect text.</p>
+     */
+    inline DetectTextResult& WithTextModelVersion(const char* value) { SetTextModelVersion(value); return *this;}
+
   private:
 
     Aws::Vector<TextDetection> m_textDetections;
+
+    Aws::String m_textModelVersion;
   };
 
 } // namespace Model

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -35,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p>Represents the autoscaling settings to be modified for a global table or
+   * <p>Represents the auto scaling settings to be modified for a global table or
    * global secondary index.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/AutoScalingSettingsUpdate">AWS
    * API Reference</a></p>
@@ -100,63 +90,63 @@ namespace Model
 
 
     /**
-     * <p>Disabled autoscaling for this global table or global secondary index.</p>
+     * <p>Disabled auto scaling for this global table or global secondary index.</p>
      */
     inline bool GetAutoScalingDisabled() const{ return m_autoScalingDisabled; }
 
     /**
-     * <p>Disabled autoscaling for this global table or global secondary index.</p>
+     * <p>Disabled auto scaling for this global table or global secondary index.</p>
      */
     inline bool AutoScalingDisabledHasBeenSet() const { return m_autoScalingDisabledHasBeenSet; }
 
     /**
-     * <p>Disabled autoscaling for this global table or global secondary index.</p>
+     * <p>Disabled auto scaling for this global table or global secondary index.</p>
      */
     inline void SetAutoScalingDisabled(bool value) { m_autoScalingDisabledHasBeenSet = true; m_autoScalingDisabled = value; }
 
     /**
-     * <p>Disabled autoscaling for this global table or global secondary index.</p>
+     * <p>Disabled auto scaling for this global table or global secondary index.</p>
      */
     inline AutoScalingSettingsUpdate& WithAutoScalingDisabled(bool value) { SetAutoScalingDisabled(value); return *this;}
 
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline const Aws::String& GetAutoScalingRoleArn() const{ return m_autoScalingRoleArn; }
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline bool AutoScalingRoleArnHasBeenSet() const { return m_autoScalingRoleArnHasBeenSet; }
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline void SetAutoScalingRoleArn(const Aws::String& value) { m_autoScalingRoleArnHasBeenSet = true; m_autoScalingRoleArn = value; }
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline void SetAutoScalingRoleArn(Aws::String&& value) { m_autoScalingRoleArnHasBeenSet = true; m_autoScalingRoleArn = std::move(value); }
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline void SetAutoScalingRoleArn(const char* value) { m_autoScalingRoleArnHasBeenSet = true; m_autoScalingRoleArn.assign(value); }
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline AutoScalingSettingsUpdate& WithAutoScalingRoleArn(const Aws::String& value) { SetAutoScalingRoleArn(value); return *this;}
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline AutoScalingSettingsUpdate& WithAutoScalingRoleArn(Aws::String&& value) { SetAutoScalingRoleArn(std::move(value)); return *this;}
 
     /**
-     * <p>Role ARN used for configuring autoscaling policy.</p>
+     * <p>Role ARN used for configuring auto scaling policy.</p>
      */
     inline AutoScalingSettingsUpdate& WithAutoScalingRoleArn(const char* value) { SetAutoScalingRoleArn(value); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -92,119 +82,119 @@ namespace Model
 
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline const Aws::String& GetDeviceArn() const{ return m_deviceArn; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline bool DeviceArnHasBeenSet() const { return m_deviceArnHasBeenSet; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline void SetDeviceArn(const Aws::String& value) { m_deviceArnHasBeenSet = true; m_deviceArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline void SetDeviceArn(Aws::String&& value) { m_deviceArnHasBeenSet = true; m_deviceArn = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline void SetDeviceArn(const char* value) { m_deviceArnHasBeenSet = true; m_deviceArn.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline DeviceInstance& WithDeviceArn(const Aws::String& value) { SetDeviceArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline DeviceInstance& WithDeviceArn(Aws::String&& value) { SetDeviceArn(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the device.</p>
+     * <p>The ARN of the device.</p>
      */
     inline DeviceInstance& WithDeviceArn(const char* value) { SetDeviceArn(value); return *this;}
 
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline const Aws::Vector<Aws::String>& GetLabels() const{ return m_labels; }
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline bool LabelsHasBeenSet() const { return m_labelsHasBeenSet; }
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline void SetLabels(const Aws::Vector<Aws::String>& value) { m_labelsHasBeenSet = true; m_labels = value; }
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline void SetLabels(Aws::Vector<Aws::String>&& value) { m_labelsHasBeenSet = true; m_labels = std::move(value); }
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline DeviceInstance& WithLabels(const Aws::Vector<Aws::String>& value) { SetLabels(value); return *this;}
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline DeviceInstance& WithLabels(Aws::Vector<Aws::String>&& value) { SetLabels(std::move(value)); return *this;}
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline DeviceInstance& AddLabels(const Aws::String& value) { m_labelsHasBeenSet = true; m_labels.push_back(value); return *this; }
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline DeviceInstance& AddLabels(Aws::String&& value) { m_labelsHasBeenSet = true; m_labels.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>An array of strings describing the device instance.</p>
+     * <p>An array of strings that describe the device instance.</p>
      */
     inline DeviceInstance& AddLabels(const char* value) { m_labelsHasBeenSet = true; m_labels.push_back(value); return *this; }
 
 
     /**
-     * <p>The status of the device instance. Valid values are listed below.</p>
+     * <p>The status of the device instance. Valid values are listed here.</p>
      */
     inline const InstanceStatus& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the device instance. Valid values are listed below.</p>
+     * <p>The status of the device instance. Valid values are listed here.</p>
      */
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
 
     /**
-     * <p>The status of the device instance. Valid values are listed below.</p>
+     * <p>The status of the device instance. Valid values are listed here.</p>
      */
     inline void SetStatus(const InstanceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The status of the device instance. Valid values are listed below.</p>
+     * <p>The status of the device instance. Valid values are listed here.</p>
      */
     inline void SetStatus(InstanceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
-     * <p>The status of the device instance. Valid values are listed below.</p>
+     * <p>The status of the device instance. Valid values are listed here.</p>
      */
     inline DeviceInstance& WithStatus(const InstanceStatus& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the device instance. Valid values are listed below.</p>
+     * <p>The status of the device instance. Valid values are listed here.</p>
      */
     inline DeviceInstance& WithStatus(InstanceStatus&& value) { SetStatus(std::move(value)); return *this;}
 
@@ -251,32 +241,32 @@ namespace Model
 
 
     /**
-     * <p>A object containing information about the instance profile.</p>
+     * <p>A object that contains information about the instance profile.</p>
      */
     inline const InstanceProfile& GetInstanceProfile() const{ return m_instanceProfile; }
 
     /**
-     * <p>A object containing information about the instance profile.</p>
+     * <p>A object that contains information about the instance profile.</p>
      */
     inline bool InstanceProfileHasBeenSet() const { return m_instanceProfileHasBeenSet; }
 
     /**
-     * <p>A object containing information about the instance profile.</p>
+     * <p>A object that contains information about the instance profile.</p>
      */
     inline void SetInstanceProfile(const InstanceProfile& value) { m_instanceProfileHasBeenSet = true; m_instanceProfile = value; }
 
     /**
-     * <p>A object containing information about the instance profile.</p>
+     * <p>A object that contains information about the instance profile.</p>
      */
     inline void SetInstanceProfile(InstanceProfile&& value) { m_instanceProfileHasBeenSet = true; m_instanceProfile = std::move(value); }
 
     /**
-     * <p>A object containing information about the instance profile.</p>
+     * <p>A object that contains information about the instance profile.</p>
      */
     inline DeviceInstance& WithInstanceProfile(const InstanceProfile& value) { SetInstanceProfile(value); return *this;}
 
     /**
-     * <p>A object containing information about the instance profile.</p>
+     * <p>A object that contains information about the instance profile.</p>
      */
     inline DeviceInstance& WithInstanceProfile(InstanceProfile&& value) { SetInstanceProfile(std::move(value)); return *this;}
 

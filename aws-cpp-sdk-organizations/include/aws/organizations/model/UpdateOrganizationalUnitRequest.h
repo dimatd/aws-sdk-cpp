@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/organizations/Organizations_EXPORTS.h>
@@ -48,9 +38,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline const Aws::String& GetOrganizationalUnitId() const{ return m_organizationalUnitId; }
 
@@ -58,9 +48,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline bool OrganizationalUnitIdHasBeenSet() const { return m_organizationalUnitIdHasBeenSet; }
 
@@ -68,9 +58,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline void SetOrganizationalUnitId(const Aws::String& value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId = value; }
 
@@ -78,9 +68,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline void SetOrganizationalUnitId(Aws::String&& value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId = std::move(value); }
 
@@ -88,9 +78,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline void SetOrganizationalUnitId(const char* value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId.assign(value); }
 
@@ -98,9 +88,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline UpdateOrganizationalUnitRequest& WithOrganizationalUnitId(const Aws::String& value) { SetOrganizationalUnitId(value); return *this;}
 
@@ -108,9 +98,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline UpdateOrganizationalUnitRequest& WithOrganizationalUnitId(Aws::String&& value) { SetOrganizationalUnitId(std::move(value)); return *this;}
 
@@ -118,9 +108,9 @@ namespace Model
      * <p>The unique identifier (ID) of the OU that you want to rename. You can get the
      * ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational
-     * unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash
-     * and from 8 to 32 additional lower-case letters or digits.</p>
+     * unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
      */
     inline UpdateOrganizationalUnitRequest& WithOrganizationalUnitId(const char* value) { SetOrganizationalUnitId(value); return *this;}
 

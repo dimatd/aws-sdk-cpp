@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/signer/Signer_EXPORTS.h>
 #include <aws/signer/SignerRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/signer/model/SigningMaterial.h>
+#include <aws/signer/model/SignatureValidityPeriod.h>
 #include <aws/signer/model/SigningPlatformOverrides.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
@@ -124,42 +115,79 @@ namespace Model
 
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The default validity period override for any signature generated using this
+     * signing profile. If unspecified, the default is 135 months.</p>
+     */
+    inline const SignatureValidityPeriod& GetSignatureValidityPeriod() const{ return m_signatureValidityPeriod; }
+
+    /**
+     * <p>The default validity period override for any signature generated using this
+     * signing profile. If unspecified, the default is 135 months.</p>
+     */
+    inline bool SignatureValidityPeriodHasBeenSet() const { return m_signatureValidityPeriodHasBeenSet; }
+
+    /**
+     * <p>The default validity period override for any signature generated using this
+     * signing profile. If unspecified, the default is 135 months.</p>
+     */
+    inline void SetSignatureValidityPeriod(const SignatureValidityPeriod& value) { m_signatureValidityPeriodHasBeenSet = true; m_signatureValidityPeriod = value; }
+
+    /**
+     * <p>The default validity period override for any signature generated using this
+     * signing profile. If unspecified, the default is 135 months.</p>
+     */
+    inline void SetSignatureValidityPeriod(SignatureValidityPeriod&& value) { m_signatureValidityPeriodHasBeenSet = true; m_signatureValidityPeriod = std::move(value); }
+
+    /**
+     * <p>The default validity period override for any signature generated using this
+     * signing profile. If unspecified, the default is 135 months.</p>
+     */
+    inline PutSigningProfileRequest& WithSignatureValidityPeriod(const SignatureValidityPeriod& value) { SetSignatureValidityPeriod(value); return *this;}
+
+    /**
+     * <p>The default validity period override for any signature generated using this
+     * signing profile. If unspecified, the default is 135 months.</p>
+     */
+    inline PutSigningProfileRequest& WithSignatureValidityPeriod(SignatureValidityPeriod&& value) { SetSignatureValidityPeriod(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline const Aws::String& GetPlatformId() const{ return m_platformId; }
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline bool PlatformIdHasBeenSet() const { return m_platformIdHasBeenSet; }
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline void SetPlatformId(const Aws::String& value) { m_platformIdHasBeenSet = true; m_platformId = value; }
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline void SetPlatformId(Aws::String&& value) { m_platformIdHasBeenSet = true; m_platformId = std::move(value); }
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline void SetPlatformId(const char* value) { m_platformIdHasBeenSet = true; m_platformId.assign(value); }
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline PutSigningProfileRequest& WithPlatformId(const Aws::String& value) { SetPlatformId(value); return *this;}
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline PutSigningProfileRequest& WithPlatformId(Aws::String&& value) { SetPlatformId(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the signing profile to be created.</p>
+     * <p>The ID of the signing platform to be created.</p>
      */
     inline PutSigningProfileRequest& WithPlatformId(const char* value) { SetPlatformId(value); return *this;}
 
@@ -285,6 +313,72 @@ namespace Model
      */
     inline PutSigningProfileRequest& AddSigningParameters(const char* key, const char* value) { m_signingParametersHasBeenSet = true; m_signingParameters.emplace(key, value); return *this; }
 
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>Tags to be associated with the signing profile that is being created.</p>
+     */
+    inline PutSigningProfileRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
   private:
 
     Aws::String m_profileName;
@@ -292,6 +386,9 @@ namespace Model
 
     SigningMaterial m_signingMaterial;
     bool m_signingMaterialHasBeenSet;
+
+    SignatureValidityPeriod m_signatureValidityPeriod;
+    bool m_signatureValidityPeriodHasBeenSet;
 
     Aws::String m_platformId;
     bool m_platformIdHasBeenSet;
@@ -301,6 +398,9 @@ namespace Model
 
     Aws::Map<Aws::String, Aws::String> m_signingParameters;
     bool m_signingParametersHasBeenSet;
+
+    Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

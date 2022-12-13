@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/OnDemandOptionsRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -33,6 +23,7 @@ namespace Model
 OnDemandOptionsRequest::OnDemandOptionsRequest() : 
     m_allocationStrategy(FleetOnDemandAllocationStrategy::NOT_SET),
     m_allocationStrategyHasBeenSet(false),
+    m_capacityReservationOptionsHasBeenSet(false),
     m_singleInstanceType(false),
     m_singleInstanceTypeHasBeenSet(false),
     m_singleAvailabilityZone(false),
@@ -46,6 +37,7 @@ OnDemandOptionsRequest::OnDemandOptionsRequest() :
 OnDemandOptionsRequest::OnDemandOptionsRequest(const XmlNode& xmlNode) : 
     m_allocationStrategy(FleetOnDemandAllocationStrategy::NOT_SET),
     m_allocationStrategyHasBeenSet(false),
+    m_capacityReservationOptionsHasBeenSet(false),
     m_singleInstanceType(false),
     m_singleInstanceTypeHasBeenSet(false),
     m_singleAvailabilityZone(false),
@@ -68,6 +60,12 @@ OnDemandOptionsRequest& OnDemandOptionsRequest::operator =(const XmlNode& xmlNod
     {
       m_allocationStrategy = FleetOnDemandAllocationStrategyMapper::GetFleetOnDemandAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()).c_str());
       m_allocationStrategyHasBeenSet = true;
+    }
+    XmlNode capacityReservationOptionsNode = resultNode.FirstChild("CapacityReservationOptions");
+    if(!capacityReservationOptionsNode.IsNull())
+    {
+      m_capacityReservationOptions = capacityReservationOptionsNode;
+      m_capacityReservationOptionsHasBeenSet = true;
     }
     XmlNode singleInstanceTypeNode = resultNode.FirstChild("SingleInstanceType");
     if(!singleInstanceTypeNode.IsNull())
@@ -105,6 +103,13 @@ void OnDemandOptionsRequest::OutputToStream(Aws::OStream& oStream, const char* l
       oStream << location << index << locationValue << ".AllocationStrategy=" << FleetOnDemandAllocationStrategyMapper::GetNameForFleetOnDemandAllocationStrategy(m_allocationStrategy) << "&";
   }
 
+  if(m_capacityReservationOptionsHasBeenSet)
+  {
+      Aws::StringStream capacityReservationOptionsLocationAndMemberSs;
+      capacityReservationOptionsLocationAndMemberSs << location << index << locationValue << ".CapacityReservationOptions";
+      m_capacityReservationOptions.OutputToStream(oStream, capacityReservationOptionsLocationAndMemberSs.str().c_str());
+  }
+
   if(m_singleInstanceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SingleInstanceType=" << std::boolalpha << m_singleInstanceType << "&";
@@ -132,6 +137,12 @@ void OnDemandOptionsRequest::OutputToStream(Aws::OStream& oStream, const char* l
   if(m_allocationStrategyHasBeenSet)
   {
       oStream << location << ".AllocationStrategy=" << FleetOnDemandAllocationStrategyMapper::GetNameForFleetOnDemandAllocationStrategy(m_allocationStrategy) << "&";
+  }
+  if(m_capacityReservationOptionsHasBeenSet)
+  {
+      Aws::String capacityReservationOptionsLocationAndMember(location);
+      capacityReservationOptionsLocationAndMember += ".CapacityReservationOptions";
+      m_capacityReservationOptions.OutputToStream(oStream, capacityReservationOptionsLocationAndMember.c_str());
   }
   if(m_singleInstanceTypeHasBeenSet)
   {

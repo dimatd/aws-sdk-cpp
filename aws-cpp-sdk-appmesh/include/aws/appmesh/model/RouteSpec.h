@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/appmesh/AppMesh_EXPORTS.h>
@@ -51,63 +41,63 @@ namespace Model
 
 
     /**
-     * <p>An object that represents the specification of a GRPC route.</p>
+     * <p>An object that represents the specification of a gRPC route.</p>
      */
     inline const GrpcRoute& GetGrpcRoute() const{ return m_grpcRoute; }
 
     /**
-     * <p>An object that represents the specification of a GRPC route.</p>
+     * <p>An object that represents the specification of a gRPC route.</p>
      */
     inline bool GrpcRouteHasBeenSet() const { return m_grpcRouteHasBeenSet; }
 
     /**
-     * <p>An object that represents the specification of a GRPC route.</p>
+     * <p>An object that represents the specification of a gRPC route.</p>
      */
     inline void SetGrpcRoute(const GrpcRoute& value) { m_grpcRouteHasBeenSet = true; m_grpcRoute = value; }
 
     /**
-     * <p>An object that represents the specification of a GRPC route.</p>
+     * <p>An object that represents the specification of a gRPC route.</p>
      */
     inline void SetGrpcRoute(GrpcRoute&& value) { m_grpcRouteHasBeenSet = true; m_grpcRoute = std::move(value); }
 
     /**
-     * <p>An object that represents the specification of a GRPC route.</p>
+     * <p>An object that represents the specification of a gRPC route.</p>
      */
     inline RouteSpec& WithGrpcRoute(const GrpcRoute& value) { SetGrpcRoute(value); return *this;}
 
     /**
-     * <p>An object that represents the specification of a GRPC route.</p>
+     * <p>An object that represents the specification of a gRPC route.</p>
      */
     inline RouteSpec& WithGrpcRoute(GrpcRoute&& value) { SetGrpcRoute(std::move(value)); return *this;}
 
 
     /**
-     * <p>An object that represents the specification of an HTTP2 route.</p>
+     * <p>An object that represents the specification of an HTTP/2 route.</p>
      */
     inline const HttpRoute& GetHttp2Route() const{ return m_http2Route; }
 
     /**
-     * <p>An object that represents the specification of an HTTP2 route.</p>
+     * <p>An object that represents the specification of an HTTP/2 route.</p>
      */
     inline bool Http2RouteHasBeenSet() const { return m_http2RouteHasBeenSet; }
 
     /**
-     * <p>An object that represents the specification of an HTTP2 route.</p>
+     * <p>An object that represents the specification of an HTTP/2 route.</p>
      */
     inline void SetHttp2Route(const HttpRoute& value) { m_http2RouteHasBeenSet = true; m_http2Route = value; }
 
     /**
-     * <p>An object that represents the specification of an HTTP2 route.</p>
+     * <p>An object that represents the specification of an HTTP/2 route.</p>
      */
     inline void SetHttp2Route(HttpRoute&& value) { m_http2RouteHasBeenSet = true; m_http2Route = std::move(value); }
 
     /**
-     * <p>An object that represents the specification of an HTTP2 route.</p>
+     * <p>An object that represents the specification of an HTTP/2 route.</p>
      */
     inline RouteSpec& WithHttp2Route(const HttpRoute& value) { SetHttp2Route(value); return *this;}
 
     /**
-     * <p>An object that represents the specification of an HTTP2 route.</p>
+     * <p>An object that represents the specification of an HTTP/2 route.</p>
      */
     inline RouteSpec& WithHttp2Route(HttpRoute&& value) { SetHttp2Route(std::move(value)); return *this;}
 
@@ -145,29 +135,25 @@ namespace Model
 
     /**
      * <p>The priority for the route. Routes are matched based on the specified value,
-     * where 0 is
-         the highest priority.</p>
+     * where 0 is the highest priority.</p>
      */
     inline int GetPriority() const{ return m_priority; }
 
     /**
      * <p>The priority for the route. Routes are matched based on the specified value,
-     * where 0 is
-         the highest priority.</p>
+     * where 0 is the highest priority.</p>
      */
     inline bool PriorityHasBeenSet() const { return m_priorityHasBeenSet; }
 
     /**
      * <p>The priority for the route. Routes are matched based on the specified value,
-     * where 0 is
-         the highest priority.</p>
+     * where 0 is the highest priority.</p>
      */
     inline void SetPriority(int value) { m_priorityHasBeenSet = true; m_priority = value; }
 
     /**
      * <p>The priority for the route. Routes are matched based on the specified value,
-     * where 0 is
-         the highest priority.</p>
+     * where 0 is the highest priority.</p>
      */
     inline RouteSpec& WithPriority(int value) { SetPriority(value); return *this;}
 

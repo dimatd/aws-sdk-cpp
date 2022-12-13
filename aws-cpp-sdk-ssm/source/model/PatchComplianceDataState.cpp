@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ssm/model/PatchComplianceDataState.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -32,6 +22,7 @@ namespace Aws
 
         static const int INSTALLED_HASH = HashingUtils::HashString("INSTALLED");
         static const int INSTALLED_OTHER_HASH = HashingUtils::HashString("INSTALLED_OTHER");
+        static const int INSTALLED_PENDING_REBOOT_HASH = HashingUtils::HashString("INSTALLED_PENDING_REBOOT");
         static const int INSTALLED_REJECTED_HASH = HashingUtils::HashString("INSTALLED_REJECTED");
         static const int MISSING_HASH = HashingUtils::HashString("MISSING");
         static const int NOT_APPLICABLE_HASH = HashingUtils::HashString("NOT_APPLICABLE");
@@ -48,6 +39,10 @@ namespace Aws
           else if (hashCode == INSTALLED_OTHER_HASH)
           {
             return PatchComplianceDataState::INSTALLED_OTHER;
+          }
+          else if (hashCode == INSTALLED_PENDING_REBOOT_HASH)
+          {
+            return PatchComplianceDataState::INSTALLED_PENDING_REBOOT;
           }
           else if (hashCode == INSTALLED_REJECTED_HASH)
           {
@@ -83,6 +78,8 @@ namespace Aws
             return "INSTALLED";
           case PatchComplianceDataState::INSTALLED_OTHER:
             return "INSTALLED_OTHER";
+          case PatchComplianceDataState::INSTALLED_PENDING_REBOOT:
+            return "INSTALLED_PENDING_REBOOT";
           case PatchComplianceDataState::INSTALLED_REJECTED:
             return "INSTALLED_REJECTED";
           case PatchComplianceDataState::MISSING:

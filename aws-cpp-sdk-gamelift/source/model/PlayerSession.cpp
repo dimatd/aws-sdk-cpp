@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/gamelift/model/PlayerSession.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,6 +23,7 @@ PlayerSession::PlayerSession() :
     m_playerIdHasBeenSet(false),
     m_gameSessionIdHasBeenSet(false),
     m_fleetIdHasBeenSet(false),
+    m_fleetArnHasBeenSet(false),
     m_creationTimeHasBeenSet(false),
     m_terminationTimeHasBeenSet(false),
     m_status(PlayerSessionStatus::NOT_SET),
@@ -50,6 +41,7 @@ PlayerSession::PlayerSession(JsonView jsonValue) :
     m_playerIdHasBeenSet(false),
     m_gameSessionIdHasBeenSet(false),
     m_fleetIdHasBeenSet(false),
+    m_fleetArnHasBeenSet(false),
     m_creationTimeHasBeenSet(false),
     m_terminationTimeHasBeenSet(false),
     m_status(PlayerSessionStatus::NOT_SET),
@@ -91,6 +83,13 @@ PlayerSession& PlayerSession::operator =(JsonView jsonValue)
     m_fleetId = jsonValue.GetString("FleetId");
 
     m_fleetIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FleetArn"))
+  {
+    m_fleetArn = jsonValue.GetString("FleetArn");
+
+    m_fleetArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("CreationTime"))
@@ -170,6 +169,12 @@ JsonValue PlayerSession::Jsonize() const
   if(m_fleetIdHasBeenSet)
   {
    payload.WithString("FleetId", m_fleetId);
+
+  }
+
+  if(m_fleetArnHasBeenSet)
+  {
+   payload.WithString("FleetArn", m_fleetArn);
 
   }
 

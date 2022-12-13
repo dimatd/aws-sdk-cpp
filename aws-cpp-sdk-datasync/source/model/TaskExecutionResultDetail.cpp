@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/datasync/model/TaskExecutionResultDetail.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,6 +23,8 @@ TaskExecutionResultDetail::TaskExecutionResultDetail() :
     m_prepareDurationHasBeenSet(false),
     m_prepareStatus(PhaseStatus::NOT_SET),
     m_prepareStatusHasBeenSet(false),
+    m_totalDuration(0),
+    m_totalDurationHasBeenSet(false),
     m_transferDuration(0),
     m_transferDurationHasBeenSet(false),
     m_transferStatus(PhaseStatus::NOT_SET),
@@ -51,6 +43,8 @@ TaskExecutionResultDetail::TaskExecutionResultDetail(JsonView jsonValue) :
     m_prepareDurationHasBeenSet(false),
     m_prepareStatus(PhaseStatus::NOT_SET),
     m_prepareStatusHasBeenSet(false),
+    m_totalDuration(0),
+    m_totalDurationHasBeenSet(false),
     m_transferDuration(0),
     m_transferDurationHasBeenSet(false),
     m_transferStatus(PhaseStatus::NOT_SET),
@@ -79,6 +73,13 @@ TaskExecutionResultDetail& TaskExecutionResultDetail::operator =(JsonView jsonVa
     m_prepareStatus = PhaseStatusMapper::GetPhaseStatusForName(jsonValue.GetString("PrepareStatus"));
 
     m_prepareStatusHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TotalDuration"))
+  {
+    m_totalDuration = jsonValue.GetInt64("TotalDuration");
+
+    m_totalDurationHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("TransferDuration"))
@@ -139,6 +140,12 @@ JsonValue TaskExecutionResultDetail::Jsonize() const
   if(m_prepareStatusHasBeenSet)
   {
    payload.WithString("PrepareStatus", PhaseStatusMapper::GetNameForPhaseStatus(m_prepareStatus));
+  }
+
+  if(m_totalDurationHasBeenSet)
+  {
+   payload.WithInt64("TotalDuration", m_totalDuration);
+
   }
 
   if(m_transferDurationHasBeenSet)

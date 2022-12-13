@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -49,38 +39,38 @@ namespace Model
 
 
     /**
-     * <p>The operation on a file (add, modify, or delete) of a file in the source of a
-     * merge or pull request.</p>
+     * <p>The operation (add, modify, or delete) on a file in the source of a merge or
+     * pull request.</p>
      */
     inline const ChangeTypeEnum& GetSource() const{ return m_source; }
 
     /**
-     * <p>The operation on a file (add, modify, or delete) of a file in the source of a
-     * merge or pull request.</p>
+     * <p>The operation (add, modify, or delete) on a file in the source of a merge or
+     * pull request.</p>
      */
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
 
     /**
-     * <p>The operation on a file (add, modify, or delete) of a file in the source of a
-     * merge or pull request.</p>
+     * <p>The operation (add, modify, or delete) on a file in the source of a merge or
+     * pull request.</p>
      */
     inline void SetSource(const ChangeTypeEnum& value) { m_sourceHasBeenSet = true; m_source = value; }
 
     /**
-     * <p>The operation on a file (add, modify, or delete) of a file in the source of a
-     * merge or pull request.</p>
+     * <p>The operation (add, modify, or delete) on a file in the source of a merge or
+     * pull request.</p>
      */
     inline void SetSource(ChangeTypeEnum&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
 
     /**
-     * <p>The operation on a file (add, modify, or delete) of a file in the source of a
-     * merge or pull request.</p>
+     * <p>The operation (add, modify, or delete) on a file in the source of a merge or
+     * pull request.</p>
      */
     inline MergeOperations& WithSource(const ChangeTypeEnum& value) { SetSource(value); return *this;}
 
     /**
-     * <p>The operation on a file (add, modify, or delete) of a file in the source of a
-     * merge or pull request.</p>
+     * <p>The operation (add, modify, or delete) on a file in the source of a merge or
+     * pull request.</p>
      */
     inline MergeOperations& WithSource(ChangeTypeEnum&& value) { SetSource(std::move(value)); return *this;}
 

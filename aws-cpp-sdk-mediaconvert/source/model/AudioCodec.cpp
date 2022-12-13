@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconvert/model/AudioCodec.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -32,11 +22,14 @@ namespace Aws
 
         static const int AAC_HASH = HashingUtils::HashString("AAC");
         static const int MP2_HASH = HashingUtils::HashString("MP2");
+        static const int MP3_HASH = HashingUtils::HashString("MP3");
         static const int WAV_HASH = HashingUtils::HashString("WAV");
         static const int AIFF_HASH = HashingUtils::HashString("AIFF");
         static const int AC3_HASH = HashingUtils::HashString("AC3");
         static const int EAC3_HASH = HashingUtils::HashString("EAC3");
         static const int EAC3_ATMOS_HASH = HashingUtils::HashString("EAC3_ATMOS");
+        static const int VORBIS_HASH = HashingUtils::HashString("VORBIS");
+        static const int OPUS_HASH = HashingUtils::HashString("OPUS");
         static const int PASSTHROUGH_HASH = HashingUtils::HashString("PASSTHROUGH");
 
 
@@ -50,6 +43,10 @@ namespace Aws
           else if (hashCode == MP2_HASH)
           {
             return AudioCodec::MP2;
+          }
+          else if (hashCode == MP3_HASH)
+          {
+            return AudioCodec::MP3;
           }
           else if (hashCode == WAV_HASH)
           {
@@ -70,6 +67,14 @@ namespace Aws
           else if (hashCode == EAC3_ATMOS_HASH)
           {
             return AudioCodec::EAC3_ATMOS;
+          }
+          else if (hashCode == VORBIS_HASH)
+          {
+            return AudioCodec::VORBIS;
+          }
+          else if (hashCode == OPUS_HASH)
+          {
+            return AudioCodec::OPUS;
           }
           else if (hashCode == PASSTHROUGH_HASH)
           {
@@ -93,6 +98,8 @@ namespace Aws
             return "AAC";
           case AudioCodec::MP2:
             return "MP2";
+          case AudioCodec::MP3:
+            return "MP3";
           case AudioCodec::WAV:
             return "WAV";
           case AudioCodec::AIFF:
@@ -103,6 +110,10 @@ namespace Aws
             return "EAC3";
           case AudioCodec::EAC3_ATMOS:
             return "EAC3_ATMOS";
+          case AudioCodec::VORBIS:
+            return "VORBIS";
+          case AudioCodec::OPUS:
+            return "OPUS";
           case AudioCodec::PASSTHROUGH:
             return "PASSTHROUGH";
           default:

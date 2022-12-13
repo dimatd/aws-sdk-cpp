@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/dynamodb/model/UpdateTableRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,7 +20,10 @@ UpdateTableRequest::UpdateTableRequest() :
     m_provisionedThroughputHasBeenSet(false),
     m_globalSecondaryIndexUpdatesHasBeenSet(false),
     m_streamSpecificationHasBeenSet(false),
-    m_sSESpecificationHasBeenSet(false)
+    m_sSESpecificationHasBeenSet(false),
+    m_replicaUpdatesHasBeenSet(false),
+    m_tableClass(TableClass::NOT_SET),
+    m_tableClassHasBeenSet(false)
 {
 }
 
@@ -87,6 +80,22 @@ Aws::String UpdateTableRequest::SerializePayload() const
   {
    payload.WithObject("SSESpecification", m_sSESpecification.Jsonize());
 
+  }
+
+  if(m_replicaUpdatesHasBeenSet)
+  {
+   Array<JsonValue> replicaUpdatesJsonList(m_replicaUpdates.size());
+   for(unsigned replicaUpdatesIndex = 0; replicaUpdatesIndex < replicaUpdatesJsonList.GetLength(); ++replicaUpdatesIndex)
+   {
+     replicaUpdatesJsonList[replicaUpdatesIndex].AsObject(m_replicaUpdates[replicaUpdatesIndex].Jsonize());
+   }
+   payload.WithArray("ReplicaUpdates", std::move(replicaUpdatesJsonList));
+
+  }
+
+  if(m_tableClassHasBeenSet)
+  {
+   payload.WithString("TableClass", TableClassMapper::GetNameForTableClass(m_tableClass));
   }
 
   return payload.View().WriteReadable();

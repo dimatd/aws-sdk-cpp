@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
@@ -51,56 +41,56 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline const Aws::String& GetGatewayARN() const{ return m_gatewayARN; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline bool GatewayARNHasBeenSet() const { return m_gatewayARNHasBeenSet; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline void SetGatewayARN(const char* value) { m_gatewayARNHasBeenSet = true; m_gatewayARN.assign(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline JoinDomainRequest& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline JoinDomainRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the
      * <code>ListGateways</code> operation to return a list of gateways for your
-     * account and AWS Region.</p>
+     * account and Amazon Web Services Region.</p>
      */
     inline JoinDomainRequest& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}
 
@@ -268,50 +258,99 @@ namespace Model
 
 
     /**
+     * <p>Specifies the time in seconds, in which the <code>JoinDomain</code> operation
+     * must complete. The default is 20 seconds.</p>
+     */
+    inline int GetTimeoutInSeconds() const{ return m_timeoutInSeconds; }
+
+    /**
+     * <p>Specifies the time in seconds, in which the <code>JoinDomain</code> operation
+     * must complete. The default is 20 seconds.</p>
+     */
+    inline bool TimeoutInSecondsHasBeenSet() const { return m_timeoutInSecondsHasBeenSet; }
+
+    /**
+     * <p>Specifies the time in seconds, in which the <code>JoinDomain</code> operation
+     * must complete. The default is 20 seconds.</p>
+     */
+    inline void SetTimeoutInSeconds(int value) { m_timeoutInSecondsHasBeenSet = true; m_timeoutInSeconds = value; }
+
+    /**
+     * <p>Specifies the time in seconds, in which the <code>JoinDomain</code> operation
+     * must complete. The default is 20 seconds.</p>
+     */
+    inline JoinDomainRequest& WithTimeoutInSeconds(int value) { SetTimeoutInSeconds(value); return *this;}
+
+
+    /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline const Aws::String& GetUserName() const{ return m_userName; }
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline JoinDomainRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline JoinDomainRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
 
     /**
      * <p>Sets the user name of user who has permission to add the gateway to the
-     * Active Directory domain.</p>
+     * Active Directory domain. The domain user account should be enabled to join
+     * computers to the domain. For example, you can use the domain administrator
+     * account or an account with delegated permissions to join computers to the
+     * domain.</p>
      */
     inline JoinDomainRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
 
@@ -377,6 +416,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_domainControllers;
     bool m_domainControllersHasBeenSet;
+
+    int m_timeoutInSeconds;
+    bool m_timeoutInSecondsHasBeenSet;
 
     Aws::String m_userName;
     bool m_userNameHasBeenSet;

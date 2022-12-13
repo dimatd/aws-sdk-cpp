@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -235,55 +225,124 @@ namespace Model
 
 
     /**
-     * <p>The tenancy for the instance.</p>
+     * <p>The tenancy for the instance.</p>  <p>For T3 instances, you can't
+     * change the tenancy from <code>dedicated</code> to <code>host</code>, or from
+     * <code>host</code> to <code>dedicated</code>. Attempting to make one of these
+     * unsupported tenancy changes results in the <code>InvalidTenancy</code> error
+     * code.</p> 
      */
     inline const HostTenancy& GetTenancy() const{ return m_tenancy; }
 
     /**
-     * <p>The tenancy for the instance.</p>
+     * <p>The tenancy for the instance.</p>  <p>For T3 instances, you can't
+     * change the tenancy from <code>dedicated</code> to <code>host</code>, or from
+     * <code>host</code> to <code>dedicated</code>. Attempting to make one of these
+     * unsupported tenancy changes results in the <code>InvalidTenancy</code> error
+     * code.</p> 
      */
     inline bool TenancyHasBeenSet() const { return m_tenancyHasBeenSet; }
 
     /**
-     * <p>The tenancy for the instance.</p>
+     * <p>The tenancy for the instance.</p>  <p>For T3 instances, you can't
+     * change the tenancy from <code>dedicated</code> to <code>host</code>, or from
+     * <code>host</code> to <code>dedicated</code>. Attempting to make one of these
+     * unsupported tenancy changes results in the <code>InvalidTenancy</code> error
+     * code.</p> 
      */
     inline void SetTenancy(const HostTenancy& value) { m_tenancyHasBeenSet = true; m_tenancy = value; }
 
     /**
-     * <p>The tenancy for the instance.</p>
+     * <p>The tenancy for the instance.</p>  <p>For T3 instances, you can't
+     * change the tenancy from <code>dedicated</code> to <code>host</code>, or from
+     * <code>host</code> to <code>dedicated</code>. Attempting to make one of these
+     * unsupported tenancy changes results in the <code>InvalidTenancy</code> error
+     * code.</p> 
      */
     inline void SetTenancy(HostTenancy&& value) { m_tenancyHasBeenSet = true; m_tenancy = std::move(value); }
 
     /**
-     * <p>The tenancy for the instance.</p>
+     * <p>The tenancy for the instance.</p>  <p>For T3 instances, you can't
+     * change the tenancy from <code>dedicated</code> to <code>host</code>, or from
+     * <code>host</code> to <code>dedicated</code>. Attempting to make one of these
+     * unsupported tenancy changes results in the <code>InvalidTenancy</code> error
+     * code.</p> 
      */
     inline ModifyInstancePlacementRequest& WithTenancy(const HostTenancy& value) { SetTenancy(value); return *this;}
 
     /**
-     * <p>The tenancy for the instance.</p>
+     * <p>The tenancy for the instance.</p>  <p>For T3 instances, you can't
+     * change the tenancy from <code>dedicated</code> to <code>host</code>, or from
+     * <code>host</code> to <code>dedicated</code>. Attempting to make one of these
+     * unsupported tenancy changes results in the <code>InvalidTenancy</code> error
+     * code.</p> 
      */
     inline ModifyInstancePlacementRequest& WithTenancy(HostTenancy&& value) { SetTenancy(std::move(value)); return *this;}
 
 
     /**
-     * <p>Reserved for future use.</p>
+     * <p>The number of the partition in which to place the instance. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
      */
     inline int GetPartitionNumber() const{ return m_partitionNumber; }
 
     /**
-     * <p>Reserved for future use.</p>
+     * <p>The number of the partition in which to place the instance. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
      */
     inline bool PartitionNumberHasBeenSet() const { return m_partitionNumberHasBeenSet; }
 
     /**
-     * <p>Reserved for future use.</p>
+     * <p>The number of the partition in which to place the instance. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
      */
     inline void SetPartitionNumber(int value) { m_partitionNumberHasBeenSet = true; m_partitionNumber = value; }
 
     /**
-     * <p>Reserved for future use.</p>
+     * <p>The number of the partition in which to place the instance. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
      */
     inline ModifyInstancePlacementRequest& WithPartitionNumber(int value) { SetPartitionNumber(value); return *this;}
+
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline const Aws::String& GetHostResourceGroupArn() const{ return m_hostResourceGroupArn; }
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline bool HostResourceGroupArnHasBeenSet() const { return m_hostResourceGroupArnHasBeenSet; }
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline void SetHostResourceGroupArn(const Aws::String& value) { m_hostResourceGroupArnHasBeenSet = true; m_hostResourceGroupArn = value; }
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline void SetHostResourceGroupArn(Aws::String&& value) { m_hostResourceGroupArnHasBeenSet = true; m_hostResourceGroupArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline void SetHostResourceGroupArn(const char* value) { m_hostResourceGroupArnHasBeenSet = true; m_hostResourceGroupArn.assign(value); }
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline ModifyInstancePlacementRequest& WithHostResourceGroupArn(const Aws::String& value) { SetHostResourceGroupArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline ModifyInstancePlacementRequest& WithHostResourceGroupArn(Aws::String&& value) { SetHostResourceGroupArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the host resource group in which to place the instance.</p>
+     */
+    inline ModifyInstancePlacementRequest& WithHostResourceGroupArn(const char* value) { SetHostResourceGroupArn(value); return *this;}
 
   private:
 
@@ -304,6 +363,9 @@ namespace Model
 
     int m_partitionNumber;
     bool m_partitionNumberHasBeenSet;
+
+    Aws::String m_hostResourceGroupArn;
+    bool m_hostResourceGroupArnHasBeenSet;
   };
 
 } // namespace Model

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -20,6 +10,7 @@
 #include <aws/codecommit/model/PullRequestStatusEnum.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codecommit/model/PullRequestTarget.h>
+#include <aws/codecommit/model/ApprovalRule.h>
 #include <utility>
 
 namespace Aws
@@ -94,49 +85,49 @@ namespace Model
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline const Aws::String& GetTitle() const{ return m_title; }
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline PullRequest& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline PullRequest& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
 
     /**
      * <p>The user-defined title of the pull request. This title is displayed in the
-     * list of pull requests to other users of the repository.</p>
+     * list of pull requests to other repository users.</p>
      */
     inline PullRequest& WithTitle(const char* value) { SetTitle(value); return *this;}
 
@@ -392,68 +383,150 @@ namespace Model
 
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline PullRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline PullRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline PullRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
+
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline PullRequest& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline PullRequest& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
+
+    /**
+     * <p>The system-generated revision ID for the pull request.</p>
+     */
+    inline PullRequest& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
+
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline const Aws::Vector<ApprovalRule>& GetApprovalRules() const{ return m_approvalRules; }
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline bool ApprovalRulesHasBeenSet() const { return m_approvalRulesHasBeenSet; }
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline void SetApprovalRules(const Aws::Vector<ApprovalRule>& value) { m_approvalRulesHasBeenSet = true; m_approvalRules = value; }
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline void SetApprovalRules(Aws::Vector<ApprovalRule>&& value) { m_approvalRulesHasBeenSet = true; m_approvalRules = std::move(value); }
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline PullRequest& WithApprovalRules(const Aws::Vector<ApprovalRule>& value) { SetApprovalRules(value); return *this;}
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline PullRequest& WithApprovalRules(Aws::Vector<ApprovalRule>&& value) { SetApprovalRules(std::move(value)); return *this;}
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline PullRequest& AddApprovalRules(const ApprovalRule& value) { m_approvalRulesHasBeenSet = true; m_approvalRules.push_back(value); return *this; }
+
+    /**
+     * <p>The approval rules applied to the pull request.</p>
+     */
+    inline PullRequest& AddApprovalRules(ApprovalRule&& value) { m_approvalRulesHasBeenSet = true; m_approvalRules.push_back(std::move(value)); return *this; }
 
   private:
 
@@ -483,6 +556,12 @@ namespace Model
 
     Aws::String m_clientRequestToken;
     bool m_clientRequestTokenHasBeenSet;
+
+    Aws::String m_revisionId;
+    bool m_revisionIdHasBeenSet;
+
+    Aws::Vector<ApprovalRule> m_approvalRules;
+    bool m_approvalRulesHasBeenSet;
   };
 
 } // namespace Model

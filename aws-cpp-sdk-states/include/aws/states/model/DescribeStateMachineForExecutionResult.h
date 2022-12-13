@@ -1,22 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/states/SFN_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/states/model/LoggingConfiguration.h>
+#include <aws/states/model/TracingConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -245,6 +237,48 @@ namespace Model
      */
     inline DescribeStateMachineForExecutionResult& WithUpdateDate(Aws::Utils::DateTime&& value) { SetUpdateDate(std::move(value)); return *this;}
 
+
+    
+    inline const LoggingConfiguration& GetLoggingConfiguration() const{ return m_loggingConfiguration; }
+
+    
+    inline void SetLoggingConfiguration(const LoggingConfiguration& value) { m_loggingConfiguration = value; }
+
+    
+    inline void SetLoggingConfiguration(LoggingConfiguration&& value) { m_loggingConfiguration = std::move(value); }
+
+    
+    inline DescribeStateMachineForExecutionResult& WithLoggingConfiguration(const LoggingConfiguration& value) { SetLoggingConfiguration(value); return *this;}
+
+    
+    inline DescribeStateMachineForExecutionResult& WithLoggingConfiguration(LoggingConfiguration&& value) { SetLoggingConfiguration(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline const TracingConfiguration& GetTracingConfiguration() const{ return m_tracingConfiguration; }
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline void SetTracingConfiguration(const TracingConfiguration& value) { m_tracingConfiguration = value; }
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline void SetTracingConfiguration(TracingConfiguration&& value) { m_tracingConfiguration = std::move(value); }
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline DescribeStateMachineForExecutionResult& WithTracingConfiguration(const TracingConfiguration& value) { SetTracingConfiguration(value); return *this;}
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline DescribeStateMachineForExecutionResult& WithTracingConfiguration(TracingConfiguration&& value) { SetTracingConfiguration(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_stateMachineArn;
@@ -256,6 +290,10 @@ namespace Model
     Aws::String m_roleArn;
 
     Aws::Utils::DateTime m_updateDate;
+
+    LoggingConfiguration m_loggingConfiguration;
+
+    TracingConfiguration m_tracingConfiguration;
   };
 
 } // namespace Model

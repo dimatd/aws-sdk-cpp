@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/codebuild/model/Build.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,6 +21,8 @@ namespace Model
 Build::Build() : 
     m_idHasBeenSet(false),
     m_arnHasBeenSet(false),
+    m_buildNumber(0),
+    m_buildNumberHasBeenSet(false),
     m_startTimeHasBeenSet(false),
     m_endTimeHasBeenSet(false),
     m_currentPhaseHasBeenSet(false),
@@ -58,13 +50,20 @@ Build::Build() :
     m_initiatorHasBeenSet(false),
     m_vpcConfigHasBeenSet(false),
     m_networkInterfaceHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false)
+    m_encryptionKeyHasBeenSet(false),
+    m_exportedEnvironmentVariablesHasBeenSet(false),
+    m_reportArnsHasBeenSet(false),
+    m_fileSystemLocationsHasBeenSet(false),
+    m_debugSessionHasBeenSet(false),
+    m_buildBatchArnHasBeenSet(false)
 {
 }
 
 Build::Build(JsonView jsonValue) : 
     m_idHasBeenSet(false),
     m_arnHasBeenSet(false),
+    m_buildNumber(0),
+    m_buildNumberHasBeenSet(false),
     m_startTimeHasBeenSet(false),
     m_endTimeHasBeenSet(false),
     m_currentPhaseHasBeenSet(false),
@@ -92,7 +91,12 @@ Build::Build(JsonView jsonValue) :
     m_initiatorHasBeenSet(false),
     m_vpcConfigHasBeenSet(false),
     m_networkInterfaceHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false)
+    m_encryptionKeyHasBeenSet(false),
+    m_exportedEnvironmentVariablesHasBeenSet(false),
+    m_reportArnsHasBeenSet(false),
+    m_fileSystemLocationsHasBeenSet(false),
+    m_debugSessionHasBeenSet(false),
+    m_buildBatchArnHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -111,6 +115,13 @@ Build& Build::operator =(JsonView jsonValue)
     m_arn = jsonValue.GetString("arn");
 
     m_arnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("buildNumber"))
+  {
+    m_buildNumber = jsonValue.GetInt64("buildNumber");
+
+    m_buildNumberHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("startTime"))
@@ -293,6 +304,50 @@ Build& Build::operator =(JsonView jsonValue)
     m_encryptionKeyHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("exportedEnvironmentVariables"))
+  {
+    Array<JsonView> exportedEnvironmentVariablesJsonList = jsonValue.GetArray("exportedEnvironmentVariables");
+    for(unsigned exportedEnvironmentVariablesIndex = 0; exportedEnvironmentVariablesIndex < exportedEnvironmentVariablesJsonList.GetLength(); ++exportedEnvironmentVariablesIndex)
+    {
+      m_exportedEnvironmentVariables.push_back(exportedEnvironmentVariablesJsonList[exportedEnvironmentVariablesIndex].AsObject());
+    }
+    m_exportedEnvironmentVariablesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("reportArns"))
+  {
+    Array<JsonView> reportArnsJsonList = jsonValue.GetArray("reportArns");
+    for(unsigned reportArnsIndex = 0; reportArnsIndex < reportArnsJsonList.GetLength(); ++reportArnsIndex)
+    {
+      m_reportArns.push_back(reportArnsJsonList[reportArnsIndex].AsString());
+    }
+    m_reportArnsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("fileSystemLocations"))
+  {
+    Array<JsonView> fileSystemLocationsJsonList = jsonValue.GetArray("fileSystemLocations");
+    for(unsigned fileSystemLocationsIndex = 0; fileSystemLocationsIndex < fileSystemLocationsJsonList.GetLength(); ++fileSystemLocationsIndex)
+    {
+      m_fileSystemLocations.push_back(fileSystemLocationsJsonList[fileSystemLocationsIndex].AsObject());
+    }
+    m_fileSystemLocationsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("debugSession"))
+  {
+    m_debugSession = jsonValue.GetObject("debugSession");
+
+    m_debugSessionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("buildBatchArn"))
+  {
+    m_buildBatchArn = jsonValue.GetString("buildBatchArn");
+
+    m_buildBatchArnHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -309,6 +364,12 @@ JsonValue Build::Jsonize() const
   if(m_arnHasBeenSet)
   {
    payload.WithString("arn", m_arn);
+
+  }
+
+  if(m_buildNumberHasBeenSet)
+  {
+   payload.WithInt64("buildNumber", m_buildNumber);
 
   }
 
@@ -470,6 +531,51 @@ JsonValue Build::Jsonize() const
   if(m_encryptionKeyHasBeenSet)
   {
    payload.WithString("encryptionKey", m_encryptionKey);
+
+  }
+
+  if(m_exportedEnvironmentVariablesHasBeenSet)
+  {
+   Array<JsonValue> exportedEnvironmentVariablesJsonList(m_exportedEnvironmentVariables.size());
+   for(unsigned exportedEnvironmentVariablesIndex = 0; exportedEnvironmentVariablesIndex < exportedEnvironmentVariablesJsonList.GetLength(); ++exportedEnvironmentVariablesIndex)
+   {
+     exportedEnvironmentVariablesJsonList[exportedEnvironmentVariablesIndex].AsObject(m_exportedEnvironmentVariables[exportedEnvironmentVariablesIndex].Jsonize());
+   }
+   payload.WithArray("exportedEnvironmentVariables", std::move(exportedEnvironmentVariablesJsonList));
+
+  }
+
+  if(m_reportArnsHasBeenSet)
+  {
+   Array<JsonValue> reportArnsJsonList(m_reportArns.size());
+   for(unsigned reportArnsIndex = 0; reportArnsIndex < reportArnsJsonList.GetLength(); ++reportArnsIndex)
+   {
+     reportArnsJsonList[reportArnsIndex].AsString(m_reportArns[reportArnsIndex]);
+   }
+   payload.WithArray("reportArns", std::move(reportArnsJsonList));
+
+  }
+
+  if(m_fileSystemLocationsHasBeenSet)
+  {
+   Array<JsonValue> fileSystemLocationsJsonList(m_fileSystemLocations.size());
+   for(unsigned fileSystemLocationsIndex = 0; fileSystemLocationsIndex < fileSystemLocationsJsonList.GetLength(); ++fileSystemLocationsIndex)
+   {
+     fileSystemLocationsJsonList[fileSystemLocationsIndex].AsObject(m_fileSystemLocations[fileSystemLocationsIndex].Jsonize());
+   }
+   payload.WithArray("fileSystemLocations", std::move(fileSystemLocationsJsonList));
+
+  }
+
+  if(m_debugSessionHasBeenSet)
+  {
+   payload.WithObject("debugSession", m_debugSession.Jsonize());
+
+  }
+
+  if(m_buildBatchArnHasBeenSet)
+  {
+   payload.WithString("buildBatchArn", m_buildBatchArn);
 
   }
 

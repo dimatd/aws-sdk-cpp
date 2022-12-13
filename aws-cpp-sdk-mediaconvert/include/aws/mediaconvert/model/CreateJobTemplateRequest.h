@@ -1,26 +1,18 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/mediaconvert/MediaConvert_EXPORTS.h>
 #include <aws/mediaconvert/MediaConvertRequest.h>
 #include <aws/mediaconvert/model/AccelerationSettings.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/mediaconvert/model/JobTemplateSettings.h>
 #include <aws/mediaconvert/model/StatusUpdateInterval.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/mediaconvert/model/HopDestination.h>
 #include <utility>
 
 namespace Aws
@@ -175,6 +167,71 @@ namespace Model
      * Optional. A description of the job template you are creating.
      */
     inline CreateJobTemplateRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
+
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline const Aws::Vector<HopDestination>& GetHopDestinations() const{ return m_hopDestinations; }
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline bool HopDestinationsHasBeenSet() const { return m_hopDestinationsHasBeenSet; }
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline void SetHopDestinations(const Aws::Vector<HopDestination>& value) { m_hopDestinationsHasBeenSet = true; m_hopDestinations = value; }
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline void SetHopDestinations(Aws::Vector<HopDestination>&& value) { m_hopDestinationsHasBeenSet = true; m_hopDestinations = std::move(value); }
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline CreateJobTemplateRequest& WithHopDestinations(const Aws::Vector<HopDestination>& value) { SetHopDestinations(value); return *this;}
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline CreateJobTemplateRequest& WithHopDestinations(Aws::Vector<HopDestination>&& value) { SetHopDestinations(std::move(value)); return *this;}
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline CreateJobTemplateRequest& AddHopDestinations(const HopDestination& value) { m_hopDestinationsHasBeenSet = true; m_hopDestinations.push_back(value); return *this; }
+
+    /**
+     * Optional. Use queue hopping to avoid overly long waits in the backlog of the
+     * queue that you submit your job to. Specify an alternate queue and the maximum
+     * time that your job will wait in the initial queue before hopping. For more
+     * information about this feature, see the AWS Elemental MediaConvert User Guide.
+     */
+    inline CreateJobTemplateRequest& AddHopDestinations(HopDestination&& value) { m_hopDestinationsHasBeenSet = true; m_hopDestinations.push_back(std::move(value)); return *this; }
 
 
     /**
@@ -474,6 +531,9 @@ namespace Model
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet;
+
+    Aws::Vector<HopDestination> m_hopDestinations;
+    bool m_hopDestinationsHasBeenSet;
 
     Aws::String m_name;
     bool m_nameHasBeenSet;

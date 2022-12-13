@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/autoscaling/model/Instance.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -32,6 +22,7 @@ namespace Model
 
 Instance::Instance() : 
     m_instanceIdHasBeenSet(false),
+    m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_lifecycleState(LifecycleState::NOT_SET),
     m_lifecycleStateHasBeenSet(false),
@@ -39,12 +30,14 @@ Instance::Instance() :
     m_launchConfigurationNameHasBeenSet(false),
     m_launchTemplateHasBeenSet(false),
     m_protectedFromScaleIn(false),
-    m_protectedFromScaleInHasBeenSet(false)
+    m_protectedFromScaleInHasBeenSet(false),
+    m_weightedCapacityHasBeenSet(false)
 {
 }
 
 Instance::Instance(const XmlNode& xmlNode) : 
     m_instanceIdHasBeenSet(false),
+    m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_lifecycleState(LifecycleState::NOT_SET),
     m_lifecycleStateHasBeenSet(false),
@@ -52,7 +45,8 @@ Instance::Instance(const XmlNode& xmlNode) :
     m_launchConfigurationNameHasBeenSet(false),
     m_launchTemplateHasBeenSet(false),
     m_protectedFromScaleIn(false),
-    m_protectedFromScaleInHasBeenSet(false)
+    m_protectedFromScaleInHasBeenSet(false),
+    m_weightedCapacityHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -68,6 +62,12 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
     {
       m_instanceId = Aws::Utils::Xml::DecodeEscapedXmlText(instanceIdNode.GetText());
       m_instanceIdHasBeenSet = true;
+    }
+    XmlNode instanceTypeNode = resultNode.FirstChild("InstanceType");
+    if(!instanceTypeNode.IsNull())
+    {
+      m_instanceType = Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText());
+      m_instanceTypeHasBeenSet = true;
     }
     XmlNode availabilityZoneNode = resultNode.FirstChild("AvailabilityZone");
     if(!availabilityZoneNode.IsNull())
@@ -105,6 +105,12 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
       m_protectedFromScaleIn = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protectedFromScaleInNode.GetText()).c_str()).c_str());
       m_protectedFromScaleInHasBeenSet = true;
     }
+    XmlNode weightedCapacityNode = resultNode.FirstChild("WeightedCapacity");
+    if(!weightedCapacityNode.IsNull())
+    {
+      m_weightedCapacity = Aws::Utils::Xml::DecodeEscapedXmlText(weightedCapacityNode.GetText());
+      m_weightedCapacityHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -115,6 +121,11 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   if(m_instanceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
+  }
+
+  if(m_instanceTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
 
   if(m_availabilityZoneHasBeenSet)
@@ -149,6 +160,11 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       oStream << location << index << locationValue << ".ProtectedFromScaleIn=" << std::boolalpha << m_protectedFromScaleIn << "&";
   }
 
+  if(m_weightedCapacityHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity.c_str()) << "&";
+  }
+
 }
 
 void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -156,6 +172,10 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_instanceIdHasBeenSet)
   {
       oStream << location << ".InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
+  }
+  if(m_instanceTypeHasBeenSet)
+  {
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
   if(m_availabilityZoneHasBeenSet)
   {
@@ -182,6 +202,10 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_protectedFromScaleInHasBeenSet)
   {
       oStream << location << ".ProtectedFromScaleIn=" << std::boolalpha << m_protectedFromScaleIn << "&";
+  }
+  if(m_weightedCapacityHasBeenSet)
+  {
+      oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity.c_str()) << "&";
   }
 }
 

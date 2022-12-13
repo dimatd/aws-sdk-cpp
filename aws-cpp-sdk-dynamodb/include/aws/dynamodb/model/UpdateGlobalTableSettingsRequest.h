@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -93,42 +83,90 @@ namespace Model
     /**
      * <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code>
      * is not specified, the global table defaults to <code>PROVISIONED</code> capacity
-     * billing mode.</p>
+     * billing mode.</p> <ul> <li> <p> <code>PROVISIONED</code> - We recommend using
+     * <code>PROVISIONED</code> for predictable workloads. <code>PROVISIONED</code>
+     * sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline const BillingMode& GetGlobalTableBillingMode() const{ return m_globalTableBillingMode; }
 
     /**
      * <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code>
      * is not specified, the global table defaults to <code>PROVISIONED</code> capacity
-     * billing mode.</p>
+     * billing mode.</p> <ul> <li> <p> <code>PROVISIONED</code> - We recommend using
+     * <code>PROVISIONED</code> for predictable workloads. <code>PROVISIONED</code>
+     * sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline bool GlobalTableBillingModeHasBeenSet() const { return m_globalTableBillingModeHasBeenSet; }
 
     /**
      * <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code>
      * is not specified, the global table defaults to <code>PROVISIONED</code> capacity
-     * billing mode.</p>
+     * billing mode.</p> <ul> <li> <p> <code>PROVISIONED</code> - We recommend using
+     * <code>PROVISIONED</code> for predictable workloads. <code>PROVISIONED</code>
+     * sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline void SetGlobalTableBillingMode(const BillingMode& value) { m_globalTableBillingModeHasBeenSet = true; m_globalTableBillingMode = value; }
 
     /**
      * <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code>
      * is not specified, the global table defaults to <code>PROVISIONED</code> capacity
-     * billing mode.</p>
+     * billing mode.</p> <ul> <li> <p> <code>PROVISIONED</code> - We recommend using
+     * <code>PROVISIONED</code> for predictable workloads. <code>PROVISIONED</code>
+     * sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline void SetGlobalTableBillingMode(BillingMode&& value) { m_globalTableBillingModeHasBeenSet = true; m_globalTableBillingMode = std::move(value); }
 
     /**
      * <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code>
      * is not specified, the global table defaults to <code>PROVISIONED</code> capacity
-     * billing mode.</p>
+     * billing mode.</p> <ul> <li> <p> <code>PROVISIONED</code> - We recommend using
+     * <code>PROVISIONED</code> for predictable workloads. <code>PROVISIONED</code>
+     * sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline UpdateGlobalTableSettingsRequest& WithGlobalTableBillingMode(const BillingMode& value) { SetGlobalTableBillingMode(value); return *this;}
 
     /**
      * <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code>
      * is not specified, the global table defaults to <code>PROVISIONED</code> capacity
-     * billing mode.</p>
+     * billing mode.</p> <ul> <li> <p> <code>PROVISIONED</code> - We recommend using
+     * <code>PROVISIONED</code> for predictable workloads. <code>PROVISIONED</code>
+     * sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline UpdateGlobalTableSettingsRequest& WithGlobalTableBillingMode(BillingMode&& value) { SetGlobalTableBillingMode(std::move(value)); return *this;}
 

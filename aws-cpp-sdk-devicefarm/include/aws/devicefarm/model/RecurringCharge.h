@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -35,8 +25,8 @@ namespace Model
 {
 
   /**
-   * <p>Specifies whether charges for devices will be recurring.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Specifies whether charges for devices are recurring.</p><p><h3>See Also:</h3>
+   * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/RecurringCharge">AWS
    * API Reference</a></p>
    */
@@ -81,32 +71,32 @@ namespace Model
 
 
     /**
-     * <p>The frequency in which charges will recur.</p>
+     * <p>The frequency in which charges recur.</p>
      */
     inline const RecurringChargeFrequency& GetFrequency() const{ return m_frequency; }
 
     /**
-     * <p>The frequency in which charges will recur.</p>
+     * <p>The frequency in which charges recur.</p>
      */
     inline bool FrequencyHasBeenSet() const { return m_frequencyHasBeenSet; }
 
     /**
-     * <p>The frequency in which charges will recur.</p>
+     * <p>The frequency in which charges recur.</p>
      */
     inline void SetFrequency(const RecurringChargeFrequency& value) { m_frequencyHasBeenSet = true; m_frequency = value; }
 
     /**
-     * <p>The frequency in which charges will recur.</p>
+     * <p>The frequency in which charges recur.</p>
      */
     inline void SetFrequency(RecurringChargeFrequency&& value) { m_frequencyHasBeenSet = true; m_frequency = std::move(value); }
 
     /**
-     * <p>The frequency in which charges will recur.</p>
+     * <p>The frequency in which charges recur.</p>
      */
     inline RecurringCharge& WithFrequency(const RecurringChargeFrequency& value) { SetFrequency(value); return *this;}
 
     /**
-     * <p>The frequency in which charges will recur.</p>
+     * <p>The frequency in which charges recur.</p>
      */
     inline RecurringCharge& WithFrequency(RecurringChargeFrequency&& value) { SetFrequency(std::move(value)); return *this;}
 

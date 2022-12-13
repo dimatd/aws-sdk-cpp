@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/lex-models/model/Slot.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -39,7 +29,10 @@ Slot::Slot() :
     m_priority(0),
     m_priorityHasBeenSet(false),
     m_sampleUtterancesHasBeenSet(false),
-    m_responseCardHasBeenSet(false)
+    m_responseCardHasBeenSet(false),
+    m_obfuscationSetting(ObfuscationSetting::NOT_SET),
+    m_obfuscationSettingHasBeenSet(false),
+    m_defaultValueSpecHasBeenSet(false)
 {
 }
 
@@ -54,7 +47,10 @@ Slot::Slot(JsonView jsonValue) :
     m_priority(0),
     m_priorityHasBeenSet(false),
     m_sampleUtterancesHasBeenSet(false),
-    m_responseCardHasBeenSet(false)
+    m_responseCardHasBeenSet(false),
+    m_obfuscationSetting(ObfuscationSetting::NOT_SET),
+    m_obfuscationSettingHasBeenSet(false),
+    m_defaultValueSpecHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -127,6 +123,20 @@ Slot& Slot::operator =(JsonView jsonValue)
     m_responseCardHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("obfuscationSetting"))
+  {
+    m_obfuscationSetting = ObfuscationSettingMapper::GetObfuscationSettingForName(jsonValue.GetString("obfuscationSetting"));
+
+    m_obfuscationSettingHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("defaultValueSpec"))
+  {
+    m_defaultValueSpec = jsonValue.GetObject("defaultValueSpec");
+
+    m_defaultValueSpecHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -189,6 +199,17 @@ JsonValue Slot::Jsonize() const
   if(m_responseCardHasBeenSet)
   {
    payload.WithString("responseCard", m_responseCard);
+
+  }
+
+  if(m_obfuscationSettingHasBeenSet)
+  {
+   payload.WithString("obfuscationSetting", ObfuscationSettingMapper::GetNameForObfuscationSetting(m_obfuscationSetting));
+  }
+
+  if(m_defaultValueSpecHasBeenSet)
+  {
+   payload.WithObject("defaultValueSpec", m_defaultValueSpec.Jsonize());
 
   }
 

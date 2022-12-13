@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/monitoring/model/DescribeAlarmsRequest.h>
 #include <aws/core/utils/StringUtils.h>
@@ -23,6 +13,9 @@ using namespace Aws::Utils;
 DescribeAlarmsRequest::DescribeAlarmsRequest() : 
     m_alarmNamesHasBeenSet(false),
     m_alarmNamePrefixHasBeenSet(false),
+    m_alarmTypesHasBeenSet(false),
+    m_childrenOfAlarmNameHasBeenSet(false),
+    m_parentsOfAlarmNameHasBeenSet(false),
     m_stateValue(StateValue::NOT_SET),
     m_stateValueHasBeenSet(false),
     m_actionPrefixHasBeenSet(false),
@@ -50,6 +43,27 @@ Aws::String DescribeAlarmsRequest::SerializePayload() const
   if(m_alarmNamePrefixHasBeenSet)
   {
     ss << "AlarmNamePrefix=" << StringUtils::URLEncode(m_alarmNamePrefix.c_str()) << "&";
+  }
+
+  if(m_alarmTypesHasBeenSet)
+  {
+    unsigned alarmTypesCount = 1;
+    for(auto& item : m_alarmTypes)
+    {
+      ss << "AlarmTypes.member." << alarmTypesCount << "="
+          << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(item).c_str()) << "&";
+      alarmTypesCount++;
+    }
+  }
+
+  if(m_childrenOfAlarmNameHasBeenSet)
+  {
+    ss << "ChildrenOfAlarmName=" << StringUtils::URLEncode(m_childrenOfAlarmName.c_str()) << "&";
+  }
+
+  if(m_parentsOfAlarmNameHasBeenSet)
+  {
+    ss << "ParentsOfAlarmName=" << StringUtils::URLEncode(m_parentsOfAlarmName.c_str()) << "&";
   }
 
   if(m_stateValueHasBeenSet)

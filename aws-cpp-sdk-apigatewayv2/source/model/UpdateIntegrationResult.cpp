@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/UpdateIntegrationResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -27,6 +17,7 @@ using namespace Aws::Utils;
 using namespace Aws;
 
 UpdateIntegrationResult::UpdateIntegrationResult() : 
+    m_apiGatewayManaged(false),
     m_connectionType(ConnectionType::NOT_SET),
     m_contentHandlingStrategy(ContentHandlingStrategy::NOT_SET),
     m_integrationType(IntegrationType::NOT_SET),
@@ -36,6 +27,7 @@ UpdateIntegrationResult::UpdateIntegrationResult() :
 }
 
 UpdateIntegrationResult::UpdateIntegrationResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
+    m_apiGatewayManaged(false),
     m_connectionType(ConnectionType::NOT_SET),
     m_contentHandlingStrategy(ContentHandlingStrategy::NOT_SET),
     m_integrationType(IntegrationType::NOT_SET),
@@ -48,6 +40,12 @@ UpdateIntegrationResult::UpdateIntegrationResult(const Aws::AmazonWebServiceResu
 UpdateIntegrationResult& UpdateIntegrationResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("apiGatewayManaged"))
+  {
+    m_apiGatewayManaged = jsonValue.GetBool("apiGatewayManaged");
+
+  }
+
   if(jsonValue.ValueExists("connectionId"))
   {
     m_connectionId = jsonValue.GetString("connectionId");
@@ -96,6 +94,12 @@ UpdateIntegrationResult& UpdateIntegrationResult::operator =(const Aws::AmazonWe
 
   }
 
+  if(jsonValue.ValueExists("integrationSubtype"))
+  {
+    m_integrationSubtype = jsonValue.GetString("integrationSubtype");
+
+  }
+
   if(jsonValue.ValueExists("integrationType"))
   {
     m_integrationType = IntegrationTypeMapper::GetIntegrationTypeForName(jsonValue.GetString("integrationType"));
@@ -111,6 +115,12 @@ UpdateIntegrationResult& UpdateIntegrationResult::operator =(const Aws::AmazonWe
   if(jsonValue.ValueExists("passthroughBehavior"))
   {
     m_passthroughBehavior = PassthroughBehaviorMapper::GetPassthroughBehaviorForName(jsonValue.GetString("passthroughBehavior"));
+
+  }
+
+  if(jsonValue.ValueExists("payloadFormatVersion"))
+  {
+    m_payloadFormatVersion = jsonValue.GetString("payloadFormatVersion");
 
   }
 
@@ -132,6 +142,21 @@ UpdateIntegrationResult& UpdateIntegrationResult::operator =(const Aws::AmazonWe
     }
   }
 
+  if(jsonValue.ValueExists("responseParameters"))
+  {
+    Aws::Map<Aws::String, JsonView> responseParametersJsonMap = jsonValue.GetObject("responseParameters").GetAllObjects();
+    for(auto& responseParametersItem : responseParametersJsonMap)
+    {
+      Aws::Map<Aws::String, JsonView> integrationParametersJsonMap = responseParametersItem.second.GetAllObjects();
+      Aws::Map<Aws::String, Aws::String> integrationParametersMap;
+      for(auto& integrationParametersItem : integrationParametersJsonMap)
+      {
+        integrationParametersMap[integrationParametersItem.first] = integrationParametersItem.second.AsString();
+      }
+      m_responseParameters[responseParametersItem.first] = std::move(integrationParametersMap);
+    }
+  }
+
   if(jsonValue.ValueExists("templateSelectionExpression"))
   {
     m_templateSelectionExpression = jsonValue.GetString("templateSelectionExpression");
@@ -141,6 +166,12 @@ UpdateIntegrationResult& UpdateIntegrationResult::operator =(const Aws::AmazonWe
   if(jsonValue.ValueExists("timeoutInMillis"))
   {
     m_timeoutInMillis = jsonValue.GetInteger("timeoutInMillis");
+
+  }
+
+  if(jsonValue.ValueExists("tlsConfig"))
+  {
+    m_tlsConfig = jsonValue.GetObject("tlsConfig");
 
   }
 

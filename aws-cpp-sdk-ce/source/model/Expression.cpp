@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ce/model/Expression.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,7 +23,8 @@ Expression::Expression() :
     m_andHasBeenSet(false),
     m_notHasBeenSet(false),
     m_dimensionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_costCategoriesHasBeenSet(false)
 {
 }
 
@@ -42,7 +33,8 @@ Expression::Expression(JsonView jsonValue) :
     m_andHasBeenSet(false),
     m_notHasBeenSet(false),
     m_dimensionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_costCategoriesHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -91,6 +83,13 @@ Expression& Expression::operator =(JsonView jsonValue)
     m_tagsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("CostCategories"))
+  {
+    m_costCategories = jsonValue.GetObject("CostCategories");
+
+    m_costCategoriesHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -135,6 +134,12 @@ JsonValue Expression::Jsonize() const
   if(m_tagsHasBeenSet)
   {
    payload.WithObject("Tags", m_tags.Jsonize());
+
+  }
+
+  if(m_costCategoriesHasBeenSet)
+  {
+   payload.WithObject("CostCategories", m_costCategories.Jsonize());
 
   }
 

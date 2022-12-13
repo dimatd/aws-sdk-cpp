@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -87,13 +77,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -108,13 +100,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -129,13 +123,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -150,13 +146,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -171,13 +169,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -192,13 +192,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -213,13 +215,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter
@@ -234,13 +238,15 @@ namespace Model
      * <code>resource-type</code> - The resource type (<code>customer-gateway</code> |
      * <code>dedicated-host</code> | <code>dhcp-options</code> |
      * <code>elastic-ip</code> | <code>fleet</code> | <code>fpga-image</code> |
-     * <code>image</code> | <code>instance</code> | <code>host-reservation</code> |
-     * <code>internet-gateway</code> | <code>launch-template</code> |
-     * <code>natgateway</code> | <code>network-acl</code> |
-     * <code>network-interface</code> | <code>reserved-instances</code> |
+     * <code>host-reservation</code> | <code>image</code> | <code>instance</code> |
+     * <code>internet-gateway</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>natgateway</code> |
+     * <code>network-acl</code> | <code>network-interface</code> |
+     * <code>placement-group</code> | <code>reserved-instances</code> |
      * <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> |
      * <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code>
-     * | <code>vpc</code> | <code>vpc-peering-connection</code> |
+     * | <code>vpc</code> | <code>vpc-endpoint</code> |
+     * <code>vpc-endpoint-service</code> | <code>vpc-peering-connection</code> |
      * <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p>
      * <code>tag</code>:&lt;key&gt; - The key/value combination of the tag. For
      * example, specify "tag:Owner" for the filter name and "TeamA" for the filter

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconvert/model/MsSmoothGroupSettings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -29,6 +19,7 @@ namespace Model
 {
 
 MsSmoothGroupSettings::MsSmoothGroupSettings() : 
+    m_additionalManifestsHasBeenSet(false),
     m_audioDeduplication(MsSmoothAudioDeduplication::NOT_SET),
     m_audioDeduplicationHasBeenSet(false),
     m_destinationHasBeenSet(false),
@@ -36,12 +27,15 @@ MsSmoothGroupSettings::MsSmoothGroupSettings() :
     m_encryptionHasBeenSet(false),
     m_fragmentLength(0),
     m_fragmentLengthHasBeenSet(false),
+    m_fragmentLengthControl(MsSmoothFragmentLengthControl::NOT_SET),
+    m_fragmentLengthControlHasBeenSet(false),
     m_manifestEncoding(MsSmoothManifestEncoding::NOT_SET),
     m_manifestEncodingHasBeenSet(false)
 {
 }
 
 MsSmoothGroupSettings::MsSmoothGroupSettings(JsonView jsonValue) : 
+    m_additionalManifestsHasBeenSet(false),
     m_audioDeduplication(MsSmoothAudioDeduplication::NOT_SET),
     m_audioDeduplicationHasBeenSet(false),
     m_destinationHasBeenSet(false),
@@ -49,6 +43,8 @@ MsSmoothGroupSettings::MsSmoothGroupSettings(JsonView jsonValue) :
     m_encryptionHasBeenSet(false),
     m_fragmentLength(0),
     m_fragmentLengthHasBeenSet(false),
+    m_fragmentLengthControl(MsSmoothFragmentLengthControl::NOT_SET),
+    m_fragmentLengthControlHasBeenSet(false),
     m_manifestEncoding(MsSmoothManifestEncoding::NOT_SET),
     m_manifestEncodingHasBeenSet(false)
 {
@@ -57,6 +53,16 @@ MsSmoothGroupSettings::MsSmoothGroupSettings(JsonView jsonValue) :
 
 MsSmoothGroupSettings& MsSmoothGroupSettings::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("additionalManifests"))
+  {
+    Array<JsonView> additionalManifestsJsonList = jsonValue.GetArray("additionalManifests");
+    for(unsigned additionalManifestsIndex = 0; additionalManifestsIndex < additionalManifestsJsonList.GetLength(); ++additionalManifestsIndex)
+    {
+      m_additionalManifests.push_back(additionalManifestsJsonList[additionalManifestsIndex].AsObject());
+    }
+    m_additionalManifestsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("audioDeduplication"))
   {
     m_audioDeduplication = MsSmoothAudioDeduplicationMapper::GetMsSmoothAudioDeduplicationForName(jsonValue.GetString("audioDeduplication"));
@@ -92,6 +98,13 @@ MsSmoothGroupSettings& MsSmoothGroupSettings::operator =(JsonView jsonValue)
     m_fragmentLengthHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("fragmentLengthControl"))
+  {
+    m_fragmentLengthControl = MsSmoothFragmentLengthControlMapper::GetMsSmoothFragmentLengthControlForName(jsonValue.GetString("fragmentLengthControl"));
+
+    m_fragmentLengthControlHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("manifestEncoding"))
   {
     m_manifestEncoding = MsSmoothManifestEncodingMapper::GetMsSmoothManifestEncodingForName(jsonValue.GetString("manifestEncoding"));
@@ -105,6 +118,17 @@ MsSmoothGroupSettings& MsSmoothGroupSettings::operator =(JsonView jsonValue)
 JsonValue MsSmoothGroupSettings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_additionalManifestsHasBeenSet)
+  {
+   Array<JsonValue> additionalManifestsJsonList(m_additionalManifests.size());
+   for(unsigned additionalManifestsIndex = 0; additionalManifestsIndex < additionalManifestsJsonList.GetLength(); ++additionalManifestsIndex)
+   {
+     additionalManifestsJsonList[additionalManifestsIndex].AsObject(m_additionalManifests[additionalManifestsIndex].Jsonize());
+   }
+   payload.WithArray("additionalManifests", std::move(additionalManifestsJsonList));
+
+  }
 
   if(m_audioDeduplicationHasBeenSet)
   {
@@ -133,6 +157,11 @@ JsonValue MsSmoothGroupSettings::Jsonize() const
   {
    payload.WithInteger("fragmentLength", m_fragmentLength);
 
+  }
+
+  if(m_fragmentLengthControlHasBeenSet)
+  {
+   payload.WithString("fragmentLengthControl", MsSmoothFragmentLengthControlMapper::GetNameForMsSmoothFragmentLengthControl(m_fragmentLengthControl));
   }
 
   if(m_manifestEncodingHasBeenSet)

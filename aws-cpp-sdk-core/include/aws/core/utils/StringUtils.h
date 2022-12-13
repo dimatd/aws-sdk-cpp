@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  *
-  *  http://aws.amazon.com/apache2.0
-  *
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
@@ -20,7 +10,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
-
+#include <aws/common/byte_buf.h>
 
 
 namespace Aws
@@ -77,12 +67,32 @@ namespace Aws
             */
             static Aws::String URLDecode(const char* safe);
 
+            enum class SplitOptions
+            {
+                /**
+                 * By default, removes all the empty entries in the vector returned by Split()
+                 */
+                NOT_SET,
+                /**
+                 * Includes empty entries in the vector returned by Split()
+                 */
+                INCLUDE_EMPTY_ENTRIES
+            };
+
             /**
              * @brief Splits a string on a delimiter (empty items are excluded).
              * @param toSplit, the original string to split
              * @param splitOn, the delemiter you want to use.
              */
             static Aws::Vector<Aws::String> Split(const Aws::String& toSplit, char splitOn);
+
+            /**
+             * @brief Splits a string on a delimiter.
+             * @param toSplit, the original string to split
+             * @param splitOn, the delemiter you want to use.
+             * @param option, if INCLUDE_EMPTY_ENTRIES, includes empty entries in the result, otherwise removes empty entries.
+             */
+            static Aws::Vector<Aws::String> Split(const Aws::String& toSplit, char splitOn, SplitOptions option);
 
             /**
              * @brief Splits a string on a delimiter (empty items are excluded).
@@ -92,6 +102,14 @@ namespace Aws
              */
             static Aws::Vector<Aws::String> Split(const Aws::String& toSplit, char splitOn, size_t numOfTargetParts);
 
+            /**
+             * @brief Splits a string on a delimiter.
+             * @param toSplit, the original string to split
+             * @param splitOn, the delemiter you want to use.
+             * @param numOfTargetParts, how many target parts you want to get, if it is 0, as many as possible.
+             * @param option, if INCLUDE_EMPTY_ENTRIES, includes empty entries in the result, otherwise removes empty entries.
+             */
+            static Aws::Vector<Aws::String> Split(const Aws::String& toSplit, char splitOn, size_t numOfTargetParts, SplitOptions option);
 
             /**
             * Splits a string on new line characters.
@@ -128,7 +146,7 @@ namespace Aws
             static long ConvertToInt32(const char* source);
 
 
-            /** 
+            /**
              * convert to bool
              */
             static bool ConvertToBool(const char* source);
@@ -154,7 +172,7 @@ namespace Aws
 
             /**
              * not all platforms (Android) have std::to_string
-             */ 
+             */
             template< typename T >
             static Aws::String to_string(T value)
             {
@@ -194,10 +212,13 @@ namespace Aws
                 std::reverse(s.begin(), s.end());
                 return s;
             }
+
+            static Aws::String FromByteCursor(aws_byte_cursor cursor)
+            {
+                return Aws::String(reinterpret_cast<char *>(cursor.ptr), cursor.len);
+            }
         };
 
 
     } // namespace Utils
 } // namespace Aws
-
-

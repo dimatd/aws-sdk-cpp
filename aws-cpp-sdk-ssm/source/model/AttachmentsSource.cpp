@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ssm/model/AttachmentsSource.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,14 +21,16 @@ namespace Model
 AttachmentsSource::AttachmentsSource() : 
     m_key(AttachmentsSourceKey::NOT_SET),
     m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+    m_valuesHasBeenSet(false),
+    m_nameHasBeenSet(false)
 {
 }
 
 AttachmentsSource::AttachmentsSource(JsonView jsonValue) : 
     m_key(AttachmentsSourceKey::NOT_SET),
     m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+    m_valuesHasBeenSet(false),
+    m_nameHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -62,6 +54,13 @@ AttachmentsSource& AttachmentsSource::operator =(JsonView jsonValue)
     m_valuesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("Name"))
+  {
+    m_name = jsonValue.GetString("Name");
+
+    m_nameHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -82,6 +81,12 @@ JsonValue AttachmentsSource::Jsonize() const
      valuesJsonList[valuesIndex].AsString(m_values[valuesIndex]);
    }
    payload.WithArray("Values", std::move(valuesJsonList));
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
 
   }
 

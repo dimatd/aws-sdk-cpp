@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/health/Health_EXPORTS.h>
@@ -46,38 +36,38 @@ namespace Model
 
 
     /**
-     * <p>Values to narrow the results returned. At least one event ARN is required.
-     * </p>
+     * <p>Values to narrow the results returned. At least one event ARN is
+     * required.</p>
      */
     inline const EntityFilter& GetFilter() const{ return m_filter; }
 
     /**
-     * <p>Values to narrow the results returned. At least one event ARN is required.
-     * </p>
+     * <p>Values to narrow the results returned. At least one event ARN is
+     * required.</p>
      */
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
 
     /**
-     * <p>Values to narrow the results returned. At least one event ARN is required.
-     * </p>
+     * <p>Values to narrow the results returned. At least one event ARN is
+     * required.</p>
      */
     inline void SetFilter(const EntityFilter& value) { m_filterHasBeenSet = true; m_filter = value; }
 
     /**
-     * <p>Values to narrow the results returned. At least one event ARN is required.
-     * </p>
+     * <p>Values to narrow the results returned. At least one event ARN is
+     * required.</p>
      */
     inline void SetFilter(EntityFilter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
 
     /**
-     * <p>Values to narrow the results returned. At least one event ARN is required.
-     * </p>
+     * <p>Values to narrow the results returned. At least one event ARN is
+     * required.</p>
      */
     inline DescribeAffectedEntitiesRequest& WithFilter(const EntityFilter& value) { SetFilter(value); return *this;}
 
     /**
-     * <p>Values to narrow the results returned. At least one event ARN is required.
-     * </p>
+     * <p>Values to narrow the results returned. At least one event ARN is
+     * required.</p>
      */
     inline DescribeAffectedEntitiesRequest& WithFilter(EntityFilter&& value) { SetFilter(std::move(value)); return *this;}
 

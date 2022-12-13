@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/Authorizer.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,30 +21,36 @@ namespace Model
 Authorizer::Authorizer() : 
     m_authorizerCredentialsArnHasBeenSet(false),
     m_authorizerIdHasBeenSet(false),
+    m_authorizerPayloadFormatVersionHasBeenSet(false),
     m_authorizerResultTtlInSeconds(0),
     m_authorizerResultTtlInSecondsHasBeenSet(false),
     m_authorizerType(AuthorizerType::NOT_SET),
     m_authorizerTypeHasBeenSet(false),
     m_authorizerUriHasBeenSet(false),
+    m_enableSimpleResponses(false),
+    m_enableSimpleResponsesHasBeenSet(false),
     m_identitySourceHasBeenSet(false),
     m_identityValidationExpressionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_providerArnsHasBeenSet(false)
+    m_jwtConfigurationHasBeenSet(false),
+    m_nameHasBeenSet(false)
 {
 }
 
 Authorizer::Authorizer(JsonView jsonValue) : 
     m_authorizerCredentialsArnHasBeenSet(false),
     m_authorizerIdHasBeenSet(false),
+    m_authorizerPayloadFormatVersionHasBeenSet(false),
     m_authorizerResultTtlInSeconds(0),
     m_authorizerResultTtlInSecondsHasBeenSet(false),
     m_authorizerType(AuthorizerType::NOT_SET),
     m_authorizerTypeHasBeenSet(false),
     m_authorizerUriHasBeenSet(false),
+    m_enableSimpleResponses(false),
+    m_enableSimpleResponsesHasBeenSet(false),
     m_identitySourceHasBeenSet(false),
     m_identityValidationExpressionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_providerArnsHasBeenSet(false)
+    m_jwtConfigurationHasBeenSet(false),
+    m_nameHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -73,6 +69,13 @@ Authorizer& Authorizer::operator =(JsonView jsonValue)
     m_authorizerId = jsonValue.GetString("authorizerId");
 
     m_authorizerIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("authorizerPayloadFormatVersion"))
+  {
+    m_authorizerPayloadFormatVersion = jsonValue.GetString("authorizerPayloadFormatVersion");
+
+    m_authorizerPayloadFormatVersionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("authorizerResultTtlInSeconds"))
@@ -96,6 +99,13 @@ Authorizer& Authorizer::operator =(JsonView jsonValue)
     m_authorizerUriHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("enableSimpleResponses"))
+  {
+    m_enableSimpleResponses = jsonValue.GetBool("enableSimpleResponses");
+
+    m_enableSimpleResponsesHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("identitySource"))
   {
     Array<JsonView> identitySourceJsonList = jsonValue.GetArray("identitySource");
@@ -113,21 +123,18 @@ Authorizer& Authorizer::operator =(JsonView jsonValue)
     m_identityValidationExpressionHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("jwtConfiguration"))
+  {
+    m_jwtConfiguration = jsonValue.GetObject("jwtConfiguration");
+
+    m_jwtConfigurationHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
 
     m_nameHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("providerArns"))
-  {
-    Array<JsonView> providerArnsJsonList = jsonValue.GetArray("providerArns");
-    for(unsigned providerArnsIndex = 0; providerArnsIndex < providerArnsJsonList.GetLength(); ++providerArnsIndex)
-    {
-      m_providerArns.push_back(providerArnsJsonList[providerArnsIndex].AsString());
-    }
-    m_providerArnsHasBeenSet = true;
   }
 
   return *this;
@@ -149,6 +156,12 @@ JsonValue Authorizer::Jsonize() const
 
   }
 
+  if(m_authorizerPayloadFormatVersionHasBeenSet)
+  {
+   payload.WithString("authorizerPayloadFormatVersion", m_authorizerPayloadFormatVersion);
+
+  }
+
   if(m_authorizerResultTtlInSecondsHasBeenSet)
   {
    payload.WithInteger("authorizerResultTtlInSeconds", m_authorizerResultTtlInSeconds);
@@ -163,6 +176,12 @@ JsonValue Authorizer::Jsonize() const
   if(m_authorizerUriHasBeenSet)
   {
    payload.WithString("authorizerUri", m_authorizerUri);
+
+  }
+
+  if(m_enableSimpleResponsesHasBeenSet)
+  {
+   payload.WithBool("enableSimpleResponses", m_enableSimpleResponses);
 
   }
 
@@ -183,20 +202,15 @@ JsonValue Authorizer::Jsonize() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_jwtConfigurationHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithObject("jwtConfiguration", m_jwtConfiguration.Jsonize());
 
   }
 
-  if(m_providerArnsHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   Array<JsonValue> providerArnsJsonList(m_providerArns.size());
-   for(unsigned providerArnsIndex = 0; providerArnsIndex < providerArnsJsonList.GetLength(); ++providerArnsIndex)
-   {
-     providerArnsJsonList[providerArnsIndex].AsString(m_providerArns[providerArnsIndex]);
-   }
-   payload.WithArray("providerArns", std::move(providerArnsJsonList));
+   payload.WithString("name", m_name);
 
   }
 

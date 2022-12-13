@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -90,42 +80,42 @@ namespace Model
 
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline const Aws::String& GetAbsolutePath() const{ return m_absolutePath; }
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline bool AbsolutePathHasBeenSet() const { return m_absolutePathHasBeenSet; }
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline void SetAbsolutePath(const Aws::String& value) { m_absolutePathHasBeenSet = true; m_absolutePath = value; }
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline void SetAbsolutePath(Aws::String&& value) { m_absolutePathHasBeenSet = true; m_absolutePath = std::move(value); }
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline void SetAbsolutePath(const char* value) { m_absolutePathHasBeenSet = true; m_absolutePath.assign(value); }
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline File& WithAbsolutePath(const Aws::String& value) { SetAbsolutePath(value); return *this;}
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline File& WithAbsolutePath(Aws::String&& value) { SetAbsolutePath(std::move(value)); return *this;}
 
     /**
-     * <p>The fully-qualified path to the file in the repository.</p>
+     * <p>The fully qualified path to the file in the repository.</p>
      */
     inline File& WithAbsolutePath(const char* value) { SetAbsolutePath(value); return *this;}
 

@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/apigatewayv2/ApiGatewayV2_EXPORTS.h>
 #include <aws/apigatewayv2/ApiGatewayV2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/apigatewayv2/model/MutualTlsAuthenticationInput.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/apigatewayv2/model/DomainNameConfiguration.h>
 #include <utility>
@@ -30,6 +21,10 @@ namespace Model
 {
 
   /**
+   * <p>Creates a new DomainName resource to represent a domain name.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/CreateDomainNameRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAYV2_API CreateDomainNameRequest : public ApiGatewayV2Request
   {
@@ -128,93 +123,98 @@ namespace Model
 
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The mutual TLS authentication configuration for a custom domain name.</p>
+     */
+    inline const MutualTlsAuthenticationInput& GetMutualTlsAuthentication() const{ return m_mutualTlsAuthentication; }
+
+    /**
+     * <p>The mutual TLS authentication configuration for a custom domain name.</p>
+     */
+    inline bool MutualTlsAuthenticationHasBeenSet() const { return m_mutualTlsAuthenticationHasBeenSet; }
+
+    /**
+     * <p>The mutual TLS authentication configuration for a custom domain name.</p>
+     */
+    inline void SetMutualTlsAuthentication(const MutualTlsAuthenticationInput& value) { m_mutualTlsAuthenticationHasBeenSet = true; m_mutualTlsAuthentication = value; }
+
+    /**
+     * <p>The mutual TLS authentication configuration for a custom domain name.</p>
+     */
+    inline void SetMutualTlsAuthentication(MutualTlsAuthenticationInput&& value) { m_mutualTlsAuthenticationHasBeenSet = true; m_mutualTlsAuthentication = std::move(value); }
+
+    /**
+     * <p>The mutual TLS authentication configuration for a custom domain name.</p>
+     */
+    inline CreateDomainNameRequest& WithMutualTlsAuthentication(const MutualTlsAuthenticationInput& value) { SetMutualTlsAuthentication(value); return *this;}
+
+    /**
+     * <p>The mutual TLS authentication configuration for a custom domain name.</p>
+     */
+    inline CreateDomainNameRequest& WithMutualTlsAuthentication(MutualTlsAuthenticationInput&& value) { SetMutualTlsAuthentication(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The
-     * tag key can be up to 128 characters and must not start with aws:. The tag value
-     * can be up to 256 characters..</p>
+     * <p>The collection of tags associated with a domain name.</p>
      */
     inline CreateDomainNameRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
 
@@ -225,6 +225,9 @@ namespace Model
 
     Aws::Vector<DomainNameConfiguration> m_domainNameConfigurations;
     bool m_domainNameConfigurationsHasBeenSet;
+
+    MutualTlsAuthenticationInput m_mutualTlsAuthentication;
+    bool m_mutualTlsAuthenticationHasBeenSet;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet;

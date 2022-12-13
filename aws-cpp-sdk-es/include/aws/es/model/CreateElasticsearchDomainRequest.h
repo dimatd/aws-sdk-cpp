@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
@@ -26,8 +16,12 @@
 #include <aws/es/model/NodeToNodeEncryptionOptions.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/es/model/DomainEndpointOptions.h>
+#include <aws/es/model/AdvancedSecurityOptionsInput.h>
+#include <aws/es/model/AutoTuneOptionsInput.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/es/model/LogType.h>
 #include <aws/es/model/LogPublishingOption.h>
+#include <aws/es/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -724,6 +718,109 @@ namespace Model
      */
     inline CreateElasticsearchDomainRequest& WithDomainEndpointOptions(DomainEndpointOptions&& value) { SetDomainEndpointOptions(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Specifies advanced security options.</p>
+     */
+    inline const AdvancedSecurityOptionsInput& GetAdvancedSecurityOptions() const{ return m_advancedSecurityOptions; }
+
+    /**
+     * <p>Specifies advanced security options.</p>
+     */
+    inline bool AdvancedSecurityOptionsHasBeenSet() const { return m_advancedSecurityOptionsHasBeenSet; }
+
+    /**
+     * <p>Specifies advanced security options.</p>
+     */
+    inline void SetAdvancedSecurityOptions(const AdvancedSecurityOptionsInput& value) { m_advancedSecurityOptionsHasBeenSet = true; m_advancedSecurityOptions = value; }
+
+    /**
+     * <p>Specifies advanced security options.</p>
+     */
+    inline void SetAdvancedSecurityOptions(AdvancedSecurityOptionsInput&& value) { m_advancedSecurityOptionsHasBeenSet = true; m_advancedSecurityOptions = std::move(value); }
+
+    /**
+     * <p>Specifies advanced security options.</p>
+     */
+    inline CreateElasticsearchDomainRequest& WithAdvancedSecurityOptions(const AdvancedSecurityOptionsInput& value) { SetAdvancedSecurityOptions(value); return *this;}
+
+    /**
+     * <p>Specifies advanced security options.</p>
+     */
+    inline CreateElasticsearchDomainRequest& WithAdvancedSecurityOptions(AdvancedSecurityOptionsInput&& value) { SetAdvancedSecurityOptions(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Specifies Auto-Tune options.</p>
+     */
+    inline const AutoTuneOptionsInput& GetAutoTuneOptions() const{ return m_autoTuneOptions; }
+
+    /**
+     * <p>Specifies Auto-Tune options.</p>
+     */
+    inline bool AutoTuneOptionsHasBeenSet() const { return m_autoTuneOptionsHasBeenSet; }
+
+    /**
+     * <p>Specifies Auto-Tune options.</p>
+     */
+    inline void SetAutoTuneOptions(const AutoTuneOptionsInput& value) { m_autoTuneOptionsHasBeenSet = true; m_autoTuneOptions = value; }
+
+    /**
+     * <p>Specifies Auto-Tune options.</p>
+     */
+    inline void SetAutoTuneOptions(AutoTuneOptionsInput&& value) { m_autoTuneOptionsHasBeenSet = true; m_autoTuneOptions = std::move(value); }
+
+    /**
+     * <p>Specifies Auto-Tune options.</p>
+     */
+    inline CreateElasticsearchDomainRequest& WithAutoTuneOptions(const AutoTuneOptionsInput& value) { SetAutoTuneOptions(value); return *this;}
+
+    /**
+     * <p>Specifies Auto-Tune options.</p>
+     */
+    inline CreateElasticsearchDomainRequest& WithAutoTuneOptions(AutoTuneOptionsInput&& value) { SetAutoTuneOptions(std::move(value)); return *this;}
+
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTagList() const{ return m_tagList; }
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline bool TagListHasBeenSet() const { return m_tagListHasBeenSet; }
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline void SetTagList(const Aws::Vector<Tag>& value) { m_tagListHasBeenSet = true; m_tagList = value; }
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline void SetTagList(Aws::Vector<Tag>&& value) { m_tagListHasBeenSet = true; m_tagList = std::move(value); }
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline CreateElasticsearchDomainRequest& WithTagList(const Aws::Vector<Tag>& value) { SetTagList(value); return *this;}
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline CreateElasticsearchDomainRequest& WithTagList(Aws::Vector<Tag>&& value) { SetTagList(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline CreateElasticsearchDomainRequest& AddTagList(const Tag& value) { m_tagListHasBeenSet = true; m_tagList.push_back(value); return *this; }
+
+    /**
+     * <p>A list of <code>Tag</code> added during domain creation.</p>
+     */
+    inline CreateElasticsearchDomainRequest& AddTagList(Tag&& value) { m_tagListHasBeenSet = true; m_tagList.push_back(std::move(value)); return *this; }
+
   private:
 
     Aws::String m_domainName;
@@ -764,6 +861,15 @@ namespace Model
 
     DomainEndpointOptions m_domainEndpointOptions;
     bool m_domainEndpointOptionsHasBeenSet;
+
+    AdvancedSecurityOptionsInput m_advancedSecurityOptions;
+    bool m_advancedSecurityOptionsHasBeenSet;
+
+    AutoTuneOptionsInput m_autoTuneOptions;
+    bool m_autoTuneOptionsHasBeenSet;
+
+    Aws::Vector<Tag> m_tagList;
+    bool m_tagListHasBeenSet;
   };
 
 } // namespace Model

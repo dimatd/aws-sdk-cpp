@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ce/model/Context.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -32,6 +22,7 @@ namespace Aws
 
         static const int COST_AND_USAGE_HASH = HashingUtils::HashString("COST_AND_USAGE");
         static const int RESERVATIONS_HASH = HashingUtils::HashString("RESERVATIONS");
+        static const int SAVINGS_PLANS_HASH = HashingUtils::HashString("SAVINGS_PLANS");
 
 
         Context GetContextForName(const Aws::String& name)
@@ -44,6 +35,10 @@ namespace Aws
           else if (hashCode == RESERVATIONS_HASH)
           {
             return Context::RESERVATIONS;
+          }
+          else if (hashCode == SAVINGS_PLANS_HASH)
+          {
+            return Context::SAVINGS_PLANS;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -63,6 +58,8 @@ namespace Aws
             return "COST_AND_USAGE";
           case Context::RESERVATIONS:
             return "RESERVATIONS";
+          case Context::SAVINGS_PLANS:
+            return "SAVINGS_PLANS";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

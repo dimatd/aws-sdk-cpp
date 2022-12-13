@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/managedblockchain/ManagedBlockchain_EXPORTS.h>
@@ -51,7 +41,7 @@ namespace Model
     /**
      * <p>The edition of Amazon Managed Blockchain that the network uses. For more
      * information, see <a
-     * href="https://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
+     * href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
      * Blockchain Pricing</a>.</p>
      */
     inline const Edition& GetEdition() const{ return m_edition; }
@@ -59,7 +49,7 @@ namespace Model
     /**
      * <p>The edition of Amazon Managed Blockchain that the network uses. For more
      * information, see <a
-     * href="https://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
+     * href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
      * Blockchain Pricing</a>.</p>
      */
     inline bool EditionHasBeenSet() const { return m_editionHasBeenSet; }
@@ -67,7 +57,7 @@ namespace Model
     /**
      * <p>The edition of Amazon Managed Blockchain that the network uses. For more
      * information, see <a
-     * href="https://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
+     * href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
      * Blockchain Pricing</a>.</p>
      */
     inline void SetEdition(const Edition& value) { m_editionHasBeenSet = true; m_edition = value; }
@@ -75,7 +65,7 @@ namespace Model
     /**
      * <p>The edition of Amazon Managed Blockchain that the network uses. For more
      * information, see <a
-     * href="https://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
+     * href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
      * Blockchain Pricing</a>.</p>
      */
     inline void SetEdition(Edition&& value) { m_editionHasBeenSet = true; m_edition = std::move(value); }
@@ -83,7 +73,7 @@ namespace Model
     /**
      * <p>The edition of Amazon Managed Blockchain that the network uses. For more
      * information, see <a
-     * href="https://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
+     * href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
      * Blockchain Pricing</a>.</p>
      */
     inline NetworkFabricConfiguration& WithEdition(const Edition& value) { SetEdition(value); return *this;}
@@ -91,7 +81,7 @@ namespace Model
     /**
      * <p>The edition of Amazon Managed Blockchain that the network uses. For more
      * information, see <a
-     * href="https://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
+     * href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed
      * Blockchain Pricing</a>.</p>
      */
     inline NetworkFabricConfiguration& WithEdition(Edition&& value) { SetEdition(std::move(value)); return *this;}

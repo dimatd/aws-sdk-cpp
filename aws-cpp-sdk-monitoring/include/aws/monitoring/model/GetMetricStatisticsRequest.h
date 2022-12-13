@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
@@ -250,22 +240,22 @@ namespace Model
      * <p>The time stamp that determines the first data point to return. Start times
      * are evaluated relative to the time that CloudWatch receives the request.</p>
      * <p>The value specified is inclusive; results include data points with the
-     * specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-     * example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time
-     * stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down
-     * to the nearest whole minute. For example, 12:32:34 is rounded down to
-     * 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down
-     * to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to
-     * 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to
-     * the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to
-     * 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to 5, 10, or 30, the
-     * start time of your request is rounded down to the nearest time that corresponds
-     * to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a
-     * query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
-     * of your request is rounded down and you receive data from 01:05:10 to 01:05:20.
-     * If you make a query at 15:07:17 for the previous 5 minutes of data, using a
-     * period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
-     * </p>
+     * specified time stamp. In a raw HTTP query, the time stamp must be in ISO 8601
+     * UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the
+     * specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days
+     * ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded
+     * down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago -
+     * Round down to the nearest 5-minute clock interval. For example, 12:32:34 is
+     * rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago
+     * - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to
+     * 5, 10, or 30, the start time of your request is rounded down to the nearest time
+     * that corresponds to even 5-, 10-, or 30-second divisions of a minute. For
+     * example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second
+     * period, the start time of your request is rounded down and you receive data from
+     * 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes
+     * of data, using a period of 5 seconds, you receive data timestamped between
+     * 15:02:15 and 15:07:15. </p>
      */
     inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
 
@@ -273,22 +263,22 @@ namespace Model
      * <p>The time stamp that determines the first data point to return. Start times
      * are evaluated relative to the time that CloudWatch receives the request.</p>
      * <p>The value specified is inclusive; results include data points with the
-     * specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-     * example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time
-     * stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down
-     * to the nearest whole minute. For example, 12:32:34 is rounded down to
-     * 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down
-     * to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to
-     * 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to
-     * the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to
-     * 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to 5, 10, or 30, the
-     * start time of your request is rounded down to the nearest time that corresponds
-     * to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a
-     * query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
-     * of your request is rounded down and you receive data from 01:05:10 to 01:05:20.
-     * If you make a query at 15:07:17 for the previous 5 minutes of data, using a
-     * period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
-     * </p>
+     * specified time stamp. In a raw HTTP query, the time stamp must be in ISO 8601
+     * UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the
+     * specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days
+     * ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded
+     * down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago -
+     * Round down to the nearest 5-minute clock interval. For example, 12:32:34 is
+     * rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago
+     * - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to
+     * 5, 10, or 30, the start time of your request is rounded down to the nearest time
+     * that corresponds to even 5-, 10-, or 30-second divisions of a minute. For
+     * example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second
+     * period, the start time of your request is rounded down and you receive data from
+     * 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes
+     * of data, using a period of 5 seconds, you receive data timestamped between
+     * 15:02:15 and 15:07:15. </p>
      */
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
 
@@ -296,22 +286,22 @@ namespace Model
      * <p>The time stamp that determines the first data point to return. Start times
      * are evaluated relative to the time that CloudWatch receives the request.</p>
      * <p>The value specified is inclusive; results include data points with the
-     * specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-     * example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time
-     * stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down
-     * to the nearest whole minute. For example, 12:32:34 is rounded down to
-     * 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down
-     * to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to
-     * 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to
-     * the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to
-     * 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to 5, 10, or 30, the
-     * start time of your request is rounded down to the nearest time that corresponds
-     * to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a
-     * query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
-     * of your request is rounded down and you receive data from 01:05:10 to 01:05:20.
-     * If you make a query at 15:07:17 for the previous 5 minutes of data, using a
-     * period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
-     * </p>
+     * specified time stamp. In a raw HTTP query, the time stamp must be in ISO 8601
+     * UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the
+     * specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days
+     * ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded
+     * down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago -
+     * Round down to the nearest 5-minute clock interval. For example, 12:32:34 is
+     * rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago
+     * - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to
+     * 5, 10, or 30, the start time of your request is rounded down to the nearest time
+     * that corresponds to even 5-, 10-, or 30-second divisions of a minute. For
+     * example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second
+     * period, the start time of your request is rounded down and you receive data from
+     * 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes
+     * of data, using a period of 5 seconds, you receive data timestamped between
+     * 15:02:15 and 15:07:15. </p>
      */
     inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
 
@@ -319,22 +309,22 @@ namespace Model
      * <p>The time stamp that determines the first data point to return. Start times
      * are evaluated relative to the time that CloudWatch receives the request.</p>
      * <p>The value specified is inclusive; results include data points with the
-     * specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-     * example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time
-     * stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down
-     * to the nearest whole minute. For example, 12:32:34 is rounded down to
-     * 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down
-     * to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to
-     * 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to
-     * the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to
-     * 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to 5, 10, or 30, the
-     * start time of your request is rounded down to the nearest time that corresponds
-     * to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a
-     * query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
-     * of your request is rounded down and you receive data from 01:05:10 to 01:05:20.
-     * If you make a query at 15:07:17 for the previous 5 minutes of data, using a
-     * period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
-     * </p>
+     * specified time stamp. In a raw HTTP query, the time stamp must be in ISO 8601
+     * UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the
+     * specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days
+     * ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded
+     * down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago -
+     * Round down to the nearest 5-minute clock interval. For example, 12:32:34 is
+     * rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago
+     * - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to
+     * 5, 10, or 30, the start time of your request is rounded down to the nearest time
+     * that corresponds to even 5-, 10-, or 30-second divisions of a minute. For
+     * example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second
+     * period, the start time of your request is rounded down and you receive data from
+     * 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes
+     * of data, using a period of 5 seconds, you receive data timestamped between
+     * 15:02:15 and 15:07:15. </p>
      */
     inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
@@ -342,22 +332,22 @@ namespace Model
      * <p>The time stamp that determines the first data point to return. Start times
      * are evaluated relative to the time that CloudWatch receives the request.</p>
      * <p>The value specified is inclusive; results include data points with the
-     * specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-     * example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time
-     * stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down
-     * to the nearest whole minute. For example, 12:32:34 is rounded down to
-     * 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down
-     * to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to
-     * 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to
-     * the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to
-     * 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to 5, 10, or 30, the
-     * start time of your request is rounded down to the nearest time that corresponds
-     * to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a
-     * query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
-     * of your request is rounded down and you receive data from 01:05:10 to 01:05:20.
-     * If you make a query at 15:07:17 for the previous 5 minutes of data, using a
-     * period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
-     * </p>
+     * specified time stamp. In a raw HTTP query, the time stamp must be in ISO 8601
+     * UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the
+     * specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days
+     * ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded
+     * down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago -
+     * Round down to the nearest 5-minute clock interval. For example, 12:32:34 is
+     * rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago
+     * - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to
+     * 5, 10, or 30, the start time of your request is rounded down to the nearest time
+     * that corresponds to even 5-, 10-, or 30-second divisions of a minute. For
+     * example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second
+     * period, the start time of your request is rounded down and you receive data from
+     * 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes
+     * of data, using a period of 5 seconds, you receive data timestamped between
+     * 15:02:15 and 15:07:15. </p>
      */
     inline GetMetricStatisticsRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
 
@@ -365,22 +355,22 @@ namespace Model
      * <p>The time stamp that determines the first data point to return. Start times
      * are evaluated relative to the time that CloudWatch receives the request.</p>
      * <p>The value specified is inclusive; results include data points with the
-     * specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-     * example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time
-     * stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down
-     * to the nearest whole minute. For example, 12:32:34 is rounded down to
-     * 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down
-     * to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to
-     * 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to
-     * the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to
-     * 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to 5, 10, or 30, the
-     * start time of your request is rounded down to the nearest time that corresponds
-     * to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a
-     * query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
-     * of your request is rounded down and you receive data from 01:05:10 to 01:05:20.
-     * If you make a query at 15:07:17 for the previous 5 minutes of data, using a
-     * period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.
-     * </p>
+     * specified time stamp. In a raw HTTP query, the time stamp must be in ISO 8601
+     * UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the
+     * specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days
+     * ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded
+     * down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago -
+     * Round down to the nearest 5-minute clock interval. For example, 12:32:34 is
+     * rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago
+     * - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.</p> </li> </ul> <p>If you set <code>Period</code> to
+     * 5, 10, or 30, the start time of your request is rounded down to the nearest time
+     * that corresponds to even 5-, 10-, or 30-second divisions of a minute. For
+     * example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second
+     * period, the start time of your request is rounded down and you receive data from
+     * 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes
+     * of data, using a period of 5 seconds, you receive data timestamped between
+     * 15:02:15 and 15:07:15. </p>
      */
     inline GetMetricStatisticsRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
@@ -388,48 +378,48 @@ namespace Model
     /**
      * <p>The time stamp that determines the last data point to return.</p> <p>The
      * value specified is exclusive; results include data points up to the specified
-     * time stamp. The time stamp must be in ISO 8601 UTC format (for example,
-     * 2016-10-10T23:00:00Z).</p>
+     * time stamp. In a raw HTTP query, the time stamp must be in ISO 8601 UTC format
+     * (for example, 2016-10-10T23:00:00Z).</p>
      */
     inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
 
     /**
      * <p>The time stamp that determines the last data point to return.</p> <p>The
      * value specified is exclusive; results include data points up to the specified
-     * time stamp. The time stamp must be in ISO 8601 UTC format (for example,
-     * 2016-10-10T23:00:00Z).</p>
+     * time stamp. In a raw HTTP query, the time stamp must be in ISO 8601 UTC format
+     * (for example, 2016-10-10T23:00:00Z).</p>
      */
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
 
     /**
      * <p>The time stamp that determines the last data point to return.</p> <p>The
      * value specified is exclusive; results include data points up to the specified
-     * time stamp. The time stamp must be in ISO 8601 UTC format (for example,
-     * 2016-10-10T23:00:00Z).</p>
+     * time stamp. In a raw HTTP query, the time stamp must be in ISO 8601 UTC format
+     * (for example, 2016-10-10T23:00:00Z).</p>
      */
     inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
 
     /**
      * <p>The time stamp that determines the last data point to return.</p> <p>The
      * value specified is exclusive; results include data points up to the specified
-     * time stamp. The time stamp must be in ISO 8601 UTC format (for example,
-     * 2016-10-10T23:00:00Z).</p>
+     * time stamp. In a raw HTTP query, the time stamp must be in ISO 8601 UTC format
+     * (for example, 2016-10-10T23:00:00Z).</p>
      */
     inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>The time stamp that determines the last data point to return.</p> <p>The
      * value specified is exclusive; results include data points up to the specified
-     * time stamp. The time stamp must be in ISO 8601 UTC format (for example,
-     * 2016-10-10T23:00:00Z).</p>
+     * time stamp. In a raw HTTP query, the time stamp must be in ISO 8601 UTC format
+     * (for example, 2016-10-10T23:00:00Z).</p>
      */
     inline GetMetricStatisticsRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
 
     /**
      * <p>The time stamp that determines the last data point to return.</p> <p>The
      * value specified is exclusive; results include data points up to the specified
-     * time stamp. The time stamp must be in ISO 8601 UTC format (for example,
-     * 2016-10-10T23:00:00Z).</p>
+     * time stamp. In a raw HTTP query, the time stamp must be in ISO 8601 UTC format
+     * (for example, 2016-10-10T23:00:00Z).</p>
      */
     inline GetMetricStatisticsRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
@@ -654,10 +644,9 @@ namespace Model
      * <p>The unit for a given metric. If you omit <code>Unit</code>, all data that was
      * collected with any unit is returned, along with the corresponding units that
      * were specified when the data was reported to CloudWatch. If you specify a unit,
-     * the operation returns only data data that was collected with that unit
-     * specified. If you specify a unit that does not match the data collected, the
-     * results of the operation are null. CloudWatch does not perform unit
-     * conversions.</p>
+     * the operation returns only data that was collected with that unit specified. If
+     * you specify a unit that does not match the data collected, the results of the
+     * operation are null. CloudWatch does not perform unit conversions.</p>
      */
     inline const StandardUnit& GetUnit() const{ return m_unit; }
 
@@ -665,10 +654,9 @@ namespace Model
      * <p>The unit for a given metric. If you omit <code>Unit</code>, all data that was
      * collected with any unit is returned, along with the corresponding units that
      * were specified when the data was reported to CloudWatch. If you specify a unit,
-     * the operation returns only data data that was collected with that unit
-     * specified. If you specify a unit that does not match the data collected, the
-     * results of the operation are null. CloudWatch does not perform unit
-     * conversions.</p>
+     * the operation returns only data that was collected with that unit specified. If
+     * you specify a unit that does not match the data collected, the results of the
+     * operation are null. CloudWatch does not perform unit conversions.</p>
      */
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
 
@@ -676,10 +664,9 @@ namespace Model
      * <p>The unit for a given metric. If you omit <code>Unit</code>, all data that was
      * collected with any unit is returned, along with the corresponding units that
      * were specified when the data was reported to CloudWatch. If you specify a unit,
-     * the operation returns only data data that was collected with that unit
-     * specified. If you specify a unit that does not match the data collected, the
-     * results of the operation are null. CloudWatch does not perform unit
-     * conversions.</p>
+     * the operation returns only data that was collected with that unit specified. If
+     * you specify a unit that does not match the data collected, the results of the
+     * operation are null. CloudWatch does not perform unit conversions.</p>
      */
     inline void SetUnit(const StandardUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
 
@@ -687,10 +674,9 @@ namespace Model
      * <p>The unit for a given metric. If you omit <code>Unit</code>, all data that was
      * collected with any unit is returned, along with the corresponding units that
      * were specified when the data was reported to CloudWatch. If you specify a unit,
-     * the operation returns only data data that was collected with that unit
-     * specified. If you specify a unit that does not match the data collected, the
-     * results of the operation are null. CloudWatch does not perform unit
-     * conversions.</p>
+     * the operation returns only data that was collected with that unit specified. If
+     * you specify a unit that does not match the data collected, the results of the
+     * operation are null. CloudWatch does not perform unit conversions.</p>
      */
     inline void SetUnit(StandardUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
 
@@ -698,10 +684,9 @@ namespace Model
      * <p>The unit for a given metric. If you omit <code>Unit</code>, all data that was
      * collected with any unit is returned, along with the corresponding units that
      * were specified when the data was reported to CloudWatch. If you specify a unit,
-     * the operation returns only data data that was collected with that unit
-     * specified. If you specify a unit that does not match the data collected, the
-     * results of the operation are null. CloudWatch does not perform unit
-     * conversions.</p>
+     * the operation returns only data that was collected with that unit specified. If
+     * you specify a unit that does not match the data collected, the results of the
+     * operation are null. CloudWatch does not perform unit conversions.</p>
      */
     inline GetMetricStatisticsRequest& WithUnit(const StandardUnit& value) { SetUnit(value); return *this;}
 
@@ -709,10 +694,9 @@ namespace Model
      * <p>The unit for a given metric. If you omit <code>Unit</code>, all data that was
      * collected with any unit is returned, along with the corresponding units that
      * were specified when the data was reported to CloudWatch. If you specify a unit,
-     * the operation returns only data data that was collected with that unit
-     * specified. If you specify a unit that does not match the data collected, the
-     * results of the operation are null. CloudWatch does not perform unit
-     * conversions.</p>
+     * the operation returns only data that was collected with that unit specified. If
+     * you specify a unit that does not match the data collected, the results of the
+     * operation are null. CloudWatch does not perform unit conversions.</p>
      */
     inline GetMetricStatisticsRequest& WithUnit(StandardUnit&& value) { SetUnit(std::move(value)); return *this;}
 

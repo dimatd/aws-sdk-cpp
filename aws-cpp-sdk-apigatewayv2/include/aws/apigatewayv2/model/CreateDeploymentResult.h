@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/apigatewayv2/ApiGatewayV2_EXPORTS.h>
@@ -42,6 +32,22 @@ namespace Model
     CreateDeploymentResult();
     CreateDeploymentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     CreateDeploymentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
+
+
+    /**
+     * <p>Specifies whether a deployment was automatically released.</p>
+     */
+    inline bool GetAutoDeployed() const{ return m_autoDeployed; }
+
+    /**
+     * <p>Specifies whether a deployment was automatically released.</p>
+     */
+    inline void SetAutoDeployed(bool value) { m_autoDeployed = value; }
+
+    /**
+     * <p>Specifies whether a deployment was automatically released.</p>
+     */
+    inline CreateDeploymentResult& WithAutoDeployed(bool value) { SetAutoDeployed(value); return *this;}
 
 
     /**
@@ -107,32 +113,27 @@ namespace Model
 
 
     /**
-     * <p>The status of the deployment: PENDING, FAILED, or
- SUCCEEDED.</p>
+     * <p>The status of the deployment: PENDING, FAILED, or SUCCEEDED.</p>
      */
     inline const DeploymentStatus& GetDeploymentStatus() const{ return m_deploymentStatus; }
 
     /**
-     * <p>The status of the deployment: PENDING, FAILED, or
- SUCCEEDED.</p>
+     * <p>The status of the deployment: PENDING, FAILED, or SUCCEEDED.</p>
      */
     inline void SetDeploymentStatus(const DeploymentStatus& value) { m_deploymentStatus = value; }
 
     /**
-     * <p>The status of the deployment: PENDING, FAILED, or
- SUCCEEDED.</p>
+     * <p>The status of the deployment: PENDING, FAILED, or SUCCEEDED.</p>
      */
     inline void SetDeploymentStatus(DeploymentStatus&& value) { m_deploymentStatus = std::move(value); }
 
     /**
-     * <p>The status of the deployment: PENDING, FAILED, or
- SUCCEEDED.</p>
+     * <p>The status of the deployment: PENDING, FAILED, or SUCCEEDED.</p>
      */
     inline CreateDeploymentResult& WithDeploymentStatus(const DeploymentStatus& value) { SetDeploymentStatus(value); return *this;}
 
     /**
-     * <p>The status of the deployment: PENDING, FAILED, or
- SUCCEEDED.</p>
+     * <p>The status of the deployment: PENDING, FAILED, or SUCCEEDED.</p>
      */
     inline CreateDeploymentResult& WithDeploymentStatus(DeploymentStatus&& value) { SetDeploymentStatus(std::move(value)); return *this;}
 
@@ -209,6 +210,8 @@ namespace Model
     inline CreateDeploymentResult& WithDescription(const char* value) { SetDescription(value); return *this;}
 
   private:
+
+    bool m_autoDeployed;
 
     Aws::Utils::DateTime m_createdDate;
 

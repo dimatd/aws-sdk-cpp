@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/guardduty/model/InstanceDetails.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -36,6 +26,7 @@ InstanceDetails::InstanceDetails() :
     m_instanceIdHasBeenSet(false),
     m_instanceStateHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_launchTimeHasBeenSet(false),
     m_networkInterfacesHasBeenSet(false),
     m_platformHasBeenSet(false),
@@ -52,6 +43,7 @@ InstanceDetails::InstanceDetails(JsonView jsonValue) :
     m_instanceIdHasBeenSet(false),
     m_instanceStateHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
+    m_outpostArnHasBeenSet(false),
     m_launchTimeHasBeenSet(false),
     m_networkInterfacesHasBeenSet(false),
     m_platformHasBeenSet(false),
@@ -110,6 +102,13 @@ InstanceDetails& InstanceDetails::operator =(JsonView jsonValue)
     m_instanceType = jsonValue.GetString("instanceType");
 
     m_instanceTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("outpostArn"))
+  {
+    m_outpostArn = jsonValue.GetString("outpostArn");
+
+    m_outpostArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("launchTime"))
@@ -202,6 +201,12 @@ JsonValue InstanceDetails::Jsonize() const
   if(m_instanceTypeHasBeenSet)
   {
    payload.WithString("instanceType", m_instanceType);
+
+  }
+
+  if(m_outpostArnHasBeenSet)
+  {
+   payload.WithString("outpostArn", m_outpostArn);
 
   }
 

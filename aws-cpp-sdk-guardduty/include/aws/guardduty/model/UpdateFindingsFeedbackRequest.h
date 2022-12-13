@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/guardduty/GuardDuty_EXPORTS.h>
@@ -45,127 +35,127 @@ namespace Model
 
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to mark as useful or not useful.</p>
+     * <p>The ID of the detector associated with the findings to update feedback
+     * for.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
 
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline const Aws::Vector<Aws::String>& GetFindingIds() const{ return m_findingIds; }
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline bool FindingIdsHasBeenSet() const { return m_findingIdsHasBeenSet; }
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline void SetFindingIds(const Aws::Vector<Aws::String>& value) { m_findingIdsHasBeenSet = true; m_findingIds = value; }
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline void SetFindingIds(Aws::Vector<Aws::String>&& value) { m_findingIdsHasBeenSet = true; m_findingIds = std::move(value); }
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithFindingIds(const Aws::Vector<Aws::String>& value) { SetFindingIds(value); return *this;}
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithFindingIds(Aws::Vector<Aws::String>&& value) { SetFindingIds(std::move(value)); return *this;}
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline UpdateFindingsFeedbackRequest& AddFindingIds(const Aws::String& value) { m_findingIdsHasBeenSet = true; m_findingIds.push_back(value); return *this; }
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline UpdateFindingsFeedbackRequest& AddFindingIds(Aws::String&& value) { m_findingIdsHasBeenSet = true; m_findingIds.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>IDs of the findings that you want to mark as useful or not useful.</p>
+     * <p>The IDs of the findings that you want to mark as useful or not useful.</p>
      */
     inline UpdateFindingsFeedbackRequest& AddFindingIds(const char* value) { m_findingIdsHasBeenSet = true; m_findingIds.push_back(value); return *this; }
 
 
     /**
-     * <p>Valid values: USEFUL | NOT_USEFUL</p>
+     * <p>The feedback for the finding.</p>
      */
     inline const Feedback& GetFeedback() const{ return m_feedback; }
 
     /**
-     * <p>Valid values: USEFUL | NOT_USEFUL</p>
+     * <p>The feedback for the finding.</p>
      */
     inline bool FeedbackHasBeenSet() const { return m_feedbackHasBeenSet; }
 
     /**
-     * <p>Valid values: USEFUL | NOT_USEFUL</p>
+     * <p>The feedback for the finding.</p>
      */
     inline void SetFeedback(const Feedback& value) { m_feedbackHasBeenSet = true; m_feedback = value; }
 
     /**
-     * <p>Valid values: USEFUL | NOT_USEFUL</p>
+     * <p>The feedback for the finding.</p>
      */
     inline void SetFeedback(Feedback&& value) { m_feedbackHasBeenSet = true; m_feedback = std::move(value); }
 
     /**
-     * <p>Valid values: USEFUL | NOT_USEFUL</p>
+     * <p>The feedback for the finding.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithFeedback(const Feedback& value) { SetFeedback(value); return *this;}
 
     /**
-     * <p>Valid values: USEFUL | NOT_USEFUL</p>
+     * <p>The feedback for the finding.</p>
      */
     inline UpdateFindingsFeedbackRequest& WithFeedback(Feedback&& value) { SetFeedback(std::move(value)); return *this;}
 

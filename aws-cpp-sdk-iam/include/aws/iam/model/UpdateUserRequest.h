@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
@@ -125,8 +115,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline const Aws::String& GetNewPath() const{ return m_newPath; }
 
@@ -136,8 +127,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline bool NewPathHasBeenSet() const { return m_newPathHasBeenSet; }
 
@@ -147,8 +139,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline void SetNewPath(const Aws::String& value) { m_newPathHasBeenSet = true; m_newPath = value; }
 
@@ -158,8 +151,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline void SetNewPath(Aws::String&& value) { m_newPathHasBeenSet = true; m_newPath = std::move(value); }
 
@@ -169,8 +163,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline void SetNewPath(const char* value) { m_newPathHasBeenSet = true; m_newPath.assign(value); }
 
@@ -180,8 +175,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline UpdateUserRequest& WithNewPath(const Aws::String& value) { SetNewPath(value); return *this;}
 
@@ -191,8 +187,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline UpdateUserRequest& WithNewPath(Aws::String&& value) { SetNewPath(std::move(value)); return *this;}
 
@@ -202,8 +199,9 @@ namespace Model
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * consisting of either a forward slash (/) by itself or a string that must begin
      * and end with forward slashes. In addition, it can contain any ASCII character
-     * from the ! (\u0021) through the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * from the ! (<code>\u0021</code>) through the DEL character
+     * (<code>\u007F</code>), including most punctuation characters, digits, and upper
+     * and lowercased letters.</p>
      */
     inline UpdateUserRequest& WithNewPath(const char* value) { SetNewPath(value); return *this;}
 

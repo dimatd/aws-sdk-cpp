@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/es/model/ElasticsearchClusterConfig.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -41,7 +31,14 @@ ElasticsearchClusterConfig::ElasticsearchClusterConfig() :
     m_dedicatedMasterType(ESPartitionInstanceType::NOT_SET),
     m_dedicatedMasterTypeHasBeenSet(false),
     m_dedicatedMasterCount(0),
-    m_dedicatedMasterCountHasBeenSet(false)
+    m_dedicatedMasterCountHasBeenSet(false),
+    m_warmEnabled(false),
+    m_warmEnabledHasBeenSet(false),
+    m_warmType(ESWarmPartitionInstanceType::NOT_SET),
+    m_warmTypeHasBeenSet(false),
+    m_warmCount(0),
+    m_warmCountHasBeenSet(false),
+    m_coldStorageOptionsHasBeenSet(false)
 {
 }
 
@@ -58,7 +55,14 @@ ElasticsearchClusterConfig::ElasticsearchClusterConfig(JsonView jsonValue) :
     m_dedicatedMasterType(ESPartitionInstanceType::NOT_SET),
     m_dedicatedMasterTypeHasBeenSet(false),
     m_dedicatedMasterCount(0),
-    m_dedicatedMasterCountHasBeenSet(false)
+    m_dedicatedMasterCountHasBeenSet(false),
+    m_warmEnabled(false),
+    m_warmEnabledHasBeenSet(false),
+    m_warmType(ESWarmPartitionInstanceType::NOT_SET),
+    m_warmTypeHasBeenSet(false),
+    m_warmCount(0),
+    m_warmCountHasBeenSet(false),
+    m_coldStorageOptionsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -114,6 +118,34 @@ ElasticsearchClusterConfig& ElasticsearchClusterConfig::operator =(JsonView json
     m_dedicatedMasterCountHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("WarmEnabled"))
+  {
+    m_warmEnabled = jsonValue.GetBool("WarmEnabled");
+
+    m_warmEnabledHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("WarmType"))
+  {
+    m_warmType = ESWarmPartitionInstanceTypeMapper::GetESWarmPartitionInstanceTypeForName(jsonValue.GetString("WarmType"));
+
+    m_warmTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("WarmCount"))
+  {
+    m_warmCount = jsonValue.GetInteger("WarmCount");
+
+    m_warmCountHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ColdStorageOptions"))
+  {
+    m_coldStorageOptions = jsonValue.GetObject("ColdStorageOptions");
+
+    m_coldStorageOptionsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -158,6 +190,29 @@ JsonValue ElasticsearchClusterConfig::Jsonize() const
   if(m_dedicatedMasterCountHasBeenSet)
   {
    payload.WithInteger("DedicatedMasterCount", m_dedicatedMasterCount);
+
+  }
+
+  if(m_warmEnabledHasBeenSet)
+  {
+   payload.WithBool("WarmEnabled", m_warmEnabled);
+
+  }
+
+  if(m_warmTypeHasBeenSet)
+  {
+   payload.WithString("WarmType", ESWarmPartitionInstanceTypeMapper::GetNameForESWarmPartitionInstanceType(m_warmType));
+  }
+
+  if(m_warmCountHasBeenSet)
+  {
+   payload.WithInteger("WarmCount", m_warmCount);
+
+  }
+
+  if(m_coldStorageOptionsHasBeenSet)
+  {
+   payload.WithObject("ColdStorageOptions", m_coldStorageOptions.Jsonize());
 
   }
 

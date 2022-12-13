@@ -1,25 +1,15 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/gamelift/GameLiftErrors.h>
 
 using namespace Aws::Client;
-using namespace Aws::GameLift;
 using namespace Aws::Utils;
+using namespace Aws::GameLift;
 
 namespace Aws
 {
@@ -35,7 +25,9 @@ static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededEx
 static const int FLEET_CAPACITY_EXCEEDED_HASH = HashingUtils::HashString("FleetCapacityExceededException");
 static const int INTERNAL_SERVICE_HASH = HashingUtils::HashString("InternalServiceException");
 static const int UNSUPPORTED_REGION_HASH = HashingUtils::HashString("UnsupportedRegionException");
+static const int TAGGING_FAILED_HASH = HashingUtils::HashString("TaggingFailedException");
 static const int NOT_FOUND_HASH = HashingUtils::HashString("NotFoundException");
+static const int OUT_OF_CAPACITY_HASH = HashingUtils::HashString("OutOfCapacityException");
 static const int UNAUTHORIZED_HASH = HashingUtils::HashString("UnauthorizedException");
 static const int INVALID_FLEET_STATUS_HASH = HashingUtils::HashString("InvalidFleetStatusException");
 static const int GAME_SESSION_FULL_HASH = HashingUtils::HashString("GameSessionFullException");
@@ -61,7 +53,7 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   }
   else if (hashCode == LIMIT_EXCEEDED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(GameLiftErrors::LIMIT_EXCEEDED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(GameLiftErrors::LIMIT_EXCEEDED), true);
   }
   else if (hashCode == FLEET_CAPACITY_EXCEEDED_HASH)
   {
@@ -75,9 +67,17 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(GameLiftErrors::UNSUPPORTED_REGION), false);
   }
+  else if (hashCode == TAGGING_FAILED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(GameLiftErrors::TAGGING_FAILED), false);
+  }
   else if (hashCode == NOT_FOUND_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(GameLiftErrors::NOT_FOUND), false);
+  }
+  else if (hashCode == OUT_OF_CAPACITY_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(GameLiftErrors::OUT_OF_CAPACITY), false);
   }
   else if (hashCode == UNAUTHORIZED_HASH)
   {

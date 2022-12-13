@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/cognito-idp/model/ExplicitAuthFlowsType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -33,6 +23,11 @@ namespace Aws
         static const int ADMIN_NO_SRP_AUTH_HASH = HashingUtils::HashString("ADMIN_NO_SRP_AUTH");
         static const int CUSTOM_AUTH_FLOW_ONLY_HASH = HashingUtils::HashString("CUSTOM_AUTH_FLOW_ONLY");
         static const int USER_PASSWORD_AUTH_HASH = HashingUtils::HashString("USER_PASSWORD_AUTH");
+        static const int ALLOW_ADMIN_USER_PASSWORD_AUTH_HASH = HashingUtils::HashString("ALLOW_ADMIN_USER_PASSWORD_AUTH");
+        static const int ALLOW_CUSTOM_AUTH_HASH = HashingUtils::HashString("ALLOW_CUSTOM_AUTH");
+        static const int ALLOW_USER_PASSWORD_AUTH_HASH = HashingUtils::HashString("ALLOW_USER_PASSWORD_AUTH");
+        static const int ALLOW_USER_SRP_AUTH_HASH = HashingUtils::HashString("ALLOW_USER_SRP_AUTH");
+        static const int ALLOW_REFRESH_TOKEN_AUTH_HASH = HashingUtils::HashString("ALLOW_REFRESH_TOKEN_AUTH");
 
 
         ExplicitAuthFlowsType GetExplicitAuthFlowsTypeForName(const Aws::String& name)
@@ -49,6 +44,26 @@ namespace Aws
           else if (hashCode == USER_PASSWORD_AUTH_HASH)
           {
             return ExplicitAuthFlowsType::USER_PASSWORD_AUTH;
+          }
+          else if (hashCode == ALLOW_ADMIN_USER_PASSWORD_AUTH_HASH)
+          {
+            return ExplicitAuthFlowsType::ALLOW_ADMIN_USER_PASSWORD_AUTH;
+          }
+          else if (hashCode == ALLOW_CUSTOM_AUTH_HASH)
+          {
+            return ExplicitAuthFlowsType::ALLOW_CUSTOM_AUTH;
+          }
+          else if (hashCode == ALLOW_USER_PASSWORD_AUTH_HASH)
+          {
+            return ExplicitAuthFlowsType::ALLOW_USER_PASSWORD_AUTH;
+          }
+          else if (hashCode == ALLOW_USER_SRP_AUTH_HASH)
+          {
+            return ExplicitAuthFlowsType::ALLOW_USER_SRP_AUTH;
+          }
+          else if (hashCode == ALLOW_REFRESH_TOKEN_AUTH_HASH)
+          {
+            return ExplicitAuthFlowsType::ALLOW_REFRESH_TOKEN_AUTH;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -70,6 +85,16 @@ namespace Aws
             return "CUSTOM_AUTH_FLOW_ONLY";
           case ExplicitAuthFlowsType::USER_PASSWORD_AUTH:
             return "USER_PASSWORD_AUTH";
+          case ExplicitAuthFlowsType::ALLOW_ADMIN_USER_PASSWORD_AUTH:
+            return "ALLOW_ADMIN_USER_PASSWORD_AUTH";
+          case ExplicitAuthFlowsType::ALLOW_CUSTOM_AUTH:
+            return "ALLOW_CUSTOM_AUTH";
+          case ExplicitAuthFlowsType::ALLOW_USER_PASSWORD_AUTH:
+            return "ALLOW_USER_PASSWORD_AUTH";
+          case ExplicitAuthFlowsType::ALLOW_USER_SRP_AUTH:
+            return "ALLOW_USER_SRP_AUTH";
+          case ExplicitAuthFlowsType::ALLOW_REFRESH_TOKEN_AUTH:
+            return "ALLOW_REFRESH_TOKEN_AUTH";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -207,61 +197,49 @@ namespace Model
 
     /**
      * <p>The problem's result.</p> <p>Allowed values include:</p> <ul> <li>
-     * <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing
-     * condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li>
-     * <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped
-     * condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li>
-     * <p>STOPPED: A stopped condition.</p> </li> </ul>
+     * <p>PENDING</p> </li> <li> <p>PASSED</p> </li> <li> <p>WARNED</p> </li> <li>
+     * <p>FAILED</p> </li> <li> <p>SKIPPED</p> </li> <li> <p>ERRORED</p> </li> <li>
+     * <p>STOPPED</p> </li> </ul>
      */
     inline const ExecutionResult& GetResult() const{ return m_result; }
 
     /**
      * <p>The problem's result.</p> <p>Allowed values include:</p> <ul> <li>
-     * <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing
-     * condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li>
-     * <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped
-     * condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li>
-     * <p>STOPPED: A stopped condition.</p> </li> </ul>
+     * <p>PENDING</p> </li> <li> <p>PASSED</p> </li> <li> <p>WARNED</p> </li> <li>
+     * <p>FAILED</p> </li> <li> <p>SKIPPED</p> </li> <li> <p>ERRORED</p> </li> <li>
+     * <p>STOPPED</p> </li> </ul>
      */
     inline bool ResultHasBeenSet() const { return m_resultHasBeenSet; }
 
     /**
      * <p>The problem's result.</p> <p>Allowed values include:</p> <ul> <li>
-     * <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing
-     * condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li>
-     * <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped
-     * condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li>
-     * <p>STOPPED: A stopped condition.</p> </li> </ul>
+     * <p>PENDING</p> </li> <li> <p>PASSED</p> </li> <li> <p>WARNED</p> </li> <li>
+     * <p>FAILED</p> </li> <li> <p>SKIPPED</p> </li> <li> <p>ERRORED</p> </li> <li>
+     * <p>STOPPED</p> </li> </ul>
      */
     inline void SetResult(const ExecutionResult& value) { m_resultHasBeenSet = true; m_result = value; }
 
     /**
      * <p>The problem's result.</p> <p>Allowed values include:</p> <ul> <li>
-     * <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing
-     * condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li>
-     * <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped
-     * condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li>
-     * <p>STOPPED: A stopped condition.</p> </li> </ul>
+     * <p>PENDING</p> </li> <li> <p>PASSED</p> </li> <li> <p>WARNED</p> </li> <li>
+     * <p>FAILED</p> </li> <li> <p>SKIPPED</p> </li> <li> <p>ERRORED</p> </li> <li>
+     * <p>STOPPED</p> </li> </ul>
      */
     inline void SetResult(ExecutionResult&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
 
     /**
      * <p>The problem's result.</p> <p>Allowed values include:</p> <ul> <li>
-     * <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing
-     * condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li>
-     * <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped
-     * condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li>
-     * <p>STOPPED: A stopped condition.</p> </li> </ul>
+     * <p>PENDING</p> </li> <li> <p>PASSED</p> </li> <li> <p>WARNED</p> </li> <li>
+     * <p>FAILED</p> </li> <li> <p>SKIPPED</p> </li> <li> <p>ERRORED</p> </li> <li>
+     * <p>STOPPED</p> </li> </ul>
      */
     inline Problem& WithResult(const ExecutionResult& value) { SetResult(value); return *this;}
 
     /**
      * <p>The problem's result.</p> <p>Allowed values include:</p> <ul> <li>
-     * <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing
-     * condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li>
-     * <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped
-     * condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li>
-     * <p>STOPPED: A stopped condition.</p> </li> </ul>
+     * <p>PENDING</p> </li> <li> <p>PASSED</p> </li> <li> <p>WARNED</p> </li> <li>
+     * <p>FAILED</p> </li> <li> <p>SKIPPED</p> </li> <li> <p>ERRORED</p> </li> <li>
+     * <p>STOPPED</p> </li> </ul>
      */
     inline Problem& WithResult(ExecutionResult&& value) { SetResult(std::move(value)); return *this;}
 

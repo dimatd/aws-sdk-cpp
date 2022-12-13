@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ecs/model/TaskSet.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -47,14 +37,17 @@ TaskSet::TaskSet() :
     m_updatedAtHasBeenSet(false),
     m_launchType(LaunchType::NOT_SET),
     m_launchTypeHasBeenSet(false),
+    m_capacityProviderStrategyHasBeenSet(false),
     m_platformVersionHasBeenSet(false),
+    m_platformFamilyHasBeenSet(false),
     m_networkConfigurationHasBeenSet(false),
     m_loadBalancersHasBeenSet(false),
     m_serviceRegistriesHasBeenSet(false),
     m_scaleHasBeenSet(false),
     m_stabilityStatus(StabilityStatus::NOT_SET),
     m_stabilityStatusHasBeenSet(false),
-    m_stabilityStatusAtHasBeenSet(false)
+    m_stabilityStatusAtHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
 }
 
@@ -77,14 +70,17 @@ TaskSet::TaskSet(JsonView jsonValue) :
     m_updatedAtHasBeenSet(false),
     m_launchType(LaunchType::NOT_SET),
     m_launchTypeHasBeenSet(false),
+    m_capacityProviderStrategyHasBeenSet(false),
     m_platformVersionHasBeenSet(false),
+    m_platformFamilyHasBeenSet(false),
     m_networkConfigurationHasBeenSet(false),
     m_loadBalancersHasBeenSet(false),
     m_serviceRegistriesHasBeenSet(false),
     m_scaleHasBeenSet(false),
     m_stabilityStatus(StabilityStatus::NOT_SET),
     m_stabilityStatusHasBeenSet(false),
-    m_stabilityStatusAtHasBeenSet(false)
+    m_stabilityStatusAtHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -189,11 +185,28 @@ TaskSet& TaskSet::operator =(JsonView jsonValue)
     m_launchTypeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("capacityProviderStrategy"))
+  {
+    Array<JsonView> capacityProviderStrategyJsonList = jsonValue.GetArray("capacityProviderStrategy");
+    for(unsigned capacityProviderStrategyIndex = 0; capacityProviderStrategyIndex < capacityProviderStrategyJsonList.GetLength(); ++capacityProviderStrategyIndex)
+    {
+      m_capacityProviderStrategy.push_back(capacityProviderStrategyJsonList[capacityProviderStrategyIndex].AsObject());
+    }
+    m_capacityProviderStrategyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("platformVersion"))
   {
     m_platformVersion = jsonValue.GetString("platformVersion");
 
     m_platformVersionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("platformFamily"))
+  {
+    m_platformFamily = jsonValue.GetString("platformFamily");
+
+    m_platformFamilyHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("networkConfiguration"))
@@ -242,6 +255,16 @@ TaskSet& TaskSet::operator =(JsonView jsonValue)
     m_stabilityStatusAt = jsonValue.GetDouble("stabilityStatusAt");
 
     m_stabilityStatusAtHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("tags"))
+  {
+    Array<JsonView> tagsJsonList = jsonValue.GetArray("tags");
+    for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+    {
+      m_tags.push_back(tagsJsonList[tagsIndex].AsObject());
+    }
+    m_tagsHasBeenSet = true;
   }
 
   return *this;
@@ -332,9 +355,26 @@ JsonValue TaskSet::Jsonize() const
    payload.WithString("launchType", LaunchTypeMapper::GetNameForLaunchType(m_launchType));
   }
 
+  if(m_capacityProviderStrategyHasBeenSet)
+  {
+   Array<JsonValue> capacityProviderStrategyJsonList(m_capacityProviderStrategy.size());
+   for(unsigned capacityProviderStrategyIndex = 0; capacityProviderStrategyIndex < capacityProviderStrategyJsonList.GetLength(); ++capacityProviderStrategyIndex)
+   {
+     capacityProviderStrategyJsonList[capacityProviderStrategyIndex].AsObject(m_capacityProviderStrategy[capacityProviderStrategyIndex].Jsonize());
+   }
+   payload.WithArray("capacityProviderStrategy", std::move(capacityProviderStrategyJsonList));
+
+  }
+
   if(m_platformVersionHasBeenSet)
   {
    payload.WithString("platformVersion", m_platformVersion);
+
+  }
+
+  if(m_platformFamilyHasBeenSet)
+  {
+   payload.WithString("platformFamily", m_platformFamily);
 
   }
 
@@ -380,6 +420,17 @@ JsonValue TaskSet::Jsonize() const
   if(m_stabilityStatusAtHasBeenSet)
   {
    payload.WithDouble("stabilityStatusAt", m_stabilityStatusAt.SecondsWithMSPrecision());
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("tags", std::move(tagsJsonList));
+
   }
 
   return payload;

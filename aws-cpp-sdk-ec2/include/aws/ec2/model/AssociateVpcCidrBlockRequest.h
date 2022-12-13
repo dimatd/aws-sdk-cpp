@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -156,6 +146,381 @@ namespace Model
      */
     inline AssociateVpcCidrBlockRequest& WithVpcId(const char* value) { SetVpcId(value); return *this;}
 
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline const Aws::String& GetIpv6CidrBlockNetworkBorderGroup() const{ return m_ipv6CidrBlockNetworkBorderGroup; }
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline bool Ipv6CidrBlockNetworkBorderGroupHasBeenSet() const { return m_ipv6CidrBlockNetworkBorderGroupHasBeenSet; }
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline void SetIpv6CidrBlockNetworkBorderGroup(const Aws::String& value) { m_ipv6CidrBlockNetworkBorderGroupHasBeenSet = true; m_ipv6CidrBlockNetworkBorderGroup = value; }
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline void SetIpv6CidrBlockNetworkBorderGroup(Aws::String&& value) { m_ipv6CidrBlockNetworkBorderGroupHasBeenSet = true; m_ipv6CidrBlockNetworkBorderGroup = std::move(value); }
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline void SetIpv6CidrBlockNetworkBorderGroup(const char* value) { m_ipv6CidrBlockNetworkBorderGroupHasBeenSet = true; m_ipv6CidrBlockNetworkBorderGroup.assign(value); }
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6CidrBlockNetworkBorderGroup(const Aws::String& value) { SetIpv6CidrBlockNetworkBorderGroup(value); return *this;}
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6CidrBlockNetworkBorderGroup(Aws::String&& value) { SetIpv6CidrBlockNetworkBorderGroup(std::move(value)); return *this;}
+
+    /**
+     * <p>The name of the location from which we advertise the IPV6 CIDR block. Use
+     * this parameter to limit the CIDR block to this location.</p> <p> You must set
+     * <code>AmazonProvidedIpv6CidrBlock</code> to <code>true</code> to use this
+     * parameter.</p> <p> You can have one IPv6 CIDR block association per network
+     * border group.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6CidrBlockNetworkBorderGroup(const char* value) { SetIpv6CidrBlockNetworkBorderGroup(value); return *this;}
+
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline const Aws::String& GetIpv6Pool() const{ return m_ipv6Pool; }
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline bool Ipv6PoolHasBeenSet() const { return m_ipv6PoolHasBeenSet; }
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline void SetIpv6Pool(const Aws::String& value) { m_ipv6PoolHasBeenSet = true; m_ipv6Pool = value; }
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline void SetIpv6Pool(Aws::String&& value) { m_ipv6PoolHasBeenSet = true; m_ipv6Pool = std::move(value); }
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline void SetIpv6Pool(const char* value) { m_ipv6PoolHasBeenSet = true; m_ipv6Pool.assign(value); }
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6Pool(const Aws::String& value) { SetIpv6Pool(value); return *this;}
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6Pool(Aws::String&& value) { SetIpv6Pool(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+     * block.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6Pool(const char* value) { SetIpv6Pool(value); return *this;}
+
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline const Aws::String& GetIpv6CidrBlock() const{ return m_ipv6CidrBlock; }
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline bool Ipv6CidrBlockHasBeenSet() const { return m_ipv6CidrBlockHasBeenSet; }
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline void SetIpv6CidrBlock(const Aws::String& value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock = value; }
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline void SetIpv6CidrBlock(Aws::String&& value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock = std::move(value); }
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline void SetIpv6CidrBlock(const char* value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock.assign(value); }
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6CidrBlock(const Aws::String& value) { SetIpv6CidrBlock(value); return *this;}
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6CidrBlock(Aws::String&& value) { SetIpv6CidrBlock(std::move(value)); return *this;}
+
+    /**
+     * <p>An IPv6 CIDR block from the IPv6 address pool. You must also specify
+     * <code>Ipv6Pool</code> in the request.</p> <p>To let Amazon choose the IPv6 CIDR
+     * block for you, omit this parameter.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6CidrBlock(const char* value) { SetIpv6CidrBlock(value); return *this;}
+
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline const Aws::String& GetIpv4IpamPoolId() const{ return m_ipv4IpamPoolId; }
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline bool Ipv4IpamPoolIdHasBeenSet() const { return m_ipv4IpamPoolIdHasBeenSet; }
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline void SetIpv4IpamPoolId(const Aws::String& value) { m_ipv4IpamPoolIdHasBeenSet = true; m_ipv4IpamPoolId = value; }
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline void SetIpv4IpamPoolId(Aws::String&& value) { m_ipv4IpamPoolIdHasBeenSet = true; m_ipv4IpamPoolId = std::move(value); }
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline void SetIpv4IpamPoolId(const char* value) { m_ipv4IpamPoolIdHasBeenSet = true; m_ipv4IpamPoolId.assign(value); }
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv4IpamPoolId(const Aws::String& value) { SetIpv4IpamPoolId(value); return *this;}
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv4IpamPoolId(Aws::String&& value) { SetIpv4IpamPoolId(std::move(value)); return *this;}
+
+    /**
+     * <p>Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv4IpamPoolId(const char* value) { SetIpv4IpamPoolId(value); return *this;}
+
+
+    /**
+     * <p>The netmask length of the IPv4 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline int GetIpv4NetmaskLength() const{ return m_ipv4NetmaskLength; }
+
+    /**
+     * <p>The netmask length of the IPv4 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline bool Ipv4NetmaskLengthHasBeenSet() const { return m_ipv4NetmaskLengthHasBeenSet; }
+
+    /**
+     * <p>The netmask length of the IPv4 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline void SetIpv4NetmaskLength(int value) { m_ipv4NetmaskLengthHasBeenSet = true; m_ipv4NetmaskLength = value; }
+
+    /**
+     * <p>The netmask length of the IPv4 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv4NetmaskLength(int value) { SetIpv4NetmaskLength(value); return *this;}
+
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline const Aws::String& GetIpv6IpamPoolId() const{ return m_ipv6IpamPoolId; }
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline bool Ipv6IpamPoolIdHasBeenSet() const { return m_ipv6IpamPoolIdHasBeenSet; }
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline void SetIpv6IpamPoolId(const Aws::String& value) { m_ipv6IpamPoolIdHasBeenSet = true; m_ipv6IpamPoolId = value; }
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline void SetIpv6IpamPoolId(Aws::String&& value) { m_ipv6IpamPoolIdHasBeenSet = true; m_ipv6IpamPoolId = std::move(value); }
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline void SetIpv6IpamPoolId(const char* value) { m_ipv6IpamPoolIdHasBeenSet = true; m_ipv6IpamPoolId.assign(value); }
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6IpamPoolId(const Aws::String& value) { SetIpv6IpamPoolId(value); return *this;}
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6IpamPoolId(Aws::String&& value) { SetIpv6IpamPoolId(std::move(value)); return *this;}
+
+    /**
+     * <p>Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+     * information about Amazon VPC IP Address Manager (IPAM), see <a
+     * href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the <i>Amazon
+     * VPC IPAM User Guide</i>.</p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6IpamPoolId(const char* value) { SetIpv6IpamPoolId(value); return *this;}
+
+
+    /**
+     * <p>The netmask length of the IPv6 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline int GetIpv6NetmaskLength() const{ return m_ipv6NetmaskLength; }
+
+    /**
+     * <p>The netmask length of the IPv6 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline bool Ipv6NetmaskLengthHasBeenSet() const { return m_ipv6NetmaskLengthHasBeenSet; }
+
+    /**
+     * <p>The netmask length of the IPv6 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline void SetIpv6NetmaskLength(int value) { m_ipv6NetmaskLengthHasBeenSet = true; m_ipv6NetmaskLength = value; }
+
+    /**
+     * <p>The netmask length of the IPv6 CIDR you would like to associate from an
+     * Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see
+     * <a href="/vpc/latest/ipam/what-is-it-ipam.html">What is IPAM?</a> in the
+     * <i>Amazon VPC IPAM User Guide</i>. </p>
+     */
+    inline AssociateVpcCidrBlockRequest& WithIpv6NetmaskLength(int value) { SetIpv6NetmaskLength(value); return *this;}
+
   private:
 
     bool m_amazonProvidedIpv6CidrBlock;
@@ -166,6 +531,27 @@ namespace Model
 
     Aws::String m_vpcId;
     bool m_vpcIdHasBeenSet;
+
+    Aws::String m_ipv6CidrBlockNetworkBorderGroup;
+    bool m_ipv6CidrBlockNetworkBorderGroupHasBeenSet;
+
+    Aws::String m_ipv6Pool;
+    bool m_ipv6PoolHasBeenSet;
+
+    Aws::String m_ipv6CidrBlock;
+    bool m_ipv6CidrBlockHasBeenSet;
+
+    Aws::String m_ipv4IpamPoolId;
+    bool m_ipv4IpamPoolIdHasBeenSet;
+
+    int m_ipv4NetmaskLength;
+    bool m_ipv4NetmaskLengthHasBeenSet;
+
+    Aws::String m_ipv6IpamPoolId;
+    bool m_ipv6IpamPoolIdHasBeenSet;
+
+    int m_ipv6NetmaskLength;
+    bool m_ipv6NetmaskLengthHasBeenSet;
   };
 
 } // namespace Model

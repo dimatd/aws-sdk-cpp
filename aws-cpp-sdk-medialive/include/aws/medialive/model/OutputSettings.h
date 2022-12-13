@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
@@ -20,6 +10,7 @@
 #include <aws/medialive/model/HlsOutputSettings.h>
 #include <aws/medialive/model/MediaPackageOutputSettings.h>
 #include <aws/medialive/model/MsSmoothOutputSettings.h>
+#include <aws/medialive/model/MultiplexOutputSettings.h>
 #include <aws/medialive/model/RtmpOutputSettings.h>
 #include <aws/medialive/model/UdpOutputSettings.h>
 #include <utility>
@@ -149,6 +140,25 @@ namespace Model
 
 
     
+    inline const MultiplexOutputSettings& GetMultiplexOutputSettings() const{ return m_multiplexOutputSettings; }
+
+    
+    inline bool MultiplexOutputSettingsHasBeenSet() const { return m_multiplexOutputSettingsHasBeenSet; }
+
+    
+    inline void SetMultiplexOutputSettings(const MultiplexOutputSettings& value) { m_multiplexOutputSettingsHasBeenSet = true; m_multiplexOutputSettings = value; }
+
+    
+    inline void SetMultiplexOutputSettings(MultiplexOutputSettings&& value) { m_multiplexOutputSettingsHasBeenSet = true; m_multiplexOutputSettings = std::move(value); }
+
+    
+    inline OutputSettings& WithMultiplexOutputSettings(const MultiplexOutputSettings& value) { SetMultiplexOutputSettings(value); return *this;}
+
+    
+    inline OutputSettings& WithMultiplexOutputSettings(MultiplexOutputSettings&& value) { SetMultiplexOutputSettings(std::move(value)); return *this;}
+
+
+    
     inline const RtmpOutputSettings& GetRtmpOutputSettings() const{ return m_rtmpOutputSettings; }
 
     
@@ -201,6 +211,9 @@ namespace Model
 
     MsSmoothOutputSettings m_msSmoothOutputSettings;
     bool m_msSmoothOutputSettingsHasBeenSet;
+
+    MultiplexOutputSettings m_multiplexOutputSettings;
+    bool m_multiplexOutputSettingsHasBeenSet;
 
     RtmpOutputSettings m_rtmpOutputSettings;
     bool m_rtmpOutputSettingsHasBeenSet;

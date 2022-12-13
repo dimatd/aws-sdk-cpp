@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/serverlessrepo/ServerlessApplicationRepository_EXPORTS.h>
@@ -122,6 +112,70 @@ namespace Model
 
 
     /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetPrincipalOrgIDs() const{ return m_principalOrgIDs; }
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline bool PrincipalOrgIDsHasBeenSet() const { return m_principalOrgIDsHasBeenSet; }
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline void SetPrincipalOrgIDs(const Aws::Vector<Aws::String>& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs = value; }
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline void SetPrincipalOrgIDs(Aws::Vector<Aws::String>&& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs = std::move(value); }
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline ApplicationPolicyStatement& WithPrincipalOrgIDs(const Aws::Vector<Aws::String>& value) { SetPrincipalOrgIDs(value); return *this;}
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline ApplicationPolicyStatement& WithPrincipalOrgIDs(Aws::Vector<Aws::String>&& value) { SetPrincipalOrgIDs(std::move(value)); return *this;}
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline ApplicationPolicyStatement& AddPrincipalOrgIDs(const Aws::String& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.push_back(value); return *this; }
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline ApplicationPolicyStatement& AddPrincipalOrgIDs(Aws::String&& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
+     * global condition key.</p>
+     */
+    inline ApplicationPolicyStatement& AddPrincipalOrgIDs(const char* value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.push_back(value); return *this; }
+
+
+    /**
      * <p>An array of AWS account IDs, or * to make the application public.</p>
      */
     inline const Aws::Vector<Aws::String>& GetPrincipals() const{ return m_principals; }
@@ -211,6 +265,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_actions;
     bool m_actionsHasBeenSet;
+
+    Aws::Vector<Aws::String> m_principalOrgIDs;
+    bool m_principalOrgIDsHasBeenSet;
 
     Aws::Vector<Aws::String> m_principals;
     bool m_principalsHasBeenSet;

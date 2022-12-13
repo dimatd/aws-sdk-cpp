@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/fsx/model/FileSystem.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -39,6 +29,8 @@ FileSystem::FileSystem() :
     m_failureDetailsHasBeenSet(false),
     m_storageCapacity(0),
     m_storageCapacityHasBeenSet(false),
+    m_storageType(StorageType::NOT_SET),
+    m_storageTypeHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_subnetIdsHasBeenSet(false),
     m_networkInterfaceIdsHasBeenSet(false),
@@ -47,7 +39,11 @@ FileSystem::FileSystem() :
     m_resourceARNHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_windowsConfigurationHasBeenSet(false),
-    m_lustreConfigurationHasBeenSet(false)
+    m_lustreConfigurationHasBeenSet(false),
+    m_administrativeActionsHasBeenSet(false),
+    m_ontapConfigurationHasBeenSet(false),
+    m_fileSystemTypeVersionHasBeenSet(false),
+    m_openZFSConfigurationHasBeenSet(false)
 {
 }
 
@@ -62,6 +58,8 @@ FileSystem::FileSystem(JsonView jsonValue) :
     m_failureDetailsHasBeenSet(false),
     m_storageCapacity(0),
     m_storageCapacityHasBeenSet(false),
+    m_storageType(StorageType::NOT_SET),
+    m_storageTypeHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_subnetIdsHasBeenSet(false),
     m_networkInterfaceIdsHasBeenSet(false),
@@ -70,7 +68,11 @@ FileSystem::FileSystem(JsonView jsonValue) :
     m_resourceARNHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_windowsConfigurationHasBeenSet(false),
-    m_lustreConfigurationHasBeenSet(false)
+    m_lustreConfigurationHasBeenSet(false),
+    m_administrativeActionsHasBeenSet(false),
+    m_ontapConfigurationHasBeenSet(false),
+    m_fileSystemTypeVersionHasBeenSet(false),
+    m_openZFSConfigurationHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -124,6 +126,13 @@ FileSystem& FileSystem::operator =(JsonView jsonValue)
     m_storageCapacity = jsonValue.GetInteger("StorageCapacity");
 
     m_storageCapacityHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StorageType"))
+  {
+    m_storageType = StorageTypeMapper::GetStorageTypeForName(jsonValue.GetString("StorageType"));
+
+    m_storageTypeHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("VpcId"))
@@ -198,6 +207,37 @@ FileSystem& FileSystem::operator =(JsonView jsonValue)
     m_lustreConfigurationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("AdministrativeActions"))
+  {
+    Array<JsonView> administrativeActionsJsonList = jsonValue.GetArray("AdministrativeActions");
+    for(unsigned administrativeActionsIndex = 0; administrativeActionsIndex < administrativeActionsJsonList.GetLength(); ++administrativeActionsIndex)
+    {
+      m_administrativeActions.push_back(administrativeActionsJsonList[administrativeActionsIndex].AsObject());
+    }
+    m_administrativeActionsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OntapConfiguration"))
+  {
+    m_ontapConfiguration = jsonValue.GetObject("OntapConfiguration");
+
+    m_ontapConfigurationHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FileSystemTypeVersion"))
+  {
+    m_fileSystemTypeVersion = jsonValue.GetString("FileSystemTypeVersion");
+
+    m_fileSystemTypeVersionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OpenZFSConfiguration"))
+  {
+    m_openZFSConfiguration = jsonValue.GetObject("OpenZFSConfiguration");
+
+    m_openZFSConfigurationHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -242,6 +282,11 @@ JsonValue FileSystem::Jsonize() const
   {
    payload.WithInteger("StorageCapacity", m_storageCapacity);
 
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+   payload.WithString("StorageType", StorageTypeMapper::GetNameForStorageType(m_storageType));
   }
 
   if(m_vpcIdHasBeenSet)
@@ -310,6 +355,35 @@ JsonValue FileSystem::Jsonize() const
   if(m_lustreConfigurationHasBeenSet)
   {
    payload.WithObject("LustreConfiguration", m_lustreConfiguration.Jsonize());
+
+  }
+
+  if(m_administrativeActionsHasBeenSet)
+  {
+   Array<JsonValue> administrativeActionsJsonList(m_administrativeActions.size());
+   for(unsigned administrativeActionsIndex = 0; administrativeActionsIndex < administrativeActionsJsonList.GetLength(); ++administrativeActionsIndex)
+   {
+     administrativeActionsJsonList[administrativeActionsIndex].AsObject(m_administrativeActions[administrativeActionsIndex].Jsonize());
+   }
+   payload.WithArray("AdministrativeActions", std::move(administrativeActionsJsonList));
+
+  }
+
+  if(m_ontapConfigurationHasBeenSet)
+  {
+   payload.WithObject("OntapConfiguration", m_ontapConfiguration.Jsonize());
+
+  }
+
+  if(m_fileSystemTypeVersionHasBeenSet)
+  {
+   payload.WithString("FileSystemTypeVersion", m_fileSystemTypeVersion);
+
+  }
+
+  if(m_openZFSConfigurationHasBeenSet)
+  {
+   payload.WithObject("OpenZFSConfiguration", m_openZFSConfiguration.Jsonize());
 
   }
 

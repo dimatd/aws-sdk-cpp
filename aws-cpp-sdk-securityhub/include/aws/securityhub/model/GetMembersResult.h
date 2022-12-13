@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/securityhub/SecurityHub_EXPORTS.h>
@@ -45,80 +35,80 @@ namespace Model
 
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline const Aws::Vector<Member>& GetMembers() const{ return m_members; }
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline void SetMembers(const Aws::Vector<Member>& value) { m_members = value; }
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline void SetMembers(Aws::Vector<Member>&& value) { m_members = std::move(value); }
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline GetMembersResult& WithMembers(const Aws::Vector<Member>& value) { SetMembers(value); return *this;}
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline GetMembersResult& WithMembers(Aws::Vector<Member>&& value) { SetMembers(std::move(value)); return *this;}
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline GetMembersResult& AddMembers(const Member& value) { m_members.push_back(value); return *this; }
 
     /**
-     * <p>A list of details about the Security Hub member accounts.</p>
+     * <p>The list of details about the Security Hub member accounts.</p>
      */
     inline GetMembersResult& AddMembers(Member&& value) { m_members.push_back(std::move(value)); return *this; }
 
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline const Aws::Vector<Result>& GetUnprocessedAccounts() const{ return m_unprocessedAccounts; }
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline void SetUnprocessedAccounts(const Aws::Vector<Result>& value) { m_unprocessedAccounts = value; }
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline void SetUnprocessedAccounts(Aws::Vector<Result>&& value) { m_unprocessedAccounts = std::move(value); }
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline GetMembersResult& WithUnprocessedAccounts(const Aws::Vector<Result>& value) { SetUnprocessedAccounts(value); return *this;}
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline GetMembersResult& WithUnprocessedAccounts(Aws::Vector<Result>&& value) { SetUnprocessedAccounts(std::move(value)); return *this;}
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline GetMembersResult& AddUnprocessedAccounts(const Result& value) { m_unprocessedAccounts.push_back(value); return *this; }
 
     /**
-     * <p>A list of account ID and email address pairs of the AWS accounts that
-     * couldn't be processed.</p>
+     * <p>The list of Amazon Web Services accounts that could not be processed. For
+     * each account, the list includes the account ID and the email address.</p>
      */
     inline GetMembersResult& AddUnprocessedAccounts(Result&& value) { m_unprocessedAccounts.push_back(std::move(value)); return *this; }
 

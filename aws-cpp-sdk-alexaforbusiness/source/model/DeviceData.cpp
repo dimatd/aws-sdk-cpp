@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/alexaforbusiness/model/DeviceData.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -41,7 +31,8 @@ DeviceData::DeviceData() :
     m_networkProfileNameHasBeenSet(false),
     m_roomArnHasBeenSet(false),
     m_roomNameHasBeenSet(false),
-    m_deviceStatusInfoHasBeenSet(false)
+    m_deviceStatusInfoHasBeenSet(false),
+    m_createdTimeHasBeenSet(false)
 {
 }
 
@@ -58,7 +49,8 @@ DeviceData::DeviceData(JsonView jsonValue) :
     m_networkProfileNameHasBeenSet(false),
     m_roomArnHasBeenSet(false),
     m_roomNameHasBeenSet(false),
-    m_deviceStatusInfoHasBeenSet(false)
+    m_deviceStatusInfoHasBeenSet(false),
+    m_createdTimeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -149,6 +141,13 @@ DeviceData& DeviceData::operator =(JsonView jsonValue)
     m_deviceStatusInfoHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("CreatedTime"))
+  {
+    m_createdTime = jsonValue.GetDouble("CreatedTime");
+
+    m_createdTimeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -225,6 +224,11 @@ JsonValue DeviceData::Jsonize() const
   {
    payload.WithObject("DeviceStatusInfo", m_deviceStatusInfo.Jsonize());
 
+  }
+
+  if(m_createdTimeHasBeenSet)
+  {
+   payload.WithDouble("CreatedTime", m_createdTime.SecondsWithMSPrecision());
   }
 
   return payload;

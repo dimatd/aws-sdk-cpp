@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/comprehend/Comprehend_EXPORTS.h>
@@ -136,25 +126,25 @@ namespace Model
 
 
     /**
-     * <p>indicates the number of times the given entity name was seen in the training
+     * <p>Indicates the number of times the given entity type was seen in the training
      * data. </p>
      */
     inline int GetNumberOfTrainMentions() const{ return m_numberOfTrainMentions; }
 
     /**
-     * <p>indicates the number of times the given entity name was seen in the training
+     * <p>Indicates the number of times the given entity type was seen in the training
      * data. </p>
      */
     inline bool NumberOfTrainMentionsHasBeenSet() const { return m_numberOfTrainMentionsHasBeenSet; }
 
     /**
-     * <p>indicates the number of times the given entity name was seen in the training
+     * <p>Indicates the number of times the given entity type was seen in the training
      * data. </p>
      */
     inline void SetNumberOfTrainMentions(int value) { m_numberOfTrainMentionsHasBeenSet = true; m_numberOfTrainMentions = value; }
 
     /**
-     * <p>indicates the number of times the given entity name was seen in the training
+     * <p>Indicates the number of times the given entity type was seen in the training
      * data. </p>
      */
     inline EntityRecognizerMetadataEntityTypesListItem& WithNumberOfTrainMentions(int value) { SetNumberOfTrainMentions(value); return *this;}

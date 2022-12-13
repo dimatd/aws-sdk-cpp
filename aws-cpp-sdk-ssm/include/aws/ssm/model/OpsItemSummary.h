@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
@@ -237,42 +227,42 @@ namespace Model
 
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline const Aws::String& GetSource() const{ return m_source; }
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline OpsItemSummary& WithSource(const Aws::String& value) { SetSource(value); return *this;}
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline OpsItemSummary& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
 
     /**
-     * <p>The impacted AWS resource.</p>
+     * <p>The impacted Amazon Web Services resource.</p>
      */
     inline OpsItemSummary& WithSource(const char* value) { SetSource(value); return *this;}
 
@@ -476,6 +466,297 @@ namespace Model
      */
     inline OpsItemSummary& AddOperationalData(const char* key, const OpsItemDataValue& value) { m_operationalDataHasBeenSet = true; m_operationalData.emplace(key, value); return *this; }
 
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline const Aws::String& GetCategory() const{ return m_category; }
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline void SetCategory(const Aws::String& value) { m_categoryHasBeenSet = true; m_category = value; }
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline void SetCategory(Aws::String&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline void SetCategory(const char* value) { m_categoryHasBeenSet = true; m_category.assign(value); }
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline OpsItemSummary& WithCategory(const Aws::String& value) { SetCategory(value); return *this;}
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline OpsItemSummary& WithCategory(Aws::String&& value) { SetCategory(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of OpsItems by category.</p>
+     */
+    inline OpsItemSummary& WithCategory(const char* value) { SetCategory(value); return *this;}
+
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline const Aws::String& GetSeverity() const{ return m_severity; }
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline bool SeverityHasBeenSet() const { return m_severityHasBeenSet; }
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline void SetSeverity(const Aws::String& value) { m_severityHasBeenSet = true; m_severity = value; }
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline void SetSeverity(Aws::String&& value) { m_severityHasBeenSet = true; m_severity = std::move(value); }
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline void SetSeverity(const char* value) { m_severityHasBeenSet = true; m_severity.assign(value); }
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline OpsItemSummary& WithSeverity(const Aws::String& value) { SetSeverity(value); return *this;}
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline OpsItemSummary& WithSeverity(Aws::String&& value) { SetSeverity(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of OpsItems by severity.</p>
+     */
+    inline OpsItemSummary& WithSeverity(const char* value) { SetSeverity(value); return *this;}
+
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline const Aws::String& GetOpsItemType() const{ return m_opsItemType; }
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline bool OpsItemTypeHasBeenSet() const { return m_opsItemTypeHasBeenSet; }
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline void SetOpsItemType(const Aws::String& value) { m_opsItemTypeHasBeenSet = true; m_opsItemType = value; }
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline void SetOpsItemType(Aws::String&& value) { m_opsItemTypeHasBeenSet = true; m_opsItemType = std::move(value); }
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline void SetOpsItemType(const char* value) { m_opsItemTypeHasBeenSet = true; m_opsItemType.assign(value); }
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline OpsItemSummary& WithOpsItemType(const Aws::String& value) { SetOpsItemType(value); return *this;}
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline OpsItemSummary& WithOpsItemType(Aws::String&& value) { SetOpsItemType(std::move(value)); return *this;}
+
+    /**
+     * <p>The type of OpsItem. Currently, the only valid values are
+     * <code>/aws/changerequest</code> and <code>/aws/issue</code>.</p>
+     */
+    inline OpsItemSummary& WithOpsItemType(const char* value) { SetOpsItemType(value); return *this;}
+
+
+    /**
+     * <p>The time a runbook workflow started. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline const Aws::Utils::DateTime& GetActualStartTime() const{ return m_actualStartTime; }
+
+    /**
+     * <p>The time a runbook workflow started. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline bool ActualStartTimeHasBeenSet() const { return m_actualStartTimeHasBeenSet; }
+
+    /**
+     * <p>The time a runbook workflow started. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetActualStartTime(const Aws::Utils::DateTime& value) { m_actualStartTimeHasBeenSet = true; m_actualStartTime = value; }
+
+    /**
+     * <p>The time a runbook workflow started. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetActualStartTime(Aws::Utils::DateTime&& value) { m_actualStartTimeHasBeenSet = true; m_actualStartTime = std::move(value); }
+
+    /**
+     * <p>The time a runbook workflow started. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithActualStartTime(const Aws::Utils::DateTime& value) { SetActualStartTime(value); return *this;}
+
+    /**
+     * <p>The time a runbook workflow started. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithActualStartTime(Aws::Utils::DateTime&& value) { SetActualStartTime(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The time a runbook workflow ended. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline const Aws::Utils::DateTime& GetActualEndTime() const{ return m_actualEndTime; }
+
+    /**
+     * <p>The time a runbook workflow ended. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline bool ActualEndTimeHasBeenSet() const { return m_actualEndTimeHasBeenSet; }
+
+    /**
+     * <p>The time a runbook workflow ended. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetActualEndTime(const Aws::Utils::DateTime& value) { m_actualEndTimeHasBeenSet = true; m_actualEndTime = value; }
+
+    /**
+     * <p>The time a runbook workflow ended. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetActualEndTime(Aws::Utils::DateTime&& value) { m_actualEndTimeHasBeenSet = true; m_actualEndTime = std::move(value); }
+
+    /**
+     * <p>The time a runbook workflow ended. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithActualEndTime(const Aws::Utils::DateTime& value) { SetActualEndTime(value); return *this;}
+
+    /**
+     * <p>The time a runbook workflow ended. Currently reported only for the OpsItem
+     * type <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithActualEndTime(Aws::Utils::DateTime&& value) { SetActualEndTime(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to start.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline const Aws::Utils::DateTime& GetPlannedStartTime() const{ return m_plannedStartTime; }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to start.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline bool PlannedStartTimeHasBeenSet() const { return m_plannedStartTimeHasBeenSet; }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to start.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetPlannedStartTime(const Aws::Utils::DateTime& value) { m_plannedStartTimeHasBeenSet = true; m_plannedStartTime = value; }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to start.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetPlannedStartTime(Aws::Utils::DateTime&& value) { m_plannedStartTimeHasBeenSet = true; m_plannedStartTime = std::move(value); }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to start.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithPlannedStartTime(const Aws::Utils::DateTime& value) { SetPlannedStartTime(value); return *this;}
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to start.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithPlannedStartTime(Aws::Utils::DateTime&& value) { SetPlannedStartTime(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to end.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline const Aws::Utils::DateTime& GetPlannedEndTime() const{ return m_plannedEndTime; }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to end.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline bool PlannedEndTimeHasBeenSet() const { return m_plannedEndTimeHasBeenSet; }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to end.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetPlannedEndTime(const Aws::Utils::DateTime& value) { m_plannedEndTimeHasBeenSet = true; m_plannedEndTime = value; }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to end.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline void SetPlannedEndTime(Aws::Utils::DateTime&& value) { m_plannedEndTimeHasBeenSet = true; m_plannedEndTime = std::move(value); }
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to end.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithPlannedEndTime(const Aws::Utils::DateTime& value) { SetPlannedEndTime(value); return *this;}
+
+    /**
+     * <p>The time specified in a change request for a runbook workflow to end.
+     * Currently supported only for the OpsItem type
+     * <code>/aws/changerequest</code>.</p>
+     */
+    inline OpsItemSummary& WithPlannedEndTime(Aws::Utils::DateTime&& value) { SetPlannedEndTime(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_createdBy;
@@ -507,6 +788,27 @@ namespace Model
 
     Aws::Map<Aws::String, OpsItemDataValue> m_operationalData;
     bool m_operationalDataHasBeenSet;
+
+    Aws::String m_category;
+    bool m_categoryHasBeenSet;
+
+    Aws::String m_severity;
+    bool m_severityHasBeenSet;
+
+    Aws::String m_opsItemType;
+    bool m_opsItemTypeHasBeenSet;
+
+    Aws::Utils::DateTime m_actualStartTime;
+    bool m_actualStartTimeHasBeenSet;
+
+    Aws::Utils::DateTime m_actualEndTime;
+    bool m_actualEndTimeHasBeenSet;
+
+    Aws::Utils::DateTime m_plannedStartTime;
+    bool m_plannedStartTimeHasBeenSet;
+
+    Aws::Utils::DateTime m_plannedEndTime;
+    bool m_plannedEndTimeHasBeenSet;
   };
 
 } // namespace Model

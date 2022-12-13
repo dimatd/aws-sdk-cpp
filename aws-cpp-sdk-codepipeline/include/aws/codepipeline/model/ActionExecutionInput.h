@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
@@ -134,6 +124,85 @@ namespace Model
      * <p>Configuration data for an action execution.</p>
      */
     inline ActionExecutionInput& AddConfiguration(const char* key, const char* value) { m_configurationHasBeenSet = true; m_configuration.emplace(key, value); return *this; }
+
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetResolvedConfiguration() const{ return m_resolvedConfiguration; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline bool ResolvedConfigurationHasBeenSet() const { return m_resolvedConfigurationHasBeenSet; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline void SetResolvedConfiguration(const Aws::Map<Aws::String, Aws::String>& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration = value; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline void SetResolvedConfiguration(Aws::Map<Aws::String, Aws::String>&& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration = std::move(value); }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& WithResolvedConfiguration(const Aws::Map<Aws::String, Aws::String>& value) { SetResolvedConfiguration(value); return *this;}
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& WithResolvedConfiguration(Aws::Map<Aws::String, Aws::String>&& value) { SetResolvedConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(const Aws::String& key, const Aws::String& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(key, value); return *this; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(Aws::String&& key, const Aws::String& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(const Aws::String& key, Aws::String&& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(Aws::String&& key, Aws::String&& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(std::move(key), std::move(value)); return *this; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(const char* key, Aws::String&& value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(Aws::String&& key, const char* value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>Configuration data for an action execution with all variable references
+     * replaced with their real values for the execution.</p>
+     */
+    inline ActionExecutionInput& AddResolvedConfiguration(const char* key, const char* value) { m_resolvedConfigurationHasBeenSet = true; m_resolvedConfiguration.emplace(key, value); return *this; }
 
 
     /**
@@ -274,6 +343,55 @@ namespace Model
      */
     inline ActionExecutionInput& AddInputArtifacts(ArtifactDetail&& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.push_back(std::move(value)); return *this; }
 
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline const Aws::String& GetNamespace() const{ return m_namespace; }
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline ActionExecutionInput& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline ActionExecutionInput& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
+
+    /**
+     * <p>The variable namespace associated with the action. All variables produced as
+     * output by this action fall under this namespace.</p>
+     */
+    inline ActionExecutionInput& WithNamespace(const char* value) { SetNamespace(value); return *this;}
+
   private:
 
     ActionTypeId m_actionTypeId;
@@ -281,6 +399,9 @@ namespace Model
 
     Aws::Map<Aws::String, Aws::String> m_configuration;
     bool m_configurationHasBeenSet;
+
+    Aws::Map<Aws::String, Aws::String> m_resolvedConfiguration;
+    bool m_resolvedConfigurationHasBeenSet;
 
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet;
@@ -290,6 +411,9 @@ namespace Model
 
     Aws::Vector<ArtifactDetail> m_inputArtifacts;
     bool m_inputArtifactsHasBeenSet;
+
+    Aws::String m_namespace;
+    bool m_namespaceHasBeenSet;
   };
 
 } // namespace Model

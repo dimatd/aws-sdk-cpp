@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -388,49 +378,57 @@ namespace Model
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline const Aws::String& GetRawContent() const{ return m_rawContent; }
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline bool RawContentHasBeenSet() const { return m_rawContentHasBeenSet; }
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline void SetRawContent(const Aws::String& value) { m_rawContentHasBeenSet = true; m_rawContent = value; }
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline void SetRawContent(Aws::String&& value) { m_rawContentHasBeenSet = true; m_rawContent = std::move(value); }
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline void SetRawContent(const char* value) { m_rawContentHasBeenSet = true; m_rawContent.assign(value); }
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline Message& WithRawContent(const Aws::String& value) { SetRawContent(value); return *this;}
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline Message& WithRawContent(Aws::String&& value) { SetRawContent(std::move(value)); return *this;}
 
     /**
      * <p>The raw, JSON-formatted string to use as the payload for the notification
-     * message. This value overrides other values for the message.</p>
+     * message. If specified, this value overrides all other content for the
+     * message.</p>
      */
     inline Message& WithRawContent(const char* value) { SetRawContent(value); return *this;}
 

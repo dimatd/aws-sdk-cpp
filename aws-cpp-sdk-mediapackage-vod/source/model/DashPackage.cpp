@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediapackage-vod/model/DashPackage.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,16 +21,26 @@ namespace Model
 DashPackage::DashPackage() : 
     m_dashManifestsHasBeenSet(false),
     m_encryptionHasBeenSet(false),
+    m_includeEncoderConfigurationInSegments(false),
+    m_includeEncoderConfigurationInSegmentsHasBeenSet(false),
+    m_periodTriggersHasBeenSet(false),
     m_segmentDurationSeconds(0),
-    m_segmentDurationSecondsHasBeenSet(false)
+    m_segmentDurationSecondsHasBeenSet(false),
+    m_segmentTemplateFormat(SegmentTemplateFormat::NOT_SET),
+    m_segmentTemplateFormatHasBeenSet(false)
 {
 }
 
 DashPackage::DashPackage(JsonView jsonValue) : 
     m_dashManifestsHasBeenSet(false),
     m_encryptionHasBeenSet(false),
+    m_includeEncoderConfigurationInSegments(false),
+    m_includeEncoderConfigurationInSegmentsHasBeenSet(false),
+    m_periodTriggersHasBeenSet(false),
     m_segmentDurationSeconds(0),
-    m_segmentDurationSecondsHasBeenSet(false)
+    m_segmentDurationSecondsHasBeenSet(false),
+    m_segmentTemplateFormat(SegmentTemplateFormat::NOT_SET),
+    m_segmentTemplateFormatHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -64,11 +64,35 @@ DashPackage& DashPackage::operator =(JsonView jsonValue)
     m_encryptionHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("includeEncoderConfigurationInSegments"))
+  {
+    m_includeEncoderConfigurationInSegments = jsonValue.GetBool("includeEncoderConfigurationInSegments");
+
+    m_includeEncoderConfigurationInSegmentsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("periodTriggers"))
+  {
+    Array<JsonView> periodTriggersJsonList = jsonValue.GetArray("periodTriggers");
+    for(unsigned periodTriggersIndex = 0; periodTriggersIndex < periodTriggersJsonList.GetLength(); ++periodTriggersIndex)
+    {
+      m_periodTriggers.push_back(__PeriodTriggersElementMapper::Get__PeriodTriggersElementForName(periodTriggersJsonList[periodTriggersIndex].AsString()));
+    }
+    m_periodTriggersHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("segmentDurationSeconds"))
   {
     m_segmentDurationSeconds = jsonValue.GetInteger("segmentDurationSeconds");
 
     m_segmentDurationSecondsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("segmentTemplateFormat"))
+  {
+    m_segmentTemplateFormat = SegmentTemplateFormatMapper::GetSegmentTemplateFormatForName(jsonValue.GetString("segmentTemplateFormat"));
+
+    m_segmentTemplateFormatHasBeenSet = true;
   }
 
   return *this;
@@ -95,10 +119,32 @@ JsonValue DashPackage::Jsonize() const
 
   }
 
+  if(m_includeEncoderConfigurationInSegmentsHasBeenSet)
+  {
+   payload.WithBool("includeEncoderConfigurationInSegments", m_includeEncoderConfigurationInSegments);
+
+  }
+
+  if(m_periodTriggersHasBeenSet)
+  {
+   Array<JsonValue> periodTriggersJsonList(m_periodTriggers.size());
+   for(unsigned periodTriggersIndex = 0; periodTriggersIndex < periodTriggersJsonList.GetLength(); ++periodTriggersIndex)
+   {
+     periodTriggersJsonList[periodTriggersIndex].AsString(__PeriodTriggersElementMapper::GetNameFor__PeriodTriggersElement(m_periodTriggers[periodTriggersIndex]));
+   }
+   payload.WithArray("periodTriggers", std::move(periodTriggersJsonList));
+
+  }
+
   if(m_segmentDurationSecondsHasBeenSet)
   {
    payload.WithInteger("segmentDurationSeconds", m_segmentDurationSeconds);
 
+  }
+
+  if(m_segmentTemplateFormatHasBeenSet)
+  {
+   payload.WithString("segmentTemplateFormat", SegmentTemplateFormatMapper::GetNameForSegmentTemplateFormat(m_segmentTemplateFormat));
   }
 
   return payload;

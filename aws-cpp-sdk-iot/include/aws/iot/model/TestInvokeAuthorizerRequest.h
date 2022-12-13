@@ -1,22 +1,15 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/iot/model/HttpContext.h>
+#include <aws/iot/model/MqttContext.h>
+#include <aws/iot/model/TlsContext.h>
 #include <utility>
 
 namespace Aws
@@ -126,51 +119,144 @@ namespace Model
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline const Aws::String& GetTokenSignature() const{ return m_tokenSignature; }
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline bool TokenSignatureHasBeenSet() const { return m_tokenSignatureHasBeenSet; }
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline void SetTokenSignature(const Aws::String& value) { m_tokenSignatureHasBeenSet = true; m_tokenSignature = value; }
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline void SetTokenSignature(Aws::String&& value) { m_tokenSignatureHasBeenSet = true; m_tokenSignature = std::move(value); }
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline void SetTokenSignature(const char* value) { m_tokenSignatureHasBeenSet = true; m_tokenSignature.assign(value); }
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline TestInvokeAuthorizerRequest& WithTokenSignature(const Aws::String& value) { SetTokenSignature(value); return *this;}
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline TestInvokeAuthorizerRequest& WithTokenSignature(Aws::String&& value) { SetTokenSignature(std::move(value)); return *this;}
 
     /**
      * <p>The signature made with the token and your custom authentication service's
-     * private key.</p>
+     * private key. This value must be Base-64-encoded.</p>
      */
     inline TestInvokeAuthorizerRequest& WithTokenSignature(const char* value) { SetTokenSignature(value); return *this;}
+
+
+    /**
+     * <p>Specifies a test HTTP authorization request.</p>
+     */
+    inline const HttpContext& GetHttpContext() const{ return m_httpContext; }
+
+    /**
+     * <p>Specifies a test HTTP authorization request.</p>
+     */
+    inline bool HttpContextHasBeenSet() const { return m_httpContextHasBeenSet; }
+
+    /**
+     * <p>Specifies a test HTTP authorization request.</p>
+     */
+    inline void SetHttpContext(const HttpContext& value) { m_httpContextHasBeenSet = true; m_httpContext = value; }
+
+    /**
+     * <p>Specifies a test HTTP authorization request.</p>
+     */
+    inline void SetHttpContext(HttpContext&& value) { m_httpContextHasBeenSet = true; m_httpContext = std::move(value); }
+
+    /**
+     * <p>Specifies a test HTTP authorization request.</p>
+     */
+    inline TestInvokeAuthorizerRequest& WithHttpContext(const HttpContext& value) { SetHttpContext(value); return *this;}
+
+    /**
+     * <p>Specifies a test HTTP authorization request.</p>
+     */
+    inline TestInvokeAuthorizerRequest& WithHttpContext(HttpContext&& value) { SetHttpContext(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Specifies a test MQTT authorization request.</p>
+     */
+    inline const MqttContext& GetMqttContext() const{ return m_mqttContext; }
+
+    /**
+     * <p>Specifies a test MQTT authorization request.</p>
+     */
+    inline bool MqttContextHasBeenSet() const { return m_mqttContextHasBeenSet; }
+
+    /**
+     * <p>Specifies a test MQTT authorization request.</p>
+     */
+    inline void SetMqttContext(const MqttContext& value) { m_mqttContextHasBeenSet = true; m_mqttContext = value; }
+
+    /**
+     * <p>Specifies a test MQTT authorization request.</p>
+     */
+    inline void SetMqttContext(MqttContext&& value) { m_mqttContextHasBeenSet = true; m_mqttContext = std::move(value); }
+
+    /**
+     * <p>Specifies a test MQTT authorization request.</p>
+     */
+    inline TestInvokeAuthorizerRequest& WithMqttContext(const MqttContext& value) { SetMqttContext(value); return *this;}
+
+    /**
+     * <p>Specifies a test MQTT authorization request.</p>
+     */
+    inline TestInvokeAuthorizerRequest& WithMqttContext(MqttContext&& value) { SetMqttContext(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Specifies a test TLS authorization request.</p>
+     */
+    inline const TlsContext& GetTlsContext() const{ return m_tlsContext; }
+
+    /**
+     * <p>Specifies a test TLS authorization request.</p>
+     */
+    inline bool TlsContextHasBeenSet() const { return m_tlsContextHasBeenSet; }
+
+    /**
+     * <p>Specifies a test TLS authorization request.</p>
+     */
+    inline void SetTlsContext(const TlsContext& value) { m_tlsContextHasBeenSet = true; m_tlsContext = value; }
+
+    /**
+     * <p>Specifies a test TLS authorization request.</p>
+     */
+    inline void SetTlsContext(TlsContext&& value) { m_tlsContextHasBeenSet = true; m_tlsContext = std::move(value); }
+
+    /**
+     * <p>Specifies a test TLS authorization request.</p>
+     */
+    inline TestInvokeAuthorizerRequest& WithTlsContext(const TlsContext& value) { SetTlsContext(value); return *this;}
+
+    /**
+     * <p>Specifies a test TLS authorization request.</p>
+     */
+    inline TestInvokeAuthorizerRequest& WithTlsContext(TlsContext&& value) { SetTlsContext(std::move(value)); return *this;}
 
   private:
 
@@ -182,6 +268,15 @@ namespace Model
 
     Aws::String m_tokenSignature;
     bool m_tokenSignatureHasBeenSet;
+
+    HttpContext m_httpContext;
+    bool m_httpContextHasBeenSet;
+
+    MqttContext m_mqttContext;
+    bool m_mqttContextHasBeenSet;
+
+    TlsContext m_tlsContext;
+    bool m_tlsContextHasBeenSet;
   };
 
 } // namespace Model

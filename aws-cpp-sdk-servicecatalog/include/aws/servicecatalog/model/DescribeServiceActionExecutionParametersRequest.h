@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
@@ -44,78 +34,142 @@ namespace Model
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline const Aws::String& GetProvisionedProductId() const{ return m_provisionedProductId; }
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline bool ProvisionedProductIdHasBeenSet() const { return m_provisionedProductIdHasBeenSet; }
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline void SetProvisionedProductId(const Aws::String& value) { m_provisionedProductIdHasBeenSet = true; m_provisionedProductId = value; }
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline void SetProvisionedProductId(Aws::String&& value) { m_provisionedProductIdHasBeenSet = true; m_provisionedProductId = std::move(value); }
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline void SetProvisionedProductId(const char* value) { m_provisionedProductIdHasBeenSet = true; m_provisionedProductId.assign(value); }
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithProvisionedProductId(const Aws::String& value) { SetProvisionedProductId(value); return *this;}
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithProvisionedProductId(Aws::String&& value) { SetProvisionedProductId(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>The identifier of the provisioned product.</p>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithProvisionedProductId(const char* value) { SetProvisionedProductId(value); return *this;}
 
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline const Aws::String& GetServiceActionId() const{ return m_serviceActionId; }
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline bool ServiceActionIdHasBeenSet() const { return m_serviceActionIdHasBeenSet; }
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline void SetServiceActionId(const Aws::String& value) { m_serviceActionIdHasBeenSet = true; m_serviceActionId = value; }
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline void SetServiceActionId(Aws::String&& value) { m_serviceActionIdHasBeenSet = true; m_serviceActionId = std::move(value); }
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline void SetServiceActionId(const char* value) { m_serviceActionIdHasBeenSet = true; m_serviceActionId.assign(value); }
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithServiceActionId(const Aws::String& value) { SetServiceActionId(value); return *this;}
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithServiceActionId(Aws::String&& value) { SetServiceActionId(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>The self-service action identifier.</p>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithServiceActionId(const char* value) { SetServiceActionId(value); return *this;}
 
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline const Aws::String& GetAcceptLanguage() const{ return m_acceptLanguage; }
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline bool AcceptLanguageHasBeenSet() const { return m_acceptLanguageHasBeenSet; }
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline void SetAcceptLanguage(const Aws::String& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = value; }
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline void SetAcceptLanguage(Aws::String&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::move(value); }
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline void SetAcceptLanguage(const char* value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage.assign(value); }
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithAcceptLanguage(const Aws::String& value) { SetAcceptLanguage(value); return *this;}
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithAcceptLanguage(Aws::String&& value) { SetAcceptLanguage(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>The language code.</p> <ul> <li> <p> <code>en</code> - English (default)</p>
+     * </li> <li> <p> <code>jp</code> - Japanese</p> </li> <li> <p> <code>zh</code> -
+     * Chinese</p> </li> </ul>
+     */
     inline DescribeServiceActionExecutionParametersRequest& WithAcceptLanguage(const char* value) { SetAcceptLanguage(value); return *this;}
 
   private:

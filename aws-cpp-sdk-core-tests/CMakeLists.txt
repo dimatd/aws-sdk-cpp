@@ -1,6 +1,6 @@
-add_project(aws-cpp-sdk-core-tests 
+add_project(aws-cpp-sdk-core-tests
     "Tests for the AWS Core C++ Library"
-    testing-resources 
+    testing-resources
     aws-cpp-sdk-core )
 
 # Headers are included in the source so that they show up in Visual Studio.
@@ -99,11 +99,19 @@ if (NO_HTTP_CLIENT)
     target_compile_definitions(${PROJECT_NAME} PRIVATE "NO_HTTP_CLIENT")
 endif()
 
-target_link_libraries(${PROJECT_NAME} ${PROJECT_LIBS})
+target_link_libraries(${PROJECT_NAME} ${PROJECT_LIBS} ${CLIENT_LIBS})
+
+if(ENABLE_FUNCTIONAL_TESTING)
+    target_link_libraries(${PROJECT_NAME} aws-cpp-sdk-document-test)
+endif()
 
 add_custom_command(TARGET aws-cpp-sdk-core-tests PRE_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy_directory
                    ${CMAKE_CURRENT_SOURCE_DIR}/resources ${CMAKE_CURRENT_BINARY_DIR})
+
+if (ENABLE_HTTP_CLIENT_TESTING)
+    add_definitions(-DENABLE_HTTP_CLIENT_TESTING)
+endif()
 
 if (AUTORUN_UNIT_TESTS)
     ADD_CUSTOM_COMMAND( TARGET ${PROJECT_NAME} POST_BUILD COMMAND $<TARGET_FILE:${PROJECT_NAME}>

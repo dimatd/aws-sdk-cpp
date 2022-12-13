@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
@@ -35,7 +25,10 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>Provides information about types of supported endpoints in response to a
+   * request by the <code>DescribeEndpointTypes</code> operation. This information
+   * includes the type of endpoint, the database engine name, and whether change data
+   * capture (CDC) is supported.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/SupportedEndpointType">AWS
    * API Reference</a></p>
    */
@@ -50,78 +43,118 @@ namespace Model
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline const Aws::String& GetEngineName() const{ return m_engineName; }
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline bool EngineNameHasBeenSet() const { return m_engineNameHasBeenSet; }
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline void SetEngineName(const Aws::String& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = std::move(value); }
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline void SetEngineName(const char* value) { m_engineNameHasBeenSet = true; m_engineName.assign(value); }
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline SupportedEndpointType& WithEngineName(const Aws::String& value) { SetEngineName(value); return *this;}
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline SupportedEndpointType& WithEngineName(Aws::String&& value) { SetEngineName(std::move(value)); return *this;}
 
     /**
      * <p>The database engine name. Valid values, depending on the EndpointType,
-     * include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift,
-     * s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.</p>
+     * include <code>"mysql"</code>, <code>"oracle"</code>, <code>"postgres"</code>,
+     * <code>"mariadb"</code>, <code>"aurora"</code>, <code>"aurora-postgresql"</code>,
+     * <code>"redshift"</code>, <code>"s3"</code>, <code>"db2"</code>,
+     * <code>"azuredb"</code>, <code>"sybase"</code>, <code>"dynamodb"</code>,
+     * <code>"mongodb"</code>, <code>"kinesis"</code>, <code>"kafka"</code>,
+     * <code>"elasticsearch"</code>, <code>"documentdb"</code>,
+     * <code>"sqlserver"</code>, and <code>"neptune"</code>.</p>
      */
     inline SupportedEndpointType& WithEngineName(const char* value) { SetEngineName(value); return *this;}
 
 
     /**
-     * <p>Indicates if Change Data Capture (CDC) is supported.</p>
+     * <p>Indicates if change data capture (CDC) is supported.</p>
      */
     inline bool GetSupportsCDC() const{ return m_supportsCDC; }
 
     /**
-     * <p>Indicates if Change Data Capture (CDC) is supported.</p>
+     * <p>Indicates if change data capture (CDC) is supported.</p>
      */
     inline bool SupportsCDCHasBeenSet() const { return m_supportsCDCHasBeenSet; }
 
     /**
-     * <p>Indicates if Change Data Capture (CDC) is supported.</p>
+     * <p>Indicates if change data capture (CDC) is supported.</p>
      */
     inline void SetSupportsCDC(bool value) { m_supportsCDCHasBeenSet = true; m_supportsCDC = value; }
 
     /**
-     * <p>Indicates if Change Data Capture (CDC) is supported.</p>
+     * <p>Indicates if change data capture (CDC) is supported.</p>
      */
     inline SupportedEndpointType& WithSupportsCDC(bool value) { SetSupportsCDC(value); return *this;}
 
@@ -161,6 +194,63 @@ namespace Model
      * <code>target</code>.</p>
      */
     inline SupportedEndpointType& WithEndpointType(ReplicationEndpointTypeValue&& value) { SetEndpointType(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline const Aws::String& GetReplicationInstanceEngineMinimumVersion() const{ return m_replicationInstanceEngineMinimumVersion; }
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline bool ReplicationInstanceEngineMinimumVersionHasBeenSet() const { return m_replicationInstanceEngineMinimumVersionHasBeenSet; }
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline void SetReplicationInstanceEngineMinimumVersion(const Aws::String& value) { m_replicationInstanceEngineMinimumVersionHasBeenSet = true; m_replicationInstanceEngineMinimumVersion = value; }
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline void SetReplicationInstanceEngineMinimumVersion(Aws::String&& value) { m_replicationInstanceEngineMinimumVersionHasBeenSet = true; m_replicationInstanceEngineMinimumVersion = std::move(value); }
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline void SetReplicationInstanceEngineMinimumVersion(const char* value) { m_replicationInstanceEngineMinimumVersionHasBeenSet = true; m_replicationInstanceEngineMinimumVersion.assign(value); }
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline SupportedEndpointType& WithReplicationInstanceEngineMinimumVersion(const Aws::String& value) { SetReplicationInstanceEngineMinimumVersion(value); return *this;}
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline SupportedEndpointType& WithReplicationInstanceEngineMinimumVersion(Aws::String&& value) { SetReplicationInstanceEngineMinimumVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The earliest DMS engine version that supports this endpoint engine. Note that
+     * endpoint engines released with DMS versions earlier than 3.1.1 do not return a
+     * value for this parameter.</p>
+     */
+    inline SupportedEndpointType& WithReplicationInstanceEngineMinimumVersion(const char* value) { SetReplicationInstanceEngineMinimumVersion(value); return *this;}
 
 
     /**
@@ -229,6 +319,9 @@ namespace Model
 
     ReplicationEndpointTypeValue m_endpointType;
     bool m_endpointTypeHasBeenSet;
+
+    Aws::String m_replicationInstanceEngineMinimumVersion;
+    bool m_replicationInstanceEngineMinimumVersionHasBeenSet;
 
     Aws::String m_engineDisplayName;
     bool m_engineDisplayNameHasBeenSet;

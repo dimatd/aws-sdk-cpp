@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/forecast/ForecastService_EXPORTS.h>
@@ -153,27 +143,32 @@ namespace Model
 
 
     /**
-     * <p>The path to the AWS S3 bucket where the forecast is exported.</p>
+     * <p>The path to the Amazon Simple Storage Service (Amazon S3) bucket where the
+     * forecast is exported.</p>
      */
     inline const DataDestination& GetDestination() const{ return m_destination; }
 
     /**
-     * <p>The path to the AWS S3 bucket where the forecast is exported.</p>
+     * <p>The path to the Amazon Simple Storage Service (Amazon S3) bucket where the
+     * forecast is exported.</p>
      */
     inline void SetDestination(const DataDestination& value) { m_destination = value; }
 
     /**
-     * <p>The path to the AWS S3 bucket where the forecast is exported.</p>
+     * <p>The path to the Amazon Simple Storage Service (Amazon S3) bucket where the
+     * forecast is exported.</p>
      */
     inline void SetDestination(DataDestination&& value) { m_destination = std::move(value); }
 
     /**
-     * <p>The path to the AWS S3 bucket where the forecast is exported.</p>
+     * <p>The path to the Amazon Simple Storage Service (Amazon S3) bucket where the
+     * forecast is exported.</p>
      */
     inline DescribeForecastExportJobResult& WithDestination(const DataDestination& value) { SetDestination(value); return *this;}
 
     /**
-     * <p>The path to the AWS S3 bucket where the forecast is exported.</p>
+     * <p>The path to the Amazon Simple Storage Service (Amazon S3) bucket where the
+     * forecast is exported.</p>
      */
     inline DescribeForecastExportJobResult& WithDestination(DataDestination&& value) { SetDestination(std::move(value)); return *this;}
 
@@ -215,79 +210,86 @@ namespace Model
 
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline const Aws::String& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline void SetStatus(const Aws::String& value) { m_status = value; }
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline void SetStatus(const char* value) { m_status.assign(value); }
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline DescribeForecastExportJobResult& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline DescribeForecastExportJobResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
-     * <p>The status of the forecast export job. One of the following states:</p> <ul>
-     * <li> <p> <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
+     * <p>The status of the forecast export job. States include:</p> <ul> <li> <p>
+     * <code>ACTIVE</code> </p> </li> <li> <p> <code>CREATE_PENDING</code>,
      * <code>CREATE_IN_PROGRESS</code>, <code>CREATE_FAILED</code> </p> </li> <li> <p>
+     * <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code> </p> </li> <li> <p>
      * <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-     * <code>DELETE_FAILED</code> </p> </li> </ul> <note> <p>The <code>Status</code> of
+     * <code>DELETE_FAILED</code> </p> </li> </ul>  <p>The <code>Status</code> of
      * the forecast export job must be <code>ACTIVE</code> before you can access the
-     * forecast in your Amazon S3 bucket.</p> </note>
+     * forecast in your S3 bucket.</p> 
      */
     inline DescribeForecastExportJobResult& WithStatus(const char* value) { SetStatus(value); return *this;}
 
@@ -319,29 +321,95 @@ namespace Model
 
 
     /**
-     * <p>When the last successful export job finished.</p>
+     * <p>The last time the resource was modified. The timestamp depends on the status
+     * of the job:</p> <ul> <li> <p> <code>CREATE_PENDING</code> - The
+     * <code>CreationTime</code>.</p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> -
+     * The current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPING</code> - The
+     * current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPED</code> - When the job
+     * stopped.</p> </li> <li> <p> <code>ACTIVE</code> or <code>CREATE_FAILED</code> -
+     * When the job finished or failed.</p> </li> </ul>
      */
     inline const Aws::Utils::DateTime& GetLastModificationTime() const{ return m_lastModificationTime; }
 
     /**
-     * <p>When the last successful export job finished.</p>
+     * <p>The last time the resource was modified. The timestamp depends on the status
+     * of the job:</p> <ul> <li> <p> <code>CREATE_PENDING</code> - The
+     * <code>CreationTime</code>.</p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> -
+     * The current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPING</code> - The
+     * current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPED</code> - When the job
+     * stopped.</p> </li> <li> <p> <code>ACTIVE</code> or <code>CREATE_FAILED</code> -
+     * When the job finished or failed.</p> </li> </ul>
      */
     inline void SetLastModificationTime(const Aws::Utils::DateTime& value) { m_lastModificationTime = value; }
 
     /**
-     * <p>When the last successful export job finished.</p>
+     * <p>The last time the resource was modified. The timestamp depends on the status
+     * of the job:</p> <ul> <li> <p> <code>CREATE_PENDING</code> - The
+     * <code>CreationTime</code>.</p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> -
+     * The current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPING</code> - The
+     * current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPED</code> - When the job
+     * stopped.</p> </li> <li> <p> <code>ACTIVE</code> or <code>CREATE_FAILED</code> -
+     * When the job finished or failed.</p> </li> </ul>
      */
     inline void SetLastModificationTime(Aws::Utils::DateTime&& value) { m_lastModificationTime = std::move(value); }
 
     /**
-     * <p>When the last successful export job finished.</p>
+     * <p>The last time the resource was modified. The timestamp depends on the status
+     * of the job:</p> <ul> <li> <p> <code>CREATE_PENDING</code> - The
+     * <code>CreationTime</code>.</p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> -
+     * The current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPING</code> - The
+     * current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPED</code> - When the job
+     * stopped.</p> </li> <li> <p> <code>ACTIVE</code> or <code>CREATE_FAILED</code> -
+     * When the job finished or failed.</p> </li> </ul>
      */
     inline DescribeForecastExportJobResult& WithLastModificationTime(const Aws::Utils::DateTime& value) { SetLastModificationTime(value); return *this;}
 
     /**
-     * <p>When the last successful export job finished.</p>
+     * <p>The last time the resource was modified. The timestamp depends on the status
+     * of the job:</p> <ul> <li> <p> <code>CREATE_PENDING</code> - The
+     * <code>CreationTime</code>.</p> </li> <li> <p> <code>CREATE_IN_PROGRESS</code> -
+     * The current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPING</code> - The
+     * current timestamp.</p> </li> <li> <p> <code>CREATE_STOPPED</code> - When the job
+     * stopped.</p> </li> <li> <p> <code>ACTIVE</code> or <code>CREATE_FAILED</code> -
+     * When the job finished or failed.</p> </li> </ul>
      */
     inline DescribeForecastExportJobResult& WithLastModificationTime(Aws::Utils::DateTime&& value) { SetLastModificationTime(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline const Aws::String& GetFormat() const{ return m_format; }
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline void SetFormat(const Aws::String& value) { m_format = value; }
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline void SetFormat(Aws::String&& value) { m_format = std::move(value); }
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline void SetFormat(const char* value) { m_format.assign(value); }
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline DescribeForecastExportJobResult& WithFormat(const Aws::String& value) { SetFormat(value); return *this;}
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline DescribeForecastExportJobResult& WithFormat(Aws::String&& value) { SetFormat(std::move(value)); return *this;}
+
+    /**
+     * <p>The format of the exported data, CSV or PARQUET.</p>
+     */
+    inline DescribeForecastExportJobResult& WithFormat(const char* value) { SetFormat(value); return *this;}
 
   private:
 
@@ -360,6 +428,8 @@ namespace Model
     Aws::Utils::DateTime m_creationTime;
 
     Aws::Utils::DateTime m_lastModificationTime;
+
+    Aws::String m_format;
   };
 
 } // namespace Model

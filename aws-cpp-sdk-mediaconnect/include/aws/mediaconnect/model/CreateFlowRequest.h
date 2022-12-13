@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/mediaconnect/MediaConnect_EXPORTS.h>
@@ -19,8 +9,12 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/mediaconnect/model/SetSourceRequest.h>
+#include <aws/mediaconnect/model/FailoverConfig.h>
+#include <aws/mediaconnect/model/AddMaintenance.h>
 #include <aws/mediaconnect/model/GrantEntitlementRequest.h>
+#include <aws/mediaconnect/model/AddMediaStreamRequest.h>
 #include <aws/mediaconnect/model/AddOutputRequest.h>
+#include <aws/mediaconnect/model/VpcInterfaceRequest.h>
 #include <utility>
 
 namespace Aws
@@ -32,7 +26,7 @@ namespace Model
 
   /**
    * Creates a new flow. The request must include one source. The request optionally
-   * can include outputs (up to 20) and entitlements (up to 50).<p><h3>See Also:</h3>
+   * can include outputs (up to 50) and entitlements (up to 50).<p><h3>See Also:</h3>
    * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/CreateFlowRequest">AWS
    * API Reference</a></p>
@@ -142,6 +136,55 @@ namespace Model
 
 
     /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline const Aws::Vector<AddMediaStreamRequest>& GetMediaStreams() const{ return m_mediaStreams; }
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline bool MediaStreamsHasBeenSet() const { return m_mediaStreamsHasBeenSet; }
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline void SetMediaStreams(const Aws::Vector<AddMediaStreamRequest>& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = value; }
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline void SetMediaStreams(Aws::Vector<AddMediaStreamRequest>&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = std::move(value); }
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline CreateFlowRequest& WithMediaStreams(const Aws::Vector<AddMediaStreamRequest>& value) { SetMediaStreams(value); return *this;}
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline CreateFlowRequest& WithMediaStreams(Aws::Vector<AddMediaStreamRequest>&& value) { SetMediaStreams(std::move(value)); return *this;}
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline CreateFlowRequest& AddMediaStreams(const AddMediaStreamRequest& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.push_back(value); return *this; }
+
+    /**
+     * The media streams that you want to add to the flow. You can associate these
+     * media streams with sources and outputs on the flow.
+     */
+    inline CreateFlowRequest& AddMediaStreams(AddMediaStreamRequest&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.push_back(std::move(value)); return *this; }
+
+
+    /**
      * The name of the flow.
      */
     inline const Aws::String& GetName() const{ return m_name; }
@@ -241,6 +284,110 @@ namespace Model
     
     inline CreateFlowRequest& WithSource(SetSourceRequest&& value) { SetSource(std::move(value)); return *this;}
 
+
+    
+    inline const FailoverConfig& GetSourceFailoverConfig() const{ return m_sourceFailoverConfig; }
+
+    
+    inline bool SourceFailoverConfigHasBeenSet() const { return m_sourceFailoverConfigHasBeenSet; }
+
+    
+    inline void SetSourceFailoverConfig(const FailoverConfig& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = value; }
+
+    
+    inline void SetSourceFailoverConfig(FailoverConfig&& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = std::move(value); }
+
+    
+    inline CreateFlowRequest& WithSourceFailoverConfig(const FailoverConfig& value) { SetSourceFailoverConfig(value); return *this;}
+
+    
+    inline CreateFlowRequest& WithSourceFailoverConfig(FailoverConfig&& value) { SetSourceFailoverConfig(std::move(value)); return *this;}
+
+
+    
+    inline const Aws::Vector<SetSourceRequest>& GetSources() const{ return m_sources; }
+
+    
+    inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+
+    
+    inline void SetSources(const Aws::Vector<SetSourceRequest>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
+
+    
+    inline void SetSources(Aws::Vector<SetSourceRequest>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
+
+    
+    inline CreateFlowRequest& WithSources(const Aws::Vector<SetSourceRequest>& value) { SetSources(value); return *this;}
+
+    
+    inline CreateFlowRequest& WithSources(Aws::Vector<SetSourceRequest>&& value) { SetSources(std::move(value)); return *this;}
+
+    
+    inline CreateFlowRequest& AddSources(const SetSourceRequest& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
+
+    
+    inline CreateFlowRequest& AddSources(SetSourceRequest&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline const Aws::Vector<VpcInterfaceRequest>& GetVpcInterfaces() const{ return m_vpcInterfaces; }
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline bool VpcInterfacesHasBeenSet() const { return m_vpcInterfacesHasBeenSet; }
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline void SetVpcInterfaces(const Aws::Vector<VpcInterfaceRequest>& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = value; }
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline void SetVpcInterfaces(Aws::Vector<VpcInterfaceRequest>&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = std::move(value); }
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline CreateFlowRequest& WithVpcInterfaces(const Aws::Vector<VpcInterfaceRequest>& value) { SetVpcInterfaces(value); return *this;}
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline CreateFlowRequest& WithVpcInterfaces(Aws::Vector<VpcInterfaceRequest>&& value) { SetVpcInterfaces(std::move(value)); return *this;}
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline CreateFlowRequest& AddVpcInterfaces(const VpcInterfaceRequest& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.push_back(value); return *this; }
+
+    /**
+     * The VPC interfaces you want on the flow.
+     */
+    inline CreateFlowRequest& AddVpcInterfaces(VpcInterfaceRequest&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.push_back(std::move(value)); return *this; }
+
+
+    
+    inline const AddMaintenance& GetMaintenance() const{ return m_maintenance; }
+
+    
+    inline bool MaintenanceHasBeenSet() const { return m_maintenanceHasBeenSet; }
+
+    
+    inline void SetMaintenance(const AddMaintenance& value) { m_maintenanceHasBeenSet = true; m_maintenance = value; }
+
+    
+    inline void SetMaintenance(AddMaintenance&& value) { m_maintenanceHasBeenSet = true; m_maintenance = std::move(value); }
+
+    
+    inline CreateFlowRequest& WithMaintenance(const AddMaintenance& value) { SetMaintenance(value); return *this;}
+
+    
+    inline CreateFlowRequest& WithMaintenance(AddMaintenance&& value) { SetMaintenance(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_availabilityZone;
@@ -248,6 +395,9 @@ namespace Model
 
     Aws::Vector<GrantEntitlementRequest> m_entitlements;
     bool m_entitlementsHasBeenSet;
+
+    Aws::Vector<AddMediaStreamRequest> m_mediaStreams;
+    bool m_mediaStreamsHasBeenSet;
 
     Aws::String m_name;
     bool m_nameHasBeenSet;
@@ -257,6 +407,18 @@ namespace Model
 
     SetSourceRequest m_source;
     bool m_sourceHasBeenSet;
+
+    FailoverConfig m_sourceFailoverConfig;
+    bool m_sourceFailoverConfigHasBeenSet;
+
+    Aws::Vector<SetSourceRequest> m_sources;
+    bool m_sourcesHasBeenSet;
+
+    Aws::Vector<VpcInterfaceRequest> m_vpcInterfaces;
+    bool m_vpcInterfacesHasBeenSet;
+
+    AddMaintenance m_maintenance;
+    bool m_maintenanceHasBeenSet;
   };
 
 } // namespace Model

@@ -1,22 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dlm/DLM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dlm/model/GettablePolicyStateValues.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/dlm/model/PolicyTypeValues.h>
 #include <utility>
 
 namespace Aws
@@ -160,6 +152,121 @@ namespace Model
      */
     inline LifecyclePolicySummary& WithState(GettablePolicyStateValues&& value) { SetState(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>The tags.</p>
+     */
+    inline LifecyclePolicySummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
+
+    /**
+     * <p>The type of policy. <code>EBS_SNAPSHOT_MANAGEMENT</code> indicates that the
+     * policy manages the lifecycle of Amazon EBS snapshots.
+     * <code>IMAGE_MANAGEMENT</code> indicates that the policy manages the lifecycle of
+     * EBS-backed AMIs.</p>
+     */
+    inline const PolicyTypeValues& GetPolicyType() const{ return m_policyType; }
+
+    /**
+     * <p>The type of policy. <code>EBS_SNAPSHOT_MANAGEMENT</code> indicates that the
+     * policy manages the lifecycle of Amazon EBS snapshots.
+     * <code>IMAGE_MANAGEMENT</code> indicates that the policy manages the lifecycle of
+     * EBS-backed AMIs.</p>
+     */
+    inline bool PolicyTypeHasBeenSet() const { return m_policyTypeHasBeenSet; }
+
+    /**
+     * <p>The type of policy. <code>EBS_SNAPSHOT_MANAGEMENT</code> indicates that the
+     * policy manages the lifecycle of Amazon EBS snapshots.
+     * <code>IMAGE_MANAGEMENT</code> indicates that the policy manages the lifecycle of
+     * EBS-backed AMIs.</p>
+     */
+    inline void SetPolicyType(const PolicyTypeValues& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+
+    /**
+     * <p>The type of policy. <code>EBS_SNAPSHOT_MANAGEMENT</code> indicates that the
+     * policy manages the lifecycle of Amazon EBS snapshots.
+     * <code>IMAGE_MANAGEMENT</code> indicates that the policy manages the lifecycle of
+     * EBS-backed AMIs.</p>
+     */
+    inline void SetPolicyType(PolicyTypeValues&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
+
+    /**
+     * <p>The type of policy. <code>EBS_SNAPSHOT_MANAGEMENT</code> indicates that the
+     * policy manages the lifecycle of Amazon EBS snapshots.
+     * <code>IMAGE_MANAGEMENT</code> indicates that the policy manages the lifecycle of
+     * EBS-backed AMIs.</p>
+     */
+    inline LifecyclePolicySummary& WithPolicyType(const PolicyTypeValues& value) { SetPolicyType(value); return *this;}
+
+    /**
+     * <p>The type of policy. <code>EBS_SNAPSHOT_MANAGEMENT</code> indicates that the
+     * policy manages the lifecycle of Amazon EBS snapshots.
+     * <code>IMAGE_MANAGEMENT</code> indicates that the policy manages the lifecycle of
+     * EBS-backed AMIs.</p>
+     */
+    inline LifecyclePolicySummary& WithPolicyType(PolicyTypeValues&& value) { SetPolicyType(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_policyId;
@@ -170,6 +277,12 @@ namespace Model
 
     GettablePolicyStateValues m_state;
     bool m_stateHasBeenSet;
+
+    Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet;
+
+    PolicyTypeValues m_policyType;
+    bool m_policyTypeHasBeenSet;
   };
 
 } // namespace Model

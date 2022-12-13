@@ -1,25 +1,17 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/textract/Textract_EXPORTS.h>
 #include <aws/textract/model/BlockType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/textract/model/TextType.h>
 #include <aws/textract/model/Geometry.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/textract/model/SelectionStatus.h>
+#include <aws/textract/model/Query.h>
 #include <aws/textract/model/Relationship.h>
 #include <aws/textract/model/EntityType.h>
 #include <utility>
@@ -42,16 +34,16 @@ namespace Model
   /**
    * <p>A <code>Block</code> represents items that are recognized in a document
    * within a group of pixels close to each other. The information returned in a
-   * <code>Block</code> depends on the type of operation. In document-text detection
-   * (for example <a>DetectDocumentText</a>), you get information about the detected
-   * words and lines of text. In text analysis (for example <a>AnalyzeDocument</a>),
-   * you can also get information about the fields, tables and selection elements
-   * that are detected in the document.</p> <p>An array of <code>Block</code> objects
-   * is returned by both synchronous and asynchronous operations. In synchronous
-   * operations, such as <a>DetectDocumentText</a>, the array of <code>Block</code>
-   * objects is the entire set of results. In asynchronous operations, such as
-   * <a>GetDocumentAnalysis</a>, the array is returned over one or more
-   * responses.</p> <p>For more information, see <a
+   * <code>Block</code> object depends on the type of operation. In text detection
+   * for documents (for example <a>DetectDocumentText</a>), you get information about
+   * the detected words and lines of text. In text analysis (for example
+   * <a>AnalyzeDocument</a>), you can also get information about the fields, tables,
+   * and selection elements that are detected in the document.</p> <p>An array of
+   * <code>Block</code> objects is returned by both synchronous and asynchronous
+   * operations. In synchronous operations, such as <a>DetectDocumentText</a>, the
+   * array of <code>Block</code> objects is the entire set of results. In
+   * asynchronous operations, such as <a>GetDocumentAnalysis</a>, the array is
+   * returned over one or more responses.</p> <p>For more information, see <a
    * href="https://docs.aws.amazon.com/textract/latest/dg/how-it-works.html">How
    * Amazon Textract Works</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/textract-2018-06-27/Block">AWS API
@@ -67,195 +59,229 @@ namespace Model
 
 
     /**
-     * <p>The type of text that's recognized in a block. In text-detection operations,
+     * <p>The type of text item that's recognized. In operations for text detection,
      * the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a
-     * list of the LINE Block objects that are detected on a document page.</p> </li>
-     * <li> <p> <i>WORD</i> - A word detected on a document page. A word is one or more
-     * ISO basic Latin script characters that aren't separated by spaces.</p> </li>
-     * <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous words that's
-     * detected on a document page.</p> </li> </ul> <p>In text analysis operations, the
-     * following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a list of
-     * child Block objects that are detected on a document page.</p> </li> <li> <p>
-     * <i>KEY_VALUE_SET</i> - Stores the KEY and VALUE Block objects for a field that's
-     * detected on a document page. Use the <code>EntityType</code> field to determine
-     * if a KEY_VALUE_SET object is a KEY Block object or a VALUE Block object. </p>
-     * </li> <li> <p> <i>WORD</i> - A word detected on a document page. A word is one
-     * or more ISO basic Latin script characters that aren't separated by spaces that's
-     * detected on a document page.</p> </li> <li> <p> <i>LINE</i> - A string of
-     * tab-delimited, contiguous words that's detected on a document page.</p> </li>
-     * <li> <p> <i>TABLE</i> - A table that's detected on a document page. A table is
-     * any grid-based information with 2 or more rows or columns with a cell span of 1
-     * row and 1 column each. </p> </li> <li> <p> <i>CELL</i> - A cell within a
-     * detected table. The cell is the parent of the block that contains the text in
-     * the cell.</p> </li> <li> <p> <i>SELECTION_ELEMENT</i> - A selectable element
-     * such as a radio button or checkbox that's detected on a document page. Use the
-     * value of <code>SelectionStatus</code> to determine the status of the selection
-     * element.</p> </li> </ul>
+     * list of the LINE <code>Block</code> objects that are detected on a document
+     * page.</p> </li> <li> <p> <i>WORD</i> - A word detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> </ul> <p>In text analysis
+     * operations, the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> -
+     * Contains a list of child <code>Block</code> objects that are detected on a
+     * document page.</p> </li> <li> <p> <i>KEY_VALUE_SET</i> - Stores the KEY and
+     * VALUE <code>Block</code> objects for linked text that's detected on a document
+     * page. Use the <code>EntityType</code> field to determine if a KEY_VALUE_SET
+     * object is a KEY <code>Block</code> object or a VALUE <code>Block</code> object.
+     * </p> </li> <li> <p> <i>WORD</i> - A word that's detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> <li> <p> <i>TABLE</i> - A
+     * table that's detected on a document page. A table is grid-based information with
+     * two or more rows or columns, with a cell span of one row and one column each.
+     * </p> </li> <li> <p> <i>CELL</i> - A cell within a detected table. The cell is
+     * the parent of the block that contains the text in the cell.</p> </li> <li> <p>
+     * <i>SELECTION_ELEMENT</i> - A selection element such as an option button (radio
+     * button) or a check box that's detected on a document page. Use the value of
+     * <code>SelectionStatus</code> to determine the status of the selection
+     * element.</p> </li> <li> <p> <i>QUERY</i> - A question asked during the call of
+     * AnalyzeDocument. Contains an alias and an ID that attachs it to its answer.</p>
+     * </li> <li> <p> <i>QUERY_RESULT</i> - A response to a question asked during the
+     * call of analyze document. Comes with an alias and ID for ease of locating in a
+     * response. Also contains location and confidence score.</p> </li> </ul>
      */
     inline const BlockType& GetBlockType() const{ return m_blockType; }
 
     /**
-     * <p>The type of text that's recognized in a block. In text-detection operations,
+     * <p>The type of text item that's recognized. In operations for text detection,
      * the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a
-     * list of the LINE Block objects that are detected on a document page.</p> </li>
-     * <li> <p> <i>WORD</i> - A word detected on a document page. A word is one or more
-     * ISO basic Latin script characters that aren't separated by spaces.</p> </li>
-     * <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous words that's
-     * detected on a document page.</p> </li> </ul> <p>In text analysis operations, the
-     * following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a list of
-     * child Block objects that are detected on a document page.</p> </li> <li> <p>
-     * <i>KEY_VALUE_SET</i> - Stores the KEY and VALUE Block objects for a field that's
-     * detected on a document page. Use the <code>EntityType</code> field to determine
-     * if a KEY_VALUE_SET object is a KEY Block object or a VALUE Block object. </p>
-     * </li> <li> <p> <i>WORD</i> - A word detected on a document page. A word is one
-     * or more ISO basic Latin script characters that aren't separated by spaces that's
-     * detected on a document page.</p> </li> <li> <p> <i>LINE</i> - A string of
-     * tab-delimited, contiguous words that's detected on a document page.</p> </li>
-     * <li> <p> <i>TABLE</i> - A table that's detected on a document page. A table is
-     * any grid-based information with 2 or more rows or columns with a cell span of 1
-     * row and 1 column each. </p> </li> <li> <p> <i>CELL</i> - A cell within a
-     * detected table. The cell is the parent of the block that contains the text in
-     * the cell.</p> </li> <li> <p> <i>SELECTION_ELEMENT</i> - A selectable element
-     * such as a radio button or checkbox that's detected on a document page. Use the
-     * value of <code>SelectionStatus</code> to determine the status of the selection
-     * element.</p> </li> </ul>
+     * list of the LINE <code>Block</code> objects that are detected on a document
+     * page.</p> </li> <li> <p> <i>WORD</i> - A word detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> </ul> <p>In text analysis
+     * operations, the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> -
+     * Contains a list of child <code>Block</code> objects that are detected on a
+     * document page.</p> </li> <li> <p> <i>KEY_VALUE_SET</i> - Stores the KEY and
+     * VALUE <code>Block</code> objects for linked text that's detected on a document
+     * page. Use the <code>EntityType</code> field to determine if a KEY_VALUE_SET
+     * object is a KEY <code>Block</code> object or a VALUE <code>Block</code> object.
+     * </p> </li> <li> <p> <i>WORD</i> - A word that's detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> <li> <p> <i>TABLE</i> - A
+     * table that's detected on a document page. A table is grid-based information with
+     * two or more rows or columns, with a cell span of one row and one column each.
+     * </p> </li> <li> <p> <i>CELL</i> - A cell within a detected table. The cell is
+     * the parent of the block that contains the text in the cell.</p> </li> <li> <p>
+     * <i>SELECTION_ELEMENT</i> - A selection element such as an option button (radio
+     * button) or a check box that's detected on a document page. Use the value of
+     * <code>SelectionStatus</code> to determine the status of the selection
+     * element.</p> </li> <li> <p> <i>QUERY</i> - A question asked during the call of
+     * AnalyzeDocument. Contains an alias and an ID that attachs it to its answer.</p>
+     * </li> <li> <p> <i>QUERY_RESULT</i> - A response to a question asked during the
+     * call of analyze document. Comes with an alias and ID for ease of locating in a
+     * response. Also contains location and confidence score.</p> </li> </ul>
      */
     inline bool BlockTypeHasBeenSet() const { return m_blockTypeHasBeenSet; }
 
     /**
-     * <p>The type of text that's recognized in a block. In text-detection operations,
+     * <p>The type of text item that's recognized. In operations for text detection,
      * the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a
-     * list of the LINE Block objects that are detected on a document page.</p> </li>
-     * <li> <p> <i>WORD</i> - A word detected on a document page. A word is one or more
-     * ISO basic Latin script characters that aren't separated by spaces.</p> </li>
-     * <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous words that's
-     * detected on a document page.</p> </li> </ul> <p>In text analysis operations, the
-     * following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a list of
-     * child Block objects that are detected on a document page.</p> </li> <li> <p>
-     * <i>KEY_VALUE_SET</i> - Stores the KEY and VALUE Block objects for a field that's
-     * detected on a document page. Use the <code>EntityType</code> field to determine
-     * if a KEY_VALUE_SET object is a KEY Block object or a VALUE Block object. </p>
-     * </li> <li> <p> <i>WORD</i> - A word detected on a document page. A word is one
-     * or more ISO basic Latin script characters that aren't separated by spaces that's
-     * detected on a document page.</p> </li> <li> <p> <i>LINE</i> - A string of
-     * tab-delimited, contiguous words that's detected on a document page.</p> </li>
-     * <li> <p> <i>TABLE</i> - A table that's detected on a document page. A table is
-     * any grid-based information with 2 or more rows or columns with a cell span of 1
-     * row and 1 column each. </p> </li> <li> <p> <i>CELL</i> - A cell within a
-     * detected table. The cell is the parent of the block that contains the text in
-     * the cell.</p> </li> <li> <p> <i>SELECTION_ELEMENT</i> - A selectable element
-     * such as a radio button or checkbox that's detected on a document page. Use the
-     * value of <code>SelectionStatus</code> to determine the status of the selection
-     * element.</p> </li> </ul>
+     * list of the LINE <code>Block</code> objects that are detected on a document
+     * page.</p> </li> <li> <p> <i>WORD</i> - A word detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> </ul> <p>In text analysis
+     * operations, the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> -
+     * Contains a list of child <code>Block</code> objects that are detected on a
+     * document page.</p> </li> <li> <p> <i>KEY_VALUE_SET</i> - Stores the KEY and
+     * VALUE <code>Block</code> objects for linked text that's detected on a document
+     * page. Use the <code>EntityType</code> field to determine if a KEY_VALUE_SET
+     * object is a KEY <code>Block</code> object or a VALUE <code>Block</code> object.
+     * </p> </li> <li> <p> <i>WORD</i> - A word that's detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> <li> <p> <i>TABLE</i> - A
+     * table that's detected on a document page. A table is grid-based information with
+     * two or more rows or columns, with a cell span of one row and one column each.
+     * </p> </li> <li> <p> <i>CELL</i> - A cell within a detected table. The cell is
+     * the parent of the block that contains the text in the cell.</p> </li> <li> <p>
+     * <i>SELECTION_ELEMENT</i> - A selection element such as an option button (radio
+     * button) or a check box that's detected on a document page. Use the value of
+     * <code>SelectionStatus</code> to determine the status of the selection
+     * element.</p> </li> <li> <p> <i>QUERY</i> - A question asked during the call of
+     * AnalyzeDocument. Contains an alias and an ID that attachs it to its answer.</p>
+     * </li> <li> <p> <i>QUERY_RESULT</i> - A response to a question asked during the
+     * call of analyze document. Comes with an alias and ID for ease of locating in a
+     * response. Also contains location and confidence score.</p> </li> </ul>
      */
     inline void SetBlockType(const BlockType& value) { m_blockTypeHasBeenSet = true; m_blockType = value; }
 
     /**
-     * <p>The type of text that's recognized in a block. In text-detection operations,
+     * <p>The type of text item that's recognized. In operations for text detection,
      * the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a
-     * list of the LINE Block objects that are detected on a document page.</p> </li>
-     * <li> <p> <i>WORD</i> - A word detected on a document page. A word is one or more
-     * ISO basic Latin script characters that aren't separated by spaces.</p> </li>
-     * <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous words that's
-     * detected on a document page.</p> </li> </ul> <p>In text analysis operations, the
-     * following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a list of
-     * child Block objects that are detected on a document page.</p> </li> <li> <p>
-     * <i>KEY_VALUE_SET</i> - Stores the KEY and VALUE Block objects for a field that's
-     * detected on a document page. Use the <code>EntityType</code> field to determine
-     * if a KEY_VALUE_SET object is a KEY Block object or a VALUE Block object. </p>
-     * </li> <li> <p> <i>WORD</i> - A word detected on a document page. A word is one
-     * or more ISO basic Latin script characters that aren't separated by spaces that's
-     * detected on a document page.</p> </li> <li> <p> <i>LINE</i> - A string of
-     * tab-delimited, contiguous words that's detected on a document page.</p> </li>
-     * <li> <p> <i>TABLE</i> - A table that's detected on a document page. A table is
-     * any grid-based information with 2 or more rows or columns with a cell span of 1
-     * row and 1 column each. </p> </li> <li> <p> <i>CELL</i> - A cell within a
-     * detected table. The cell is the parent of the block that contains the text in
-     * the cell.</p> </li> <li> <p> <i>SELECTION_ELEMENT</i> - A selectable element
-     * such as a radio button or checkbox that's detected on a document page. Use the
-     * value of <code>SelectionStatus</code> to determine the status of the selection
-     * element.</p> </li> </ul>
+     * list of the LINE <code>Block</code> objects that are detected on a document
+     * page.</p> </li> <li> <p> <i>WORD</i> - A word detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> </ul> <p>In text analysis
+     * operations, the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> -
+     * Contains a list of child <code>Block</code> objects that are detected on a
+     * document page.</p> </li> <li> <p> <i>KEY_VALUE_SET</i> - Stores the KEY and
+     * VALUE <code>Block</code> objects for linked text that's detected on a document
+     * page. Use the <code>EntityType</code> field to determine if a KEY_VALUE_SET
+     * object is a KEY <code>Block</code> object or a VALUE <code>Block</code> object.
+     * </p> </li> <li> <p> <i>WORD</i> - A word that's detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> <li> <p> <i>TABLE</i> - A
+     * table that's detected on a document page. A table is grid-based information with
+     * two or more rows or columns, with a cell span of one row and one column each.
+     * </p> </li> <li> <p> <i>CELL</i> - A cell within a detected table. The cell is
+     * the parent of the block that contains the text in the cell.</p> </li> <li> <p>
+     * <i>SELECTION_ELEMENT</i> - A selection element such as an option button (radio
+     * button) or a check box that's detected on a document page. Use the value of
+     * <code>SelectionStatus</code> to determine the status of the selection
+     * element.</p> </li> <li> <p> <i>QUERY</i> - A question asked during the call of
+     * AnalyzeDocument. Contains an alias and an ID that attachs it to its answer.</p>
+     * </li> <li> <p> <i>QUERY_RESULT</i> - A response to a question asked during the
+     * call of analyze document. Comes with an alias and ID for ease of locating in a
+     * response. Also contains location and confidence score.</p> </li> </ul>
      */
     inline void SetBlockType(BlockType&& value) { m_blockTypeHasBeenSet = true; m_blockType = std::move(value); }
 
     /**
-     * <p>The type of text that's recognized in a block. In text-detection operations,
+     * <p>The type of text item that's recognized. In operations for text detection,
      * the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a
-     * list of the LINE Block objects that are detected on a document page.</p> </li>
-     * <li> <p> <i>WORD</i> - A word detected on a document page. A word is one or more
-     * ISO basic Latin script characters that aren't separated by spaces.</p> </li>
-     * <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous words that's
-     * detected on a document page.</p> </li> </ul> <p>In text analysis operations, the
-     * following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a list of
-     * child Block objects that are detected on a document page.</p> </li> <li> <p>
-     * <i>KEY_VALUE_SET</i> - Stores the KEY and VALUE Block objects for a field that's
-     * detected on a document page. Use the <code>EntityType</code> field to determine
-     * if a KEY_VALUE_SET object is a KEY Block object or a VALUE Block object. </p>
-     * </li> <li> <p> <i>WORD</i> - A word detected on a document page. A word is one
-     * or more ISO basic Latin script characters that aren't separated by spaces that's
-     * detected on a document page.</p> </li> <li> <p> <i>LINE</i> - A string of
-     * tab-delimited, contiguous words that's detected on a document page.</p> </li>
-     * <li> <p> <i>TABLE</i> - A table that's detected on a document page. A table is
-     * any grid-based information with 2 or more rows or columns with a cell span of 1
-     * row and 1 column each. </p> </li> <li> <p> <i>CELL</i> - A cell within a
-     * detected table. The cell is the parent of the block that contains the text in
-     * the cell.</p> </li> <li> <p> <i>SELECTION_ELEMENT</i> - A selectable element
-     * such as a radio button or checkbox that's detected on a document page. Use the
-     * value of <code>SelectionStatus</code> to determine the status of the selection
-     * element.</p> </li> </ul>
+     * list of the LINE <code>Block</code> objects that are detected on a document
+     * page.</p> </li> <li> <p> <i>WORD</i> - A word detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> </ul> <p>In text analysis
+     * operations, the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> -
+     * Contains a list of child <code>Block</code> objects that are detected on a
+     * document page.</p> </li> <li> <p> <i>KEY_VALUE_SET</i> - Stores the KEY and
+     * VALUE <code>Block</code> objects for linked text that's detected on a document
+     * page. Use the <code>EntityType</code> field to determine if a KEY_VALUE_SET
+     * object is a KEY <code>Block</code> object or a VALUE <code>Block</code> object.
+     * </p> </li> <li> <p> <i>WORD</i> - A word that's detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> <li> <p> <i>TABLE</i> - A
+     * table that's detected on a document page. A table is grid-based information with
+     * two or more rows or columns, with a cell span of one row and one column each.
+     * </p> </li> <li> <p> <i>CELL</i> - A cell within a detected table. The cell is
+     * the parent of the block that contains the text in the cell.</p> </li> <li> <p>
+     * <i>SELECTION_ELEMENT</i> - A selection element such as an option button (radio
+     * button) or a check box that's detected on a document page. Use the value of
+     * <code>SelectionStatus</code> to determine the status of the selection
+     * element.</p> </li> <li> <p> <i>QUERY</i> - A question asked during the call of
+     * AnalyzeDocument. Contains an alias and an ID that attachs it to its answer.</p>
+     * </li> <li> <p> <i>QUERY_RESULT</i> - A response to a question asked during the
+     * call of analyze document. Comes with an alias and ID for ease of locating in a
+     * response. Also contains location and confidence score.</p> </li> </ul>
      */
     inline Block& WithBlockType(const BlockType& value) { SetBlockType(value); return *this;}
 
     /**
-     * <p>The type of text that's recognized in a block. In text-detection operations,
+     * <p>The type of text item that's recognized. In operations for text detection,
      * the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a
-     * list of the LINE Block objects that are detected on a document page.</p> </li>
-     * <li> <p> <i>WORD</i> - A word detected on a document page. A word is one or more
-     * ISO basic Latin script characters that aren't separated by spaces.</p> </li>
-     * <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous words that's
-     * detected on a document page.</p> </li> </ul> <p>In text analysis operations, the
-     * following types are returned:</p> <ul> <li> <p> <i>PAGE</i> - Contains a list of
-     * child Block objects that are detected on a document page.</p> </li> <li> <p>
-     * <i>KEY_VALUE_SET</i> - Stores the KEY and VALUE Block objects for a field that's
-     * detected on a document page. Use the <code>EntityType</code> field to determine
-     * if a KEY_VALUE_SET object is a KEY Block object or a VALUE Block object. </p>
-     * </li> <li> <p> <i>WORD</i> - A word detected on a document page. A word is one
-     * or more ISO basic Latin script characters that aren't separated by spaces that's
-     * detected on a document page.</p> </li> <li> <p> <i>LINE</i> - A string of
-     * tab-delimited, contiguous words that's detected on a document page.</p> </li>
-     * <li> <p> <i>TABLE</i> - A table that's detected on a document page. A table is
-     * any grid-based information with 2 or more rows or columns with a cell span of 1
-     * row and 1 column each. </p> </li> <li> <p> <i>CELL</i> - A cell within a
-     * detected table. The cell is the parent of the block that contains the text in
-     * the cell.</p> </li> <li> <p> <i>SELECTION_ELEMENT</i> - A selectable element
-     * such as a radio button or checkbox that's detected on a document page. Use the
-     * value of <code>SelectionStatus</code> to determine the status of the selection
-     * element.</p> </li> </ul>
+     * list of the LINE <code>Block</code> objects that are detected on a document
+     * page.</p> </li> <li> <p> <i>WORD</i> - A word detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> </ul> <p>In text analysis
+     * operations, the following types are returned:</p> <ul> <li> <p> <i>PAGE</i> -
+     * Contains a list of child <code>Block</code> objects that are detected on a
+     * document page.</p> </li> <li> <p> <i>KEY_VALUE_SET</i> - Stores the KEY and
+     * VALUE <code>Block</code> objects for linked text that's detected on a document
+     * page. Use the <code>EntityType</code> field to determine if a KEY_VALUE_SET
+     * object is a KEY <code>Block</code> object or a VALUE <code>Block</code> object.
+     * </p> </li> <li> <p> <i>WORD</i> - A word that's detected on a document page. A
+     * word is one or more ISO basic Latin script characters that aren't separated by
+     * spaces.</p> </li> <li> <p> <i>LINE</i> - A string of tab-delimited, contiguous
+     * words that are detected on a document page.</p> </li> <li> <p> <i>TABLE</i> - A
+     * table that's detected on a document page. A table is grid-based information with
+     * two or more rows or columns, with a cell span of one row and one column each.
+     * </p> </li> <li> <p> <i>CELL</i> - A cell within a detected table. The cell is
+     * the parent of the block that contains the text in the cell.</p> </li> <li> <p>
+     * <i>SELECTION_ELEMENT</i> - A selection element such as an option button (radio
+     * button) or a check box that's detected on a document page. Use the value of
+     * <code>SelectionStatus</code> to determine the status of the selection
+     * element.</p> </li> <li> <p> <i>QUERY</i> - A question asked during the call of
+     * AnalyzeDocument. Contains an alias and an ID that attachs it to its answer.</p>
+     * </li> <li> <p> <i>QUERY_RESULT</i> - A response to a question asked during the
+     * call of analyze document. Comes with an alias and ID for ease of locating in a
+     * response. Also contains location and confidence score.</p> </li> </ul>
      */
     inline Block& WithBlockType(BlockType&& value) { SetBlockType(std::move(value)); return *this;}
 
 
     /**
-     * <p>The confidence that Amazon Textract has in the accuracy of the recognized
-     * text and the accuracy of the geometry points around the recognized text.</p>
+     * <p>The confidence score that Amazon Textract has in the accuracy of the
+     * recognized text and the accuracy of the geometry points around the recognized
+     * text.</p>
      */
     inline double GetConfidence() const{ return m_confidence; }
 
     /**
-     * <p>The confidence that Amazon Textract has in the accuracy of the recognized
-     * text and the accuracy of the geometry points around the recognized text.</p>
+     * <p>The confidence score that Amazon Textract has in the accuracy of the
+     * recognized text and the accuracy of the geometry points around the recognized
+     * text.</p>
      */
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
 
     /**
-     * <p>The confidence that Amazon Textract has in the accuracy of the recognized
-     * text and the accuracy of the geometry points around the recognized text.</p>
+     * <p>The confidence score that Amazon Textract has in the accuracy of the
+     * recognized text and the accuracy of the geometry points around the recognized
+     * text.</p>
      */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
 
     /**
-     * <p>The confidence that Amazon Textract has in the accuracy of the recognized
-     * text and the accuracy of the geometry points around the recognized text.</p>
+     * <p>The confidence score that Amazon Textract has in the accuracy of the
+     * recognized text and the accuracy of the geometry points around the recognized
+     * text.</p>
      */
     inline Block& WithConfidence(double value) { SetConfidence(value); return *this;}
 
@@ -299,6 +325,43 @@ namespace Model
      * <p>The word or line of text that's recognized by Amazon Textract. </p>
      */
     inline Block& WithText(const char* value) { SetText(value); return *this;}
+
+
+    /**
+     * <p>The kind of text that Amazon Textract has detected. Can check for handwritten
+     * text and printed text.</p>
+     */
+    inline const TextType& GetTextType() const{ return m_textType; }
+
+    /**
+     * <p>The kind of text that Amazon Textract has detected. Can check for handwritten
+     * text and printed text.</p>
+     */
+    inline bool TextTypeHasBeenSet() const { return m_textTypeHasBeenSet; }
+
+    /**
+     * <p>The kind of text that Amazon Textract has detected. Can check for handwritten
+     * text and printed text.</p>
+     */
+    inline void SetTextType(const TextType& value) { m_textTypeHasBeenSet = true; m_textType = value; }
+
+    /**
+     * <p>The kind of text that Amazon Textract has detected. Can check for handwritten
+     * text and printed text.</p>
+     */
+    inline void SetTextType(TextType&& value) { m_textTypeHasBeenSet = true; m_textType = std::move(value); }
+
+    /**
+     * <p>The kind of text that Amazon Textract has detected. Can check for handwritten
+     * text and printed text.</p>
+     */
+    inline Block& WithTextType(const TextType& value) { SetTextType(value); return *this;}
+
+    /**
+     * <p>The kind of text that Amazon Textract has detected. Can check for handwritten
+     * text and printed text.</p>
+     */
+    inline Block& WithTextType(TextType&& value) { SetTextType(std::move(value)); return *this;}
 
 
     /**
@@ -360,54 +423,66 @@ namespace Model
 
 
     /**
-     * <p>The number of rows that a table spans. <code>RowSpan</code> isn't returned by
-     * <code>DetectDocumentText</code> and <code>GetDocumentTextDetection</code>.</p>
+     * <p>The number of rows that a table cell spans. Currently this value is always 1,
+     * even if the number of rows spanned is greater than 1. <code>RowSpan</code> isn't
+     * returned by <code>DetectDocumentText</code> and
+     * <code>GetDocumentTextDetection</code>.</p>
      */
     inline int GetRowSpan() const{ return m_rowSpan; }
 
     /**
-     * <p>The number of rows that a table spans. <code>RowSpan</code> isn't returned by
-     * <code>DetectDocumentText</code> and <code>GetDocumentTextDetection</code>.</p>
+     * <p>The number of rows that a table cell spans. Currently this value is always 1,
+     * even if the number of rows spanned is greater than 1. <code>RowSpan</code> isn't
+     * returned by <code>DetectDocumentText</code> and
+     * <code>GetDocumentTextDetection</code>.</p>
      */
     inline bool RowSpanHasBeenSet() const { return m_rowSpanHasBeenSet; }
 
     /**
-     * <p>The number of rows that a table spans. <code>RowSpan</code> isn't returned by
-     * <code>DetectDocumentText</code> and <code>GetDocumentTextDetection</code>.</p>
+     * <p>The number of rows that a table cell spans. Currently this value is always 1,
+     * even if the number of rows spanned is greater than 1. <code>RowSpan</code> isn't
+     * returned by <code>DetectDocumentText</code> and
+     * <code>GetDocumentTextDetection</code>.</p>
      */
     inline void SetRowSpan(int value) { m_rowSpanHasBeenSet = true; m_rowSpan = value; }
 
     /**
-     * <p>The number of rows that a table spans. <code>RowSpan</code> isn't returned by
-     * <code>DetectDocumentText</code> and <code>GetDocumentTextDetection</code>.</p>
+     * <p>The number of rows that a table cell spans. Currently this value is always 1,
+     * even if the number of rows spanned is greater than 1. <code>RowSpan</code> isn't
+     * returned by <code>DetectDocumentText</code> and
+     * <code>GetDocumentTextDetection</code>.</p>
      */
     inline Block& WithRowSpan(int value) { SetRowSpan(value); return *this;}
 
 
     /**
-     * <p>The number of columns that a table cell spans. <code>ColumnSpan</code> isn't
-     * returned by <code>DetectDocumentText</code> and
+     * <p>The number of columns that a table cell spans. Currently this value is always
+     * 1, even if the number of columns spanned is greater than 1.
+     * <code>ColumnSpan</code> isn't returned by <code>DetectDocumentText</code> and
      * <code>GetDocumentTextDetection</code>. </p>
      */
     inline int GetColumnSpan() const{ return m_columnSpan; }
 
     /**
-     * <p>The number of columns that a table cell spans. <code>ColumnSpan</code> isn't
-     * returned by <code>DetectDocumentText</code> and
+     * <p>The number of columns that a table cell spans. Currently this value is always
+     * 1, even if the number of columns spanned is greater than 1.
+     * <code>ColumnSpan</code> isn't returned by <code>DetectDocumentText</code> and
      * <code>GetDocumentTextDetection</code>. </p>
      */
     inline bool ColumnSpanHasBeenSet() const { return m_columnSpanHasBeenSet; }
 
     /**
-     * <p>The number of columns that a table cell spans. <code>ColumnSpan</code> isn't
-     * returned by <code>DetectDocumentText</code> and
+     * <p>The number of columns that a table cell spans. Currently this value is always
+     * 1, even if the number of columns spanned is greater than 1.
+     * <code>ColumnSpan</code> isn't returned by <code>DetectDocumentText</code> and
      * <code>GetDocumentTextDetection</code>. </p>
      */
     inline void SetColumnSpan(int value) { m_columnSpanHasBeenSet = true; m_columnSpan = value; }
 
     /**
-     * <p>The number of columns that a table cell spans. <code>ColumnSpan</code> isn't
-     * returned by <code>DetectDocumentText</code> and
+     * <p>The number of columns that a table cell spans. Currently this value is always
+     * 1, even if the number of columns spanned is greater than 1.
+     * <code>ColumnSpan</code> isn't returned by <code>DetectDocumentText</code> and
      * <code>GetDocumentTextDetection</code>. </p>
      */
     inline Block& WithColumnSpan(int value) { SetColumnSpan(value); return *this;}
@@ -506,7 +581,7 @@ namespace Model
 
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -516,7 +591,7 @@ namespace Model
     inline const Aws::Vector<Relationship>& GetRelationships() const{ return m_relationships; }
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -526,7 +601,7 @@ namespace Model
     inline bool RelationshipsHasBeenSet() const { return m_relationshipsHasBeenSet; }
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -536,7 +611,7 @@ namespace Model
     inline void SetRelationships(const Aws::Vector<Relationship>& value) { m_relationshipsHasBeenSet = true; m_relationships = value; }
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -546,7 +621,7 @@ namespace Model
     inline void SetRelationships(Aws::Vector<Relationship>&& value) { m_relationshipsHasBeenSet = true; m_relationships = std::move(value); }
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -556,7 +631,7 @@ namespace Model
     inline Block& WithRelationships(const Aws::Vector<Relationship>& value) { SetRelationships(value); return *this;}
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -566,7 +641,7 @@ namespace Model
     inline Block& WithRelationships(Aws::Vector<Relationship>&& value) { SetRelationships(std::move(value)); return *this;}
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -576,7 +651,7 @@ namespace Model
     inline Block& AddRelationships(const Relationship& value) { m_relationshipsHasBeenSet = true; m_relationships.push_back(value); return *this; }
 
     /**
-     * <p>A list of child blocks of the current block. For example a LINE object has
+     * <p>A list of child blocks of the current block. For example, a LINE object has
      * child blocks for each WORD block that's part of the line of text. There aren't
      * Relationship objects in the list for relationships that don't exist, such as
      * when the current block has no child blocks. The list size can be the
@@ -660,85 +735,116 @@ namespace Model
 
 
     /**
-     * <p>The selection status of a selectable element such as a radio button or
-     * checkbox. </p>
+     * <p>The selection status of a selection element, such as an option button or
+     * check box. </p>
      */
     inline const SelectionStatus& GetSelectionStatus() const{ return m_selectionStatus; }
 
     /**
-     * <p>The selection status of a selectable element such as a radio button or
-     * checkbox. </p>
+     * <p>The selection status of a selection element, such as an option button or
+     * check box. </p>
      */
     inline bool SelectionStatusHasBeenSet() const { return m_selectionStatusHasBeenSet; }
 
     /**
-     * <p>The selection status of a selectable element such as a radio button or
-     * checkbox. </p>
+     * <p>The selection status of a selection element, such as an option button or
+     * check box. </p>
      */
     inline void SetSelectionStatus(const SelectionStatus& value) { m_selectionStatusHasBeenSet = true; m_selectionStatus = value; }
 
     /**
-     * <p>The selection status of a selectable element such as a radio button or
-     * checkbox. </p>
+     * <p>The selection status of a selection element, such as an option button or
+     * check box. </p>
      */
     inline void SetSelectionStatus(SelectionStatus&& value) { m_selectionStatusHasBeenSet = true; m_selectionStatus = std::move(value); }
 
     /**
-     * <p>The selection status of a selectable element such as a radio button or
-     * checkbox. </p>
+     * <p>The selection status of a selection element, such as an option button or
+     * check box. </p>
      */
     inline Block& WithSelectionStatus(const SelectionStatus& value) { SetSelectionStatus(value); return *this;}
 
     /**
-     * <p>The selection status of a selectable element such as a radio button or
-     * checkbox. </p>
+     * <p>The selection status of a selection element, such as an option button or
+     * check box. </p>
      */
     inline Block& WithSelectionStatus(SelectionStatus&& value) { SetSelectionStatus(std::move(value)); return *this;}
 
 
     /**
-     * <p>The page in which a block was detected. <code>Page</code> is returned by
+     * <p>The page on which a block was detected. <code>Page</code> is returned by
      * asynchronous operations. Page values greater than 1 are only returned for
-     * multi-page documents that are in PDF format. A scanned image (JPG/PNG), even if
-     * it contains multiple document pages, is always considered to be a single-page
-     * document and the value of <code>Page</code> is always 1. Synchronous operations
-     * don't return <code>Page</code> as every input document is considered to be a
-     * single-page document.</p>
+     * multipage documents that are in PDF or TIFF format. A scanned image (JPEG/PNG),
+     * even if it contains multiple document pages, is considered to be a single-page
+     * document. The value of <code>Page</code> is always 1. Synchronous operations
+     * don't return <code>Page</code> because every input document is considered to be
+     * a single-page document.</p>
      */
     inline int GetPage() const{ return m_page; }
 
     /**
-     * <p>The page in which a block was detected. <code>Page</code> is returned by
+     * <p>The page on which a block was detected. <code>Page</code> is returned by
      * asynchronous operations. Page values greater than 1 are only returned for
-     * multi-page documents that are in PDF format. A scanned image (JPG/PNG), even if
-     * it contains multiple document pages, is always considered to be a single-page
-     * document and the value of <code>Page</code> is always 1. Synchronous operations
-     * don't return <code>Page</code> as every input document is considered to be a
-     * single-page document.</p>
+     * multipage documents that are in PDF or TIFF format. A scanned image (JPEG/PNG),
+     * even if it contains multiple document pages, is considered to be a single-page
+     * document. The value of <code>Page</code> is always 1. Synchronous operations
+     * don't return <code>Page</code> because every input document is considered to be
+     * a single-page document.</p>
      */
     inline bool PageHasBeenSet() const { return m_pageHasBeenSet; }
 
     /**
-     * <p>The page in which a block was detected. <code>Page</code> is returned by
+     * <p>The page on which a block was detected. <code>Page</code> is returned by
      * asynchronous operations. Page values greater than 1 are only returned for
-     * multi-page documents that are in PDF format. A scanned image (JPG/PNG), even if
-     * it contains multiple document pages, is always considered to be a single-page
-     * document and the value of <code>Page</code> is always 1. Synchronous operations
-     * don't return <code>Page</code> as every input document is considered to be a
-     * single-page document.</p>
+     * multipage documents that are in PDF or TIFF format. A scanned image (JPEG/PNG),
+     * even if it contains multiple document pages, is considered to be a single-page
+     * document. The value of <code>Page</code> is always 1. Synchronous operations
+     * don't return <code>Page</code> because every input document is considered to be
+     * a single-page document.</p>
      */
     inline void SetPage(int value) { m_pageHasBeenSet = true; m_page = value; }
 
     /**
-     * <p>The page in which a block was detected. <code>Page</code> is returned by
+     * <p>The page on which a block was detected. <code>Page</code> is returned by
      * asynchronous operations. Page values greater than 1 are only returned for
-     * multi-page documents that are in PDF format. A scanned image (JPG/PNG), even if
-     * it contains multiple document pages, is always considered to be a single-page
-     * document and the value of <code>Page</code> is always 1. Synchronous operations
-     * don't return <code>Page</code> as every input document is considered to be a
-     * single-page document.</p>
+     * multipage documents that are in PDF or TIFF format. A scanned image (JPEG/PNG),
+     * even if it contains multiple document pages, is considered to be a single-page
+     * document. The value of <code>Page</code> is always 1. Synchronous operations
+     * don't return <code>Page</code> because every input document is considered to be
+     * a single-page document.</p>
      */
     inline Block& WithPage(int value) { SetPage(value); return *this;}
+
+
+    /**
+     * <p/>
+     */
+    inline const Query& GetQuery() const{ return m_query; }
+
+    /**
+     * <p/>
+     */
+    inline bool QueryHasBeenSet() const { return m_queryHasBeenSet; }
+
+    /**
+     * <p/>
+     */
+    inline void SetQuery(const Query& value) { m_queryHasBeenSet = true; m_query = value; }
+
+    /**
+     * <p/>
+     */
+    inline void SetQuery(Query&& value) { m_queryHasBeenSet = true; m_query = std::move(value); }
+
+    /**
+     * <p/>
+     */
+    inline Block& WithQuery(const Query& value) { SetQuery(value); return *this;}
+
+    /**
+     * <p/>
+     */
+    inline Block& WithQuery(Query&& value) { SetQuery(std::move(value)); return *this;}
 
   private:
 
@@ -750,6 +856,9 @@ namespace Model
 
     Aws::String m_text;
     bool m_textHasBeenSet;
+
+    TextType m_textType;
+    bool m_textTypeHasBeenSet;
 
     int m_rowIndex;
     bool m_rowIndexHasBeenSet;
@@ -780,6 +889,9 @@ namespace Model
 
     int m_page;
     bool m_pageHasBeenSet;
+
+    Query m_query;
+    bool m_queryHasBeenSet;
   };
 
 } // namespace Model

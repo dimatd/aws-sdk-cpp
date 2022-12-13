@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/docdb/DocDB_EXPORTS.h>
@@ -53,42 +43,42 @@ namespace Model
   public:
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline const Aws::String& GetEngine() const{ return m_engine; }
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline void SetEngine(const Aws::String& value) { m_engineHasBeenSet = true; m_engine = value; }
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline void SetEngine(const char* value) { m_engineHasBeenSet = true; m_engine.assign(value); }
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline DescribeOrderableDBInstanceOptionsRequest& WithEngine(const Aws::String& value) { SetEngine(value); return *this;}
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline DescribeOrderableDBInstanceOptionsRequest& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the engine to retrieve DB instance options for.</p>
+     * <p>The name of the engine to retrieve instance options for.</p>
      */
     inline DescribeOrderableDBInstanceOptionsRequest& WithEngine(const char* value) { SetEngine(value); return *this;}
 
@@ -143,50 +133,50 @@ namespace Model
 
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline const Aws::String& GetDBInstanceClass() const{ return m_dBInstanceClass; }
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline bool DBInstanceClassHasBeenSet() const { return m_dBInstanceClassHasBeenSet; }
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline void SetDBInstanceClass(const Aws::String& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = value; }
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = std::move(value); }
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline void SetDBInstanceClass(const char* value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass.assign(value); }
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline DescribeOrderableDBInstanceOptionsRequest& WithDBInstanceClass(const Aws::String& value) { SetDBInstanceClass(value); return *this;}
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline DescribeOrderableDBInstanceOptionsRequest& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(std::move(value)); return *this;}
 
     /**
-     * <p>The DB instance class filter value. Specify this parameter to show only the
-     * available offerings that match the specified DB instance class.</p>
+     * <p>The instance class filter value. Specify this parameter to show only the
+     * available offerings that match the specified instance class.</p>
      */
     inline DescribeOrderableDBInstanceOptionsRequest& WithDBInstanceClass(const char* value) { SetDBInstanceClass(value); return *this;}
 

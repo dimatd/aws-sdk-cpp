@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/ec2/model/AllocationStrategy.h>
 #include <aws/ec2/model/OnDemandAllocationStrategy.h>
+#include <aws/ec2/model/SpotMaintenanceStrategies.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ExcessCapacityTerminationPolicy.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
@@ -25,8 +16,10 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/ec2/model/InstanceInterruptionBehavior.h>
 #include <aws/ec2/model/LoadBalancersConfig.h>
+#include <aws/ec2/model/TargetCapacityUnitType.h>
 #include <aws/ec2/model/SpotFleetLaunchSpecification.h>
 #include <aws/ec2/model/LaunchTemplateConfig.h>
+#include <aws/ec2/model/TagSpecification.h>
 #include <utility>
 
 namespace Aws
@@ -67,9 +60,18 @@ namespace Model
      * Spot Instance pools with the lowest price. This is the default allocation
      * strategy.</p> <p>If the allocation strategy is <code>diversified</code>, Spot
      * Fleet launches instances from all the Spot Instance pools that you specify.</p>
-     * <p>If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet
-     * launches instances from Spot Instance pools with optimal capacity for the number
-     * of instances that are launching.</p>
+     * <p>If the allocation strategy is <code>capacityOptimized</code> (recommended),
+     * Spot Fleet launches instances from Spot Instance pools with optimal capacity for
+     * the number of instances that are launching. To give certain instance types a
+     * higher chance of launching first, use <code>capacityOptimizedPrioritized</code>.
+     * Set a priority for each instance type by using the <code>Priority</code>
+     * parameter for <code>LaunchTemplateOverrides</code>. You can assign the same
+     * priority to different <code>LaunchTemplateOverrides</code>. EC2 implements the
+     * priorities on a best-effort basis, but optimizes for capacity first.
+     * <code>capacityOptimizedPrioritized</code> is supported only if your Spot Fleet
+     * uses a launch template. Note that if the <code>OnDemandAllocationStrategy</code>
+     * is set to <code>prioritized</code>, the same priority is applied when fulfilling
+     * On-Demand capacity.</p>
      */
     inline const AllocationStrategy& GetAllocationStrategy() const{ return m_allocationStrategy; }
 
@@ -80,9 +82,18 @@ namespace Model
      * Spot Instance pools with the lowest price. This is the default allocation
      * strategy.</p> <p>If the allocation strategy is <code>diversified</code>, Spot
      * Fleet launches instances from all the Spot Instance pools that you specify.</p>
-     * <p>If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet
-     * launches instances from Spot Instance pools with optimal capacity for the number
-     * of instances that are launching.</p>
+     * <p>If the allocation strategy is <code>capacityOptimized</code> (recommended),
+     * Spot Fleet launches instances from Spot Instance pools with optimal capacity for
+     * the number of instances that are launching. To give certain instance types a
+     * higher chance of launching first, use <code>capacityOptimizedPrioritized</code>.
+     * Set a priority for each instance type by using the <code>Priority</code>
+     * parameter for <code>LaunchTemplateOverrides</code>. You can assign the same
+     * priority to different <code>LaunchTemplateOverrides</code>. EC2 implements the
+     * priorities on a best-effort basis, but optimizes for capacity first.
+     * <code>capacityOptimizedPrioritized</code> is supported only if your Spot Fleet
+     * uses a launch template. Note that if the <code>OnDemandAllocationStrategy</code>
+     * is set to <code>prioritized</code>, the same priority is applied when fulfilling
+     * On-Demand capacity.</p>
      */
     inline bool AllocationStrategyHasBeenSet() const { return m_allocationStrategyHasBeenSet; }
 
@@ -93,9 +104,18 @@ namespace Model
      * Spot Instance pools with the lowest price. This is the default allocation
      * strategy.</p> <p>If the allocation strategy is <code>diversified</code>, Spot
      * Fleet launches instances from all the Spot Instance pools that you specify.</p>
-     * <p>If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet
-     * launches instances from Spot Instance pools with optimal capacity for the number
-     * of instances that are launching.</p>
+     * <p>If the allocation strategy is <code>capacityOptimized</code> (recommended),
+     * Spot Fleet launches instances from Spot Instance pools with optimal capacity for
+     * the number of instances that are launching. To give certain instance types a
+     * higher chance of launching first, use <code>capacityOptimizedPrioritized</code>.
+     * Set a priority for each instance type by using the <code>Priority</code>
+     * parameter for <code>LaunchTemplateOverrides</code>. You can assign the same
+     * priority to different <code>LaunchTemplateOverrides</code>. EC2 implements the
+     * priorities on a best-effort basis, but optimizes for capacity first.
+     * <code>capacityOptimizedPrioritized</code> is supported only if your Spot Fleet
+     * uses a launch template. Note that if the <code>OnDemandAllocationStrategy</code>
+     * is set to <code>prioritized</code>, the same priority is applied when fulfilling
+     * On-Demand capacity.</p>
      */
     inline void SetAllocationStrategy(const AllocationStrategy& value) { m_allocationStrategyHasBeenSet = true; m_allocationStrategy = value; }
 
@@ -106,9 +126,18 @@ namespace Model
      * Spot Instance pools with the lowest price. This is the default allocation
      * strategy.</p> <p>If the allocation strategy is <code>diversified</code>, Spot
      * Fleet launches instances from all the Spot Instance pools that you specify.</p>
-     * <p>If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet
-     * launches instances from Spot Instance pools with optimal capacity for the number
-     * of instances that are launching.</p>
+     * <p>If the allocation strategy is <code>capacityOptimized</code> (recommended),
+     * Spot Fleet launches instances from Spot Instance pools with optimal capacity for
+     * the number of instances that are launching. To give certain instance types a
+     * higher chance of launching first, use <code>capacityOptimizedPrioritized</code>.
+     * Set a priority for each instance type by using the <code>Priority</code>
+     * parameter for <code>LaunchTemplateOverrides</code>. You can assign the same
+     * priority to different <code>LaunchTemplateOverrides</code>. EC2 implements the
+     * priorities on a best-effort basis, but optimizes for capacity first.
+     * <code>capacityOptimizedPrioritized</code> is supported only if your Spot Fleet
+     * uses a launch template. Note that if the <code>OnDemandAllocationStrategy</code>
+     * is set to <code>prioritized</code>, the same priority is applied when fulfilling
+     * On-Demand capacity.</p>
      */
     inline void SetAllocationStrategy(AllocationStrategy&& value) { m_allocationStrategyHasBeenSet = true; m_allocationStrategy = std::move(value); }
 
@@ -119,9 +148,18 @@ namespace Model
      * Spot Instance pools with the lowest price. This is the default allocation
      * strategy.</p> <p>If the allocation strategy is <code>diversified</code>, Spot
      * Fleet launches instances from all the Spot Instance pools that you specify.</p>
-     * <p>If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet
-     * launches instances from Spot Instance pools with optimal capacity for the number
-     * of instances that are launching.</p>
+     * <p>If the allocation strategy is <code>capacityOptimized</code> (recommended),
+     * Spot Fleet launches instances from Spot Instance pools with optimal capacity for
+     * the number of instances that are launching. To give certain instance types a
+     * higher chance of launching first, use <code>capacityOptimizedPrioritized</code>.
+     * Set a priority for each instance type by using the <code>Priority</code>
+     * parameter for <code>LaunchTemplateOverrides</code>. You can assign the same
+     * priority to different <code>LaunchTemplateOverrides</code>. EC2 implements the
+     * priorities on a best-effort basis, but optimizes for capacity first.
+     * <code>capacityOptimizedPrioritized</code> is supported only if your Spot Fleet
+     * uses a launch template. Note that if the <code>OnDemandAllocationStrategy</code>
+     * is set to <code>prioritized</code>, the same priority is applied when fulfilling
+     * On-Demand capacity.</p>
      */
     inline SpotFleetRequestConfigData& WithAllocationStrategy(const AllocationStrategy& value) { SetAllocationStrategy(value); return *this;}
 
@@ -132,9 +170,18 @@ namespace Model
      * Spot Instance pools with the lowest price. This is the default allocation
      * strategy.</p> <p>If the allocation strategy is <code>diversified</code>, Spot
      * Fleet launches instances from all the Spot Instance pools that you specify.</p>
-     * <p>If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet
-     * launches instances from Spot Instance pools with optimal capacity for the number
-     * of instances that are launching.</p>
+     * <p>If the allocation strategy is <code>capacityOptimized</code> (recommended),
+     * Spot Fleet launches instances from Spot Instance pools with optimal capacity for
+     * the number of instances that are launching. To give certain instance types a
+     * higher chance of launching first, use <code>capacityOptimizedPrioritized</code>.
+     * Set a priority for each instance type by using the <code>Priority</code>
+     * parameter for <code>LaunchTemplateOverrides</code>. You can assign the same
+     * priority to different <code>LaunchTemplateOverrides</code>. EC2 implements the
+     * priorities on a best-effort basis, but optimizes for capacity first.
+     * <code>capacityOptimizedPrioritized</code> is supported only if your Spot Fleet
+     * uses a launch template. Note that if the <code>OnDemandAllocationStrategy</code>
+     * is set to <code>prioritized</code>, the same priority is applied when fulfilling
+     * On-Demand capacity.</p>
      */
     inline SpotFleetRequestConfigData& WithAllocationStrategy(AllocationStrategy&& value) { SetAllocationStrategy(std::move(value)); return *this;}
 
@@ -198,6 +245,43 @@ namespace Model
      * you do not specify a value, Spot Fleet defaults to <code>lowestPrice</code>.</p>
      */
     inline SpotFleetRequestConfigData& WithOnDemandAllocationStrategy(OnDemandAllocationStrategy&& value) { SetOnDemandAllocationStrategy(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The strategies for managing your Spot Instances that are at an elevated risk
+     * of being interrupted.</p>
+     */
+    inline const SpotMaintenanceStrategies& GetSpotMaintenanceStrategies() const{ return m_spotMaintenanceStrategies; }
+
+    /**
+     * <p>The strategies for managing your Spot Instances that are at an elevated risk
+     * of being interrupted.</p>
+     */
+    inline bool SpotMaintenanceStrategiesHasBeenSet() const { return m_spotMaintenanceStrategiesHasBeenSet; }
+
+    /**
+     * <p>The strategies for managing your Spot Instances that are at an elevated risk
+     * of being interrupted.</p>
+     */
+    inline void SetSpotMaintenanceStrategies(const SpotMaintenanceStrategies& value) { m_spotMaintenanceStrategiesHasBeenSet = true; m_spotMaintenanceStrategies = value; }
+
+    /**
+     * <p>The strategies for managing your Spot Instances that are at an elevated risk
+     * of being interrupted.</p>
+     */
+    inline void SetSpotMaintenanceStrategies(SpotMaintenanceStrategies&& value) { m_spotMaintenanceStrategiesHasBeenSet = true; m_spotMaintenanceStrategies = std::move(value); }
+
+    /**
+     * <p>The strategies for managing your Spot Instances that are at an elevated risk
+     * of being interrupted.</p>
+     */
+    inline SpotFleetRequestConfigData& WithSpotMaintenanceStrategies(const SpotMaintenanceStrategies& value) { SetSpotMaintenanceStrategies(value); return *this;}
+
+    /**
+     * <p>The strategies for managing your Spot Instances that are at an elevated risk
+     * of being interrupted.</p>
+     */
+    inline SpotFleetRequestConfigData& WithSpotMaintenanceStrategies(SpotMaintenanceStrategies&& value) { SetSpotMaintenanceStrategies(std::move(value)); return *this;}
 
 
     /**
@@ -367,98 +451,114 @@ namespace Model
 
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline const Aws::String& GetIamFleetRole() const{ return m_iamFleetRole; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline bool IamFleetRoleHasBeenSet() const { return m_iamFleetRoleHasBeenSet; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline void SetIamFleetRole(const Aws::String& value) { m_iamFleetRoleHasBeenSet = true; m_iamFleetRole = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline void SetIamFleetRole(Aws::String&& value) { m_iamFleetRoleHasBeenSet = true; m_iamFleetRole = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline void SetIamFleetRole(const char* value) { m_iamFleetRoleHasBeenSet = true; m_iamFleetRole.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline SpotFleetRequestConfigData& WithIamFleetRole(const Aws::String& value) { SetIamFleetRole(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline SpotFleetRequestConfigData& WithIamFleetRole(Aws::String&& value) { SetIamFleetRole(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * <p>The Amazon Resource Name (ARN) of an Identity and Access Management (IAM)
      * role that grants the Spot Fleet the permission to request, launch, terminate,
      * and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
-     * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * Fleet prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * Spot Fleet can terminate Spot Instances on your behalf when you cancel its Spot
-     * Fleet request using <a>CancelSpotFleetRequests</a> or when the Spot Fleet
-     * request expires, if you set <code>TerminateInstancesWithExpiration</code>.</p>
+     * Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests">CancelSpotFleetRequests</a>
+     * or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.</p>
      */
     inline SpotFleetRequestConfigData& WithIamFleetRole(const char* value) { SetIamFleetRole(value); return *this;}
 
@@ -1242,7 +1342,14 @@ namespace Model
      * Valid only when Spot <b>AllocationStrategy</b> is set to
      * <code>lowest-price</code>. Spot Fleet selects the cheapest Spot pools and evenly
      * allocates your target Spot capacity across the number of Spot pools that you
-     * specify.</p>
+     * specify.</p> <p>Note that Spot Fleet attempts to draw Spot Instances from the
+     * number of pools that you specify on a best effort basis. If a pool runs out of
+     * Spot capacity before fulfilling your target capacity, Spot Fleet will continue
+     * to fulfill your request by drawing from the next cheapest pool. To ensure that
+     * your target capacity is met, you might receive Spot Instances from more than the
+     * number of pools that you specified. Similarly, if most of the pools have no Spot
+     * capacity, you might receive your full target capacity from fewer than the number
+     * of pools that you specified.</p>
      */
     inline int GetInstancePoolsToUseCount() const{ return m_instancePoolsToUseCount; }
 
@@ -1251,7 +1358,14 @@ namespace Model
      * Valid only when Spot <b>AllocationStrategy</b> is set to
      * <code>lowest-price</code>. Spot Fleet selects the cheapest Spot pools and evenly
      * allocates your target Spot capacity across the number of Spot pools that you
-     * specify.</p>
+     * specify.</p> <p>Note that Spot Fleet attempts to draw Spot Instances from the
+     * number of pools that you specify on a best effort basis. If a pool runs out of
+     * Spot capacity before fulfilling your target capacity, Spot Fleet will continue
+     * to fulfill your request by drawing from the next cheapest pool. To ensure that
+     * your target capacity is met, you might receive Spot Instances from more than the
+     * number of pools that you specified. Similarly, if most of the pools have no Spot
+     * capacity, you might receive your full target capacity from fewer than the number
+     * of pools that you specified.</p>
      */
     inline bool InstancePoolsToUseCountHasBeenSet() const { return m_instancePoolsToUseCountHasBeenSet; }
 
@@ -1260,7 +1374,14 @@ namespace Model
      * Valid only when Spot <b>AllocationStrategy</b> is set to
      * <code>lowest-price</code>. Spot Fleet selects the cheapest Spot pools and evenly
      * allocates your target Spot capacity across the number of Spot pools that you
-     * specify.</p>
+     * specify.</p> <p>Note that Spot Fleet attempts to draw Spot Instances from the
+     * number of pools that you specify on a best effort basis. If a pool runs out of
+     * Spot capacity before fulfilling your target capacity, Spot Fleet will continue
+     * to fulfill your request by drawing from the next cheapest pool. To ensure that
+     * your target capacity is met, you might receive Spot Instances from more than the
+     * number of pools that you specified. Similarly, if most of the pools have no Spot
+     * capacity, you might receive your full target capacity from fewer than the number
+     * of pools that you specified.</p>
      */
     inline void SetInstancePoolsToUseCount(int value) { m_instancePoolsToUseCountHasBeenSet = true; m_instancePoolsToUseCount = value; }
 
@@ -1269,9 +1390,231 @@ namespace Model
      * Valid only when Spot <b>AllocationStrategy</b> is set to
      * <code>lowest-price</code>. Spot Fleet selects the cheapest Spot pools and evenly
      * allocates your target Spot capacity across the number of Spot pools that you
-     * specify.</p>
+     * specify.</p> <p>Note that Spot Fleet attempts to draw Spot Instances from the
+     * number of pools that you specify on a best effort basis. If a pool runs out of
+     * Spot capacity before fulfilling your target capacity, Spot Fleet will continue
+     * to fulfill your request by drawing from the next cheapest pool. To ensure that
+     * your target capacity is met, you might receive Spot Instances from more than the
+     * number of pools that you specified. Similarly, if most of the pools have no Spot
+     * capacity, you might receive your full target capacity from fewer than the number
+     * of pools that you specified.</p>
      */
     inline SpotFleetRequestConfigData& WithInstancePoolsToUseCount(int value) { SetInstancePoolsToUseCount(value); return *this;}
+
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline const Aws::String& GetContext() const{ return m_context; }
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline void SetContext(const Aws::String& value) { m_contextHasBeenSet = true; m_context = value; }
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline void SetContext(Aws::String&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline void SetContext(const char* value) { m_contextHasBeenSet = true; m_context.assign(value); }
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline SpotFleetRequestConfigData& WithContext(const Aws::String& value) { SetContext(value); return *this;}
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline SpotFleetRequestConfigData& WithContext(Aws::String&& value) { SetContext(std::move(value)); return *this;}
+
+    /**
+     * <p>Reserved.</p>
+     */
+    inline SpotFleetRequestConfigData& WithContext(const char* value) { SetContext(value); return *this;}
+
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline const TargetCapacityUnitType& GetTargetCapacityUnitType() const{ return m_targetCapacityUnitType; }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline bool TargetCapacityUnitTypeHasBeenSet() const { return m_targetCapacityUnitTypeHasBeenSet; }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline void SetTargetCapacityUnitType(const TargetCapacityUnitType& value) { m_targetCapacityUnitTypeHasBeenSet = true; m_targetCapacityUnitType = value; }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline void SetTargetCapacityUnitType(TargetCapacityUnitType&& value) { m_targetCapacityUnitTypeHasBeenSet = true; m_targetCapacityUnitType = std::move(value); }
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline SpotFleetRequestConfigData& WithTargetCapacityUnitType(const TargetCapacityUnitType& value) { SetTargetCapacityUnitType(value); return *this;}
+
+    /**
+     * <p>The unit for the target capacity.</p> <p>Default: <code>units</code>
+     * (translates to number of instances)</p>
+     */
+    inline SpotFleetRequestConfigData& WithTargetCapacityUnitType(TargetCapacityUnitType&& value) { SetTargetCapacityUnitType(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline SpotFleetRequestConfigData& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline SpotFleetRequestConfigData& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline SpotFleetRequestConfigData& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
+
+    /**
+     * <p>The key-value pair for tagging the Spot Fleet request on creation. The value
+     * for <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise
+     * the Spot Fleet request fails. To tag instances at launch, specify the tags in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template">launch
+     * template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in
+     * the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use
+     * <code>LaunchSpecifications</code>). For information about tagging after launch,
+     * see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging
+     * Your Resources</a>.</p>
+     */
+    inline SpotFleetRequestConfigData& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
 
   private:
 
@@ -1280,6 +1623,9 @@ namespace Model
 
     OnDemandAllocationStrategy m_onDemandAllocationStrategy;
     bool m_onDemandAllocationStrategyHasBeenSet;
+
+    SpotMaintenanceStrategies m_spotMaintenanceStrategies;
+    bool m_spotMaintenanceStrategiesHasBeenSet;
 
     Aws::String m_clientToken;
     bool m_clientTokenHasBeenSet;
@@ -1340,6 +1686,15 @@ namespace Model
 
     int m_instancePoolsToUseCount;
     bool m_instancePoolsToUseCountHasBeenSet;
+
+    Aws::String m_context;
+    bool m_contextHasBeenSet;
+
+    TargetCapacityUnitType m_targetCapacityUnitType;
+    bool m_targetCapacityUnitTypeHasBeenSet;
+
+    Aws::Vector<TagSpecification> m_tagSpecifications;
+    bool m_tagSpecificationsHasBeenSet;
   };
 
 } // namespace Model

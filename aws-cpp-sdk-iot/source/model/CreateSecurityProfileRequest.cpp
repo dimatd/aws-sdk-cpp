@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/iot/model/CreateSecurityProfileRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -27,7 +17,7 @@ CreateSecurityProfileRequest::CreateSecurityProfileRequest() :
     m_securityProfileDescriptionHasBeenSet(false),
     m_behaviorsHasBeenSet(false),
     m_alertTargetsHasBeenSet(false),
-    m_additionalMetricsToRetainHasBeenSet(false),
+    m_additionalMetricsToRetainV2HasBeenSet(false),
     m_tagsHasBeenSet(false)
 {
 }
@@ -64,14 +54,14 @@ Aws::String CreateSecurityProfileRequest::SerializePayload() const
 
   }
 
-  if(m_additionalMetricsToRetainHasBeenSet)
+  if(m_additionalMetricsToRetainV2HasBeenSet)
   {
-   Array<JsonValue> additionalMetricsToRetainJsonList(m_additionalMetricsToRetain.size());
-   for(unsigned additionalMetricsToRetainIndex = 0; additionalMetricsToRetainIndex < additionalMetricsToRetainJsonList.GetLength(); ++additionalMetricsToRetainIndex)
+   Array<JsonValue> additionalMetricsToRetainV2JsonList(m_additionalMetricsToRetainV2.size());
+   for(unsigned additionalMetricsToRetainV2Index = 0; additionalMetricsToRetainV2Index < additionalMetricsToRetainV2JsonList.GetLength(); ++additionalMetricsToRetainV2Index)
    {
-     additionalMetricsToRetainJsonList[additionalMetricsToRetainIndex].AsString(m_additionalMetricsToRetain[additionalMetricsToRetainIndex]);
+     additionalMetricsToRetainV2JsonList[additionalMetricsToRetainV2Index].AsObject(m_additionalMetricsToRetainV2[additionalMetricsToRetainV2Index].Jsonize());
    }
-   payload.WithArray("additionalMetricsToRetain", std::move(additionalMetricsToRetainJsonList));
+   payload.WithArray("additionalMetricsToRetainV2", std::move(additionalMetricsToRetainV2JsonList));
 
   }
 

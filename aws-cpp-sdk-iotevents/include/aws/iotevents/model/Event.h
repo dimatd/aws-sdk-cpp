@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iotevents/IoTEvents_EXPORTS.h>
@@ -36,8 +26,8 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the <code>"actions"</code> to be performed when the
-   * <code>"condition"</code> evaluates to TRUE.</p><p><h3>See Also:</h3>   <a
+   * <p>Specifies the <code>actions</code> to be performed when the
+   * <code>condition</code> evaluates to TRUE.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/iotevents-2018-07-27/Event">AWS API
    * Reference</a></p>
    */
@@ -92,66 +82,66 @@ namespace Model
 
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline const Aws::String& GetCondition() const{ return m_condition; }
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline void SetCondition(const Aws::String& value) { m_conditionHasBeenSet = true; m_condition = value; }
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline void SetCondition(Aws::String&& value) { m_conditionHasBeenSet = true; m_condition = std::move(value); }
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline void SetCondition(const char* value) { m_conditionHasBeenSet = true; m_condition.assign(value); }
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline Event& WithCondition(const Aws::String& value) { SetCondition(value); return *this;}
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline Event& WithCondition(Aws::String&& value) { SetCondition(std::move(value)); return *this;}
 
     /**
-     * <p>[Optional] The Boolean expression that when TRUE causes the
-     * <code>"actions"</code> to be performed. If not present, the actions are
-     * performed (=TRUE); if the expression result is not a Boolean value, the actions
-     * are NOT performed (=FALSE).</p>
+     * <p>Optional. The Boolean expression that, when TRUE, causes the
+     * <code>actions</code> to be performed. If not present, the actions are performed
+     * (=TRUE). If the expression result is not a Boolean value, the actions are not
+     * performed (=FALSE).</p>
      */
     inline Event& WithCondition(const char* value) { SetCondition(value); return *this;}
 

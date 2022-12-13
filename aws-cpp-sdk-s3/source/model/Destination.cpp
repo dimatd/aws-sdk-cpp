@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/s3/model/Destination.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -36,7 +26,9 @@ Destination::Destination() :
     m_storageClass(StorageClass::NOT_SET),
     m_storageClassHasBeenSet(false),
     m_accessControlTranslationHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false)
+    m_encryptionConfigurationHasBeenSet(false),
+    m_replicationTimeHasBeenSet(false),
+    m_metricsHasBeenSet(false)
 {
 }
 
@@ -46,7 +38,9 @@ Destination::Destination(const XmlNode& xmlNode) :
     m_storageClass(StorageClass::NOT_SET),
     m_storageClassHasBeenSet(false),
     m_accessControlTranslationHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false)
+    m_encryptionConfigurationHasBeenSet(false),
+    m_replicationTimeHasBeenSet(false),
+    m_metricsHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -87,6 +81,18 @@ Destination& Destination::operator =(const XmlNode& xmlNode)
       m_encryptionConfiguration = encryptionConfigurationNode;
       m_encryptionConfigurationHasBeenSet = true;
     }
+    XmlNode replicationTimeNode = resultNode.FirstChild("ReplicationTime");
+    if(!replicationTimeNode.IsNull())
+    {
+      m_replicationTime = replicationTimeNode;
+      m_replicationTimeHasBeenSet = true;
+    }
+    XmlNode metricsNode = resultNode.FirstChild("Metrics");
+    if(!metricsNode.IsNull())
+    {
+      m_metrics = metricsNode;
+      m_metricsHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -123,6 +129,18 @@ void Destination::AddToNode(XmlNode& parentNode) const
   {
    XmlNode encryptionConfigurationNode = parentNode.CreateChildElement("EncryptionConfiguration");
    m_encryptionConfiguration.AddToNode(encryptionConfigurationNode);
+  }
+
+  if(m_replicationTimeHasBeenSet)
+  {
+   XmlNode replicationTimeNode = parentNode.CreateChildElement("ReplicationTime");
+   m_replicationTime.AddToNode(replicationTimeNode);
+  }
+
+  if(m_metricsHasBeenSet)
+  {
+   XmlNode metricsNode = parentNode.CreateChildElement("Metrics");
+   m_metrics.AddToNode(metricsNode);
   }
 
 }

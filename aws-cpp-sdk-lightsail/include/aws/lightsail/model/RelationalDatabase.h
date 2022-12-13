@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lightsail/Lightsail_EXPORTS.h>
@@ -297,64 +287,64 @@ namespace Model
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline RelationalDatabase& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline RelationalDatabase& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline RelationalDatabase& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
 
     /**
      * <p>The tag keys and optional values for the resource. For more information about
      * tags in Lightsail, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags">Lightsail
-     * Dev Guide</a>.</p>
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags">Amazon
+     * Lightsail Developer Guide</a>.</p>
      */
     inline RelationalDatabase& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
@@ -1090,6 +1080,47 @@ namespace Model
      */
     inline RelationalDatabase& AddPendingMaintenanceActions(PendingMaintenanceAction&& value) { m_pendingMaintenanceActionsHasBeenSet = true; m_pendingMaintenanceActions.push_back(std::move(value)); return *this; }
 
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline const Aws::String& GetCaCertificateIdentifier() const{ return m_caCertificateIdentifier; }
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline bool CaCertificateIdentifierHasBeenSet() const { return m_caCertificateIdentifierHasBeenSet; }
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline void SetCaCertificateIdentifier(const Aws::String& value) { m_caCertificateIdentifierHasBeenSet = true; m_caCertificateIdentifier = value; }
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline void SetCaCertificateIdentifier(Aws::String&& value) { m_caCertificateIdentifierHasBeenSet = true; m_caCertificateIdentifier = std::move(value); }
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline void SetCaCertificateIdentifier(const char* value) { m_caCertificateIdentifierHasBeenSet = true; m_caCertificateIdentifier.assign(value); }
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline RelationalDatabase& WithCaCertificateIdentifier(const Aws::String& value) { SetCaCertificateIdentifier(value); return *this;}
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline RelationalDatabase& WithCaCertificateIdentifier(Aws::String&& value) { SetCaCertificateIdentifier(std::move(value)); return *this;}
+
+    /**
+     * <p>The certificate associated with the database.</p>
+     */
+    inline RelationalDatabase& WithCaCertificateIdentifier(const char* value) { SetCaCertificateIdentifier(value); return *this;}
+
   private:
 
     Aws::String m_name;
@@ -1166,6 +1197,9 @@ namespace Model
 
     Aws::Vector<PendingMaintenanceAction> m_pendingMaintenanceActions;
     bool m_pendingMaintenanceActionsHasBeenSet;
+
+    Aws::String m_caCertificateIdentifier;
+    bool m_caCertificateIdentifierHasBeenSet;
   };
 
 } // namespace Model

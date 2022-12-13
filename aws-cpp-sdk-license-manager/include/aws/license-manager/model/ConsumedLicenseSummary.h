@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/license-manager/LicenseManager_EXPORTS.h>
@@ -48,59 +38,53 @@ namespace Model
 
 
     /**
-     * <p>Resource type of the resource consuming a license (instance, host, or
-     * AMI).</p>
+     * <p>Resource type of the resource consuming a license.</p>
      */
     inline const ResourceType& GetResourceType() const{ return m_resourceType; }
 
     /**
-     * <p>Resource type of the resource consuming a license (instance, host, or
-     * AMI).</p>
+     * <p>Resource type of the resource consuming a license.</p>
      */
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
 
     /**
-     * <p>Resource type of the resource consuming a license (instance, host, or
-     * AMI).</p>
+     * <p>Resource type of the resource consuming a license.</p>
      */
     inline void SetResourceType(const ResourceType& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
 
     /**
-     * <p>Resource type of the resource consuming a license (instance, host, or
-     * AMI).</p>
+     * <p>Resource type of the resource consuming a license.</p>
      */
     inline void SetResourceType(ResourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
 
     /**
-     * <p>Resource type of the resource consuming a license (instance, host, or
-     * AMI).</p>
+     * <p>Resource type of the resource consuming a license.</p>
      */
     inline ConsumedLicenseSummary& WithResourceType(const ResourceType& value) { SetResourceType(value); return *this;}
 
     /**
-     * <p>Resource type of the resource consuming a license (instance, host, or
-     * AMI).</p>
+     * <p>Resource type of the resource consuming a license.</p>
      */
     inline ConsumedLicenseSummary& WithResourceType(ResourceType&& value) { SetResourceType(std::move(value)); return *this;}
 
 
     /**
-     * <p>Number of licenses consumed by a resource.</p>
+     * <p>Number of licenses consumed by the resource.</p>
      */
     inline long long GetConsumedLicenses() const{ return m_consumedLicenses; }
 
     /**
-     * <p>Number of licenses consumed by a resource.</p>
+     * <p>Number of licenses consumed by the resource.</p>
      */
     inline bool ConsumedLicensesHasBeenSet() const { return m_consumedLicensesHasBeenSet; }
 
     /**
-     * <p>Number of licenses consumed by a resource.</p>
+     * <p>Number of licenses consumed by the resource.</p>
      */
     inline void SetConsumedLicenses(long long value) { m_consumedLicensesHasBeenSet = true; m_consumedLicenses = value; }
 
     /**
-     * <p>Number of licenses consumed by a resource.</p>
+     * <p>Number of licenses consumed by the resource.</p>
      */
     inline ConsumedLicenseSummary& WithConsumedLicenses(long long value) { SetConsumedLicenses(value); return *this;}
 

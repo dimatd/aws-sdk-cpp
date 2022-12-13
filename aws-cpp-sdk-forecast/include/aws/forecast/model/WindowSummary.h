@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/forecast/ForecastService_EXPORTS.h>
@@ -179,22 +169,34 @@ namespace Model
     inline WindowSummary& WithEvaluationType(EvaluationType&& value) { SetEvaluationType(std::move(value)); return *this;}
 
 
-    
+    /**
+     * <p>Provides metrics used to evaluate the performance of a predictor.</p>
+     */
     inline const Metrics& GetMetrics() const{ return m_metrics; }
 
-    
+    /**
+     * <p>Provides metrics used to evaluate the performance of a predictor.</p>
+     */
     inline bool MetricsHasBeenSet() const { return m_metricsHasBeenSet; }
 
-    
+    /**
+     * <p>Provides metrics used to evaluate the performance of a predictor.</p>
+     */
     inline void SetMetrics(const Metrics& value) { m_metricsHasBeenSet = true; m_metrics = value; }
 
-    
+    /**
+     * <p>Provides metrics used to evaluate the performance of a predictor.</p>
+     */
     inline void SetMetrics(Metrics&& value) { m_metricsHasBeenSet = true; m_metrics = std::move(value); }
 
-    
+    /**
+     * <p>Provides metrics used to evaluate the performance of a predictor.</p>
+     */
     inline WindowSummary& WithMetrics(const Metrics& value) { SetMetrics(value); return *this;}
 
-    
+    /**
+     * <p>Provides metrics used to evaluate the performance of a predictor.</p>
+     */
     inline WindowSummary& WithMetrics(Metrics&& value) { SetMetrics(std::move(value)); return *this;}
 
   private:

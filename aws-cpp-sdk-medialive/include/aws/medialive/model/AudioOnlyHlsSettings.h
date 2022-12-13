@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/medialive/model/InputLocation.h>
 #include <aws/medialive/model/AudioOnlyHlsTrackType.h>
+#include <aws/medialive/model/AudioOnlyHlsSegmentType.h>
 #include <utility>
 
 namespace Aws
@@ -319,6 +310,37 @@ Alternate rendition that the client will not try to play
      */
     inline AudioOnlyHlsSettings& WithAudioTrackType(AudioOnlyHlsTrackType&& value) { SetAudioTrackType(std::move(value)); return *this;}
 
+
+    /**
+     * Specifies the segment type.
+     */
+    inline const AudioOnlyHlsSegmentType& GetSegmentType() const{ return m_segmentType; }
+
+    /**
+     * Specifies the segment type.
+     */
+    inline bool SegmentTypeHasBeenSet() const { return m_segmentTypeHasBeenSet; }
+
+    /**
+     * Specifies the segment type.
+     */
+    inline void SetSegmentType(const AudioOnlyHlsSegmentType& value) { m_segmentTypeHasBeenSet = true; m_segmentType = value; }
+
+    /**
+     * Specifies the segment type.
+     */
+    inline void SetSegmentType(AudioOnlyHlsSegmentType&& value) { m_segmentTypeHasBeenSet = true; m_segmentType = std::move(value); }
+
+    /**
+     * Specifies the segment type.
+     */
+    inline AudioOnlyHlsSettings& WithSegmentType(const AudioOnlyHlsSegmentType& value) { SetSegmentType(value); return *this;}
+
+    /**
+     * Specifies the segment type.
+     */
+    inline AudioOnlyHlsSettings& WithSegmentType(AudioOnlyHlsSegmentType&& value) { SetSegmentType(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_audioGroupId;
@@ -329,6 +351,9 @@ Alternate rendition that the client will not try to play
 
     AudioOnlyHlsTrackType m_audioTrackType;
     bool m_audioTrackTypeHasBeenSet;
+
+    AudioOnlyHlsSegmentType m_segmentType;
+    bool m_segmentTypeHasBeenSet;
   };
 
 } // namespace Model

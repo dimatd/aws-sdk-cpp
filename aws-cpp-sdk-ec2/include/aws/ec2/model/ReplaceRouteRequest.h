@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -145,6 +135,47 @@ namespace Model
 
 
     /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline const Aws::String& GetDestinationPrefixListId() const{ return m_destinationPrefixListId; }
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline bool DestinationPrefixListIdHasBeenSet() const { return m_destinationPrefixListIdHasBeenSet; }
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline void SetDestinationPrefixListId(const Aws::String& value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId = value; }
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline void SetDestinationPrefixListId(Aws::String&& value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId = std::move(value); }
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline void SetDestinationPrefixListId(const char* value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId.assign(value); }
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline ReplaceRouteRequest& WithDestinationPrefixListId(const Aws::String& value) { SetDestinationPrefixListId(value); return *this;}
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline ReplaceRouteRequest& WithDestinationPrefixListId(Aws::String&& value) { SetDestinationPrefixListId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of the prefix list for the route.</p>
+     */
+    inline ReplaceRouteRequest& WithDestinationPrefixListId(const char* value) { SetDestinationPrefixListId(value); return *this;}
+
+
+    /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
@@ -175,6 +206,55 @@ namespace Model
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
     inline ReplaceRouteRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline ReplaceRouteRequest& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline ReplaceRouteRequest& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+     * only.</p>
+     */
+    inline ReplaceRouteRequest& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
 
 
     /**
@@ -301,6 +381,31 @@ namespace Model
 
 
     /**
+     * <p>Specifies whether to reset the local route to its default target
+     * (<code>local</code>).</p>
+     */
+    inline bool GetLocalTarget() const{ return m_localTarget; }
+
+    /**
+     * <p>Specifies whether to reset the local route to its default target
+     * (<code>local</code>).</p>
+     */
+    inline bool LocalTargetHasBeenSet() const { return m_localTargetHasBeenSet; }
+
+    /**
+     * <p>Specifies whether to reset the local route to its default target
+     * (<code>local</code>).</p>
+     */
+    inline void SetLocalTarget(bool value) { m_localTargetHasBeenSet = true; m_localTarget = value; }
+
+    /**
+     * <p>Specifies whether to reset the local route to its default target
+     * (<code>local</code>).</p>
+     */
+    inline ReplaceRouteRequest& WithLocalTarget(bool value) { SetLocalTarget(value); return *this;}
+
+
+    /**
      * <p>[IPv4 traffic only] The ID of a NAT gateway.</p>
      */
     inline const Aws::String& GetNatGatewayId() const{ return m_natGatewayId; }
@@ -380,6 +485,88 @@ namespace Model
      * <p>The ID of a transit gateway.</p>
      */
     inline ReplaceRouteRequest& WithTransitGatewayId(const char* value) { SetTransitGatewayId(value); return *this;}
+
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline const Aws::String& GetLocalGatewayId() const{ return m_localGatewayId; }
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline bool LocalGatewayIdHasBeenSet() const { return m_localGatewayIdHasBeenSet; }
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline void SetLocalGatewayId(const Aws::String& value) { m_localGatewayIdHasBeenSet = true; m_localGatewayId = value; }
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline void SetLocalGatewayId(Aws::String&& value) { m_localGatewayIdHasBeenSet = true; m_localGatewayId = std::move(value); }
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline void SetLocalGatewayId(const char* value) { m_localGatewayIdHasBeenSet = true; m_localGatewayId.assign(value); }
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline ReplaceRouteRequest& WithLocalGatewayId(const Aws::String& value) { SetLocalGatewayId(value); return *this;}
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline ReplaceRouteRequest& WithLocalGatewayId(Aws::String&& value) { SetLocalGatewayId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of the local gateway.</p>
+     */
+    inline ReplaceRouteRequest& WithLocalGatewayId(const char* value) { SetLocalGatewayId(value); return *this;}
+
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline const Aws::String& GetCarrierGatewayId() const{ return m_carrierGatewayId; }
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline bool CarrierGatewayIdHasBeenSet() const { return m_carrierGatewayIdHasBeenSet; }
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline void SetCarrierGatewayId(const Aws::String& value) { m_carrierGatewayIdHasBeenSet = true; m_carrierGatewayId = value; }
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline void SetCarrierGatewayId(Aws::String&& value) { m_carrierGatewayIdHasBeenSet = true; m_carrierGatewayId = std::move(value); }
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline void SetCarrierGatewayId(const char* value) { m_carrierGatewayIdHasBeenSet = true; m_carrierGatewayId.assign(value); }
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline ReplaceRouteRequest& WithCarrierGatewayId(const Aws::String& value) { SetCarrierGatewayId(value); return *this;}
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline ReplaceRouteRequest& WithCarrierGatewayId(Aws::String&& value) { SetCarrierGatewayId(std::move(value)); return *this;}
+
+    /**
+     * <p>[IPv4 traffic only] The ID of a carrier gateway.</p>
+     */
+    inline ReplaceRouteRequest& WithCarrierGatewayId(const char* value) { SetCarrierGatewayId(value); return *this;}
 
 
     /**
@@ -504,6 +691,47 @@ namespace Model
      */
     inline ReplaceRouteRequest& WithVpcPeeringConnectionId(const char* value) { SetVpcPeeringConnectionId(value); return *this;}
 
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline const Aws::String& GetCoreNetworkArn() const{ return m_coreNetworkArn; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline bool CoreNetworkArnHasBeenSet() const { return m_coreNetworkArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline void SetCoreNetworkArn(const Aws::String& value) { m_coreNetworkArnHasBeenSet = true; m_coreNetworkArn = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline void SetCoreNetworkArn(Aws::String&& value) { m_coreNetworkArnHasBeenSet = true; m_coreNetworkArn = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline void SetCoreNetworkArn(const char* value) { m_coreNetworkArnHasBeenSet = true; m_coreNetworkArn.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline ReplaceRouteRequest& WithCoreNetworkArn(const Aws::String& value) { SetCoreNetworkArn(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline ReplaceRouteRequest& WithCoreNetworkArn(Aws::String&& value) { SetCoreNetworkArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the core network.</p>
+     */
+    inline ReplaceRouteRequest& WithCoreNetworkArn(const char* value) { SetCoreNetworkArn(value); return *this;}
+
   private:
 
     Aws::String m_destinationCidrBlock;
@@ -512,8 +740,14 @@ namespace Model
     Aws::String m_destinationIpv6CidrBlock;
     bool m_destinationIpv6CidrBlockHasBeenSet;
 
+    Aws::String m_destinationPrefixListId;
+    bool m_destinationPrefixListIdHasBeenSet;
+
     bool m_dryRun;
     bool m_dryRunHasBeenSet;
+
+    Aws::String m_vpcEndpointId;
+    bool m_vpcEndpointIdHasBeenSet;
 
     Aws::String m_egressOnlyInternetGatewayId;
     bool m_egressOnlyInternetGatewayIdHasBeenSet;
@@ -524,11 +758,20 @@ namespace Model
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet;
 
+    bool m_localTarget;
+    bool m_localTargetHasBeenSet;
+
     Aws::String m_natGatewayId;
     bool m_natGatewayIdHasBeenSet;
 
     Aws::String m_transitGatewayId;
     bool m_transitGatewayIdHasBeenSet;
+
+    Aws::String m_localGatewayId;
+    bool m_localGatewayIdHasBeenSet;
+
+    Aws::String m_carrierGatewayId;
+    bool m_carrierGatewayIdHasBeenSet;
 
     Aws::String m_networkInterfaceId;
     bool m_networkInterfaceIdHasBeenSet;
@@ -538,6 +781,9 @@ namespace Model
 
     Aws::String m_vpcPeeringConnectionId;
     bool m_vpcPeeringConnectionIdHasBeenSet;
+
+    Aws::String m_coreNetworkArn;
+    bool m_coreNetworkArnHasBeenSet;
   };
 
 } // namespace Model

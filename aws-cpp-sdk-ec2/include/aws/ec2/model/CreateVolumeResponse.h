@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -169,53 +159,82 @@ namespace Model
 
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyId = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyId = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline void SetKmsKeyId(const char* value) { m_kmsKeyId.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline CreateVolumeResponse& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline CreateVolumeResponse& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
-     * customer master key (CMK) that was used to protect the volume encryption key for
-     * the volume.</p>
+     * <p>The Amazon Resource Name (ARN) of the Key Management Service (KMS) KMS key
+     * that was used to protect the volume encryption key for the volume.</p>
      */
     inline CreateVolumeResponse& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
+
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline const Aws::String& GetOutpostArn() const{ return m_outpostArn; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline void SetOutpostArn(const Aws::String& value) { m_outpostArn = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline void SetOutpostArn(Aws::String&& value) { m_outpostArn = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline void SetOutpostArn(const char* value) { m_outpostArn.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline CreateVolumeResponse& WithOutpostArn(const Aws::String& value) { SetOutpostArn(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline CreateVolumeResponse& WithOutpostArn(Aws::String&& value) { SetOutpostArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+     */
+    inline CreateVolumeResponse& WithOutpostArn(const char* value) { SetOutpostArn(value); return *this;}
 
 
     /**
@@ -333,59 +352,29 @@ namespace Model
 
 
     /**
-     * <p>The number of I/O operations per second (IOPS) that the volume supports. For
-     * Provisioned IOPS SSD volumes, this represents the number of IOPS that are
-     * provisioned for the volume. For General Purpose SSD volumes, this represents the
-     * baseline performance of the volume and the rate at which the volume accumulates
-     * I/O credits for bursting. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     * <p>Constraints: Range is 100-16,000 IOPS for <code>gp2</code> volumes and 100 to
-     * 64,000IOPS for <code>io1</code> volumes, in most Regions. The maximum IOPS for
-     * <code>io1</code> of 64,000 is guaranteed only on <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * instances</a>. Other instance families guarantee performance up to 32,000
-     * IOPS.</p> <p>Condition: This parameter is required for requests to create
-     * <code>io1</code> volumes; it is not used in requests to create <code>gp2</code>,
-     * <code>st1</code>, <code>sc1</code>, or <code>standard</code> volumes.</p>
+     * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
+     * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
+     * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
+     * represents the baseline performance of the volume and the rate at which the
+     * volume accumulates I/O credits for bursting.</p>
      */
     inline int GetIops() const{ return m_iops; }
 
     /**
-     * <p>The number of I/O operations per second (IOPS) that the volume supports. For
-     * Provisioned IOPS SSD volumes, this represents the number of IOPS that are
-     * provisioned for the volume. For General Purpose SSD volumes, this represents the
-     * baseline performance of the volume and the rate at which the volume accumulates
-     * I/O credits for bursting. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     * <p>Constraints: Range is 100-16,000 IOPS for <code>gp2</code> volumes and 100 to
-     * 64,000IOPS for <code>io1</code> volumes, in most Regions. The maximum IOPS for
-     * <code>io1</code> of 64,000 is guaranteed only on <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * instances</a>. Other instance families guarantee performance up to 32,000
-     * IOPS.</p> <p>Condition: This parameter is required for requests to create
-     * <code>io1</code> volumes; it is not used in requests to create <code>gp2</code>,
-     * <code>st1</code>, <code>sc1</code>, or <code>standard</code> volumes.</p>
+     * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
+     * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
+     * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
+     * represents the baseline performance of the volume and the rate at which the
+     * volume accumulates I/O credits for bursting.</p>
      */
     inline void SetIops(int value) { m_iops = value; }
 
     /**
-     * <p>The number of I/O operations per second (IOPS) that the volume supports. For
-     * Provisioned IOPS SSD volumes, this represents the number of IOPS that are
-     * provisioned for the volume. For General Purpose SSD volumes, this represents the
-     * baseline performance of the volume and the rate at which the volume accumulates
-     * I/O credits for bursting. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-     * EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     * <p>Constraints: Range is 100-16,000 IOPS for <code>gp2</code> volumes and 100 to
-     * 64,000IOPS for <code>io1</code> volumes, in most Regions. The maximum IOPS for
-     * <code>io1</code> of 64,000 is guaranteed only on <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * instances</a>. Other instance families guarantee performance up to 32,000
-     * IOPS.</p> <p>Condition: This parameter is required for requests to create
-     * <code>io1</code> volumes; it is not used in requests to create <code>gp2</code>,
-     * <code>st1</code>, <code>sc1</code>, or <code>standard</code> volumes.</p>
+     * <p>The number of I/O operations per second (IOPS). For <code>gp3</code>,
+     * <code>io1</code>, and <code>io2</code> volumes, this represents the number of
+     * IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this
+     * represents the baseline performance of the volume and the rate at which the
+     * volume accumulates I/O credits for bursting.</p>
      */
     inline CreateVolumeResponse& WithIops(int value) { SetIops(value); return *this;}
 
@@ -427,44 +416,77 @@ namespace Model
 
 
     /**
-     * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
-     * <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
-     * Magnetic volumes.</p>
+     * <p>The volume type.</p>
      */
     inline const VolumeType& GetVolumeType() const{ return m_volumeType; }
 
     /**
-     * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
-     * <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
-     * Magnetic volumes.</p>
+     * <p>The volume type.</p>
      */
     inline void SetVolumeType(const VolumeType& value) { m_volumeType = value; }
 
     /**
-     * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
-     * <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
-     * Magnetic volumes.</p>
+     * <p>The volume type.</p>
      */
     inline void SetVolumeType(VolumeType&& value) { m_volumeType = std::move(value); }
 
     /**
-     * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
-     * <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
-     * Magnetic volumes.</p>
+     * <p>The volume type.</p>
      */
     inline CreateVolumeResponse& WithVolumeType(const VolumeType& value) { SetVolumeType(value); return *this;}
 
     /**
-     * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
-     * <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
-     * Magnetic volumes.</p>
+     * <p>The volume type.</p>
      */
     inline CreateVolumeResponse& WithVolumeType(VolumeType&& value) { SetVolumeType(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Indicates whether the volume was created using fast snapshot restore.</p>
+     */
+    inline bool GetFastRestored() const{ return m_fastRestored; }
+
+    /**
+     * <p>Indicates whether the volume was created using fast snapshot restore.</p>
+     */
+    inline void SetFastRestored(bool value) { m_fastRestored = value; }
+
+    /**
+     * <p>Indicates whether the volume was created using fast snapshot restore.</p>
+     */
+    inline CreateVolumeResponse& WithFastRestored(bool value) { SetFastRestored(value); return *this;}
+
+
+    /**
+     * <p>Indicates whether Amazon EBS Multi-Attach is enabled.</p>
+     */
+    inline bool GetMultiAttachEnabled() const{ return m_multiAttachEnabled; }
+
+    /**
+     * <p>Indicates whether Amazon EBS Multi-Attach is enabled.</p>
+     */
+    inline void SetMultiAttachEnabled(bool value) { m_multiAttachEnabled = value; }
+
+    /**
+     * <p>Indicates whether Amazon EBS Multi-Attach is enabled.</p>
+     */
+    inline CreateVolumeResponse& WithMultiAttachEnabled(bool value) { SetMultiAttachEnabled(value); return *this;}
+
+
+    /**
+     * <p>The throughput that the volume supports, in MiB/s.</p>
+     */
+    inline int GetThroughput() const{ return m_throughput; }
+
+    /**
+     * <p>The throughput that the volume supports, in MiB/s.</p>
+     */
+    inline void SetThroughput(int value) { m_throughput = value; }
+
+    /**
+     * <p>The throughput that the volume supports, in MiB/s.</p>
+     */
+    inline CreateVolumeResponse& WithThroughput(int value) { SetThroughput(value); return *this;}
 
 
     
@@ -494,6 +516,8 @@ namespace Model
 
     Aws::String m_kmsKeyId;
 
+    Aws::String m_outpostArn;
+
     int m_size;
 
     Aws::String m_snapshotId;
@@ -507,6 +531,12 @@ namespace Model
     Aws::Vector<Tag> m_tags;
 
     VolumeType m_volumeType;
+
+    bool m_fastRestored;
+
+    bool m_multiAttachEnabled;
+
+    int m_throughput;
 
     ResponseMetadata m_responseMetadata;
   };

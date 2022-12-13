@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/eventbridge/EventBridge_EXPORTS.h>
@@ -143,31 +133,31 @@ namespace Model
 
 
     /**
-     * <p>The date and time that the event source will expire if you don't create a
+     * <p>The date and time that the event source will expire if you do not create a
      * matching event bus.</p>
      */
     inline const Aws::Utils::DateTime& GetExpirationTime() const{ return m_expirationTime; }
 
     /**
-     * <p>The date and time that the event source will expire if you don't create a
+     * <p>The date and time that the event source will expire if you do not create a
      * matching event bus.</p>
      */
     inline void SetExpirationTime(const Aws::Utils::DateTime& value) { m_expirationTime = value; }
 
     /**
-     * <p>The date and time that the event source will expire if you don't create a
+     * <p>The date and time that the event source will expire if you do not create a
      * matching event bus.</p>
      */
     inline void SetExpirationTime(Aws::Utils::DateTime&& value) { m_expirationTime = std::move(value); }
 
     /**
-     * <p>The date and time that the event source will expire if you don't create a
+     * <p>The date and time that the event source will expire if you do not create a
      * matching event bus.</p>
      */
     inline DescribeEventSourceResult& WithExpirationTime(const Aws::Utils::DateTime& value) { SetExpirationTime(value); return *this;}
 
     /**
-     * <p>The date and time that the event source will expire if you don't create a
+     * <p>The date and time that the event source will expire if you do not create a
      * matching event bus.</p>
      */
     inline DescribeEventSourceResult& WithExpirationTime(Aws::Utils::DateTime&& value) { SetExpirationTime(std::move(value)); return *this;}
@@ -210,52 +200,47 @@ namespace Model
 
 
     /**
-     * <p>The state of the event source. If it's <code>ACTIVE</code>, you have already
-     * created a matching event bus for this event source, and that event bus is
-     * active. If it's <code>PENDING</code>, either you haven't yet created a matching
-     * event bus, or that event bus is deactivated. If it's <code>DELETED</code>, you
-     * have created a matching event bus, but the event source has since been
-     * deleted.</p>
+     * <p>The state of the event source. If it is ACTIVE, you have already created a
+     * matching event bus for this event source, and that event bus is active. If it is
+     * PENDING, either you haven't yet created a matching event bus, or that event bus
+     * is deactivated. If it is DELETED, you have created a matching event bus, but the
+     * event source has since been deleted.</p>
      */
     inline const EventSourceState& GetState() const{ return m_state; }
 
     /**
-     * <p>The state of the event source. If it's <code>ACTIVE</code>, you have already
-     * created a matching event bus for this event source, and that event bus is
-     * active. If it's <code>PENDING</code>, either you haven't yet created a matching
-     * event bus, or that event bus is deactivated. If it's <code>DELETED</code>, you
-     * have created a matching event bus, but the event source has since been
-     * deleted.</p>
+     * <p>The state of the event source. If it is ACTIVE, you have already created a
+     * matching event bus for this event source, and that event bus is active. If it is
+     * PENDING, either you haven't yet created a matching event bus, or that event bus
+     * is deactivated. If it is DELETED, you have created a matching event bus, but the
+     * event source has since been deleted.</p>
      */
     inline void SetState(const EventSourceState& value) { m_state = value; }
 
     /**
-     * <p>The state of the event source. If it's <code>ACTIVE</code>, you have already
-     * created a matching event bus for this event source, and that event bus is
-     * active. If it's <code>PENDING</code>, either you haven't yet created a matching
-     * event bus, or that event bus is deactivated. If it's <code>DELETED</code>, you
-     * have created a matching event bus, but the event source has since been
-     * deleted.</p>
+     * <p>The state of the event source. If it is ACTIVE, you have already created a
+     * matching event bus for this event source, and that event bus is active. If it is
+     * PENDING, either you haven't yet created a matching event bus, or that event bus
+     * is deactivated. If it is DELETED, you have created a matching event bus, but the
+     * event source has since been deleted.</p>
      */
     inline void SetState(EventSourceState&& value) { m_state = std::move(value); }
 
     /**
-     * <p>The state of the event source. If it's <code>ACTIVE</code>, you have already
-     * created a matching event bus for this event source, and that event bus is
-     * active. If it's <code>PENDING</code>, either you haven't yet created a matching
-     * event bus, or that event bus is deactivated. If it's <code>DELETED</code>, you
-     * have created a matching event bus, but the event source has since been
-     * deleted.</p>
+     * <p>The state of the event source. If it is ACTIVE, you have already created a
+     * matching event bus for this event source, and that event bus is active. If it is
+     * PENDING, either you haven't yet created a matching event bus, or that event bus
+     * is deactivated. If it is DELETED, you have created a matching event bus, but the
+     * event source has since been deleted.</p>
      */
     inline DescribeEventSourceResult& WithState(const EventSourceState& value) { SetState(value); return *this;}
 
     /**
-     * <p>The state of the event source. If it's <code>ACTIVE</code>, you have already
-     * created a matching event bus for this event source, and that event bus is
-     * active. If it's <code>PENDING</code>, either you haven't yet created a matching
-     * event bus, or that event bus is deactivated. If it's <code>DELETED</code>, you
-     * have created a matching event bus, but the event source has since been
-     * deleted.</p>
+     * <p>The state of the event source. If it is ACTIVE, you have already created a
+     * matching event bus for this event source, and that event bus is active. If it is
+     * PENDING, either you haven't yet created a matching event bus, or that event bus
+     * is deactivated. If it is DELETED, you have created a matching event bus, but the
+     * event source has since been deleted.</p>
      */
     inline DescribeEventSourceResult& WithState(EventSourceState&& value) { SetState(std::move(value)); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/neptune/model/CreateDBClusterRequest.h>
 #include <aws/core/utils/StringUtils.h>
@@ -25,6 +15,8 @@ CreateDBClusterRequest::CreateDBClusterRequest() :
     m_backupRetentionPeriod(0),
     m_backupRetentionPeriodHasBeenSet(false),
     m_characterSetNameHasBeenSet(false),
+    m_copyTagsToSnapshot(false),
+    m_copyTagsToSnapshotHasBeenSet(false),
     m_databaseNameHasBeenSet(false),
     m_dBClusterIdentifierHasBeenSet(false),
     m_dBClusterParameterGroupNameHasBeenSet(false),
@@ -47,7 +39,11 @@ CreateDBClusterRequest::CreateDBClusterRequest() :
     m_preSignedUrlHasBeenSet(false),
     m_enableIAMDatabaseAuthentication(false),
     m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_enableCloudwatchLogsExportsHasBeenSet(false)
+    m_enableCloudwatchLogsExportsHasBeenSet(false),
+    m_deletionProtection(false),
+    m_deletionProtectionHasBeenSet(false),
+    m_globalClusterIdentifierHasBeenSet(false),
+    m_sourceRegionHasBeenSet(false)
 {
 }
 
@@ -74,6 +70,11 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
   if(m_characterSetNameHasBeenSet)
   {
     ss << "CharacterSetName=" << StringUtils::URLEncode(m_characterSetName.c_str()) << "&";
+  }
+
+  if(m_copyTagsToSnapshotHasBeenSet)
+  {
+    ss << "CopyTagsToSnapshot=" << std::boolalpha << m_copyTagsToSnapshot << "&";
   }
 
   if(m_databaseNameHasBeenSet)
@@ -191,6 +192,16 @@ Aws::String CreateDBClusterRequest::SerializePayload() const
           << StringUtils::URLEncode(item.c_str()) << "&";
       enableCloudwatchLogsExportsCount++;
     }
+  }
+
+  if(m_deletionProtectionHasBeenSet)
+  {
+    ss << "DeletionProtection=" << std::boolalpha << m_deletionProtection << "&";
+  }
+
+  if(m_globalClusterIdentifierHasBeenSet)
+  {
+    ss << "GlobalClusterIdentifier=" << StringUtils::URLEncode(m_globalClusterIdentifier.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

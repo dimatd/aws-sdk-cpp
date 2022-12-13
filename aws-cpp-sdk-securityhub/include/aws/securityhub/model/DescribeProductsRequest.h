@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/securityhub/SecurityHub_EXPORTS.h>
@@ -49,42 +39,74 @@ namespace Model
 
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline DescribeProductsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline DescribeProductsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>The token that is required for pagination.</p>
+     * <p>The token that is required for pagination. On your first call to the
+     * <code>DescribeProducts</code> operation, set the value of this parameter to
+     * <code>NULL</code>.</p> <p>For subsequent calls to the operation, to continue
+     * listing data, set the value of this parameter to the value returned from the
+     * previous response.</p>
      */
     inline DescribeProductsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 
@@ -109,6 +131,47 @@ namespace Model
      */
     inline DescribeProductsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
 
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline const Aws::String& GetProductArn() const{ return m_productArn; }
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline bool ProductArnHasBeenSet() const { return m_productArnHasBeenSet; }
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline void SetProductArn(const Aws::String& value) { m_productArnHasBeenSet = true; m_productArn = value; }
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline void SetProductArn(Aws::String&& value) { m_productArnHasBeenSet = true; m_productArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline void SetProductArn(const char* value) { m_productArnHasBeenSet = true; m_productArn.assign(value); }
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline DescribeProductsRequest& WithProductArn(const Aws::String& value) { SetProductArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline DescribeProductsRequest& WithProductArn(Aws::String&& value) { SetProductArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the integration to return.</p>
+     */
+    inline DescribeProductsRequest& WithProductArn(const char* value) { SetProductArn(value); return *this;}
+
   private:
 
     Aws::String m_nextToken;
@@ -116,6 +179,9 @@ namespace Model
 
     int m_maxResults;
     bool m_maxResultsHasBeenSet;
+
+    Aws::String m_productArn;
+    bool m_productArnHasBeenSet;
   };
 
 } // namespace Model

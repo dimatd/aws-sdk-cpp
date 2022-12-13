@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  *
-  *  http://aws.amazon.com/apache2.0
-  *
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 
 #include <aws/core/auth/STSCredentialsProvider.h>
@@ -53,27 +43,17 @@ STSAssumeRoleWebIdentityCredentialsProvider::STSAssumeRoleWebIdentityCredentials
     // region source is not enforced, but we need it to construct sts endpoint, if we can't find from environment, we should check if it's set in config file.
     if (m_roleArn.empty() || m_tokenFile.empty() || tmpRegion.empty())
     {
-        Aws::String configFile = Aws::Auth::GetConfigProfileFilename();
-        Aws::Config::AWSConfigFileProfileConfigLoader configLoader(configFile, true/*use profile prefix for config file*/);
-
-        if (configLoader.Load())
+        auto profile = Aws::Config::GetCachedConfigProfile(Aws::Auth::GetConfigProfileName());
+        if (tmpRegion.empty())
         {
-            auto profilesMap = configLoader.GetProfiles();
-            auto iter = profilesMap.find(Aws::Auth::GetConfigProfileName());
-            if (iter != profilesMap.end())
-            {
-                if (tmpRegion.empty())
-                {
-                    tmpRegion = iter->second.GetRegion();
-                }
-                // If either of these two were not found from environment, use whatever found for all three in config file
-                if (m_roleArn.empty() || m_tokenFile.empty())
-                {
-                    m_roleArn = iter->second.GetRoleArn();
-                    m_tokenFile = iter->second.GetValue("web_identity_token_file");
-                    m_sessionName = iter->second.GetValue("role_session_name");
-                }
-            }
+            tmpRegion = profile.GetRegion();
+        }
+        // If either of these two were not found from environment, use whatever found for all three in config file
+        if (m_roleArn.empty() || m_tokenFile.empty())
+        {
+            m_roleArn = profile.GetRoleArn();
+            m_tokenFile = profile.GetValue("web_identity_token_file");
+            m_sessionName = profile.GetValue("role_session_name");
         }
     }
 
@@ -161,6 +141,7 @@ void STSAssumeRoleWebIdentityCredentialsProvider::Reload()
     STSCredentialsClient::STSAssumeRoleWithWebIdentityRequest request {m_sessionName, m_roleArn, m_token};
 
     auto result = m_client->GetAssumeRoleWithWebIdentityCredentials(request);
+    AWS_LOGSTREAM_TRACE(STS_ASSUME_ROLE_WEB_IDENTITY_LOG_TAG, "Successfully retrieved credentials with AWS_ACCESS_KEY: " << result.creds.GetAWSAccessKeyId());
     m_credentials = result.creds;
 }
 

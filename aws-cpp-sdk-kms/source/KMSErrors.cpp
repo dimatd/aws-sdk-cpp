@@ -1,25 +1,15 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/kms/KMSErrors.h>
 
 using namespace Aws::Client;
-using namespace Aws::KMS;
 using namespace Aws::Utils;
+using namespace Aws::KMS;
 
 namespace Aws
 {
@@ -35,11 +25,13 @@ static const int INVALID_IMPORT_TOKEN_HASH = HashingUtils::HashString("InvalidIm
 static const int K_M_S_INVALID_STATE_HASH = HashingUtils::HashString("KMSInvalidStateException");
 static const int INVALID_KEY_USAGE_HASH = HashingUtils::HashString("InvalidKeyUsageException");
 static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
+static const int INCORRECT_KEY_HASH = HashingUtils::HashString("IncorrectKeyException");
 static const int CUSTOM_KEY_STORE_NOT_FOUND_HASH = HashingUtils::HashString("CustomKeyStoreNotFoundException");
 static const int K_M_S_INTERNAL_HASH = HashingUtils::HashString("KMSInternalException");
 static const int CLOUD_HSM_CLUSTER_NOT_RELATED_HASH = HashingUtils::HashString("CloudHsmClusterNotRelatedException");
 static const int MALFORMED_POLICY_DOCUMENT_HASH = HashingUtils::HashString("MalformedPolicyDocumentException");
 static const int INVALID_ALIAS_NAME_HASH = HashingUtils::HashString("InvalidAliasNameException");
+static const int K_M_S_INVALID_MAC_HASH = HashingUtils::HashString("KMSInvalidMacException");
 static const int DISABLED_HASH = HashingUtils::HashString("DisabledException");
 static const int UNSUPPORTED_OPERATION_HASH = HashingUtils::HashString("UnsupportedOperationException");
 static const int CUSTOM_KEY_STORE_HAS_C_M_KS_HASH = HashingUtils::HashString("CustomKeyStoreHasCMKsException");
@@ -57,6 +49,7 @@ static const int CLOUD_HSM_CLUSTER_IN_USE_HASH = HashingUtils::HashString("Cloud
 static const int INVALID_ARN_HASH = HashingUtils::HashString("InvalidArnException");
 static const int KEY_UNAVAILABLE_HASH = HashingUtils::HashString("KeyUnavailableException");
 static const int INVALID_CIPHERTEXT_HASH = HashingUtils::HashString("InvalidCiphertextException");
+static const int K_M_S_INVALID_SIGNATURE_HASH = HashingUtils::HashString("KMSInvalidSignatureException");
 static const int CUSTOM_KEY_STORE_INVALID_STATE_HASH = HashingUtils::HashString("CustomKeyStoreInvalidStateException");
 static const int EXPIRED_IMPORT_TOKEN_HASH = HashingUtils::HashString("ExpiredImportTokenException");
 
@@ -91,7 +84,11 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   }
   else if (hashCode == LIMIT_EXCEEDED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::LIMIT_EXCEEDED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::LIMIT_EXCEEDED), true);
+  }
+  else if (hashCode == INCORRECT_KEY_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::INCORRECT_KEY), false);
   }
   else if (hashCode == CUSTOM_KEY_STORE_NOT_FOUND_HASH)
   {
@@ -112,6 +109,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_ALIAS_NAME_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::INVALID_ALIAS_NAME), false);
+  }
+  else if (hashCode == K_M_S_INVALID_MAC_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::K_M_S_INVALID_MAC), false);
   }
   else if (hashCode == DISABLED_HASH)
   {
@@ -180,6 +181,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_CIPHERTEXT_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::INVALID_CIPHERTEXT), false);
+  }
+  else if (hashCode == K_M_S_INVALID_SIGNATURE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::K_M_S_INVALID_SIGNATURE), false);
   }
   else if (hashCode == CUSTOM_KEY_STORE_INVALID_STATE_HASH)
   {

@@ -1,16 +1,6 @@
-/*
- * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- * A copy of the License is located at
- *
- *  http://aws.amazon.com/apache2.0
- *
- * or in the "license" file accompanying this file. This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
  */
 
 #include <aws/core/utils/memory/AWSMemory.h>
@@ -33,7 +23,7 @@ namespace Aws
         const char MonitoringTag[] = "MonitoringAllocTag";
 
         /**
-         * Global factory to create global metrics instance. 
+         * Global factory to create global metrics instance.
          */
         static Aws::UniquePtr<Monitors> s_monitors;
 
@@ -42,7 +32,7 @@ namespace Aws
             assert(s_monitors);
             Aws::Vector<void*> contexts;
             contexts.reserve(s_monitors->size());
-            for (const auto& interface: *s_monitors) 
+            for (const auto& interface: *s_monitors)
             {
                 contexts.emplace_back(interface->OnRequestStarted(serviceName, requestName, request));
             }
@@ -73,7 +63,7 @@ namespace Aws
             }
         }
 
-        void OnRequestRetry(const Aws::String& serviceName, const Aws::String& requestName, 
+        void OnRequestRetry(const Aws::String& serviceName, const Aws::String& requestName,
                 const std::shared_ptr<const Aws::Http::HttpRequest>& request, const Aws::Vector<void*>& contexts)
         {
             assert(s_monitors);
@@ -85,7 +75,7 @@ namespace Aws
             }
         }
 
-        void OnFinish(const Aws::String& serviceName, const Aws::String& requestName, 
+        void OnFinish(const Aws::String& serviceName, const Aws::String& requestName,
                 const std::shared_ptr<const Aws::Http::HttpRequest>& request, const Aws::Vector<void*>& contexts)
         {
             assert(s_monitors);
@@ -134,6 +124,6 @@ namespace Aws
 
             s_monitors = nullptr;
         }
-    } // namepsace Monitoring
+    } // namespace Monitoring
 
 } // namespace Aws

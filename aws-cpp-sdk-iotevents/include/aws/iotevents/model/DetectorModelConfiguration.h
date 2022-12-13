@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iotevents/IoTEvents_EXPORTS.h>
@@ -358,123 +348,135 @@ namespace Model
 
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline const Aws::String& GetKey() const{ return m_key; }
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline DetectorModelConfiguration& WithKey(const Aws::String& value) { SetKey(value); return *this;}
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline DetectorModelConfiguration& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
-     * <p>The input attribute key used to identify a device or system to create a
-     * detector (an instance of the detector model) and then to route each input
-     * received to the appropriate detector (instance). This parameter uses a JSON-path
-     * expression to specify the attribute-value pair in the message payload of each
-     * input that is used to identify the device associated with the input.</p>
+     * <p>The value used to identify a detector instance. When a device or system sends
+     * input, a new detector instance with a unique key value is created. AWS IoT
+     * Events can continue to route input to its corresponding detector instance based
+     * on this identifying information. </p> <p>This parameter uses a JSON-path
+     * expression to select the attribute-value pair in the message payload that is
+     * used for identification. To route the message to the correct detector instance,
+     * the device must send a message payload that contains the same
+     * attribute-value.</p>
      */
     inline DetectorModelConfiguration& WithKey(const char* value) { SetKey(value); return *this;}
 
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline const EvaluationMethod& GetEvaluationMethod() const{ return m_evaluationMethod; }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline bool EvaluationMethodHasBeenSet() const { return m_evaluationMethodHasBeenSet; }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline void SetEvaluationMethod(const EvaluationMethod& value) { m_evaluationMethodHasBeenSet = true; m_evaluationMethod = value; }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline void SetEvaluationMethod(EvaluationMethod&& value) { m_evaluationMethodHasBeenSet = true; m_evaluationMethod = std::move(value); }
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline DetectorModelConfiguration& WithEvaluationMethod(const EvaluationMethod& value) { SetEvaluationMethod(value); return *this;}
 
     /**
-     * <p>When set to <code>SERIAL</code>, variables are updated and event conditions
-     * evaluated in the order that the events are defined. When set to
-     * <code>BATCH</code>, variables are updated and events performed only after all
-     * event conditions are evaluated.</p>
+     * <p>Information about the order in which events are evaluated and how actions are
+     * executed. </p>
      */
     inline DetectorModelConfiguration& WithEvaluationMethod(EvaluationMethod&& value) { SetEvaluationMethod(std::move(value)); return *this;}
 

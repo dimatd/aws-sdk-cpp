@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -86,12 +76,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilter() const{ return m_filter; }
 
@@ -100,12 +98,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
 
@@ -114,12 +120,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline void SetFilter(const Aws::Vector<Filter>& value) { m_filterHasBeenSet = true; m_filter = value; }
 
@@ -128,12 +142,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline void SetFilter(Aws::Vector<Filter>&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
 
@@ -142,12 +164,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline DescribeFlowLogsRequest& WithFilter(const Aws::Vector<Filter>& value) { SetFilter(value); return *this;}
 
@@ -156,12 +186,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline DescribeFlowLogsRequest& WithFilter(Aws::Vector<Filter>&& value) { SetFilter(std::move(value)); return *this;}
 
@@ -170,12 +208,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline DescribeFlowLogsRequest& AddFilter(const Filter& value) { m_filterHasBeenSet = true; m_filter.push_back(value); return *this; }
 
@@ -184,12 +230,20 @@ namespace Model
      * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
      * </li> <li> <p> <code>log-destination-type</code> - The type of destination to
      * which the flow log publishes data. Possible destination types include
-     * <code>cloud-watch-logs</code> and <code>S3</code>.</p> </li> <li> <p>
+     * <code>cloud-watch-logs</code> and <code>s3</code>.</p> </li> <li> <p>
      * <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li> <p>
      * <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
      * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
      * </li> <li> <p> <code>traffic-type</code> - The type of traffic
-     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> </ul>
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>).</p> </li> <li>
+     * <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag assigned
+     * to the resource. Use the tag key in the filter name and the tag value as the
+     * filter value. For example, to find all resources that have a tag with the key
+     * <code>Owner</code> and the value <code>TeamA</code>, specify
+     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
+     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
+     * the resource. Use this filter to find all resources assigned a tag with a
+     * specific key, regardless of the tag value.</p> </li> </ul>
      */
     inline DescribeFlowLogsRequest& AddFilter(Filter&& value) { m_filterHasBeenSet = true; m_filter.push_back(std::move(value)); return *this; }
 

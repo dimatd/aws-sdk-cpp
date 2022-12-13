@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/codebuild/model/ComputeType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -33,6 +23,7 @@ namespace Aws
         static const int BUILD_GENERAL1_SMALL_HASH = HashingUtils::HashString("BUILD_GENERAL1_SMALL");
         static const int BUILD_GENERAL1_MEDIUM_HASH = HashingUtils::HashString("BUILD_GENERAL1_MEDIUM");
         static const int BUILD_GENERAL1_LARGE_HASH = HashingUtils::HashString("BUILD_GENERAL1_LARGE");
+        static const int BUILD_GENERAL1_2XLARGE_HASH = HashingUtils::HashString("BUILD_GENERAL1_2XLARGE");
 
 
         ComputeType GetComputeTypeForName(const Aws::String& name)
@@ -49,6 +40,10 @@ namespace Aws
           else if (hashCode == BUILD_GENERAL1_LARGE_HASH)
           {
             return ComputeType::BUILD_GENERAL1_LARGE;
+          }
+          else if (hashCode == BUILD_GENERAL1_2XLARGE_HASH)
+          {
+            return ComputeType::BUILD_GENERAL1_2XLARGE;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -70,6 +65,8 @@ namespace Aws
             return "BUILD_GENERAL1_MEDIUM";
           case ComputeType::BUILD_GENERAL1_LARGE:
             return "BUILD_GENERAL1_LARGE";
+          case ComputeType::BUILD_GENERAL1_2XLARGE:
+            return "BUILD_GENERAL1_2XLARGE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/groundstation/GroundStation_EXPORTS.h>
@@ -48,32 +38,32 @@ namespace Model
 
 
     /**
-     * <p>Parameters for a <code>Config</code>.</p>
+     * <p>Parameters of a <code>Config</code>.</p>
      */
     inline const ConfigTypeData& GetConfigData() const{ return m_configData; }
 
     /**
-     * <p>Parameters for a <code>Config</code>.</p>
+     * <p>Parameters of a <code>Config</code>.</p>
      */
     inline bool ConfigDataHasBeenSet() const { return m_configDataHasBeenSet; }
 
     /**
-     * <p>Parameters for a <code>Config</code>.</p>
+     * <p>Parameters of a <code>Config</code>.</p>
      */
     inline void SetConfigData(const ConfigTypeData& value) { m_configDataHasBeenSet = true; m_configData = value; }
 
     /**
-     * <p>Parameters for a <code>Config</code>.</p>
+     * <p>Parameters of a <code>Config</code>.</p>
      */
     inline void SetConfigData(ConfigTypeData&& value) { m_configDataHasBeenSet = true; m_configData = std::move(value); }
 
     /**
-     * <p>Parameters for a <code>Config</code>.</p>
+     * <p>Parameters of a <code>Config</code>.</p>
      */
     inline UpdateConfigRequest& WithConfigData(const ConfigTypeData& value) { SetConfigData(value); return *this;}
 
     /**
-     * <p>Parameters for a <code>Config</code>.</p>
+     * <p>Parameters of a <code>Config</code>.</p>
      */
     inline UpdateConfigRequest& WithConfigData(ConfigTypeData&& value) { SetConfigData(std::move(value)); return *this;}
 

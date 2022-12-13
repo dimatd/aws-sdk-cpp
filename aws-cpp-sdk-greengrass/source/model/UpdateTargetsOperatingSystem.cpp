@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/greengrass/model/UpdateTargetsOperatingSystem.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -33,6 +23,7 @@ namespace Aws
         static const int ubuntu_HASH = HashingUtils::HashString("ubuntu");
         static const int raspbian_HASH = HashingUtils::HashString("raspbian");
         static const int amazon_linux_HASH = HashingUtils::HashString("amazon_linux");
+        static const int openwrt_HASH = HashingUtils::HashString("openwrt");
 
 
         UpdateTargetsOperatingSystem GetUpdateTargetsOperatingSystemForName(const Aws::String& name)
@@ -49,6 +40,10 @@ namespace Aws
           else if (hashCode == amazon_linux_HASH)
           {
             return UpdateTargetsOperatingSystem::amazon_linux;
+          }
+          else if (hashCode == openwrt_HASH)
+          {
+            return UpdateTargetsOperatingSystem::openwrt;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -70,6 +65,8 @@ namespace Aws
             return "raspbian";
           case UpdateTargetsOperatingSystem::amazon_linux:
             return "amazon_linux";
+          case UpdateTargetsOperatingSystem::openwrt:
+            return "openwrt";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

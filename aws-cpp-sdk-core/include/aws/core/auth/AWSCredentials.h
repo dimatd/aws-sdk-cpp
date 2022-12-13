@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  *
-  *  http://aws.amazon.com/apache2.0
-  *
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
  #pragma once
 
@@ -33,7 +23,7 @@ namespace Aws
              * Empty credentials are not expired by default.
              * Credentials expire only if an expiration date is explicitly set on them.
              */
-            AWSCredentials() : m_expiration(std::chrono::time_point<std::chrono::system_clock>::max())
+            AWSCredentials() : m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
             {
             }
 
@@ -43,7 +33,7 @@ namespace Aws
              * Expiration date is set to "never expire".
              */
             AWSCredentials(const Aws::String& accessKeyId, const Aws::String& secretKey) :
-                m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_expiration(std::chrono::time_point<std::chrono::system_clock>::max())
+                m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
             {
             }
 
@@ -52,7 +42,7 @@ namespace Aws
              * Expiration date is set to "never expire".
              */
             AWSCredentials(const Aws::String& accessKeyId, const Aws::String& secretKey, const Aws::String& sessionToken) :
-                m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_sessionToken(sessionToken), m_expiration(std::chrono::time_point<std::chrono::system_clock>::max())
+                m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_sessionToken(sessionToken), m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
             {
             }
 

@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/translate/Translate_EXPORTS.h>
 #include <aws/translate/TranslateRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/translate/model/TranslationSettings.h>
 #include <utility>
 
 namespace Aws
@@ -95,137 +86,162 @@ namespace Model
 
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline const Aws::Vector<Aws::String>& GetTerminologyNames() const{ return m_terminologyNames; }
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline bool TerminologyNamesHasBeenSet() const { return m_terminologyNamesHasBeenSet; }
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline void SetTerminologyNames(const Aws::Vector<Aws::String>& value) { m_terminologyNamesHasBeenSet = true; m_terminologyNames = value; }
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline void SetTerminologyNames(Aws::Vector<Aws::String>&& value) { m_terminologyNamesHasBeenSet = true; m_terminologyNames = std::move(value); }
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline TranslateTextRequest& WithTerminologyNames(const Aws::Vector<Aws::String>& value) { SetTerminologyNames(value); return *this;}
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline TranslateTextRequest& WithTerminologyNames(Aws::Vector<Aws::String>&& value) { SetTerminologyNames(std::move(value)); return *this;}
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline TranslateTextRequest& AddTerminologyNames(const Aws::String& value) { m_terminologyNamesHasBeenSet = true; m_terminologyNames.push_back(value); return *this; }
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline TranslateTextRequest& AddTerminologyNames(Aws::String&& value) { m_terminologyNamesHasBeenSet = true; m_terminologyNames.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The TerminologyNames list that is taken as input to the TranslateText
-     * request. This has a minimum length of 0 and a maximum length of 1.</p>
+     * <p>The name of the terminology list file to be used in the TranslateText
+     * request. You can use 1 terminology list at most in a <code>TranslateText</code>
+     * request. Terminology lists can contain a maximum of 256 terms.</p>
      */
     inline TranslateTextRequest& AddTerminologyNames(const char* value) { m_terminologyNamesHasBeenSet = true; m_terminologyNames.push_back(value); return *this; }
 
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline const Aws::String& GetSourceLanguageCode() const{ return m_sourceLanguageCode; }
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline bool SourceLanguageCodeHasBeenSet() const { return m_sourceLanguageCodeHasBeenSet; }
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline void SetSourceLanguageCode(const Aws::String& value) { m_sourceLanguageCodeHasBeenSet = true; m_sourceLanguageCode = value; }
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline void SetSourceLanguageCode(Aws::String&& value) { m_sourceLanguageCodeHasBeenSet = true; m_sourceLanguageCode = std::move(value); }
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline void SetSourceLanguageCode(const char* value) { m_sourceLanguageCodeHasBeenSet = true; m_sourceLanguageCode.assign(value); }
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline TranslateTextRequest& WithSourceLanguageCode(const Aws::String& value) { SetSourceLanguageCode(value); return *this;}
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline TranslateTextRequest& WithSourceLanguageCode(Aws::String&& value) { SetSourceLanguageCode(std::move(value)); return *this;}
 
     /**
      * <p>The language code for the language of the source text. The language must be a
-     * language supported by Amazon Translate. </p> <p>To have Amazon Translate
-     * determine the source language of your text, you can specify <code>auto</code> in
-     * the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>,
-     * Amazon Translate will call Amazon Comprehend to determine the source
-     * language.</p>
+     * language supported by Amazon Translate. For a list of language codes, see
+     * <a>what-is-languages</a>.</p> <p>To have Amazon Translate determine the source
+     * language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon
+     * Translate will call <a
+     * href="https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html">Amazon
+     * Comprehend</a> to determine the source language.</p>
      */
     inline TranslateTextRequest& WithSourceLanguageCode(const char* value) { SetSourceLanguageCode(value); return *this;}
 
@@ -278,6 +294,43 @@ namespace Model
      */
     inline TranslateTextRequest& WithTargetLanguageCode(const char* value) { SetTargetLanguageCode(value); return *this;}
 
+
+    /**
+     * <p>Settings to configure your translation output, including the option to mask
+     * profane words and phrases.</p>
+     */
+    inline const TranslationSettings& GetSettings() const{ return m_settings; }
+
+    /**
+     * <p>Settings to configure your translation output, including the option to mask
+     * profane words and phrases.</p>
+     */
+    inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
+
+    /**
+     * <p>Settings to configure your translation output, including the option to mask
+     * profane words and phrases.</p>
+     */
+    inline void SetSettings(const TranslationSettings& value) { m_settingsHasBeenSet = true; m_settings = value; }
+
+    /**
+     * <p>Settings to configure your translation output, including the option to mask
+     * profane words and phrases.</p>
+     */
+    inline void SetSettings(TranslationSettings&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
+
+    /**
+     * <p>Settings to configure your translation output, including the option to mask
+     * profane words and phrases.</p>
+     */
+    inline TranslateTextRequest& WithSettings(const TranslationSettings& value) { SetSettings(value); return *this;}
+
+    /**
+     * <p>Settings to configure your translation output, including the option to mask
+     * profane words and phrases.</p>
+     */
+    inline TranslateTextRequest& WithSettings(TranslationSettings&& value) { SetSettings(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_text;
@@ -291,6 +344,9 @@ namespace Model
 
     Aws::String m_targetLanguageCode;
     bool m_targetLanguageCodeHasBeenSet;
+
+    TranslationSettings m_settings;
+    bool m_settingsHasBeenSet;
   };
 
 } // namespace Model

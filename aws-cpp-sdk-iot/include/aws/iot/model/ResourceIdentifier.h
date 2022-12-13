@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
@@ -284,6 +274,88 @@ namespace Model
      */
     inline ResourceIdentifier& WithAccount(const char* value) { SetAccount(value); return *this;}
 
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline const Aws::String& GetIamRoleArn() const{ return m_iamRoleArn; }
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline bool IamRoleArnHasBeenSet() const { return m_iamRoleArnHasBeenSet; }
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline void SetIamRoleArn(const Aws::String& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = value; }
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline void SetIamRoleArn(Aws::String&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline void SetIamRoleArn(const char* value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn.assign(value); }
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline ResourceIdentifier& WithIamRoleArn(const Aws::String& value) { SetIamRoleArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline ResourceIdentifier& WithIamRoleArn(Aws::String&& value) { SetIamRoleArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the IAM role that has overly permissive actions.</p>
+     */
+    inline ResourceIdentifier& WithIamRoleArn(const char* value) { SetIamRoleArn(value); return *this;}
+
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline const Aws::String& GetRoleAliasArn() const{ return m_roleAliasArn; }
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline bool RoleAliasArnHasBeenSet() const { return m_roleAliasArnHasBeenSet; }
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline void SetRoleAliasArn(const Aws::String& value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn = value; }
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline void SetRoleAliasArn(Aws::String&& value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline void SetRoleAliasArn(const char* value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn.assign(value); }
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline ResourceIdentifier& WithRoleAliasArn(const Aws::String& value) { SetRoleAliasArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline ResourceIdentifier& WithRoleAliasArn(Aws::String&& value) { SetRoleAliasArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the role alias that has overly permissive actions.</p>
+     */
+    inline ResourceIdentifier& WithRoleAliasArn(const char* value) { SetRoleAliasArn(value); return *this;}
+
   private:
 
     Aws::String m_deviceCertificateId;
@@ -303,6 +375,12 @@ namespace Model
 
     Aws::String m_account;
     bool m_accountHasBeenSet;
+
+    Aws::String m_iamRoleArn;
+    bool m_iamRoleArnHasBeenSet;
+
+    Aws::String m_roleAliasArn;
+    bool m_roleAliasArnHasBeenSet;
   };
 
 } // namespace Model

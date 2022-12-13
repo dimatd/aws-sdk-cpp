@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dlm/DLM_EXPORTS.h>
@@ -19,7 +9,11 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/dlm/model/CreateRule.h>
 #include <aws/dlm/model/RetainRule.h>
+#include <aws/dlm/model/FastRestoreRule.h>
+#include <aws/dlm/model/DeprecateRule.h>
 #include <aws/dlm/model/Tag.h>
+#include <aws/dlm/model/CrossRegionCopyRule.h>
+#include <aws/dlm/model/ShareRule.h>
 #include <utility>
 
 namespace Aws
@@ -38,7 +32,8 @@ namespace Model
 {
 
   /**
-   * <p>Specifies a schedule.</p><p><h3>See Also:</h3>   <a
+   * <p>Specifies a backup schedule for a snapshot or AMI lifecycle
+   * policy.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/dlm-2018-01-12/Schedule">AWS API
    * Reference</a></p>
    */
@@ -119,49 +114,49 @@ namespace Model
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline const Aws::Vector<Tag>& GetTagsToAdd() const{ return m_tagsToAdd; }
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline bool TagsToAddHasBeenSet() const { return m_tagsToAddHasBeenSet; }
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline void SetTagsToAdd(const Aws::Vector<Tag>& value) { m_tagsToAddHasBeenSet = true; m_tagsToAdd = value; }
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline void SetTagsToAdd(Aws::Vector<Tag>&& value) { m_tagsToAddHasBeenSet = true; m_tagsToAdd = std::move(value); }
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline Schedule& WithTagsToAdd(const Aws::Vector<Tag>& value) { SetTagsToAdd(value); return *this;}
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline Schedule& WithTagsToAdd(Aws::Vector<Tag>&& value) { SetTagsToAdd(std::move(value)); return *this;}
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline Schedule& AddTagsToAdd(const Tag& value) { m_tagsToAddHasBeenSet = true; m_tagsToAdd.push_back(value); return *this; }
 
     /**
      * <p>The tags to apply to policy-created resources. These user-defined tags are in
-     * addition to the AWS-added lifecycle tags.</p>
+     * addition to the Amazon Web Services-added lifecycle tags.</p>
      */
     inline Schedule& AddTagsToAdd(Tag&& value) { m_tagsToAddHasBeenSet = true; m_tagsToAdd.push_back(std::move(value)); return *this; }
 
@@ -240,65 +235,241 @@ namespace Model
 
 
     /**
-     * <p>The create rule.</p>
+     * <p>The creation rule.</p>
      */
     inline const CreateRule& GetCreateRule() const{ return m_createRule; }
 
     /**
-     * <p>The create rule.</p>
+     * <p>The creation rule.</p>
      */
     inline bool CreateRuleHasBeenSet() const { return m_createRuleHasBeenSet; }
 
     /**
-     * <p>The create rule.</p>
+     * <p>The creation rule.</p>
      */
     inline void SetCreateRule(const CreateRule& value) { m_createRuleHasBeenSet = true; m_createRule = value; }
 
     /**
-     * <p>The create rule.</p>
+     * <p>The creation rule.</p>
      */
     inline void SetCreateRule(CreateRule&& value) { m_createRuleHasBeenSet = true; m_createRule = std::move(value); }
 
     /**
-     * <p>The create rule.</p>
+     * <p>The creation rule.</p>
      */
     inline Schedule& WithCreateRule(const CreateRule& value) { SetCreateRule(value); return *this;}
 
     /**
-     * <p>The create rule.</p>
+     * <p>The creation rule.</p>
      */
     inline Schedule& WithCreateRule(CreateRule&& value) { SetCreateRule(std::move(value)); return *this;}
 
 
     /**
-     * <p>The retain rule.</p>
+     * <p>The retention rule.</p>
      */
     inline const RetainRule& GetRetainRule() const{ return m_retainRule; }
 
     /**
-     * <p>The retain rule.</p>
+     * <p>The retention rule.</p>
      */
     inline bool RetainRuleHasBeenSet() const { return m_retainRuleHasBeenSet; }
 
     /**
-     * <p>The retain rule.</p>
+     * <p>The retention rule.</p>
      */
     inline void SetRetainRule(const RetainRule& value) { m_retainRuleHasBeenSet = true; m_retainRule = value; }
 
     /**
-     * <p>The retain rule.</p>
+     * <p>The retention rule.</p>
      */
     inline void SetRetainRule(RetainRule&& value) { m_retainRuleHasBeenSet = true; m_retainRule = std::move(value); }
 
     /**
-     * <p>The retain rule.</p>
+     * <p>The retention rule.</p>
      */
     inline Schedule& WithRetainRule(const RetainRule& value) { SetRetainRule(value); return *this;}
 
     /**
-     * <p>The retain rule.</p>
+     * <p>The retention rule.</p>
      */
     inline Schedule& WithRetainRule(RetainRule&& value) { SetRetainRule(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The rule for enabling fast snapshot restore.</p>
+     */
+    inline const FastRestoreRule& GetFastRestoreRule() const{ return m_fastRestoreRule; }
+
+    /**
+     * <p>The rule for enabling fast snapshot restore.</p>
+     */
+    inline bool FastRestoreRuleHasBeenSet() const { return m_fastRestoreRuleHasBeenSet; }
+
+    /**
+     * <p>The rule for enabling fast snapshot restore.</p>
+     */
+    inline void SetFastRestoreRule(const FastRestoreRule& value) { m_fastRestoreRuleHasBeenSet = true; m_fastRestoreRule = value; }
+
+    /**
+     * <p>The rule for enabling fast snapshot restore.</p>
+     */
+    inline void SetFastRestoreRule(FastRestoreRule&& value) { m_fastRestoreRuleHasBeenSet = true; m_fastRestoreRule = std::move(value); }
+
+    /**
+     * <p>The rule for enabling fast snapshot restore.</p>
+     */
+    inline Schedule& WithFastRestoreRule(const FastRestoreRule& value) { SetFastRestoreRule(value); return *this;}
+
+    /**
+     * <p>The rule for enabling fast snapshot restore.</p>
+     */
+    inline Schedule& WithFastRestoreRule(FastRestoreRule&& value) { SetFastRestoreRule(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline const Aws::Vector<CrossRegionCopyRule>& GetCrossRegionCopyRules() const{ return m_crossRegionCopyRules; }
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline bool CrossRegionCopyRulesHasBeenSet() const { return m_crossRegionCopyRulesHasBeenSet; }
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline void SetCrossRegionCopyRules(const Aws::Vector<CrossRegionCopyRule>& value) { m_crossRegionCopyRulesHasBeenSet = true; m_crossRegionCopyRules = value; }
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline void SetCrossRegionCopyRules(Aws::Vector<CrossRegionCopyRule>&& value) { m_crossRegionCopyRulesHasBeenSet = true; m_crossRegionCopyRules = std::move(value); }
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline Schedule& WithCrossRegionCopyRules(const Aws::Vector<CrossRegionCopyRule>& value) { SetCrossRegionCopyRules(value); return *this;}
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline Schedule& WithCrossRegionCopyRules(Aws::Vector<CrossRegionCopyRule>&& value) { SetCrossRegionCopyRules(std::move(value)); return *this;}
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline Schedule& AddCrossRegionCopyRules(const CrossRegionCopyRule& value) { m_crossRegionCopyRulesHasBeenSet = true; m_crossRegionCopyRules.push_back(value); return *this; }
+
+    /**
+     * <p>The rule for cross-Region snapshot copies.</p> <p>You can only specify
+     * cross-Region copy rules for policies that create snapshots in a Region. If the
+     * policy creates snapshots on an Outpost, then you cannot copy the snapshots to a
+     * Region or to an Outpost. If the policy creates snapshots in a Region, then
+     * snapshots can be copied to up to three Regions or Outposts.</p>
+     */
+    inline Schedule& AddCrossRegionCopyRules(CrossRegionCopyRule&& value) { m_crossRegionCopyRulesHasBeenSet = true; m_crossRegionCopyRules.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline const Aws::Vector<ShareRule>& GetShareRules() const{ return m_shareRules; }
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline bool ShareRulesHasBeenSet() const { return m_shareRulesHasBeenSet; }
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline void SetShareRules(const Aws::Vector<ShareRule>& value) { m_shareRulesHasBeenSet = true; m_shareRules = value; }
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline void SetShareRules(Aws::Vector<ShareRule>&& value) { m_shareRulesHasBeenSet = true; m_shareRules = std::move(value); }
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline Schedule& WithShareRules(const Aws::Vector<ShareRule>& value) { SetShareRules(value); return *this;}
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline Schedule& WithShareRules(Aws::Vector<ShareRule>&& value) { SetShareRules(std::move(value)); return *this;}
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline Schedule& AddShareRules(const ShareRule& value) { m_shareRulesHasBeenSet = true; m_shareRules.push_back(value); return *this; }
+
+    /**
+     * <p>The rule for sharing snapshots with other Amazon Web Services accounts.</p>
+     */
+    inline Schedule& AddShareRules(ShareRule&& value) { m_shareRulesHasBeenSet = true; m_shareRules.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The AMI deprecation rule for the schedule.</p>
+     */
+    inline const DeprecateRule& GetDeprecateRule() const{ return m_deprecateRule; }
+
+    /**
+     * <p>The AMI deprecation rule for the schedule.</p>
+     */
+    inline bool DeprecateRuleHasBeenSet() const { return m_deprecateRuleHasBeenSet; }
+
+    /**
+     * <p>The AMI deprecation rule for the schedule.</p>
+     */
+    inline void SetDeprecateRule(const DeprecateRule& value) { m_deprecateRuleHasBeenSet = true; m_deprecateRule = value; }
+
+    /**
+     * <p>The AMI deprecation rule for the schedule.</p>
+     */
+    inline void SetDeprecateRule(DeprecateRule&& value) { m_deprecateRuleHasBeenSet = true; m_deprecateRule = std::move(value); }
+
+    /**
+     * <p>The AMI deprecation rule for the schedule.</p>
+     */
+    inline Schedule& WithDeprecateRule(const DeprecateRule& value) { SetDeprecateRule(value); return *this;}
+
+    /**
+     * <p>The AMI deprecation rule for the schedule.</p>
+     */
+    inline Schedule& WithDeprecateRule(DeprecateRule&& value) { SetDeprecateRule(std::move(value)); return *this;}
 
   private:
 
@@ -319,6 +490,18 @@ namespace Model
 
     RetainRule m_retainRule;
     bool m_retainRuleHasBeenSet;
+
+    FastRestoreRule m_fastRestoreRule;
+    bool m_fastRestoreRuleHasBeenSet;
+
+    Aws::Vector<CrossRegionCopyRule> m_crossRegionCopyRules;
+    bool m_crossRegionCopyRulesHasBeenSet;
+
+    Aws::Vector<ShareRule> m_shareRules;
+    bool m_shareRulesHasBeenSet;
+
+    DeprecateRule m_deprecateRule;
+    bool m_deprecateRuleHasBeenSet;
   };
 
 } // namespace Model

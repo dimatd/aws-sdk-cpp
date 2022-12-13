@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/neptune/Neptune_EXPORTS.h>
@@ -260,101 +250,73 @@ namespace Model
 
 
     /**
-     * <p> The default character set for new instances of this engine version, if the
-     * <code>CharacterSetName</code> parameter of the CreateDBInstance API is not
-     * specified.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline const CharacterSet& GetDefaultCharacterSet() const{ return m_defaultCharacterSet; }
 
     /**
-     * <p> The default character set for new instances of this engine version, if the
-     * <code>CharacterSetName</code> parameter of the CreateDBInstance API is not
-     * specified.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline bool DefaultCharacterSetHasBeenSet() const { return m_defaultCharacterSetHasBeenSet; }
 
     /**
-     * <p> The default character set for new instances of this engine version, if the
-     * <code>CharacterSetName</code> parameter of the CreateDBInstance API is not
-     * specified.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetDefaultCharacterSet(const CharacterSet& value) { m_defaultCharacterSetHasBeenSet = true; m_defaultCharacterSet = value; }
 
     /**
-     * <p> The default character set for new instances of this engine version, if the
-     * <code>CharacterSetName</code> parameter of the CreateDBInstance API is not
-     * specified.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetDefaultCharacterSet(CharacterSet&& value) { m_defaultCharacterSetHasBeenSet = true; m_defaultCharacterSet = std::move(value); }
 
     /**
-     * <p> The default character set for new instances of this engine version, if the
-     * <code>CharacterSetName</code> parameter of the CreateDBInstance API is not
-     * specified.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline DBEngineVersion& WithDefaultCharacterSet(const CharacterSet& value) { SetDefaultCharacterSet(value); return *this;}
 
     /**
-     * <p> The default character set for new instances of this engine version, if the
-     * <code>CharacterSetName</code> parameter of the CreateDBInstance API is not
-     * specified.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline DBEngineVersion& WithDefaultCharacterSet(CharacterSet&& value) { SetDefaultCharacterSet(std::move(value)); return *this;}
 
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline const Aws::Vector<CharacterSet>& GetSupportedCharacterSets() const{ return m_supportedCharacterSets; }
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline bool SupportedCharacterSetsHasBeenSet() const { return m_supportedCharacterSetsHasBeenSet; }
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetSupportedCharacterSets(const Aws::Vector<CharacterSet>& value) { m_supportedCharacterSetsHasBeenSet = true; m_supportedCharacterSets = value; }
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline void SetSupportedCharacterSets(Aws::Vector<CharacterSet>&& value) { m_supportedCharacterSetsHasBeenSet = true; m_supportedCharacterSets = std::move(value); }
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline DBEngineVersion& WithSupportedCharacterSets(const Aws::Vector<CharacterSet>& value) { SetSupportedCharacterSets(value); return *this;}
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline DBEngineVersion& WithSupportedCharacterSets(Aws::Vector<CharacterSet>&& value) { SetSupportedCharacterSets(std::move(value)); return *this;}
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline DBEngineVersion& AddSupportedCharacterSets(const CharacterSet& value) { m_supportedCharacterSetsHasBeenSet = true; m_supportedCharacterSets.push_back(value); return *this; }
 
     /**
-     * <p> A list of the character sets supported by this engine for the
-     * <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code>
-     * action.</p>
+     * <p> <i>(Not supported by Neptune)</i> </p>
      */
     inline DBEngineVersion& AddSupportedCharacterSets(CharacterSet&& value) { m_supportedCharacterSetsHasBeenSet = true; m_supportedCharacterSets.push_back(std::move(value)); return *this; }
 
@@ -557,6 +519,31 @@ namespace Model
      */
     inline DBEngineVersion& WithSupportsReadReplica(bool value) { SetSupportsReadReplica(value); return *this;}
 
+
+    /**
+     * <p>A value that indicates whether you can use Aurora global databases with a
+     * specific DB engine version.</p>
+     */
+    inline bool GetSupportsGlobalDatabases() const{ return m_supportsGlobalDatabases; }
+
+    /**
+     * <p>A value that indicates whether you can use Aurora global databases with a
+     * specific DB engine version.</p>
+     */
+    inline bool SupportsGlobalDatabasesHasBeenSet() const { return m_supportsGlobalDatabasesHasBeenSet; }
+
+    /**
+     * <p>A value that indicates whether you can use Aurora global databases with a
+     * specific DB engine version.</p>
+     */
+    inline void SetSupportsGlobalDatabases(bool value) { m_supportsGlobalDatabasesHasBeenSet = true; m_supportsGlobalDatabases = value; }
+
+    /**
+     * <p>A value that indicates whether you can use Aurora global databases with a
+     * specific DB engine version.</p>
+     */
+    inline DBEngineVersion& WithSupportsGlobalDatabases(bool value) { SetSupportsGlobalDatabases(value); return *this;}
+
   private:
 
     Aws::String m_engine;
@@ -594,6 +581,9 @@ namespace Model
 
     bool m_supportsReadReplica;
     bool m_supportsReadReplicaHasBeenSet;
+
+    bool m_supportsGlobalDatabases;
+    bool m_supportsGlobalDatabasesHasBeenSet;
   };
 
 } // namespace Model

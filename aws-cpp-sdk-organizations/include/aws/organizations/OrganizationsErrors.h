@@ -1,20 +1,11 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
+#include <aws/core/client/AWSError.h>
 #include <aws/core/client/CoreErrors.h>
 #include <aws/organizations/Organizations_EXPORTS.h>
 
@@ -52,17 +43,21 @@ enum class OrganizationsErrors
   INVALID_ACCESS_KEY_ID = 23,
   REQUEST_TIMEOUT = 24,
   NETWORK_CONNECTION = 99,
-  
+
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   ACCESS_DENIED_FOR_DEPENDENCY= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  ACCOUNT_ALREADY_CLOSED,
+  ACCOUNT_ALREADY_REGISTERED,
   ACCOUNT_NOT_FOUND,
+  ACCOUNT_NOT_REGISTERED,
   ACCOUNT_OWNER_NOT_VERIFIED,
   ALREADY_IN_ORGANIZATION,
   A_W_S_ORGANIZATIONS_NOT_IN_USE,
   CHILD_NOT_FOUND,
   CONCURRENT_MODIFICATION,
+  CONFLICT,
   CONSTRAINT_VIOLATION,
   CREATE_ACCOUNT_STATUS_NOT_FOUND,
   DESTINATION_PARENT_NOT_FOUND,
@@ -71,6 +66,7 @@ enum class OrganizationsErrors
   DUPLICATE_ORGANIZATIONAL_UNIT,
   DUPLICATE_POLICY,
   DUPLICATE_POLICY_ATTACHMENT,
+  EFFECTIVE_POLICY_NOT_FOUND,
   FINALIZING_ORGANIZATION,
   HANDSHAKE_ALREADY_IN_STATE,
   HANDSHAKE_CONSTRAINT_VIOLATION,
@@ -83,6 +79,7 @@ enum class OrganizationsErrors
   ORGANIZATIONAL_UNIT_NOT_FOUND,
   ORGANIZATION_NOT_EMPTY,
   PARENT_NOT_FOUND,
+  POLICY_CHANGES_IN_PROGRESS,
   POLICY_IN_USE,
   POLICY_NOT_ATTACHED,
   POLICY_NOT_FOUND,
@@ -96,6 +93,20 @@ enum class OrganizationsErrors
   TOO_MANY_REQUESTS,
   UNSUPPORTED_A_P_I_ENDPOINT
 };
+
+class AWS_ORGANIZATIONS_API OrganizationsError : public Aws::Client::AWSError<OrganizationsErrors>
+{
+public:
+  OrganizationsError() {}
+  OrganizationsError(const Aws::Client::AWSError<Aws::Client::CoreErrors>& rhs) : Aws::Client::AWSError<OrganizationsErrors>(rhs) {}
+  OrganizationsError(Aws::Client::AWSError<Aws::Client::CoreErrors>&& rhs) : Aws::Client::AWSError<OrganizationsErrors>(rhs) {}
+  OrganizationsError(const Aws::Client::AWSError<OrganizationsErrors>& rhs) : Aws::Client::AWSError<OrganizationsErrors>(rhs) {}
+  OrganizationsError(Aws::Client::AWSError<OrganizationsErrors>&& rhs) : Aws::Client::AWSError<OrganizationsErrors>(rhs) {}
+
+  template <typename T>
+  T GetModeledError();
+};
+
 namespace OrganizationsErrorMapper
 {
   AWS_ORGANIZATIONS_API Aws::Client::AWSError<Aws::Client::CoreErrors> GetErrorForName(const char* errorName);

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/RouteTableAssociation.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -35,7 +25,9 @@ RouteTableAssociation::RouteTableAssociation() :
     m_mainHasBeenSet(false),
     m_routeTableAssociationIdHasBeenSet(false),
     m_routeTableIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
+    m_subnetIdHasBeenSet(false),
+    m_gatewayIdHasBeenSet(false),
+    m_associationStateHasBeenSet(false)
 {
 }
 
@@ -44,7 +36,9 @@ RouteTableAssociation::RouteTableAssociation(const XmlNode& xmlNode) :
     m_mainHasBeenSet(false),
     m_routeTableAssociationIdHasBeenSet(false),
     m_routeTableIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
+    m_subnetIdHasBeenSet(false),
+    m_gatewayIdHasBeenSet(false),
+    m_associationStateHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -79,6 +73,18 @@ RouteTableAssociation& RouteTableAssociation::operator =(const XmlNode& xmlNode)
       m_subnetId = Aws::Utils::Xml::DecodeEscapedXmlText(subnetIdNode.GetText());
       m_subnetIdHasBeenSet = true;
     }
+    XmlNode gatewayIdNode = resultNode.FirstChild("gatewayId");
+    if(!gatewayIdNode.IsNull())
+    {
+      m_gatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(gatewayIdNode.GetText());
+      m_gatewayIdHasBeenSet = true;
+    }
+    XmlNode associationStateNode = resultNode.FirstChild("associationState");
+    if(!associationStateNode.IsNull())
+    {
+      m_associationState = associationStateNode;
+      m_associationStateHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -106,6 +112,18 @@ void RouteTableAssociation::OutputToStream(Aws::OStream& oStream, const char* lo
       oStream << location << index << locationValue << ".SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
   }
 
+  if(m_gatewayIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
+  }
+
+  if(m_associationStateHasBeenSet)
+  {
+      Aws::StringStream associationStateLocationAndMemberSs;
+      associationStateLocationAndMemberSs << location << index << locationValue << ".AssociationState";
+      m_associationState.OutputToStream(oStream, associationStateLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void RouteTableAssociation::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -125,6 +143,16 @@ void RouteTableAssociation::OutputToStream(Aws::OStream& oStream, const char* lo
   if(m_subnetIdHasBeenSet)
   {
       oStream << location << ".SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
+  }
+  if(m_gatewayIdHasBeenSet)
+  {
+      oStream << location << ".GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
+  }
+  if(m_associationStateHasBeenSet)
+  {
+      Aws::String associationStateLocationAndMember(location);
+      associationStateLocationAndMember += ".AssociationState";
+      m_associationState.OutputToStream(oStream, associationStateLocationAndMember.c_str());
   }
 }
 

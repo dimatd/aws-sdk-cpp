@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconvert/model/SccDestinationFramerate.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -32,6 +22,7 @@ namespace Aws
 
         static const int FRAMERATE_23_97_HASH = HashingUtils::HashString("FRAMERATE_23_97");
         static const int FRAMERATE_24_HASH = HashingUtils::HashString("FRAMERATE_24");
+        static const int FRAMERATE_25_HASH = HashingUtils::HashString("FRAMERATE_25");
         static const int FRAMERATE_29_97_DROPFRAME_HASH = HashingUtils::HashString("FRAMERATE_29_97_DROPFRAME");
         static const int FRAMERATE_29_97_NON_DROPFRAME_HASH = HashingUtils::HashString("FRAMERATE_29_97_NON_DROPFRAME");
 
@@ -46,6 +37,10 @@ namespace Aws
           else if (hashCode == FRAMERATE_24_HASH)
           {
             return SccDestinationFramerate::FRAMERATE_24;
+          }
+          else if (hashCode == FRAMERATE_25_HASH)
+          {
+            return SccDestinationFramerate::FRAMERATE_25;
           }
           else if (hashCode == FRAMERATE_29_97_DROPFRAME_HASH)
           {
@@ -73,6 +68,8 @@ namespace Aws
             return "FRAMERATE_23_97";
           case SccDestinationFramerate::FRAMERATE_24:
             return "FRAMERATE_24";
+          case SccDestinationFramerate::FRAMERATE_25:
+            return "FRAMERATE_25";
           case SccDestinationFramerate::FRAMERATE_29_97_DROPFRAME:
             return "FRAMERATE_29_97_DROPFRAME";
           case SccDestinationFramerate::FRAMERATE_29_97_NON_DROPFRAME:

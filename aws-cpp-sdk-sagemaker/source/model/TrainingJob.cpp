@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/sagemaker/model/TrainingJob.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,6 +23,7 @@ TrainingJob::TrainingJob() :
     m_trainingJobArnHasBeenSet(false),
     m_tuningJobArnHasBeenSet(false),
     m_labelingJobArnHasBeenSet(false),
+    m_autoMLJobArnHasBeenSet(false),
     m_modelArtifactsHasBeenSet(false),
     m_trainingJobStatus(TrainingJobStatus::NOT_SET),
     m_trainingJobStatusHasBeenSet(false),
@@ -57,6 +48,20 @@ TrainingJob::TrainingJob() :
     m_enableNetworkIsolationHasBeenSet(false),
     m_enableInterContainerTrafficEncryption(false),
     m_enableInterContainerTrafficEncryptionHasBeenSet(false),
+    m_enableManagedSpotTraining(false),
+    m_enableManagedSpotTrainingHasBeenSet(false),
+    m_checkpointConfigHasBeenSet(false),
+    m_trainingTimeInSeconds(0),
+    m_trainingTimeInSecondsHasBeenSet(false),
+    m_billableTimeInSeconds(0),
+    m_billableTimeInSecondsHasBeenSet(false),
+    m_debugHookConfigHasBeenSet(false),
+    m_experimentConfigHasBeenSet(false),
+    m_debugRuleConfigurationsHasBeenSet(false),
+    m_tensorBoardOutputConfigHasBeenSet(false),
+    m_debugRuleEvaluationStatusesHasBeenSet(false),
+    m_environmentHasBeenSet(false),
+    m_retryStrategyHasBeenSet(false),
     m_tagsHasBeenSet(false)
 {
 }
@@ -66,6 +71,7 @@ TrainingJob::TrainingJob(JsonView jsonValue) :
     m_trainingJobArnHasBeenSet(false),
     m_tuningJobArnHasBeenSet(false),
     m_labelingJobArnHasBeenSet(false),
+    m_autoMLJobArnHasBeenSet(false),
     m_modelArtifactsHasBeenSet(false),
     m_trainingJobStatus(TrainingJobStatus::NOT_SET),
     m_trainingJobStatusHasBeenSet(false),
@@ -90,6 +96,20 @@ TrainingJob::TrainingJob(JsonView jsonValue) :
     m_enableNetworkIsolationHasBeenSet(false),
     m_enableInterContainerTrafficEncryption(false),
     m_enableInterContainerTrafficEncryptionHasBeenSet(false),
+    m_enableManagedSpotTraining(false),
+    m_enableManagedSpotTrainingHasBeenSet(false),
+    m_checkpointConfigHasBeenSet(false),
+    m_trainingTimeInSeconds(0),
+    m_trainingTimeInSecondsHasBeenSet(false),
+    m_billableTimeInSeconds(0),
+    m_billableTimeInSecondsHasBeenSet(false),
+    m_debugHookConfigHasBeenSet(false),
+    m_experimentConfigHasBeenSet(false),
+    m_debugRuleConfigurationsHasBeenSet(false),
+    m_tensorBoardOutputConfigHasBeenSet(false),
+    m_debugRuleEvaluationStatusesHasBeenSet(false),
+    m_environmentHasBeenSet(false),
+    m_retryStrategyHasBeenSet(false),
     m_tagsHasBeenSet(false)
 {
   *this = jsonValue;
@@ -123,6 +143,13 @@ TrainingJob& TrainingJob::operator =(JsonView jsonValue)
     m_labelingJobArn = jsonValue.GetString("LabelingJobArn");
 
     m_labelingJobArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("AutoMLJobArn"))
+  {
+    m_autoMLJobArn = jsonValue.GetString("AutoMLJobArn");
+
+    m_autoMLJobArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("ModelArtifacts"))
@@ -277,6 +304,92 @@ TrainingJob& TrainingJob::operator =(JsonView jsonValue)
     m_enableInterContainerTrafficEncryptionHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("EnableManagedSpotTraining"))
+  {
+    m_enableManagedSpotTraining = jsonValue.GetBool("EnableManagedSpotTraining");
+
+    m_enableManagedSpotTrainingHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("CheckpointConfig"))
+  {
+    m_checkpointConfig = jsonValue.GetObject("CheckpointConfig");
+
+    m_checkpointConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TrainingTimeInSeconds"))
+  {
+    m_trainingTimeInSeconds = jsonValue.GetInteger("TrainingTimeInSeconds");
+
+    m_trainingTimeInSecondsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("BillableTimeInSeconds"))
+  {
+    m_billableTimeInSeconds = jsonValue.GetInteger("BillableTimeInSeconds");
+
+    m_billableTimeInSecondsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("DebugHookConfig"))
+  {
+    m_debugHookConfig = jsonValue.GetObject("DebugHookConfig");
+
+    m_debugHookConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ExperimentConfig"))
+  {
+    m_experimentConfig = jsonValue.GetObject("ExperimentConfig");
+
+    m_experimentConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("DebugRuleConfigurations"))
+  {
+    Array<JsonView> debugRuleConfigurationsJsonList = jsonValue.GetArray("DebugRuleConfigurations");
+    for(unsigned debugRuleConfigurationsIndex = 0; debugRuleConfigurationsIndex < debugRuleConfigurationsJsonList.GetLength(); ++debugRuleConfigurationsIndex)
+    {
+      m_debugRuleConfigurations.push_back(debugRuleConfigurationsJsonList[debugRuleConfigurationsIndex].AsObject());
+    }
+    m_debugRuleConfigurationsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TensorBoardOutputConfig"))
+  {
+    m_tensorBoardOutputConfig = jsonValue.GetObject("TensorBoardOutputConfig");
+
+    m_tensorBoardOutputConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("DebugRuleEvaluationStatuses"))
+  {
+    Array<JsonView> debugRuleEvaluationStatusesJsonList = jsonValue.GetArray("DebugRuleEvaluationStatuses");
+    for(unsigned debugRuleEvaluationStatusesIndex = 0; debugRuleEvaluationStatusesIndex < debugRuleEvaluationStatusesJsonList.GetLength(); ++debugRuleEvaluationStatusesIndex)
+    {
+      m_debugRuleEvaluationStatuses.push_back(debugRuleEvaluationStatusesJsonList[debugRuleEvaluationStatusesIndex].AsObject());
+    }
+    m_debugRuleEvaluationStatusesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Environment"))
+  {
+    Aws::Map<Aws::String, JsonView> environmentJsonMap = jsonValue.GetObject("Environment").GetAllObjects();
+    for(auto& environmentItem : environmentJsonMap)
+    {
+      m_environment[environmentItem.first] = environmentItem.second.AsString();
+    }
+    m_environmentHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RetryStrategy"))
+  {
+    m_retryStrategy = jsonValue.GetObject("RetryStrategy");
+
+    m_retryStrategyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("Tags"))
   {
     Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -315,6 +428,12 @@ JsonValue TrainingJob::Jsonize() const
   if(m_labelingJobArnHasBeenSet)
   {
    payload.WithString("LabelingJobArn", m_labelingJobArn);
+
+  }
+
+  if(m_autoMLJobArnHasBeenSet)
+  {
+   payload.WithString("AutoMLJobArn", m_autoMLJobArn);
 
   }
 
@@ -449,6 +568,87 @@ JsonValue TrainingJob::Jsonize() const
   if(m_enableInterContainerTrafficEncryptionHasBeenSet)
   {
    payload.WithBool("EnableInterContainerTrafficEncryption", m_enableInterContainerTrafficEncryption);
+
+  }
+
+  if(m_enableManagedSpotTrainingHasBeenSet)
+  {
+   payload.WithBool("EnableManagedSpotTraining", m_enableManagedSpotTraining);
+
+  }
+
+  if(m_checkpointConfigHasBeenSet)
+  {
+   payload.WithObject("CheckpointConfig", m_checkpointConfig.Jsonize());
+
+  }
+
+  if(m_trainingTimeInSecondsHasBeenSet)
+  {
+   payload.WithInteger("TrainingTimeInSeconds", m_trainingTimeInSeconds);
+
+  }
+
+  if(m_billableTimeInSecondsHasBeenSet)
+  {
+   payload.WithInteger("BillableTimeInSeconds", m_billableTimeInSeconds);
+
+  }
+
+  if(m_debugHookConfigHasBeenSet)
+  {
+   payload.WithObject("DebugHookConfig", m_debugHookConfig.Jsonize());
+
+  }
+
+  if(m_experimentConfigHasBeenSet)
+  {
+   payload.WithObject("ExperimentConfig", m_experimentConfig.Jsonize());
+
+  }
+
+  if(m_debugRuleConfigurationsHasBeenSet)
+  {
+   Array<JsonValue> debugRuleConfigurationsJsonList(m_debugRuleConfigurations.size());
+   for(unsigned debugRuleConfigurationsIndex = 0; debugRuleConfigurationsIndex < debugRuleConfigurationsJsonList.GetLength(); ++debugRuleConfigurationsIndex)
+   {
+     debugRuleConfigurationsJsonList[debugRuleConfigurationsIndex].AsObject(m_debugRuleConfigurations[debugRuleConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("DebugRuleConfigurations", std::move(debugRuleConfigurationsJsonList));
+
+  }
+
+  if(m_tensorBoardOutputConfigHasBeenSet)
+  {
+   payload.WithObject("TensorBoardOutputConfig", m_tensorBoardOutputConfig.Jsonize());
+
+  }
+
+  if(m_debugRuleEvaluationStatusesHasBeenSet)
+  {
+   Array<JsonValue> debugRuleEvaluationStatusesJsonList(m_debugRuleEvaluationStatuses.size());
+   for(unsigned debugRuleEvaluationStatusesIndex = 0; debugRuleEvaluationStatusesIndex < debugRuleEvaluationStatusesJsonList.GetLength(); ++debugRuleEvaluationStatusesIndex)
+   {
+     debugRuleEvaluationStatusesJsonList[debugRuleEvaluationStatusesIndex].AsObject(m_debugRuleEvaluationStatuses[debugRuleEvaluationStatusesIndex].Jsonize());
+   }
+   payload.WithArray("DebugRuleEvaluationStatuses", std::move(debugRuleEvaluationStatusesJsonList));
+
+  }
+
+  if(m_environmentHasBeenSet)
+  {
+   JsonValue environmentJsonMap;
+   for(auto& environmentItem : m_environment)
+   {
+     environmentJsonMap.WithString(environmentItem.first, environmentItem.second);
+   }
+   payload.WithObject("Environment", std::move(environmentJsonMap));
+
+  }
+
+  if(m_retryStrategyHasBeenSet)
+  {
+   payload.WithObject("RetryStrategy", m_retryStrategy.Jsonize());
 
   }
 

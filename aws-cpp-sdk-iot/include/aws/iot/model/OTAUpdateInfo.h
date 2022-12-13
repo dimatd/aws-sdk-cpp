@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
@@ -19,10 +9,12 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/iot/model/AwsJobExecutionsRolloutConfig.h>
+#include <aws/iot/model/AwsJobPresignedUrlConfig.h>
 #include <aws/iot/model/TargetSelection.h>
 #include <aws/iot/model/OTAUpdateStatus.h>
 #include <aws/iot/model/ErrorInfo.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/iot/model/Protocol.h>
 #include <aws/iot/model/OTAUpdateFile.h>
 #include <utility>
 
@@ -287,6 +279,63 @@ namespace Model
 
 
     /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline const Aws::Vector<Protocol>& GetProtocols() const{ return m_protocols; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline bool ProtocolsHasBeenSet() const { return m_protocolsHasBeenSet; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline void SetProtocols(const Aws::Vector<Protocol>& value) { m_protocolsHasBeenSet = true; m_protocols = value; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline void SetProtocols(Aws::Vector<Protocol>&& value) { m_protocolsHasBeenSet = true; m_protocols = std::move(value); }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline OTAUpdateInfo& WithProtocols(const Aws::Vector<Protocol>& value) { SetProtocols(value); return *this;}
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline OTAUpdateInfo& WithProtocols(Aws::Vector<Protocol>&& value) { SetProtocols(std::move(value)); return *this;}
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline OTAUpdateInfo& AddProtocols(const Protocol& value) { m_protocolsHasBeenSet = true; m_protocols.push_back(value); return *this; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline OTAUpdateInfo& AddProtocols(Protocol&& value) { m_protocolsHasBeenSet = true; m_protocols.push_back(std::move(value)); return *this; }
+
+
+    /**
      * <p>Configuration for the rollout of OTA updates.</p>
      */
     inline const AwsJobExecutionsRolloutConfig& GetAwsJobExecutionsRolloutConfig() const{ return m_awsJobExecutionsRolloutConfig; }
@@ -315,6 +364,43 @@ namespace Model
      * <p>Configuration for the rollout of OTA updates.</p>
      */
     inline OTAUpdateInfo& WithAwsJobExecutionsRolloutConfig(AwsJobExecutionsRolloutConfig&& value) { SetAwsJobExecutionsRolloutConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Configuration information for pre-signed URLs. Valid when
+     * <code>protocols</code> contains HTTP.</p>
+     */
+    inline const AwsJobPresignedUrlConfig& GetAwsJobPresignedUrlConfig() const{ return m_awsJobPresignedUrlConfig; }
+
+    /**
+     * <p>Configuration information for pre-signed URLs. Valid when
+     * <code>protocols</code> contains HTTP.</p>
+     */
+    inline bool AwsJobPresignedUrlConfigHasBeenSet() const { return m_awsJobPresignedUrlConfigHasBeenSet; }
+
+    /**
+     * <p>Configuration information for pre-signed URLs. Valid when
+     * <code>protocols</code> contains HTTP.</p>
+     */
+    inline void SetAwsJobPresignedUrlConfig(const AwsJobPresignedUrlConfig& value) { m_awsJobPresignedUrlConfigHasBeenSet = true; m_awsJobPresignedUrlConfig = value; }
+
+    /**
+     * <p>Configuration information for pre-signed URLs. Valid when
+     * <code>protocols</code> contains HTTP.</p>
+     */
+    inline void SetAwsJobPresignedUrlConfig(AwsJobPresignedUrlConfig&& value) { m_awsJobPresignedUrlConfigHasBeenSet = true; m_awsJobPresignedUrlConfig = std::move(value); }
+
+    /**
+     * <p>Configuration information for pre-signed URLs. Valid when
+     * <code>protocols</code> contains HTTP.</p>
+     */
+    inline OTAUpdateInfo& WithAwsJobPresignedUrlConfig(const AwsJobPresignedUrlConfig& value) { SetAwsJobPresignedUrlConfig(value); return *this;}
+
+    /**
+     * <p>Configuration information for pre-signed URLs. Valid when
+     * <code>protocols</code> contains HTTP.</p>
+     */
+    inline OTAUpdateInfo& WithAwsJobPresignedUrlConfig(AwsJobPresignedUrlConfig&& value) { SetAwsJobPresignedUrlConfig(std::move(value)); return *this;}
 
 
     /**
@@ -451,83 +537,83 @@ namespace Model
 
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline const Aws::String& GetAwsIotJobId() const{ return m_awsIotJobId; }
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline bool AwsIotJobIdHasBeenSet() const { return m_awsIotJobIdHasBeenSet; }
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline void SetAwsIotJobId(const Aws::String& value) { m_awsIotJobIdHasBeenSet = true; m_awsIotJobId = value; }
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline void SetAwsIotJobId(Aws::String&& value) { m_awsIotJobIdHasBeenSet = true; m_awsIotJobId = std::move(value); }
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline void SetAwsIotJobId(const char* value) { m_awsIotJobIdHasBeenSet = true; m_awsIotJobId.assign(value); }
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline OTAUpdateInfo& WithAwsIotJobId(const Aws::String& value) { SetAwsIotJobId(value); return *this;}
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline OTAUpdateInfo& WithAwsIotJobId(Aws::String&& value) { SetAwsIotJobId(std::move(value)); return *this;}
 
     /**
-     * <p>The AWS IoT job ID associated with the OTA update.</p>
+     * <p>The IoT job ID associated with the OTA update.</p>
      */
     inline OTAUpdateInfo& WithAwsIotJobId(const char* value) { SetAwsIotJobId(value); return *this;}
 
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline const Aws::String& GetAwsIotJobArn() const{ return m_awsIotJobArn; }
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline bool AwsIotJobArnHasBeenSet() const { return m_awsIotJobArnHasBeenSet; }
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline void SetAwsIotJobArn(const Aws::String& value) { m_awsIotJobArnHasBeenSet = true; m_awsIotJobArn = value; }
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline void SetAwsIotJobArn(Aws::String&& value) { m_awsIotJobArnHasBeenSet = true; m_awsIotJobArn = std::move(value); }
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline void SetAwsIotJobArn(const char* value) { m_awsIotJobArnHasBeenSet = true; m_awsIotJobArn.assign(value); }
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline OTAUpdateInfo& WithAwsIotJobArn(const Aws::String& value) { SetAwsIotJobArn(value); return *this;}
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline OTAUpdateInfo& WithAwsIotJobArn(Aws::String&& value) { SetAwsIotJobArn(std::move(value)); return *this;}
 
     /**
-     * <p>The AWS IoT job ARN associated with the OTA update.</p>
+     * <p>The IoT job ARN associated with the OTA update.</p>
      */
     inline OTAUpdateInfo& WithAwsIotJobArn(const char* value) { SetAwsIotJobArn(value); return *this;}
 
@@ -648,8 +734,14 @@ namespace Model
     Aws::Vector<Aws::String> m_targets;
     bool m_targetsHasBeenSet;
 
+    Aws::Vector<Protocol> m_protocols;
+    bool m_protocolsHasBeenSet;
+
     AwsJobExecutionsRolloutConfig m_awsJobExecutionsRolloutConfig;
     bool m_awsJobExecutionsRolloutConfigHasBeenSet;
+
+    AwsJobPresignedUrlConfig m_awsJobPresignedUrlConfig;
+    bool m_awsJobPresignedUrlConfigHasBeenSet;
 
     TargetSelection m_targetSelection;
     bool m_targetSelectionHasBeenSet;

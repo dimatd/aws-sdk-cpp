@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/CreateClientVpnEndpointRequest.h>
 #include <aws/core/utils/StringUtils.h>
@@ -28,6 +18,8 @@ CreateClientVpnEndpointRequest::CreateClientVpnEndpointRequest() :
     m_dnsServersHasBeenSet(false),
     m_transportProtocol(TransportProtocol::NOT_SET),
     m_transportProtocolHasBeenSet(false),
+    m_vpnPort(0),
+    m_vpnPortHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_splitTunnel(false),
     m_splitTunnelHasBeenSet(false),
@@ -35,7 +27,15 @@ CreateClientVpnEndpointRequest::CreateClientVpnEndpointRequest() :
     m_dryRunHasBeenSet(false),
     m_clientToken(Aws::Utils::UUID::RandomUUID()),
     m_clientTokenHasBeenSet(true),
-    m_tagSpecificationsHasBeenSet(false)
+    m_tagSpecificationsHasBeenSet(false),
+    m_securityGroupIdsHasBeenSet(false),
+    m_vpcIdHasBeenSet(false),
+    m_selfServicePortal(SelfServicePortal::NOT_SET),
+    m_selfServicePortalHasBeenSet(false),
+    m_clientConnectOptionsHasBeenSet(false),
+    m_sessionTimeoutHours(0),
+    m_sessionTimeoutHoursHasBeenSet(false),
+    m_clientLoginBannerOptionsHasBeenSet(false)
 {
 }
 
@@ -84,6 +84,11 @@ Aws::String CreateClientVpnEndpointRequest::SerializePayload() const
     ss << "TransportProtocol=" << TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol) << "&";
   }
 
+  if(m_vpnPortHasBeenSet)
+  {
+    ss << "VpnPort=" << m_vpnPort << "&";
+  }
+
   if(m_descriptionHasBeenSet)
   {
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
@@ -112,6 +117,42 @@ Aws::String CreateClientVpnEndpointRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_securityGroupIdsHasBeenSet)
+  {
+    unsigned securityGroupIdsCount = 1;
+    for(auto& item : m_securityGroupIds)
+    {
+      ss << "SecurityGroupId." << securityGroupIdsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      securityGroupIdsCount++;
+    }
+  }
+
+  if(m_vpcIdHasBeenSet)
+  {
+    ss << "VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+
+  if(m_selfServicePortalHasBeenSet)
+  {
+    ss << "SelfServicePortal=" << SelfServicePortalMapper::GetNameForSelfServicePortal(m_selfServicePortal) << "&";
+  }
+
+  if(m_clientConnectOptionsHasBeenSet)
+  {
+    m_clientConnectOptions.OutputToStream(ss, "ClientConnectOptions");
+  }
+
+  if(m_sessionTimeoutHoursHasBeenSet)
+  {
+    ss << "SessionTimeoutHours=" << m_sessionTimeoutHours << "&";
+  }
+
+  if(m_clientLoginBannerOptionsHasBeenSet)
+  {
+    m_clientLoginBannerOptions.OutputToStream(ss, "ClientLoginBannerOptions");
   }
 
   ss << "Version=2016-11-15";

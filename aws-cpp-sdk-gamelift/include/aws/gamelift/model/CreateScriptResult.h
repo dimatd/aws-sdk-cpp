@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
@@ -43,9 +33,9 @@ namespace Model
 
 
     /**
-     * <p>The newly created script record with a unique script ID. The new script's
-     * storage location reflects an Amazon S3 location: (1) If the script was uploaded
-     * from an S3 bucket under your account, the storage location reflects the
+     * <p>The newly created script record with a unique script ID and ARN. The new
+     * script's storage location reflects an Amazon S3 location: (1) If the script was
+     * uploaded from an S3 bucket under your account, the storage location reflects the
      * information that was provided in the <i>CreateScript</i> request; (2) If the
      * script file was uploaded from a local zip file, the storage location reflects an
      * S3 location controls by the Amazon GameLift service.</p>
@@ -53,9 +43,9 @@ namespace Model
     inline const Script& GetScript() const{ return m_script; }
 
     /**
-     * <p>The newly created script record with a unique script ID. The new script's
-     * storage location reflects an Amazon S3 location: (1) If the script was uploaded
-     * from an S3 bucket under your account, the storage location reflects the
+     * <p>The newly created script record with a unique script ID and ARN. The new
+     * script's storage location reflects an Amazon S3 location: (1) If the script was
+     * uploaded from an S3 bucket under your account, the storage location reflects the
      * information that was provided in the <i>CreateScript</i> request; (2) If the
      * script file was uploaded from a local zip file, the storage location reflects an
      * S3 location controls by the Amazon GameLift service.</p>
@@ -63,9 +53,9 @@ namespace Model
     inline void SetScript(const Script& value) { m_script = value; }
 
     /**
-     * <p>The newly created script record with a unique script ID. The new script's
-     * storage location reflects an Amazon S3 location: (1) If the script was uploaded
-     * from an S3 bucket under your account, the storage location reflects the
+     * <p>The newly created script record with a unique script ID and ARN. The new
+     * script's storage location reflects an Amazon S3 location: (1) If the script was
+     * uploaded from an S3 bucket under your account, the storage location reflects the
      * information that was provided in the <i>CreateScript</i> request; (2) If the
      * script file was uploaded from a local zip file, the storage location reflects an
      * S3 location controls by the Amazon GameLift service.</p>
@@ -73,9 +63,9 @@ namespace Model
     inline void SetScript(Script&& value) { m_script = std::move(value); }
 
     /**
-     * <p>The newly created script record with a unique script ID. The new script's
-     * storage location reflects an Amazon S3 location: (1) If the script was uploaded
-     * from an S3 bucket under your account, the storage location reflects the
+     * <p>The newly created script record with a unique script ID and ARN. The new
+     * script's storage location reflects an Amazon S3 location: (1) If the script was
+     * uploaded from an S3 bucket under your account, the storage location reflects the
      * information that was provided in the <i>CreateScript</i> request; (2) If the
      * script file was uploaded from a local zip file, the storage location reflects an
      * S3 location controls by the Amazon GameLift service.</p>
@@ -83,9 +73,9 @@ namespace Model
     inline CreateScriptResult& WithScript(const Script& value) { SetScript(value); return *this;}
 
     /**
-     * <p>The newly created script record with a unique script ID. The new script's
-     * storage location reflects an Amazon S3 location: (1) If the script was uploaded
-     * from an S3 bucket under your account, the storage location reflects the
+     * <p>The newly created script record with a unique script ID and ARN. The new
+     * script's storage location reflects an Amazon S3 location: (1) If the script was
+     * uploaded from an S3 bucket under your account, the storage location reflects the
      * information that was provided in the <i>CreateScript</i> request; (2) If the
      * script file was uploaded from a local zip file, the storage location reflects an
      * S3 location controls by the Amazon GameLift service.</p>

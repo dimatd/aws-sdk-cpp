@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/Host.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -46,7 +36,14 @@ Host::Host() :
     m_releaseTimeHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_hostRecovery(HostRecovery::NOT_SET),
-    m_hostRecoveryHasBeenSet(false)
+    m_hostRecoveryHasBeenSet(false),
+    m_allowsMultipleInstanceTypes(AllowsMultipleInstanceTypes::NOT_SET),
+    m_allowsMultipleInstanceTypesHasBeenSet(false),
+    m_ownerIdHasBeenSet(false),
+    m_availabilityZoneIdHasBeenSet(false),
+    m_memberOfServiceLinkedResourceGroup(false),
+    m_memberOfServiceLinkedResourceGroupHasBeenSet(false),
+    m_outpostArnHasBeenSet(false)
 {
 }
 
@@ -66,7 +63,14 @@ Host::Host(const XmlNode& xmlNode) :
     m_releaseTimeHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_hostRecovery(HostRecovery::NOT_SET),
-    m_hostRecoveryHasBeenSet(false)
+    m_hostRecoveryHasBeenSet(false),
+    m_allowsMultipleInstanceTypes(AllowsMultipleInstanceTypes::NOT_SET),
+    m_allowsMultipleInstanceTypesHasBeenSet(false),
+    m_ownerIdHasBeenSet(false),
+    m_availabilityZoneIdHasBeenSet(false),
+    m_memberOfServiceLinkedResourceGroup(false),
+    m_memberOfServiceLinkedResourceGroupHasBeenSet(false),
+    m_outpostArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -167,6 +171,36 @@ Host& Host::operator =(const XmlNode& xmlNode)
       m_hostRecovery = HostRecoveryMapper::GetHostRecoveryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hostRecoveryNode.GetText()).c_str()).c_str());
       m_hostRecoveryHasBeenSet = true;
     }
+    XmlNode allowsMultipleInstanceTypesNode = resultNode.FirstChild("allowsMultipleInstanceTypes");
+    if(!allowsMultipleInstanceTypesNode.IsNull())
+    {
+      m_allowsMultipleInstanceTypes = AllowsMultipleInstanceTypesMapper::GetAllowsMultipleInstanceTypesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allowsMultipleInstanceTypesNode.GetText()).c_str()).c_str());
+      m_allowsMultipleInstanceTypesHasBeenSet = true;
+    }
+    XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
+    if(!ownerIdNode.IsNull())
+    {
+      m_ownerId = Aws::Utils::Xml::DecodeEscapedXmlText(ownerIdNode.GetText());
+      m_ownerIdHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("availabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
+    }
+    XmlNode memberOfServiceLinkedResourceGroupNode = resultNode.FirstChild("memberOfServiceLinkedResourceGroup");
+    if(!memberOfServiceLinkedResourceGroupNode.IsNull())
+    {
+      m_memberOfServiceLinkedResourceGroup = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(memberOfServiceLinkedResourceGroupNode.GetText()).c_str()).c_str());
+      m_memberOfServiceLinkedResourceGroupHasBeenSet = true;
+    }
+    XmlNode outpostArnNode = resultNode.FirstChild("outpostArn");
+    if(!outpostArnNode.IsNull())
+    {
+      m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
+      m_outpostArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -255,6 +289,31 @@ void Host::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
       oStream << location << index << locationValue << ".HostRecovery=" << HostRecoveryMapper::GetNameForHostRecovery(m_hostRecovery) << "&";
   }
 
+  if(m_allowsMultipleInstanceTypesHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AllowsMultipleInstanceTypes=" << AllowsMultipleInstanceTypesMapper::GetNameForAllowsMultipleInstanceTypes(m_allowsMultipleInstanceTypes) << "&";
+  }
+
+  if(m_ownerIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
+
+  if(m_memberOfServiceLinkedResourceGroupHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MemberOfServiceLinkedResourceGroup=" << std::boolalpha << m_memberOfServiceLinkedResourceGroup << "&";
+  }
+
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+
 }
 
 void Host::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -326,6 +385,26 @@ void Host::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_hostRecoveryHasBeenSet)
   {
       oStream << location << ".HostRecovery=" << HostRecoveryMapper::GetNameForHostRecovery(m_hostRecovery) << "&";
+  }
+  if(m_allowsMultipleInstanceTypesHasBeenSet)
+  {
+      oStream << location << ".AllowsMultipleInstanceTypes=" << AllowsMultipleInstanceTypesMapper::GetNameForAllowsMultipleInstanceTypes(m_allowsMultipleInstanceTypes) << "&";
+  }
+  if(m_ownerIdHasBeenSet)
+  {
+      oStream << location << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
+  }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
+  if(m_memberOfServiceLinkedResourceGroupHasBeenSet)
+  {
+      oStream << location << ".MemberOfServiceLinkedResourceGroup=" << std::boolalpha << m_memberOfServiceLinkedResourceGroup << "&";
+  }
+  if(m_outpostArnHasBeenSet)
+  {
+      oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
   }
 }
 

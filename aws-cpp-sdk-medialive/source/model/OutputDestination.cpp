@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/medialive/model/OutputDestination.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,6 +21,7 @@ namespace Model
 OutputDestination::OutputDestination() : 
     m_idHasBeenSet(false),
     m_mediaPackageSettingsHasBeenSet(false),
+    m_multiplexSettingsHasBeenSet(false),
     m_settingsHasBeenSet(false)
 {
 }
@@ -38,6 +29,7 @@ OutputDestination::OutputDestination() :
 OutputDestination::OutputDestination(JsonView jsonValue) : 
     m_idHasBeenSet(false),
     m_mediaPackageSettingsHasBeenSet(false),
+    m_multiplexSettingsHasBeenSet(false),
     m_settingsHasBeenSet(false)
 {
   *this = jsonValue;
@@ -60,6 +52,13 @@ OutputDestination& OutputDestination::operator =(JsonView jsonValue)
       m_mediaPackageSettings.push_back(mediaPackageSettingsJsonList[mediaPackageSettingsIndex].AsObject());
     }
     m_mediaPackageSettingsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("multiplexSettings"))
+  {
+    m_multiplexSettings = jsonValue.GetObject("multiplexSettings");
+
+    m_multiplexSettingsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("settings"))
@@ -93,6 +92,12 @@ JsonValue OutputDestination::Jsonize() const
      mediaPackageSettingsJsonList[mediaPackageSettingsIndex].AsObject(m_mediaPackageSettings[mediaPackageSettingsIndex].Jsonize());
    }
    payload.WithArray("mediaPackageSettings", std::move(mediaPackageSettingsJsonList));
+
+  }
+
+  if(m_multiplexSettingsHasBeenSet)
+  {
+   payload.WithObject("multiplexSettings", m_multiplexSettings.Jsonize());
 
   }
 

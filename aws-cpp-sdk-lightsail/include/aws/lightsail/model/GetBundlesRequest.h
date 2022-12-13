@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lightsail/Lightsail_EXPORTS.h>
@@ -45,75 +35,91 @@ namespace Model
 
 
     /**
-     * <p>A Boolean value that indicates whether to include inactive bundle results in
-     * your request.</p>
+     * <p>A Boolean value that indicates whether to include inactive (unavailable)
+     * bundles in the response of your request.</p>
      */
     inline bool GetIncludeInactive() const{ return m_includeInactive; }
 
     /**
-     * <p>A Boolean value that indicates whether to include inactive bundle results in
-     * your request.</p>
+     * <p>A Boolean value that indicates whether to include inactive (unavailable)
+     * bundles in the response of your request.</p>
      */
     inline bool IncludeInactiveHasBeenSet() const { return m_includeInactiveHasBeenSet; }
 
     /**
-     * <p>A Boolean value that indicates whether to include inactive bundle results in
-     * your request.</p>
+     * <p>A Boolean value that indicates whether to include inactive (unavailable)
+     * bundles in the response of your request.</p>
      */
     inline void SetIncludeInactive(bool value) { m_includeInactiveHasBeenSet = true; m_includeInactive = value; }
 
     /**
-     * <p>A Boolean value that indicates whether to include inactive bundle results in
-     * your request.</p>
+     * <p>A Boolean value that indicates whether to include inactive (unavailable)
+     * bundles in the response of your request.</p>
      */
     inline GetBundlesRequest& WithIncludeInactive(bool value) { SetIncludeInactive(value); return *this;}
 
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline const Aws::String& GetPageToken() const{ return m_pageToken; }
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline GetBundlesRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline GetBundlesRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
 
     /**
-     * <p>A token used for advancing to the next page of results from your get bundles
-     * request.</p>
+     * <p>The token to advance to the next page of results from your request.</p> <p>To
+     * get a page token, perform an initial <code>GetBundles</code> request. If your
+     * results are paginated, the response will return a next page token that you can
+     * specify as the page token in a subsequent request.</p>
      */
     inline GetBundlesRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
 

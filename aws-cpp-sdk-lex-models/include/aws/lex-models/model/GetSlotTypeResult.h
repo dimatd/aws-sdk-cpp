@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lex-models/LexModelBuildingService_EXPORTS.h>
@@ -20,6 +10,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/lex-models/model/SlotValueSelectionStrategy.h>
 #include <aws/lex-models/model/EnumerationValue.h>
+#include <aws/lex-models/model/SlotTypeConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -320,6 +311,78 @@ namespace Model
      */
     inline GetSlotTypeResult& WithValueSelectionStrategy(SlotValueSelectionStrategy&& value) { SetValueSelectionStrategy(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline const Aws::String& GetParentSlotTypeSignature() const{ return m_parentSlotTypeSignature; }
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline void SetParentSlotTypeSignature(const Aws::String& value) { m_parentSlotTypeSignature = value; }
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline void SetParentSlotTypeSignature(Aws::String&& value) { m_parentSlotTypeSignature = std::move(value); }
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline void SetParentSlotTypeSignature(const char* value) { m_parentSlotTypeSignature.assign(value); }
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline GetSlotTypeResult& WithParentSlotTypeSignature(const Aws::String& value) { SetParentSlotTypeSignature(value); return *this;}
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline GetSlotTypeResult& WithParentSlotTypeSignature(Aws::String&& value) { SetParentSlotTypeSignature(std::move(value)); return *this;}
+
+    /**
+     * <p>The built-in slot type used as a parent for the slot type.</p>
+     */
+    inline GetSlotTypeResult& WithParentSlotTypeSignature(const char* value) { SetParentSlotTypeSignature(value); return *this;}
+
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline const Aws::Vector<SlotTypeConfiguration>& GetSlotTypeConfigurations() const{ return m_slotTypeConfigurations; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline void SetSlotTypeConfigurations(const Aws::Vector<SlotTypeConfiguration>& value) { m_slotTypeConfigurations = value; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline void SetSlotTypeConfigurations(Aws::Vector<SlotTypeConfiguration>&& value) { m_slotTypeConfigurations = std::move(value); }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline GetSlotTypeResult& WithSlotTypeConfigurations(const Aws::Vector<SlotTypeConfiguration>& value) { SetSlotTypeConfigurations(value); return *this;}
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline GetSlotTypeResult& WithSlotTypeConfigurations(Aws::Vector<SlotTypeConfiguration>&& value) { SetSlotTypeConfigurations(std::move(value)); return *this;}
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline GetSlotTypeResult& AddSlotTypeConfigurations(const SlotTypeConfiguration& value) { m_slotTypeConfigurations.push_back(value); return *this; }
+
+    /**
+     * <p>Configuration information that extends the parent built-in slot type.</p>
+     */
+    inline GetSlotTypeResult& AddSlotTypeConfigurations(SlotTypeConfiguration&& value) { m_slotTypeConfigurations.push_back(std::move(value)); return *this; }
+
   private:
 
     Aws::String m_name;
@@ -337,6 +400,10 @@ namespace Model
     Aws::String m_checksum;
 
     SlotValueSelectionStrategy m_valueSelectionStrategy;
+
+    Aws::String m_parentSlotTypeSignature;
+
+    Aws::Vector<SlotTypeConfiguration> m_slotTypeConfigurations;
   };
 
 } // namespace Model

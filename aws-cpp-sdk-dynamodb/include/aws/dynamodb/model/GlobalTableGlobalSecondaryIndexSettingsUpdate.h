@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -124,37 +114,37 @@ namespace Model
 
 
     /**
-     * <p>AutoScaling settings for managing a global secondary index's write capacity
+     * <p>Auto scaling settings for managing a global secondary index's write capacity
      * units.</p>
      */
     inline const AutoScalingSettingsUpdate& GetProvisionedWriteCapacityAutoScalingSettingsUpdate() const{ return m_provisionedWriteCapacityAutoScalingSettingsUpdate; }
 
     /**
-     * <p>AutoScaling settings for managing a global secondary index's write capacity
+     * <p>Auto scaling settings for managing a global secondary index's write capacity
      * units.</p>
      */
     inline bool ProvisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet() const { return m_provisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet; }
 
     /**
-     * <p>AutoScaling settings for managing a global secondary index's write capacity
+     * <p>Auto scaling settings for managing a global secondary index's write capacity
      * units.</p>
      */
     inline void SetProvisionedWriteCapacityAutoScalingSettingsUpdate(const AutoScalingSettingsUpdate& value) { m_provisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettingsUpdate = value; }
 
     /**
-     * <p>AutoScaling settings for managing a global secondary index's write capacity
+     * <p>Auto scaling settings for managing a global secondary index's write capacity
      * units.</p>
      */
     inline void SetProvisionedWriteCapacityAutoScalingSettingsUpdate(AutoScalingSettingsUpdate&& value) { m_provisionedWriteCapacityAutoScalingSettingsUpdateHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettingsUpdate = std::move(value); }
 
     /**
-     * <p>AutoScaling settings for managing a global secondary index's write capacity
+     * <p>Auto scaling settings for managing a global secondary index's write capacity
      * units.</p>
      */
     inline GlobalTableGlobalSecondaryIndexSettingsUpdate& WithProvisionedWriteCapacityAutoScalingSettingsUpdate(const AutoScalingSettingsUpdate& value) { SetProvisionedWriteCapacityAutoScalingSettingsUpdate(value); return *this;}
 
     /**
-     * <p>AutoScaling settings for managing a global secondary index's write capacity
+     * <p>Auto scaling settings for managing a global secondary index's write capacity
      * units.</p>
      */
     inline GlobalTableGlobalSecondaryIndexSettingsUpdate& WithProvisionedWriteCapacityAutoScalingSettingsUpdate(AutoScalingSettingsUpdate&& value) { SetProvisionedWriteCapacityAutoScalingSettingsUpdate(std::move(value)); return *this;}

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/comprehend/Comprehend_EXPORTS.h>
@@ -111,7 +101,7 @@ namespace Model
 
 
     /**
-     * <p>The language of the input documents. You can specify any of the primary
+     * <p>The language of the input documents. You can specify any of the following
      * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
      * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
      * be in the same language.</p>
@@ -119,7 +109,7 @@ namespace Model
     inline const SyntaxLanguageCode& GetLanguageCode() const{ return m_languageCode; }
 
     /**
-     * <p>The language of the input documents. You can specify any of the primary
+     * <p>The language of the input documents. You can specify any of the following
      * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
      * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
      * be in the same language.</p>
@@ -127,7 +117,7 @@ namespace Model
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
 
     /**
-     * <p>The language of the input documents. You can specify any of the primary
+     * <p>The language of the input documents. You can specify any of the following
      * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
      * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
      * be in the same language.</p>
@@ -135,7 +125,7 @@ namespace Model
     inline void SetLanguageCode(const SyntaxLanguageCode& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
 
     /**
-     * <p>The language of the input documents. You can specify any of the primary
+     * <p>The language of the input documents. You can specify any of the following
      * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
      * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
      * be in the same language.</p>
@@ -143,7 +133,7 @@ namespace Model
     inline void SetLanguageCode(SyntaxLanguageCode&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
 
     /**
-     * <p>The language of the input documents. You can specify any of the primary
+     * <p>The language of the input documents. You can specify any of the following
      * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
      * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
      * be in the same language.</p>
@@ -151,7 +141,7 @@ namespace Model
     inline BatchDetectSyntaxRequest& WithLanguageCode(const SyntaxLanguageCode& value) { SetLanguageCode(value); return *this;}
 
     /**
-     * <p>The language of the input documents. You can specify any of the primary
+     * <p>The language of the input documents. You can specify any of the following
      * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
      * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
      * be in the same language.</p>

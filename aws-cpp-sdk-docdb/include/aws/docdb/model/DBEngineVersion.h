@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/docdb/DocDB_EXPORTS.h>
@@ -36,8 +26,7 @@ namespace Model
 {
 
   /**
-   * <p> Detailed information about a DB engine version. </p><p><h3>See Also:</h3>  
-   * <a
+   * <p> Detailed information about an engine version. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/docdb-2014-10-31/DBEngineVersion">AWS
    * API Reference</a></p>
    */
@@ -135,42 +124,42 @@ namespace Model
 
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline const Aws::String& GetDBParameterGroupFamily() const{ return m_dBParameterGroupFamily; }
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline bool DBParameterGroupFamilyHasBeenSet() const { return m_dBParameterGroupFamilyHasBeenSet; }
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline void SetDBParameterGroupFamily(const Aws::String& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = value; }
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline void SetDBParameterGroupFamily(Aws::String&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = std::move(value); }
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline void SetDBParameterGroupFamily(const char* value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily.assign(value); }
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline DBEngineVersion& WithDBParameterGroupFamily(const Aws::String& value) { SetDBParameterGroupFamily(value); return *this;}
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline DBEngineVersion& WithDBParameterGroupFamily(Aws::String&& value) { SetDBParameterGroupFamily(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the DB parameter group family for the database engine.</p>
+     * <p>The name of the parameter group family for the database engine.</p>
      */
     inline DBEngineVersion& WithDBParameterGroupFamily(const char* value) { SetDBParameterGroupFamily(value); return *this;}
 

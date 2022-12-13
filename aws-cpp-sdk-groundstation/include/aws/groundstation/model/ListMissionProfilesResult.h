@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/groundstation/GroundStation_EXPORTS.h>
@@ -50,37 +40,37 @@ namespace Model
 
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline const Aws::Vector<MissionProfileListItem>& GetMissionProfileList() const{ return m_missionProfileList; }
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline void SetMissionProfileList(const Aws::Vector<MissionProfileListItem>& value) { m_missionProfileList = value; }
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline void SetMissionProfileList(Aws::Vector<MissionProfileListItem>&& value) { m_missionProfileList = std::move(value); }
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline ListMissionProfilesResult& WithMissionProfileList(const Aws::Vector<MissionProfileListItem>& value) { SetMissionProfileList(value); return *this;}
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline ListMissionProfilesResult& WithMissionProfileList(Aws::Vector<MissionProfileListItem>&& value) { SetMissionProfileList(std::move(value)); return *this;}
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline ListMissionProfilesResult& AddMissionProfileList(const MissionProfileListItem& value) { m_missionProfileList.push_back(value); return *this; }
 
     /**
-     * <p>List of mission profiles</p>
+     * <p>List of mission profiles.</p>
      */
     inline ListMissionProfilesResult& AddMissionProfileList(MissionProfileListItem&& value) { m_missionProfileList.push_back(std::move(value)); return *this; }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/globalaccelerator/GlobalAccelerator_EXPORTS.h>
@@ -257,104 +247,104 @@ namespace Model
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline const Aws::String& GetDnsName() const{ return m_dnsName; }
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline bool DnsNameHasBeenSet() const { return m_dnsNameHasBeenSet; }
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline void SetDnsName(const Aws::String& value) { m_dnsNameHasBeenSet = true; m_dnsName = value; }
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline void SetDnsName(Aws::String&& value) { m_dnsNameHasBeenSet = true; m_dnsName = std::move(value); }
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline void SetDnsName(const char* value) { m_dnsNameHasBeenSet = true; m_dnsName.assign(value); }
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline Accelerator& WithDnsName(const Aws::String& value) { SetDnsName(value); return *this;}
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline Accelerator& WithDnsName(Aws::String&& value) { SetDnsName(std::move(value)); return *this;}
 
     /**
      * <p>The Domain Name System (DNS) name that Global Accelerator creates that points
      * to your accelerator's static IP addresses. </p> <p>The naming convention for the
-     * DNS name is: a lower case letter a, followed by a 16-bit random hex string,
-     * followed by .awsglobalaccelerator.com. For example:
+     * DNS name is the following: A lowercase letter a, followed by a 16-bit random hex
+     * string, followed by .awsglobalaccelerator.com. For example:
      * a1234567890abcdef.awsglobalaccelerator.com.</p> <p>For more information about
      * the default DNS name, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">Support
-     * for DNS Addressing in Global Accelerator</a> in the <i>AWS Global Accelerator
-     * Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing">
+     * Support for DNS Addressing in Global Accelerator</a> in the <i>AWS Global
+     * Accelerator Developer Guide</i>.</p>
      */
     inline Accelerator& WithDnsName(const char* value) { SetDnsName(value); return *this;}
 

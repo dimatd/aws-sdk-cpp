@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ssm/model/GetOpsSummaryRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -23,8 +13,10 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 GetOpsSummaryRequest::GetOpsSummaryRequest() : 
+    m_syncNameHasBeenSet(false),
     m_filtersHasBeenSet(false),
     m_aggregatorsHasBeenSet(false),
+    m_resultAttributesHasBeenSet(false),
     m_nextTokenHasBeenSet(false),
     m_maxResults(0),
     m_maxResultsHasBeenSet(false)
@@ -34,6 +26,12 @@ GetOpsSummaryRequest::GetOpsSummaryRequest() :
 Aws::String GetOpsSummaryRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_syncNameHasBeenSet)
+  {
+   payload.WithString("SyncName", m_syncName);
+
+  }
 
   if(m_filtersHasBeenSet)
   {
@@ -54,6 +52,17 @@ Aws::String GetOpsSummaryRequest::SerializePayload() const
      aggregatorsJsonList[aggregatorsIndex].AsObject(m_aggregators[aggregatorsIndex].Jsonize());
    }
    payload.WithArray("Aggregators", std::move(aggregatorsJsonList));
+
+  }
+
+  if(m_resultAttributesHasBeenSet)
+  {
+   Array<JsonValue> resultAttributesJsonList(m_resultAttributes.size());
+   for(unsigned resultAttributesIndex = 0; resultAttributesIndex < resultAttributesJsonList.GetLength(); ++resultAttributesIndex)
+   {
+     resultAttributesJsonList[resultAttributesIndex].AsObject(m_resultAttributes[resultAttributesIndex].Jsonize());
+   }
+   payload.WithArray("ResultAttributes", std::move(resultAttributesJsonList));
 
   }
 

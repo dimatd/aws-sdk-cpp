@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -45,27 +35,27 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>Container for the bucket owner's display name and ID.</p>
      */
     inline const Owner& GetOwner() const{ return m_owner; }
 
     /**
-     * <p/>
+     * <p>Container for the bucket owner's display name and ID.</p>
      */
     inline void SetOwner(const Owner& value) { m_owner = value; }
 
     /**
-     * <p/>
+     * <p>Container for the bucket owner's display name and ID.</p>
      */
     inline void SetOwner(Owner&& value) { m_owner = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Container for the bucket owner's display name and ID.</p>
      */
     inline GetBucketAclResult& WithOwner(const Owner& value) { SetOwner(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Container for the bucket owner's display name and ID.</p>
      */
     inline GetBucketAclResult& WithOwner(Owner&& value) { SetOwner(std::move(value)); return *this;}
 

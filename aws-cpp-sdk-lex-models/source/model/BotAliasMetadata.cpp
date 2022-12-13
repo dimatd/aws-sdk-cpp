@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/lex-models/model/BotAliasMetadata.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -35,7 +25,8 @@ BotAliasMetadata::BotAliasMetadata() :
     m_botNameHasBeenSet(false),
     m_lastUpdatedDateHasBeenSet(false),
     m_createdDateHasBeenSet(false),
-    m_checksumHasBeenSet(false)
+    m_checksumHasBeenSet(false),
+    m_conversationLogsHasBeenSet(false)
 {
 }
 
@@ -46,7 +37,8 @@ BotAliasMetadata::BotAliasMetadata(JsonView jsonValue) :
     m_botNameHasBeenSet(false),
     m_lastUpdatedDateHasBeenSet(false),
     m_createdDateHasBeenSet(false),
-    m_checksumHasBeenSet(false)
+    m_checksumHasBeenSet(false),
+    m_conversationLogsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -102,6 +94,13 @@ BotAliasMetadata& BotAliasMetadata::operator =(JsonView jsonValue)
     m_checksumHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("conversationLogs"))
+  {
+    m_conversationLogs = jsonValue.GetObject("conversationLogs");
+
+    m_conversationLogsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -146,6 +145,12 @@ JsonValue BotAliasMetadata::Jsonize() const
   if(m_checksumHasBeenSet)
   {
    payload.WithString("checksum", m_checksum);
+
+  }
+
+  if(m_conversationLogsHasBeenSet)
+  {
+   payload.WithObject("conversationLogs", m_conversationLogs.Jsonize());
 
   }
 

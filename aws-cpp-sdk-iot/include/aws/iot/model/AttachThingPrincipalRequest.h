@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
@@ -90,42 +80,50 @@ namespace Model
 
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline const Aws::String& GetPrincipal() const{ return m_principal; }
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline void SetPrincipal(const Aws::String& value) { m_principalHasBeenSet = true; m_principal = value; }
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline void SetPrincipal(Aws::String&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline void SetPrincipal(const char* value) { m_principalHasBeenSet = true; m_principal.assign(value); }
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline AttachThingPrincipalRequest& WithPrincipal(const Aws::String& value) { SetPrincipal(value); return *this;}
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline AttachThingPrincipalRequest& WithPrincipal(Aws::String&& value) { SetPrincipal(std::move(value)); return *this;}
 
     /**
-     * <p>The principal, such as a certificate or other credential.</p>
+     * <p>The principal, which can be a certificate ARN (as returned from the
+     * CreateCertificate operation) or an Amazon Cognito ID.</p>
      */
     inline AttachThingPrincipalRequest& WithPrincipal(const char* value) { SetPrincipal(value); return *this;}
 

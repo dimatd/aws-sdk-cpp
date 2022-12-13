@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
@@ -36,11 +26,11 @@ namespace Model
 {
 
   /**
-   * <p>The Amazon S3 bucket where artifacts for the pipeline are stored.</p> <note>
-   * <p>You must include either <code>artifactStore</code> or
-   * <code>artifactStores</code> in your pipeline, but you cannot use both. If you
-   * create a cross-region action in your pipeline, you must use
-   * <code>artifactStores</code>.</p> </note><p><h3>See Also:</h3>   <a
+   * <p>The S3 bucket where artifacts for the pipeline are stored.</p>  <p>You
+   * must include either <code>artifactStore</code> or <code>artifactStores</code> in
+   * your pipeline, but you cannot use both. If you create a cross-region action in
+   * your pipeline, you must use <code>artifactStores</code>.</p> <p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ArtifactStore">AWS
    * API Reference</a></p>
    */
@@ -85,74 +75,74 @@ namespace Model
 
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline const Aws::String& GetLocation() const{ return m_location; }
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline ArtifactStore& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline ArtifactStore& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can
-     * specify the name of an S3 bucket but not a folder in the bucket. A folder to
-     * contain the pipeline artifacts is created for you based on the name of the
-     * pipeline. You can use any Amazon S3 bucket in the same AWS Region as the
-     * pipeline to store your pipeline artifacts.</p>
+     * <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify
+     * the name of an S3 bucket but not a folder in the bucket. A folder to contain the
+     * pipeline artifacts is created for you based on the name of the pipeline. You can
+     * use any S3 bucket in the same AWS Region as the pipeline to store your pipeline
+     * artifacts.</p>
      */
     inline ArtifactStore& WithLocation(const char* value) { SetLocation(value); return *this;}
 

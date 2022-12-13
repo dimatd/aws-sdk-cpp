@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
@@ -20,8 +10,10 @@
 #include <aws/medialive/model/H264ColorMetadata.h>
 #include <aws/medialive/model/H264ColorSpaceSettings.h>
 #include <aws/medialive/model/H264EntropyEncoding.h>
+#include <aws/medialive/model/H264FilterSettings.h>
 #include <aws/medialive/model/FixedAfd.h>
 #include <aws/medialive/model/H264FlickerAq.h>
+#include <aws/medialive/model/H264ForceFieldPictures.h>
 #include <aws/medialive/model/H264FramerateControl.h>
 #include <aws/medialive/model/H264GopBReference.h>
 #include <aws/medialive/model/H264GopSizeUnits.h>
@@ -29,6 +21,7 @@
 #include <aws/medialive/model/H264LookAheadRateControl.h>
 #include <aws/medialive/model/H264ParControl.h>
 #include <aws/medialive/model/H264Profile.h>
+#include <aws/medialive/model/H264QualityLevel.h>
 #include <aws/medialive/model/H264RateControlMode.h>
 #include <aws/medialive/model/H264ScanType.h>
 #include <aws/medialive/model/H264SceneChangeDetect.h>
@@ -69,38 +62,74 @@ namespace Model
 
 
     /**
-     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual
-     * quality.
+     * Enables or disables adaptive quantization, which is a technique MediaLive can
+     * apply to video on a frame-by-frame basis to produce more compression without
+     * losing quality. There are three types of adaptive quantization: flicker,
+     * spatial, and temporal. Set the field in one of these ways: Set to Auto.
+     * Recommended. For each type of AQ, MediaLive will determine if AQ is needed, and
+     * if so, the appropriate strength. Set a strength (a value other than Auto or
+     * Disable). This strength will apply to any of the AQ fields that you choose to
+     * enable. Set to Disabled to disable all types of adaptive quantization.
      */
     inline const H264AdaptiveQuantization& GetAdaptiveQuantization() const{ return m_adaptiveQuantization; }
 
     /**
-     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual
-     * quality.
+     * Enables or disables adaptive quantization, which is a technique MediaLive can
+     * apply to video on a frame-by-frame basis to produce more compression without
+     * losing quality. There are three types of adaptive quantization: flicker,
+     * spatial, and temporal. Set the field in one of these ways: Set to Auto.
+     * Recommended. For each type of AQ, MediaLive will determine if AQ is needed, and
+     * if so, the appropriate strength. Set a strength (a value other than Auto or
+     * Disable). This strength will apply to any of the AQ fields that you choose to
+     * enable. Set to Disabled to disable all types of adaptive quantization.
      */
     inline bool AdaptiveQuantizationHasBeenSet() const { return m_adaptiveQuantizationHasBeenSet; }
 
     /**
-     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual
-     * quality.
+     * Enables or disables adaptive quantization, which is a technique MediaLive can
+     * apply to video on a frame-by-frame basis to produce more compression without
+     * losing quality. There are three types of adaptive quantization: flicker,
+     * spatial, and temporal. Set the field in one of these ways: Set to Auto.
+     * Recommended. For each type of AQ, MediaLive will determine if AQ is needed, and
+     * if so, the appropriate strength. Set a strength (a value other than Auto or
+     * Disable). This strength will apply to any of the AQ fields that you choose to
+     * enable. Set to Disabled to disable all types of adaptive quantization.
      */
     inline void SetAdaptiveQuantization(const H264AdaptiveQuantization& value) { m_adaptiveQuantizationHasBeenSet = true; m_adaptiveQuantization = value; }
 
     /**
-     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual
-     * quality.
+     * Enables or disables adaptive quantization, which is a technique MediaLive can
+     * apply to video on a frame-by-frame basis to produce more compression without
+     * losing quality. There are three types of adaptive quantization: flicker,
+     * spatial, and temporal. Set the field in one of these ways: Set to Auto.
+     * Recommended. For each type of AQ, MediaLive will determine if AQ is needed, and
+     * if so, the appropriate strength. Set a strength (a value other than Auto or
+     * Disable). This strength will apply to any of the AQ fields that you choose to
+     * enable. Set to Disabled to disable all types of adaptive quantization.
      */
     inline void SetAdaptiveQuantization(H264AdaptiveQuantization&& value) { m_adaptiveQuantizationHasBeenSet = true; m_adaptiveQuantization = std::move(value); }
 
     /**
-     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual
-     * quality.
+     * Enables or disables adaptive quantization, which is a technique MediaLive can
+     * apply to video on a frame-by-frame basis to produce more compression without
+     * losing quality. There are three types of adaptive quantization: flicker,
+     * spatial, and temporal. Set the field in one of these ways: Set to Auto.
+     * Recommended. For each type of AQ, MediaLive will determine if AQ is needed, and
+     * if so, the appropriate strength. Set a strength (a value other than Auto or
+     * Disable). This strength will apply to any of the AQ fields that you choose to
+     * enable. Set to Disabled to disable all types of adaptive quantization.
      */
     inline H264Settings& WithAdaptiveQuantization(const H264AdaptiveQuantization& value) { SetAdaptiveQuantization(value); return *this;}
 
     /**
-     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual
-     * quality.
+     * Enables or disables adaptive quantization, which is a technique MediaLive can
+     * apply to video on a frame-by-frame basis to produce more compression without
+     * losing quality. There are three types of adaptive quantization: flicker,
+     * spatial, and temporal. Set the field in one of these ways: Set to Auto.
+     * Recommended. For each type of AQ, MediaLive will determine if AQ is needed, and
+     * if so, the appropriate strength. Set a strength (a value other than Auto or
+     * Disable). This strength will apply to any of the AQ fields that you choose to
+     * enable. Set to Disabled to disable all types of adaptive quantization.
      */
     inline H264Settings& WithAdaptiveQuantization(H264AdaptiveQuantization&& value) { SetAdaptiveQuantization(std::move(value)); return *this;}
 
@@ -319,6 +348,37 @@ namespace Model
 
 
     /**
+     * Optional filters that you can apply to an encode.
+     */
+    inline const H264FilterSettings& GetFilterSettings() const{ return m_filterSettings; }
+
+    /**
+     * Optional filters that you can apply to an encode.
+     */
+    inline bool FilterSettingsHasBeenSet() const { return m_filterSettingsHasBeenSet; }
+
+    /**
+     * Optional filters that you can apply to an encode.
+     */
+    inline void SetFilterSettings(const H264FilterSettings& value) { m_filterSettingsHasBeenSet = true; m_filterSettings = value; }
+
+    /**
+     * Optional filters that you can apply to an encode.
+     */
+    inline void SetFilterSettings(H264FilterSettings&& value) { m_filterSettingsHasBeenSet = true; m_filterSettings = std::move(value); }
+
+    /**
+     * Optional filters that you can apply to an encode.
+     */
+    inline H264Settings& WithFilterSettings(const H264FilterSettings& value) { SetFilterSettings(value); return *this;}
+
+    /**
+     * Optional filters that you can apply to an encode.
+     */
+    inline H264Settings& WithFilterSettings(H264FilterSettings&& value) { SetFilterSettings(std::move(value)); return *this;}
+
+
+    /**
      * Four bit AFD value to write on all frames of video in the output stream. Only
      * valid when afdSignaling is set to 'Fixed'.
      */
@@ -356,40 +416,167 @@ namespace Model
 
 
     /**
-     * If set to enabled, adjust quantization within each frame to reduce flicker or
-     * 'pop' on I-frames.
+     * Flicker AQ makes adjustments within each frame to reduce flicker or 'pop' on
+     * I-frames. The value to enter in this field depends on the value in the Adaptive
+     * quantization field: If you have set the Adaptive quantization field to Auto,
+     * MediaLive ignores any value in this field. MediaLive will determine if flicker
+     * AQ is appropriate and will apply the appropriate strength. If you have set the
+     * Adaptive quantization field to a strength, you can set this field to Enabled or
+     * Disabled. Enabled: MediaLive will apply flicker AQ using the specified strength.
+     * Disabled: MediaLive won't apply flicker AQ. If you have set the Adaptive
+     * quantization to Disabled, MediaLive ignores any value in this field and doesn't
+     * apply flicker AQ.
      */
     inline const H264FlickerAq& GetFlickerAq() const{ return m_flickerAq; }
 
     /**
-     * If set to enabled, adjust quantization within each frame to reduce flicker or
-     * 'pop' on I-frames.
+     * Flicker AQ makes adjustments within each frame to reduce flicker or 'pop' on
+     * I-frames. The value to enter in this field depends on the value in the Adaptive
+     * quantization field: If you have set the Adaptive quantization field to Auto,
+     * MediaLive ignores any value in this field. MediaLive will determine if flicker
+     * AQ is appropriate and will apply the appropriate strength. If you have set the
+     * Adaptive quantization field to a strength, you can set this field to Enabled or
+     * Disabled. Enabled: MediaLive will apply flicker AQ using the specified strength.
+     * Disabled: MediaLive won't apply flicker AQ. If you have set the Adaptive
+     * quantization to Disabled, MediaLive ignores any value in this field and doesn't
+     * apply flicker AQ.
      */
     inline bool FlickerAqHasBeenSet() const { return m_flickerAqHasBeenSet; }
 
     /**
-     * If set to enabled, adjust quantization within each frame to reduce flicker or
-     * 'pop' on I-frames.
+     * Flicker AQ makes adjustments within each frame to reduce flicker or 'pop' on
+     * I-frames. The value to enter in this field depends on the value in the Adaptive
+     * quantization field: If you have set the Adaptive quantization field to Auto,
+     * MediaLive ignores any value in this field. MediaLive will determine if flicker
+     * AQ is appropriate and will apply the appropriate strength. If you have set the
+     * Adaptive quantization field to a strength, you can set this field to Enabled or
+     * Disabled. Enabled: MediaLive will apply flicker AQ using the specified strength.
+     * Disabled: MediaLive won't apply flicker AQ. If you have set the Adaptive
+     * quantization to Disabled, MediaLive ignores any value in this field and doesn't
+     * apply flicker AQ.
      */
     inline void SetFlickerAq(const H264FlickerAq& value) { m_flickerAqHasBeenSet = true; m_flickerAq = value; }
 
     /**
-     * If set to enabled, adjust quantization within each frame to reduce flicker or
-     * 'pop' on I-frames.
+     * Flicker AQ makes adjustments within each frame to reduce flicker or 'pop' on
+     * I-frames. The value to enter in this field depends on the value in the Adaptive
+     * quantization field: If you have set the Adaptive quantization field to Auto,
+     * MediaLive ignores any value in this field. MediaLive will determine if flicker
+     * AQ is appropriate and will apply the appropriate strength. If you have set the
+     * Adaptive quantization field to a strength, you can set this field to Enabled or
+     * Disabled. Enabled: MediaLive will apply flicker AQ using the specified strength.
+     * Disabled: MediaLive won't apply flicker AQ. If you have set the Adaptive
+     * quantization to Disabled, MediaLive ignores any value in this field and doesn't
+     * apply flicker AQ.
      */
     inline void SetFlickerAq(H264FlickerAq&& value) { m_flickerAqHasBeenSet = true; m_flickerAq = std::move(value); }
 
     /**
-     * If set to enabled, adjust quantization within each frame to reduce flicker or
-     * 'pop' on I-frames.
+     * Flicker AQ makes adjustments within each frame to reduce flicker or 'pop' on
+     * I-frames. The value to enter in this field depends on the value in the Adaptive
+     * quantization field: If you have set the Adaptive quantization field to Auto,
+     * MediaLive ignores any value in this field. MediaLive will determine if flicker
+     * AQ is appropriate and will apply the appropriate strength. If you have set the
+     * Adaptive quantization field to a strength, you can set this field to Enabled or
+     * Disabled. Enabled: MediaLive will apply flicker AQ using the specified strength.
+     * Disabled: MediaLive won't apply flicker AQ. If you have set the Adaptive
+     * quantization to Disabled, MediaLive ignores any value in this field and doesn't
+     * apply flicker AQ.
      */
     inline H264Settings& WithFlickerAq(const H264FlickerAq& value) { SetFlickerAq(value); return *this;}
 
     /**
-     * If set to enabled, adjust quantization within each frame to reduce flicker or
-     * 'pop' on I-frames.
+     * Flicker AQ makes adjustments within each frame to reduce flicker or 'pop' on
+     * I-frames. The value to enter in this field depends on the value in the Adaptive
+     * quantization field: If you have set the Adaptive quantization field to Auto,
+     * MediaLive ignores any value in this field. MediaLive will determine if flicker
+     * AQ is appropriate and will apply the appropriate strength. If you have set the
+     * Adaptive quantization field to a strength, you can set this field to Enabled or
+     * Disabled. Enabled: MediaLive will apply flicker AQ using the specified strength.
+     * Disabled: MediaLive won't apply flicker AQ. If you have set the Adaptive
+     * quantization to Disabled, MediaLive ignores any value in this field and doesn't
+     * apply flicker AQ.
      */
     inline H264Settings& WithFlickerAq(H264FlickerAq&& value) { SetFlickerAq(std::move(value)); return *this;}
+
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether
+     * coding is performed on a field basis or on a frame basis. (When the video is
+     * progressive, the coding is always performed on a frame basis.)
+enabled: Force
+     * MediaLive to code on a field basis, so that odd and even sets of fields are
+     * coded separately.
+disabled: Code the two sets of fields separately (on a field
+     * basis) or together (on a frame basis using PAFF), depending on what is most
+     * appropriate for the content.
+     */
+    inline const H264ForceFieldPictures& GetForceFieldPictures() const{ return m_forceFieldPictures; }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether
+     * coding is performed on a field basis or on a frame basis. (When the video is
+     * progressive, the coding is always performed on a frame basis.)
+enabled: Force
+     * MediaLive to code on a field basis, so that odd and even sets of fields are
+     * coded separately.
+disabled: Code the two sets of fields separately (on a field
+     * basis) or together (on a frame basis using PAFF), depending on what is most
+     * appropriate for the content.
+     */
+    inline bool ForceFieldPicturesHasBeenSet() const { return m_forceFieldPicturesHasBeenSet; }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether
+     * coding is performed on a field basis or on a frame basis. (When the video is
+     * progressive, the coding is always performed on a frame basis.)
+enabled: Force
+     * MediaLive to code on a field basis, so that odd and even sets of fields are
+     * coded separately.
+disabled: Code the two sets of fields separately (on a field
+     * basis) or together (on a frame basis using PAFF), depending on what is most
+     * appropriate for the content.
+     */
+    inline void SetForceFieldPictures(const H264ForceFieldPictures& value) { m_forceFieldPicturesHasBeenSet = true; m_forceFieldPictures = value; }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether
+     * coding is performed on a field basis or on a frame basis. (When the video is
+     * progressive, the coding is always performed on a frame basis.)
+enabled: Force
+     * MediaLive to code on a field basis, so that odd and even sets of fields are
+     * coded separately.
+disabled: Code the two sets of fields separately (on a field
+     * basis) or together (on a frame basis using PAFF), depending on what is most
+     * appropriate for the content.
+     */
+    inline void SetForceFieldPictures(H264ForceFieldPictures&& value) { m_forceFieldPicturesHasBeenSet = true; m_forceFieldPictures = std::move(value); }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether
+     * coding is performed on a field basis or on a frame basis. (When the video is
+     * progressive, the coding is always performed on a frame basis.)
+enabled: Force
+     * MediaLive to code on a field basis, so that odd and even sets of fields are
+     * coded separately.
+disabled: Code the two sets of fields separately (on a field
+     * basis) or together (on a frame basis using PAFF), depending on what is most
+     * appropriate for the content.
+     */
+    inline H264Settings& WithForceFieldPictures(const H264ForceFieldPictures& value) { SetForceFieldPictures(value); return *this;}
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether
+     * coding is performed on a field basis or on a frame basis. (When the video is
+     * progressive, the coding is always performed on a frame basis.)
+enabled: Force
+     * MediaLive to code on a field basis, so that odd and even sets of fields are
+     * coded separately.
+disabled: Code the two sets of fields separately (on a field
+     * basis) or together (on a frame basis using PAFF), depending on what is most
+     * appropriate for the content.
+     */
+    inline H264Settings& WithForceFieldPictures(H264ForceFieldPictures&& value) { SetForceFieldPictures(std::move(value)); return *this;}
 
 
     /**
@@ -572,25 +759,41 @@ namespace Model
 
     /**
      * GOP size (keyframe interval) in units of either frames or seconds per
-     * gopSizeUnits. Must be greater than zero.
+     * gopSizeUnits.
+If gopSizeUnits is frames, gopSize must be an integer and must be
+     * greater than or equal to 1.
+If gopSizeUnits is seconds, gopSize must be greater
+     * than 0, but need not be an integer.
      */
     inline double GetGopSize() const{ return m_gopSize; }
 
     /**
      * GOP size (keyframe interval) in units of either frames or seconds per
-     * gopSizeUnits. Must be greater than zero.
+     * gopSizeUnits.
+If gopSizeUnits is frames, gopSize must be an integer and must be
+     * greater than or equal to 1.
+If gopSizeUnits is seconds, gopSize must be greater
+     * than 0, but need not be an integer.
      */
     inline bool GopSizeHasBeenSet() const { return m_gopSizeHasBeenSet; }
 
     /**
      * GOP size (keyframe interval) in units of either frames or seconds per
-     * gopSizeUnits. Must be greater than zero.
+     * gopSizeUnits.
+If gopSizeUnits is frames, gopSize must be an integer and must be
+     * greater than or equal to 1.
+If gopSizeUnits is seconds, gopSize must be greater
+     * than 0, but need not be an integer.
      */
     inline void SetGopSize(double value) { m_gopSizeHasBeenSet = true; m_gopSize = value; }
 
     /**
      * GOP size (keyframe interval) in units of either frames or seconds per
-     * gopSizeUnits. Must be greater than zero.
+     * gopSizeUnits.
+If gopSizeUnits is frames, gopSize must be an integer and must be
+     * greater than or equal to 1.
+If gopSizeUnits is seconds, gopSize must be greater
+     * than 0, but need not be an integer.
      */
     inline H264Settings& WithGopSize(double value) { SetGopSize(value); return *this;}
 
@@ -734,46 +937,46 @@ For VBR: Set the maximum bitrate in
 
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation
-     * between repeated (cadence) I-frames and I-frames inserted by Scene Change
-     * Detection. If a scene change I-frame is within I-interval frames of a cadence
-     * I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP
-     * stretch requires enabling lookahead as well as setting I-interval. The normal
-     * cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
-     * Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if
+     * multiplex rate control is used.  Enforces separation between repeated (cadence)
+     * I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk
+     * and/or stretched to the scene change I-frame. GOP stretch requires enabling
+     * lookahead as well as setting I-interval. The normal cadence resumes for the next
+     * GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      */
     inline int GetMinIInterval() const{ return m_minIInterval; }
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation
-     * between repeated (cadence) I-frames and I-frames inserted by Scene Change
-     * Detection. If a scene change I-frame is within I-interval frames of a cadence
-     * I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP
-     * stretch requires enabling lookahead as well as setting I-interval. The normal
-     * cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
-     * Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if
+     * multiplex rate control is used.  Enforces separation between repeated (cadence)
+     * I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk
+     * and/or stretched to the scene change I-frame. GOP stretch requires enabling
+     * lookahead as well as setting I-interval. The normal cadence resumes for the next
+     * GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      */
     inline bool MinIIntervalHasBeenSet() const { return m_minIIntervalHasBeenSet; }
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation
-     * between repeated (cadence) I-frames and I-frames inserted by Scene Change
-     * Detection. If a scene change I-frame is within I-interval frames of a cadence
-     * I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP
-     * stretch requires enabling lookahead as well as setting I-interval. The normal
-     * cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
-     * Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if
+     * multiplex rate control is used.  Enforces separation between repeated (cadence)
+     * I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk
+     * and/or stretched to the scene change I-frame. GOP stretch requires enabling
+     * lookahead as well as setting I-interval. The normal cadence resumes for the next
+     * GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      */
     inline void SetMinIInterval(int value) { m_minIIntervalHasBeenSet = true; m_minIInterval = value; }
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation
-     * between repeated (cadence) I-frames and I-frames inserted by Scene Change
-     * Detection. If a scene change I-frame is within I-interval frames of a cadence
-     * I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP
-     * stretch requires enabling lookahead as well as setting I-interval. The normal
-     * cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
-     * Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if
+     * multiplex rate control is used.  Enforces separation between repeated (cadence)
+     * I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk
+     * and/or stretched to the scene change I-frame. GOP stretch requires enabling
+     * lookahead as well as setting I-interval. The normal cadence resumes for the next
+     * GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      */
     inline H264Settings& WithMinIInterval(int value) { SetMinIInterval(value); return *this;}
 
@@ -932,54 +1135,147 @@ For VBR: Set the maximum bitrate in
 
 
     /**
+     * Leave as STANDARD_QUALITY or choose a different value (which might result in
+     * additional costs to run the channel).
+- ENHANCED_QUALITY: Produces a slightly
+     * better video quality without an increase in the bitrate. Has an effect only when
+     * the Rate control mode is QVBR or CBR. If this channel is in a MediaLive
+     * multiplex, the value must be ENHANCED_QUALITY.
+- STANDARD_QUALITY: Valid for any
+     * Rate control mode.
+     */
+    inline const H264QualityLevel& GetQualityLevel() const{ return m_qualityLevel; }
+
+    /**
+     * Leave as STANDARD_QUALITY or choose a different value (which might result in
+     * additional costs to run the channel).
+- ENHANCED_QUALITY: Produces a slightly
+     * better video quality without an increase in the bitrate. Has an effect only when
+     * the Rate control mode is QVBR or CBR. If this channel is in a MediaLive
+     * multiplex, the value must be ENHANCED_QUALITY.
+- STANDARD_QUALITY: Valid for any
+     * Rate control mode.
+     */
+    inline bool QualityLevelHasBeenSet() const { return m_qualityLevelHasBeenSet; }
+
+    /**
+     * Leave as STANDARD_QUALITY or choose a different value (which might result in
+     * additional costs to run the channel).
+- ENHANCED_QUALITY: Produces a slightly
+     * better video quality without an increase in the bitrate. Has an effect only when
+     * the Rate control mode is QVBR or CBR. If this channel is in a MediaLive
+     * multiplex, the value must be ENHANCED_QUALITY.
+- STANDARD_QUALITY: Valid for any
+     * Rate control mode.
+     */
+    inline void SetQualityLevel(const H264QualityLevel& value) { m_qualityLevelHasBeenSet = true; m_qualityLevel = value; }
+
+    /**
+     * Leave as STANDARD_QUALITY or choose a different value (which might result in
+     * additional costs to run the channel).
+- ENHANCED_QUALITY: Produces a slightly
+     * better video quality without an increase in the bitrate. Has an effect only when
+     * the Rate control mode is QVBR or CBR. If this channel is in a MediaLive
+     * multiplex, the value must be ENHANCED_QUALITY.
+- STANDARD_QUALITY: Valid for any
+     * Rate control mode.
+     */
+    inline void SetQualityLevel(H264QualityLevel&& value) { m_qualityLevelHasBeenSet = true; m_qualityLevel = std::move(value); }
+
+    /**
+     * Leave as STANDARD_QUALITY or choose a different value (which might result in
+     * additional costs to run the channel).
+- ENHANCED_QUALITY: Produces a slightly
+     * better video quality without an increase in the bitrate. Has an effect only when
+     * the Rate control mode is QVBR or CBR. If this channel is in a MediaLive
+     * multiplex, the value must be ENHANCED_QUALITY.
+- STANDARD_QUALITY: Valid for any
+     * Rate control mode.
+     */
+    inline H264Settings& WithQualityLevel(const H264QualityLevel& value) { SetQualityLevel(value); return *this;}
+
+    /**
+     * Leave as STANDARD_QUALITY or choose a different value (which might result in
+     * additional costs to run the channel).
+- ENHANCED_QUALITY: Produces a slightly
+     * better video quality without an increase in the bitrate. Has an effect only when
+     * the Rate control mode is QVBR or CBR. If this channel is in a MediaLive
+     * multiplex, the value must be ENHANCED_QUALITY.
+- STANDARD_QUALITY: Valid for any
+     * Rate control mode.
+     */
+    inline H264Settings& WithQualityLevel(H264QualityLevel&& value) { SetQualityLevel(std::move(value)); return *this;}
+
+
+    /**
      * Controls the target quality for the video encode. Applies only when the rate
-     * control mode is QVBR. Set values for the QVBR quality level field and Max
-     * bitrate field that suit your most important viewing devices. Recommended values
-     * are:
-- Primary screen: Quality level: 8 to 10. Max bitrate: 4M
-- PC or tablet:
-     * Quality level: 7. Max bitrate: 1.5M to 3M
-- Smartphone: Quality level: 6. Max
-     * bitrate: 1M to 1.5M
+     * control mode is QVBR. You can set a target quality or you can let MediaLive
+     * determine the best quality. To set a target quality, enter values in the QVBR
+     * quality level field and the Max bitrate field. Enter values that suit your most
+     * important viewing devices. Recommended values are:
+- Primary screen: Quality
+     * level: 8 to 10. Max bitrate: 4M
+- PC or tablet: Quality level: 7. Max bitrate:
+     * 1.5M to 3M
+- Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+To let
+     * MediaLive decide, leave the QVBR quality level field empty, and in Max bitrate
+     * enter the maximum rate you want in the video. For more information, see the
+     * section called "Video - rate control mode" in the MediaLive user guide
      */
     inline int GetQvbrQualityLevel() const{ return m_qvbrQualityLevel; }
 
     /**
      * Controls the target quality for the video encode. Applies only when the rate
-     * control mode is QVBR. Set values for the QVBR quality level field and Max
-     * bitrate field that suit your most important viewing devices. Recommended values
-     * are:
-- Primary screen: Quality level: 8 to 10. Max bitrate: 4M
-- PC or tablet:
-     * Quality level: 7. Max bitrate: 1.5M to 3M
-- Smartphone: Quality level: 6. Max
-     * bitrate: 1M to 1.5M
+     * control mode is QVBR. You can set a target quality or you can let MediaLive
+     * determine the best quality. To set a target quality, enter values in the QVBR
+     * quality level field and the Max bitrate field. Enter values that suit your most
+     * important viewing devices. Recommended values are:
+- Primary screen: Quality
+     * level: 8 to 10. Max bitrate: 4M
+- PC or tablet: Quality level: 7. Max bitrate:
+     * 1.5M to 3M
+- Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+To let
+     * MediaLive decide, leave the QVBR quality level field empty, and in Max bitrate
+     * enter the maximum rate you want in the video. For more information, see the
+     * section called "Video - rate control mode" in the MediaLive user guide
      */
     inline bool QvbrQualityLevelHasBeenSet() const { return m_qvbrQualityLevelHasBeenSet; }
 
     /**
      * Controls the target quality for the video encode. Applies only when the rate
-     * control mode is QVBR. Set values for the QVBR quality level field and Max
-     * bitrate field that suit your most important viewing devices. Recommended values
-     * are:
-- Primary screen: Quality level: 8 to 10. Max bitrate: 4M
-- PC or tablet:
-     * Quality level: 7. Max bitrate: 1.5M to 3M
-- Smartphone: Quality level: 6. Max
-     * bitrate: 1M to 1.5M
+     * control mode is QVBR. You can set a target quality or you can let MediaLive
+     * determine the best quality. To set a target quality, enter values in the QVBR
+     * quality level field and the Max bitrate field. Enter values that suit your most
+     * important viewing devices. Recommended values are:
+- Primary screen: Quality
+     * level: 8 to 10. Max bitrate: 4M
+- PC or tablet: Quality level: 7. Max bitrate:
+     * 1.5M to 3M
+- Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+To let
+     * MediaLive decide, leave the QVBR quality level field empty, and in Max bitrate
+     * enter the maximum rate you want in the video. For more information, see the
+     * section called "Video - rate control mode" in the MediaLive user guide
      */
     inline void SetQvbrQualityLevel(int value) { m_qvbrQualityLevelHasBeenSet = true; m_qvbrQualityLevel = value; }
 
     /**
      * Controls the target quality for the video encode. Applies only when the rate
-     * control mode is QVBR. Set values for the QVBR quality level field and Max
-     * bitrate field that suit your most important viewing devices. Recommended values
-     * are:
-- Primary screen: Quality level: 8 to 10. Max bitrate: 4M
-- PC or tablet:
-     * Quality level: 7. Max bitrate: 1.5M to 3M
-- Smartphone: Quality level: 6. Max
-     * bitrate: 1M to 1.5M
+     * control mode is QVBR. You can set a target quality or you can let MediaLive
+     * determine the best quality. To set a target quality, enter values in the QVBR
+     * quality level field and the Max bitrate field. Enter values that suit your most
+     * important viewing devices. Recommended values are:
+- Primary screen: Quality
+     * level: 8 to 10. Max bitrate: 4M
+- PC or tablet: Quality level: 7. Max bitrate:
+     * 1.5M to 3M
+- Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+To let
+     * MediaLive decide, leave the QVBR quality level field empty, and in Max bitrate
+     * enter the maximum rate you want in the video. For more information, see the
+     * section called "Video - rate control mode" in the MediaLive user guide
      */
     inline H264Settings& WithQvbrQualityLevel(int value) { SetQvbrQualityLevel(value); return *this;}
 
@@ -1001,6 +1297,13 @@ CBR: Quality varies,
      * depending on the video complexity. Recommended only if you distribute
 your
      * assets to devices that cannot handle variable bitrates.
+
+Multiplex: This rate
+     * control mode is only supported (and is required) when the video is
+     * being
+delivered to a MediaLive Multiplex in which case the rate control
+     * configuration is controlled
+by the properties within the Multiplex Program.
      */
     inline const H264RateControlMode& GetRateControlMode() const{ return m_rateControlMode; }
 
@@ -1021,6 +1324,13 @@ CBR: Quality varies,
      * depending on the video complexity. Recommended only if you distribute
 your
      * assets to devices that cannot handle variable bitrates.
+
+Multiplex: This rate
+     * control mode is only supported (and is required) when the video is
+     * being
+delivered to a MediaLive Multiplex in which case the rate control
+     * configuration is controlled
+by the properties within the Multiplex Program.
      */
     inline bool RateControlModeHasBeenSet() const { return m_rateControlModeHasBeenSet; }
 
@@ -1041,6 +1351,13 @@ CBR: Quality varies,
      * depending on the video complexity. Recommended only if you distribute
 your
      * assets to devices that cannot handle variable bitrates.
+
+Multiplex: This rate
+     * control mode is only supported (and is required) when the video is
+     * being
+delivered to a MediaLive Multiplex in which case the rate control
+     * configuration is controlled
+by the properties within the Multiplex Program.
      */
     inline void SetRateControlMode(const H264RateControlMode& value) { m_rateControlModeHasBeenSet = true; m_rateControlMode = value; }
 
@@ -1061,6 +1378,13 @@ CBR: Quality varies,
      * depending on the video complexity. Recommended only if you distribute
 your
      * assets to devices that cannot handle variable bitrates.
+
+Multiplex: This rate
+     * control mode is only supported (and is required) when the video is
+     * being
+delivered to a MediaLive Multiplex in which case the rate control
+     * configuration is controlled
+by the properties within the Multiplex Program.
      */
     inline void SetRateControlMode(H264RateControlMode&& value) { m_rateControlModeHasBeenSet = true; m_rateControlMode = std::move(value); }
 
@@ -1081,6 +1405,13 @@ CBR: Quality varies,
      * depending on the video complexity. Recommended only if you distribute
 your
      * assets to devices that cannot handle variable bitrates.
+
+Multiplex: This rate
+     * control mode is only supported (and is required) when the video is
+     * being
+delivered to a MediaLive Multiplex in which case the rate control
+     * configuration is controlled
+by the properties within the Multiplex Program.
      */
     inline H264Settings& WithRateControlMode(const H264RateControlMode& value) { SetRateControlMode(value); return *this;}
 
@@ -1101,6 +1432,13 @@ CBR: Quality varies,
      * depending on the video complexity. Recommended only if you distribute
 your
      * assets to devices that cannot handle variable bitrates.
+
+Multiplex: This rate
+     * control mode is only supported (and is required) when the video is
+     * being
+delivered to a MediaLive Multiplex in which case the rate control
+     * configuration is controlled
+by the properties within the Multiplex Program.
      */
     inline H264Settings& WithRateControlMode(H264RateControlMode&& value) { SetRateControlMode(std::move(value)); return *this;}
 
@@ -1234,62 +1572,110 @@ This field is optional; when
 
     /**
      * Softness. Selects quantizer matrix, larger values reduce high-frequency content
-     * in the encoded image.
+     * in the encoded image.  If not set to zero, must be greater than 15.
      */
     inline int GetSoftness() const{ return m_softness; }
 
     /**
      * Softness. Selects quantizer matrix, larger values reduce high-frequency content
-     * in the encoded image.
+     * in the encoded image.  If not set to zero, must be greater than 15.
      */
     inline bool SoftnessHasBeenSet() const { return m_softnessHasBeenSet; }
 
     /**
      * Softness. Selects quantizer matrix, larger values reduce high-frequency content
-     * in the encoded image.
+     * in the encoded image.  If not set to zero, must be greater than 15.
      */
     inline void SetSoftness(int value) { m_softnessHasBeenSet = true; m_softness = value; }
 
     /**
      * Softness. Selects quantizer matrix, larger values reduce high-frequency content
-     * in the encoded image.
+     * in the encoded image.  If not set to zero, must be greater than 15.
      */
     inline H264Settings& WithSoftness(int value) { SetSoftness(value); return *this;}
 
 
     /**
-     * If set to enabled, adjust quantization within each frame based on spatial
-     * variation of content complexity.
+     * Spatial AQ makes adjustments within each frame based on spatial variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * spatial AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using the
+     * specified strength. Disabled: MediaLive won't apply spatial AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply spatial AQ.
      */
     inline const H264SpatialAq& GetSpatialAq() const{ return m_spatialAq; }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on spatial
-     * variation of content complexity.
+     * Spatial AQ makes adjustments within each frame based on spatial variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * spatial AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using the
+     * specified strength. Disabled: MediaLive won't apply spatial AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply spatial AQ.
      */
     inline bool SpatialAqHasBeenSet() const { return m_spatialAqHasBeenSet; }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on spatial
-     * variation of content complexity.
+     * Spatial AQ makes adjustments within each frame based on spatial variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * spatial AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using the
+     * specified strength. Disabled: MediaLive won't apply spatial AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply spatial AQ.
      */
     inline void SetSpatialAq(const H264SpatialAq& value) { m_spatialAqHasBeenSet = true; m_spatialAq = value; }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on spatial
-     * variation of content complexity.
+     * Spatial AQ makes adjustments within each frame based on spatial variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * spatial AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using the
+     * specified strength. Disabled: MediaLive won't apply spatial AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply spatial AQ.
      */
     inline void SetSpatialAq(H264SpatialAq&& value) { m_spatialAqHasBeenSet = true; m_spatialAq = std::move(value); }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on spatial
-     * variation of content complexity.
+     * Spatial AQ makes adjustments within each frame based on spatial variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * spatial AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using the
+     * specified strength. Disabled: MediaLive won't apply spatial AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply spatial AQ.
      */
     inline H264Settings& WithSpatialAq(const H264SpatialAq& value) { SetSpatialAq(value); return *this;}
 
     /**
-     * If set to enabled, adjust quantization within each frame based on spatial
-     * variation of content complexity.
+     * Spatial AQ makes adjustments within each frame based on spatial variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * spatial AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using the
+     * specified strength. Disabled: MediaLive won't apply spatial AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply spatial AQ.
      */
     inline H264Settings& WithSpatialAq(H264SpatialAq&& value) { SetSpatialAq(std::move(value)); return *this;}
 
@@ -1363,38 +1749,86 @@ This field is optional; when
 
 
     /**
-     * If set to enabled, adjust quantization within each frame based on temporal
-     * variation of content complexity.
+     * Temporal makes adjustments within each frame based on temporal variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * temporal AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using the
+     * specified strength. Disabled: MediaLive won't apply temporal AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply temporal AQ.
      */
     inline const H264TemporalAq& GetTemporalAq() const{ return m_temporalAq; }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on temporal
-     * variation of content complexity.
+     * Temporal makes adjustments within each frame based on temporal variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * temporal AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using the
+     * specified strength. Disabled: MediaLive won't apply temporal AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply temporal AQ.
      */
     inline bool TemporalAqHasBeenSet() const { return m_temporalAqHasBeenSet; }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on temporal
-     * variation of content complexity.
+     * Temporal makes adjustments within each frame based on temporal variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * temporal AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using the
+     * specified strength. Disabled: MediaLive won't apply temporal AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply temporal AQ.
      */
     inline void SetTemporalAq(const H264TemporalAq& value) { m_temporalAqHasBeenSet = true; m_temporalAq = value; }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on temporal
-     * variation of content complexity.
+     * Temporal makes adjustments within each frame based on temporal variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * temporal AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using the
+     * specified strength. Disabled: MediaLive won't apply temporal AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply temporal AQ.
      */
     inline void SetTemporalAq(H264TemporalAq&& value) { m_temporalAqHasBeenSet = true; m_temporalAq = std::move(value); }
 
     /**
-     * If set to enabled, adjust quantization within each frame based on temporal
-     * variation of content complexity.
+     * Temporal makes adjustments within each frame based on temporal variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * temporal AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using the
+     * specified strength. Disabled: MediaLive won't apply temporal AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply temporal AQ.
      */
     inline H264Settings& WithTemporalAq(const H264TemporalAq& value) { SetTemporalAq(value); return *this;}
 
     /**
-     * If set to enabled, adjust quantization within each frame based on temporal
-     * variation of content complexity.
+     * Temporal makes adjustments within each frame based on temporal variation of
+     * content complexity. The value to enter in this field depends on the value in the
+     * Adaptive quantization field: If you have set the Adaptive quantization field to
+     * Auto, MediaLive ignores any value in this field. MediaLive will determine if
+     * temporal AQ is appropriate and will apply the appropriate strength. If you have
+     * set the Adaptive quantization field to a strength, you can set this field to
+     * Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using the
+     * specified strength. Disabled: MediaLive won't apply temporal AQ. If you have set
+     * the Adaptive quantization to Disabled, MediaLive ignores any value in this field
+     * and doesn't apply temporal AQ.
      */
     inline H264Settings& WithTemporalAq(H264TemporalAq&& value) { SetTemporalAq(std::move(value)); return *this;}
 
@@ -1479,11 +1913,17 @@ This field is optional; when
     H264EntropyEncoding m_entropyEncoding;
     bool m_entropyEncodingHasBeenSet;
 
+    H264FilterSettings m_filterSettings;
+    bool m_filterSettingsHasBeenSet;
+
     FixedAfd m_fixedAfd;
     bool m_fixedAfdHasBeenSet;
 
     H264FlickerAq m_flickerAq;
     bool m_flickerAqHasBeenSet;
+
+    H264ForceFieldPictures m_forceFieldPictures;
+    bool m_forceFieldPicturesHasBeenSet;
 
     H264FramerateControl m_framerateControl;
     bool m_framerateControlHasBeenSet;
@@ -1535,6 +1975,9 @@ This field is optional; when
 
     H264Profile m_profile;
     bool m_profileHasBeenSet;
+
+    H264QualityLevel m_qualityLevel;
+    bool m_qualityLevelHasBeenSet;
 
     int m_qvbrQualityLevel;
     bool m_qvbrQualityLevelHasBeenSet;

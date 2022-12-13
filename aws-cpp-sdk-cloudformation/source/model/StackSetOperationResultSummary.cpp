@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/cloudformation/model/StackSetOperationResultSummary.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -36,7 +26,8 @@ StackSetOperationResultSummary::StackSetOperationResultSummary() :
     m_status(StackSetOperationResultStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_statusReasonHasBeenSet(false),
-    m_accountGateResultHasBeenSet(false)
+    m_accountGateResultHasBeenSet(false),
+    m_organizationalUnitIdHasBeenSet(false)
 {
 }
 
@@ -46,7 +37,8 @@ StackSetOperationResultSummary::StackSetOperationResultSummary(const XmlNode& xm
     m_status(StackSetOperationResultStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_statusReasonHasBeenSet(false),
-    m_accountGateResultHasBeenSet(false)
+    m_accountGateResultHasBeenSet(false),
+    m_organizationalUnitIdHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -87,6 +79,12 @@ StackSetOperationResultSummary& StackSetOperationResultSummary::operator =(const
       m_accountGateResult = accountGateResultNode;
       m_accountGateResultHasBeenSet = true;
     }
+    XmlNode organizationalUnitIdNode = resultNode.FirstChild("OrganizationalUnitId");
+    if(!organizationalUnitIdNode.IsNull())
+    {
+      m_organizationalUnitId = Aws::Utils::Xml::DecodeEscapedXmlText(organizationalUnitIdNode.GetText());
+      m_organizationalUnitIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -121,6 +119,11 @@ void StackSetOperationResultSummary::OutputToStream(Aws::OStream& oStream, const
       m_accountGateResult.OutputToStream(oStream, accountGateResultLocationAndMemberSs.str().c_str());
   }
 
+  if(m_organizationalUnitIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OrganizationalUnitId=" << StringUtils::URLEncode(m_organizationalUnitId.c_str()) << "&";
+  }
+
 }
 
 void StackSetOperationResultSummary::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -146,6 +149,10 @@ void StackSetOperationResultSummary::OutputToStream(Aws::OStream& oStream, const
       Aws::String accountGateResultLocationAndMember(location);
       accountGateResultLocationAndMember += ".AccountGateResult";
       m_accountGateResult.OutputToStream(oStream, accountGateResultLocationAndMember.c_str());
+  }
+  if(m_organizationalUnitIdHasBeenSet)
+  {
+      oStream << location << ".OrganizationalUnitId=" << StringUtils::URLEncode(m_organizationalUnitId.c_str()) << "&";
   }
 }
 

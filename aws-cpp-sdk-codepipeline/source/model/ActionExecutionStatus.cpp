@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/codepipeline/model/ActionExecutionStatus.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -31,6 +21,7 @@ namespace Aws
       {
 
         static const int InProgress_HASH = HashingUtils::HashString("InProgress");
+        static const int Abandoned_HASH = HashingUtils::HashString("Abandoned");
         static const int Succeeded_HASH = HashingUtils::HashString("Succeeded");
         static const int Failed_HASH = HashingUtils::HashString("Failed");
 
@@ -41,6 +32,10 @@ namespace Aws
           if (hashCode == InProgress_HASH)
           {
             return ActionExecutionStatus::InProgress;
+          }
+          else if (hashCode == Abandoned_HASH)
+          {
+            return ActionExecutionStatus::Abandoned;
           }
           else if (hashCode == Succeeded_HASH)
           {
@@ -66,6 +61,8 @@ namespace Aws
           {
           case ActionExecutionStatus::InProgress:
             return "InProgress";
+          case ActionExecutionStatus::Abandoned:
+            return "Abandoned";
           case ActionExecutionStatus::Succeeded:
             return "Succeeded";
           case ActionExecutionStatus::Failed:

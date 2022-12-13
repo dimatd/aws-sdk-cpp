@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/acm/ACM_EXPORTS.h>
@@ -235,7 +225,11 @@ namespace Model
      * <p>Contains the CNAME record that you add to your DNS database for domain
      * validation. For more information, see <a
      * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use
-     * DNS to Validate Domain Ownership</a>.</p>
+     * DNS to Validate Domain Ownership</a>.</p> <p>Note: The CNAME information that
+     * you need does not include the name of your domain. If you include&#x2028; your
+     * domain name in the DNS database CNAME record, validation fails.&#x2028; For
+     * example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only
+     * "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.</p>
      */
     inline const ResourceRecord& GetResourceRecord() const{ return m_resourceRecord; }
 
@@ -243,7 +237,11 @@ namespace Model
      * <p>Contains the CNAME record that you add to your DNS database for domain
      * validation. For more information, see <a
      * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use
-     * DNS to Validate Domain Ownership</a>.</p>
+     * DNS to Validate Domain Ownership</a>.</p> <p>Note: The CNAME information that
+     * you need does not include the name of your domain. If you include&#x2028; your
+     * domain name in the DNS database CNAME record, validation fails.&#x2028; For
+     * example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only
+     * "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.</p>
      */
     inline bool ResourceRecordHasBeenSet() const { return m_resourceRecordHasBeenSet; }
 
@@ -251,7 +249,11 @@ namespace Model
      * <p>Contains the CNAME record that you add to your DNS database for domain
      * validation. For more information, see <a
      * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use
-     * DNS to Validate Domain Ownership</a>.</p>
+     * DNS to Validate Domain Ownership</a>.</p> <p>Note: The CNAME information that
+     * you need does not include the name of your domain. If you include&#x2028; your
+     * domain name in the DNS database CNAME record, validation fails.&#x2028; For
+     * example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only
+     * "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.</p>
      */
     inline void SetResourceRecord(const ResourceRecord& value) { m_resourceRecordHasBeenSet = true; m_resourceRecord = value; }
 
@@ -259,7 +261,11 @@ namespace Model
      * <p>Contains the CNAME record that you add to your DNS database for domain
      * validation. For more information, see <a
      * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use
-     * DNS to Validate Domain Ownership</a>.</p>
+     * DNS to Validate Domain Ownership</a>.</p> <p>Note: The CNAME information that
+     * you need does not include the name of your domain. If you include&#x2028; your
+     * domain name in the DNS database CNAME record, validation fails.&#x2028; For
+     * example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only
+     * "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.</p>
      */
     inline void SetResourceRecord(ResourceRecord&& value) { m_resourceRecordHasBeenSet = true; m_resourceRecord = std::move(value); }
 
@@ -267,7 +273,11 @@ namespace Model
      * <p>Contains the CNAME record that you add to your DNS database for domain
      * validation. For more information, see <a
      * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use
-     * DNS to Validate Domain Ownership</a>.</p>
+     * DNS to Validate Domain Ownership</a>.</p> <p>Note: The CNAME information that
+     * you need does not include the name of your domain. If you include&#x2028; your
+     * domain name in the DNS database CNAME record, validation fails.&#x2028; For
+     * example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only
+     * "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.</p>
      */
     inline DomainValidation& WithResourceRecord(const ResourceRecord& value) { SetResourceRecord(value); return *this;}
 
@@ -275,7 +285,11 @@ namespace Model
      * <p>Contains the CNAME record that you add to your DNS database for domain
      * validation. For more information, see <a
      * href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html">Use
-     * DNS to Validate Domain Ownership</a>.</p>
+     * DNS to Validate Domain Ownership</a>.</p> <p>Note: The CNAME information that
+     * you need does not include the name of your domain. If you include&#x2028; your
+     * domain name in the DNS database CNAME record, validation fails.&#x2028; For
+     * example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only
+     * "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.</p>
      */
     inline DomainValidation& WithResourceRecord(ResourceRecord&& value) { SetResourceRecord(std::move(value)); return *this;}
 

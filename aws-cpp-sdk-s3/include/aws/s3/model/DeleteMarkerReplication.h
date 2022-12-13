@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -33,8 +23,22 @@ namespace Model
 {
 
   /**
-   * <p>Specifies whether Amazon S3 should replicate delete makers.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Specifies whether Amazon S3 replicates delete markers. If you specify a
+   * <code>Filter</code> in your replication configuration, you must also include a
+   * <code>DeleteMarkerReplication</code> element. If your <code>Filter</code>
+   * includes a <code>Tag</code> element, the <code>DeleteMarkerReplication</code>
+   * <code>Status</code> must be set to Disabled, because Amazon S3 does not support
+   * replicating delete markers for tag-based rules. For an example configuration,
+   * see <a
+   * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config">Basic
+   * Rule Configuration</a>. </p> <p>For more information about delete marker
+   * replication, see <a
+   * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-marker-replication.html">Basic
+   * Rule Configuration</a>. </p>  <p>If you are using an earlier version of
+   * the replication configuration, Amazon S3 handles replication of delete markers
+   * differently. For more information, see <a
+   * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations">Backward
+   * Compatibility</a>.</p> <p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteMarkerReplication">AWS
    * API Reference</a></p>
    */
@@ -49,44 +53,38 @@ namespace Model
 
 
     /**
-     * <p>The status of the delete marker replication.</p> <note> <p> In the current
-     * implementation, Amazon S3 doesn't replicate the delete markers. The status must
-     * be <code>Disabled</code>. </p> </note>
+     * <p>Indicates whether to replicate delete markers.</p>  <p>Indicates
+     * whether to replicate delete markers.</p> 
      */
     inline const DeleteMarkerReplicationStatus& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the delete marker replication.</p> <note> <p> In the current
-     * implementation, Amazon S3 doesn't replicate the delete markers. The status must
-     * be <code>Disabled</code>. </p> </note>
+     * <p>Indicates whether to replicate delete markers.</p>  <p>Indicates
+     * whether to replicate delete markers.</p> 
      */
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
 
     /**
-     * <p>The status of the delete marker replication.</p> <note> <p> In the current
-     * implementation, Amazon S3 doesn't replicate the delete markers. The status must
-     * be <code>Disabled</code>. </p> </note>
+     * <p>Indicates whether to replicate delete markers.</p>  <p>Indicates
+     * whether to replicate delete markers.</p> 
      */
     inline void SetStatus(const DeleteMarkerReplicationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The status of the delete marker replication.</p> <note> <p> In the current
-     * implementation, Amazon S3 doesn't replicate the delete markers. The status must
-     * be <code>Disabled</code>. </p> </note>
+     * <p>Indicates whether to replicate delete markers.</p>  <p>Indicates
+     * whether to replicate delete markers.</p> 
      */
     inline void SetStatus(DeleteMarkerReplicationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
-     * <p>The status of the delete marker replication.</p> <note> <p> In the current
-     * implementation, Amazon S3 doesn't replicate the delete markers. The status must
-     * be <code>Disabled</code>. </p> </note>
+     * <p>Indicates whether to replicate delete markers.</p>  <p>Indicates
+     * whether to replicate delete markers.</p> 
      */
     inline DeleteMarkerReplication& WithStatus(const DeleteMarkerReplicationStatus& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the delete marker replication.</p> <note> <p> In the current
-     * implementation, Amazon S3 doesn't replicate the delete markers. The status must
-     * be <code>Disabled</code>. </p> </note>
+     * <p>Indicates whether to replicate delete markers.</p>  <p>Indicates
+     * whether to replicate delete markers.</p> 
      */
     inline DeleteMarkerReplication& WithStatus(DeleteMarkerReplicationStatus&& value) { SetStatus(std::move(value)); return *this;}
 

@@ -1,25 +1,15 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/codepipeline/CodePipelineErrors.h>
 
 using namespace Aws::Client;
-using namespace Aws::CodePipeline;
 using namespace Aws::Utils;
+using namespace Aws::CodePipeline;
 
 namespace Aws
 {
@@ -28,12 +18,15 @@ namespace CodePipeline
 namespace CodePipelineErrorMapper
 {
 
+static const int CONFLICT_HASH = HashingUtils::HashString("ConflictException");
+static const int DUPLICATED_STOP_REQUEST_HASH = HashingUtils::HashString("DuplicatedStopRequestException");
 static const int INVALID_NONCE_HASH = HashingUtils::HashString("InvalidNonceException");
 static const int INVALID_CLIENT_TOKEN_HASH = HashingUtils::HashString("InvalidClientTokenException");
 static const int NOT_LATEST_PIPELINE_EXECUTION_HASH = HashingUtils::HashString("NotLatestPipelineExecutionException");
 static const int INVALID_BLOCKER_DECLARATION_HASH = HashingUtils::HashString("InvalidBlockerDeclarationException");
 static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
 static const int INVALID_ACTION_DECLARATION_HASH = HashingUtils::HashString("InvalidActionDeclarationException");
+static const int REQUEST_FAILED_HASH = HashingUtils::HashString("RequestFailedException");
 static const int CONCURRENT_MODIFICATION_HASH = HashingUtils::HashString("ConcurrentModificationException");
 static const int PIPELINE_NAME_IN_USE_HASH = HashingUtils::HashString("PipelineNameInUseException");
 static const int APPROVAL_ALREADY_COMPLETED_HASH = HashingUtils::HashString("ApprovalAlreadyCompletedException");
@@ -42,6 +35,7 @@ static const int INVALID_STRUCTURE_HASH = HashingUtils::HashString("InvalidStruc
 static const int PIPELINE_VERSION_NOT_FOUND_HASH = HashingUtils::HashString("PipelineVersionNotFoundException");
 static const int INVALID_WEBHOOK_FILTER_PATTERN_HASH = HashingUtils::HashString("InvalidWebhookFilterPatternException");
 static const int PIPELINE_NOT_FOUND_HASH = HashingUtils::HashString("PipelineNotFoundException");
+static const int OUTPUT_VARIABLES_SIZE_EXCEEDED_HASH = HashingUtils::HashString("OutputVariablesSizeExceededException");
 static const int ACTION_TYPE_NOT_FOUND_HASH = HashingUtils::HashString("ActionTypeNotFoundException");
 static const int INVALID_TAGS_HASH = HashingUtils::HashString("InvalidTagsException");
 static const int INVALID_APPROVAL_TOKEN_HASH = HashingUtils::HashString("InvalidApprovalTokenException");
@@ -49,6 +43,7 @@ static const int JOB_NOT_FOUND_HASH = HashingUtils::HashString("JobNotFoundExcep
 static const int INVALID_JOB_HASH = HashingUtils::HashString("InvalidJobException");
 static const int INVALID_ARN_HASH = HashingUtils::HashString("InvalidArnException");
 static const int INVALID_JOB_STATE_HASH = HashingUtils::HashString("InvalidJobStateException");
+static const int PIPELINE_EXECUTION_NOT_STOPPABLE_HASH = HashingUtils::HashString("PipelineExecutionNotStoppableException");
 static const int PIPELINE_EXECUTION_NOT_FOUND_HASH = HashingUtils::HashString("PipelineExecutionNotFoundException");
 static const int INVALID_WEBHOOK_AUTHENTICATION_PARAMETERS_HASH = HashingUtils::HashString("InvalidWebhookAuthenticationParametersException");
 static const int TOO_MANY_TAGS_HASH = HashingUtils::HashString("TooManyTagsException");
@@ -63,7 +58,15 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
   int hashCode = HashingUtils::HashString(errorName);
 
-  if (hashCode == INVALID_NONCE_HASH)
+  if (hashCode == CONFLICT_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::CONFLICT), false);
+  }
+  else if (hashCode == DUPLICATED_STOP_REQUEST_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::DUPLICATED_STOP_REQUEST), false);
+  }
+  else if (hashCode == INVALID_NONCE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::INVALID_NONCE), false);
   }
@@ -81,11 +84,15 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   }
   else if (hashCode == LIMIT_EXCEEDED_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::LIMIT_EXCEEDED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::LIMIT_EXCEEDED), true);
   }
   else if (hashCode == INVALID_ACTION_DECLARATION_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::INVALID_ACTION_DECLARATION), false);
+  }
+  else if (hashCode == REQUEST_FAILED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::REQUEST_FAILED), false);
   }
   else if (hashCode == CONCURRENT_MODIFICATION_HASH)
   {
@@ -119,6 +126,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::PIPELINE_NOT_FOUND), false);
   }
+  else if (hashCode == OUTPUT_VARIABLES_SIZE_EXCEEDED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::OUTPUT_VARIABLES_SIZE_EXCEEDED), false);
+  }
   else if (hashCode == ACTION_TYPE_NOT_FOUND_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::ACTION_TYPE_NOT_FOUND), false);
@@ -146,6 +157,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_JOB_STATE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::INVALID_JOB_STATE), false);
+  }
+  else if (hashCode == PIPELINE_EXECUTION_NOT_STOPPABLE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::PIPELINE_EXECUTION_NOT_STOPPABLE), false);
   }
   else if (hashCode == PIPELINE_EXECUTION_NOT_FOUND_HASH)
   {

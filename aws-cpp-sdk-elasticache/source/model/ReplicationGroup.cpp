@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/elasticache/model/ReplicationGroup.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -33,6 +23,7 @@ namespace Model
 ReplicationGroup::ReplicationGroup() : 
     m_replicationGroupIdHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_globalReplicationGroupInfoHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_pendingModifiedValuesHasBeenSet(false),
     m_memberClustersHasBeenSet(false),
@@ -40,6 +31,8 @@ ReplicationGroup::ReplicationGroup() :
     m_snapshottingClusterIdHasBeenSet(false),
     m_automaticFailover(AutomaticFailoverStatus::NOT_SET),
     m_automaticFailoverHasBeenSet(false),
+    m_multiAZ(MultiAZStatus::NOT_SET),
+    m_multiAZHasBeenSet(false),
     m_configurationEndpointHasBeenSet(false),
     m_snapshotRetentionLimit(0),
     m_snapshotRetentionLimitHasBeenSet(false),
@@ -54,13 +47,21 @@ ReplicationGroup::ReplicationGroup() :
     m_transitEncryptionEnabledHasBeenSet(false),
     m_atRestEncryptionEnabled(false),
     m_atRestEncryptionEnabledHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_memberClustersOutpostArnsHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_aRNHasBeenSet(false),
+    m_userGroupIdsHasBeenSet(false),
+    m_logDeliveryConfigurationsHasBeenSet(false),
+    m_replicationGroupCreateTimeHasBeenSet(false),
+    m_dataTiering(DataTieringStatus::NOT_SET),
+    m_dataTieringHasBeenSet(false)
 {
 }
 
 ReplicationGroup::ReplicationGroup(const XmlNode& xmlNode) : 
     m_replicationGroupIdHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_globalReplicationGroupInfoHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_pendingModifiedValuesHasBeenSet(false),
     m_memberClustersHasBeenSet(false),
@@ -68,6 +69,8 @@ ReplicationGroup::ReplicationGroup(const XmlNode& xmlNode) :
     m_snapshottingClusterIdHasBeenSet(false),
     m_automaticFailover(AutomaticFailoverStatus::NOT_SET),
     m_automaticFailoverHasBeenSet(false),
+    m_multiAZ(MultiAZStatus::NOT_SET),
+    m_multiAZHasBeenSet(false),
     m_configurationEndpointHasBeenSet(false),
     m_snapshotRetentionLimit(0),
     m_snapshotRetentionLimitHasBeenSet(false),
@@ -82,7 +85,14 @@ ReplicationGroup::ReplicationGroup(const XmlNode& xmlNode) :
     m_transitEncryptionEnabledHasBeenSet(false),
     m_atRestEncryptionEnabled(false),
     m_atRestEncryptionEnabledHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_memberClustersOutpostArnsHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_aRNHasBeenSet(false),
+    m_userGroupIdsHasBeenSet(false),
+    m_logDeliveryConfigurationsHasBeenSet(false),
+    m_replicationGroupCreateTimeHasBeenSet(false),
+    m_dataTiering(DataTieringStatus::NOT_SET),
+    m_dataTieringHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -104,6 +114,12 @@ ReplicationGroup& ReplicationGroup::operator =(const XmlNode& xmlNode)
     {
       m_description = Aws::Utils::Xml::DecodeEscapedXmlText(descriptionNode.GetText());
       m_descriptionHasBeenSet = true;
+    }
+    XmlNode globalReplicationGroupInfoNode = resultNode.FirstChild("GlobalReplicationGroupInfo");
+    if(!globalReplicationGroupInfoNode.IsNull())
+    {
+      m_globalReplicationGroupInfo = globalReplicationGroupInfoNode;
+      m_globalReplicationGroupInfoHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
@@ -152,6 +168,12 @@ ReplicationGroup& ReplicationGroup::operator =(const XmlNode& xmlNode)
     {
       m_automaticFailover = AutomaticFailoverStatusMapper::GetAutomaticFailoverStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(automaticFailoverNode.GetText()).c_str()).c_str());
       m_automaticFailoverHasBeenSet = true;
+    }
+    XmlNode multiAZNode = resultNode.FirstChild("MultiAZ");
+    if(!multiAZNode.IsNull())
+    {
+      m_multiAZ = MultiAZStatusMapper::GetMultiAZStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(multiAZNode.GetText()).c_str()).c_str());
+      m_multiAZHasBeenSet = true;
     }
     XmlNode configurationEndpointNode = resultNode.FirstChild("ConfigurationEndpoint");
     if(!configurationEndpointNode.IsNull())
@@ -207,11 +229,65 @@ ReplicationGroup& ReplicationGroup::operator =(const XmlNode& xmlNode)
       m_atRestEncryptionEnabled = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(atRestEncryptionEnabledNode.GetText()).c_str()).c_str());
       m_atRestEncryptionEnabledHasBeenSet = true;
     }
+    XmlNode memberClustersOutpostArnsNode = resultNode.FirstChild("MemberClustersOutpostArns");
+    if(!memberClustersOutpostArnsNode.IsNull())
+    {
+      XmlNode memberClustersOutpostArnsMember = memberClustersOutpostArnsNode.FirstChild("ReplicationGroupOutpostArn");
+      while(!memberClustersOutpostArnsMember.IsNull())
+      {
+        m_memberClustersOutpostArns.push_back(memberClustersOutpostArnsMember.GetText());
+        memberClustersOutpostArnsMember = memberClustersOutpostArnsMember.NextNode("ReplicationGroupOutpostArn");
+      }
+
+      m_memberClustersOutpostArnsHasBeenSet = true;
+    }
     XmlNode kmsKeyIdNode = resultNode.FirstChild("KmsKeyId");
     if(!kmsKeyIdNode.IsNull())
     {
       m_kmsKeyId = Aws::Utils::Xml::DecodeEscapedXmlText(kmsKeyIdNode.GetText());
       m_kmsKeyIdHasBeenSet = true;
+    }
+    XmlNode aRNNode = resultNode.FirstChild("ARN");
+    if(!aRNNode.IsNull())
+    {
+      m_aRN = Aws::Utils::Xml::DecodeEscapedXmlText(aRNNode.GetText());
+      m_aRNHasBeenSet = true;
+    }
+    XmlNode userGroupIdsNode = resultNode.FirstChild("UserGroupIds");
+    if(!userGroupIdsNode.IsNull())
+    {
+      XmlNode userGroupIdsMember = userGroupIdsNode.FirstChild("member");
+      while(!userGroupIdsMember.IsNull())
+      {
+        m_userGroupIds.push_back(userGroupIdsMember.GetText());
+        userGroupIdsMember = userGroupIdsMember.NextNode("member");
+      }
+
+      m_userGroupIdsHasBeenSet = true;
+    }
+    XmlNode logDeliveryConfigurationsNode = resultNode.FirstChild("LogDeliveryConfigurations");
+    if(!logDeliveryConfigurationsNode.IsNull())
+    {
+      XmlNode logDeliveryConfigurationsMember = logDeliveryConfigurationsNode.FirstChild("LogDeliveryConfiguration");
+      while(!logDeliveryConfigurationsMember.IsNull())
+      {
+        m_logDeliveryConfigurations.push_back(logDeliveryConfigurationsMember);
+        logDeliveryConfigurationsMember = logDeliveryConfigurationsMember.NextNode("LogDeliveryConfiguration");
+      }
+
+      m_logDeliveryConfigurationsHasBeenSet = true;
+    }
+    XmlNode replicationGroupCreateTimeNode = resultNode.FirstChild("ReplicationGroupCreateTime");
+    if(!replicationGroupCreateTimeNode.IsNull())
+    {
+      m_replicationGroupCreateTime = DateTime(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replicationGroupCreateTimeNode.GetText()).c_str()).c_str(), DateFormat::ISO_8601);
+      m_replicationGroupCreateTimeHasBeenSet = true;
+    }
+    XmlNode dataTieringNode = resultNode.FirstChild("DataTiering");
+    if(!dataTieringNode.IsNull())
+    {
+      m_dataTiering = DataTieringStatusMapper::GetDataTieringStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dataTieringNode.GetText()).c_str()).c_str());
+      m_dataTieringHasBeenSet = true;
     }
   }
 
@@ -228,6 +304,13 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
+  }
+
+  if(m_globalReplicationGroupInfoHasBeenSet)
+  {
+      Aws::StringStream globalReplicationGroupInfoLocationAndMemberSs;
+      globalReplicationGroupInfoLocationAndMemberSs << location << index << locationValue << ".GlobalReplicationGroupInfo";
+      m_globalReplicationGroupInfo.OutputToStream(oStream, globalReplicationGroupInfoLocationAndMemberSs.str().c_str());
   }
 
   if(m_statusHasBeenSet)
@@ -270,6 +353,11 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_automaticFailoverHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutomaticFailover=" << AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover) << "&";
+  }
+
+  if(m_multiAZHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MultiAZ=" << MultiAZStatusMapper::GetNameForMultiAZStatus(m_multiAZ) << "&";
   }
 
   if(m_configurationEndpointHasBeenSet)
@@ -319,9 +407,53 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".AtRestEncryptionEnabled=" << std::boolalpha << m_atRestEncryptionEnabled << "&";
   }
 
+  if(m_memberClustersOutpostArnsHasBeenSet)
+  {
+      unsigned memberClustersOutpostArnsIdx = 1;
+      for(auto& item : m_memberClustersOutpostArns)
+      {
+        oStream << location << index << locationValue << ".ReplicationGroupOutpostArn." << memberClustersOutpostArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+
+  if(m_aRNHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ARN=" << StringUtils::URLEncode(m_aRN.c_str()) << "&";
+  }
+
+  if(m_userGroupIdsHasBeenSet)
+  {
+      unsigned userGroupIdsIdx = 1;
+      for(auto& item : m_userGroupIds)
+      {
+        oStream << location << index << locationValue << ".UserGroupIds.member." << userGroupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
+  if(m_logDeliveryConfigurationsHasBeenSet)
+  {
+      unsigned logDeliveryConfigurationsIdx = 1;
+      for(auto& item : m_logDeliveryConfigurations)
+      {
+        Aws::StringStream logDeliveryConfigurationsSs;
+        logDeliveryConfigurationsSs << location << index << locationValue << ".LogDeliveryConfiguration." << logDeliveryConfigurationsIdx++;
+        item.OutputToStream(oStream, logDeliveryConfigurationsSs.str().c_str());
+      }
+  }
+
+  if(m_replicationGroupCreateTimeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ReplicationGroupCreateTime=" << StringUtils::URLEncode(m_replicationGroupCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
+  }
+
+  if(m_dataTieringHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DataTiering=" << DataTieringStatusMapper::GetNameForDataTieringStatus(m_dataTiering) << "&";
   }
 
 }
@@ -335,6 +467,12 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_descriptionHasBeenSet)
   {
       oStream << location << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
+  }
+  if(m_globalReplicationGroupInfoHasBeenSet)
+  {
+      Aws::String globalReplicationGroupInfoLocationAndMember(location);
+      globalReplicationGroupInfoLocationAndMember += ".GlobalReplicationGroupInfo";
+      m_globalReplicationGroupInfo.OutputToStream(oStream, globalReplicationGroupInfoLocationAndMember.c_str());
   }
   if(m_statusHasBeenSet)
   {
@@ -371,6 +509,10 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_automaticFailoverHasBeenSet)
   {
       oStream << location << ".AutomaticFailover=" << AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover) << "&";
+  }
+  if(m_multiAZHasBeenSet)
+  {
+      oStream << location << ".MultiAZ=" << MultiAZStatusMapper::GetNameForMultiAZStatus(m_multiAZ) << "&";
   }
   if(m_configurationEndpointHasBeenSet)
   {
@@ -410,9 +552,47 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << ".AtRestEncryptionEnabled=" << std::boolalpha << m_atRestEncryptionEnabled << "&";
   }
+  if(m_memberClustersOutpostArnsHasBeenSet)
+  {
+      unsigned memberClustersOutpostArnsIdx = 1;
+      for(auto& item : m_memberClustersOutpostArns)
+      {
+        oStream << location << ".ReplicationGroupOutpostArn." << memberClustersOutpostArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_aRNHasBeenSet)
+  {
+      oStream << location << ".ARN=" << StringUtils::URLEncode(m_aRN.c_str()) << "&";
+  }
+  if(m_userGroupIdsHasBeenSet)
+  {
+      unsigned userGroupIdsIdx = 1;
+      for(auto& item : m_userGroupIds)
+      {
+        oStream << location << ".UserGroupIds.member." << userGroupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+  if(m_logDeliveryConfigurationsHasBeenSet)
+  {
+      unsigned logDeliveryConfigurationsIdx = 1;
+      for(auto& item : m_logDeliveryConfigurations)
+      {
+        Aws::StringStream logDeliveryConfigurationsSs;
+        logDeliveryConfigurationsSs << location <<  ".LogDeliveryConfiguration." << logDeliveryConfigurationsIdx++;
+        item.OutputToStream(oStream, logDeliveryConfigurationsSs.str().c_str());
+      }
+  }
+  if(m_replicationGroupCreateTimeHasBeenSet)
+  {
+      oStream << location << ".ReplicationGroupCreateTime=" << StringUtils::URLEncode(m_replicationGroupCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_dataTieringHasBeenSet)
+  {
+      oStream << location << ".DataTiering=" << DataTieringStatusMapper::GetNameForDataTieringStatus(m_dataTiering) << "&";
   }
 }
 

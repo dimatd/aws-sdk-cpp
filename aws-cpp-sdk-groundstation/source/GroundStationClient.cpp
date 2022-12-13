@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
@@ -40,21 +30,21 @@
 #include <aws/groundstation/model/DescribeContactRequest.h>
 #include <aws/groundstation/model/GetConfigRequest.h>
 #include <aws/groundstation/model/GetDataflowEndpointGroupRequest.h>
+#include <aws/groundstation/model/GetMinuteUsageRequest.h>
 #include <aws/groundstation/model/GetMissionProfileRequest.h>
+#include <aws/groundstation/model/GetSatelliteRequest.h>
 #include <aws/groundstation/model/ListConfigsRequest.h>
 #include <aws/groundstation/model/ListContactsRequest.h>
 #include <aws/groundstation/model/ListDataflowEndpointGroupsRequest.h>
-#include <aws/groundstation/model/ListMissionProfilesRequest.h>
-#include <aws/groundstation/model/ReserveContactRequest.h>
-#include <aws/groundstation/model/UpdateConfigRequest.h>
-#include <aws/groundstation/model/UpdateMissionProfileRequest.h>
-#include <aws/groundstation/model/GetMinuteUsageRequest.h>
-#include <aws/groundstation/model/GetSatelliteRequest.h>
 #include <aws/groundstation/model/ListGroundStationsRequest.h>
+#include <aws/groundstation/model/ListMissionProfilesRequest.h>
 #include <aws/groundstation/model/ListSatellitesRequest.h>
 #include <aws/groundstation/model/ListTagsForResourceRequest.h>
+#include <aws/groundstation/model/ReserveContactRequest.h>
 #include <aws/groundstation/model/TagResourceRequest.h>
 #include <aws/groundstation/model/UntagResourceRequest.h>
+#include <aws/groundstation/model/UpdateConfigRequest.h>
+#include <aws/groundstation/model/UpdateMissionProfileRequest.h>
 
 using namespace Aws;
 using namespace Aws::Auth;
@@ -71,7 +61,7 @@ static const char* ALLOCATION_TAG = "GroundStationClient";
 GroundStationClient::GroundStationClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-        SERVICE_NAME, clientConfiguration.region),
+        SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<GroundStationErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -81,7 +71,7 @@ GroundStationClient::GroundStationClient(const Client::ClientConfiguration& clie
 GroundStationClient::GroundStationClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
-         SERVICE_NAME, clientConfiguration.region),
+         SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<GroundStationErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -92,7 +82,7 @@ GroundStationClient::GroundStationClient(const std::shared_ptr<AWSCredentialsPro
   const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
-         SERVICE_NAME, clientConfiguration.region),
+         SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<GroundStationErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -103,8 +93,9 @@ GroundStationClient::~GroundStationClient()
 {
 }
 
-void GroundStationClient::init(const ClientConfiguration& config)
+void GroundStationClient::init(const Client::ClientConfiguration& config)
 {
+  SetServiceClientName("GroundStation");
   m_configScheme = SchemeMapper::ToString(config.scheme);
   if (config.endpointOverride.empty())
   {
@@ -136,19 +127,9 @@ CancelContactOutcome GroundStationClient::CancelContact(const CancelContactReque
     return CancelContactOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ContactId]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/contact/";
-  ss << request.GetContactId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return CancelContactOutcome(CancelContactResult(outcome.GetResult()));
-  }
-  else
-  {
-    return CancelContactOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/contact/");
+  uri.AddPathSegment(request.GetContactId());
+  return CancelContactOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
 }
 
 CancelContactOutcomeCallable GroundStationClient::CancelContactCallable(const CancelContactRequest& request) const
@@ -172,18 +153,8 @@ void GroundStationClient::CancelContactAsyncHelper(const CancelContactRequest& r
 CreateConfigOutcome GroundStationClient::CreateConfig(const CreateConfigRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/config";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return CreateConfigOutcome(CreateConfigResult(outcome.GetResult()));
-  }
-  else
-  {
-    return CreateConfigOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/config");
+  return CreateConfigOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 CreateConfigOutcomeCallable GroundStationClient::CreateConfigCallable(const CreateConfigRequest& request) const
@@ -207,18 +178,8 @@ void GroundStationClient::CreateConfigAsyncHelper(const CreateConfigRequest& req
 CreateDataflowEndpointGroupOutcome GroundStationClient::CreateDataflowEndpointGroup(const CreateDataflowEndpointGroupRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/dataflowEndpointGroup";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return CreateDataflowEndpointGroupOutcome(CreateDataflowEndpointGroupResult(outcome.GetResult()));
-  }
-  else
-  {
-    return CreateDataflowEndpointGroupOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/dataflowEndpointGroup");
+  return CreateDataflowEndpointGroupOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 CreateDataflowEndpointGroupOutcomeCallable GroundStationClient::CreateDataflowEndpointGroupCallable(const CreateDataflowEndpointGroupRequest& request) const
@@ -242,18 +203,8 @@ void GroundStationClient::CreateDataflowEndpointGroupAsyncHelper(const CreateDat
 CreateMissionProfileOutcome GroundStationClient::CreateMissionProfile(const CreateMissionProfileRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/missionprofile";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return CreateMissionProfileOutcome(CreateMissionProfileResult(outcome.GetResult()));
-  }
-  else
-  {
-    return CreateMissionProfileOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/missionprofile");
+  return CreateMissionProfileOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 CreateMissionProfileOutcomeCallable GroundStationClient::CreateMissionProfileCallable(const CreateMissionProfileRequest& request) const
@@ -287,21 +238,10 @@ DeleteConfigOutcome GroundStationClient::DeleteConfig(const DeleteConfigRequest&
     return DeleteConfigOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ConfigType]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/config/";
-  ss << ConfigCapabilityTypeMapper::GetNameForConfigCapabilityType(request.GetConfigType());
-  ss << "/";
-  ss << request.GetConfigId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DeleteConfigOutcome(DeleteConfigResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteConfigOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/config/");
+  uri.AddPathSegment(ConfigCapabilityTypeMapper::GetNameForConfigCapabilityType(request.GetConfigType()));
+  uri.AddPathSegment(request.GetConfigId());
+  return DeleteConfigOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
 }
 
 DeleteConfigOutcomeCallable GroundStationClient::DeleteConfigCallable(const DeleteConfigRequest& request) const
@@ -330,19 +270,9 @@ DeleteDataflowEndpointGroupOutcome GroundStationClient::DeleteDataflowEndpointGr
     return DeleteDataflowEndpointGroupOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DataflowEndpointGroupId]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/dataflowEndpointGroup/";
-  ss << request.GetDataflowEndpointGroupId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DeleteDataflowEndpointGroupOutcome(DeleteDataflowEndpointGroupResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteDataflowEndpointGroupOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/dataflowEndpointGroup/");
+  uri.AddPathSegment(request.GetDataflowEndpointGroupId());
+  return DeleteDataflowEndpointGroupOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
 }
 
 DeleteDataflowEndpointGroupOutcomeCallable GroundStationClient::DeleteDataflowEndpointGroupCallable(const DeleteDataflowEndpointGroupRequest& request) const
@@ -371,19 +301,9 @@ DeleteMissionProfileOutcome GroundStationClient::DeleteMissionProfile(const Dele
     return DeleteMissionProfileOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [MissionProfileId]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/missionprofile/";
-  ss << request.GetMissionProfileId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DeleteMissionProfileOutcome(DeleteMissionProfileResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteMissionProfileOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/missionprofile/");
+  uri.AddPathSegment(request.GetMissionProfileId());
+  return DeleteMissionProfileOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
 }
 
 DeleteMissionProfileOutcomeCallable GroundStationClient::DeleteMissionProfileCallable(const DeleteMissionProfileRequest& request) const
@@ -412,19 +332,9 @@ DescribeContactOutcome GroundStationClient::DescribeContact(const DescribeContac
     return DescribeContactOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ContactId]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/contact/";
-  ss << request.GetContactId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return DescribeContactOutcome(DescribeContactResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeContactOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/contact/");
+  uri.AddPathSegment(request.GetContactId());
+  return DescribeContactOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 DescribeContactOutcomeCallable GroundStationClient::DescribeContactCallable(const DescribeContactRequest& request) const
@@ -458,21 +368,10 @@ GetConfigOutcome GroundStationClient::GetConfig(const GetConfigRequest& request)
     return GetConfigOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ConfigType]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/config/";
-  ss << ConfigCapabilityTypeMapper::GetNameForConfigCapabilityType(request.GetConfigType());
-  ss << "/";
-  ss << request.GetConfigId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return GetConfigOutcome(GetConfigResult(outcome.GetResult()));
-  }
-  else
-  {
-    return GetConfigOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/config/");
+  uri.AddPathSegment(ConfigCapabilityTypeMapper::GetNameForConfigCapabilityType(request.GetConfigType()));
+  uri.AddPathSegment(request.GetConfigId());
+  return GetConfigOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 GetConfigOutcomeCallable GroundStationClient::GetConfigCallable(const GetConfigRequest& request) const
@@ -501,19 +400,9 @@ GetDataflowEndpointGroupOutcome GroundStationClient::GetDataflowEndpointGroup(co
     return GetDataflowEndpointGroupOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DataflowEndpointGroupId]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/dataflowEndpointGroup/";
-  ss << request.GetDataflowEndpointGroupId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return GetDataflowEndpointGroupOutcome(GetDataflowEndpointGroupResult(outcome.GetResult()));
-  }
-  else
-  {
-    return GetDataflowEndpointGroupOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/dataflowEndpointGroup/");
+  uri.AddPathSegment(request.GetDataflowEndpointGroupId());
+  return GetDataflowEndpointGroupOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 GetDataflowEndpointGroupOutcomeCallable GroundStationClient::GetDataflowEndpointGroupCallable(const GetDataflowEndpointGroupRequest& request) const
@@ -534,6 +423,31 @@ void GroundStationClient::GetDataflowEndpointGroupAsyncHelper(const GetDataflowE
   handler(this, request, GetDataflowEndpointGroup(request), context);
 }
 
+GetMinuteUsageOutcome GroundStationClient::GetMinuteUsage(const GetMinuteUsageRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  uri.AddPathSegments("/minute-usage");
+  return GetMinuteUsageOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+}
+
+GetMinuteUsageOutcomeCallable GroundStationClient::GetMinuteUsageCallable(const GetMinuteUsageRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< GetMinuteUsageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetMinuteUsage(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void GroundStationClient::GetMinuteUsageAsync(const GetMinuteUsageRequest& request, const GetMinuteUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->GetMinuteUsageAsyncHelper( request, handler, context ); } );
+}
+
+void GroundStationClient::GetMinuteUsageAsyncHelper(const GetMinuteUsageRequest& request, const GetMinuteUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, GetMinuteUsage(request), context);
+}
+
 GetMissionProfileOutcome GroundStationClient::GetMissionProfile(const GetMissionProfileRequest& request) const
 {
   if (!request.MissionProfileIdHasBeenSet())
@@ -542,19 +456,9 @@ GetMissionProfileOutcome GroundStationClient::GetMissionProfile(const GetMission
     return GetMissionProfileOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [MissionProfileId]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/missionprofile/";
-  ss << request.GetMissionProfileId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return GetMissionProfileOutcome(GetMissionProfileResult(outcome.GetResult()));
-  }
-  else
-  {
-    return GetMissionProfileOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/missionprofile/");
+  uri.AddPathSegment(request.GetMissionProfileId());
+  return GetMissionProfileOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 GetMissionProfileOutcomeCallable GroundStationClient::GetMissionProfileCallable(const GetMissionProfileRequest& request) const
@@ -575,21 +479,42 @@ void GroundStationClient::GetMissionProfileAsyncHelper(const GetMissionProfileRe
   handler(this, request, GetMissionProfile(request), context);
 }
 
+GetSatelliteOutcome GroundStationClient::GetSatellite(const GetSatelliteRequest& request) const
+{
+  if (!request.SatelliteIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetSatellite", "Required field: SatelliteId, is not set");
+    return GetSatelliteOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SatelliteId]", false));
+  }
+  Aws::Http::URI uri = m_uri;
+  uri.AddPathSegments("/satellite/");
+  uri.AddPathSegment(request.GetSatelliteId());
+  return GetSatelliteOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+}
+
+GetSatelliteOutcomeCallable GroundStationClient::GetSatelliteCallable(const GetSatelliteRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< GetSatelliteOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetSatellite(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void GroundStationClient::GetSatelliteAsync(const GetSatelliteRequest& request, const GetSatelliteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->GetSatelliteAsyncHelper( request, handler, context ); } );
+}
+
+void GroundStationClient::GetSatelliteAsyncHelper(const GetSatelliteRequest& request, const GetSatelliteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, GetSatellite(request), context);
+}
+
 ListConfigsOutcome GroundStationClient::ListConfigs(const ListConfigsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/config";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListConfigsOutcome(ListConfigsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListConfigsOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/config");
+  return ListConfigsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListConfigsOutcomeCallable GroundStationClient::ListConfigsCallable(const ListConfigsRequest& request) const
@@ -613,18 +538,8 @@ void GroundStationClient::ListConfigsAsyncHelper(const ListConfigsRequest& reque
 ListContactsOutcome GroundStationClient::ListContacts(const ListContactsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/contacts";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListContactsOutcome(ListContactsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListContactsOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/contacts");
+  return ListContactsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListContactsOutcomeCallable GroundStationClient::ListContactsCallable(const ListContactsRequest& request) const
@@ -648,18 +563,8 @@ void GroundStationClient::ListContactsAsyncHelper(const ListContactsRequest& req
 ListDataflowEndpointGroupsOutcome GroundStationClient::ListDataflowEndpointGroups(const ListDataflowEndpointGroupsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/dataflowEndpointGroup";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListDataflowEndpointGroupsOutcome(ListDataflowEndpointGroupsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListDataflowEndpointGroupsOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/dataflowEndpointGroup");
+  return ListDataflowEndpointGroupsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListDataflowEndpointGroupsOutcomeCallable GroundStationClient::ListDataflowEndpointGroupsCallable(const ListDataflowEndpointGroupsRequest& request) const
@@ -680,256 +585,11 @@ void GroundStationClient::ListDataflowEndpointGroupsAsyncHelper(const ListDatafl
   handler(this, request, ListDataflowEndpointGroups(request), context);
 }
 
-ListMissionProfilesOutcome GroundStationClient::ListMissionProfiles(const ListMissionProfilesRequest& request) const
-{
-  Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/missionprofile";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListMissionProfilesOutcome(ListMissionProfilesResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListMissionProfilesOutcome(outcome.GetError());
-  }
-}
-
-ListMissionProfilesOutcomeCallable GroundStationClient::ListMissionProfilesCallable(const ListMissionProfilesRequest& request) const
-{
-  auto task = Aws::MakeShared< std::packaged_task< ListMissionProfilesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListMissionProfiles(request); } );
-  auto packagedFunction = [task]() { (*task)(); };
-  m_executor->Submit(packagedFunction);
-  return task->get_future();
-}
-
-void GroundStationClient::ListMissionProfilesAsync(const ListMissionProfilesRequest& request, const ListMissionProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  m_executor->Submit( [this, request, handler, context](){ this->ListMissionProfilesAsyncHelper( request, handler, context ); } );
-}
-
-void GroundStationClient::ListMissionProfilesAsyncHelper(const ListMissionProfilesRequest& request, const ListMissionProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  handler(this, request, ListMissionProfiles(request), context);
-}
-
-ReserveContactOutcome GroundStationClient::ReserveContact(const ReserveContactRequest& request) const
-{
-  Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/contact";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ReserveContactOutcome(ReserveContactResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ReserveContactOutcome(outcome.GetError());
-  }
-}
-
-ReserveContactOutcomeCallable GroundStationClient::ReserveContactCallable(const ReserveContactRequest& request) const
-{
-  auto task = Aws::MakeShared< std::packaged_task< ReserveContactOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ReserveContact(request); } );
-  auto packagedFunction = [task]() { (*task)(); };
-  m_executor->Submit(packagedFunction);
-  return task->get_future();
-}
-
-void GroundStationClient::ReserveContactAsync(const ReserveContactRequest& request, const ReserveContactResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  m_executor->Submit( [this, request, handler, context](){ this->ReserveContactAsyncHelper( request, handler, context ); } );
-}
-
-void GroundStationClient::ReserveContactAsyncHelper(const ReserveContactRequest& request, const ReserveContactResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  handler(this, request, ReserveContact(request), context);
-}
-
-UpdateConfigOutcome GroundStationClient::UpdateConfig(const UpdateConfigRequest& request) const
-{
-  if (!request.ConfigIdHasBeenSet())
-  {
-    AWS_LOGSTREAM_ERROR("UpdateConfig", "Required field: ConfigId, is not set");
-    return UpdateConfigOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ConfigId]", false));
-  }
-  if (!request.ConfigTypeHasBeenSet())
-  {
-    AWS_LOGSTREAM_ERROR("UpdateConfig", "Required field: ConfigType, is not set");
-    return UpdateConfigOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ConfigType]", false));
-  }
-  Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/config/";
-  ss << ConfigCapabilityTypeMapper::GetNameForConfigCapabilityType(request.GetConfigType());
-  ss << "/";
-  ss << request.GetConfigId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return UpdateConfigOutcome(UpdateConfigResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateConfigOutcome(outcome.GetError());
-  }
-}
-
-UpdateConfigOutcomeCallable GroundStationClient::UpdateConfigCallable(const UpdateConfigRequest& request) const
-{
-  auto task = Aws::MakeShared< std::packaged_task< UpdateConfigOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateConfig(request); } );
-  auto packagedFunction = [task]() { (*task)(); };
-  m_executor->Submit(packagedFunction);
-  return task->get_future();
-}
-
-void GroundStationClient::UpdateConfigAsync(const UpdateConfigRequest& request, const UpdateConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  m_executor->Submit( [this, request, handler, context](){ this->UpdateConfigAsyncHelper( request, handler, context ); } );
-}
-
-void GroundStationClient::UpdateConfigAsyncHelper(const UpdateConfigRequest& request, const UpdateConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  handler(this, request, UpdateConfig(request), context);
-}
-
-UpdateMissionProfileOutcome GroundStationClient::UpdateMissionProfile(const UpdateMissionProfileRequest& request) const
-{
-  if (!request.MissionProfileIdHasBeenSet())
-  {
-    AWS_LOGSTREAM_ERROR("UpdateMissionProfile", "Required field: MissionProfileId, is not set");
-    return UpdateMissionProfileOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [MissionProfileId]", false));
-  }
-  Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/missionprofile/";
-  ss << request.GetMissionProfileId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return UpdateMissionProfileOutcome(UpdateMissionProfileResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateMissionProfileOutcome(outcome.GetError());
-  }
-}
-
-UpdateMissionProfileOutcomeCallable GroundStationClient::UpdateMissionProfileCallable(const UpdateMissionProfileRequest& request) const
-{
-  auto task = Aws::MakeShared< std::packaged_task< UpdateMissionProfileOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateMissionProfile(request); } );
-  auto packagedFunction = [task]() { (*task)(); };
-  m_executor->Submit(packagedFunction);
-  return task->get_future();
-}
-
-void GroundStationClient::UpdateMissionProfileAsync(const UpdateMissionProfileRequest& request, const UpdateMissionProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  m_executor->Submit( [this, request, handler, context](){ this->UpdateMissionProfileAsyncHelper( request, handler, context ); } );
-}
-
-void GroundStationClient::UpdateMissionProfileAsyncHelper(const UpdateMissionProfileRequest& request, const UpdateMissionProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  handler(this, request, UpdateMissionProfile(request), context);
-}
-
-GetMinuteUsageOutcome GroundStationClient::GetMinuteUsage(const GetMinuteUsageRequest& request) const
-{
-  Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/minute-usage";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return GetMinuteUsageOutcome(GetMinuteUsageResult(outcome.GetResult()));
-  }
-  else
-  {
-    return GetMinuteUsageOutcome(outcome.GetError());
-  }
-}
-
-GetMinuteUsageOutcomeCallable GroundStationClient::GetMinuteUsageCallable(const GetMinuteUsageRequest& request) const
-{
-  auto task = Aws::MakeShared< std::packaged_task< GetMinuteUsageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetMinuteUsage(request); } );
-  auto packagedFunction = [task]() { (*task)(); };
-  m_executor->Submit(packagedFunction);
-  return task->get_future();
-}
-
-void GroundStationClient::GetMinuteUsageAsync(const GetMinuteUsageRequest& request, const GetMinuteUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  m_executor->Submit( [this, request, handler, context](){ this->GetMinuteUsageAsyncHelper( request, handler, context ); } );
-}
-
-void GroundStationClient::GetMinuteUsageAsyncHelper(const GetMinuteUsageRequest& request, const GetMinuteUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  handler(this, request, GetMinuteUsage(request), context);
-}
-
-GetSatelliteOutcome GroundStationClient::GetSatellite(const GetSatelliteRequest& request) const
-{
-  if (!request.SatelliteIdHasBeenSet())
-  {
-    AWS_LOGSTREAM_ERROR("GetSatellite", "Required field: SatelliteId, is not set");
-    return GetSatelliteOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [SatelliteId]", false));
-  }
-  Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/satellite/";
-  ss << request.GetSatelliteId();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return GetSatelliteOutcome(GetSatelliteResult(outcome.GetResult()));
-  }
-  else
-  {
-    return GetSatelliteOutcome(outcome.GetError());
-  }
-}
-
-GetSatelliteOutcomeCallable GroundStationClient::GetSatelliteCallable(const GetSatelliteRequest& request) const
-{
-  auto task = Aws::MakeShared< std::packaged_task< GetSatelliteOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetSatellite(request); } );
-  auto packagedFunction = [task]() { (*task)(); };
-  m_executor->Submit(packagedFunction);
-  return task->get_future();
-}
-
-void GroundStationClient::GetSatelliteAsync(const GetSatelliteRequest& request, const GetSatelliteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  m_executor->Submit( [this, request, handler, context](){ this->GetSatelliteAsyncHelper( request, handler, context ); } );
-}
-
-void GroundStationClient::GetSatelliteAsyncHelper(const GetSatelliteRequest& request, const GetSatelliteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
-{
-  handler(this, request, GetSatellite(request), context);
-}
-
 ListGroundStationsOutcome GroundStationClient::ListGroundStations(const ListGroundStationsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/groundstation";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListGroundStationsOutcome(ListGroundStationsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListGroundStationsOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/groundstation");
+  return ListGroundStationsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListGroundStationsOutcomeCallable GroundStationClient::ListGroundStationsCallable(const ListGroundStationsRequest& request) const
@@ -950,21 +610,36 @@ void GroundStationClient::ListGroundStationsAsyncHelper(const ListGroundStations
   handler(this, request, ListGroundStations(request), context);
 }
 
+ListMissionProfilesOutcome GroundStationClient::ListMissionProfiles(const ListMissionProfilesRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  uri.AddPathSegments("/missionprofile");
+  return ListMissionProfilesOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+}
+
+ListMissionProfilesOutcomeCallable GroundStationClient::ListMissionProfilesCallable(const ListMissionProfilesRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListMissionProfilesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListMissionProfiles(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void GroundStationClient::ListMissionProfilesAsync(const ListMissionProfilesRequest& request, const ListMissionProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListMissionProfilesAsyncHelper( request, handler, context ); } );
+}
+
+void GroundStationClient::ListMissionProfilesAsyncHelper(const ListMissionProfilesRequest& request, const ListMissionProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListMissionProfiles(request), context);
+}
+
 ListSatellitesOutcome GroundStationClient::ListSatellites(const ListSatellitesRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/satellite";
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListSatellitesOutcome(ListSatellitesResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListSatellitesOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/satellite");
+  return ListSatellitesOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListSatellitesOutcomeCallable GroundStationClient::ListSatellitesCallable(const ListSatellitesRequest& request) const
@@ -993,19 +668,9 @@ ListTagsForResourceOutcome GroundStationClient::ListTagsForResource(const ListTa
     return ListTagsForResourceOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ResourceArn]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/tags/";
-  ss << request.GetResourceArn();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return ListTagsForResourceOutcome(ListTagsForResourceResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListTagsForResourceOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/tags/");
+  uri.AddPathSegment(request.GetResourceArn());
+  return ListTagsForResourceOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
 }
 
 ListTagsForResourceOutcomeCallable GroundStationClient::ListTagsForResourceCallable(const ListTagsForResourceRequest& request) const
@@ -1026,6 +691,31 @@ void GroundStationClient::ListTagsForResourceAsyncHelper(const ListTagsForResour
   handler(this, request, ListTagsForResource(request), context);
 }
 
+ReserveContactOutcome GroundStationClient::ReserveContact(const ReserveContactRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  uri.AddPathSegments("/contact");
+  return ReserveContactOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+}
+
+ReserveContactOutcomeCallable GroundStationClient::ReserveContactCallable(const ReserveContactRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ReserveContactOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ReserveContact(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void GroundStationClient::ReserveContactAsync(const ReserveContactRequest& request, const ReserveContactResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ReserveContactAsyncHelper( request, handler, context ); } );
+}
+
+void GroundStationClient::ReserveContactAsyncHelper(const ReserveContactRequest& request, const ReserveContactResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ReserveContact(request), context);
+}
+
 TagResourceOutcome GroundStationClient::TagResource(const TagResourceRequest& request) const
 {
   if (!request.ResourceArnHasBeenSet())
@@ -1034,19 +724,9 @@ TagResourceOutcome GroundStationClient::TagResource(const TagResourceRequest& re
     return TagResourceOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ResourceArn]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/tags/";
-  ss << request.GetResourceArn();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return TagResourceOutcome(TagResourceResult(outcome.GetResult()));
-  }
-  else
-  {
-    return TagResourceOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/tags/");
+  uri.AddPathSegment(request.GetResourceArn());
+  return TagResourceOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
 }
 
 TagResourceOutcomeCallable GroundStationClient::TagResourceCallable(const TagResourceRequest& request) const
@@ -1080,19 +760,9 @@ UntagResourceOutcome GroundStationClient::UntagResource(const UntagResourceReque
     return UntagResourceOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [TagKeys]", false));
   }
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/tags/";
-  ss << request.GetResourceArn();
-  uri.SetPath(uri.GetPath() + ss.str());
-  JsonOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER);
-  if(outcome.IsSuccess())
-  {
-    return UntagResourceOutcome(UntagResourceResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UntagResourceOutcome(outcome.GetError());
-  }
+  uri.AddPathSegments("/tags/");
+  uri.AddPathSegment(request.GetResourceArn());
+  return UntagResourceOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
 }
 
 UntagResourceOutcomeCallable GroundStationClient::UntagResourceCallable(const UntagResourceRequest& request) const
@@ -1111,5 +781,73 @@ void GroundStationClient::UntagResourceAsync(const UntagResourceRequest& request
 void GroundStationClient::UntagResourceAsyncHelper(const UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, UntagResource(request), context);
+}
+
+UpdateConfigOutcome GroundStationClient::UpdateConfig(const UpdateConfigRequest& request) const
+{
+  if (!request.ConfigIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateConfig", "Required field: ConfigId, is not set");
+    return UpdateConfigOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ConfigId]", false));
+  }
+  if (!request.ConfigTypeHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateConfig", "Required field: ConfigType, is not set");
+    return UpdateConfigOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ConfigType]", false));
+  }
+  Aws::Http::URI uri = m_uri;
+  uri.AddPathSegments("/config/");
+  uri.AddPathSegment(ConfigCapabilityTypeMapper::GetNameForConfigCapabilityType(request.GetConfigType()));
+  uri.AddPathSegment(request.GetConfigId());
+  return UpdateConfigOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
+}
+
+UpdateConfigOutcomeCallable GroundStationClient::UpdateConfigCallable(const UpdateConfigRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UpdateConfigOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateConfig(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void GroundStationClient::UpdateConfigAsync(const UpdateConfigRequest& request, const UpdateConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UpdateConfigAsyncHelper( request, handler, context ); } );
+}
+
+void GroundStationClient::UpdateConfigAsyncHelper(const UpdateConfigRequest& request, const UpdateConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateConfig(request), context);
+}
+
+UpdateMissionProfileOutcome GroundStationClient::UpdateMissionProfile(const UpdateMissionProfileRequest& request) const
+{
+  if (!request.MissionProfileIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateMissionProfile", "Required field: MissionProfileId, is not set");
+    return UpdateMissionProfileOutcome(Aws::Client::AWSError<GroundStationErrors>(GroundStationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [MissionProfileId]", false));
+  }
+  Aws::Http::URI uri = m_uri;
+  uri.AddPathSegments("/missionprofile/");
+  uri.AddPathSegment(request.GetMissionProfileId());
+  return UpdateMissionProfileOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
+}
+
+UpdateMissionProfileOutcomeCallable GroundStationClient::UpdateMissionProfileCallable(const UpdateMissionProfileRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UpdateMissionProfileOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateMissionProfile(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void GroundStationClient::UpdateMissionProfileAsync(const UpdateMissionProfileRequest& request, const UpdateMissionProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UpdateMissionProfileAsyncHelper( request, handler, context ); } );
+}
+
+void GroundStationClient::UpdateMissionProfileAsyncHelper(const UpdateMissionProfileRequest& request, const UpdateMissionProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateMissionProfile(request), context);
 }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/application-autoscaling/model/MetricType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -41,6 +31,16 @@ namespace Aws
         static const int SageMakerVariantInvocationsPerInstance_HASH = HashingUtils::HashString("SageMakerVariantInvocationsPerInstance");
         static const int ECSServiceAverageCPUUtilization_HASH = HashingUtils::HashString("ECSServiceAverageCPUUtilization");
         static const int ECSServiceAverageMemoryUtilization_HASH = HashingUtils::HashString("ECSServiceAverageMemoryUtilization");
+        static const int AppStreamAverageCapacityUtilization_HASH = HashingUtils::HashString("AppStreamAverageCapacityUtilization");
+        static const int ComprehendInferenceUtilization_HASH = HashingUtils::HashString("ComprehendInferenceUtilization");
+        static const int LambdaProvisionedConcurrencyUtilization_HASH = HashingUtils::HashString("LambdaProvisionedConcurrencyUtilization");
+        static const int CassandraReadCapacityUtilization_HASH = HashingUtils::HashString("CassandraReadCapacityUtilization");
+        static const int CassandraWriteCapacityUtilization_HASH = HashingUtils::HashString("CassandraWriteCapacityUtilization");
+        static const int KafkaBrokerStorageUtilization_HASH = HashingUtils::HashString("KafkaBrokerStorageUtilization");
+        static const int ElastiCachePrimaryEngineCPUUtilization_HASH = HashingUtils::HashString("ElastiCachePrimaryEngineCPUUtilization");
+        static const int ElastiCacheReplicaEngineCPUUtilization_HASH = HashingUtils::HashString("ElastiCacheReplicaEngineCPUUtilization");
+        static const int ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage_HASH = HashingUtils::HashString("ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage");
+        static const int NeptuneReaderAverageCPUUtilization_HASH = HashingUtils::HashString("NeptuneReaderAverageCPUUtilization");
 
 
         MetricType GetMetricTypeForName(const Aws::String& name)
@@ -90,6 +90,46 @@ namespace Aws
           {
             return MetricType::ECSServiceAverageMemoryUtilization;
           }
+          else if (hashCode == AppStreamAverageCapacityUtilization_HASH)
+          {
+            return MetricType::AppStreamAverageCapacityUtilization;
+          }
+          else if (hashCode == ComprehendInferenceUtilization_HASH)
+          {
+            return MetricType::ComprehendInferenceUtilization;
+          }
+          else if (hashCode == LambdaProvisionedConcurrencyUtilization_HASH)
+          {
+            return MetricType::LambdaProvisionedConcurrencyUtilization;
+          }
+          else if (hashCode == CassandraReadCapacityUtilization_HASH)
+          {
+            return MetricType::CassandraReadCapacityUtilization;
+          }
+          else if (hashCode == CassandraWriteCapacityUtilization_HASH)
+          {
+            return MetricType::CassandraWriteCapacityUtilization;
+          }
+          else if (hashCode == KafkaBrokerStorageUtilization_HASH)
+          {
+            return MetricType::KafkaBrokerStorageUtilization;
+          }
+          else if (hashCode == ElastiCachePrimaryEngineCPUUtilization_HASH)
+          {
+            return MetricType::ElastiCachePrimaryEngineCPUUtilization;
+          }
+          else if (hashCode == ElastiCacheReplicaEngineCPUUtilization_HASH)
+          {
+            return MetricType::ElastiCacheReplicaEngineCPUUtilization;
+          }
+          else if (hashCode == ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage_HASH)
+          {
+            return MetricType::ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage;
+          }
+          else if (hashCode == NeptuneReaderAverageCPUUtilization_HASH)
+          {
+            return MetricType::NeptuneReaderAverageCPUUtilization;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -126,6 +166,26 @@ namespace Aws
             return "ECSServiceAverageCPUUtilization";
           case MetricType::ECSServiceAverageMemoryUtilization:
             return "ECSServiceAverageMemoryUtilization";
+          case MetricType::AppStreamAverageCapacityUtilization:
+            return "AppStreamAverageCapacityUtilization";
+          case MetricType::ComprehendInferenceUtilization:
+            return "ComprehendInferenceUtilization";
+          case MetricType::LambdaProvisionedConcurrencyUtilization:
+            return "LambdaProvisionedConcurrencyUtilization";
+          case MetricType::CassandraReadCapacityUtilization:
+            return "CassandraReadCapacityUtilization";
+          case MetricType::CassandraWriteCapacityUtilization:
+            return "CassandraWriteCapacityUtilization";
+          case MetricType::KafkaBrokerStorageUtilization:
+            return "KafkaBrokerStorageUtilization";
+          case MetricType::ElastiCachePrimaryEngineCPUUtilization:
+            return "ElastiCachePrimaryEngineCPUUtilization";
+          case MetricType::ElastiCacheReplicaEngineCPUUtilization:
+            return "ElastiCacheReplicaEngineCPUUtilization";
+          case MetricType::ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage:
+            return "ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage";
+          case MetricType::NeptuneReaderAverageCPUUtilization:
+            return "NeptuneReaderAverageCPUUtilization";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

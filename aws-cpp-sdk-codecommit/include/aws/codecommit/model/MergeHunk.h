@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -52,9 +42,9 @@ namespace Model
      * <p>A Boolean value indicating whether a combination of hunks contains a
      * conflict. Conflicts occur when the same file or the same lines in a file were
      * modified in both the source and destination of a merge or pull request. Valid
-     * values include true, false, and null. This will be true when the hunk represents
-     * a conflict and one or more files contains a line conflict. File mode conflicts
-     * in a merge will not set this to be true.</p>
+     * values include true, false, and null. True when the hunk represents a conflict
+     * and one or more files contains a line conflict. File mode conflicts in a merge
+     * do not set this to true.</p>
      */
     inline bool GetIsConflict() const{ return m_isConflict; }
 
@@ -62,9 +52,9 @@ namespace Model
      * <p>A Boolean value indicating whether a combination of hunks contains a
      * conflict. Conflicts occur when the same file or the same lines in a file were
      * modified in both the source and destination of a merge or pull request. Valid
-     * values include true, false, and null. This will be true when the hunk represents
-     * a conflict and one or more files contains a line conflict. File mode conflicts
-     * in a merge will not set this to be true.</p>
+     * values include true, false, and null. True when the hunk represents a conflict
+     * and one or more files contains a line conflict. File mode conflicts in a merge
+     * do not set this to true.</p>
      */
     inline bool IsConflictHasBeenSet() const { return m_isConflictHasBeenSet; }
 
@@ -72,9 +62,9 @@ namespace Model
      * <p>A Boolean value indicating whether a combination of hunks contains a
      * conflict. Conflicts occur when the same file or the same lines in a file were
      * modified in both the source and destination of a merge or pull request. Valid
-     * values include true, false, and null. This will be true when the hunk represents
-     * a conflict and one or more files contains a line conflict. File mode conflicts
-     * in a merge will not set this to be true.</p>
+     * values include true, false, and null. True when the hunk represents a conflict
+     * and one or more files contains a line conflict. File mode conflicts in a merge
+     * do not set this to true.</p>
      */
     inline void SetIsConflict(bool value) { m_isConflictHasBeenSet = true; m_isConflict = value; }
 
@@ -82,9 +72,9 @@ namespace Model
      * <p>A Boolean value indicating whether a combination of hunks contains a
      * conflict. Conflicts occur when the same file or the same lines in a file were
      * modified in both the source and destination of a merge or pull request. Valid
-     * values include true, false, and null. This will be true when the hunk represents
-     * a conflict and one or more files contains a line conflict. File mode conflicts
-     * in a merge will not set this to be true.</p>
+     * values include true, false, and null. True when the hunk represents a conflict
+     * and one or more files contains a line conflict. File mode conflicts in a merge
+     * do not set this to true.</p>
      */
     inline MergeHunk& WithIsConflict(bool value) { SetIsConflict(value); return *this;}
 

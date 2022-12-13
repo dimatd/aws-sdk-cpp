@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/shield/model/Protection.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,14 +21,20 @@ namespace Model
 Protection::Protection() : 
     m_idHasBeenSet(false),
     m_nameHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
+    m_resourceArnHasBeenSet(false),
+    m_healthCheckIdsHasBeenSet(false),
+    m_protectionArnHasBeenSet(false),
+    m_applicationLayerAutomaticResponseConfigurationHasBeenSet(false)
 {
 }
 
 Protection::Protection(JsonView jsonValue) : 
     m_idHasBeenSet(false),
     m_nameHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
+    m_resourceArnHasBeenSet(false),
+    m_healthCheckIdsHasBeenSet(false),
+    m_protectionArnHasBeenSet(false),
+    m_applicationLayerAutomaticResponseConfigurationHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -66,6 +62,30 @@ Protection& Protection::operator =(JsonView jsonValue)
     m_resourceArnHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("HealthCheckIds"))
+  {
+    Array<JsonView> healthCheckIdsJsonList = jsonValue.GetArray("HealthCheckIds");
+    for(unsigned healthCheckIdsIndex = 0; healthCheckIdsIndex < healthCheckIdsJsonList.GetLength(); ++healthCheckIdsIndex)
+    {
+      m_healthCheckIds.push_back(healthCheckIdsJsonList[healthCheckIdsIndex].AsString());
+    }
+    m_healthCheckIdsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ProtectionArn"))
+  {
+    m_protectionArn = jsonValue.GetString("ProtectionArn");
+
+    m_protectionArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ApplicationLayerAutomaticResponseConfiguration"))
+  {
+    m_applicationLayerAutomaticResponseConfiguration = jsonValue.GetObject("ApplicationLayerAutomaticResponseConfiguration");
+
+    m_applicationLayerAutomaticResponseConfigurationHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -88,6 +108,29 @@ JsonValue Protection::Jsonize() const
   if(m_resourceArnHasBeenSet)
   {
    payload.WithString("ResourceArn", m_resourceArn);
+
+  }
+
+  if(m_healthCheckIdsHasBeenSet)
+  {
+   Array<JsonValue> healthCheckIdsJsonList(m_healthCheckIds.size());
+   for(unsigned healthCheckIdsIndex = 0; healthCheckIdsIndex < healthCheckIdsJsonList.GetLength(); ++healthCheckIdsIndex)
+   {
+     healthCheckIdsJsonList[healthCheckIdsIndex].AsString(m_healthCheckIds[healthCheckIdsIndex]);
+   }
+   payload.WithArray("HealthCheckIds", std::move(healthCheckIdsJsonList));
+
+  }
+
+  if(m_protectionArnHasBeenSet)
+  {
+   payload.WithString("ProtectionArn", m_protectionArn);
+
+  }
+
+  if(m_applicationLayerAutomaticResponseConfigurationHasBeenSet)
+  {
+   payload.WithObject("ApplicationLayerAutomaticResponseConfiguration", m_applicationLayerAutomaticResponseConfiguration.Jsonize());
 
   }
 

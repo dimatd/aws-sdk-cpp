@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/lex-models/model/PutBotResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -27,20 +17,26 @@ using namespace Aws::Utils;
 using namespace Aws;
 
 PutBotResult::PutBotResult() : 
+    m_enableModelImprovements(false),
+    m_nluIntentConfidenceThreshold(0.0),
     m_status(Status::NOT_SET),
     m_idleSessionTTLInSeconds(0),
     m_locale(Locale::NOT_SET),
     m_childDirected(false),
-    m_createVersion(false)
+    m_createVersion(false),
+    m_detectSentiment(false)
 {
 }
 
 PutBotResult::PutBotResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
+    m_enableModelImprovements(false),
+    m_nluIntentConfidenceThreshold(0.0),
     m_status(Status::NOT_SET),
     m_idleSessionTTLInSeconds(0),
     m_locale(Locale::NOT_SET),
     m_childDirected(false),
-    m_createVersion(false)
+    m_createVersion(false),
+    m_detectSentiment(false)
 {
   *this = result;
 }
@@ -67,6 +63,18 @@ PutBotResult& PutBotResult::operator =(const Aws::AmazonWebServiceResult<JsonVal
     {
       m_intents.push_back(intentsJsonList[intentsIndex].AsObject());
     }
+  }
+
+  if(jsonValue.ValueExists("enableModelImprovements"))
+  {
+    m_enableModelImprovements = jsonValue.GetBool("enableModelImprovements");
+
+  }
+
+  if(jsonValue.ValueExists("nluIntentConfidenceThreshold"))
+  {
+    m_nluIntentConfidenceThreshold = jsonValue.GetDouble("nluIntentConfidenceThreshold");
+
   }
 
   if(jsonValue.ValueExists("clarificationPrompt"))
@@ -145,6 +153,21 @@ PutBotResult& PutBotResult::operator =(const Aws::AmazonWebServiceResult<JsonVal
   {
     m_createVersion = jsonValue.GetBool("createVersion");
 
+  }
+
+  if(jsonValue.ValueExists("detectSentiment"))
+  {
+    m_detectSentiment = jsonValue.GetBool("detectSentiment");
+
+  }
+
+  if(jsonValue.ValueExists("tags"))
+  {
+    Array<JsonView> tagsJsonList = jsonValue.GetArray("tags");
+    for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+    {
+      m_tags.push_back(tagsJsonList[tagsIndex].AsObject());
+    }
   }
 
 

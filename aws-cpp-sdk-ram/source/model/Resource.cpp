@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ram/model/Resource.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -32,11 +22,14 @@ Resource::Resource() :
     m_arnHasBeenSet(false),
     m_typeHasBeenSet(false),
     m_resourceShareArnHasBeenSet(false),
+    m_resourceGroupArnHasBeenSet(false),
     m_status(ResourceStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_statusMessageHasBeenSet(false),
     m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false)
+    m_lastUpdatedTimeHasBeenSet(false),
+    m_resourceRegionScope(ResourceRegionScope::NOT_SET),
+    m_resourceRegionScopeHasBeenSet(false)
 {
 }
 
@@ -44,11 +37,14 @@ Resource::Resource(JsonView jsonValue) :
     m_arnHasBeenSet(false),
     m_typeHasBeenSet(false),
     m_resourceShareArnHasBeenSet(false),
+    m_resourceGroupArnHasBeenSet(false),
     m_status(ResourceStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_statusMessageHasBeenSet(false),
     m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false)
+    m_lastUpdatedTimeHasBeenSet(false),
+    m_resourceRegionScope(ResourceRegionScope::NOT_SET),
+    m_resourceRegionScopeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -74,6 +70,13 @@ Resource& Resource::operator =(JsonView jsonValue)
     m_resourceShareArn = jsonValue.GetString("resourceShareArn");
 
     m_resourceShareArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("resourceGroupArn"))
+  {
+    m_resourceGroupArn = jsonValue.GetString("resourceGroupArn");
+
+    m_resourceGroupArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("status"))
@@ -104,6 +107,13 @@ Resource& Resource::operator =(JsonView jsonValue)
     m_lastUpdatedTimeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("resourceRegionScope"))
+  {
+    m_resourceRegionScope = ResourceRegionScopeMapper::GetResourceRegionScopeForName(jsonValue.GetString("resourceRegionScope"));
+
+    m_resourceRegionScopeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -129,6 +139,12 @@ JsonValue Resource::Jsonize() const
 
   }
 
+  if(m_resourceGroupArnHasBeenSet)
+  {
+   payload.WithString("resourceGroupArn", m_resourceGroupArn);
+
+  }
+
   if(m_statusHasBeenSet)
   {
    payload.WithString("status", ResourceStatusMapper::GetNameForResourceStatus(m_status));
@@ -148,6 +164,11 @@ JsonValue Resource::Jsonize() const
   if(m_lastUpdatedTimeHasBeenSet)
   {
    payload.WithDouble("lastUpdatedTime", m_lastUpdatedTime.SecondsWithMSPrecision());
+  }
+
+  if(m_resourceRegionScopeHasBeenSet)
+  {
+   payload.WithString("resourceRegionScope", ResourceRegionScopeMapper::GetNameForResourceRegionScope(m_resourceRegionScope));
   }
 
   return payload;

@@ -1,22 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/organizations/Organizations_EXPORTS.h>
 #include <aws/organizations/OrganizationsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/organizations/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -49,10 +41,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline const Aws::String& GetParentId() const{ return m_parentId; }
 
@@ -61,10 +54,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline bool ParentIdHasBeenSet() const { return m_parentIdHasBeenSet; }
 
@@ -73,10 +67,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline void SetParentId(const Aws::String& value) { m_parentIdHasBeenSet = true; m_parentId = value; }
 
@@ -85,10 +80,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline void SetParentId(Aws::String&& value) { m_parentIdHasBeenSet = true; m_parentId = std::move(value); }
 
@@ -97,10 +93,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline void SetParentId(const char* value) { m_parentIdHasBeenSet = true; m_parentId.assign(value); }
 
@@ -109,10 +106,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline CreateOrganizationalUnitRequest& WithParentId(const Aws::String& value) { SetParentId(value); return *this;}
 
@@ -121,10 +119,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline CreateOrganizationalUnitRequest& WithParentId(Aws::String&& value) { SetParentId(std::move(value)); return *this;}
 
@@ -133,10 +132,11 @@ namespace Model
      * the new OU in.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
      * pattern</a> for a parent ID string requires one of the following:</p> <ul> <li>
      * <p> <b>Root</b> - A string that begins with "r-" followed by from 4 to 32
-     * lower-case letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
-     * - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that the OU is in) followed by a second "-" dash and
-     * from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+     * lowercase letters or digits.</p> </li> <li> <p> <b>Organizational unit (OU)</b>
+     * - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that the OU is in). This string is followed by a
+     * second "-" dash and from 8 to 32 additional lowercase letters or digits.</p>
+     * </li> </ul>
      */
     inline CreateOrganizationalUnitRequest& WithParentId(const char* value) { SetParentId(value); return *this;}
 
@@ -181,6 +181,103 @@ namespace Model
      */
     inline CreateOrganizationalUnitRequest& WithName(const char* value) { SetName(value); return *this;}
 
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline CreateOrganizationalUnitRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline CreateOrganizationalUnitRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline CreateOrganizationalUnitRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
+    /**
+     * <p>A list of tags that you want to attach to the newly created OU. For each tag
+     * in the list, you must specify both a tag key and a value. You can set the value
+     * to an empty string, but you can't set it to <code>null</code>. For more
+     * information about tagging, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging
+     * Organizations resources</a> in the Organizations User Guide.</p>  <p>If
+     * any one of the tags is invalid or if you exceed the allowed number of tags for
+     * an OU, then the entire request fails and the OU is not created.</p> 
+     */
+    inline CreateOrganizationalUnitRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
+
   private:
 
     Aws::String m_parentId;
@@ -188,6 +285,9 @@ namespace Model
 
     Aws::String m_name;
     bool m_nameHasBeenSet;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

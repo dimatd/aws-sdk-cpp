@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/personalize/model/SolutionVersion.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -43,6 +33,7 @@ SolutionVersion::SolutionVersion() :
     m_trainingHoursHasBeenSet(false),
     m_trainingMode(TrainingMode::NOT_SET),
     m_trainingModeHasBeenSet(false),
+    m_tunedHPOParamsHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_failureReasonHasBeenSet(false),
     m_creationDateTimeHasBeenSet(false),
@@ -65,6 +56,7 @@ SolutionVersion::SolutionVersion(JsonView jsonValue) :
     m_trainingHoursHasBeenSet(false),
     m_trainingMode(TrainingMode::NOT_SET),
     m_trainingModeHasBeenSet(false),
+    m_tunedHPOParamsHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_failureReasonHasBeenSet(false),
     m_creationDateTimeHasBeenSet(false),
@@ -143,6 +135,13 @@ SolutionVersion& SolutionVersion::operator =(JsonView jsonValue)
     m_trainingMode = TrainingModeMapper::GetTrainingModeForName(jsonValue.GetString("trainingMode"));
 
     m_trainingModeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("tunedHPOParams"))
+  {
+    m_tunedHPOParams = jsonValue.GetObject("tunedHPOParams");
+
+    m_tunedHPOParamsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("status"))
@@ -237,6 +236,12 @@ JsonValue SolutionVersion::Jsonize() const
   if(m_trainingModeHasBeenSet)
   {
    payload.WithString("trainingMode", TrainingModeMapper::GetNameForTrainingMode(m_trainingMode));
+  }
+
+  if(m_tunedHPOParamsHasBeenSet)
+  {
+   payload.WithObject("tunedHPOParams", m_tunedHPOParams.Jsonize());
+
   }
 
   if(m_statusHasBeenSet)

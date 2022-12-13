@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/textract/model/AnalyzeDocumentRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -24,7 +14,9 @@ using namespace Aws::Utils;
 
 AnalyzeDocumentRequest::AnalyzeDocumentRequest() : 
     m_documentHasBeenSet(false),
-    m_featureTypesHasBeenSet(false)
+    m_featureTypesHasBeenSet(false),
+    m_humanLoopConfigHasBeenSet(false),
+    m_queriesConfigHasBeenSet(false)
 {
 }
 
@@ -46,6 +38,18 @@ Aws::String AnalyzeDocumentRequest::SerializePayload() const
      featureTypesJsonList[featureTypesIndex].AsString(FeatureTypeMapper::GetNameForFeatureType(m_featureTypes[featureTypesIndex]));
    }
    payload.WithArray("FeatureTypes", std::move(featureTypesJsonList));
+
+  }
+
+  if(m_humanLoopConfigHasBeenSet)
+  {
+   payload.WithObject("HumanLoopConfig", m_humanLoopConfig.Jsonize());
+
+  }
+
+  if(m_queriesConfigHasBeenSet)
+  {
+   payload.WithObject("QueriesConfig", m_queriesConfig.Jsonize());
 
   }
 

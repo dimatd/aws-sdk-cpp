@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/elasticfilesystem/EFS_EXPORTS.h>
@@ -53,33 +43,29 @@ namespace Model
 
     /**
      * <p>(Optional) Specifies the maximum number of file systems to return in the
-     * response (integer). Currently, this number is automatically set to 10, and other
-     * values are ignored. The response is paginated at 10 per page if you have more
-     * than 10 file systems. </p>
+     * response (integer). This number is automatically set to 100. The response is
+     * paginated at 100 per page if you have more than 100 file systems. </p>
      */
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
      * <p>(Optional) Specifies the maximum number of file systems to return in the
-     * response (integer). Currently, this number is automatically set to 10, and other
-     * values are ignored. The response is paginated at 10 per page if you have more
-     * than 10 file systems. </p>
+     * response (integer). This number is automatically set to 100. The response is
+     * paginated at 100 per page if you have more than 100 file systems. </p>
      */
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
 
     /**
      * <p>(Optional) Specifies the maximum number of file systems to return in the
-     * response (integer). Currently, this number is automatically set to 10, and other
-     * values are ignored. The response is paginated at 10 per page if you have more
-     * than 10 file systems. </p>
+     * response (integer). This number is automatically set to 100. The response is
+     * paginated at 100 per page if you have more than 100 file systems. </p>
      */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
      * <p>(Optional) Specifies the maximum number of file systems to return in the
-     * response (integer). Currently, this number is automatically set to 10, and other
-     * values are ignored. The response is paginated at 10 per page if you have more
-     * than 10 file systems. </p>
+     * response (integer). This number is automatically set to 100. The response is
+     * paginated at 100 per page if you have more than 100 file systems. </p>
      */
     inline DescribeFileSystemsRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
 

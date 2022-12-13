@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -195,7 +185,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetAttributes() const{ return m_attributes; }
@@ -203,7 +193,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
@@ -211,7 +201,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline void SetAttributes(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
@@ -219,7 +209,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline void SetAttributes(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
@@ -227,7 +217,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& WithAttributes(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { SetAttributes(value); return *this;}
@@ -235,7 +225,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& WithAttributes(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { SetAttributes(std::move(value)); return *this;}
@@ -243,7 +233,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& AddAttributes(const Aws::String& key, const Aws::Vector<Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
@@ -251,7 +241,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& AddAttributes(Aws::String&& key, const Aws::Vector<Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
@@ -259,7 +249,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& AddAttributes(const Aws::String& key, Aws::Vector<Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
@@ -267,7 +257,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& AddAttributes(Aws::String&& key, Aws::Vector<Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
@@ -275,7 +265,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& AddAttributes(const char* key, Aws::Vector<Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
@@ -283,7 +273,7 @@ namespace Model
     /**
      * <p>One or more custom attributes that describe the endpoint by associating a
      * name with an array of values. For example, the value of a custom attribute named
-     * Interests might be: ["science", "music", "travel"]. You can use these attributes
+     * Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
      * as filter criteria when you create segments.</p>
      */
     inline EndpointResponse& AddAttributes(const char* key, const Aws::Vector<Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }

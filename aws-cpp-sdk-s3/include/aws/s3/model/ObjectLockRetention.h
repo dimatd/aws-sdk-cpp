@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -80,32 +70,32 @@ namespace Model
 
 
     /**
-     * <p>The date on which this object lock retention expires.</p>
+     * <p>The date on which this Object Lock Retention will expire.</p>
      */
     inline const Aws::Utils::DateTime& GetRetainUntilDate() const{ return m_retainUntilDate; }
 
     /**
-     * <p>The date on which this object lock retention expires.</p>
+     * <p>The date on which this Object Lock Retention will expire.</p>
      */
     inline bool RetainUntilDateHasBeenSet() const { return m_retainUntilDateHasBeenSet; }
 
     /**
-     * <p>The date on which this object lock retention expires.</p>
+     * <p>The date on which this Object Lock Retention will expire.</p>
      */
     inline void SetRetainUntilDate(const Aws::Utils::DateTime& value) { m_retainUntilDateHasBeenSet = true; m_retainUntilDate = value; }
 
     /**
-     * <p>The date on which this object lock retention expires.</p>
+     * <p>The date on which this Object Lock Retention will expire.</p>
      */
     inline void SetRetainUntilDate(Aws::Utils::DateTime&& value) { m_retainUntilDateHasBeenSet = true; m_retainUntilDate = std::move(value); }
 
     /**
-     * <p>The date on which this object lock retention expires.</p>
+     * <p>The date on which this Object Lock Retention will expire.</p>
      */
     inline ObjectLockRetention& WithRetainUntilDate(const Aws::Utils::DateTime& value) { SetRetainUntilDate(value); return *this;}
 
     /**
-     * <p>The date on which this object lock retention expires.</p>
+     * <p>The date on which this Object Lock Retention will expire.</p>
      */
     inline ObjectLockRetention& WithRetainUntilDate(Aws::Utils::DateTime&& value) { SetRetainUntilDate(std::move(value)); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
@@ -19,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/CurrentRevision.h>
 #include <aws/codepipeline/model/ExecutionDetails.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
 namespace Aws
@@ -245,6 +236,98 @@ namespace Model
      */
     inline PutJobSuccessResultRequest& WithExecutionDetails(ExecutionDetails&& value) { SetExecutionDetails(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetOutputVariables() const{ return m_outputVariables; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline bool OutputVariablesHasBeenSet() const { return m_outputVariablesHasBeenSet; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline void SetOutputVariables(const Aws::Map<Aws::String, Aws::String>& value) { m_outputVariablesHasBeenSet = true; m_outputVariables = value; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline void SetOutputVariables(Aws::Map<Aws::String, Aws::String>&& value) { m_outputVariablesHasBeenSet = true; m_outputVariables = std::move(value); }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& WithOutputVariables(const Aws::Map<Aws::String, Aws::String>& value) { SetOutputVariables(value); return *this;}
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& WithOutputVariables(Aws::Map<Aws::String, Aws::String>&& value) { SetOutputVariables(std::move(value)); return *this;}
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(const Aws::String& key, const Aws::String& value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(key, value); return *this; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(Aws::String&& key, const Aws::String& value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(const Aws::String& key, Aws::String&& value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(Aws::String&& key, Aws::String&& value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(std::move(key), std::move(value)); return *this; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(const char* key, Aws::String&& value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(Aws::String&& key, const char* value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>Key-value pairs produced as output by a job worker that can be made available
+     * to a downstream action configuration. <code>outputVariables</code> can be
+     * included only when there is no continuation token on the request.</p>
+     */
+    inline PutJobSuccessResultRequest& AddOutputVariables(const char* key, const char* value) { m_outputVariablesHasBeenSet = true; m_outputVariables.emplace(key, value); return *this; }
+
   private:
 
     Aws::String m_jobId;
@@ -258,6 +341,9 @@ namespace Model
 
     ExecutionDetails m_executionDetails;
     bool m_executionDetailsHasBeenSet;
+
+    Aws::Map<Aws::String, Aws::String> m_outputVariables;
+    bool m_outputVariablesHasBeenSet;
   };
 
 } // namespace Model

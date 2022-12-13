@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/serverlessrepo/ServerlessApplicationRepository_EXPORTS.h>
@@ -246,6 +236,31 @@ namespace Model
 
 
     /**
+     * <p>Whether the author of this application has been verified. This means means
+     * that AWS has made a good faith review, as a reasonable and prudent service
+     * provider, of the information provided by the requester and has confirmed that
+     * the requester's identity is as claimed.</p>
+     */
+    inline bool GetIsVerifiedAuthor() const{ return m_isVerifiedAuthor; }
+
+    /**
+     * <p>Whether the author of this application has been verified. This means means
+     * that AWS has made a good faith review, as a reasonable and prudent service
+     * provider, of the information provided by the requester and has confirmed that
+     * the requester's identity is as claimed.</p>
+     */
+    inline void SetIsVerifiedAuthor(bool value) { m_isVerifiedAuthor = value; }
+
+    /**
+     * <p>Whether the author of this application has been verified. This means means
+     * that AWS has made a good faith review, as a reasonable and prudent service
+     * provider, of the information provided by the requester and has confirmed that
+     * the requester's identity is as claimed.</p>
+     */
+    inline CreateApplicationResult& WithIsVerifiedAuthor(bool value) { SetIsVerifiedAuthor(value); return *this;}
+
+
+    /**
      * <p>Labels to improve discovery of apps in search results.</p><p>Minimum
      * length=1. Maximum length=127. Maximum number of labels: 10</p><p>Pattern:
      * "^[a-zA-Z0-9+\\-_:\\/@]+$";</p>
@@ -468,6 +483,49 @@ namespace Model
 
 
     /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline const Aws::String& GetVerifiedAuthorUrl() const{ return m_verifiedAuthorUrl; }
+
+    /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline void SetVerifiedAuthorUrl(const Aws::String& value) { m_verifiedAuthorUrl = value; }
+
+    /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline void SetVerifiedAuthorUrl(Aws::String&& value) { m_verifiedAuthorUrl = std::move(value); }
+
+    /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline void SetVerifiedAuthorUrl(const char* value) { m_verifiedAuthorUrl.assign(value); }
+
+    /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline CreateApplicationResult& WithVerifiedAuthorUrl(const Aws::String& value) { SetVerifiedAuthorUrl(value); return *this;}
+
+    /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline CreateApplicationResult& WithVerifiedAuthorUrl(Aws::String&& value) { SetVerifiedAuthorUrl(std::move(value)); return *this;}
+
+    /**
+     * <p>The URL to the public profile of a verified author. This URL is submitted by
+     * the author.</p>
+     */
+    inline CreateApplicationResult& WithVerifiedAuthorUrl(const char* value) { SetVerifiedAuthorUrl(value); return *this;}
+
+
+    /**
      * <p>Version information about the application.</p>
      */
     inline const Version& GetVersion() const{ return m_version; }
@@ -504,6 +562,8 @@ namespace Model
 
     Aws::String m_homePageUrl;
 
+    bool m_isVerifiedAuthor;
+
     Aws::Vector<Aws::String> m_labels;
 
     Aws::String m_licenseUrl;
@@ -513,6 +573,8 @@ namespace Model
     Aws::String m_readmeUrl;
 
     Aws::String m_spdxLicenseId;
+
+    Aws::String m_verifiedAuthorUrl;
 
     Version m_version;
   };

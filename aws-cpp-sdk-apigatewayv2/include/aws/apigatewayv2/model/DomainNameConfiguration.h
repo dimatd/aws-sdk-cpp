@@ -1,25 +1,15 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/apigatewayv2/ApiGatewayV2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/apigatewayv2/model/DomainNameStatus.h>
 #include <aws/apigatewayv2/model/EndpointType.h>
 #include <aws/apigatewayv2/model/SecurityPolicy.h>
-#include <aws/apigatewayv2/model/DomainNameStatus.h>
 #include <utility>
 
 namespace Aws
@@ -52,201 +42,277 @@ namespace Model
 
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline const Aws::String& GetApiGatewayDomainName() const{ return m_apiGatewayDomainName; }
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline bool ApiGatewayDomainNameHasBeenSet() const { return m_apiGatewayDomainNameHasBeenSet; }
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline void SetApiGatewayDomainName(const Aws::String& value) { m_apiGatewayDomainNameHasBeenSet = true; m_apiGatewayDomainName = value; }
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline void SetApiGatewayDomainName(Aws::String&& value) { m_apiGatewayDomainNameHasBeenSet = true; m_apiGatewayDomainName = std::move(value); }
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline void SetApiGatewayDomainName(const char* value) { m_apiGatewayDomainNameHasBeenSet = true; m_apiGatewayDomainName.assign(value); }
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline DomainNameConfiguration& WithApiGatewayDomainName(const Aws::String& value) { SetApiGatewayDomainName(value); return *this;}
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline DomainNameConfiguration& WithApiGatewayDomainName(Aws::String&& value) { SetApiGatewayDomainName(std::move(value)); return *this;}
 
     /**
-     * <p>A domain name for the WebSocket API.</p>
+     * <p>A domain name for the API.</p>
      */
     inline DomainNameConfiguration& WithApiGatewayDomainName(const char* value) { SetApiGatewayDomainName(value); return *this;}
 
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline DomainNameConfiguration& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline DomainNameConfiguration& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
 
     /**
      * <p>An AWS-managed certificate that will be used by the edge-optimized endpoint
-     * for
- this domain name. AWS Certificate Manager is the only supported source.</p>
+     * for this domain name. AWS Certificate Manager is the only supported source.</p>
      */
     inline DomainNameConfiguration& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
 
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline const Aws::String& GetCertificateName() const{ return m_certificateName; }
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline bool CertificateNameHasBeenSet() const { return m_certificateNameHasBeenSet; }
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline void SetCertificateName(const Aws::String& value) { m_certificateNameHasBeenSet = true; m_certificateName = value; }
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline void SetCertificateName(Aws::String&& value) { m_certificateNameHasBeenSet = true; m_certificateName = std::move(value); }
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline void SetCertificateName(const char* value) { m_certificateNameHasBeenSet = true; m_certificateName.assign(value); }
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline DomainNameConfiguration& WithCertificateName(const Aws::String& value) { SetCertificateName(value); return *this;}
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline DomainNameConfiguration& WithCertificateName(Aws::String&& value) { SetCertificateName(std::move(value)); return *this;}
 
     /**
      * <p>The user-friendly name of the certificate that will be used by the
-     * edge-optimized
- endpoint for this domain name.</p>
+     * edge-optimized endpoint for this domain name.</p>
      */
     inline DomainNameConfiguration& WithCertificateName(const char* value) { SetCertificateName(value); return *this;}
 
 
     /**
      * <p>The timestamp when the certificate that was used by edge-optimized endpoint
-     * for
- this domain name was uploaded.</p>
+     * for this domain name was uploaded.</p>
      */
     inline const Aws::Utils::DateTime& GetCertificateUploadDate() const{ return m_certificateUploadDate; }
 
     /**
      * <p>The timestamp when the certificate that was used by edge-optimized endpoint
-     * for
- this domain name was uploaded.</p>
+     * for this domain name was uploaded.</p>
      */
     inline bool CertificateUploadDateHasBeenSet() const { return m_certificateUploadDateHasBeenSet; }
 
     /**
      * <p>The timestamp when the certificate that was used by edge-optimized endpoint
-     * for
- this domain name was uploaded.</p>
+     * for this domain name was uploaded.</p>
      */
     inline void SetCertificateUploadDate(const Aws::Utils::DateTime& value) { m_certificateUploadDateHasBeenSet = true; m_certificateUploadDate = value; }
 
     /**
      * <p>The timestamp when the certificate that was used by edge-optimized endpoint
-     * for
- this domain name was uploaded.</p>
+     * for this domain name was uploaded.</p>
      */
     inline void SetCertificateUploadDate(Aws::Utils::DateTime&& value) { m_certificateUploadDateHasBeenSet = true; m_certificateUploadDate = std::move(value); }
 
     /**
      * <p>The timestamp when the certificate that was used by edge-optimized endpoint
-     * for
- this domain name was uploaded.</p>
+     * for this domain name was uploaded.</p>
      */
     inline DomainNameConfiguration& WithCertificateUploadDate(const Aws::Utils::DateTime& value) { SetCertificateUploadDate(value); return *this;}
 
     /**
      * <p>The timestamp when the certificate that was used by edge-optimized endpoint
-     * for
- this domain name was uploaded.</p>
+     * for this domain name was uploaded.</p>
      */
     inline DomainNameConfiguration& WithCertificateUploadDate(Aws::Utils::DateTime&& value) { SetCertificateUploadDate(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The status of the domain name migration. The valid values are AVAILABLE,
+     * UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION. If
+     * the status is UPDATING, the domain cannot be modified further until the existing
+     * operation is complete. If it is AVAILABLE, the domain can be updated.</p>
+     */
+    inline const DomainNameStatus& GetDomainNameStatus() const{ return m_domainNameStatus; }
+
+    /**
+     * <p>The status of the domain name migration. The valid values are AVAILABLE,
+     * UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION. If
+     * the status is UPDATING, the domain cannot be modified further until the existing
+     * operation is complete. If it is AVAILABLE, the domain can be updated.</p>
+     */
+    inline bool DomainNameStatusHasBeenSet() const { return m_domainNameStatusHasBeenSet; }
+
+    /**
+     * <p>The status of the domain name migration. The valid values are AVAILABLE,
+     * UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION. If
+     * the status is UPDATING, the domain cannot be modified further until the existing
+     * operation is complete. If it is AVAILABLE, the domain can be updated.</p>
+     */
+    inline void SetDomainNameStatus(const DomainNameStatus& value) { m_domainNameStatusHasBeenSet = true; m_domainNameStatus = value; }
+
+    /**
+     * <p>The status of the domain name migration. The valid values are AVAILABLE,
+     * UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION. If
+     * the status is UPDATING, the domain cannot be modified further until the existing
+     * operation is complete. If it is AVAILABLE, the domain can be updated.</p>
+     */
+    inline void SetDomainNameStatus(DomainNameStatus&& value) { m_domainNameStatusHasBeenSet = true; m_domainNameStatus = std::move(value); }
+
+    /**
+     * <p>The status of the domain name migration. The valid values are AVAILABLE,
+     * UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION. If
+     * the status is UPDATING, the domain cannot be modified further until the existing
+     * operation is complete. If it is AVAILABLE, the domain can be updated.</p>
+     */
+    inline DomainNameConfiguration& WithDomainNameStatus(const DomainNameStatus& value) { SetDomainNameStatus(value); return *this;}
+
+    /**
+     * <p>The status of the domain name migration. The valid values are AVAILABLE,
+     * UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION. If
+     * the status is UPDATING, the domain cannot be modified further until the existing
+     * operation is complete. If it is AVAILABLE, the domain can be updated.</p>
+     */
+    inline DomainNameConfiguration& WithDomainNameStatus(DomainNameStatus&& value) { SetDomainNameStatus(std::move(value)); return *this;}
+
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline const Aws::String& GetDomainNameStatusMessage() const{ return m_domainNameStatusMessage; }
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline bool DomainNameStatusMessageHasBeenSet() const { return m_domainNameStatusMessageHasBeenSet; }
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline void SetDomainNameStatusMessage(const Aws::String& value) { m_domainNameStatusMessageHasBeenSet = true; m_domainNameStatusMessage = value; }
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline void SetDomainNameStatusMessage(Aws::String&& value) { m_domainNameStatusMessageHasBeenSet = true; m_domainNameStatusMessage = std::move(value); }
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline void SetDomainNameStatusMessage(const char* value) { m_domainNameStatusMessageHasBeenSet = true; m_domainNameStatusMessage.assign(value); }
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline DomainNameConfiguration& WithDomainNameStatusMessage(const Aws::String& value) { SetDomainNameStatusMessage(value); return *this;}
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline DomainNameConfiguration& WithDomainNameStatusMessage(Aws::String&& value) { SetDomainNameStatusMessage(std::move(value)); return *this;}
+
+    /**
+     * <p>An optional text message containing detailed information about status of the
+     * domain name migration.</p>
+     */
+    inline DomainNameConfiguration& WithDomainNameStatusMessage(const char* value) { SetDomainNameStatusMessage(value); return *this;}
 
 
     /**
@@ -359,101 +425,60 @@ namespace Model
 
 
     /**
-     * <p>The status of the domain name migration. The valid values are AVAILABLE and
-     * UPDATING. If the status is UPDATING, the domain cannot be modified further until
-     * the existing operation is complete. If it is AVAILABLE, the domain can be
-     * updated.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline const DomainNameStatus& GetDomainNameStatus() const{ return m_domainNameStatus; }
+    inline const Aws::String& GetOwnershipVerificationCertificateArn() const{ return m_ownershipVerificationCertificateArn; }
 
     /**
-     * <p>The status of the domain name migration. The valid values are AVAILABLE and
-     * UPDATING. If the status is UPDATING, the domain cannot be modified further until
-     * the existing operation is complete. If it is AVAILABLE, the domain can be
-     * updated.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline bool DomainNameStatusHasBeenSet() const { return m_domainNameStatusHasBeenSet; }
+    inline bool OwnershipVerificationCertificateArnHasBeenSet() const { return m_ownershipVerificationCertificateArnHasBeenSet; }
 
     /**
-     * <p>The status of the domain name migration. The valid values are AVAILABLE and
-     * UPDATING. If the status is UPDATING, the domain cannot be modified further until
-     * the existing operation is complete. If it is AVAILABLE, the domain can be
-     * updated.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline void SetDomainNameStatus(const DomainNameStatus& value) { m_domainNameStatusHasBeenSet = true; m_domainNameStatus = value; }
+    inline void SetOwnershipVerificationCertificateArn(const Aws::String& value) { m_ownershipVerificationCertificateArnHasBeenSet = true; m_ownershipVerificationCertificateArn = value; }
 
     /**
-     * <p>The status of the domain name migration. The valid values are AVAILABLE and
-     * UPDATING. If the status is UPDATING, the domain cannot be modified further until
-     * the existing operation is complete. If it is AVAILABLE, the domain can be
-     * updated.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline void SetDomainNameStatus(DomainNameStatus&& value) { m_domainNameStatusHasBeenSet = true; m_domainNameStatus = std::move(value); }
+    inline void SetOwnershipVerificationCertificateArn(Aws::String&& value) { m_ownershipVerificationCertificateArnHasBeenSet = true; m_ownershipVerificationCertificateArn = std::move(value); }
 
     /**
-     * <p>The status of the domain name migration. The valid values are AVAILABLE and
-     * UPDATING. If the status is UPDATING, the domain cannot be modified further until
-     * the existing operation is complete. If it is AVAILABLE, the domain can be
-     * updated.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline DomainNameConfiguration& WithDomainNameStatus(const DomainNameStatus& value) { SetDomainNameStatus(value); return *this;}
+    inline void SetOwnershipVerificationCertificateArn(const char* value) { m_ownershipVerificationCertificateArnHasBeenSet = true; m_ownershipVerificationCertificateArn.assign(value); }
 
     /**
-     * <p>The status of the domain name migration. The valid values are AVAILABLE and
-     * UPDATING. If the status is UPDATING, the domain cannot be modified further until
-     * the existing operation is complete. If it is AVAILABLE, the domain can be
-     * updated.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline DomainNameConfiguration& WithDomainNameStatus(DomainNameStatus&& value) { SetDomainNameStatus(std::move(value)); return *this;}
-
+    inline DomainNameConfiguration& WithOwnershipVerificationCertificateArn(const Aws::String& value) { SetOwnershipVerificationCertificateArn(value); return *this;}
 
     /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline const Aws::String& GetDomainNameStatusMessage() const{ return m_domainNameStatusMessage; }
+    inline DomainNameConfiguration& WithOwnershipVerificationCertificateArn(Aws::String&& value) { SetOwnershipVerificationCertificateArn(std::move(value)); return *this;}
 
     /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
+     * <p>The ARN of the public certificate issued by ACM to validate ownership of your
+     * custom domain. Only required when configuring mutual TLS and using an ACM
+     * imported or private CA certificate ARN as the regionalCertificateArn</p>
      */
-    inline bool DomainNameStatusMessageHasBeenSet() const { return m_domainNameStatusMessageHasBeenSet; }
-
-    /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
-     */
-    inline void SetDomainNameStatusMessage(const Aws::String& value) { m_domainNameStatusMessageHasBeenSet = true; m_domainNameStatusMessage = value; }
-
-    /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
-     */
-    inline void SetDomainNameStatusMessage(Aws::String&& value) { m_domainNameStatusMessageHasBeenSet = true; m_domainNameStatusMessage = std::move(value); }
-
-    /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
-     */
-    inline void SetDomainNameStatusMessage(const char* value) { m_domainNameStatusMessageHasBeenSet = true; m_domainNameStatusMessage.assign(value); }
-
-    /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
-     */
-    inline DomainNameConfiguration& WithDomainNameStatusMessage(const Aws::String& value) { SetDomainNameStatusMessage(value); return *this;}
-
-    /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
-     */
-    inline DomainNameConfiguration& WithDomainNameStatusMessage(Aws::String&& value) { SetDomainNameStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional text message containing detailed information about status of the
-     * domain name migration.</p>
-     */
-    inline DomainNameConfiguration& WithDomainNameStatusMessage(const char* value) { SetDomainNameStatusMessage(value); return *this;}
+    inline DomainNameConfiguration& WithOwnershipVerificationCertificateArn(const char* value) { SetOwnershipVerificationCertificateArn(value); return *this;}
 
   private:
 
@@ -469,6 +494,12 @@ namespace Model
     Aws::Utils::DateTime m_certificateUploadDate;
     bool m_certificateUploadDateHasBeenSet;
 
+    DomainNameStatus m_domainNameStatus;
+    bool m_domainNameStatusHasBeenSet;
+
+    Aws::String m_domainNameStatusMessage;
+    bool m_domainNameStatusMessageHasBeenSet;
+
     EndpointType m_endpointType;
     bool m_endpointTypeHasBeenSet;
 
@@ -478,11 +509,8 @@ namespace Model
     SecurityPolicy m_securityPolicy;
     bool m_securityPolicyHasBeenSet;
 
-    DomainNameStatus m_domainNameStatus;
-    bool m_domainNameStatusHasBeenSet;
-
-    Aws::String m_domainNameStatusMessage;
-    bool m_domainNameStatusMessageHasBeenSet;
+    Aws::String m_ownershipVerificationCertificateArn;
+    bool m_ownershipVerificationCertificateArnHasBeenSet;
   };
 
 } // namespace Model

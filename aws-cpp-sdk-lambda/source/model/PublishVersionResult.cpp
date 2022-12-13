@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/lambda/model/PublishVersionResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,7 +20,12 @@ PublishVersionResult::PublishVersionResult() :
     m_runtime(Runtime::NOT_SET),
     m_codeSize(0),
     m_timeout(0),
-    m_memorySize(0)
+    m_memorySize(0),
+    m_state(State::NOT_SET),
+    m_stateReasonCode(StateReasonCode::NOT_SET),
+    m_lastUpdateStatus(LastUpdateStatus::NOT_SET),
+    m_lastUpdateStatusReasonCode(LastUpdateStatusReasonCode::NOT_SET),
+    m_packageType(PackageType::NOT_SET)
 {
 }
 
@@ -38,7 +33,12 @@ PublishVersionResult::PublishVersionResult(const Aws::AmazonWebServiceResult<Jso
     m_runtime(Runtime::NOT_SET),
     m_codeSize(0),
     m_timeout(0),
-    m_memorySize(0)
+    m_memorySize(0),
+    m_state(State::NOT_SET),
+    m_stateReasonCode(StateReasonCode::NOT_SET),
+    m_lastUpdateStatus(LastUpdateStatus::NOT_SET),
+    m_lastUpdateStatusReasonCode(LastUpdateStatusReasonCode::NOT_SET),
+    m_packageType(PackageType::NOT_SET)
 {
   *this = result;
 }
@@ -167,6 +167,90 @@ PublishVersionResult& PublishVersionResult::operator =(const Aws::AmazonWebServi
     {
       m_layers.push_back(layersJsonList[layersIndex].AsObject());
     }
+  }
+
+  if(jsonValue.ValueExists("State"))
+  {
+    m_state = StateMapper::GetStateForName(jsonValue.GetString("State"));
+
+  }
+
+  if(jsonValue.ValueExists("StateReason"))
+  {
+    m_stateReason = jsonValue.GetString("StateReason");
+
+  }
+
+  if(jsonValue.ValueExists("StateReasonCode"))
+  {
+    m_stateReasonCode = StateReasonCodeMapper::GetStateReasonCodeForName(jsonValue.GetString("StateReasonCode"));
+
+  }
+
+  if(jsonValue.ValueExists("LastUpdateStatus"))
+  {
+    m_lastUpdateStatus = LastUpdateStatusMapper::GetLastUpdateStatusForName(jsonValue.GetString("LastUpdateStatus"));
+
+  }
+
+  if(jsonValue.ValueExists("LastUpdateStatusReason"))
+  {
+    m_lastUpdateStatusReason = jsonValue.GetString("LastUpdateStatusReason");
+
+  }
+
+  if(jsonValue.ValueExists("LastUpdateStatusReasonCode"))
+  {
+    m_lastUpdateStatusReasonCode = LastUpdateStatusReasonCodeMapper::GetLastUpdateStatusReasonCodeForName(jsonValue.GetString("LastUpdateStatusReasonCode"));
+
+  }
+
+  if(jsonValue.ValueExists("FileSystemConfigs"))
+  {
+    Array<JsonView> fileSystemConfigsJsonList = jsonValue.GetArray("FileSystemConfigs");
+    for(unsigned fileSystemConfigsIndex = 0; fileSystemConfigsIndex < fileSystemConfigsJsonList.GetLength(); ++fileSystemConfigsIndex)
+    {
+      m_fileSystemConfigs.push_back(fileSystemConfigsJsonList[fileSystemConfigsIndex].AsObject());
+    }
+  }
+
+  if(jsonValue.ValueExists("PackageType"))
+  {
+    m_packageType = PackageTypeMapper::GetPackageTypeForName(jsonValue.GetString("PackageType"));
+
+  }
+
+  if(jsonValue.ValueExists("ImageConfigResponse"))
+  {
+    m_imageConfigResponse = jsonValue.GetObject("ImageConfigResponse");
+
+  }
+
+  if(jsonValue.ValueExists("SigningProfileVersionArn"))
+  {
+    m_signingProfileVersionArn = jsonValue.GetString("SigningProfileVersionArn");
+
+  }
+
+  if(jsonValue.ValueExists("SigningJobArn"))
+  {
+    m_signingJobArn = jsonValue.GetString("SigningJobArn");
+
+  }
+
+  if(jsonValue.ValueExists("Architectures"))
+  {
+    Array<JsonView> architecturesJsonList = jsonValue.GetArray("Architectures");
+    for(unsigned architecturesIndex = 0; architecturesIndex < architecturesJsonList.GetLength(); ++architecturesIndex)
+    {
+      m_architectures.push_back(ArchitectureMapper::GetArchitectureForName(architecturesJsonList[architecturesIndex].AsString()));
+    }
+  }
+
+  if(jsonValue.ValueExists("EphemeralStorage"))
+  {
+    m_ephemeralStorage = jsonValue.GetObject("EphemeralStorage");
+
   }
 
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
@@ -26,11 +16,17 @@
 #include <aws/iot/model/FirehoseAction.h>
 #include <aws/iot/model/CloudwatchMetricAction.h>
 #include <aws/iot/model/CloudwatchAlarmAction.h>
+#include <aws/iot/model/CloudwatchLogsAction.h>
 #include <aws/iot/model/ElasticsearchAction.h>
 #include <aws/iot/model/SalesforceAction.h>
 #include <aws/iot/model/IotAnalyticsAction.h>
 #include <aws/iot/model/IotEventsAction.h>
+#include <aws/iot/model/IotSiteWiseAction.h>
 #include <aws/iot/model/StepFunctionsAction.h>
+#include <aws/iot/model/TimestreamAction.h>
+#include <aws/iot/model/HttpAction.h>
+#include <aws/iot/model/KafkaAction.h>
+#include <aws/iot/model/OpenSearchAction.h>
 #include <utility>
 
 namespace Aws
@@ -416,32 +412,93 @@ namespace Model
 
 
     /**
-     * <p>Write data to an Amazon Elasticsearch Service domain.</p>
+     * <p>Send data to CloudWatch Logs.</p>
+     */
+    inline const CloudwatchLogsAction& GetCloudwatchLogs() const{ return m_cloudwatchLogs; }
+
+    /**
+     * <p>Send data to CloudWatch Logs.</p>
+     */
+    inline bool CloudwatchLogsHasBeenSet() const { return m_cloudwatchLogsHasBeenSet; }
+
+    /**
+     * <p>Send data to CloudWatch Logs.</p>
+     */
+    inline void SetCloudwatchLogs(const CloudwatchLogsAction& value) { m_cloudwatchLogsHasBeenSet = true; m_cloudwatchLogs = value; }
+
+    /**
+     * <p>Send data to CloudWatch Logs.</p>
+     */
+    inline void SetCloudwatchLogs(CloudwatchLogsAction&& value) { m_cloudwatchLogsHasBeenSet = true; m_cloudwatchLogs = std::move(value); }
+
+    /**
+     * <p>Send data to CloudWatch Logs.</p>
+     */
+    inline Action& WithCloudwatchLogs(const CloudwatchLogsAction& value) { SetCloudwatchLogs(value); return *this;}
+
+    /**
+     * <p>Send data to CloudWatch Logs.</p>
+     */
+    inline Action& WithCloudwatchLogs(CloudwatchLogsAction&& value) { SetCloudwatchLogs(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>  <p>The
+     * <code>Elasticsearch</code> action can only be used by existing rule actions. To
+     * create a new rule action or to update an existing rule action, use the
+     * <code>OpenSearch</code> rule action instead. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html">OpenSearchAction</a>.</p>
+     * 
      */
     inline const ElasticsearchAction& GetElasticsearch() const{ return m_elasticsearch; }
 
     /**
-     * <p>Write data to an Amazon Elasticsearch Service domain.</p>
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>  <p>The
+     * <code>Elasticsearch</code> action can only be used by existing rule actions. To
+     * create a new rule action or to update an existing rule action, use the
+     * <code>OpenSearch</code> rule action instead. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html">OpenSearchAction</a>.</p>
+     * 
      */
     inline bool ElasticsearchHasBeenSet() const { return m_elasticsearchHasBeenSet; }
 
     /**
-     * <p>Write data to an Amazon Elasticsearch Service domain.</p>
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>  <p>The
+     * <code>Elasticsearch</code> action can only be used by existing rule actions. To
+     * create a new rule action or to update an existing rule action, use the
+     * <code>OpenSearch</code> rule action instead. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html">OpenSearchAction</a>.</p>
+     * 
      */
     inline void SetElasticsearch(const ElasticsearchAction& value) { m_elasticsearchHasBeenSet = true; m_elasticsearch = value; }
 
     /**
-     * <p>Write data to an Amazon Elasticsearch Service domain.</p>
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>  <p>The
+     * <code>Elasticsearch</code> action can only be used by existing rule actions. To
+     * create a new rule action or to update an existing rule action, use the
+     * <code>OpenSearch</code> rule action instead. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html">OpenSearchAction</a>.</p>
+     * 
      */
     inline void SetElasticsearch(ElasticsearchAction&& value) { m_elasticsearchHasBeenSet = true; m_elasticsearch = std::move(value); }
 
     /**
-     * <p>Write data to an Amazon Elasticsearch Service domain.</p>
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>  <p>The
+     * <code>Elasticsearch</code> action can only be used by existing rule actions. To
+     * create a new rule action or to update an existing rule action, use the
+     * <code>OpenSearch</code> rule action instead. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html">OpenSearchAction</a>.</p>
+     * 
      */
     inline Action& WithElasticsearch(const ElasticsearchAction& value) { SetElasticsearch(value); return *this;}
 
     /**
-     * <p>Write data to an Amazon Elasticsearch Service domain.</p>
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>  <p>The
+     * <code>Elasticsearch</code> action can only be used by existing rule actions. To
+     * create a new rule action or to update an existing rule action, use the
+     * <code>OpenSearch</code> rule action instead. For more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html">OpenSearchAction</a>.</p>
+     * 
      */
     inline Action& WithElasticsearch(ElasticsearchAction&& value) { SetElasticsearch(std::move(value)); return *this;}
 
@@ -478,65 +535,102 @@ namespace Model
 
 
     /**
-     * <p>Sends message data to an AWS IoT Analytics channel.</p>
+     * <p>Sends message data to an IoT Analytics channel.</p>
      */
     inline const IotAnalyticsAction& GetIotAnalytics() const{ return m_iotAnalytics; }
 
     /**
-     * <p>Sends message data to an AWS IoT Analytics channel.</p>
+     * <p>Sends message data to an IoT Analytics channel.</p>
      */
     inline bool IotAnalyticsHasBeenSet() const { return m_iotAnalyticsHasBeenSet; }
 
     /**
-     * <p>Sends message data to an AWS IoT Analytics channel.</p>
+     * <p>Sends message data to an IoT Analytics channel.</p>
      */
     inline void SetIotAnalytics(const IotAnalyticsAction& value) { m_iotAnalyticsHasBeenSet = true; m_iotAnalytics = value; }
 
     /**
-     * <p>Sends message data to an AWS IoT Analytics channel.</p>
+     * <p>Sends message data to an IoT Analytics channel.</p>
      */
     inline void SetIotAnalytics(IotAnalyticsAction&& value) { m_iotAnalyticsHasBeenSet = true; m_iotAnalytics = std::move(value); }
 
     /**
-     * <p>Sends message data to an AWS IoT Analytics channel.</p>
+     * <p>Sends message data to an IoT Analytics channel.</p>
      */
     inline Action& WithIotAnalytics(const IotAnalyticsAction& value) { SetIotAnalytics(value); return *this;}
 
     /**
-     * <p>Sends message data to an AWS IoT Analytics channel.</p>
+     * <p>Sends message data to an IoT Analytics channel.</p>
      */
     inline Action& WithIotAnalytics(IotAnalyticsAction&& value) { SetIotAnalytics(std::move(value)); return *this;}
 
 
     /**
-     * <p>Sends an input to an AWS IoT Events detector.</p>
+     * <p>Sends an input to an IoT Events detector.</p>
      */
     inline const IotEventsAction& GetIotEvents() const{ return m_iotEvents; }
 
     /**
-     * <p>Sends an input to an AWS IoT Events detector.</p>
+     * <p>Sends an input to an IoT Events detector.</p>
      */
     inline bool IotEventsHasBeenSet() const { return m_iotEventsHasBeenSet; }
 
     /**
-     * <p>Sends an input to an AWS IoT Events detector.</p>
+     * <p>Sends an input to an IoT Events detector.</p>
      */
     inline void SetIotEvents(const IotEventsAction& value) { m_iotEventsHasBeenSet = true; m_iotEvents = value; }
 
     /**
-     * <p>Sends an input to an AWS IoT Events detector.</p>
+     * <p>Sends an input to an IoT Events detector.</p>
      */
     inline void SetIotEvents(IotEventsAction&& value) { m_iotEventsHasBeenSet = true; m_iotEvents = std::move(value); }
 
     /**
-     * <p>Sends an input to an AWS IoT Events detector.</p>
+     * <p>Sends an input to an IoT Events detector.</p>
      */
     inline Action& WithIotEvents(const IotEventsAction& value) { SetIotEvents(value); return *this;}
 
     /**
-     * <p>Sends an input to an AWS IoT Events detector.</p>
+     * <p>Sends an input to an IoT Events detector.</p>
      */
     inline Action& WithIotEvents(IotEventsAction&& value) { SetIotEvents(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Sends data from the MQTT message that triggered the rule to IoT SiteWise
+     * asset properties.</p>
+     */
+    inline const IotSiteWiseAction& GetIotSiteWise() const{ return m_iotSiteWise; }
+
+    /**
+     * <p>Sends data from the MQTT message that triggered the rule to IoT SiteWise
+     * asset properties.</p>
+     */
+    inline bool IotSiteWiseHasBeenSet() const { return m_iotSiteWiseHasBeenSet; }
+
+    /**
+     * <p>Sends data from the MQTT message that triggered the rule to IoT SiteWise
+     * asset properties.</p>
+     */
+    inline void SetIotSiteWise(const IotSiteWiseAction& value) { m_iotSiteWiseHasBeenSet = true; m_iotSiteWise = value; }
+
+    /**
+     * <p>Sends data from the MQTT message that triggered the rule to IoT SiteWise
+     * asset properties.</p>
+     */
+    inline void SetIotSiteWise(IotSiteWiseAction&& value) { m_iotSiteWiseHasBeenSet = true; m_iotSiteWise = std::move(value); }
+
+    /**
+     * <p>Sends data from the MQTT message that triggered the rule to IoT SiteWise
+     * asset properties.</p>
+     */
+    inline Action& WithIotSiteWise(const IotSiteWiseAction& value) { SetIotSiteWise(value); return *this;}
+
+    /**
+     * <p>Sends data from the MQTT message that triggered the rule to IoT SiteWise
+     * asset properties.</p>
+     */
+    inline Action& WithIotSiteWise(IotSiteWiseAction&& value) { SetIotSiteWise(std::move(value)); return *this;}
 
 
     /**
@@ -568,6 +662,154 @@ namespace Model
      * <p>Starts execution of a Step Functions state machine.</p>
      */
     inline Action& WithStepFunctions(StepFunctionsAction&& value) { SetStepFunctions(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The Timestream rule action writes attributes (measures) from an MQTT message
+     * into an Amazon Timestream table. For more information, see the <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html">Timestream</a>
+     * topic rule action documentation.</p>
+     */
+    inline const TimestreamAction& GetTimestream() const{ return m_timestream; }
+
+    /**
+     * <p>The Timestream rule action writes attributes (measures) from an MQTT message
+     * into an Amazon Timestream table. For more information, see the <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html">Timestream</a>
+     * topic rule action documentation.</p>
+     */
+    inline bool TimestreamHasBeenSet() const { return m_timestreamHasBeenSet; }
+
+    /**
+     * <p>The Timestream rule action writes attributes (measures) from an MQTT message
+     * into an Amazon Timestream table. For more information, see the <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html">Timestream</a>
+     * topic rule action documentation.</p>
+     */
+    inline void SetTimestream(const TimestreamAction& value) { m_timestreamHasBeenSet = true; m_timestream = value; }
+
+    /**
+     * <p>The Timestream rule action writes attributes (measures) from an MQTT message
+     * into an Amazon Timestream table. For more information, see the <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html">Timestream</a>
+     * topic rule action documentation.</p>
+     */
+    inline void SetTimestream(TimestreamAction&& value) { m_timestreamHasBeenSet = true; m_timestream = std::move(value); }
+
+    /**
+     * <p>The Timestream rule action writes attributes (measures) from an MQTT message
+     * into an Amazon Timestream table. For more information, see the <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html">Timestream</a>
+     * topic rule action documentation.</p>
+     */
+    inline Action& WithTimestream(const TimestreamAction& value) { SetTimestream(value); return *this;}
+
+    /**
+     * <p>The Timestream rule action writes attributes (measures) from an MQTT message
+     * into an Amazon Timestream table. For more information, see the <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html">Timestream</a>
+     * topic rule action documentation.</p>
+     */
+    inline Action& WithTimestream(TimestreamAction&& value) { SetTimestream(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Send data to an HTTPS endpoint.</p>
+     */
+    inline const HttpAction& GetHttp() const{ return m_http; }
+
+    /**
+     * <p>Send data to an HTTPS endpoint.</p>
+     */
+    inline bool HttpHasBeenSet() const { return m_httpHasBeenSet; }
+
+    /**
+     * <p>Send data to an HTTPS endpoint.</p>
+     */
+    inline void SetHttp(const HttpAction& value) { m_httpHasBeenSet = true; m_http = value; }
+
+    /**
+     * <p>Send data to an HTTPS endpoint.</p>
+     */
+    inline void SetHttp(HttpAction&& value) { m_httpHasBeenSet = true; m_http = std::move(value); }
+
+    /**
+     * <p>Send data to an HTTPS endpoint.</p>
+     */
+    inline Action& WithHttp(const HttpAction& value) { SetHttp(value); return *this;}
+
+    /**
+     * <p>Send data to an HTTPS endpoint.</p>
+     */
+    inline Action& WithHttp(HttpAction&& value) { SetHttp(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or
+     * self-managed Apache Kafka cluster.</p>
+     */
+    inline const KafkaAction& GetKafka() const{ return m_kafka; }
+
+    /**
+     * <p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or
+     * self-managed Apache Kafka cluster.</p>
+     */
+    inline bool KafkaHasBeenSet() const { return m_kafkaHasBeenSet; }
+
+    /**
+     * <p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or
+     * self-managed Apache Kafka cluster.</p>
+     */
+    inline void SetKafka(const KafkaAction& value) { m_kafkaHasBeenSet = true; m_kafka = value; }
+
+    /**
+     * <p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or
+     * self-managed Apache Kafka cluster.</p>
+     */
+    inline void SetKafka(KafkaAction&& value) { m_kafkaHasBeenSet = true; m_kafka = std::move(value); }
+
+    /**
+     * <p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or
+     * self-managed Apache Kafka cluster.</p>
+     */
+    inline Action& WithKafka(const KafkaAction& value) { SetKafka(value); return *this;}
+
+    /**
+     * <p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or
+     * self-managed Apache Kafka cluster.</p>
+     */
+    inline Action& WithKafka(KafkaAction&& value) { SetKafka(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>
+     */
+    inline const OpenSearchAction& GetOpenSearch() const{ return m_openSearch; }
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>
+     */
+    inline bool OpenSearchHasBeenSet() const { return m_openSearchHasBeenSet; }
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>
+     */
+    inline void SetOpenSearch(const OpenSearchAction& value) { m_openSearchHasBeenSet = true; m_openSearch = value; }
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>
+     */
+    inline void SetOpenSearch(OpenSearchAction&& value) { m_openSearchHasBeenSet = true; m_openSearch = std::move(value); }
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>
+     */
+    inline Action& WithOpenSearch(const OpenSearchAction& value) { SetOpenSearch(value); return *this;}
+
+    /**
+     * <p>Write data to an Amazon OpenSearch Service domain.</p>
+     */
+    inline Action& WithOpenSearch(OpenSearchAction&& value) { SetOpenSearch(std::move(value)); return *this;}
 
   private:
 
@@ -604,6 +846,9 @@ namespace Model
     CloudwatchAlarmAction m_cloudwatchAlarm;
     bool m_cloudwatchAlarmHasBeenSet;
 
+    CloudwatchLogsAction m_cloudwatchLogs;
+    bool m_cloudwatchLogsHasBeenSet;
+
     ElasticsearchAction m_elasticsearch;
     bool m_elasticsearchHasBeenSet;
 
@@ -616,8 +861,23 @@ namespace Model
     IotEventsAction m_iotEvents;
     bool m_iotEventsHasBeenSet;
 
+    IotSiteWiseAction m_iotSiteWise;
+    bool m_iotSiteWiseHasBeenSet;
+
     StepFunctionsAction m_stepFunctions;
     bool m_stepFunctionsHasBeenSet;
+
+    TimestreamAction m_timestream;
+    bool m_timestreamHasBeenSet;
+
+    HttpAction m_http;
+    bool m_httpHasBeenSet;
+
+    KafkaAction m_kafka;
+    bool m_kafkaHasBeenSet;
+
+    OpenSearchAction m_openSearch;
+    bool m_openSearchHasBeenSet;
   };
 
 } // namespace Model

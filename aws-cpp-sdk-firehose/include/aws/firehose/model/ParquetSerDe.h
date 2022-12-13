@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
@@ -117,7 +107,7 @@ namespace Model
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
      * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ration is more
+     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
     inline const ParquetCompression& GetCompression() const{ return m_compression; }
@@ -126,7 +116,7 @@ namespace Model
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
      * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ration is more
+     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
     inline bool CompressionHasBeenSet() const { return m_compressionHasBeenSet; }
@@ -135,7 +125,7 @@ namespace Model
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
      * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ration is more
+     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
     inline void SetCompression(const ParquetCompression& value) { m_compressionHasBeenSet = true; m_compression = value; }
@@ -144,7 +134,7 @@ namespace Model
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
      * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ration is more
+     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
     inline void SetCompression(ParquetCompression&& value) { m_compressionHasBeenSet = true; m_compression = std::move(value); }
@@ -153,7 +143,7 @@ namespace Model
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
      * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ration is more
+     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
     inline ParquetSerDe& WithCompression(const ParquetCompression& value) { SetCompression(value); return *this;}
@@ -162,7 +152,7 @@ namespace Model
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
      * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ration is more
+     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
     inline ParquetSerDe& WithCompression(ParquetCompression&& value) { SetCompression(std::move(value)); return *this;}

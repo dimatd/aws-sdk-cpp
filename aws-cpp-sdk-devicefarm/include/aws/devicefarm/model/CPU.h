@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -34,9 +24,8 @@ namespace Model
 {
 
   /**
-   * <p>Represents the amount of CPU that an app is using on a physical device.</p>
-   * <p>Note that this does not represent system-wide CPU usage.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Represents the amount of CPU that an app is using on a physical device. Does
+   * not represent system-wide CPU usage.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CPU">AWS API
    * Reference</a></p>
    */
@@ -91,42 +80,42 @@ namespace Model
 
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline const Aws::String& GetArchitecture() const{ return m_architecture; }
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline bool ArchitectureHasBeenSet() const { return m_architectureHasBeenSet; }
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline void SetArchitecture(const Aws::String& value) { m_architectureHasBeenSet = true; m_architecture = value; }
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline void SetArchitecture(Aws::String&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline void SetArchitecture(const char* value) { m_architectureHasBeenSet = true; m_architecture.assign(value); }
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline CPU& WithArchitecture(const Aws::String& value) { SetArchitecture(value); return *this;}
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline CPU& WithArchitecture(Aws::String&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
-     * <p>The CPU's architecture, for example x86 or ARM.</p>
+     * <p>The CPU's architecture (for example, x86 or ARM).</p>
      */
     inline CPU& WithArchitecture(const char* value) { SetArchitecture(value); return *this;}
 

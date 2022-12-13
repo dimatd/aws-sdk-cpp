@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -34,7 +24,8 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>Container for lifecycle rules. You can add as many as 1000
+   * rules.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/LifecycleConfiguration">AWS
    * API Reference</a></p>
    */
@@ -49,42 +40,42 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline const Aws::Vector<Rule>& GetRules() const{ return m_rules; }
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline bool RulesHasBeenSet() const { return m_rulesHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline void SetRules(const Aws::Vector<Rule>& value) { m_rulesHasBeenSet = true; m_rules = value; }
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline void SetRules(Aws::Vector<Rule>&& value) { m_rulesHasBeenSet = true; m_rules = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline LifecycleConfiguration& WithRules(const Aws::Vector<Rule>& value) { SetRules(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline LifecycleConfiguration& WithRules(Aws::Vector<Rule>&& value) { SetRules(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline LifecycleConfiguration& AddRules(const Rule& value) { m_rulesHasBeenSet = true; m_rules.push_back(value); return *this; }
 
     /**
-     * <p/>
+     * <p>Specifies lifecycle configuration rules for an Amazon S3 bucket. </p>
      */
     inline LifecycleConfiguration& AddRules(Rule&& value) { m_rulesHasBeenSet = true; m_rules.push_back(std::move(value)); return *this; }
 

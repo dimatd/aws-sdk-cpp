@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconvert/model/CreateJobRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -28,6 +18,7 @@ CreateJobRequest::CreateJobRequest() :
     m_billingTagsSourceHasBeenSet(false),
     m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
     m_clientRequestTokenHasBeenSet(true),
+    m_hopDestinationsHasBeenSet(false),
     m_jobTemplateHasBeenSet(false),
     m_priority(0),
     m_priorityHasBeenSet(false),
@@ -61,6 +52,17 @@ Aws::String CreateJobRequest::SerializePayload() const
   if(m_clientRequestTokenHasBeenSet)
   {
    payload.WithString("clientRequestToken", m_clientRequestToken);
+
+  }
+
+  if(m_hopDestinationsHasBeenSet)
+  {
+   Array<JsonValue> hopDestinationsJsonList(m_hopDestinations.size());
+   for(unsigned hopDestinationsIndex = 0; hopDestinationsIndex < hopDestinationsJsonList.GetLength(); ++hopDestinationsIndex)
+   {
+     hopDestinationsJsonList[hopDestinationsIndex].AsObject(m_hopDestinations[hopDestinationsIndex].Jsonize());
+   }
+   payload.WithArray("hopDestinations", std::move(hopDestinationsJsonList));
 
   }
 

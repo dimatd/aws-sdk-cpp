@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/dlm/model/Schedule.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -35,7 +25,11 @@ Schedule::Schedule() :
     m_tagsToAddHasBeenSet(false),
     m_variableTagsHasBeenSet(false),
     m_createRuleHasBeenSet(false),
-    m_retainRuleHasBeenSet(false)
+    m_retainRuleHasBeenSet(false),
+    m_fastRestoreRuleHasBeenSet(false),
+    m_crossRegionCopyRulesHasBeenSet(false),
+    m_shareRulesHasBeenSet(false),
+    m_deprecateRuleHasBeenSet(false)
 {
 }
 
@@ -46,7 +40,11 @@ Schedule::Schedule(JsonView jsonValue) :
     m_tagsToAddHasBeenSet(false),
     m_variableTagsHasBeenSet(false),
     m_createRuleHasBeenSet(false),
-    m_retainRuleHasBeenSet(false)
+    m_retainRuleHasBeenSet(false),
+    m_fastRestoreRuleHasBeenSet(false),
+    m_crossRegionCopyRulesHasBeenSet(false),
+    m_shareRulesHasBeenSet(false),
+    m_deprecateRuleHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -101,6 +99,40 @@ Schedule& Schedule::operator =(JsonView jsonValue)
     m_retainRuleHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("FastRestoreRule"))
+  {
+    m_fastRestoreRule = jsonValue.GetObject("FastRestoreRule");
+
+    m_fastRestoreRuleHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("CrossRegionCopyRules"))
+  {
+    Array<JsonView> crossRegionCopyRulesJsonList = jsonValue.GetArray("CrossRegionCopyRules");
+    for(unsigned crossRegionCopyRulesIndex = 0; crossRegionCopyRulesIndex < crossRegionCopyRulesJsonList.GetLength(); ++crossRegionCopyRulesIndex)
+    {
+      m_crossRegionCopyRules.push_back(crossRegionCopyRulesJsonList[crossRegionCopyRulesIndex].AsObject());
+    }
+    m_crossRegionCopyRulesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ShareRules"))
+  {
+    Array<JsonView> shareRulesJsonList = jsonValue.GetArray("ShareRules");
+    for(unsigned shareRulesIndex = 0; shareRulesIndex < shareRulesJsonList.GetLength(); ++shareRulesIndex)
+    {
+      m_shareRules.push_back(shareRulesJsonList[shareRulesIndex].AsObject());
+    }
+    m_shareRulesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("DeprecateRule"))
+  {
+    m_deprecateRule = jsonValue.GetObject("DeprecateRule");
+
+    m_deprecateRuleHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -151,6 +183,40 @@ JsonValue Schedule::Jsonize() const
   if(m_retainRuleHasBeenSet)
   {
    payload.WithObject("RetainRule", m_retainRule.Jsonize());
+
+  }
+
+  if(m_fastRestoreRuleHasBeenSet)
+  {
+   payload.WithObject("FastRestoreRule", m_fastRestoreRule.Jsonize());
+
+  }
+
+  if(m_crossRegionCopyRulesHasBeenSet)
+  {
+   Array<JsonValue> crossRegionCopyRulesJsonList(m_crossRegionCopyRules.size());
+   for(unsigned crossRegionCopyRulesIndex = 0; crossRegionCopyRulesIndex < crossRegionCopyRulesJsonList.GetLength(); ++crossRegionCopyRulesIndex)
+   {
+     crossRegionCopyRulesJsonList[crossRegionCopyRulesIndex].AsObject(m_crossRegionCopyRules[crossRegionCopyRulesIndex].Jsonize());
+   }
+   payload.WithArray("CrossRegionCopyRules", std::move(crossRegionCopyRulesJsonList));
+
+  }
+
+  if(m_shareRulesHasBeenSet)
+  {
+   Array<JsonValue> shareRulesJsonList(m_shareRules.size());
+   for(unsigned shareRulesIndex = 0; shareRulesIndex < shareRulesJsonList.GetLength(); ++shareRulesIndex)
+   {
+     shareRulesJsonList[shareRulesIndex].AsObject(m_shareRules[shareRulesIndex].Jsonize());
+   }
+   payload.WithArray("ShareRules", std::move(shareRulesJsonList));
+
+  }
+
+  if(m_deprecateRuleHasBeenSet)
+  {
+   payload.WithObject("DeprecateRule", m_deprecateRule.Jsonize());
 
   }
 

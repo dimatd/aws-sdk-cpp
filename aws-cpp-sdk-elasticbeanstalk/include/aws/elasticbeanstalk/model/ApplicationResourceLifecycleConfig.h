@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
@@ -37,7 +27,7 @@ namespace Model
   /**
    * <p>The resource lifecycle configuration for an application. Defines lifecycle
    * settings for resources that belong to the application, and the service role that
-   * Elastic Beanstalk assumes in order to apply lifecycle settings. The version
+   * AWS Elastic Beanstalk assumes in order to apply lifecycle settings. The version
    * lifecycle configuration defines lifecycle settings for application
    * versions.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ApplicationResourceLifecycleConfig">AWS
@@ -160,32 +150,32 @@ namespace Model
 
 
     /**
-     * <p>The application version lifecycle configuration.</p>
+     * <p>Defines lifecycle settings for application versions.</p>
      */
     inline const ApplicationVersionLifecycleConfig& GetVersionLifecycleConfig() const{ return m_versionLifecycleConfig; }
 
     /**
-     * <p>The application version lifecycle configuration.</p>
+     * <p>Defines lifecycle settings for application versions.</p>
      */
     inline bool VersionLifecycleConfigHasBeenSet() const { return m_versionLifecycleConfigHasBeenSet; }
 
     /**
-     * <p>The application version lifecycle configuration.</p>
+     * <p>Defines lifecycle settings for application versions.</p>
      */
     inline void SetVersionLifecycleConfig(const ApplicationVersionLifecycleConfig& value) { m_versionLifecycleConfigHasBeenSet = true; m_versionLifecycleConfig = value; }
 
     /**
-     * <p>The application version lifecycle configuration.</p>
+     * <p>Defines lifecycle settings for application versions.</p>
      */
     inline void SetVersionLifecycleConfig(ApplicationVersionLifecycleConfig&& value) { m_versionLifecycleConfigHasBeenSet = true; m_versionLifecycleConfig = std::move(value); }
 
     /**
-     * <p>The application version lifecycle configuration.</p>
+     * <p>Defines lifecycle settings for application versions.</p>
      */
     inline ApplicationResourceLifecycleConfig& WithVersionLifecycleConfig(const ApplicationVersionLifecycleConfig& value) { SetVersionLifecycleConfig(value); return *this;}
 
     /**
-     * <p>The application version lifecycle configuration.</p>
+     * <p>Defines lifecycle settings for application versions.</p>
      */
     inline ApplicationResourceLifecycleConfig& WithVersionLifecycleConfig(ApplicationVersionLifecycleConfig&& value) { SetVersionLifecycleConfig(std::move(value)); return *this;}
 

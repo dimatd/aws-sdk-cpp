@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/gamelift/model/FleetAttributes.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -42,7 +32,9 @@ FleetAttributes::FleetAttributes() :
     m_status(FleetStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_buildIdHasBeenSet(false),
+    m_buildArnHasBeenSet(false),
     m_scriptIdHasBeenSet(false),
+    m_scriptArnHasBeenSet(false),
     m_serverLaunchPathHasBeenSet(false),
     m_serverLaunchParametersHasBeenSet(false),
     m_logPathsHasBeenSet(false),
@@ -72,7 +64,9 @@ FleetAttributes::FleetAttributes(JsonView jsonValue) :
     m_status(FleetStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_buildIdHasBeenSet(false),
+    m_buildArnHasBeenSet(false),
     m_scriptIdHasBeenSet(false),
+    m_scriptArnHasBeenSet(false),
     m_serverLaunchPathHasBeenSet(false),
     m_serverLaunchParametersHasBeenSet(false),
     m_logPathsHasBeenSet(false),
@@ -161,11 +155,25 @@ FleetAttributes& FleetAttributes::operator =(JsonView jsonValue)
     m_buildIdHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("BuildArn"))
+  {
+    m_buildArn = jsonValue.GetString("BuildArn");
+
+    m_buildArnHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("ScriptId"))
   {
     m_scriptId = jsonValue.GetString("ScriptId");
 
     m_scriptIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ScriptArn"))
+  {
+    m_scriptArn = jsonValue.GetString("ScriptArn");
+
+    m_scriptArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("ServerLaunchPath"))
@@ -309,9 +317,21 @@ JsonValue FleetAttributes::Jsonize() const
 
   }
 
+  if(m_buildArnHasBeenSet)
+  {
+   payload.WithString("BuildArn", m_buildArn);
+
+  }
+
   if(m_scriptIdHasBeenSet)
   {
    payload.WithString("ScriptId", m_scriptId);
+
+  }
+
+  if(m_scriptArnHasBeenSet)
+  {
+   payload.WithString("ScriptArn", m_scriptArn);
 
   }
 

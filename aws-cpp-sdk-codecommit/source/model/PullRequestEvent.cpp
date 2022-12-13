@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/codecommit/model/PullRequestEvent.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -37,7 +27,10 @@ PullRequestEvent::PullRequestEvent() :
     m_pullRequestCreatedEventMetadataHasBeenSet(false),
     m_pullRequestStatusChangedEventMetadataHasBeenSet(false),
     m_pullRequestSourceReferenceUpdatedEventMetadataHasBeenSet(false),
-    m_pullRequestMergedStateChangedEventMetadataHasBeenSet(false)
+    m_pullRequestMergedStateChangedEventMetadataHasBeenSet(false),
+    m_approvalRuleEventMetadataHasBeenSet(false),
+    m_approvalStateChangedEventMetadataHasBeenSet(false),
+    m_approvalRuleOverriddenEventMetadataHasBeenSet(false)
 {
 }
 
@@ -50,7 +43,10 @@ PullRequestEvent::PullRequestEvent(JsonView jsonValue) :
     m_pullRequestCreatedEventMetadataHasBeenSet(false),
     m_pullRequestStatusChangedEventMetadataHasBeenSet(false),
     m_pullRequestSourceReferenceUpdatedEventMetadataHasBeenSet(false),
-    m_pullRequestMergedStateChangedEventMetadataHasBeenSet(false)
+    m_pullRequestMergedStateChangedEventMetadataHasBeenSet(false),
+    m_approvalRuleEventMetadataHasBeenSet(false),
+    m_approvalStateChangedEventMetadataHasBeenSet(false),
+    m_approvalRuleOverriddenEventMetadataHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -113,6 +109,27 @@ PullRequestEvent& PullRequestEvent::operator =(JsonView jsonValue)
     m_pullRequestMergedStateChangedEventMetadataHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("approvalRuleEventMetadata"))
+  {
+    m_approvalRuleEventMetadata = jsonValue.GetObject("approvalRuleEventMetadata");
+
+    m_approvalRuleEventMetadataHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("approvalStateChangedEventMetadata"))
+  {
+    m_approvalStateChangedEventMetadata = jsonValue.GetObject("approvalStateChangedEventMetadata");
+
+    m_approvalStateChangedEventMetadataHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("approvalRuleOverriddenEventMetadata"))
+  {
+    m_approvalRuleOverriddenEventMetadata = jsonValue.GetObject("approvalRuleOverriddenEventMetadata");
+
+    m_approvalRuleOverriddenEventMetadataHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -163,6 +180,24 @@ JsonValue PullRequestEvent::Jsonize() const
   if(m_pullRequestMergedStateChangedEventMetadataHasBeenSet)
   {
    payload.WithObject("pullRequestMergedStateChangedEventMetadata", m_pullRequestMergedStateChangedEventMetadata.Jsonize());
+
+  }
+
+  if(m_approvalRuleEventMetadataHasBeenSet)
+  {
+   payload.WithObject("approvalRuleEventMetadata", m_approvalRuleEventMetadata.Jsonize());
+
+  }
+
+  if(m_approvalStateChangedEventMetadataHasBeenSet)
+  {
+   payload.WithObject("approvalStateChangedEventMetadata", m_approvalStateChangedEventMetadata.Jsonize());
+
+  }
+
+  if(m_approvalRuleOverriddenEventMetadataHasBeenSet)
+  {
+   payload.WithObject("approvalRuleOverriddenEventMetadata", m_approvalRuleOverriddenEventMetadata.Jsonize());
 
   }
 

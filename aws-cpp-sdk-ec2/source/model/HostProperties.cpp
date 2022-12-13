@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/HostProperties.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -34,6 +24,7 @@ HostProperties::HostProperties() :
     m_cores(0),
     m_coresHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
+    m_instanceFamilyHasBeenSet(false),
     m_sockets(0),
     m_socketsHasBeenSet(false),
     m_totalVCpus(0),
@@ -45,6 +36,7 @@ HostProperties::HostProperties(const XmlNode& xmlNode) :
     m_cores(0),
     m_coresHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
+    m_instanceFamilyHasBeenSet(false),
     m_sockets(0),
     m_socketsHasBeenSet(false),
     m_totalVCpus(0),
@@ -70,6 +62,12 @@ HostProperties& HostProperties::operator =(const XmlNode& xmlNode)
     {
       m_instanceType = Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText());
       m_instanceTypeHasBeenSet = true;
+    }
+    XmlNode instanceFamilyNode = resultNode.FirstChild("instanceFamily");
+    if(!instanceFamilyNode.IsNull())
+    {
+      m_instanceFamily = Aws::Utils::Xml::DecodeEscapedXmlText(instanceFamilyNode.GetText());
+      m_instanceFamilyHasBeenSet = true;
     }
     XmlNode socketsNode = resultNode.FirstChild("sockets");
     if(!socketsNode.IsNull())
@@ -100,6 +98,11 @@ void HostProperties::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
 
+  if(m_instanceFamilyHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".InstanceFamily=" << StringUtils::URLEncode(m_instanceFamily.c_str()) << "&";
+  }
+
   if(m_socketsHasBeenSet)
   {
       oStream << location << index << locationValue << ".Sockets=" << m_sockets << "&";
@@ -121,6 +124,10 @@ void HostProperties::OutputToStream(Aws::OStream& oStream, const char* location)
   if(m_instanceTypeHasBeenSet)
   {
       oStream << location << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
+  }
+  if(m_instanceFamilyHasBeenSet)
+  {
+      oStream << location << ".InstanceFamily=" << StringUtils::URLEncode(m_instanceFamily.c_str()) << "&";
   }
   if(m_socketsHasBeenSet)
   {

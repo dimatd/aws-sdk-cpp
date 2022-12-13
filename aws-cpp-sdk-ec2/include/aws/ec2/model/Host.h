@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -24,6 +14,7 @@
 #include <aws/ec2/model/AllocationState.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/ec2/model/HostRecovery.h>
+#include <aws/ec2/model/AllowsMultipleInstanceTypes.h>
 #include <aws/ec2/model/HostInstance.h>
 #include <aws/ec2/model/Tag.h>
 #include <utility>
@@ -131,32 +122,32 @@ namespace Model
 
 
     /**
-     * <p>The number of new instances that can be launched onto the Dedicated Host.</p>
+     * <p>Information about the instances running on the Dedicated Host.</p>
      */
     inline const AvailableCapacity& GetAvailableCapacity() const{ return m_availableCapacity; }
 
     /**
-     * <p>The number of new instances that can be launched onto the Dedicated Host.</p>
+     * <p>Information about the instances running on the Dedicated Host.</p>
      */
     inline bool AvailableCapacityHasBeenSet() const { return m_availableCapacityHasBeenSet; }
 
     /**
-     * <p>The number of new instances that can be launched onto the Dedicated Host.</p>
+     * <p>Information about the instances running on the Dedicated Host.</p>
      */
     inline void SetAvailableCapacity(const AvailableCapacity& value) { m_availableCapacityHasBeenSet = true; m_availableCapacity = value; }
 
     /**
-     * <p>The number of new instances that can be launched onto the Dedicated Host.</p>
+     * <p>Information about the instances running on the Dedicated Host.</p>
      */
     inline void SetAvailableCapacity(AvailableCapacity&& value) { m_availableCapacityHasBeenSet = true; m_availableCapacity = std::move(value); }
 
     /**
-     * <p>The number of new instances that can be launched onto the Dedicated Host.</p>
+     * <p>Information about the instances running on the Dedicated Host.</p>
      */
     inline Host& WithAvailableCapacity(const AvailableCapacity& value) { SetAvailableCapacity(value); return *this;}
 
     /**
-     * <p>The number of new instances that can be launched onto the Dedicated Host.</p>
+     * <p>Information about the instances running on the Dedicated Host.</p>
      */
     inline Host& WithAvailableCapacity(AvailableCapacity&& value) { SetAvailableCapacity(std::move(value)); return *this;}
 
@@ -164,64 +155,64 @@ namespace Model
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline const Aws::String& GetClientToken() const{ return m_clientToken; }
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline Host& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline Host& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
 
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.</p>
      */
     inline Host& WithClientToken(const char* value) { SetClientToken(value); return *this;}
 
@@ -566,6 +557,215 @@ namespace Model
      */
     inline Host& WithHostRecovery(HostRecovery&& value) { SetHostRecovery(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Indicates whether the Dedicated Host supports multiple instance types of the
+     * same instance family. If the value is <code>on</code>, the Dedicated Host
+     * supports multiple instance types in the instance family. If the value is
+     * <code>off</code>, the Dedicated Host supports a single instance type only.</p>
+     */
+    inline const AllowsMultipleInstanceTypes& GetAllowsMultipleInstanceTypes() const{ return m_allowsMultipleInstanceTypes; }
+
+    /**
+     * <p>Indicates whether the Dedicated Host supports multiple instance types of the
+     * same instance family. If the value is <code>on</code>, the Dedicated Host
+     * supports multiple instance types in the instance family. If the value is
+     * <code>off</code>, the Dedicated Host supports a single instance type only.</p>
+     */
+    inline bool AllowsMultipleInstanceTypesHasBeenSet() const { return m_allowsMultipleInstanceTypesHasBeenSet; }
+
+    /**
+     * <p>Indicates whether the Dedicated Host supports multiple instance types of the
+     * same instance family. If the value is <code>on</code>, the Dedicated Host
+     * supports multiple instance types in the instance family. If the value is
+     * <code>off</code>, the Dedicated Host supports a single instance type only.</p>
+     */
+    inline void SetAllowsMultipleInstanceTypes(const AllowsMultipleInstanceTypes& value) { m_allowsMultipleInstanceTypesHasBeenSet = true; m_allowsMultipleInstanceTypes = value; }
+
+    /**
+     * <p>Indicates whether the Dedicated Host supports multiple instance types of the
+     * same instance family. If the value is <code>on</code>, the Dedicated Host
+     * supports multiple instance types in the instance family. If the value is
+     * <code>off</code>, the Dedicated Host supports a single instance type only.</p>
+     */
+    inline void SetAllowsMultipleInstanceTypes(AllowsMultipleInstanceTypes&& value) { m_allowsMultipleInstanceTypesHasBeenSet = true; m_allowsMultipleInstanceTypes = std::move(value); }
+
+    /**
+     * <p>Indicates whether the Dedicated Host supports multiple instance types of the
+     * same instance family. If the value is <code>on</code>, the Dedicated Host
+     * supports multiple instance types in the instance family. If the value is
+     * <code>off</code>, the Dedicated Host supports a single instance type only.</p>
+     */
+    inline Host& WithAllowsMultipleInstanceTypes(const AllowsMultipleInstanceTypes& value) { SetAllowsMultipleInstanceTypes(value); return *this;}
+
+    /**
+     * <p>Indicates whether the Dedicated Host supports multiple instance types of the
+     * same instance family. If the value is <code>on</code>, the Dedicated Host
+     * supports multiple instance types in the instance family. If the value is
+     * <code>off</code>, the Dedicated Host supports a single instance type only.</p>
+     */
+    inline Host& WithAllowsMultipleInstanceTypes(AllowsMultipleInstanceTypes&& value) { SetAllowsMultipleInstanceTypes(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline Host& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline Host& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of the Amazon Web Services account that owns the Dedicated Host.</p>
+     */
+    inline Host& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
+
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline const Aws::String& GetAvailabilityZoneId() const{ return m_availabilityZoneId; }
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline bool AvailabilityZoneIdHasBeenSet() const { return m_availabilityZoneIdHasBeenSet; }
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline void SetAvailabilityZoneId(const Aws::String& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = value; }
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline void SetAvailabilityZoneId(Aws::String&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::move(value); }
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline void SetAvailabilityZoneId(const char* value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId.assign(value); }
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline Host& WithAvailabilityZoneId(const Aws::String& value) { SetAvailabilityZoneId(value); return *this;}
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline Host& WithAvailabilityZoneId(Aws::String&& value) { SetAvailabilityZoneId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of the Availability Zone in which the Dedicated Host is allocated.</p>
+     */
+    inline Host& WithAvailabilityZoneId(const char* value) { SetAvailabilityZoneId(value); return *this;}
+
+
+    /**
+     * <p>Indicates whether the Dedicated Host is in a host resource group. If
+     * <b>memberOfServiceLinkedResourceGroup</b> is <code>true</code>, the host is in a
+     * host resource group; otherwise, it is not.</p>
+     */
+    inline bool GetMemberOfServiceLinkedResourceGroup() const{ return m_memberOfServiceLinkedResourceGroup; }
+
+    /**
+     * <p>Indicates whether the Dedicated Host is in a host resource group. If
+     * <b>memberOfServiceLinkedResourceGroup</b> is <code>true</code>, the host is in a
+     * host resource group; otherwise, it is not.</p>
+     */
+    inline bool MemberOfServiceLinkedResourceGroupHasBeenSet() const { return m_memberOfServiceLinkedResourceGroupHasBeenSet; }
+
+    /**
+     * <p>Indicates whether the Dedicated Host is in a host resource group. If
+     * <b>memberOfServiceLinkedResourceGroup</b> is <code>true</code>, the host is in a
+     * host resource group; otherwise, it is not.</p>
+     */
+    inline void SetMemberOfServiceLinkedResourceGroup(bool value) { m_memberOfServiceLinkedResourceGroupHasBeenSet = true; m_memberOfServiceLinkedResourceGroup = value; }
+
+    /**
+     * <p>Indicates whether the Dedicated Host is in a host resource group. If
+     * <b>memberOfServiceLinkedResourceGroup</b> is <code>true</code>, the host is in a
+     * host resource group; otherwise, it is not.</p>
+     */
+    inline Host& WithMemberOfServiceLinkedResourceGroup(bool value) { SetMemberOfServiceLinkedResourceGroup(value); return *this;}
+
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline const Aws::String& GetOutpostArn() const{ return m_outpostArn; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline bool OutpostArnHasBeenSet() const { return m_outpostArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline void SetOutpostArn(const Aws::String& value) { m_outpostArnHasBeenSet = true; m_outpostArn = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline void SetOutpostArn(Aws::String&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline void SetOutpostArn(const char* value) { m_outpostArnHasBeenSet = true; m_outpostArn.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline Host& WithOutpostArn(const Aws::String& value) { SetOutpostArn(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline Host& WithOutpostArn(Aws::String&& value) { SetOutpostArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on which
+     * the Dedicated Host is allocated.</p>
+     */
+    inline Host& WithOutpostArn(const char* value) { SetOutpostArn(value); return *this;}
+
   private:
 
     AutoPlacement m_autoPlacement;
@@ -606,6 +806,21 @@ namespace Model
 
     HostRecovery m_hostRecovery;
     bool m_hostRecoveryHasBeenSet;
+
+    AllowsMultipleInstanceTypes m_allowsMultipleInstanceTypes;
+    bool m_allowsMultipleInstanceTypesHasBeenSet;
+
+    Aws::String m_ownerId;
+    bool m_ownerIdHasBeenSet;
+
+    Aws::String m_availabilityZoneId;
+    bool m_availabilityZoneIdHasBeenSet;
+
+    bool m_memberOfServiceLinkedResourceGroup;
+    bool m_memberOfServiceLinkedResourceGroupHasBeenSet;
+
+    Aws::String m_outpostArn;
+    bool m_outpostArnHasBeenSet;
   };
 
 } // namespace Model

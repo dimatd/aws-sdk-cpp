@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -35,7 +25,8 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
+   * (optional) where inventory results are published.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/InventoryS3BucketDestination">AWS
    * API Reference</a></p>
    */
@@ -50,90 +41,114 @@ namespace Model
 
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline const Aws::String& GetAccountId() const{ return m_accountId; }
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline InventoryS3BucketDestination& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline InventoryS3BucketDestination& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the account that owns the destination bucket.</p>
+     * <p>The account ID that owns the destination S3 bucket. If no account ID is
+     * provided, the owner is not validated before exporting data. </p>  <p>
+     * Although this value is optional, we strongly recommend that you set it to help
+     * prevent problems if the destination bucket ownership changes. </p> 
      */
     inline InventoryS3BucketDestination& WithAccountId(const char* value) { SetAccountId(value); return *this;}
 
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline const Aws::String& GetBucket() const{ return m_bucket; }
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline InventoryS3BucketDestination& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline InventoryS3BucketDestination& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon resource name (ARN) of the bucket where inventory results will be
+     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
     inline InventoryS3BucketDestination& WithBucket(const char* value) { SetBucket(value); return *this;}

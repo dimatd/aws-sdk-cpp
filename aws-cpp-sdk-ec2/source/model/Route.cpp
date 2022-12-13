@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/Route.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -40,12 +30,15 @@ Route::Route() :
     m_instanceOwnerIdHasBeenSet(false),
     m_natGatewayIdHasBeenSet(false),
     m_transitGatewayIdHasBeenSet(false),
+    m_localGatewayIdHasBeenSet(false),
+    m_carrierGatewayIdHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
     m_origin(RouteOrigin::NOT_SET),
     m_originHasBeenSet(false),
     m_state(RouteState::NOT_SET),
     m_stateHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
+    m_vpcPeeringConnectionIdHasBeenSet(false),
+    m_coreNetworkArnHasBeenSet(false)
 {
 }
 
@@ -59,12 +52,15 @@ Route::Route(const XmlNode& xmlNode) :
     m_instanceOwnerIdHasBeenSet(false),
     m_natGatewayIdHasBeenSet(false),
     m_transitGatewayIdHasBeenSet(false),
+    m_localGatewayIdHasBeenSet(false),
+    m_carrierGatewayIdHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
     m_origin(RouteOrigin::NOT_SET),
     m_originHasBeenSet(false),
     m_state(RouteState::NOT_SET),
     m_stateHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
+    m_vpcPeeringConnectionIdHasBeenSet(false),
+    m_coreNetworkArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -129,6 +125,18 @@ Route& Route::operator =(const XmlNode& xmlNode)
       m_transitGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(transitGatewayIdNode.GetText());
       m_transitGatewayIdHasBeenSet = true;
     }
+    XmlNode localGatewayIdNode = resultNode.FirstChild("localGatewayId");
+    if(!localGatewayIdNode.IsNull())
+    {
+      m_localGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(localGatewayIdNode.GetText());
+      m_localGatewayIdHasBeenSet = true;
+    }
+    XmlNode carrierGatewayIdNode = resultNode.FirstChild("carrierGatewayId");
+    if(!carrierGatewayIdNode.IsNull())
+    {
+      m_carrierGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(carrierGatewayIdNode.GetText());
+      m_carrierGatewayIdHasBeenSet = true;
+    }
     XmlNode networkInterfaceIdNode = resultNode.FirstChild("networkInterfaceId");
     if(!networkInterfaceIdNode.IsNull())
     {
@@ -152,6 +160,12 @@ Route& Route::operator =(const XmlNode& xmlNode)
     {
       m_vpcPeeringConnectionId = Aws::Utils::Xml::DecodeEscapedXmlText(vpcPeeringConnectionIdNode.GetText());
       m_vpcPeeringConnectionIdHasBeenSet = true;
+    }
+    XmlNode coreNetworkArnNode = resultNode.FirstChild("coreNetworkArn");
+    if(!coreNetworkArnNode.IsNull())
+    {
+      m_coreNetworkArn = Aws::Utils::Xml::DecodeEscapedXmlText(coreNetworkArnNode.GetText());
+      m_coreNetworkArnHasBeenSet = true;
     }
   }
 
@@ -205,6 +219,16 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
       oStream << location << index << locationValue << ".TransitGatewayId=" << StringUtils::URLEncode(m_transitGatewayId.c_str()) << "&";
   }
 
+  if(m_localGatewayIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".LocalGatewayId=" << StringUtils::URLEncode(m_localGatewayId.c_str()) << "&";
+  }
+
+  if(m_carrierGatewayIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CarrierGatewayId=" << StringUtils::URLEncode(m_carrierGatewayId.c_str()) << "&";
+  }
+
   if(m_networkInterfaceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
@@ -223,6 +247,11 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   if(m_vpcPeeringConnectionIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
+  }
+
+  if(m_coreNetworkArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CoreNetworkArn=" << StringUtils::URLEncode(m_coreNetworkArn.c_str()) << "&";
   }
 
 }
@@ -265,6 +294,14 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location) const
   {
       oStream << location << ".TransitGatewayId=" << StringUtils::URLEncode(m_transitGatewayId.c_str()) << "&";
   }
+  if(m_localGatewayIdHasBeenSet)
+  {
+      oStream << location << ".LocalGatewayId=" << StringUtils::URLEncode(m_localGatewayId.c_str()) << "&";
+  }
+  if(m_carrierGatewayIdHasBeenSet)
+  {
+      oStream << location << ".CarrierGatewayId=" << StringUtils::URLEncode(m_carrierGatewayId.c_str()) << "&";
+  }
   if(m_networkInterfaceIdHasBeenSet)
   {
       oStream << location << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
@@ -280,6 +317,10 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_vpcPeeringConnectionIdHasBeenSet)
   {
       oStream << location << ".VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
+  }
+  if(m_coreNetworkArnHasBeenSet)
+  {
+      oStream << location << ".CoreNetworkArn=" << StringUtils::URLEncode(m_coreNetworkArn.c_str()) << "&";
   }
 }
 

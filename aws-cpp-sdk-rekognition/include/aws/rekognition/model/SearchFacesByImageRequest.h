@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/rekognition/Rekognition_EXPORTS.h>
 #include <aws/rekognition/RekognitionRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rekognition/model/Image.h>
+#include <aws/rekognition/model/QualityFilter.h>
 #include <utility>
 
 namespace Aws
@@ -200,6 +191,97 @@ namespace Model
      */
     inline SearchFacesByImageRequest& WithFaceMatchThreshold(double value) { SetFaceMatchThreshold(value); return *this;}
 
+
+    /**
+     * <p>A filter that specifies a quality bar for how much filtering is done to
+     * identify faces. Filtered faces aren't searched for in the collection. If you
+     * specify <code>AUTO</code>, Amazon Rekognition chooses the quality bar. If you
+     * specify <code>LOW</code>, <code>MEDIUM</code>, or <code>HIGH</code>, filtering
+     * removes all faces that don’t meet the chosen quality bar. The quality bar is
+     * based on a variety of common use cases. Low-quality detections can occur for a
+     * number of reasons. Some examples are an object that's misidentified as a face, a
+     * face that's too blurry, or a face with a pose that's too extreme to use. If you
+     * specify <code>NONE</code>, no filtering is performed. The default value is
+     * <code>NONE</code>. </p> <p>To use quality filtering, the collection you are
+     * using must be associated with version 3 of the face model or higher.</p>
+     */
+    inline const QualityFilter& GetQualityFilter() const{ return m_qualityFilter; }
+
+    /**
+     * <p>A filter that specifies a quality bar for how much filtering is done to
+     * identify faces. Filtered faces aren't searched for in the collection. If you
+     * specify <code>AUTO</code>, Amazon Rekognition chooses the quality bar. If you
+     * specify <code>LOW</code>, <code>MEDIUM</code>, or <code>HIGH</code>, filtering
+     * removes all faces that don’t meet the chosen quality bar. The quality bar is
+     * based on a variety of common use cases. Low-quality detections can occur for a
+     * number of reasons. Some examples are an object that's misidentified as a face, a
+     * face that's too blurry, or a face with a pose that's too extreme to use. If you
+     * specify <code>NONE</code>, no filtering is performed. The default value is
+     * <code>NONE</code>. </p> <p>To use quality filtering, the collection you are
+     * using must be associated with version 3 of the face model or higher.</p>
+     */
+    inline bool QualityFilterHasBeenSet() const { return m_qualityFilterHasBeenSet; }
+
+    /**
+     * <p>A filter that specifies a quality bar for how much filtering is done to
+     * identify faces. Filtered faces aren't searched for in the collection. If you
+     * specify <code>AUTO</code>, Amazon Rekognition chooses the quality bar. If you
+     * specify <code>LOW</code>, <code>MEDIUM</code>, or <code>HIGH</code>, filtering
+     * removes all faces that don’t meet the chosen quality bar. The quality bar is
+     * based on a variety of common use cases. Low-quality detections can occur for a
+     * number of reasons. Some examples are an object that's misidentified as a face, a
+     * face that's too blurry, or a face with a pose that's too extreme to use. If you
+     * specify <code>NONE</code>, no filtering is performed. The default value is
+     * <code>NONE</code>. </p> <p>To use quality filtering, the collection you are
+     * using must be associated with version 3 of the face model or higher.</p>
+     */
+    inline void SetQualityFilter(const QualityFilter& value) { m_qualityFilterHasBeenSet = true; m_qualityFilter = value; }
+
+    /**
+     * <p>A filter that specifies a quality bar for how much filtering is done to
+     * identify faces. Filtered faces aren't searched for in the collection. If you
+     * specify <code>AUTO</code>, Amazon Rekognition chooses the quality bar. If you
+     * specify <code>LOW</code>, <code>MEDIUM</code>, or <code>HIGH</code>, filtering
+     * removes all faces that don’t meet the chosen quality bar. The quality bar is
+     * based on a variety of common use cases. Low-quality detections can occur for a
+     * number of reasons. Some examples are an object that's misidentified as a face, a
+     * face that's too blurry, or a face with a pose that's too extreme to use. If you
+     * specify <code>NONE</code>, no filtering is performed. The default value is
+     * <code>NONE</code>. </p> <p>To use quality filtering, the collection you are
+     * using must be associated with version 3 of the face model or higher.</p>
+     */
+    inline void SetQualityFilter(QualityFilter&& value) { m_qualityFilterHasBeenSet = true; m_qualityFilter = std::move(value); }
+
+    /**
+     * <p>A filter that specifies a quality bar for how much filtering is done to
+     * identify faces. Filtered faces aren't searched for in the collection. If you
+     * specify <code>AUTO</code>, Amazon Rekognition chooses the quality bar. If you
+     * specify <code>LOW</code>, <code>MEDIUM</code>, or <code>HIGH</code>, filtering
+     * removes all faces that don’t meet the chosen quality bar. The quality bar is
+     * based on a variety of common use cases. Low-quality detections can occur for a
+     * number of reasons. Some examples are an object that's misidentified as a face, a
+     * face that's too blurry, or a face with a pose that's too extreme to use. If you
+     * specify <code>NONE</code>, no filtering is performed. The default value is
+     * <code>NONE</code>. </p> <p>To use quality filtering, the collection you are
+     * using must be associated with version 3 of the face model or higher.</p>
+     */
+    inline SearchFacesByImageRequest& WithQualityFilter(const QualityFilter& value) { SetQualityFilter(value); return *this;}
+
+    /**
+     * <p>A filter that specifies a quality bar for how much filtering is done to
+     * identify faces. Filtered faces aren't searched for in the collection. If you
+     * specify <code>AUTO</code>, Amazon Rekognition chooses the quality bar. If you
+     * specify <code>LOW</code>, <code>MEDIUM</code>, or <code>HIGH</code>, filtering
+     * removes all faces that don’t meet the chosen quality bar. The quality bar is
+     * based on a variety of common use cases. Low-quality detections can occur for a
+     * number of reasons. Some examples are an object that's misidentified as a face, a
+     * face that's too blurry, or a face with a pose that's too extreme to use. If you
+     * specify <code>NONE</code>, no filtering is performed. The default value is
+     * <code>NONE</code>. </p> <p>To use quality filtering, the collection you are
+     * using must be associated with version 3 of the face model or higher.</p>
+     */
+    inline SearchFacesByImageRequest& WithQualityFilter(QualityFilter&& value) { SetQualityFilter(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_collectionId;
@@ -213,6 +295,9 @@ namespace Model
 
     double m_faceMatchThreshold;
     bool m_faceMatchThresholdHasBeenSet;
+
+    QualityFilter m_qualityFilter;
+    bool m_qualityFilterHasBeenSet;
   };
 
 } // namespace Model

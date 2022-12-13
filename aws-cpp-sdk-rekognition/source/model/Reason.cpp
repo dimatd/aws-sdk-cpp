@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/rekognition/model/Reason.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -36,6 +26,7 @@ namespace Aws
         static const int LOW_SHARPNESS_HASH = HashingUtils::HashString("LOW_SHARPNESS");
         static const int LOW_CONFIDENCE_HASH = HashingUtils::HashString("LOW_CONFIDENCE");
         static const int SMALL_BOUNDING_BOX_HASH = HashingUtils::HashString("SMALL_BOUNDING_BOX");
+        static const int LOW_FACE_QUALITY_HASH = HashingUtils::HashString("LOW_FACE_QUALITY");
 
 
         Reason GetReasonForName(const Aws::String& name)
@@ -65,6 +56,10 @@ namespace Aws
           {
             return Reason::SMALL_BOUNDING_BOX;
           }
+          else if (hashCode == LOW_FACE_QUALITY_HASH)
+          {
+            return Reason::LOW_FACE_QUALITY;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -91,6 +86,8 @@ namespace Aws
             return "LOW_CONFIDENCE";
           case Reason::SMALL_BOUNDING_BOX:
             return "SMALL_BOUNDING_BOX";
+          case Reason::LOW_FACE_QUALITY:
+            return "LOW_FACE_QUALITY";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

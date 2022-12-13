@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/robomaker/RoboMaker_EXPORTS.h>
@@ -25,6 +15,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/robomaker/model/VPCConfigResponse.h>
+#include <aws/robomaker/model/ComputeResponse.h>
 #include <aws/robomaker/model/RobotApplicationConfig.h>
 #include <aws/robomaker/model/SimulationApplicationConfig.h>
 #include <aws/robomaker/model/DataSource.h>
@@ -704,6 +695,32 @@ namespace Model
      */
     inline CreateSimulationJobResult& WithVpcConfig(VPCConfigResponse&& value) { SetVpcConfig(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Compute information for the simulation job.</p>
+     */
+    inline const ComputeResponse& GetCompute() const{ return m_compute; }
+
+    /**
+     * <p>Compute information for the simulation job.</p>
+     */
+    inline void SetCompute(const ComputeResponse& value) { m_compute = value; }
+
+    /**
+     * <p>Compute information for the simulation job.</p>
+     */
+    inline void SetCompute(ComputeResponse&& value) { m_compute = std::move(value); }
+
+    /**
+     * <p>Compute information for the simulation job.</p>
+     */
+    inline CreateSimulationJobResult& WithCompute(const ComputeResponse& value) { SetCompute(value); return *this;}
+
+    /**
+     * <p>Compute information for the simulation job.</p>
+     */
+    inline CreateSimulationJobResult& WithCompute(ComputeResponse&& value) { SetCompute(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_arn;
@@ -739,6 +756,8 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_tags;
 
     VPCConfigResponse m_vpcConfig;
+
+    ComputeResponse m_compute;
   };
 
 } // namespace Model

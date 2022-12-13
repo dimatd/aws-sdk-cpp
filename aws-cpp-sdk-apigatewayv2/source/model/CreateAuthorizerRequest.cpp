@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/CreateAuthorizerRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -25,15 +15,18 @@ using namespace Aws::Utils;
 CreateAuthorizerRequest::CreateAuthorizerRequest() : 
     m_apiIdHasBeenSet(false),
     m_authorizerCredentialsArnHasBeenSet(false),
+    m_authorizerPayloadFormatVersionHasBeenSet(false),
     m_authorizerResultTtlInSeconds(0),
     m_authorizerResultTtlInSecondsHasBeenSet(false),
     m_authorizerType(AuthorizerType::NOT_SET),
     m_authorizerTypeHasBeenSet(false),
     m_authorizerUriHasBeenSet(false),
+    m_enableSimpleResponses(false),
+    m_enableSimpleResponsesHasBeenSet(false),
     m_identitySourceHasBeenSet(false),
     m_identityValidationExpressionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_providerArnsHasBeenSet(false)
+    m_jwtConfigurationHasBeenSet(false),
+    m_nameHasBeenSet(false)
 {
 }
 
@@ -44,6 +37,12 @@ Aws::String CreateAuthorizerRequest::SerializePayload() const
   if(m_authorizerCredentialsArnHasBeenSet)
   {
    payload.WithString("authorizerCredentialsArn", m_authorizerCredentialsArn);
+
+  }
+
+  if(m_authorizerPayloadFormatVersionHasBeenSet)
+  {
+   payload.WithString("authorizerPayloadFormatVersion", m_authorizerPayloadFormatVersion);
 
   }
 
@@ -64,6 +63,12 @@ Aws::String CreateAuthorizerRequest::SerializePayload() const
 
   }
 
+  if(m_enableSimpleResponsesHasBeenSet)
+  {
+   payload.WithBool("enableSimpleResponses", m_enableSimpleResponses);
+
+  }
+
   if(m_identitySourceHasBeenSet)
   {
    Array<JsonValue> identitySourceJsonList(m_identitySource.size());
@@ -81,20 +86,15 @@ Aws::String CreateAuthorizerRequest::SerializePayload() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_jwtConfigurationHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithObject("jwtConfiguration", m_jwtConfiguration.Jsonize());
 
   }
 
-  if(m_providerArnsHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   Array<JsonValue> providerArnsJsonList(m_providerArns.size());
-   for(unsigned providerArnsIndex = 0; providerArnsIndex < providerArnsJsonList.GetLength(); ++providerArnsIndex)
-   {
-     providerArnsJsonList[providerArnsIndex].AsString(m_providerArns[providerArnsIndex]);
-   }
-   payload.WithArray("providerArns", std::move(providerArnsJsonList));
+   payload.WithString("name", m_name);
 
   }
 

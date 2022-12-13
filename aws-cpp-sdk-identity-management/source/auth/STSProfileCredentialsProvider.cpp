@@ -1,17 +1,7 @@
-/*
-* Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/identity-management/auth/STSProfileCredentialsProvider.h>
 #include <aws/sts/model/AssumeRoleRequest.h>
@@ -39,7 +29,6 @@ STSProfileCredentialsProvider::STSProfileCredentialsProvider(const Aws::String& 
 
 STSProfileCredentialsProvider::STSProfileCredentialsProvider(const Aws::String& profileName, std::chrono::minutes duration, const std::function<Aws::STS::STSClient*(const AWSCredentials&)> &stsClientFactory)
       : m_profileName(profileName),
-        m_configFileLoader(GetConfigProfileFilename()),
         m_duration(duration),
         m_reloadFrequency(std::chrono::minutes(std::max(int64_t(5), static_cast<int64_t>(duration.count()))) - std::chrono::minutes(5)),
         m_stsClientFactory(stsClientFactory)
@@ -175,9 +164,8 @@ static ProfileState CheckProfile(const Aws::Config::Profile& profile, bool topLe
 
 void STSProfileCredentialsProvider::Reload()
 {
-    m_configFileLoader.Load();
     // make a copy of the profiles map to be able to set credentials on the individual profiles when assuming role
-    auto loadedProfiles = m_configFileLoader.GetProfiles();
+    auto loadedProfiles = Aws::Config::GetCachedConfigProfiles();
     auto profileIt = loadedProfiles.find(m_profileName);
 
     if(profileIt == loadedProfiles.end())

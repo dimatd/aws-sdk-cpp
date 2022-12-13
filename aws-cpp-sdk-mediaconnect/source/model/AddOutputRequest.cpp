@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconnect/model/AddOutputRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -35,15 +25,21 @@ AddOutputRequest::AddOutputRequest() :
     m_encryptionHasBeenSet(false),
     m_maxLatency(0),
     m_maxLatencyHasBeenSet(false),
+    m_mediaStreamOutputConfigurationsHasBeenSet(false),
+    m_minLatency(0),
+    m_minLatencyHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
     m_protocol(Protocol::NOT_SET),
     m_protocolHasBeenSet(false),
     m_remoteIdHasBeenSet(false),
+    m_senderControlPort(0),
+    m_senderControlPortHasBeenSet(false),
     m_smoothingLatency(0),
     m_smoothingLatencyHasBeenSet(false),
-    m_streamIdHasBeenSet(false)
+    m_streamIdHasBeenSet(false),
+    m_vpcInterfaceAttachmentHasBeenSet(false)
 {
 }
 
@@ -54,15 +50,21 @@ AddOutputRequest::AddOutputRequest(JsonView jsonValue) :
     m_encryptionHasBeenSet(false),
     m_maxLatency(0),
     m_maxLatencyHasBeenSet(false),
+    m_mediaStreamOutputConfigurationsHasBeenSet(false),
+    m_minLatency(0),
+    m_minLatencyHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
     m_protocol(Protocol::NOT_SET),
     m_protocolHasBeenSet(false),
     m_remoteIdHasBeenSet(false),
+    m_senderControlPort(0),
+    m_senderControlPortHasBeenSet(false),
     m_smoothingLatency(0),
     m_smoothingLatencyHasBeenSet(false),
-    m_streamIdHasBeenSet(false)
+    m_streamIdHasBeenSet(false),
+    m_vpcInterfaceAttachmentHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -107,6 +109,23 @@ AddOutputRequest& AddOutputRequest::operator =(JsonView jsonValue)
     m_maxLatencyHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("mediaStreamOutputConfigurations"))
+  {
+    Array<JsonView> mediaStreamOutputConfigurationsJsonList = jsonValue.GetArray("mediaStreamOutputConfigurations");
+    for(unsigned mediaStreamOutputConfigurationsIndex = 0; mediaStreamOutputConfigurationsIndex < mediaStreamOutputConfigurationsJsonList.GetLength(); ++mediaStreamOutputConfigurationsIndex)
+    {
+      m_mediaStreamOutputConfigurations.push_back(mediaStreamOutputConfigurationsJsonList[mediaStreamOutputConfigurationsIndex].AsObject());
+    }
+    m_mediaStreamOutputConfigurationsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("minLatency"))
+  {
+    m_minLatency = jsonValue.GetInteger("minLatency");
+
+    m_minLatencyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
@@ -135,6 +154,13 @@ AddOutputRequest& AddOutputRequest::operator =(JsonView jsonValue)
     m_remoteIdHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("senderControlPort"))
+  {
+    m_senderControlPort = jsonValue.GetInteger("senderControlPort");
+
+    m_senderControlPortHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("smoothingLatency"))
   {
     m_smoothingLatency = jsonValue.GetInteger("smoothingLatency");
@@ -147,6 +173,13 @@ AddOutputRequest& AddOutputRequest::operator =(JsonView jsonValue)
     m_streamId = jsonValue.GetString("streamId");
 
     m_streamIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("vpcInterfaceAttachment"))
+  {
+    m_vpcInterfaceAttachment = jsonValue.GetObject("vpcInterfaceAttachment");
+
+    m_vpcInterfaceAttachmentHasBeenSet = true;
   }
 
   return *this;
@@ -191,6 +224,23 @@ JsonValue AddOutputRequest::Jsonize() const
 
   }
 
+  if(m_mediaStreamOutputConfigurationsHasBeenSet)
+  {
+   Array<JsonValue> mediaStreamOutputConfigurationsJsonList(m_mediaStreamOutputConfigurations.size());
+   for(unsigned mediaStreamOutputConfigurationsIndex = 0; mediaStreamOutputConfigurationsIndex < mediaStreamOutputConfigurationsJsonList.GetLength(); ++mediaStreamOutputConfigurationsIndex)
+   {
+     mediaStreamOutputConfigurationsJsonList[mediaStreamOutputConfigurationsIndex].AsObject(m_mediaStreamOutputConfigurations[mediaStreamOutputConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("mediaStreamOutputConfigurations", std::move(mediaStreamOutputConfigurationsJsonList));
+
+  }
+
+  if(m_minLatencyHasBeenSet)
+  {
+   payload.WithInteger("minLatency", m_minLatency);
+
+  }
+
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
@@ -214,6 +264,12 @@ JsonValue AddOutputRequest::Jsonize() const
 
   }
 
+  if(m_senderControlPortHasBeenSet)
+  {
+   payload.WithInteger("senderControlPort", m_senderControlPort);
+
+  }
+
   if(m_smoothingLatencyHasBeenSet)
   {
    payload.WithInteger("smoothingLatency", m_smoothingLatency);
@@ -223,6 +279,12 @@ JsonValue AddOutputRequest::Jsonize() const
   if(m_streamIdHasBeenSet)
   {
    payload.WithString("streamId", m_streamId);
+
+  }
+
+  if(m_vpcInterfaceAttachmentHasBeenSet)
+  {
+   payload.WithObject("vpcInterfaceAttachment", m_vpcInterfaceAttachment.Jsonize());
 
   }
 

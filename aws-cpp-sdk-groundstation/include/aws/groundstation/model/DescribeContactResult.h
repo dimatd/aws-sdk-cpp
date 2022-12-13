@@ -1,25 +1,17 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/groundstation/GroundStation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/groundstation/model/ContactStatus.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/groundstation/model/Elevation.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/groundstation/model/DataflowDetail.h>
 #include <utility>
 
 namespace Aws
@@ -111,6 +103,42 @@ namespace Model
      * <p>Status of a contact.</p>
      */
     inline DescribeContactResult& WithContactStatus(ContactStatus&& value) { SetContactStatus(std::move(value)); return *this;}
+
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline const Aws::Vector<DataflowDetail>& GetDataflowList() const{ return m_dataflowList; }
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline void SetDataflowList(const Aws::Vector<DataflowDetail>& value) { m_dataflowList = value; }
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline void SetDataflowList(Aws::Vector<DataflowDetail>&& value) { m_dataflowList = std::move(value); }
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline DescribeContactResult& WithDataflowList(const Aws::Vector<DataflowDetail>& value) { SetDataflowList(value); return *this;}
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline DescribeContactResult& WithDataflowList(Aws::Vector<DataflowDetail>&& value) { SetDataflowList(std::move(value)); return *this;}
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline DescribeContactResult& AddDataflowList(const DataflowDetail& value) { m_dataflowList.push_back(value); return *this; }
+
+    /**
+     * <p>List describing source and destination details for each dataflow edge.</p>
+     */
+    inline DescribeContactResult& AddDataflowList(DataflowDetail&& value) { m_dataflowList.push_back(std::move(value)); return *this; }
 
 
     /**
@@ -336,6 +364,42 @@ namespace Model
 
 
     /**
+     * <p>Region of a contact.</p>
+     */
+    inline const Aws::String& GetRegion() const{ return m_region; }
+
+    /**
+     * <p>Region of a contact.</p>
+     */
+    inline void SetRegion(const Aws::String& value) { m_region = value; }
+
+    /**
+     * <p>Region of a contact.</p>
+     */
+    inline void SetRegion(Aws::String&& value) { m_region = std::move(value); }
+
+    /**
+     * <p>Region of a contact.</p>
+     */
+    inline void SetRegion(const char* value) { m_region.assign(value); }
+
+    /**
+     * <p>Region of a contact.</p>
+     */
+    inline DescribeContactResult& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
+
+    /**
+     * <p>Region of a contact.</p>
+     */
+    inline DescribeContactResult& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
+
+    /**
+     * <p>Region of a contact.</p>
+     */
+    inline DescribeContactResult& WithRegion(const char* value) { SetRegion(value); return *this;}
+
+
+    /**
      * <p>ARN of a satellite.</p>
      */
     inline const Aws::String& GetSatelliteArn() const{ return m_satelliteArn; }
@@ -463,6 +527,8 @@ namespace Model
 
     ContactStatus m_contactStatus;
 
+    Aws::Vector<DataflowDetail> m_dataflowList;
+
     Aws::Utils::DateTime m_endTime;
 
     Aws::String m_errorMessage;
@@ -476,6 +542,8 @@ namespace Model
     Aws::Utils::DateTime m_postPassEndTime;
 
     Aws::Utils::DateTime m_prePassStartTime;
+
+    Aws::String m_region;
 
     Aws::String m_satelliteArn;
 

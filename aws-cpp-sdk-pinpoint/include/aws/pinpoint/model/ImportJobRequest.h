@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -431,50 +421,50 @@ namespace Model
 
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline const Aws::String& GetSegmentName() const{ return m_segmentName; }
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline bool SegmentNameHasBeenSet() const { return m_segmentNameHasBeenSet; }
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline void SetSegmentName(const Aws::String& value) { m_segmentNameHasBeenSet = true; m_segmentName = value; }
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline void SetSegmentName(Aws::String&& value) { m_segmentNameHasBeenSet = true; m_segmentName = std::move(value); }
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline void SetSegmentName(const char* value) { m_segmentNameHasBeenSet = true; m_segmentName.assign(value); }
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline ImportJobRequest& WithSegmentName(const Aws::String& value) { SetSegmentName(value); return *this;}
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline ImportJobRequest& WithSegmentName(Aws::String&& value) { SetSegmentName(std::move(value)); return *this;}
 
     /**
-     * <p>The custom name for the segment that's created by the import job, if the
-     * value of the DefineSegment property is true.</p>
+     * <p>A custom name for the segment that's created by the import job, if the value
+     * of the DefineSegment property is true.</p>
      */
     inline ImportJobRequest& WithSegmentName(const char* value) { SetSegmentName(value); return *this;}
 

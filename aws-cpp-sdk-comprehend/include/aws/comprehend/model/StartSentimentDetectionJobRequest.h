@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/comprehend/Comprehend_EXPORTS.h>
@@ -21,6 +11,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/comprehend/model/LanguageCode.h>
 #include <aws/comprehend/model/VpcConfig.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/comprehend/model/Tag.h>
 #include <utility>
 #include <aws/core/utils/UUID.h>
 
@@ -219,49 +211,43 @@ namespace Model
 
     /**
      * <p>The language of the input documents. You can specify any of the primary
-     * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
-     * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
-     * be in the same language.</p>
+     * languages supported by Amazon Comprehend. All documents must be in the same
+     * language.</p>
      */
     inline const LanguageCode& GetLanguageCode() const{ return m_languageCode; }
 
     /**
      * <p>The language of the input documents. You can specify any of the primary
-     * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
-     * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
-     * be in the same language.</p>
+     * languages supported by Amazon Comprehend. All documents must be in the same
+     * language.</p>
      */
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
 
     /**
      * <p>The language of the input documents. You can specify any of the primary
-     * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
-     * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
-     * be in the same language.</p>
+     * languages supported by Amazon Comprehend. All documents must be in the same
+     * language.</p>
      */
     inline void SetLanguageCode(const LanguageCode& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
 
     /**
      * <p>The language of the input documents. You can specify any of the primary
-     * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
-     * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
-     * be in the same language.</p>
+     * languages supported by Amazon Comprehend. All documents must be in the same
+     * language.</p>
      */
     inline void SetLanguageCode(LanguageCode&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
 
     /**
      * <p>The language of the input documents. You can specify any of the primary
-     * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
-     * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
-     * be in the same language.</p>
+     * languages supported by Amazon Comprehend. All documents must be in the same
+     * language.</p>
      */
     inline StartSentimentDetectionJobRequest& WithLanguageCode(const LanguageCode& value) { SetLanguageCode(value); return *this;}
 
     /**
      * <p>The language of the input documents. You can specify any of the primary
-     * languages supported by Amazon Comprehend: German ("de"), English ("en"), Spanish
-     * ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents must
-     * be in the same language.</p>
+     * languages supported by Amazon Comprehend. All documents must be in the same
+     * language.</p>
      */
     inline StartSentimentDetectionJobRequest& WithLanguageCode(LanguageCode&& value) { SetLanguageCode(std::move(value)); return *this;}
 
@@ -466,6 +452,71 @@ namespace Model
      */
     inline StartSentimentDetectionJobRequest& WithVpcConfig(VpcConfig&& value) { SetVpcConfig(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline StartSentimentDetectionJobRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline StartSentimentDetectionJobRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline StartSentimentDetectionJobRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
+    /**
+     * <p>Tags to be associated with the sentiment detection job. A tag is a key-value
+     * pair that adds metadata to a resource used by Amazon Comprehend. For example, a
+     * tag with "Sales" as the key might be added to a resource to indicate its use by
+     * the sales department.</p>
+     */
+    inline StartSentimentDetectionJobRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
+
   private:
 
     InputDataConfig m_inputDataConfig;
@@ -491,6 +542,9 @@ namespace Model
 
     VpcConfig m_vpcConfig;
     bool m_vpcConfigHasBeenSet;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

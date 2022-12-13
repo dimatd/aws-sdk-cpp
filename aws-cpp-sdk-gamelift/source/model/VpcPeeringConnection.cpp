@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/gamelift/model/VpcPeeringConnection.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,6 +20,7 @@ namespace Model
 
 VpcPeeringConnection::VpcPeeringConnection() : 
     m_fleetIdHasBeenSet(false),
+    m_fleetArnHasBeenSet(false),
     m_ipV4CidrBlockHasBeenSet(false),
     m_vpcPeeringConnectionIdHasBeenSet(false),
     m_statusHasBeenSet(false),
@@ -40,6 +31,7 @@ VpcPeeringConnection::VpcPeeringConnection() :
 
 VpcPeeringConnection::VpcPeeringConnection(JsonView jsonValue) : 
     m_fleetIdHasBeenSet(false),
+    m_fleetArnHasBeenSet(false),
     m_ipV4CidrBlockHasBeenSet(false),
     m_vpcPeeringConnectionIdHasBeenSet(false),
     m_statusHasBeenSet(false),
@@ -56,6 +48,13 @@ VpcPeeringConnection& VpcPeeringConnection::operator =(JsonView jsonValue)
     m_fleetId = jsonValue.GetString("FleetId");
 
     m_fleetIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FleetArn"))
+  {
+    m_fleetArn = jsonValue.GetString("FleetArn");
+
+    m_fleetArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("IpV4CidrBlock"))
@@ -103,6 +102,12 @@ JsonValue VpcPeeringConnection::Jsonize() const
   if(m_fleetIdHasBeenSet)
   {
    payload.WithString("FleetId", m_fleetId);
+
+  }
+
+  if(m_fleetArnHasBeenSet)
+  {
+   payload.WithString("FleetArn", m_fleetArn);
 
   }
 

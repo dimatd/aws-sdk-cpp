@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/states/SFN_EXPORTS.h>
@@ -95,7 +85,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
@@ -109,7 +100,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
 
@@ -123,7 +115,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
@@ -137,7 +130,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
@@ -151,7 +145,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
 
@@ -165,7 +160,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline StartExecutionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
@@ -179,7 +175,8 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline StartExecutionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
@@ -193,74 +190,140 @@ namespace Model
      * </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li> <p>special
      * characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li> <li>
      * <p>control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)</p>
-     * </li> </ul>
+     * </li> </ul> <p>To enable logging with CloudWatch Logs, the name should only
+     * contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline StartExecutionRequest& WithName(const char* value) { SetName(value); return *this;}
 
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline const Aws::String& GetInput() const{ return m_input; }
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline void SetInput(const Aws::String& value) { m_inputHasBeenSet = true; m_input = value; }
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline void SetInput(const char* value) { m_inputHasBeenSet = true; m_input.assign(value); }
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline StartExecutionRequest& WithInput(const Aws::String& value) { SetInput(value); return *this;}
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline StartExecutionRequest& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p>The string that contains the JSON input data for the execution, for
-     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> <note>
+     * example:</p> <p> <code>"input": "{\"first_name\" : \"test\"}"</code> </p> 
      * <p>If you don't include any JSON input data, you still must include the two
-     * braces, for example: <code>"input": "{}"</code> </p> </note>
+     * braces, for example: <code>"input": "{}"</code> </p>  <p>Length
+     * constraints apply to the payload size, and are expressed as bytes in UTF-8
+     * encoding.</p>
      */
     inline StartExecutionRequest& WithInput(const char* value) { SetInput(value); return *this;}
+
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline const Aws::String& GetTraceHeader() const{ return m_traceHeader; }
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline bool TraceHeaderHasBeenSet() const { return m_traceHeaderHasBeenSet; }
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline void SetTraceHeader(const Aws::String& value) { m_traceHeaderHasBeenSet = true; m_traceHeader = value; }
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline void SetTraceHeader(Aws::String&& value) { m_traceHeaderHasBeenSet = true; m_traceHeader = std::move(value); }
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline void SetTraceHeader(const char* value) { m_traceHeaderHasBeenSet = true; m_traceHeader.assign(value); }
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline StartExecutionRequest& WithTraceHeader(const Aws::String& value) { SetTraceHeader(value); return *this;}
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline StartExecutionRequest& WithTraceHeader(Aws::String&& value) { SetTraceHeader(std::move(value)); return *this;}
+
+    /**
+     * <p>Passes the AWS X-Ray trace header. The trace header can also be passed in the
+     * request payload.</p>
+     */
+    inline StartExecutionRequest& WithTraceHeader(const char* value) { SetTraceHeader(value); return *this;}
 
   private:
 
@@ -272,6 +335,9 @@ namespace Model
 
     Aws::String m_input;
     bool m_inputHasBeenSet;
+
+    Aws::String m_traceHeader;
+    bool m_traceHeaderHasBeenSet;
   };
 
 } // namespace Model

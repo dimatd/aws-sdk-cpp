@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
@@ -22,7 +12,16 @@
 #include <aws/lambda/model/EnvironmentResponse.h>
 #include <aws/lambda/model/TracingConfigResponse.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/lambda/model/State.h>
+#include <aws/lambda/model/StateReasonCode.h>
+#include <aws/lambda/model/LastUpdateStatus.h>
+#include <aws/lambda/model/LastUpdateStatusReasonCode.h>
+#include <aws/lambda/model/PackageType.h>
+#include <aws/lambda/model/ImageConfigResponse.h>
+#include <aws/lambda/model/EphemeralStorage.h>
 #include <aws/lambda/model/Layer.h>
+#include <aws/lambda/model/FileSystemConfig.h>
+#include <aws/lambda/model/Architecture.h>
 #include <utility>
 
 namespace Aws
@@ -277,36 +276,36 @@ namespace Model
 
 
     /**
-     * <p>The amount of time that Lambda allows a function to run before stopping
-     * it.</p>
+     * <p>The amount of time in seconds that Lambda allows a function to run before
+     * stopping it.</p>
      */
     inline int GetTimeout() const{ return m_timeout; }
 
     /**
-     * <p>The amount of time that Lambda allows a function to run before stopping
-     * it.</p>
+     * <p>The amount of time in seconds that Lambda allows a function to run before
+     * stopping it.</p>
      */
     inline void SetTimeout(int value) { m_timeout = value; }
 
     /**
-     * <p>The amount of time that Lambda allows a function to run before stopping
-     * it.</p>
+     * <p>The amount of time in seconds that Lambda allows a function to run before
+     * stopping it.</p>
      */
     inline CreateFunctionResult& WithTimeout(int value) { SetTimeout(value); return *this;}
 
 
     /**
-     * <p>The memory that's allocated to the function.</p>
+     * <p>The amount of memory available to the function at runtime. </p>
      */
     inline int GetMemorySize() const{ return m_memorySize; }
 
     /**
-     * <p>The memory that's allocated to the function.</p>
+     * <p>The amount of memory available to the function at runtime. </p>
      */
     inline void SetMemorySize(int value) { m_memorySize = value; }
 
     /**
-     * <p>The memory that's allocated to the function.</p>
+     * <p>The amount of memory available to the function at runtime. </p>
      */
     inline CreateFunctionResult& WithMemorySize(int value) { SetMemorySize(value); return *this;}
 
@@ -486,132 +485,142 @@ namespace Model
 
 
     /**
-     * <p>The function's environment variables.</p>
+     * <p>The function's <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">environment
+     * variables</a>.</p>
      */
     inline const EnvironmentResponse& GetEnvironment() const{ return m_environment; }
 
     /**
-     * <p>The function's environment variables.</p>
+     * <p>The function's <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">environment
+     * variables</a>.</p>
      */
     inline void SetEnvironment(const EnvironmentResponse& value) { m_environment = value; }
 
     /**
-     * <p>The function's environment variables.</p>
+     * <p>The function's <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">environment
+     * variables</a>.</p>
      */
     inline void SetEnvironment(EnvironmentResponse&& value) { m_environment = std::move(value); }
 
     /**
-     * <p>The function's environment variables.</p>
+     * <p>The function's <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">environment
+     * variables</a>.</p>
      */
     inline CreateFunctionResult& WithEnvironment(const EnvironmentResponse& value) { SetEnvironment(value); return *this;}
 
     /**
-     * <p>The function's environment variables.</p>
+     * <p>The function's <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">environment
+     * variables</a>.</p>
      */
     inline CreateFunctionResult& WithEnvironment(EnvironmentResponse&& value) { SetEnvironment(std::move(value)); return *this;}
 
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline const Aws::String& GetKMSKeyArn() const{ return m_kMSKeyArn; }
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline void SetKMSKeyArn(const Aws::String& value) { m_kMSKeyArn = value; }
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline void SetKMSKeyArn(Aws::String&& value) { m_kMSKeyArn = std::move(value); }
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline void SetKMSKeyArn(const char* value) { m_kMSKeyArn.assign(value); }
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline CreateFunctionResult& WithKMSKeyArn(const Aws::String& value) { SetKMSKeyArn(value); return *this;}
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline CreateFunctionResult& WithKMSKeyArn(Aws::String&& value) { SetKMSKeyArn(std::move(value)); return *this;}
 
     /**
      * <p>The KMS key that's used to encrypt the function's environment variables. This
-     * key is only returned if you've configured a customer-managed CMK.</p>
+     * key is only returned if you've configured a customer managed key.</p>
      */
     inline CreateFunctionResult& WithKMSKeyArn(const char* value) { SetKMSKeyArn(value); return *this;}
 
 
     /**
-     * <p>The function's AWS X-Ray tracing configuration.</p>
+     * <p>The function's X-Ray tracing configuration.</p>
      */
     inline const TracingConfigResponse& GetTracingConfig() const{ return m_tracingConfig; }
 
     /**
-     * <p>The function's AWS X-Ray tracing configuration.</p>
+     * <p>The function's X-Ray tracing configuration.</p>
      */
     inline void SetTracingConfig(const TracingConfigResponse& value) { m_tracingConfig = value; }
 
     /**
-     * <p>The function's AWS X-Ray tracing configuration.</p>
+     * <p>The function's X-Ray tracing configuration.</p>
      */
     inline void SetTracingConfig(TracingConfigResponse&& value) { m_tracingConfig = std::move(value); }
 
     /**
-     * <p>The function's AWS X-Ray tracing configuration.</p>
+     * <p>The function's X-Ray tracing configuration.</p>
      */
     inline CreateFunctionResult& WithTracingConfig(const TracingConfigResponse& value) { SetTracingConfig(value); return *this;}
 
     /**
-     * <p>The function's AWS X-Ray tracing configuration.</p>
+     * <p>The function's X-Ray tracing configuration.</p>
      */
     inline CreateFunctionResult& WithTracingConfig(TracingConfigResponse&& value) { SetTracingConfig(std::move(value)); return *this;}
 
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline const Aws::String& GetMasterArn() const{ return m_masterArn; }
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline void SetMasterArn(const Aws::String& value) { m_masterArn = value; }
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline void SetMasterArn(Aws::String&& value) { m_masterArn = std::move(value); }
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline void SetMasterArn(const char* value) { m_masterArn.assign(value); }
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline CreateFunctionResult& WithMasterArn(const Aws::String& value) { SetMasterArn(value); return *this;}
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline CreateFunctionResult& WithMasterArn(Aws::String&& value) { SetMasterArn(std::move(value)); return *this;}
 
     /**
-     * <p>For Lambda@Edge functions, the ARN of the master function.</p>
+     * <p>For Lambda@Edge functions, the ARN of the main function.</p>
      */
     inline CreateFunctionResult& WithMasterArn(const char* value) { SetMasterArn(value); return *this;}
 
@@ -701,6 +710,457 @@ namespace Model
      */
     inline CreateFunctionResult& AddLayers(Layer&& value) { m_layers.push_back(std::move(value)); return *this; }
 
+
+    /**
+     * <p>The current state of the function. When the state is <code>Inactive</code>,
+     * you can reactivate the function by invoking it.</p>
+     */
+    inline const State& GetState() const{ return m_state; }
+
+    /**
+     * <p>The current state of the function. When the state is <code>Inactive</code>,
+     * you can reactivate the function by invoking it.</p>
+     */
+    inline void SetState(const State& value) { m_state = value; }
+
+    /**
+     * <p>The current state of the function. When the state is <code>Inactive</code>,
+     * you can reactivate the function by invoking it.</p>
+     */
+    inline void SetState(State&& value) { m_state = std::move(value); }
+
+    /**
+     * <p>The current state of the function. When the state is <code>Inactive</code>,
+     * you can reactivate the function by invoking it.</p>
+     */
+    inline CreateFunctionResult& WithState(const State& value) { SetState(value); return *this;}
+
+    /**
+     * <p>The current state of the function. When the state is <code>Inactive</code>,
+     * you can reactivate the function by invoking it.</p>
+     */
+    inline CreateFunctionResult& WithState(State&& value) { SetState(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline const Aws::String& GetStateReason() const{ return m_stateReason; }
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline void SetStateReason(const Aws::String& value) { m_stateReason = value; }
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline void SetStateReason(Aws::String&& value) { m_stateReason = std::move(value); }
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline void SetStateReason(const char* value) { m_stateReason.assign(value); }
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline CreateFunctionResult& WithStateReason(const Aws::String& value) { SetStateReason(value); return *this;}
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline CreateFunctionResult& WithStateReason(Aws::String&& value) { SetStateReason(std::move(value)); return *this;}
+
+    /**
+     * <p>The reason for the function's current state.</p>
+     */
+    inline CreateFunctionResult& WithStateReason(const char* value) { SetStateReason(value); return *this;}
+
+
+    /**
+     * <p>The reason code for the function's current state. When the code is
+     * <code>Creating</code>, you can't invoke or modify the function.</p>
+     */
+    inline const StateReasonCode& GetStateReasonCode() const{ return m_stateReasonCode; }
+
+    /**
+     * <p>The reason code for the function's current state. When the code is
+     * <code>Creating</code>, you can't invoke or modify the function.</p>
+     */
+    inline void SetStateReasonCode(const StateReasonCode& value) { m_stateReasonCode = value; }
+
+    /**
+     * <p>The reason code for the function's current state. When the code is
+     * <code>Creating</code>, you can't invoke or modify the function.</p>
+     */
+    inline void SetStateReasonCode(StateReasonCode&& value) { m_stateReasonCode = std::move(value); }
+
+    /**
+     * <p>The reason code for the function's current state. When the code is
+     * <code>Creating</code>, you can't invoke or modify the function.</p>
+     */
+    inline CreateFunctionResult& WithStateReasonCode(const StateReasonCode& value) { SetStateReasonCode(value); return *this;}
+
+    /**
+     * <p>The reason code for the function's current state. When the code is
+     * <code>Creating</code>, you can't invoke or modify the function.</p>
+     */
+    inline CreateFunctionResult& WithStateReasonCode(StateReasonCode&& value) { SetStateReasonCode(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The status of the last update that was performed on the function. This is
+     * first set to <code>Successful</code> after function creation completes.</p>
+     */
+    inline const LastUpdateStatus& GetLastUpdateStatus() const{ return m_lastUpdateStatus; }
+
+    /**
+     * <p>The status of the last update that was performed on the function. This is
+     * first set to <code>Successful</code> after function creation completes.</p>
+     */
+    inline void SetLastUpdateStatus(const LastUpdateStatus& value) { m_lastUpdateStatus = value; }
+
+    /**
+     * <p>The status of the last update that was performed on the function. This is
+     * first set to <code>Successful</code> after function creation completes.</p>
+     */
+    inline void SetLastUpdateStatus(LastUpdateStatus&& value) { m_lastUpdateStatus = std::move(value); }
+
+    /**
+     * <p>The status of the last update that was performed on the function. This is
+     * first set to <code>Successful</code> after function creation completes.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatus(const LastUpdateStatus& value) { SetLastUpdateStatus(value); return *this;}
+
+    /**
+     * <p>The status of the last update that was performed on the function. This is
+     * first set to <code>Successful</code> after function creation completes.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatus(LastUpdateStatus&& value) { SetLastUpdateStatus(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline const Aws::String& GetLastUpdateStatusReason() const{ return m_lastUpdateStatusReason; }
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline void SetLastUpdateStatusReason(const Aws::String& value) { m_lastUpdateStatusReason = value; }
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline void SetLastUpdateStatusReason(Aws::String&& value) { m_lastUpdateStatusReason = std::move(value); }
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline void SetLastUpdateStatusReason(const char* value) { m_lastUpdateStatusReason.assign(value); }
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatusReason(const Aws::String& value) { SetLastUpdateStatusReason(value); return *this;}
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatusReason(Aws::String&& value) { SetLastUpdateStatusReason(std::move(value)); return *this;}
+
+    /**
+     * <p>The reason for the last update that was performed on the function.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatusReason(const char* value) { SetLastUpdateStatusReason(value); return *this;}
+
+
+    /**
+     * <p>The reason code for the last update that was performed on the function.</p>
+     */
+    inline const LastUpdateStatusReasonCode& GetLastUpdateStatusReasonCode() const{ return m_lastUpdateStatusReasonCode; }
+
+    /**
+     * <p>The reason code for the last update that was performed on the function.</p>
+     */
+    inline void SetLastUpdateStatusReasonCode(const LastUpdateStatusReasonCode& value) { m_lastUpdateStatusReasonCode = value; }
+
+    /**
+     * <p>The reason code for the last update that was performed on the function.</p>
+     */
+    inline void SetLastUpdateStatusReasonCode(LastUpdateStatusReasonCode&& value) { m_lastUpdateStatusReasonCode = std::move(value); }
+
+    /**
+     * <p>The reason code for the last update that was performed on the function.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatusReasonCode(const LastUpdateStatusReasonCode& value) { SetLastUpdateStatusReasonCode(value); return *this;}
+
+    /**
+     * <p>The reason code for the last update that was performed on the function.</p>
+     */
+    inline CreateFunctionResult& WithLastUpdateStatusReasonCode(LastUpdateStatusReasonCode&& value) { SetLastUpdateStatusReasonCode(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline const Aws::Vector<FileSystemConfig>& GetFileSystemConfigs() const{ return m_fileSystemConfigs; }
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline void SetFileSystemConfigs(const Aws::Vector<FileSystemConfig>& value) { m_fileSystemConfigs = value; }
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline void SetFileSystemConfigs(Aws::Vector<FileSystemConfig>&& value) { m_fileSystemConfigs = std::move(value); }
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline CreateFunctionResult& WithFileSystemConfigs(const Aws::Vector<FileSystemConfig>& value) { SetFileSystemConfigs(value); return *this;}
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline CreateFunctionResult& WithFileSystemConfigs(Aws::Vector<FileSystemConfig>&& value) { SetFileSystemConfigs(std::move(value)); return *this;}
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline CreateFunctionResult& AddFileSystemConfigs(const FileSystemConfig& value) { m_fileSystemConfigs.push_back(value); return *this; }
+
+    /**
+     * <p>Connection settings for an <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon
+     * EFS file system</a>.</p>
+     */
+    inline CreateFunctionResult& AddFileSystemConfigs(FileSystemConfig&& value) { m_fileSystemConfigs.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The type of deployment package. Set to <code>Image</code> for container image
+     * and set <code>Zip</code> for .zip file archive.</p>
+     */
+    inline const PackageType& GetPackageType() const{ return m_packageType; }
+
+    /**
+     * <p>The type of deployment package. Set to <code>Image</code> for container image
+     * and set <code>Zip</code> for .zip file archive.</p>
+     */
+    inline void SetPackageType(const PackageType& value) { m_packageType = value; }
+
+    /**
+     * <p>The type of deployment package. Set to <code>Image</code> for container image
+     * and set <code>Zip</code> for .zip file archive.</p>
+     */
+    inline void SetPackageType(PackageType&& value) { m_packageType = std::move(value); }
+
+    /**
+     * <p>The type of deployment package. Set to <code>Image</code> for container image
+     * and set <code>Zip</code> for .zip file archive.</p>
+     */
+    inline CreateFunctionResult& WithPackageType(const PackageType& value) { SetPackageType(value); return *this;}
+
+    /**
+     * <p>The type of deployment package. Set to <code>Image</code> for container image
+     * and set <code>Zip</code> for .zip file archive.</p>
+     */
+    inline CreateFunctionResult& WithPackageType(PackageType&& value) { SetPackageType(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The function's image configuration values.</p>
+     */
+    inline const ImageConfigResponse& GetImageConfigResponse() const{ return m_imageConfigResponse; }
+
+    /**
+     * <p>The function's image configuration values.</p>
+     */
+    inline void SetImageConfigResponse(const ImageConfigResponse& value) { m_imageConfigResponse = value; }
+
+    /**
+     * <p>The function's image configuration values.</p>
+     */
+    inline void SetImageConfigResponse(ImageConfigResponse&& value) { m_imageConfigResponse = std::move(value); }
+
+    /**
+     * <p>The function's image configuration values.</p>
+     */
+    inline CreateFunctionResult& WithImageConfigResponse(const ImageConfigResponse& value) { SetImageConfigResponse(value); return *this;}
+
+    /**
+     * <p>The function's image configuration values.</p>
+     */
+    inline CreateFunctionResult& WithImageConfigResponse(ImageConfigResponse&& value) { SetImageConfigResponse(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline const Aws::String& GetSigningProfileVersionArn() const{ return m_signingProfileVersionArn; }
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline void SetSigningProfileVersionArn(const Aws::String& value) { m_signingProfileVersionArn = value; }
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline void SetSigningProfileVersionArn(Aws::String&& value) { m_signingProfileVersionArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline void SetSigningProfileVersionArn(const char* value) { m_signingProfileVersionArn.assign(value); }
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline CreateFunctionResult& WithSigningProfileVersionArn(const Aws::String& value) { SetSigningProfileVersionArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline CreateFunctionResult& WithSigningProfileVersionArn(Aws::String&& value) { SetSigningProfileVersionArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the signing profile version.</p>
+     */
+    inline CreateFunctionResult& WithSigningProfileVersionArn(const char* value) { SetSigningProfileVersionArn(value); return *this;}
+
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline const Aws::String& GetSigningJobArn() const{ return m_signingJobArn; }
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline void SetSigningJobArn(const Aws::String& value) { m_signingJobArn = value; }
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline void SetSigningJobArn(Aws::String&& value) { m_signingJobArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline void SetSigningJobArn(const char* value) { m_signingJobArn.assign(value); }
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline CreateFunctionResult& WithSigningJobArn(const Aws::String& value) { SetSigningJobArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline CreateFunctionResult& WithSigningJobArn(Aws::String&& value) { SetSigningJobArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the signing job.</p>
+     */
+    inline CreateFunctionResult& WithSigningJobArn(const char* value) { SetSigningJobArn(value); return *this;}
+
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline const Aws::Vector<Architecture>& GetArchitectures() const{ return m_architectures; }
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline void SetArchitectures(const Aws::Vector<Architecture>& value) { m_architectures = value; }
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline void SetArchitectures(Aws::Vector<Architecture>&& value) { m_architectures = std::move(value); }
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline CreateFunctionResult& WithArchitectures(const Aws::Vector<Architecture>& value) { SetArchitectures(value); return *this;}
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline CreateFunctionResult& WithArchitectures(Aws::Vector<Architecture>&& value) { SetArchitectures(std::move(value)); return *this;}
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline CreateFunctionResult& AddArchitectures(const Architecture& value) { m_architectures.push_back(value); return *this; }
+
+    /**
+     * <p>The instruction set architecture that the function supports. Architecture is
+     * a string array with one of the valid values. The default architecture value is
+     * <code>x86_64</code>.</p>
+     */
+    inline CreateFunctionResult& AddArchitectures(Architecture&& value) { m_architectures.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The size of the function’s /tmp directory in MB. The default value is 512,
+     * but can be any whole number between 512 and 10240 MB.</p>
+     */
+    inline const EphemeralStorage& GetEphemeralStorage() const{ return m_ephemeralStorage; }
+
+    /**
+     * <p>The size of the function’s /tmp directory in MB. The default value is 512,
+     * but can be any whole number between 512 and 10240 MB.</p>
+     */
+    inline void SetEphemeralStorage(const EphemeralStorage& value) { m_ephemeralStorage = value; }
+
+    /**
+     * <p>The size of the function’s /tmp directory in MB. The default value is 512,
+     * but can be any whole number between 512 and 10240 MB.</p>
+     */
+    inline void SetEphemeralStorage(EphemeralStorage&& value) { m_ephemeralStorage = std::move(value); }
+
+    /**
+     * <p>The size of the function’s /tmp directory in MB. The default value is 512,
+     * but can be any whole number between 512 and 10240 MB.</p>
+     */
+    inline CreateFunctionResult& WithEphemeralStorage(const EphemeralStorage& value) { SetEphemeralStorage(value); return *this;}
+
+    /**
+     * <p>The size of the function’s /tmp directory in MB. The default value is 512,
+     * but can be any whole number between 512 and 10240 MB.</p>
+     */
+    inline CreateFunctionResult& WithEphemeralStorage(EphemeralStorage&& value) { SetEphemeralStorage(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_functionName;
@@ -742,6 +1202,32 @@ namespace Model
     Aws::String m_revisionId;
 
     Aws::Vector<Layer> m_layers;
+
+    State m_state;
+
+    Aws::String m_stateReason;
+
+    StateReasonCode m_stateReasonCode;
+
+    LastUpdateStatus m_lastUpdateStatus;
+
+    Aws::String m_lastUpdateStatusReason;
+
+    LastUpdateStatusReasonCode m_lastUpdateStatusReasonCode;
+
+    Aws::Vector<FileSystemConfig> m_fileSystemConfigs;
+
+    PackageType m_packageType;
+
+    ImageConfigResponse m_imageConfigResponse;
+
+    Aws::String m_signingProfileVersionArn;
+
+    Aws::String m_signingJobArn;
+
+    Aws::Vector<Architecture> m_architectures;
+
+    EphemeralStorage m_ephemeralStorage;
   };
 
 } // namespace Model

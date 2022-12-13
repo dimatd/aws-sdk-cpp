@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/organizations/Organizations_EXPORTS.h>
@@ -47,139 +37,147 @@ namespace Model
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline const Aws::String& GetPolicyId() const{ return m_policyId; }
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline bool PolicyIdHasBeenSet() const { return m_policyIdHasBeenSet; }
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline void SetPolicyId(const Aws::String& value) { m_policyIdHasBeenSet = true; m_policyId = value; }
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline void SetPolicyId(Aws::String&& value) { m_policyIdHasBeenSet = true; m_policyId = std::move(value); }
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline void SetPolicyId(const char* value) { m_policyIdHasBeenSet = true; m_policyId.assign(value); }
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline ListTargetsForPolicyRequest& WithPolicyId(const Aws::String& value) { SetPolicyId(value); return *this;}
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline ListTargetsForPolicyRequest& WithPolicyId(Aws::String&& value) { SetPolicyId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier (ID) of the policy whose attachments you want to
      * know.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for
-     * a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or
-     * digits.</p>
+     * a policy ID string requires "p-" followed by from 8 to 128 lowercase or
+     * uppercase letters, digits, or the underscore character (_).</p>
      */
     inline ListTargetsForPolicyRequest& WithPolicyId(const char* value) { SetPolicyId(value); return *this;}
 
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline ListTargetsForPolicyRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline ListTargetsForPolicyRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>Use this parameter if you receive a <code>NextToken</code> response in a
-     * previous request that indicates that there is more output available. Set it to
-     * the value of the previous call's <code>NextToken</code> response to indicate
-     * where the output should continue from.</p>
+     * <p>The parameter for receiving additional results if you receive a
+     * <code>NextToken</code> response in a previous request. A <code>NextToken</code>
+     * response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where
+     * the output should continue from.</p>
      */
     inline ListTargetsForPolicyRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 
 
     /**
-     * <p>(Optional) Use this to limit the number of results you want included per page
-     * in the response. If you do not include this parameter, it defaults to a value
-     * that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a
-     * value (is not null). Include that value as the <code>NextToken</code> request
+     * <p>The total number of results that you want included on each page of the
+     * response. If you do not include this parameter, it defaults to a value that is
+     * specific to the operation. If additional items exist beyond the maximum you
+     * specify, the <code>NextToken</code> response element is present and has a value
+     * (is not null). Include that value as the <code>NextToken</code> request
      * parameter in the next call to the operation to get the next part of the results.
      * Note that Organizations might return fewer results than the maximum even when
      * there are more results available. You should check <code>NextToken</code> after
@@ -188,11 +186,11 @@ namespace Model
     inline int GetMaxResults() const{ return m_maxResults; }
 
     /**
-     * <p>(Optional) Use this to limit the number of results you want included per page
-     * in the response. If you do not include this parameter, it defaults to a value
-     * that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a
-     * value (is not null). Include that value as the <code>NextToken</code> request
+     * <p>The total number of results that you want included on each page of the
+     * response. If you do not include this parameter, it defaults to a value that is
+     * specific to the operation. If additional items exist beyond the maximum you
+     * specify, the <code>NextToken</code> response element is present and has a value
+     * (is not null). Include that value as the <code>NextToken</code> request
      * parameter in the next call to the operation to get the next part of the results.
      * Note that Organizations might return fewer results than the maximum even when
      * there are more results available. You should check <code>NextToken</code> after
@@ -201,11 +199,11 @@ namespace Model
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
 
     /**
-     * <p>(Optional) Use this to limit the number of results you want included per page
-     * in the response. If you do not include this parameter, it defaults to a value
-     * that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a
-     * value (is not null). Include that value as the <code>NextToken</code> request
+     * <p>The total number of results that you want included on each page of the
+     * response. If you do not include this parameter, it defaults to a value that is
+     * specific to the operation. If additional items exist beyond the maximum you
+     * specify, the <code>NextToken</code> response element is present and has a value
+     * (is not null). Include that value as the <code>NextToken</code> request
      * parameter in the next call to the operation to get the next part of the results.
      * Note that Organizations might return fewer results than the maximum even when
      * there are more results available. You should check <code>NextToken</code> after
@@ -214,11 +212,11 @@ namespace Model
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
 
     /**
-     * <p>(Optional) Use this to limit the number of results you want included per page
-     * in the response. If you do not include this parameter, it defaults to a value
-     * that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a
-     * value (is not null). Include that value as the <code>NextToken</code> request
+     * <p>The total number of results that you want included on each page of the
+     * response. If you do not include this parameter, it defaults to a value that is
+     * specific to the operation. If additional items exist beyond the maximum you
+     * specify, the <code>NextToken</code> response element is present and has a value
+     * (is not null). Include that value as the <code>NextToken</code> request
      * parameter in the next call to the operation to get the next part of the results.
      * Note that Organizations might return fewer results than the maximum even when
      * there are more results available. You should check <code>NextToken</code> after

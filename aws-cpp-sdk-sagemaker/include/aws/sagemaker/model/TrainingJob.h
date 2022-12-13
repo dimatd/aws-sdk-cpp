@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
@@ -27,9 +17,16 @@
 #include <aws/sagemaker/model/VpcConfig.h>
 #include <aws/sagemaker/model/StoppingCondition.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/sagemaker/model/CheckpointConfig.h>
+#include <aws/sagemaker/model/DebugHookConfig.h>
+#include <aws/sagemaker/model/ExperimentConfig.h>
+#include <aws/sagemaker/model/TensorBoardOutputConfig.h>
+#include <aws/sagemaker/model/RetryStrategy.h>
 #include <aws/sagemaker/model/Channel.h>
 #include <aws/sagemaker/model/SecondaryStatusTransition.h>
 #include <aws/sagemaker/model/MetricData.h>
+#include <aws/sagemaker/model/DebugRuleConfiguration.h>
+#include <aws/sagemaker/model/DebugRuleEvaluationStatus.h>
 #include <aws/sagemaker/model/Tag.h>
 #include <utility>
 
@@ -235,6 +232,47 @@ namespace Model
 
 
     /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline const Aws::String& GetAutoMLJobArn() const{ return m_autoMLJobArn; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline bool AutoMLJobArnHasBeenSet() const { return m_autoMLJobArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline void SetAutoMLJobArn(const Aws::String& value) { m_autoMLJobArnHasBeenSet = true; m_autoMLJobArn = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline void SetAutoMLJobArn(Aws::String&& value) { m_autoMLJobArnHasBeenSet = true; m_autoMLJobArn = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline void SetAutoMLJobArn(const char* value) { m_autoMLJobArnHasBeenSet = true; m_autoMLJobArn.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline TrainingJob& WithAutoMLJobArn(const Aws::String& value) { SetAutoMLJobArn(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline TrainingJob& WithAutoMLJobArn(Aws::String&& value) { SetAutoMLJobArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the job.</p>
+     */
+    inline TrainingJob& WithAutoMLJobArn(const char* value) { SetAutoMLJobArn(value); return *this;}
+
+
+    /**
      * <p>Information about the Amazon S3 location that is configured for storing model
      * artifacts.</p>
      */
@@ -353,9 +391,9 @@ namespace Model
     /**
      * <p> Provides detailed information about the state of the training job. For
      * detailed information about the secondary status of the training job, see
-     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p> <p>Amazon
-     * SageMaker provides primary statuses and secondary statuses that apply to each of
-     * them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
+     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p>
+     * <p>SageMaker provides primary statuses and secondary statuses that apply to each
+     * of them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
      * Starting the training job.</p> </li> <li> <p> <code>Downloading</code> - An
      * optional stage for algorithms that support <code>File</code> training input
      * mode. It indicates that data is being downloaded to the ML storage volumes.</p>
@@ -371,8 +409,8 @@ namespace Model
      * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
      * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
      * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <important> <p>Valid values for <code>SecondaryStatus</code> are
-     * subject to change. </p> </important> <p>We no longer support the following
+     * </dd> </dl>  <p>Valid values for <code>SecondaryStatus</code> are
+     * subject to change. </p>  <p>We no longer support the following
      * secondary statuses:</p> <ul> <li> <p> <code>LaunchingMLInstances</code> </p>
      * </li> <li> <p> <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
@@ -382,9 +420,9 @@ namespace Model
     /**
      * <p> Provides detailed information about the state of the training job. For
      * detailed information about the secondary status of the training job, see
-     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p> <p>Amazon
-     * SageMaker provides primary statuses and secondary statuses that apply to each of
-     * them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
+     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p>
+     * <p>SageMaker provides primary statuses and secondary statuses that apply to each
+     * of them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
      * Starting the training job.</p> </li> <li> <p> <code>Downloading</code> - An
      * optional stage for algorithms that support <code>File</code> training input
      * mode. It indicates that data is being downloaded to the ML storage volumes.</p>
@@ -400,8 +438,8 @@ namespace Model
      * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
      * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
      * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <important> <p>Valid values for <code>SecondaryStatus</code> are
-     * subject to change. </p> </important> <p>We no longer support the following
+     * </dd> </dl>  <p>Valid values for <code>SecondaryStatus</code> are
+     * subject to change. </p>  <p>We no longer support the following
      * secondary statuses:</p> <ul> <li> <p> <code>LaunchingMLInstances</code> </p>
      * </li> <li> <p> <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
@@ -411,9 +449,9 @@ namespace Model
     /**
      * <p> Provides detailed information about the state of the training job. For
      * detailed information about the secondary status of the training job, see
-     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p> <p>Amazon
-     * SageMaker provides primary statuses and secondary statuses that apply to each of
-     * them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
+     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p>
+     * <p>SageMaker provides primary statuses and secondary statuses that apply to each
+     * of them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
      * Starting the training job.</p> </li> <li> <p> <code>Downloading</code> - An
      * optional stage for algorithms that support <code>File</code> training input
      * mode. It indicates that data is being downloaded to the ML storage volumes.</p>
@@ -429,8 +467,8 @@ namespace Model
      * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
      * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
      * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <important> <p>Valid values for <code>SecondaryStatus</code> are
-     * subject to change. </p> </important> <p>We no longer support the following
+     * </dd> </dl>  <p>Valid values for <code>SecondaryStatus</code> are
+     * subject to change. </p>  <p>We no longer support the following
      * secondary statuses:</p> <ul> <li> <p> <code>LaunchingMLInstances</code> </p>
      * </li> <li> <p> <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
@@ -440,9 +478,9 @@ namespace Model
     /**
      * <p> Provides detailed information about the state of the training job. For
      * detailed information about the secondary status of the training job, see
-     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p> <p>Amazon
-     * SageMaker provides primary statuses and secondary statuses that apply to each of
-     * them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
+     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p>
+     * <p>SageMaker provides primary statuses and secondary statuses that apply to each
+     * of them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
      * Starting the training job.</p> </li> <li> <p> <code>Downloading</code> - An
      * optional stage for algorithms that support <code>File</code> training input
      * mode. It indicates that data is being downloaded to the ML storage volumes.</p>
@@ -458,8 +496,8 @@ namespace Model
      * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
      * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
      * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <important> <p>Valid values for <code>SecondaryStatus</code> are
-     * subject to change. </p> </important> <p>We no longer support the following
+     * </dd> </dl>  <p>Valid values for <code>SecondaryStatus</code> are
+     * subject to change. </p>  <p>We no longer support the following
      * secondary statuses:</p> <ul> <li> <p> <code>LaunchingMLInstances</code> </p>
      * </li> <li> <p> <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
@@ -469,9 +507,9 @@ namespace Model
     /**
      * <p> Provides detailed information about the state of the training job. For
      * detailed information about the secondary status of the training job, see
-     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p> <p>Amazon
-     * SageMaker provides primary statuses and secondary statuses that apply to each of
-     * them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
+     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p>
+     * <p>SageMaker provides primary statuses and secondary statuses that apply to each
+     * of them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
      * Starting the training job.</p> </li> <li> <p> <code>Downloading</code> - An
      * optional stage for algorithms that support <code>File</code> training input
      * mode. It indicates that data is being downloaded to the ML storage volumes.</p>
@@ -487,8 +525,8 @@ namespace Model
      * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
      * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
      * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <important> <p>Valid values for <code>SecondaryStatus</code> are
-     * subject to change. </p> </important> <p>We no longer support the following
+     * </dd> </dl>  <p>Valid values for <code>SecondaryStatus</code> are
+     * subject to change. </p>  <p>We no longer support the following
      * secondary statuses:</p> <ul> <li> <p> <code>LaunchingMLInstances</code> </p>
      * </li> <li> <p> <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
@@ -498,9 +536,9 @@ namespace Model
     /**
      * <p> Provides detailed information about the state of the training job. For
      * detailed information about the secondary status of the training job, see
-     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p> <p>Amazon
-     * SageMaker provides primary statuses and secondary statuses that apply to each of
-     * them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
+     * <code>StatusMessage</code> under <a>SecondaryStatusTransition</a>.</p>
+     * <p>SageMaker provides primary statuses and secondary statuses that apply to each
+     * of them:</p> <dl> <dt>InProgress</dt> <dd> <ul> <li> <p> <code>Starting</code> -
      * Starting the training job.</p> </li> <li> <p> <code>Downloading</code> - An
      * optional stage for algorithms that support <code>File</code> training input
      * mode. It indicates that data is being downloaded to the ML storage volumes.</p>
@@ -516,8 +554,8 @@ namespace Model
      * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
      * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
      * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <important> <p>Valid values for <code>SecondaryStatus</code> are
-     * subject to change. </p> </important> <p>We no longer support the following
+     * </dd> </dl>  <p>Valid values for <code>SecondaryStatus</code> are
+     * subject to change. </p>  <p>We no longer support the following
      * secondary statuses:</p> <ul> <li> <p> <code>LaunchingMLInstances</code> </p>
      * </li> <li> <p> <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
@@ -670,50 +708,50 @@ namespace Model
 
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline TrainingJob& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline TrainingJob& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
-     * <p>The AWS Identity and Access Management (IAM) role configured for the training
-     * job.</p>
+     * <p>The Amazon Web Services Identity and Access Management (IAM) role configured
+     * for the training job.</p>
      */
     inline TrainingJob& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
 
@@ -769,37 +807,37 @@ namespace Model
 
     /**
      * <p>The S3 path where model artifacts that you configured when creating the job
-     * are stored. Amazon SageMaker creates subfolders for model artifacts.</p>
+     * are stored. SageMaker creates subfolders for model artifacts.</p>
      */
     inline const OutputDataConfig& GetOutputDataConfig() const{ return m_outputDataConfig; }
 
     /**
      * <p>The S3 path where model artifacts that you configured when creating the job
-     * are stored. Amazon SageMaker creates subfolders for model artifacts.</p>
+     * are stored. SageMaker creates subfolders for model artifacts.</p>
      */
     inline bool OutputDataConfigHasBeenSet() const { return m_outputDataConfigHasBeenSet; }
 
     /**
      * <p>The S3 path where model artifacts that you configured when creating the job
-     * are stored. Amazon SageMaker creates subfolders for model artifacts.</p>
+     * are stored. SageMaker creates subfolders for model artifacts.</p>
      */
     inline void SetOutputDataConfig(const OutputDataConfig& value) { m_outputDataConfigHasBeenSet = true; m_outputDataConfig = value; }
 
     /**
      * <p>The S3 path where model artifacts that you configured when creating the job
-     * are stored. Amazon SageMaker creates subfolders for model artifacts.</p>
+     * are stored. SageMaker creates subfolders for model artifacts.</p>
      */
     inline void SetOutputDataConfig(OutputDataConfig&& value) { m_outputDataConfigHasBeenSet = true; m_outputDataConfig = std::move(value); }
 
     /**
      * <p>The S3 path where model artifacts that you configured when creating the job
-     * are stored. Amazon SageMaker creates subfolders for model artifacts.</p>
+     * are stored. SageMaker creates subfolders for model artifacts.</p>
      */
     inline TrainingJob& WithOutputDataConfig(const OutputDataConfig& value) { SetOutputDataConfig(value); return *this;}
 
     /**
      * <p>The S3 path where model artifacts that you configured when creating the job
-     * are stored. Amazon SageMaker creates subfolders for model artifacts.</p>
+     * are stored. SageMaker creates subfolders for model artifacts.</p>
      */
     inline TrainingJob& WithOutputDataConfig(OutputDataConfig&& value) { SetOutputDataConfig(std::move(value)); return *this;}
 
@@ -891,62 +929,68 @@ namespace Model
 
 
     /**
-     * <p>Specifies a limit to how long a model training job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the training job. Use this API to
-     * cap model training costs.</p> <p>To stop a job, Amazon SageMaker sends the
-     * algorithm the <code>SIGTERM</code> signal, which delays job termination for 120
-     * seconds. Algorithms can use this 120-second window to save the model artifacts,
-     * so the results of training are not lost. </p>
+     * <p>Specifies a limit to how long a model training job can run. It also specifies
+     * how long a managed Spot training job has to complete. When the job reaches the
+     * time limit, SageMaker ends the training job. Use this API to cap model training
+     * costs.</p> <p>To stop a job, SageMaker sends the algorithm the
+     * <code>SIGTERM</code> signal, which delays job termination for 120 seconds.
+     * Algorithms can use this 120-second window to save the model artifacts, so the
+     * results of training are not lost. </p>
      */
     inline const StoppingCondition& GetStoppingCondition() const{ return m_stoppingCondition; }
 
     /**
-     * <p>Specifies a limit to how long a model training job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the training job. Use this API to
-     * cap model training costs.</p> <p>To stop a job, Amazon SageMaker sends the
-     * algorithm the <code>SIGTERM</code> signal, which delays job termination for 120
-     * seconds. Algorithms can use this 120-second window to save the model artifacts,
-     * so the results of training are not lost. </p>
+     * <p>Specifies a limit to how long a model training job can run. It also specifies
+     * how long a managed Spot training job has to complete. When the job reaches the
+     * time limit, SageMaker ends the training job. Use this API to cap model training
+     * costs.</p> <p>To stop a job, SageMaker sends the algorithm the
+     * <code>SIGTERM</code> signal, which delays job termination for 120 seconds.
+     * Algorithms can use this 120-second window to save the model artifacts, so the
+     * results of training are not lost. </p>
      */
     inline bool StoppingConditionHasBeenSet() const { return m_stoppingConditionHasBeenSet; }
 
     /**
-     * <p>Specifies a limit to how long a model training job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the training job. Use this API to
-     * cap model training costs.</p> <p>To stop a job, Amazon SageMaker sends the
-     * algorithm the <code>SIGTERM</code> signal, which delays job termination for 120
-     * seconds. Algorithms can use this 120-second window to save the model artifacts,
-     * so the results of training are not lost. </p>
+     * <p>Specifies a limit to how long a model training job can run. It also specifies
+     * how long a managed Spot training job has to complete. When the job reaches the
+     * time limit, SageMaker ends the training job. Use this API to cap model training
+     * costs.</p> <p>To stop a job, SageMaker sends the algorithm the
+     * <code>SIGTERM</code> signal, which delays job termination for 120 seconds.
+     * Algorithms can use this 120-second window to save the model artifacts, so the
+     * results of training are not lost. </p>
      */
     inline void SetStoppingCondition(const StoppingCondition& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = value; }
 
     /**
-     * <p>Specifies a limit to how long a model training job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the training job. Use this API to
-     * cap model training costs.</p> <p>To stop a job, Amazon SageMaker sends the
-     * algorithm the <code>SIGTERM</code> signal, which delays job termination for 120
-     * seconds. Algorithms can use this 120-second window to save the model artifacts,
-     * so the results of training are not lost. </p>
+     * <p>Specifies a limit to how long a model training job can run. It also specifies
+     * how long a managed Spot training job has to complete. When the job reaches the
+     * time limit, SageMaker ends the training job. Use this API to cap model training
+     * costs.</p> <p>To stop a job, SageMaker sends the algorithm the
+     * <code>SIGTERM</code> signal, which delays job termination for 120 seconds.
+     * Algorithms can use this 120-second window to save the model artifacts, so the
+     * results of training are not lost. </p>
      */
     inline void SetStoppingCondition(StoppingCondition&& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = std::move(value); }
 
     /**
-     * <p>Specifies a limit to how long a model training job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the training job. Use this API to
-     * cap model training costs.</p> <p>To stop a job, Amazon SageMaker sends the
-     * algorithm the <code>SIGTERM</code> signal, which delays job termination for 120
-     * seconds. Algorithms can use this 120-second window to save the model artifacts,
-     * so the results of training are not lost. </p>
+     * <p>Specifies a limit to how long a model training job can run. It also specifies
+     * how long a managed Spot training job has to complete. When the job reaches the
+     * time limit, SageMaker ends the training job. Use this API to cap model training
+     * costs.</p> <p>To stop a job, SageMaker sends the algorithm the
+     * <code>SIGTERM</code> signal, which delays job termination for 120 seconds.
+     * Algorithms can use this 120-second window to save the model artifacts, so the
+     * results of training are not lost. </p>
      */
     inline TrainingJob& WithStoppingCondition(const StoppingCondition& value) { SetStoppingCondition(value); return *this;}
 
     /**
-     * <p>Specifies a limit to how long a model training job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the training job. Use this API to
-     * cap model training costs.</p> <p>To stop a job, Amazon SageMaker sends the
-     * algorithm the <code>SIGTERM</code> signal, which delays job termination for 120
-     * seconds. Algorithms can use this 120-second window to save the model artifacts,
-     * so the results of training are not lost. </p>
+     * <p>Specifies a limit to how long a model training job can run. It also specifies
+     * how long a managed Spot training job has to complete. When the job reaches the
+     * time limit, SageMaker ends the training job. Use this API to cap model training
+     * costs.</p> <p>To stop a job, SageMaker sends the algorithm the
+     * <code>SIGTERM</code> signal, which delays job termination for 120 seconds.
+     * Algorithms can use this 120-second window to save the model artifacts, so the
+     * results of training are not lost. </p>
      */
     inline TrainingJob& WithStoppingCondition(StoppingCondition&& value) { SetStoppingCondition(std::move(value)); return *this;}
 
@@ -1041,8 +1085,8 @@ namespace Model
      * <p>Indicates the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline const Aws::Utils::DateTime& GetTrainingEndTime() const{ return m_trainingEndTime; }
 
@@ -1050,8 +1094,8 @@ namespace Model
      * <p>Indicates the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline bool TrainingEndTimeHasBeenSet() const { return m_trainingEndTimeHasBeenSet; }
 
@@ -1059,8 +1103,8 @@ namespace Model
      * <p>Indicates the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline void SetTrainingEndTime(const Aws::Utils::DateTime& value) { m_trainingEndTimeHasBeenSet = true; m_trainingEndTime = value; }
 
@@ -1068,8 +1112,8 @@ namespace Model
      * <p>Indicates the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline void SetTrainingEndTime(Aws::Utils::DateTime&& value) { m_trainingEndTimeHasBeenSet = true; m_trainingEndTime = std::move(value); }
 
@@ -1077,8 +1121,8 @@ namespace Model
      * <p>Indicates the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline TrainingJob& WithTrainingEndTime(const Aws::Utils::DateTime& value) { SetTrainingEndTime(value); return *this;}
 
@@ -1086,8 +1130,8 @@ namespace Model
      * <p>Indicates the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline TrainingJob& WithTrainingEndTime(Aws::Utils::DateTime&& value) { SetTrainingEndTime(std::move(value)); return *this;}
 
@@ -1294,66 +1338,418 @@ namespace Model
 
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>When true, enables managed spot training using Amazon EC2 Spot instances to
+     * run training jobs instead of on-demand instances. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html">Managed
+     * Spot Training</a>.</p>
+     */
+    inline bool GetEnableManagedSpotTraining() const{ return m_enableManagedSpotTraining; }
+
+    /**
+     * <p>When true, enables managed spot training using Amazon EC2 Spot instances to
+     * run training jobs instead of on-demand instances. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html">Managed
+     * Spot Training</a>.</p>
+     */
+    inline bool EnableManagedSpotTrainingHasBeenSet() const { return m_enableManagedSpotTrainingHasBeenSet; }
+
+    /**
+     * <p>When true, enables managed spot training using Amazon EC2 Spot instances to
+     * run training jobs instead of on-demand instances. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html">Managed
+     * Spot Training</a>.</p>
+     */
+    inline void SetEnableManagedSpotTraining(bool value) { m_enableManagedSpotTrainingHasBeenSet = true; m_enableManagedSpotTraining = value; }
+
+    /**
+     * <p>When true, enables managed spot training using Amazon EC2 Spot instances to
+     * run training jobs instead of on-demand instances. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html">Managed
+     * Spot Training</a>.</p>
+     */
+    inline TrainingJob& WithEnableManagedSpotTraining(bool value) { SetEnableManagedSpotTraining(value); return *this;}
+
+
+    
+    inline const CheckpointConfig& GetCheckpointConfig() const{ return m_checkpointConfig; }
+
+    
+    inline bool CheckpointConfigHasBeenSet() const { return m_checkpointConfigHasBeenSet; }
+
+    
+    inline void SetCheckpointConfig(const CheckpointConfig& value) { m_checkpointConfigHasBeenSet = true; m_checkpointConfig = value; }
+
+    
+    inline void SetCheckpointConfig(CheckpointConfig&& value) { m_checkpointConfigHasBeenSet = true; m_checkpointConfig = std::move(value); }
+
+    
+    inline TrainingJob& WithCheckpointConfig(const CheckpointConfig& value) { SetCheckpointConfig(value); return *this;}
+
+    
+    inline TrainingJob& WithCheckpointConfig(CheckpointConfig&& value) { SetCheckpointConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The training time in seconds.</p>
+     */
+    inline int GetTrainingTimeInSeconds() const{ return m_trainingTimeInSeconds; }
+
+    /**
+     * <p>The training time in seconds.</p>
+     */
+    inline bool TrainingTimeInSecondsHasBeenSet() const { return m_trainingTimeInSecondsHasBeenSet; }
+
+    /**
+     * <p>The training time in seconds.</p>
+     */
+    inline void SetTrainingTimeInSeconds(int value) { m_trainingTimeInSecondsHasBeenSet = true; m_trainingTimeInSeconds = value; }
+
+    /**
+     * <p>The training time in seconds.</p>
+     */
+    inline TrainingJob& WithTrainingTimeInSeconds(int value) { SetTrainingTimeInSeconds(value); return *this;}
+
+
+    /**
+     * <p>The billable time in seconds.</p>
+     */
+    inline int GetBillableTimeInSeconds() const{ return m_billableTimeInSeconds; }
+
+    /**
+     * <p>The billable time in seconds.</p>
+     */
+    inline bool BillableTimeInSecondsHasBeenSet() const { return m_billableTimeInSecondsHasBeenSet; }
+
+    /**
+     * <p>The billable time in seconds.</p>
+     */
+    inline void SetBillableTimeInSeconds(int value) { m_billableTimeInSecondsHasBeenSet = true; m_billableTimeInSeconds = value; }
+
+    /**
+     * <p>The billable time in seconds.</p>
+     */
+    inline TrainingJob& WithBillableTimeInSeconds(int value) { SetBillableTimeInSeconds(value); return *this;}
+
+
+    
+    inline const DebugHookConfig& GetDebugHookConfig() const{ return m_debugHookConfig; }
+
+    
+    inline bool DebugHookConfigHasBeenSet() const { return m_debugHookConfigHasBeenSet; }
+
+    
+    inline void SetDebugHookConfig(const DebugHookConfig& value) { m_debugHookConfigHasBeenSet = true; m_debugHookConfig = value; }
+
+    
+    inline void SetDebugHookConfig(DebugHookConfig&& value) { m_debugHookConfigHasBeenSet = true; m_debugHookConfig = std::move(value); }
+
+    
+    inline TrainingJob& WithDebugHookConfig(const DebugHookConfig& value) { SetDebugHookConfig(value); return *this;}
+
+    
+    inline TrainingJob& WithDebugHookConfig(DebugHookConfig&& value) { SetDebugHookConfig(std::move(value)); return *this;}
+
+
+    
+    inline const ExperimentConfig& GetExperimentConfig() const{ return m_experimentConfig; }
+
+    
+    inline bool ExperimentConfigHasBeenSet() const { return m_experimentConfigHasBeenSet; }
+
+    
+    inline void SetExperimentConfig(const ExperimentConfig& value) { m_experimentConfigHasBeenSet = true; m_experimentConfig = value; }
+
+    
+    inline void SetExperimentConfig(ExperimentConfig&& value) { m_experimentConfigHasBeenSet = true; m_experimentConfig = std::move(value); }
+
+    
+    inline TrainingJob& WithExperimentConfig(const ExperimentConfig& value) { SetExperimentConfig(value); return *this;}
+
+    
+    inline TrainingJob& WithExperimentConfig(ExperimentConfig&& value) { SetExperimentConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline const Aws::Vector<DebugRuleConfiguration>& GetDebugRuleConfigurations() const{ return m_debugRuleConfigurations; }
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline bool DebugRuleConfigurationsHasBeenSet() const { return m_debugRuleConfigurationsHasBeenSet; }
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline void SetDebugRuleConfigurations(const Aws::Vector<DebugRuleConfiguration>& value) { m_debugRuleConfigurationsHasBeenSet = true; m_debugRuleConfigurations = value; }
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline void SetDebugRuleConfigurations(Aws::Vector<DebugRuleConfiguration>&& value) { m_debugRuleConfigurationsHasBeenSet = true; m_debugRuleConfigurations = std::move(value); }
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline TrainingJob& WithDebugRuleConfigurations(const Aws::Vector<DebugRuleConfiguration>& value) { SetDebugRuleConfigurations(value); return *this;}
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline TrainingJob& WithDebugRuleConfigurations(Aws::Vector<DebugRuleConfiguration>&& value) { SetDebugRuleConfigurations(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline TrainingJob& AddDebugRuleConfigurations(const DebugRuleConfiguration& value) { m_debugRuleConfigurationsHasBeenSet = true; m_debugRuleConfigurations.push_back(value); return *this; }
+
+    /**
+     * <p>Information about the debug rule configuration.</p>
+     */
+    inline TrainingJob& AddDebugRuleConfigurations(DebugRuleConfiguration&& value) { m_debugRuleConfigurationsHasBeenSet = true; m_debugRuleConfigurations.push_back(std::move(value)); return *this; }
+
+
+    
+    inline const TensorBoardOutputConfig& GetTensorBoardOutputConfig() const{ return m_tensorBoardOutputConfig; }
+
+    
+    inline bool TensorBoardOutputConfigHasBeenSet() const { return m_tensorBoardOutputConfigHasBeenSet; }
+
+    
+    inline void SetTensorBoardOutputConfig(const TensorBoardOutputConfig& value) { m_tensorBoardOutputConfigHasBeenSet = true; m_tensorBoardOutputConfig = value; }
+
+    
+    inline void SetTensorBoardOutputConfig(TensorBoardOutputConfig&& value) { m_tensorBoardOutputConfigHasBeenSet = true; m_tensorBoardOutputConfig = std::move(value); }
+
+    
+    inline TrainingJob& WithTensorBoardOutputConfig(const TensorBoardOutputConfig& value) { SetTensorBoardOutputConfig(value); return *this;}
+
+    
+    inline TrainingJob& WithTensorBoardOutputConfig(TensorBoardOutputConfig&& value) { SetTensorBoardOutputConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline const Aws::Vector<DebugRuleEvaluationStatus>& GetDebugRuleEvaluationStatuses() const{ return m_debugRuleEvaluationStatuses; }
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline bool DebugRuleEvaluationStatusesHasBeenSet() const { return m_debugRuleEvaluationStatusesHasBeenSet; }
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline void SetDebugRuleEvaluationStatuses(const Aws::Vector<DebugRuleEvaluationStatus>& value) { m_debugRuleEvaluationStatusesHasBeenSet = true; m_debugRuleEvaluationStatuses = value; }
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline void SetDebugRuleEvaluationStatuses(Aws::Vector<DebugRuleEvaluationStatus>&& value) { m_debugRuleEvaluationStatusesHasBeenSet = true; m_debugRuleEvaluationStatuses = std::move(value); }
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline TrainingJob& WithDebugRuleEvaluationStatuses(const Aws::Vector<DebugRuleEvaluationStatus>& value) { SetDebugRuleEvaluationStatuses(value); return *this;}
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline TrainingJob& WithDebugRuleEvaluationStatuses(Aws::Vector<DebugRuleEvaluationStatus>&& value) { SetDebugRuleEvaluationStatuses(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline TrainingJob& AddDebugRuleEvaluationStatuses(const DebugRuleEvaluationStatus& value) { m_debugRuleEvaluationStatusesHasBeenSet = true; m_debugRuleEvaluationStatuses.push_back(value); return *this; }
+
+    /**
+     * <p>Information about the evaluation status of the rules for the training
+     * job.</p>
+     */
+    inline TrainingJob& AddDebugRuleEvaluationStatuses(DebugRuleEvaluationStatus&& value) { m_debugRuleEvaluationStatusesHasBeenSet = true; m_debugRuleEvaluationStatuses.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetEnvironment() const{ return m_environment; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline bool EnvironmentHasBeenSet() const { return m_environmentHasBeenSet; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline void SetEnvironment(const Aws::Map<Aws::String, Aws::String>& value) { m_environmentHasBeenSet = true; m_environment = value; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline void SetEnvironment(Aws::Map<Aws::String, Aws::String>&& value) { m_environmentHasBeenSet = true; m_environment = std::move(value); }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& WithEnvironment(const Aws::Map<Aws::String, Aws::String>& value) { SetEnvironment(value); return *this;}
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& WithEnvironment(Aws::Map<Aws::String, Aws::String>&& value) { SetEnvironment(std::move(value)); return *this;}
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(const Aws::String& key, const Aws::String& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, value); return *this; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(Aws::String&& key, const Aws::String& value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(const Aws::String& key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(Aws::String&& key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), std::move(value)); return *this; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(const char* key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(Aws::String&& key, const char* value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>The environment variables to set in the Docker container.</p>
+     */
+    inline TrainingJob& AddEnvironment(const char* key, const char* value) { m_environmentHasBeenSet = true; m_environment.emplace(key, value); return *this; }
+
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline const RetryStrategy& GetRetryStrategy() const{ return m_retryStrategy; }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline bool RetryStrategyHasBeenSet() const { return m_retryStrategyHasBeenSet; }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline void SetRetryStrategy(const RetryStrategy& value) { m_retryStrategyHasBeenSet = true; m_retryStrategy = value; }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline void SetRetryStrategy(RetryStrategy&& value) { m_retryStrategyHasBeenSet = true; m_retryStrategy = std::move(value); }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline TrainingJob& WithRetryStrategy(const RetryStrategy& value) { SetRetryStrategy(value); return *this;}
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline TrainingJob& WithRetryStrategy(RetryStrategy&& value) { SetRetryStrategy(std::move(value)); return *this;}
+
+
+    /**
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline TrainingJob& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline TrainingJob& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline TrainingJob& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
 
     /**
-     * <p>An array of key-value pairs. For more information, see <a
-     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what">Using
-     * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.</p>
+     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
+     * Services resources in different ways, for example, by purpose, owner, or
+     * environment. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
+     * Amazon Web Services Resources</a>.</p>
      */
     inline TrainingJob& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
@@ -1370,6 +1766,9 @@ namespace Model
 
     Aws::String m_labelingJobArn;
     bool m_labelingJobArnHasBeenSet;
+
+    Aws::String m_autoMLJobArn;
+    bool m_autoMLJobArnHasBeenSet;
 
     ModelArtifacts m_modelArtifacts;
     bool m_modelArtifactsHasBeenSet;
@@ -1430,6 +1829,39 @@ namespace Model
 
     bool m_enableInterContainerTrafficEncryption;
     bool m_enableInterContainerTrafficEncryptionHasBeenSet;
+
+    bool m_enableManagedSpotTraining;
+    bool m_enableManagedSpotTrainingHasBeenSet;
+
+    CheckpointConfig m_checkpointConfig;
+    bool m_checkpointConfigHasBeenSet;
+
+    int m_trainingTimeInSeconds;
+    bool m_trainingTimeInSecondsHasBeenSet;
+
+    int m_billableTimeInSeconds;
+    bool m_billableTimeInSecondsHasBeenSet;
+
+    DebugHookConfig m_debugHookConfig;
+    bool m_debugHookConfigHasBeenSet;
+
+    ExperimentConfig m_experimentConfig;
+    bool m_experimentConfigHasBeenSet;
+
+    Aws::Vector<DebugRuleConfiguration> m_debugRuleConfigurations;
+    bool m_debugRuleConfigurationsHasBeenSet;
+
+    TensorBoardOutputConfig m_tensorBoardOutputConfig;
+    bool m_tensorBoardOutputConfigHasBeenSet;
+
+    Aws::Vector<DebugRuleEvaluationStatus> m_debugRuleEvaluationStatuses;
+    bool m_debugRuleEvaluationStatusesHasBeenSet;
+
+    Aws::Map<Aws::String, Aws::String> m_environment;
+    bool m_environmentHasBeenSet;
+
+    RetryStrategy m_retryStrategy;
+    bool m_retryStrategyHasBeenSet;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet;

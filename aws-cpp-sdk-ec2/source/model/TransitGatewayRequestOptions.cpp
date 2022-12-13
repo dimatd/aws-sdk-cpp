@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/TransitGatewayRequestOptions.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -42,7 +32,10 @@ TransitGatewayRequestOptions::TransitGatewayRequestOptions() :
     m_vpnEcmpSupport(VpnEcmpSupportValue::NOT_SET),
     m_vpnEcmpSupportHasBeenSet(false),
     m_dnsSupport(DnsSupportValue::NOT_SET),
-    m_dnsSupportHasBeenSet(false)
+    m_dnsSupportHasBeenSet(false),
+    m_multicastSupport(MulticastSupportValue::NOT_SET),
+    m_multicastSupportHasBeenSet(false),
+    m_transitGatewayCidrBlocksHasBeenSet(false)
 {
 }
 
@@ -58,7 +51,10 @@ TransitGatewayRequestOptions::TransitGatewayRequestOptions(const XmlNode& xmlNod
     m_vpnEcmpSupport(VpnEcmpSupportValue::NOT_SET),
     m_vpnEcmpSupportHasBeenSet(false),
     m_dnsSupport(DnsSupportValue::NOT_SET),
-    m_dnsSupportHasBeenSet(false)
+    m_dnsSupportHasBeenSet(false),
+    m_multicastSupport(MulticastSupportValue::NOT_SET),
+    m_multicastSupportHasBeenSet(false),
+    m_transitGatewayCidrBlocksHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -105,6 +101,24 @@ TransitGatewayRequestOptions& TransitGatewayRequestOptions::operator =(const Xml
       m_dnsSupport = DnsSupportValueMapper::GetDnsSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsSupportNode.GetText()).c_str()).c_str());
       m_dnsSupportHasBeenSet = true;
     }
+    XmlNode multicastSupportNode = resultNode.FirstChild("MulticastSupport");
+    if(!multicastSupportNode.IsNull())
+    {
+      m_multicastSupport = MulticastSupportValueMapper::GetMulticastSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(multicastSupportNode.GetText()).c_str()).c_str());
+      m_multicastSupportHasBeenSet = true;
+    }
+    XmlNode transitGatewayCidrBlocksNode = resultNode.FirstChild("TransitGatewayCidrBlocks");
+    if(!transitGatewayCidrBlocksNode.IsNull())
+    {
+      XmlNode transitGatewayCidrBlocksMember = transitGatewayCidrBlocksNode.FirstChild("item");
+      while(!transitGatewayCidrBlocksMember.IsNull())
+      {
+        m_transitGatewayCidrBlocks.push_back(transitGatewayCidrBlocksMember.GetText());
+        transitGatewayCidrBlocksMember = transitGatewayCidrBlocksMember.NextNode("item");
+      }
+
+      m_transitGatewayCidrBlocksHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -142,6 +156,20 @@ void TransitGatewayRequestOptions::OutputToStream(Aws::OStream& oStream, const c
       oStream << location << index << locationValue << ".DnsSupport=" << DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport) << "&";
   }
 
+  if(m_multicastSupportHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MulticastSupport=" << MulticastSupportValueMapper::GetNameForMulticastSupportValue(m_multicastSupport) << "&";
+  }
+
+  if(m_transitGatewayCidrBlocksHasBeenSet)
+  {
+      unsigned transitGatewayCidrBlocksIdx = 1;
+      for(auto& item : m_transitGatewayCidrBlocks)
+      {
+        oStream << location << index << locationValue << ".TransitGatewayCidrBlocks." << transitGatewayCidrBlocksIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
 }
 
 void TransitGatewayRequestOptions::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -169,6 +197,18 @@ void TransitGatewayRequestOptions::OutputToStream(Aws::OStream& oStream, const c
   if(m_dnsSupportHasBeenSet)
   {
       oStream << location << ".DnsSupport=" << DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport) << "&";
+  }
+  if(m_multicastSupportHasBeenSet)
+  {
+      oStream << location << ".MulticastSupport=" << MulticastSupportValueMapper::GetNameForMulticastSupportValue(m_multicastSupport) << "&";
+  }
+  if(m_transitGatewayCidrBlocksHasBeenSet)
+  {
+      unsigned transitGatewayCidrBlocksIdx = 1;
+      for(auto& item : m_transitGatewayCidrBlocks)
+      {
+        oStream << location << ".Item." << transitGatewayCidrBlocksIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
   }
 }
 

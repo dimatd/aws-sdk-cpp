@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -94,42 +84,50 @@ namespace Model
 
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline const Aws::String& GetAppArn() const{ return m_appArn; }
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline bool AppArnHasBeenSet() const { return m_appArnHasBeenSet; }
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline void SetAppArn(const Aws::String& value) { m_appArnHasBeenSet = true; m_appArn = value; }
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline void SetAppArn(Aws::String&& value) { m_appArnHasBeenSet = true; m_appArn = std::move(value); }
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline void SetAppArn(const char* value) { m_appArnHasBeenSet = true; m_appArn.assign(value); }
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline ScheduleRunRequest& WithAppArn(const Aws::String& value) { SetAppArn(value); return *this;}
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline ScheduleRunRequest& WithAppArn(Aws::String&& value) { SetAppArn(std::move(value)); return *this;}
 
     /**
-     * <p>The ARN of the app to schedule a run.</p>
+     * <p>The ARN of an application package to run tests against, created with
+     * <a>CreateUpload</a>. See <a>ListUploads</a>.</p>
      */
     inline ScheduleRunRequest& WithAppArn(const char* value) { SetAppArn(value); return *this;}
 
@@ -177,48 +175,48 @@ namespace Model
 
     /**
      * <p>The filter criteria used to dynamically select a set of devices for a test
-     * run, as well as the maximum number of devices to be included in the run.</p>
-     * <p>Either <b> <code>devicePoolArn</code> </b> or <b>
+     * run and the maximum number of devices to be included in the run.</p> <p>Either
+     * <b> <code>devicePoolArn</code> </b> or <b>
      * <code>deviceSelectionConfiguration</code> </b> is required in a request.</p>
      */
     inline const DeviceSelectionConfiguration& GetDeviceSelectionConfiguration() const{ return m_deviceSelectionConfiguration; }
 
     /**
      * <p>The filter criteria used to dynamically select a set of devices for a test
-     * run, as well as the maximum number of devices to be included in the run.</p>
-     * <p>Either <b> <code>devicePoolArn</code> </b> or <b>
+     * run and the maximum number of devices to be included in the run.</p> <p>Either
+     * <b> <code>devicePoolArn</code> </b> or <b>
      * <code>deviceSelectionConfiguration</code> </b> is required in a request.</p>
      */
     inline bool DeviceSelectionConfigurationHasBeenSet() const { return m_deviceSelectionConfigurationHasBeenSet; }
 
     /**
      * <p>The filter criteria used to dynamically select a set of devices for a test
-     * run, as well as the maximum number of devices to be included in the run.</p>
-     * <p>Either <b> <code>devicePoolArn</code> </b> or <b>
+     * run and the maximum number of devices to be included in the run.</p> <p>Either
+     * <b> <code>devicePoolArn</code> </b> or <b>
      * <code>deviceSelectionConfiguration</code> </b> is required in a request.</p>
      */
     inline void SetDeviceSelectionConfiguration(const DeviceSelectionConfiguration& value) { m_deviceSelectionConfigurationHasBeenSet = true; m_deviceSelectionConfiguration = value; }
 
     /**
      * <p>The filter criteria used to dynamically select a set of devices for a test
-     * run, as well as the maximum number of devices to be included in the run.</p>
-     * <p>Either <b> <code>devicePoolArn</code> </b> or <b>
+     * run and the maximum number of devices to be included in the run.</p> <p>Either
+     * <b> <code>devicePoolArn</code> </b> or <b>
      * <code>deviceSelectionConfiguration</code> </b> is required in a request.</p>
      */
     inline void SetDeviceSelectionConfiguration(DeviceSelectionConfiguration&& value) { m_deviceSelectionConfigurationHasBeenSet = true; m_deviceSelectionConfiguration = std::move(value); }
 
     /**
      * <p>The filter criteria used to dynamically select a set of devices for a test
-     * run, as well as the maximum number of devices to be included in the run.</p>
-     * <p>Either <b> <code>devicePoolArn</code> </b> or <b>
+     * run and the maximum number of devices to be included in the run.</p> <p>Either
+     * <b> <code>devicePoolArn</code> </b> or <b>
      * <code>deviceSelectionConfiguration</code> </b> is required in a request.</p>
      */
     inline ScheduleRunRequest& WithDeviceSelectionConfiguration(const DeviceSelectionConfiguration& value) { SetDeviceSelectionConfiguration(value); return *this;}
 
     /**
      * <p>The filter criteria used to dynamically select a set of devices for a test
-     * run, as well as the maximum number of devices to be included in the run.</p>
-     * <p>Either <b> <code>devicePoolArn</code> </b> or <b>
+     * run and the maximum number of devices to be included in the run.</p> <p>Either
+     * <b> <code>devicePoolArn</code> </b> or <b>
      * <code>deviceSelectionConfiguration</code> </b> is required in a request.</p>
      */
     inline ScheduleRunRequest& WithDeviceSelectionConfiguration(DeviceSelectionConfiguration&& value) { SetDeviceSelectionConfiguration(std::move(value)); return *this;}

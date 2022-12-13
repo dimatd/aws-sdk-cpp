@@ -1,22 +1,15 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lex-models/LexModelBuildingService_EXPORTS.h>
 #include <aws/lex-models/LexModelBuildingServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/lex-models/model/ConversationLogsRequest.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/lex-models/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -302,6 +295,102 @@ namespace Model
      */
     inline PutBotAliasRequest& WithChecksum(const char* value) { SetChecksum(value); return *this;}
 
+
+    /**
+     * <p>Settings for conversation logs for the alias.</p>
+     */
+    inline const ConversationLogsRequest& GetConversationLogs() const{ return m_conversationLogs; }
+
+    /**
+     * <p>Settings for conversation logs for the alias.</p>
+     */
+    inline bool ConversationLogsHasBeenSet() const { return m_conversationLogsHasBeenSet; }
+
+    /**
+     * <p>Settings for conversation logs for the alias.</p>
+     */
+    inline void SetConversationLogs(const ConversationLogsRequest& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = value; }
+
+    /**
+     * <p>Settings for conversation logs for the alias.</p>
+     */
+    inline void SetConversationLogs(ConversationLogsRequest&& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = std::move(value); }
+
+    /**
+     * <p>Settings for conversation logs for the alias.</p>
+     */
+    inline PutBotAliasRequest& WithConversationLogs(const ConversationLogsRequest& value) { SetConversationLogs(value); return *this;}
+
+    /**
+     * <p>Settings for conversation logs for the alias.</p>
+     */
+    inline PutBotAliasRequest& WithConversationLogs(ConversationLogsRequest&& value) { SetConversationLogs(std::move(value)); return *this;}
+
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline PutBotAliasRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline PutBotAliasRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline PutBotAliasRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
+    /**
+     * <p>A list of tags to add to the bot alias. You can only add tags when you create
+     * an alias, you can't use the <code>PutBotAlias</code> operation to update the
+     * tags on a bot alias. To update tags, use the <code>TagResource</code>
+     * operation.</p>
+     */
+    inline PutBotAliasRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
+
   private:
 
     Aws::String m_name;
@@ -318,6 +407,12 @@ namespace Model
 
     Aws::String m_checksum;
     bool m_checksumHasBeenSet;
+
+    ConversationLogsRequest m_conversationLogs;
+    bool m_conversationLogsHasBeenSet;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

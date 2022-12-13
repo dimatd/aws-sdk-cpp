@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/ClientVpnEndpoint.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -45,10 +35,19 @@ ClientVpnEndpoint::ClientVpnEndpoint() :
     m_vpnProtocolHasBeenSet(false),
     m_transportProtocol(TransportProtocol::NOT_SET),
     m_transportProtocolHasBeenSet(false),
+    m_vpnPort(0),
+    m_vpnPortHasBeenSet(false),
     m_serverCertificateArnHasBeenSet(false),
     m_authenticationOptionsHasBeenSet(false),
     m_connectionLogOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_securityGroupIdsHasBeenSet(false),
+    m_vpcIdHasBeenSet(false),
+    m_selfServicePortalUrlHasBeenSet(false),
+    m_clientConnectOptionsHasBeenSet(false),
+    m_sessionTimeoutHours(0),
+    m_sessionTimeoutHoursHasBeenSet(false),
+    m_clientLoginBannerOptionsHasBeenSet(false)
 {
 }
 
@@ -67,10 +66,19 @@ ClientVpnEndpoint::ClientVpnEndpoint(const XmlNode& xmlNode) :
     m_vpnProtocolHasBeenSet(false),
     m_transportProtocol(TransportProtocol::NOT_SET),
     m_transportProtocolHasBeenSet(false),
+    m_vpnPort(0),
+    m_vpnPortHasBeenSet(false),
     m_serverCertificateArnHasBeenSet(false),
     m_authenticationOptionsHasBeenSet(false),
     m_connectionLogOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_securityGroupIdsHasBeenSet(false),
+    m_vpcIdHasBeenSet(false),
+    m_selfServicePortalUrlHasBeenSet(false),
+    m_clientConnectOptionsHasBeenSet(false),
+    m_sessionTimeoutHours(0),
+    m_sessionTimeoutHoursHasBeenSet(false),
+    m_clientLoginBannerOptionsHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -153,6 +161,12 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
       m_transportProtocol = TransportProtocolMapper::GetTransportProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transportProtocolNode.GetText()).c_str()).c_str());
       m_transportProtocolHasBeenSet = true;
     }
+    XmlNode vpnPortNode = resultNode.FirstChild("vpnPort");
+    if(!vpnPortNode.IsNull())
+    {
+      m_vpnPort = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(vpnPortNode.GetText()).c_str()).c_str());
+      m_vpnPortHasBeenSet = true;
+    }
     XmlNode serverCertificateArnNode = resultNode.FirstChild("serverCertificateArn");
     if(!serverCertificateArnNode.IsNull())
     {
@@ -188,6 +202,48 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode securityGroupIdsNode = resultNode.FirstChild("securityGroupIdSet");
+    if(!securityGroupIdsNode.IsNull())
+    {
+      XmlNode securityGroupIdsMember = securityGroupIdsNode.FirstChild("item");
+      while(!securityGroupIdsMember.IsNull())
+      {
+        m_securityGroupIds.push_back(securityGroupIdsMember.GetText());
+        securityGroupIdsMember = securityGroupIdsMember.NextNode("item");
+      }
+
+      m_securityGroupIdsHasBeenSet = true;
+    }
+    XmlNode vpcIdNode = resultNode.FirstChild("vpcId");
+    if(!vpcIdNode.IsNull())
+    {
+      m_vpcId = Aws::Utils::Xml::DecodeEscapedXmlText(vpcIdNode.GetText());
+      m_vpcIdHasBeenSet = true;
+    }
+    XmlNode selfServicePortalUrlNode = resultNode.FirstChild("selfServicePortalUrl");
+    if(!selfServicePortalUrlNode.IsNull())
+    {
+      m_selfServicePortalUrl = Aws::Utils::Xml::DecodeEscapedXmlText(selfServicePortalUrlNode.GetText());
+      m_selfServicePortalUrlHasBeenSet = true;
+    }
+    XmlNode clientConnectOptionsNode = resultNode.FirstChild("clientConnectOptions");
+    if(!clientConnectOptionsNode.IsNull())
+    {
+      m_clientConnectOptions = clientConnectOptionsNode;
+      m_clientConnectOptionsHasBeenSet = true;
+    }
+    XmlNode sessionTimeoutHoursNode = resultNode.FirstChild("sessionTimeoutHours");
+    if(!sessionTimeoutHoursNode.IsNull())
+    {
+      m_sessionTimeoutHours = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sessionTimeoutHoursNode.GetText()).c_str()).c_str());
+      m_sessionTimeoutHoursHasBeenSet = true;
+    }
+    XmlNode clientLoginBannerOptionsNode = resultNode.FirstChild("clientLoginBannerOptions");
+    if(!clientLoginBannerOptionsNode.IsNull())
+    {
+      m_clientLoginBannerOptions = clientLoginBannerOptionsNode;
+      m_clientLoginBannerOptionsHasBeenSet = true;
     }
   }
 
@@ -257,6 +313,11 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << index << locationValue << ".TransportProtocol=" << TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol) << "&";
   }
 
+  if(m_vpnPortHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".VpnPort=" << m_vpnPort << "&";
+  }
+
   if(m_serverCertificateArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".ServerCertificateArn=" << StringUtils::URLEncode(m_serverCertificateArn.c_str()) << "&";
@@ -289,6 +350,44 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
         tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+
+  if(m_securityGroupIdsHasBeenSet)
+  {
+      unsigned securityGroupIdsIdx = 1;
+      for(auto& item : m_securityGroupIds)
+      {
+        oStream << location << index << locationValue << ".SecurityGroupIdSet." << securityGroupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
+  if(m_vpcIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+
+  if(m_selfServicePortalUrlHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SelfServicePortalUrl=" << StringUtils::URLEncode(m_selfServicePortalUrl.c_str()) << "&";
+  }
+
+  if(m_clientConnectOptionsHasBeenSet)
+  {
+      Aws::StringStream clientConnectOptionsLocationAndMemberSs;
+      clientConnectOptionsLocationAndMemberSs << location << index << locationValue << ".ClientConnectOptions";
+      m_clientConnectOptions.OutputToStream(oStream, clientConnectOptionsLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_sessionTimeoutHoursHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SessionTimeoutHours=" << m_sessionTimeoutHours << "&";
+  }
+
+  if(m_clientLoginBannerOptionsHasBeenSet)
+  {
+      Aws::StringStream clientLoginBannerOptionsLocationAndMemberSs;
+      clientLoginBannerOptionsLocationAndMemberSs << location << index << locationValue << ".ClientLoginBannerOptions";
+      m_clientLoginBannerOptions.OutputToStream(oStream, clientLoginBannerOptionsLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -345,6 +444,10 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << ".TransportProtocol=" << TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol) << "&";
   }
+  if(m_vpnPortHasBeenSet)
+  {
+      oStream << location << ".VpnPort=" << m_vpnPort << "&";
+  }
   if(m_serverCertificateArnHasBeenSet)
   {
       oStream << location << ".ServerCertificateArn=" << StringUtils::URLEncode(m_serverCertificateArn.c_str()) << "&";
@@ -374,6 +477,38 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
         tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_securityGroupIdsHasBeenSet)
+  {
+      unsigned securityGroupIdsIdx = 1;
+      for(auto& item : m_securityGroupIds)
+      {
+        oStream << location << ".SecurityGroupIdSet." << securityGroupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+  if(m_vpcIdHasBeenSet)
+  {
+      oStream << location << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
+  }
+  if(m_selfServicePortalUrlHasBeenSet)
+  {
+      oStream << location << ".SelfServicePortalUrl=" << StringUtils::URLEncode(m_selfServicePortalUrl.c_str()) << "&";
+  }
+  if(m_clientConnectOptionsHasBeenSet)
+  {
+      Aws::String clientConnectOptionsLocationAndMember(location);
+      clientConnectOptionsLocationAndMember += ".ClientConnectOptions";
+      m_clientConnectOptions.OutputToStream(oStream, clientConnectOptionsLocationAndMember.c_str());
+  }
+  if(m_sessionTimeoutHoursHasBeenSet)
+  {
+      oStream << location << ".SessionTimeoutHours=" << m_sessionTimeoutHours << "&";
+  }
+  if(m_clientLoginBannerOptionsHasBeenSet)
+  {
+      Aws::String clientLoginBannerOptionsLocationAndMember(location);
+      clientLoginBannerOptionsLocationAndMember += ".ClientLoginBannerOptions";
+      m_clientLoginBannerOptions.OutputToStream(oStream, clientLoginBannerOptionsLocationAndMember.c_str());
   }
 }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/docdb/DocDB_EXPORTS.h>
@@ -102,37 +92,37 @@ namespace Model
 
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline const Aws::Vector<DBClusterSnapshot>& GetDBClusterSnapshots() const{ return m_dBClusterSnapshots; }
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline void SetDBClusterSnapshots(const Aws::Vector<DBClusterSnapshot>& value) { m_dBClusterSnapshots = value; }
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline void SetDBClusterSnapshots(Aws::Vector<DBClusterSnapshot>&& value) { m_dBClusterSnapshots = std::move(value); }
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline DescribeDBClusterSnapshotsResult& WithDBClusterSnapshots(const Aws::Vector<DBClusterSnapshot>& value) { SetDBClusterSnapshots(value); return *this;}
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline DescribeDBClusterSnapshotsResult& WithDBClusterSnapshots(Aws::Vector<DBClusterSnapshot>&& value) { SetDBClusterSnapshots(std::move(value)); return *this;}
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline DescribeDBClusterSnapshotsResult& AddDBClusterSnapshots(const DBClusterSnapshot& value) { m_dBClusterSnapshots.push_back(value); return *this; }
 
     /**
-     * <p>Provides a list of DB cluster snapshots.</p>
+     * <p>Provides a list of cluster snapshots.</p>
      */
     inline DescribeDBClusterSnapshotsResult& AddDBClusterSnapshots(DBClusterSnapshot&& value) { m_dBClusterSnapshots.push_back(std::move(value)); return *this; }
 

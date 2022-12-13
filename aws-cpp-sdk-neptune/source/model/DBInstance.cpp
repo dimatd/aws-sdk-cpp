@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/neptune/model/DBInstance.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -93,7 +83,9 @@ DBInstance::DBInstance() :
     m_performanceInsightsEnabled(false),
     m_performanceInsightsEnabledHasBeenSet(false),
     m_performanceInsightsKMSKeyIdHasBeenSet(false),
-    m_enabledCloudwatchLogsExportsHasBeenSet(false)
+    m_enabledCloudwatchLogsExportsHasBeenSet(false),
+    m_deletionProtection(false),
+    m_deletionProtectionHasBeenSet(false)
 {
 }
 
@@ -160,7 +152,9 @@ DBInstance::DBInstance(const XmlNode& xmlNode) :
     m_performanceInsightsEnabled(false),
     m_performanceInsightsEnabledHasBeenSet(false),
     m_performanceInsightsKMSKeyIdHasBeenSet(false),
-    m_enabledCloudwatchLogsExportsHasBeenSet(false)
+    m_enabledCloudwatchLogsExportsHasBeenSet(false),
+    m_deletionProtection(false),
+    m_deletionProtectionHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -531,6 +525,12 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
 
       m_enabledCloudwatchLogsExportsHasBeenSet = true;
     }
+    XmlNode deletionProtectionNode = resultNode.FirstChild("DeletionProtection");
+    if(!deletionProtectionNode.IsNull())
+    {
+      m_deletionProtection = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(deletionProtectionNode.GetText()).c_str()).c_str());
+      m_deletionProtectionHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -847,6 +847,11 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
       }
   }
 
+  if(m_deletionProtectionHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DeletionProtection=" << std::boolalpha << m_deletionProtection << "&";
+  }
+
 }
 
 void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -1108,6 +1113,10 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
       {
         oStream << location << ".EnabledCloudwatchLogsExports.member." << enabledCloudwatchLogsExportsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_deletionProtectionHasBeenSet)
+  {
+      oStream << location << ".DeletionProtection=" << std::boolalpha << m_deletionProtection << "&";
   }
 }
 

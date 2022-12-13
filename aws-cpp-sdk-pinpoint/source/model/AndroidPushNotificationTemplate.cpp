@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/pinpoint/model/AndroidPushNotificationTemplate.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,6 +24,7 @@ AndroidPushNotificationTemplate::AndroidPushNotificationTemplate() :
     m_bodyHasBeenSet(false),
     m_imageIconUrlHasBeenSet(false),
     m_imageUrlHasBeenSet(false),
+    m_rawContentHasBeenSet(false),
     m_smallImageIconUrlHasBeenSet(false),
     m_soundHasBeenSet(false),
     m_titleHasBeenSet(false),
@@ -47,6 +38,7 @@ AndroidPushNotificationTemplate::AndroidPushNotificationTemplate(JsonView jsonVa
     m_bodyHasBeenSet(false),
     m_imageIconUrlHasBeenSet(false),
     m_imageUrlHasBeenSet(false),
+    m_rawContentHasBeenSet(false),
     m_smallImageIconUrlHasBeenSet(false),
     m_soundHasBeenSet(false),
     m_titleHasBeenSet(false),
@@ -83,6 +75,13 @@ AndroidPushNotificationTemplate& AndroidPushNotificationTemplate::operator =(Jso
     m_imageUrl = jsonValue.GetString("ImageUrl");
 
     m_imageUrlHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RawContent"))
+  {
+    m_rawContent = jsonValue.GetString("RawContent");
+
+    m_rawContentHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("SmallImageIconUrl"))
@@ -140,6 +139,12 @@ JsonValue AndroidPushNotificationTemplate::Jsonize() const
   if(m_imageUrlHasBeenSet)
   {
    payload.WithString("ImageUrl", m_imageUrl);
+
+  }
+
+  if(m_rawContentHasBeenSet)
+  {
+   payload.WithString("RawContent", m_rawContent);
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
@@ -92,118 +82,183 @@ namespace Model
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetOptions() const{ return m_options; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline void SetOptions(const Aws::Map<Aws::String, Aws::String>& value) { m_optionsHasBeenSet = true; m_options = value; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline void SetOptions(Aws::Map<Aws::String, Aws::String>&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& WithOptions(const Aws::Map<Aws::String, Aws::String>& value) { SetOptions(value); return *this;}
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& WithOptions(Aws::Map<Aws::String, Aws::String>&& value) { SetOptions(std::move(value)); return *this;}
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(const Aws::String& key, const Aws::String& value) { m_optionsHasBeenSet = true; m_options.emplace(key, value); return *this; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(Aws::String&& key, const Aws::String& value) { m_optionsHasBeenSet = true; m_options.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(const Aws::String& key, Aws::String&& value) { m_optionsHasBeenSet = true; m_options.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(Aws::String&& key, Aws::String&& value) { m_optionsHasBeenSet = true; m_options.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(const char* key, Aws::String&& value) { m_optionsHasBeenSet = true; m_options.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(Aws::String&& key, const char* value) { m_optionsHasBeenSet = true; m_options.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The options to use when configuring the log router. This field is optional
-     * and can be used to add additional metadata, such as the task, task definition,
-     * cluster, and container instance details to the log event. If specified, the
-     * syntax to use is
-     * <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.</p>
+     * and can be used to specify a custom configuration file or to add additional
+     * metadata, such as the task, task definition, cluster, and container instance
+     * details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon
+     * Elastic Container Service Developer Guide</i>.</p>  <p>Tasks hosted on
+     * Fargate only support the <code>file</code> configuration file type.</p> 
      */
     inline FirelensConfiguration& AddOptions(const char* key, const char* value) { m_optionsHasBeenSet = true; m_options.emplace(key, value); return *this; }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
@@ -51,10 +41,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline const Aws::String& GetMetricWidget() const{ return m_metricWidget; }
 
@@ -63,10 +54,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline bool MetricWidgetHasBeenSet() const { return m_metricWidgetHasBeenSet; }
 
@@ -75,10 +67,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline void SetMetricWidget(const Aws::String& value) { m_metricWidgetHasBeenSet = true; m_metricWidget = value; }
 
@@ -87,10 +80,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline void SetMetricWidget(Aws::String&& value) { m_metricWidgetHasBeenSet = true; m_metricWidget = std::move(value); }
 
@@ -99,10 +93,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline void SetMetricWidget(const char* value) { m_metricWidgetHasBeenSet = true; m_metricWidget.assign(value); }
 
@@ -111,10 +106,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline GetMetricWidgetImageRequest& WithMetricWidget(const Aws::String& value) { SetMetricWidget(value); return *this;}
 
@@ -123,10 +119,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline GetMetricWidgetImageRequest& WithMetricWidget(Aws::String&& value) { SetMetricWidget(std::move(value)); return *this;}
 
@@ -135,10 +132,11 @@ namespace Model
      * includes the metrics to include in the graph, statistics, annotations, title,
      * axis limits, and so on. You can include only one <code>MetricWidget</code>
      * parameter in each <code>GetMetricWidgetImage</code> call.</p> <p>For more
-     * information about the syntax of <code>MetricWidget</code> see
-     * <a>CloudWatch-Metric-Widget-Structure</a>.</p> <p>If any metric on the graph
-     * could not load all the requested data points, an orange triangle with an
-     * exclamation point appears next to the graph legend.</p>
+     * information about the syntax of <code>MetricWidget</code> see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html">GetMetricWidgetImage:
+     * Metric Widget Structure and Syntax</a>.</p> <p>If any metric on the graph could
+     * not load all the requested data points, an orange triangle with an exclamation
+     * point appears next to the graph legend.</p>
      */
     inline GetMetricWidgetImageRequest& WithMetricWidget(const char* value) { SetMetricWidget(value); return *this;}
 
@@ -159,7 +157,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -182,7 +180,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -205,7 +203,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -228,7 +226,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -251,7 +249,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -274,7 +272,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -297,7 +295,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>
@@ -320,7 +318,7 @@ namespace Model
      * </p> <p> <code> &lt;/ResponseMetadata&gt;</code> </p> <p>
      * <code>&lt;/GetMetricWidgetImageResponse&gt;</code> </p> <p>The
      * <code>image/png</code> setting is intended only for custom HTTP requests. For
-     * most use cases, and all actions using an AWS SDK, you should use
+     * most use cases, and all actions using an Amazon Web Services SDK, you should use
      * <code>png</code>. If you specify <code>image/png</code>, the HTTP response has a
      * content-type set to <code>image/png</code>, and the body of the response is a
      * PNG image. </p>

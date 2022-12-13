@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -35,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>Information about the delete marker.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteMarkerEntry">AWS
    * API Reference</a></p>
    */
@@ -50,32 +40,32 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>The account that created the delete marker.&gt;</p>
      */
     inline const Owner& GetOwner() const{ return m_owner; }
 
     /**
-     * <p/>
+     * <p>The account that created the delete marker.&gt;</p>
      */
     inline bool OwnerHasBeenSet() const { return m_ownerHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>The account that created the delete marker.&gt;</p>
      */
     inline void SetOwner(const Owner& value) { m_ownerHasBeenSet = true; m_owner = value; }
 
     /**
-     * <p/>
+     * <p>The account that created the delete marker.&gt;</p>
      */
     inline void SetOwner(Owner&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
 
     /**
-     * <p/>
+     * <p>The account that created the delete marker.&gt;</p>
      */
     inline DeleteMarkerEntry& WithOwner(const Owner& value) { SetOwner(value); return *this;}
 
     /**
-     * <p/>
+     * <p>The account that created the delete marker.&gt;</p>
      */
     inline DeleteMarkerEntry& WithOwner(Owner&& value) { SetOwner(std::move(value)); return *this;}
 

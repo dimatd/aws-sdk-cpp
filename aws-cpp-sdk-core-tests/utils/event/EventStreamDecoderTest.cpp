@@ -1,16 +1,6 @@
-/*
- * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- * A copy of the License is located at
- *
- *  http://aws.amazon.com/apache2.0
- *
- * or in the "license" file accompanying this file. This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
  */
 
 #include <aws/external/gtest.h>
@@ -520,8 +510,8 @@ namespace
 
         ASSERT_EQ(0u, handler.m_onPayloadSegmentCount);
         ASSERT_EQ(0u, handler.m_onCompletePayloadCount);
-        // Underlying Event Stream Decoder will parse xml error unsuccessfully, and take it as a prelude with CRC mismatch error.
-        ASSERT_EQ(1u, handler.m_onPreludeReceivedCount);
+        // Underlying Event Stream Decoder will parse xml error unsuccessfully, an invalid prelude with CRC mismatch error will not trigger onPreludeReceived().
+        ASSERT_EQ(0u, handler.m_onPreludeReceivedCount);
         ASSERT_EQ(0u, handler.m_onHeaderReceivedCount);
         ASSERT_EQ(0u, handler.m_requestLevelErrorsCount);
         ASSERT_EQ(0u, handler.m_requestLevelExceptionsCount);

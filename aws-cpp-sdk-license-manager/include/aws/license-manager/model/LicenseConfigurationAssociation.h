@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/license-manager/LicenseManager_EXPORTS.h>
@@ -36,8 +26,8 @@ namespace Model
 {
 
   /**
-   * <p>Describes a server resource that is associated with a license
-   * configuration.</p><p><h3>See Also:</h3>   <a
+   * <p>Describes an association with a license configuration.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/license-manager-2018-08-01/LicenseConfigurationAssociation">AWS
    * API Reference</a></p>
    */
@@ -51,42 +41,42 @@ namespace Model
 
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline LicenseConfigurationAssociation& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline LicenseConfigurationAssociation& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
 
     /**
-     * <p>ARN of the resource associated with the license configuration.</p>
+     * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
     inline LicenseConfigurationAssociation& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
 
@@ -123,42 +113,50 @@ namespace Model
 
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline const Aws::String& GetResourceOwnerId() const{ return m_resourceOwnerId; }
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline bool ResourceOwnerIdHasBeenSet() const { return m_resourceOwnerIdHasBeenSet; }
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline void SetResourceOwnerId(const Aws::String& value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId = value; }
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline void SetResourceOwnerId(Aws::String&& value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId = std::move(value); }
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline void SetResourceOwnerId(const char* value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId.assign(value); }
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline LicenseConfigurationAssociation& WithResourceOwnerId(const Aws::String& value) { SetResourceOwnerId(value); return *this;}
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline LicenseConfigurationAssociation& WithResourceOwnerId(Aws::String&& value) { SetResourceOwnerId(std::move(value)); return *this;}
 
     /**
-     * <p>ID of the AWS account that owns the resource consuming licenses.</p>
+     * <p>ID of the Amazon Web Services account that owns the resource consuming
+     * licenses.</p>
      */
     inline LicenseConfigurationAssociation& WithResourceOwnerId(const char* value) { SetResourceOwnerId(value); return *this;}
 
@@ -193,6 +191,55 @@ namespace Model
      */
     inline LicenseConfigurationAssociation& WithAssociationTime(Aws::Utils::DateTime&& value) { SetAssociationTime(std::move(value)); return *this;}
 
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline const Aws::String& GetAmiAssociationScope() const{ return m_amiAssociationScope; }
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline bool AmiAssociationScopeHasBeenSet() const { return m_amiAssociationScopeHasBeenSet; }
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline void SetAmiAssociationScope(const Aws::String& value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope = value; }
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline void SetAmiAssociationScope(Aws::String&& value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope = std::move(value); }
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline void SetAmiAssociationScope(const char* value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope.assign(value); }
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline LicenseConfigurationAssociation& WithAmiAssociationScope(const Aws::String& value) { SetAmiAssociationScope(value); return *this;}
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline LicenseConfigurationAssociation& WithAmiAssociationScope(Aws::String&& value) { SetAmiAssociationScope(std::move(value)); return *this;}
+
+    /**
+     * <p>Scope of AMI associations. The possible value is
+     * <code>cross-account</code>.</p>
+     */
+    inline LicenseConfigurationAssociation& WithAmiAssociationScope(const char* value) { SetAmiAssociationScope(value); return *this;}
+
   private:
 
     Aws::String m_resourceArn;
@@ -206,6 +253,9 @@ namespace Model
 
     Aws::Utils::DateTime m_associationTime;
     bool m_associationTimeHasBeenSet;
+
+    Aws::String m_amiAssociationScope;
+    bool m_amiAssociationScopeHasBeenSet;
   };
 
 } // namespace Model

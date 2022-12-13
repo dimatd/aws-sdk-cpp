@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -89,7 +79,7 @@ namespace Model
      * subsequent scale in requests until it has expired. You should scale in
      * conservatively to protect your application's availability. However, if another
      * alarm triggers a scale out policy during the cooldown period after a scale-in,
-     * application autoscaling scales out your scalable target immediately. </p>
+     * application auto scaling scales out your scalable target immediately. </p>
      */
     inline int GetScaleInCooldown() const{ return m_scaleInCooldown; }
 
@@ -99,7 +89,7 @@ namespace Model
      * subsequent scale in requests until it has expired. You should scale in
      * conservatively to protect your application's availability. However, if another
      * alarm triggers a scale out policy during the cooldown period after a scale-in,
-     * application autoscaling scales out your scalable target immediately. </p>
+     * application auto scaling scales out your scalable target immediately. </p>
      */
     inline bool ScaleInCooldownHasBeenSet() const { return m_scaleInCooldownHasBeenSet; }
 
@@ -109,7 +99,7 @@ namespace Model
      * subsequent scale in requests until it has expired. You should scale in
      * conservatively to protect your application's availability. However, if another
      * alarm triggers a scale out policy during the cooldown period after a scale-in,
-     * application autoscaling scales out your scalable target immediately. </p>
+     * application auto scaling scales out your scalable target immediately. </p>
      */
     inline void SetScaleInCooldown(int value) { m_scaleInCooldownHasBeenSet = true; m_scaleInCooldown = value; }
 
@@ -119,7 +109,7 @@ namespace Model
      * subsequent scale in requests until it has expired. You should scale in
      * conservatively to protect your application's availability. However, if another
      * alarm triggers a scale out policy during the cooldown period after a scale-in,
-     * application autoscaling scales out your scalable target immediately. </p>
+     * application auto scaling scales out your scalable target immediately. </p>
      */
     inline AutoScalingTargetTrackingScalingPolicyConfigurationUpdate& WithScaleInCooldown(int value) { SetScaleInCooldown(value); return *this;}
 

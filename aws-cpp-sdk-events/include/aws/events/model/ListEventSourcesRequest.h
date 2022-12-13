@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/events/CloudWatchEvents_EXPORTS.h>
@@ -144,29 +134,29 @@ namespace Model
 
     /**
      * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a <code>NextToken</code> that you can use in a subsequent
-     * operation to retrieve the next set of results.</p>
+     * operation also returns a NextToken which you can use in a subsequent operation
+     * to retrieve the next set of results.</p>
      */
     inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a <code>NextToken</code> that you can use in a subsequent
-     * operation to retrieve the next set of results.</p>
+     * operation also returns a NextToken which you can use in a subsequent operation
+     * to retrieve the next set of results.</p>
      */
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
 
     /**
      * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a <code>NextToken</code> that you can use in a subsequent
-     * operation to retrieve the next set of results.</p>
+     * operation also returns a NextToken which you can use in a subsequent operation
+     * to retrieve the next set of results.</p>
      */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a <code>NextToken</code> that you can use in a subsequent
-     * operation to retrieve the next set of results.</p>
+     * operation also returns a NextToken which you can use in a subsequent operation
+     * to retrieve the next set of results.</p>
      */
     inline ListEventSourcesRequest& WithLimit(int value) { SetLimit(value); return *this;}
 

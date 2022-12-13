@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/codebuild/model/LogsLocation.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,6 +23,8 @@ LogsLocation::LogsLocation() :
     m_streamNameHasBeenSet(false),
     m_deepLinkHasBeenSet(false),
     m_s3DeepLinkHasBeenSet(false),
+    m_cloudWatchLogsArnHasBeenSet(false),
+    m_s3LogsArnHasBeenSet(false),
     m_cloudWatchLogsHasBeenSet(false),
     m_s3LogsHasBeenSet(false)
 {
@@ -43,6 +35,8 @@ LogsLocation::LogsLocation(JsonView jsonValue) :
     m_streamNameHasBeenSet(false),
     m_deepLinkHasBeenSet(false),
     m_s3DeepLinkHasBeenSet(false),
+    m_cloudWatchLogsArnHasBeenSet(false),
+    m_s3LogsArnHasBeenSet(false),
     m_cloudWatchLogsHasBeenSet(false),
     m_s3LogsHasBeenSet(false)
 {
@@ -77,6 +71,20 @@ LogsLocation& LogsLocation::operator =(JsonView jsonValue)
     m_s3DeepLink = jsonValue.GetString("s3DeepLink");
 
     m_s3DeepLinkHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("cloudWatchLogsArn"))
+  {
+    m_cloudWatchLogsArn = jsonValue.GetString("cloudWatchLogsArn");
+
+    m_cloudWatchLogsArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("s3LogsArn"))
+  {
+    m_s3LogsArn = jsonValue.GetString("s3LogsArn");
+
+    m_s3LogsArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("cloudWatchLogs"))
@@ -121,6 +129,18 @@ JsonValue LogsLocation::Jsonize() const
   if(m_s3DeepLinkHasBeenSet)
   {
    payload.WithString("s3DeepLink", m_s3DeepLink);
+
+  }
+
+  if(m_cloudWatchLogsArnHasBeenSet)
+  {
+   payload.WithString("cloudWatchLogsArn", m_cloudWatchLogsArn);
+
+  }
+
+  if(m_s3LogsArnHasBeenSet)
+  {
+   payload.WithString("s3LogsArn", m_s3LogsArn);
 
   }
 

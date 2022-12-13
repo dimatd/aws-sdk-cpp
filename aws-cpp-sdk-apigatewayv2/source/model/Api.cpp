@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/Api.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,37 +20,49 @@ namespace Model
 
 Api::Api() : 
     m_apiEndpointHasBeenSet(false),
+    m_apiGatewayManaged(false),
+    m_apiGatewayManagedHasBeenSet(false),
     m_apiIdHasBeenSet(false),
     m_apiKeySelectionExpressionHasBeenSet(false),
+    m_corsConfigurationHasBeenSet(false),
     m_createdDateHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_disableSchemaValidation(false),
     m_disableSchemaValidationHasBeenSet(false),
+    m_disableExecuteApiEndpoint(false),
+    m_disableExecuteApiEndpointHasBeenSet(false),
+    m_importInfoHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_protocolType(ProtocolType::NOT_SET),
     m_protocolTypeHasBeenSet(false),
     m_routeSelectionExpressionHasBeenSet(false),
+    m_tagsHasBeenSet(false),
     m_versionHasBeenSet(false),
-    m_warningsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_warningsHasBeenSet(false)
 {
 }
 
 Api::Api(JsonView jsonValue) : 
     m_apiEndpointHasBeenSet(false),
+    m_apiGatewayManaged(false),
+    m_apiGatewayManagedHasBeenSet(false),
     m_apiIdHasBeenSet(false),
     m_apiKeySelectionExpressionHasBeenSet(false),
+    m_corsConfigurationHasBeenSet(false),
     m_createdDateHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_disableSchemaValidation(false),
     m_disableSchemaValidationHasBeenSet(false),
+    m_disableExecuteApiEndpoint(false),
+    m_disableExecuteApiEndpointHasBeenSet(false),
+    m_importInfoHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_protocolType(ProtocolType::NOT_SET),
     m_protocolTypeHasBeenSet(false),
     m_routeSelectionExpressionHasBeenSet(false),
+    m_tagsHasBeenSet(false),
     m_versionHasBeenSet(false),
-    m_warningsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_warningsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -72,6 +74,13 @@ Api& Api::operator =(JsonView jsonValue)
     m_apiEndpoint = jsonValue.GetString("apiEndpoint");
 
     m_apiEndpointHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("apiGatewayManaged"))
+  {
+    m_apiGatewayManaged = jsonValue.GetBool("apiGatewayManaged");
+
+    m_apiGatewayManagedHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("apiId"))
@@ -86,6 +95,13 @@ Api& Api::operator =(JsonView jsonValue)
     m_apiKeySelectionExpression = jsonValue.GetString("apiKeySelectionExpression");
 
     m_apiKeySelectionExpressionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("corsConfiguration"))
+  {
+    m_corsConfiguration = jsonValue.GetObject("corsConfiguration");
+
+    m_corsConfigurationHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("createdDate"))
@@ -109,6 +125,23 @@ Api& Api::operator =(JsonView jsonValue)
     m_disableSchemaValidationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("disableExecuteApiEndpoint"))
+  {
+    m_disableExecuteApiEndpoint = jsonValue.GetBool("disableExecuteApiEndpoint");
+
+    m_disableExecuteApiEndpointHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("importInfo"))
+  {
+    Array<JsonView> importInfoJsonList = jsonValue.GetArray("importInfo");
+    for(unsigned importInfoIndex = 0; importInfoIndex < importInfoJsonList.GetLength(); ++importInfoIndex)
+    {
+      m_importInfo.push_back(importInfoJsonList[importInfoIndex].AsString());
+    }
+    m_importInfoHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
@@ -130,6 +163,16 @@ Api& Api::operator =(JsonView jsonValue)
     m_routeSelectionExpressionHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("tags"))
+  {
+    Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
+    for(auto& tagsItem : tagsJsonMap)
+    {
+      m_tags[tagsItem.first] = tagsItem.second.AsString();
+    }
+    m_tagsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("version"))
   {
     m_version = jsonValue.GetString("version");
@@ -147,16 +190,6 @@ Api& Api::operator =(JsonView jsonValue)
     m_warningsHasBeenSet = true;
   }
 
-  if(jsonValue.ValueExists("tags"))
-  {
-    Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
-    for(auto& tagsItem : tagsJsonMap)
-    {
-      m_tags[tagsItem.first] = tagsItem.second.AsString();
-    }
-    m_tagsHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -170,6 +203,12 @@ JsonValue Api::Jsonize() const
 
   }
 
+  if(m_apiGatewayManagedHasBeenSet)
+  {
+   payload.WithBool("apiGatewayManaged", m_apiGatewayManaged);
+
+  }
+
   if(m_apiIdHasBeenSet)
   {
    payload.WithString("apiId", m_apiId);
@@ -179,6 +218,12 @@ JsonValue Api::Jsonize() const
   if(m_apiKeySelectionExpressionHasBeenSet)
   {
    payload.WithString("apiKeySelectionExpression", m_apiKeySelectionExpression);
+
+  }
+
+  if(m_corsConfigurationHasBeenSet)
+  {
+   payload.WithObject("corsConfiguration", m_corsConfiguration.Jsonize());
 
   }
 
@@ -199,6 +244,23 @@ JsonValue Api::Jsonize() const
 
   }
 
+  if(m_disableExecuteApiEndpointHasBeenSet)
+  {
+   payload.WithBool("disableExecuteApiEndpoint", m_disableExecuteApiEndpoint);
+
+  }
+
+  if(m_importInfoHasBeenSet)
+  {
+   Array<JsonValue> importInfoJsonList(m_importInfo.size());
+   for(unsigned importInfoIndex = 0; importInfoIndex < importInfoJsonList.GetLength(); ++importInfoIndex)
+   {
+     importInfoJsonList[importInfoIndex].AsString(m_importInfo[importInfoIndex]);
+   }
+   payload.WithArray("importInfo", std::move(importInfoJsonList));
+
+  }
+
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
@@ -216,6 +278,17 @@ JsonValue Api::Jsonize() const
 
   }
 
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
   if(m_versionHasBeenSet)
   {
    payload.WithString("version", m_version);
@@ -230,17 +303,6 @@ JsonValue Api::Jsonize() const
      warningsJsonList[warningsIndex].AsString(m_warnings[warningsIndex]);
    }
    payload.WithArray("warnings", std::move(warningsJsonList));
-
-  }
-
-  if(m_tagsHasBeenSet)
-  {
-   JsonValue tagsJsonMap;
-   for(auto& tagsItem : m_tags)
-   {
-     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
-   }
-   payload.WithObject("tags", std::move(tagsJsonMap));
 
   }
 

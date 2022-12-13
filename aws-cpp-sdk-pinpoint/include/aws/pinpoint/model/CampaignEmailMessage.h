@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -49,49 +39,49 @@ namespace Model
 
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline const Aws::String& GetBody() const{ return m_body; }
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline bool BodyHasBeenSet() const { return m_bodyHasBeenSet; }
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline void SetBody(const Aws::String& value) { m_bodyHasBeenSet = true; m_body = value; }
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline void SetBody(const char* value) { m_bodyHasBeenSet = true; m_body.assign(value); }
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline CampaignEmailMessage& WithBody(const Aws::String& value) { SetBody(value); return *this;}
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline CampaignEmailMessage& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
 
     /**
-     * <p>The body of the email for recipients whose email clients don't support HTML
+     * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
     inline CampaignEmailMessage& WithBody(const char* value) { SetBody(value); return *this;}
@@ -148,49 +138,49 @@ namespace Model
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline const Aws::String& GetHtmlBody() const{ return m_htmlBody; }
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline bool HtmlBodyHasBeenSet() const { return m_htmlBodyHasBeenSet; }
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline void SetHtmlBody(const Aws::String& value) { m_htmlBodyHasBeenSet = true; m_htmlBody = value; }
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline void SetHtmlBody(Aws::String&& value) { m_htmlBodyHasBeenSet = true; m_htmlBody = std::move(value); }
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline void SetHtmlBody(const char* value) { m_htmlBodyHasBeenSet = true; m_htmlBody.assign(value); }
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline CampaignEmailMessage& WithHtmlBody(const Aws::String& value) { SetHtmlBody(value); return *this;}
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline CampaignEmailMessage& WithHtmlBody(Aws::String&& value) { SetHtmlBody(std::move(value)); return *this;}
 
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
-     * support HTML content.</p>
+     * render HTML content.</p>
      */
     inline CampaignEmailMessage& WithHtmlBody(const char* value) { SetHtmlBody(value); return *this;}
 

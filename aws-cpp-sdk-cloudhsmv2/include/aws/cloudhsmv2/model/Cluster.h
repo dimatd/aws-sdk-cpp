@@ -1,21 +1,12 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/cloudhsmv2/CloudHSMV2_EXPORTS.h>
 #include <aws/cloudhsmv2/model/BackupPolicy.h>
+#include <aws/cloudhsmv2/model/BackupRetentionPolicy.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
@@ -23,6 +14,7 @@
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/cloudhsmv2/model/Certificates.h>
 #include <aws/cloudhsmv2/model/Hsm.h>
+#include <aws/cloudhsmv2/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -84,6 +76,37 @@ namespace Model
      * <p>The cluster's backup policy.</p>
      */
     inline Cluster& WithBackupPolicy(BackupPolicy&& value) { SetBackupPolicy(std::move(value)); return *this;}
+
+
+    /**
+     * <p>A policy that defines how the service retains backups.</p>
+     */
+    inline const BackupRetentionPolicy& GetBackupRetentionPolicy() const{ return m_backupRetentionPolicy; }
+
+    /**
+     * <p>A policy that defines how the service retains backups.</p>
+     */
+    inline bool BackupRetentionPolicyHasBeenSet() const { return m_backupRetentionPolicyHasBeenSet; }
+
+    /**
+     * <p>A policy that defines how the service retains backups.</p>
+     */
+    inline void SetBackupRetentionPolicy(const BackupRetentionPolicy& value) { m_backupRetentionPolicyHasBeenSet = true; m_backupRetentionPolicy = value; }
+
+    /**
+     * <p>A policy that defines how the service retains backups.</p>
+     */
+    inline void SetBackupRetentionPolicy(BackupRetentionPolicy&& value) { m_backupRetentionPolicyHasBeenSet = true; m_backupRetentionPolicy = std::move(value); }
+
+    /**
+     * <p>A policy that defines how the service retains backups.</p>
+     */
+    inline Cluster& WithBackupRetentionPolicy(const BackupRetentionPolicy& value) { SetBackupRetentionPolicy(value); return *this;}
+
+    /**
+     * <p>A policy that defines how the service retains backups.</p>
+     */
+    inline Cluster& WithBackupRetentionPolicy(BackupRetentionPolicy&& value) { SetBackupRetentionPolicy(std::move(value)); return *this;}
 
 
     /**
@@ -444,80 +467,80 @@ namespace Model
 
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetSubnetMapping() const{ return m_subnetMapping; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline bool SubnetMappingHasBeenSet() const { return m_subnetMappingHasBeenSet; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline void SetSubnetMapping(const Aws::Map<Aws::String, Aws::String>& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping = value; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline void SetSubnetMapping(Aws::Map<Aws::String, Aws::String>&& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping = std::move(value); }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& WithSubnetMapping(const Aws::Map<Aws::String, Aws::String>& value) { SetSubnetMapping(value); return *this;}
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& WithSubnetMapping(Aws::Map<Aws::String, Aws::String>&& value) { SetSubnetMapping(std::move(value)); return *this;}
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(const Aws::String& key, const Aws::String& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(key, value); return *this; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(Aws::String&& key, const Aws::String& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(const Aws::String& key, Aws::String&& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(Aws::String&& key, Aws::String&& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(const char* key, Aws::String&& value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(Aws::String&& key, const char* value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>A map of the cluster's subnets and their corresponding Availability
-     * Zones.</p>
+     * <p>A map from availability zone to the cluster’s subnet in that availability
+     * zone.</p>
      */
     inline Cluster& AddSubnetMapping(const char* key, const char* value) { m_subnetMappingHasBeenSet = true; m_subnetMapping.emplace(key, value); return *this; }
 
@@ -601,10 +624,54 @@ namespace Model
      */
     inline Cluster& WithCertificates(Certificates&& value) { SetCertificates(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTagList() const{ return m_tagList; }
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline bool TagListHasBeenSet() const { return m_tagListHasBeenSet; }
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline void SetTagList(const Aws::Vector<Tag>& value) { m_tagListHasBeenSet = true; m_tagList = value; }
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline void SetTagList(Aws::Vector<Tag>&& value) { m_tagListHasBeenSet = true; m_tagList = std::move(value); }
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline Cluster& WithTagList(const Aws::Vector<Tag>& value) { SetTagList(value); return *this;}
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline Cluster& WithTagList(Aws::Vector<Tag>&& value) { SetTagList(std::move(value)); return *this;}
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline Cluster& AddTagList(const Tag& value) { m_tagListHasBeenSet = true; m_tagList.push_back(value); return *this; }
+
+    /**
+     * <p>The list of tags for the cluster.</p>
+     */
+    inline Cluster& AddTagList(Tag&& value) { m_tagListHasBeenSet = true; m_tagList.push_back(std::move(value)); return *this; }
+
   private:
 
     BackupPolicy m_backupPolicy;
     bool m_backupPolicyHasBeenSet;
+
+    BackupRetentionPolicy m_backupRetentionPolicy;
+    bool m_backupRetentionPolicyHasBeenSet;
 
     Aws::String m_clusterId;
     bool m_clusterIdHasBeenSet;
@@ -641,6 +708,9 @@ namespace Model
 
     Certificates m_certificates;
     bool m_certificatesHasBeenSet;
+
+    Aws::Vector<Tag> m_tagList;
+    bool m_tagListHasBeenSet;
   };
 
 } // namespace Model

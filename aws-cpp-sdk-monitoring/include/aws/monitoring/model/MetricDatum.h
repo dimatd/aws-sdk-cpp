@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
@@ -177,36 +167,32 @@ namespace Model
     /**
      * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
      * type Double, CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or
-     * 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * Values must be in the range of -2^360 to 2^360. In addition, special values (for
+     * example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline double GetValue() const{ return m_value; }
 
     /**
      * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
      * type Double, CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or
-     * 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * Values must be in the range of -2^360 to 2^360. In addition, special values (for
+     * example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
 
     /**
      * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
      * type Double, CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or
-     * 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * Values must be in the range of -2^360 to 2^360. In addition, special values (for
+     * example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
      * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
      * type Double, CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or
-     * 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * Values must be in the range of -2^360 to 2^360. In addition, special values (for
+     * example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline MetricDatum& WithValue(double value) { SetValue(value); return *this;}
 
@@ -250,9 +236,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline const Aws::Vector<double>& GetValues() const{ return m_values; }
 
@@ -264,9 +249,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
 
@@ -278,9 +262,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline void SetValues(const Aws::Vector<double>& value) { m_valuesHasBeenSet = true; m_values = value; }
 
@@ -292,9 +275,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline void SetValues(Aws::Vector<double>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
 
@@ -306,9 +288,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline MetricDatum& WithValues(const Aws::Vector<double>& value) { SetValues(value); return *this;}
 
@@ -320,9 +301,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline MetricDatum& WithValues(Aws::Vector<double>&& value) { SetValues(std::move(value)); return *this;}
 
@@ -334,9 +314,8 @@ namespace Model
      * <code>PutMetricData</code> action that specifies a <code>Values</code>
      * array.</p> <p>Although the <code>Values</code> array accepts numbers of type
      * <code>Double</code>, CloudWatch rejects values that are either too small or too
-     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-     * +Infinity, -Infinity) are not supported.</p>
+     * large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
      */
     inline MetricDatum& AddValues(double value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
 

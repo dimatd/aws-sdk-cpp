@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
@@ -49,56 +39,56 @@ namespace Model
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline const Aws::String& GetCertificateIdentifier() const{ return m_certificateIdentifier; }
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline bool CertificateIdentifierHasBeenSet() const { return m_certificateIdentifierHasBeenSet; }
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline void SetCertificateIdentifier(const Aws::String& value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier = value; }
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline void SetCertificateIdentifier(Aws::String&& value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier = std::move(value); }
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline void SetCertificateIdentifier(const char* value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier.assign(value); }
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline ImportCertificateRequest& WithCertificateIdentifier(const Aws::String& value) { SetCertificateIdentifier(value); return *this;}
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline ImportCertificateRequest& WithCertificateIdentifier(Aws::String&& value) { SetCertificateIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>A customer-assigned name for the certificate. Identifiers must begin with a
-     * letter; must contain only ASCII letters, digits, and hyphens; and must not end
+     * letter and must contain only ASCII letters, digits, and hyphens. They can't end
      * with a hyphen or contain two consecutive hyphens.</p>
      */
     inline ImportCertificateRequest& WithCertificateIdentifier(const char* value) { SetCertificateIdentifier(value); return *this;}
@@ -154,32 +144,50 @@ namespace Model
 
 
     /**
-     * <p>The location of an imported Oracle Wallet certificate for use with SSL.</p>
+     * <p>The location of an imported Oracle Wallet certificate for use with SSL.
+     * Provide the name of a <code>.sso</code> file using the <code>fileb://</code>
+     * prefix. You can't provide the certificate inline.</p> <p>Example:
+     * <code>filebase64("${path.root}/rds-ca-2019-root.sso")</code> </p>
      */
     inline const Aws::Utils::ByteBuffer& GetCertificateWallet() const{ return m_certificateWallet; }
 
     /**
-     * <p>The location of an imported Oracle Wallet certificate for use with SSL.</p>
+     * <p>The location of an imported Oracle Wallet certificate for use with SSL.
+     * Provide the name of a <code>.sso</code> file using the <code>fileb://</code>
+     * prefix. You can't provide the certificate inline.</p> <p>Example:
+     * <code>filebase64("${path.root}/rds-ca-2019-root.sso")</code> </p>
      */
     inline bool CertificateWalletHasBeenSet() const { return m_certificateWalletHasBeenSet; }
 
     /**
-     * <p>The location of an imported Oracle Wallet certificate for use with SSL.</p>
+     * <p>The location of an imported Oracle Wallet certificate for use with SSL.
+     * Provide the name of a <code>.sso</code> file using the <code>fileb://</code>
+     * prefix. You can't provide the certificate inline.</p> <p>Example:
+     * <code>filebase64("${path.root}/rds-ca-2019-root.sso")</code> </p>
      */
     inline void SetCertificateWallet(const Aws::Utils::ByteBuffer& value) { m_certificateWalletHasBeenSet = true; m_certificateWallet = value; }
 
     /**
-     * <p>The location of an imported Oracle Wallet certificate for use with SSL.</p>
+     * <p>The location of an imported Oracle Wallet certificate for use with SSL.
+     * Provide the name of a <code>.sso</code> file using the <code>fileb://</code>
+     * prefix. You can't provide the certificate inline.</p> <p>Example:
+     * <code>filebase64("${path.root}/rds-ca-2019-root.sso")</code> </p>
      */
     inline void SetCertificateWallet(Aws::Utils::ByteBuffer&& value) { m_certificateWalletHasBeenSet = true; m_certificateWallet = std::move(value); }
 
     /**
-     * <p>The location of an imported Oracle Wallet certificate for use with SSL.</p>
+     * <p>The location of an imported Oracle Wallet certificate for use with SSL.
+     * Provide the name of a <code>.sso</code> file using the <code>fileb://</code>
+     * prefix. You can't provide the certificate inline.</p> <p>Example:
+     * <code>filebase64("${path.root}/rds-ca-2019-root.sso")</code> </p>
      */
     inline ImportCertificateRequest& WithCertificateWallet(const Aws::Utils::ByteBuffer& value) { SetCertificateWallet(value); return *this;}
 
     /**
-     * <p>The location of an imported Oracle Wallet certificate for use with SSL.</p>
+     * <p>The location of an imported Oracle Wallet certificate for use with SSL.
+     * Provide the name of a <code>.sso</code> file using the <code>fileb://</code>
+     * prefix. You can't provide the certificate inline.</p> <p>Example:
+     * <code>filebase64("${path.root}/rds-ca-2019-root.sso")</code> </p>
      */
     inline ImportCertificateRequest& WithCertificateWallet(Aws::Utils::ByteBuffer&& value) { SetCertificateWallet(std::move(value)); return *this;}
 

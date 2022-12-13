@@ -1,22 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/lambda/LambdaRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/lambda/model/FunctionUrlAuthType.h>
 #include <utility>
 
 namespace Aws
@@ -260,188 +251,188 @@ namespace Model
 
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline const Aws::String& GetPrincipal() const{ return m_principal; }
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline void SetPrincipal(const Aws::String& value) { m_principalHasBeenSet = true; m_principal = value; }
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline void SetPrincipal(Aws::String&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline void SetPrincipal(const char* value) { m_principalHasBeenSet = true; m_principal.assign(value); }
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline AddPermissionRequest& WithPrincipal(const Aws::String& value) { SetPrincipal(value); return *this;}
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline AddPermissionRequest& WithPrincipal(Aws::String&& value) { SetPrincipal(std::move(value)); return *this;}
 
     /**
-     * <p>The AWS service or account that invokes the function. If you specify a
-     * service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who
-     * can invoke the function through that service.</p>
+     * <p>The Amazon Web Services service or account that invokes the function. If you
+     * specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to
+     * limit who can invoke the function through that service.</p>
      */
     inline AddPermissionRequest& WithPrincipal(const char* value) { SetPrincipal(value); return *this;}
 
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline const Aws::String& GetSourceArn() const{ return m_sourceArn; }
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline bool SourceArnHasBeenSet() const { return m_sourceArnHasBeenSet; }
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline void SetSourceArn(const Aws::String& value) { m_sourceArnHasBeenSet = true; m_sourceArn = value; }
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline void SetSourceArn(Aws::String&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::move(value); }
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline void SetSourceArn(const char* value) { m_sourceArnHasBeenSet = true; m_sourceArn.assign(value); }
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline AddPermissionRequest& WithSourceArn(const Aws::String& value) { SetSourceArn(value); return *this;}
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline AddPermissionRequest& WithSourceArn(Aws::String&& value) { SetSourceArn(std::move(value)); return *this;}
 
     /**
-     * <p>For AWS services, the ARN of the AWS resource that invokes the function. For
-     * example, an Amazon S3 bucket or Amazon SNS topic.</p>
+     * <p>For Amazon Web Services services, the ARN of the Amazon Web Services resource
+     * that invokes the function. For example, an Amazon S3 bucket or Amazon SNS
+     * topic.</p> <p>Note that Lambda configures the comparison using the
+     * <code>StringLike</code> operator.</p>
      */
     inline AddPermissionRequest& WithSourceArn(const char* value) { SetSourceArn(value); return *this;}
 
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline const Aws::String& GetSourceAccount() const{ return m_sourceAccount; }
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline bool SourceAccountHasBeenSet() const { return m_sourceAccountHasBeenSet; }
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline void SetSourceAccount(const Aws::String& value) { m_sourceAccountHasBeenSet = true; m_sourceAccount = value; }
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline void SetSourceAccount(Aws::String&& value) { m_sourceAccountHasBeenSet = true; m_sourceAccount = std::move(value); }
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline void SetSourceAccount(const char* value) { m_sourceAccountHasBeenSet = true; m_sourceAccount.assign(value); }
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline AddPermissionRequest& WithSourceAccount(const Aws::String& value) { SetSourceAccount(value); return *this;}
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline AddPermissionRequest& WithSourceAccount(Aws::String&& value) { SetSourceAccount(std::move(value)); return *this;}
 
     /**
-     * <p>For AWS services, the ID of the account that owns the resource. Use this
-     * instead of <code>SourceArn</code> to grant permission to resources that are
-     * owned by another account (for example, all of an account's Amazon S3 buckets).
-     * Or use it together with <code>SourceArn</code> to ensure that the resource is
-     * owned by the specified account. For example, an Amazon S3 bucket could be
-     * deleted by its owner and recreated by another account.</p>
+     * <p>For Amazon S3, the ID of the account that owns the resource. Use this
+     * together with <code>SourceArn</code> to ensure that the resource is owned by the
+     * specified account. It is possible for an Amazon S3 bucket to be deleted by its
+     * owner and recreated by another account.</p>
      */
     inline AddPermissionRequest& WithSourceAccount(const char* value) { SetSourceAccount(value); return *this;}
 
@@ -600,6 +591,116 @@ namespace Model
      */
     inline AddPermissionRequest& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
 
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline const Aws::String& GetPrincipalOrgID() const{ return m_principalOrgID; }
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline bool PrincipalOrgIDHasBeenSet() const { return m_principalOrgIDHasBeenSet; }
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline void SetPrincipalOrgID(const Aws::String& value) { m_principalOrgIDHasBeenSet = true; m_principalOrgID = value; }
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline void SetPrincipalOrgID(Aws::String&& value) { m_principalOrgIDHasBeenSet = true; m_principalOrgID = std::move(value); }
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline void SetPrincipalOrgID(const char* value) { m_principalOrgIDHasBeenSet = true; m_principalOrgID.assign(value); }
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline AddPermissionRequest& WithPrincipalOrgID(const Aws::String& value) { SetPrincipalOrgID(value); return *this;}
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline AddPermissionRequest& WithPrincipalOrgID(Aws::String&& value) { SetPrincipalOrgID(std::move(value)); return *this;}
+
+    /**
+     * <p>The identifier for your organization in Organizations. Use this to grant
+     * permissions to all the Amazon Web Services accounts under this organization.</p>
+     */
+    inline AddPermissionRequest& WithPrincipalOrgID(const char* value) { SetPrincipalOrgID(value); return *this;}
+
+
+    /**
+     * <p>The type of authentication that your function URL uses. Set to
+     * <code>AWS_IAM</code> if you want to restrict access to authenticated
+     * <code>IAM</code> users only. Set to <code>NONE</code> if you want to bypass IAM
+     * authentication to create a public endpoint. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html"> Security and
+     * auth model for Lambda function URLs</a>.</p>
+     */
+    inline const FunctionUrlAuthType& GetFunctionUrlAuthType() const{ return m_functionUrlAuthType; }
+
+    /**
+     * <p>The type of authentication that your function URL uses. Set to
+     * <code>AWS_IAM</code> if you want to restrict access to authenticated
+     * <code>IAM</code> users only. Set to <code>NONE</code> if you want to bypass IAM
+     * authentication to create a public endpoint. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html"> Security and
+     * auth model for Lambda function URLs</a>.</p>
+     */
+    inline bool FunctionUrlAuthTypeHasBeenSet() const { return m_functionUrlAuthTypeHasBeenSet; }
+
+    /**
+     * <p>The type of authentication that your function URL uses. Set to
+     * <code>AWS_IAM</code> if you want to restrict access to authenticated
+     * <code>IAM</code> users only. Set to <code>NONE</code> if you want to bypass IAM
+     * authentication to create a public endpoint. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html"> Security and
+     * auth model for Lambda function URLs</a>.</p>
+     */
+    inline void SetFunctionUrlAuthType(const FunctionUrlAuthType& value) { m_functionUrlAuthTypeHasBeenSet = true; m_functionUrlAuthType = value; }
+
+    /**
+     * <p>The type of authentication that your function URL uses. Set to
+     * <code>AWS_IAM</code> if you want to restrict access to authenticated
+     * <code>IAM</code> users only. Set to <code>NONE</code> if you want to bypass IAM
+     * authentication to create a public endpoint. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html"> Security and
+     * auth model for Lambda function URLs</a>.</p>
+     */
+    inline void SetFunctionUrlAuthType(FunctionUrlAuthType&& value) { m_functionUrlAuthTypeHasBeenSet = true; m_functionUrlAuthType = std::move(value); }
+
+    /**
+     * <p>The type of authentication that your function URL uses. Set to
+     * <code>AWS_IAM</code> if you want to restrict access to authenticated
+     * <code>IAM</code> users only. Set to <code>NONE</code> if you want to bypass IAM
+     * authentication to create a public endpoint. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html"> Security and
+     * auth model for Lambda function URLs</a>.</p>
+     */
+    inline AddPermissionRequest& WithFunctionUrlAuthType(const FunctionUrlAuthType& value) { SetFunctionUrlAuthType(value); return *this;}
+
+    /**
+     * <p>The type of authentication that your function URL uses. Set to
+     * <code>AWS_IAM</code> if you want to restrict access to authenticated
+     * <code>IAM</code> users only. Set to <code>NONE</code> if you want to bypass IAM
+     * authentication to create a public endpoint. For more information, see <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html"> Security and
+     * auth model for Lambda function URLs</a>.</p>
+     */
+    inline AddPermissionRequest& WithFunctionUrlAuthType(FunctionUrlAuthType&& value) { SetFunctionUrlAuthType(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_functionName;
@@ -628,6 +729,12 @@ namespace Model
 
     Aws::String m_revisionId;
     bool m_revisionIdHasBeenSet;
+
+    Aws::String m_principalOrgID;
+    bool m_principalOrgIDHasBeenSet;
+
+    FunctionUrlAuthType m_functionUrlAuthType;
+    bool m_functionUrlAuthTypeHasBeenSet;
   };
 
 } // namespace Model

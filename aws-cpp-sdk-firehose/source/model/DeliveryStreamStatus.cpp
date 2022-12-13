@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/firehose/model/DeliveryStreamStatus.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -31,7 +21,9 @@ namespace Aws
       {
 
         static const int CREATING_HASH = HashingUtils::HashString("CREATING");
+        static const int CREATING_FAILED_HASH = HashingUtils::HashString("CREATING_FAILED");
         static const int DELETING_HASH = HashingUtils::HashString("DELETING");
+        static const int DELETING_FAILED_HASH = HashingUtils::HashString("DELETING_FAILED");
         static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
 
 
@@ -42,9 +34,17 @@ namespace Aws
           {
             return DeliveryStreamStatus::CREATING;
           }
+          else if (hashCode == CREATING_FAILED_HASH)
+          {
+            return DeliveryStreamStatus::CREATING_FAILED;
+          }
           else if (hashCode == DELETING_HASH)
           {
             return DeliveryStreamStatus::DELETING;
+          }
+          else if (hashCode == DELETING_FAILED_HASH)
+          {
+            return DeliveryStreamStatus::DELETING_FAILED;
           }
           else if (hashCode == ACTIVE_HASH)
           {
@@ -66,8 +66,12 @@ namespace Aws
           {
           case DeliveryStreamStatus::CREATING:
             return "CREATING";
+          case DeliveryStreamStatus::CREATING_FAILED:
+            return "CREATING_FAILED";
           case DeliveryStreamStatus::DELETING:
             return "DELETING";
+          case DeliveryStreamStatus::DELETING_FAILED:
+            return "DELETING_FAILED";
           case DeliveryStreamStatus::ACTIVE:
             return "ACTIVE";
           default:

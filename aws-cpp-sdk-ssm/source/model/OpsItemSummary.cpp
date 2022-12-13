@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ssm/model/OpsItemSummary.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -40,7 +30,14 @@ OpsItemSummary::OpsItemSummary() :
     m_statusHasBeenSet(false),
     m_opsItemIdHasBeenSet(false),
     m_titleHasBeenSet(false),
-    m_operationalDataHasBeenSet(false)
+    m_operationalDataHasBeenSet(false),
+    m_categoryHasBeenSet(false),
+    m_severityHasBeenSet(false),
+    m_opsItemTypeHasBeenSet(false),
+    m_actualStartTimeHasBeenSet(false),
+    m_actualEndTimeHasBeenSet(false),
+    m_plannedStartTimeHasBeenSet(false),
+    m_plannedEndTimeHasBeenSet(false)
 {
 }
 
@@ -56,7 +53,14 @@ OpsItemSummary::OpsItemSummary(JsonView jsonValue) :
     m_statusHasBeenSet(false),
     m_opsItemIdHasBeenSet(false),
     m_titleHasBeenSet(false),
-    m_operationalDataHasBeenSet(false)
+    m_operationalDataHasBeenSet(false),
+    m_categoryHasBeenSet(false),
+    m_severityHasBeenSet(false),
+    m_opsItemTypeHasBeenSet(false),
+    m_actualStartTimeHasBeenSet(false),
+    m_actualEndTimeHasBeenSet(false),
+    m_plannedStartTimeHasBeenSet(false),
+    m_plannedEndTimeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -136,6 +140,55 @@ OpsItemSummary& OpsItemSummary::operator =(JsonView jsonValue)
     m_operationalDataHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("Category"))
+  {
+    m_category = jsonValue.GetString("Category");
+
+    m_categoryHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Severity"))
+  {
+    m_severity = jsonValue.GetString("Severity");
+
+    m_severityHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OpsItemType"))
+  {
+    m_opsItemType = jsonValue.GetString("OpsItemType");
+
+    m_opsItemTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ActualStartTime"))
+  {
+    m_actualStartTime = jsonValue.GetDouble("ActualStartTime");
+
+    m_actualStartTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ActualEndTime"))
+  {
+    m_actualEndTime = jsonValue.GetDouble("ActualEndTime");
+
+    m_actualEndTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("PlannedStartTime"))
+  {
+    m_plannedStartTime = jsonValue.GetDouble("PlannedStartTime");
+
+    m_plannedStartTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("PlannedEndTime"))
+  {
+    m_plannedEndTime = jsonValue.GetDouble("PlannedEndTime");
+
+    m_plannedEndTimeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -203,6 +256,44 @@ JsonValue OpsItemSummary::Jsonize() const
    }
    payload.WithObject("OperationalData", std::move(operationalDataJsonMap));
 
+  }
+
+  if(m_categoryHasBeenSet)
+  {
+   payload.WithString("Category", m_category);
+
+  }
+
+  if(m_severityHasBeenSet)
+  {
+   payload.WithString("Severity", m_severity);
+
+  }
+
+  if(m_opsItemTypeHasBeenSet)
+  {
+   payload.WithString("OpsItemType", m_opsItemType);
+
+  }
+
+  if(m_actualStartTimeHasBeenSet)
+  {
+   payload.WithDouble("ActualStartTime", m_actualStartTime.SecondsWithMSPrecision());
+  }
+
+  if(m_actualEndTimeHasBeenSet)
+  {
+   payload.WithDouble("ActualEndTime", m_actualEndTime.SecondsWithMSPrecision());
+  }
+
+  if(m_plannedStartTimeHasBeenSet)
+  {
+   payload.WithDouble("PlannedStartTime", m_plannedStartTime.SecondsWithMSPrecision());
+  }
+
+  if(m_plannedEndTimeHasBeenSet)
+  {
+   payload.WithDouble("PlannedEndTime", m_plannedEndTime.SecondsWithMSPrecision());
   }
 
   return payload;

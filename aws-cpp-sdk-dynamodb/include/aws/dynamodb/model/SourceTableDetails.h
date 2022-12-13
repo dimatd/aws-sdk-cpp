@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -177,22 +167,22 @@ namespace Model
 
 
     /**
-     * <p>Size of the table in bytes. Please note this is an approximate value.</p>
+     * <p>Size of the table in bytes. Note that this is an approximate value.</p>
      */
     inline long long GetTableSizeBytes() const{ return m_tableSizeBytes; }
 
     /**
-     * <p>Size of the table in bytes. Please note this is an approximate value.</p>
+     * <p>Size of the table in bytes. Note that this is an approximate value.</p>
      */
     inline bool TableSizeBytesHasBeenSet() const { return m_tableSizeBytesHasBeenSet; }
 
     /**
-     * <p>Size of the table in bytes. Please note this is an approximate value.</p>
+     * <p>Size of the table in bytes. Note that this is an approximate value.</p>
      */
     inline void SetTableSizeBytes(long long value) { m_tableSizeBytesHasBeenSet = true; m_tableSizeBytes = value; }
 
     /**
-     * <p>Size of the table in bytes. Please note this is an approximate value.</p>
+     * <p>Size of the table in bytes. Note that this is an approximate value.</p>
      */
     inline SourceTableDetails& WithTableSizeBytes(long long value) { SetTableSizeBytes(value); return *this;}
 
@@ -301,22 +291,22 @@ namespace Model
 
 
     /**
-     * <p>Number of items in the table. Please note this is an approximate value. </p>
+     * <p>Number of items in the table. Note that this is an approximate value. </p>
      */
     inline long long GetItemCount() const{ return m_itemCount; }
 
     /**
-     * <p>Number of items in the table. Please note this is an approximate value. </p>
+     * <p>Number of items in the table. Note that this is an approximate value. </p>
      */
     inline bool ItemCountHasBeenSet() const { return m_itemCountHasBeenSet; }
 
     /**
-     * <p>Number of items in the table. Please note this is an approximate value. </p>
+     * <p>Number of items in the table. Note that this is an approximate value. </p>
      */
     inline void SetItemCount(long long value) { m_itemCountHasBeenSet = true; m_itemCount = value; }
 
     /**
-     * <p>Number of items in the table. Please note this is an approximate value. </p>
+     * <p>Number of items in the table. Note that this is an approximate value. </p>
      */
     inline SourceTableDetails& WithItemCount(long long value) { SetItemCount(value); return *this;}
 

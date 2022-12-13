@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/ImportImageTask.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -44,7 +34,12 @@ ImportImageTask::ImportImageTask() :
     m_progressHasBeenSet(false),
     m_snapshotDetailsHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
+    m_statusMessageHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_licenseSpecificationsHasBeenSet(false),
+    m_usageOperationHasBeenSet(false),
+    m_bootMode(BootModeValues::NOT_SET),
+    m_bootModeHasBeenSet(false)
 {
 }
 
@@ -62,7 +57,12 @@ ImportImageTask::ImportImageTask(const XmlNode& xmlNode) :
     m_progressHasBeenSet(false),
     m_snapshotDetailsHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
+    m_statusMessageHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_licenseSpecificationsHasBeenSet(false),
+    m_usageOperationHasBeenSet(false),
+    m_bootMode(BootModeValues::NOT_SET),
+    m_bootModeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -157,6 +157,42 @@ ImportImageTask& ImportImageTask::operator =(const XmlNode& xmlNode)
       m_statusMessage = Aws::Utils::Xml::DecodeEscapedXmlText(statusMessageNode.GetText());
       m_statusMessageHasBeenSet = true;
     }
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
+    if(!tagsNode.IsNull())
+    {
+      XmlNode tagsMember = tagsNode.FirstChild("item");
+      while(!tagsMember.IsNull())
+      {
+        m_tags.push_back(tagsMember);
+        tagsMember = tagsMember.NextNode("item");
+      }
+
+      m_tagsHasBeenSet = true;
+    }
+    XmlNode licenseSpecificationsNode = resultNode.FirstChild("licenseSpecifications");
+    if(!licenseSpecificationsNode.IsNull())
+    {
+      XmlNode licenseSpecificationsMember = licenseSpecificationsNode.FirstChild("item");
+      while(!licenseSpecificationsMember.IsNull())
+      {
+        m_licenseSpecifications.push_back(licenseSpecificationsMember);
+        licenseSpecificationsMember = licenseSpecificationsMember.NextNode("item");
+      }
+
+      m_licenseSpecificationsHasBeenSet = true;
+    }
+    XmlNode usageOperationNode = resultNode.FirstChild("usageOperation");
+    if(!usageOperationNode.IsNull())
+    {
+      m_usageOperation = Aws::Utils::Xml::DecodeEscapedXmlText(usageOperationNode.GetText());
+      m_usageOperationHasBeenSet = true;
+    }
+    XmlNode bootModeNode = resultNode.FirstChild("bootMode");
+    if(!bootModeNode.IsNull())
+    {
+      m_bootMode = BootModeValuesMapper::GetBootModeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bootModeNode.GetText()).c_str()).c_str());
+      m_bootModeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -235,6 +271,38 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
 
+  if(m_tagsHasBeenSet)
+  {
+      unsigned tagsIdx = 1;
+      for(auto& item : m_tags)
+      {
+        Aws::StringStream tagsSs;
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
+      }
+  }
+
+  if(m_licenseSpecificationsHasBeenSet)
+  {
+      unsigned licenseSpecificationsIdx = 1;
+      for(auto& item : m_licenseSpecifications)
+      {
+        Aws::StringStream licenseSpecificationsSs;
+        licenseSpecificationsSs << location << index << locationValue << ".LicenseSpecifications." << licenseSpecificationsIdx++;
+        item.OutputToStream(oStream, licenseSpecificationsSs.str().c_str());
+      }
+  }
+
+  if(m_usageOperationHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".UsageOperation=" << StringUtils::URLEncode(m_usageOperation.c_str()) << "&";
+  }
+
+  if(m_bootModeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".BootMode=" << BootModeValuesMapper::GetNameForBootModeValues(m_bootMode) << "&";
+  }
+
 }
 
 void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -296,6 +364,34 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
+  }
+  if(m_tagsHasBeenSet)
+  {
+      unsigned tagsIdx = 1;
+      for(auto& item : m_tags)
+      {
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
+      }
+  }
+  if(m_licenseSpecificationsHasBeenSet)
+  {
+      unsigned licenseSpecificationsIdx = 1;
+      for(auto& item : m_licenseSpecifications)
+      {
+        Aws::StringStream licenseSpecificationsSs;
+        licenseSpecificationsSs << location <<  ".LicenseSpecifications." << licenseSpecificationsIdx++;
+        item.OutputToStream(oStream, licenseSpecificationsSs.str().c_str());
+      }
+  }
+  if(m_usageOperationHasBeenSet)
+  {
+      oStream << location << ".UsageOperation=" << StringUtils::URLEncode(m_usageOperation.c_str()) << "&";
+  }
+  if(m_bootModeHasBeenSet)
+  {
+      oStream << location << ".BootMode=" << BootModeValuesMapper::GetNameForBootModeValues(m_bootMode) << "&";
   }
 }
 

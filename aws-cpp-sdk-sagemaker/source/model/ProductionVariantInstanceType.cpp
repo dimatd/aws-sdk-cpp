@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/sagemaker/model/ProductionVariantInstanceType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -92,6 +82,10 @@ namespace Aws
         static const int ml_r5d_4xlarge_HASH = HashingUtils::HashString("ml.r5d.4xlarge");
         static const int ml_r5d_12xlarge_HASH = HashingUtils::HashString("ml.r5d.12xlarge");
         static const int ml_r5d_24xlarge_HASH = HashingUtils::HashString("ml.r5d.24xlarge");
+        static const int ml_inf1_xlarge_HASH = HashingUtils::HashString("ml.inf1.xlarge");
+        static const int ml_inf1_2xlarge_HASH = HashingUtils::HashString("ml.inf1.2xlarge");
+        static const int ml_inf1_6xlarge_HASH = HashingUtils::HashString("ml.inf1.6xlarge");
+        static const int ml_inf1_24xlarge_HASH = HashingUtils::HashString("ml.inf1.24xlarge");
 
 
         ProductionVariantInstanceType GetProductionVariantInstanceTypeForName(const Aws::String& name)
@@ -345,6 +339,22 @@ namespace Aws
           {
             return ProductionVariantInstanceType::ml_r5d_24xlarge;
           }
+          else if (hashCode == ml_inf1_xlarge_HASH)
+          {
+            return ProductionVariantInstanceType::ml_inf1_xlarge;
+          }
+          else if (hashCode == ml_inf1_2xlarge_HASH)
+          {
+            return ProductionVariantInstanceType::ml_inf1_2xlarge;
+          }
+          else if (hashCode == ml_inf1_6xlarge_HASH)
+          {
+            return ProductionVariantInstanceType::ml_inf1_6xlarge;
+          }
+          else if (hashCode == ml_inf1_24xlarge_HASH)
+          {
+            return ProductionVariantInstanceType::ml_inf1_24xlarge;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -483,6 +493,14 @@ namespace Aws
             return "ml.r5d.12xlarge";
           case ProductionVariantInstanceType::ml_r5d_24xlarge:
             return "ml.r5d.24xlarge";
+          case ProductionVariantInstanceType::ml_inf1_xlarge:
+            return "ml.inf1.xlarge";
+          case ProductionVariantInstanceType::ml_inf1_2xlarge:
+            return "ml.inf1.2xlarge";
+          case ProductionVariantInstanceType::ml_inf1_6xlarge:
+            return "ml.inf1.6xlarge";
+          case ProductionVariantInstanceType::ml_inf1_24xlarge:
+            return "ml.inf1.24xlarge";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

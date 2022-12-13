@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/monitoring/model/ResponseMetadata.h>
+#include <aws/monitoring/model/CompositeAlarm.h>
 #include <aws/monitoring/model/MetricAlarm.h>
 #include <utility>
 
@@ -46,37 +37,73 @@ namespace Model
 
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline const Aws::Vector<CompositeAlarm>& GetCompositeAlarms() const{ return m_compositeAlarms; }
+
+    /**
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline void SetCompositeAlarms(const Aws::Vector<CompositeAlarm>& value) { m_compositeAlarms = value; }
+
+    /**
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline void SetCompositeAlarms(Aws::Vector<CompositeAlarm>&& value) { m_compositeAlarms = std::move(value); }
+
+    /**
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline DescribeAlarmsResult& WithCompositeAlarms(const Aws::Vector<CompositeAlarm>& value) { SetCompositeAlarms(value); return *this;}
+
+    /**
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline DescribeAlarmsResult& WithCompositeAlarms(Aws::Vector<CompositeAlarm>&& value) { SetCompositeAlarms(std::move(value)); return *this;}
+
+    /**
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline DescribeAlarmsResult& AddCompositeAlarms(const CompositeAlarm& value) { m_compositeAlarms.push_back(value); return *this; }
+
+    /**
+     * <p>The information about any composite alarms returned by the operation.</p>
+     */
+    inline DescribeAlarmsResult& AddCompositeAlarms(CompositeAlarm&& value) { m_compositeAlarms.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline const Aws::Vector<MetricAlarm>& GetMetricAlarms() const{ return m_metricAlarms; }
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline void SetMetricAlarms(const Aws::Vector<MetricAlarm>& value) { m_metricAlarms = value; }
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline void SetMetricAlarms(Aws::Vector<MetricAlarm>&& value) { m_metricAlarms = std::move(value); }
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline DescribeAlarmsResult& WithMetricAlarms(const Aws::Vector<MetricAlarm>& value) { SetMetricAlarms(value); return *this;}
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline DescribeAlarmsResult& WithMetricAlarms(Aws::Vector<MetricAlarm>&& value) { SetMetricAlarms(std::move(value)); return *this;}
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline DescribeAlarmsResult& AddMetricAlarms(const MetricAlarm& value) { m_metricAlarms.push_back(value); return *this; }
 
     /**
-     * <p>The information for the specified alarms.</p>
+     * <p>The information about any metric alarms returned by the operation.</p>
      */
     inline DescribeAlarmsResult& AddMetricAlarms(MetricAlarm&& value) { m_metricAlarms.push_back(std::move(value)); return *this; }
 
@@ -133,6 +160,8 @@ namespace Model
     inline DescribeAlarmsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
+
+    Aws::Vector<CompositeAlarm> m_compositeAlarms;
 
     Aws::Vector<MetricAlarm> m_metricAlarms;
 

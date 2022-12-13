@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/es/model/ESPartitionInstanceType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -55,6 +45,8 @@ namespace Aws
         static const int c5_4xlarge_elasticsearch_HASH = HashingUtils::HashString("c5.4xlarge.elasticsearch");
         static const int c5_9xlarge_elasticsearch_HASH = HashingUtils::HashString("c5.9xlarge.elasticsearch");
         static const int c5_18xlarge_elasticsearch_HASH = HashingUtils::HashString("c5.18xlarge.elasticsearch");
+        static const int ultrawarm1_medium_elasticsearch_HASH = HashingUtils::HashString("ultrawarm1.medium.elasticsearch");
+        static const int ultrawarm1_large_elasticsearch_HASH = HashingUtils::HashString("ultrawarm1.large.elasticsearch");
         static const int t2_micro_elasticsearch_HASH = HashingUtils::HashString("t2.micro.elasticsearch");
         static const int t2_small_elasticsearch_HASH = HashingUtils::HashString("t2.small.elasticsearch");
         static const int t2_medium_elasticsearch_HASH = HashingUtils::HashString("t2.medium.elasticsearch");
@@ -190,6 +182,14 @@ namespace Aws
           else if (hashCode == c5_18xlarge_elasticsearch_HASH)
           {
             return ESPartitionInstanceType::c5_18xlarge_elasticsearch;
+          }
+          else if (hashCode == ultrawarm1_medium_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::ultrawarm1_medium_elasticsearch;
+          }
+          else if (hashCode == ultrawarm1_large_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::ultrawarm1_large_elasticsearch;
           }
           else if (hashCode == t2_micro_elasticsearch_HASH)
           {
@@ -379,6 +379,10 @@ namespace Aws
             return "c5.9xlarge.elasticsearch";
           case ESPartitionInstanceType::c5_18xlarge_elasticsearch:
             return "c5.18xlarge.elasticsearch";
+          case ESPartitionInstanceType::ultrawarm1_medium_elasticsearch:
+            return "ultrawarm1.medium.elasticsearch";
+          case ESPartitionInstanceType::ultrawarm1_large_elasticsearch:
+            return "ultrawarm1.large.elasticsearch";
           case ESPartitionInstanceType::t2_micro_elasticsearch:
             return "t2.micro.elasticsearch";
           case ESPartitionInstanceType::t2_small_elasticsearch:

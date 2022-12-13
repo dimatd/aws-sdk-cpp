@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconvert/model/AudioCodecSettings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -37,6 +27,9 @@ AudioCodecSettings::AudioCodecSettings() :
     m_eac3AtmosSettingsHasBeenSet(false),
     m_eac3SettingsHasBeenSet(false),
     m_mp2SettingsHasBeenSet(false),
+    m_mp3SettingsHasBeenSet(false),
+    m_opusSettingsHasBeenSet(false),
+    m_vorbisSettingsHasBeenSet(false),
     m_wavSettingsHasBeenSet(false)
 {
 }
@@ -50,6 +43,9 @@ AudioCodecSettings::AudioCodecSettings(JsonView jsonValue) :
     m_eac3AtmosSettingsHasBeenSet(false),
     m_eac3SettingsHasBeenSet(false),
     m_mp2SettingsHasBeenSet(false),
+    m_mp3SettingsHasBeenSet(false),
+    m_opusSettingsHasBeenSet(false),
+    m_vorbisSettingsHasBeenSet(false),
     m_wavSettingsHasBeenSet(false)
 {
   *this = jsonValue;
@@ -106,6 +102,27 @@ AudioCodecSettings& AudioCodecSettings::operator =(JsonView jsonValue)
     m_mp2SettingsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("mp3Settings"))
+  {
+    m_mp3Settings = jsonValue.GetObject("mp3Settings");
+
+    m_mp3SettingsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("opusSettings"))
+  {
+    m_opusSettings = jsonValue.GetObject("opusSettings");
+
+    m_opusSettingsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("vorbisSettings"))
+  {
+    m_vorbisSettings = jsonValue.GetObject("vorbisSettings");
+
+    m_vorbisSettingsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("wavSettings"))
   {
     m_wavSettings = jsonValue.GetObject("wavSettings");
@@ -158,6 +175,24 @@ JsonValue AudioCodecSettings::Jsonize() const
   if(m_mp2SettingsHasBeenSet)
   {
    payload.WithObject("mp2Settings", m_mp2Settings.Jsonize());
+
+  }
+
+  if(m_mp3SettingsHasBeenSet)
+  {
+   payload.WithObject("mp3Settings", m_mp3Settings.Jsonize());
+
+  }
+
+  if(m_opusSettingsHasBeenSet)
+  {
+   payload.WithObject("opusSettings", m_opusSettings.Jsonize());
+
+  }
+
+  if(m_vorbisSettingsHasBeenSet)
+  {
+   payload.WithObject("vorbisSettings", m_vorbisSettings.Jsonize());
 
   }
 

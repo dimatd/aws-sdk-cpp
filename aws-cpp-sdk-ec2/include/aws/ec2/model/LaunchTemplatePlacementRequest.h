@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -291,6 +281,88 @@ namespace Model
      */
     inline LaunchTemplatePlacementRequest& WithSpreadDomain(const char* value) { SetSpreadDomain(value); return *this;}
 
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline const Aws::String& GetHostResourceGroupArn() const{ return m_hostResourceGroupArn; }
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline bool HostResourceGroupArnHasBeenSet() const { return m_hostResourceGroupArnHasBeenSet; }
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline void SetHostResourceGroupArn(const Aws::String& value) { m_hostResourceGroupArnHasBeenSet = true; m_hostResourceGroupArn = value; }
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline void SetHostResourceGroupArn(Aws::String&& value) { m_hostResourceGroupArnHasBeenSet = true; m_hostResourceGroupArn = std::move(value); }
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline void SetHostResourceGroupArn(const char* value) { m_hostResourceGroupArnHasBeenSet = true; m_hostResourceGroupArn.assign(value); }
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline LaunchTemplatePlacementRequest& WithHostResourceGroupArn(const Aws::String& value) { SetHostResourceGroupArn(value); return *this;}
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline LaunchTemplatePlacementRequest& WithHostResourceGroupArn(Aws::String&& value) { SetHostResourceGroupArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The ARN of the host resource group in which to launch the instances. If you
+     * specify a host resource group ARN, omit the <b>Tenancy</b> parameter or set it
+     * to <code>host</code>.</p>
+     */
+    inline LaunchTemplatePlacementRequest& WithHostResourceGroupArn(const char* value) { SetHostResourceGroupArn(value); return *this;}
+
+
+    /**
+     * <p>The number of the partition the instance should launch in. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
+     */
+    inline int GetPartitionNumber() const{ return m_partitionNumber; }
+
+    /**
+     * <p>The number of the partition the instance should launch in. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
+     */
+    inline bool PartitionNumberHasBeenSet() const { return m_partitionNumberHasBeenSet; }
+
+    /**
+     * <p>The number of the partition the instance should launch in. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
+     */
+    inline void SetPartitionNumber(int value) { m_partitionNumberHasBeenSet = true; m_partitionNumber = value; }
+
+    /**
+     * <p>The number of the partition the instance should launch in. Valid only if the
+     * placement group strategy is set to <code>partition</code>.</p>
+     */
+    inline LaunchTemplatePlacementRequest& WithPartitionNumber(int value) { SetPartitionNumber(value); return *this;}
+
   private:
 
     Aws::String m_availabilityZone;
@@ -310,6 +382,12 @@ namespace Model
 
     Aws::String m_spreadDomain;
     bool m_spreadDomainHasBeenSet;
+
+    Aws::String m_hostResourceGroupArn;
+    bool m_hostResourceGroupArnHasBeenSet;
+
+    int m_partitionNumber;
+    bool m_partitionNumberHasBeenSet;
   };
 
 } // namespace Model

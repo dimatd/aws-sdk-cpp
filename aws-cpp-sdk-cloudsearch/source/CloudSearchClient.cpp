@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
@@ -43,6 +33,7 @@
 #include <aws/cloudsearch/model/DeleteSuggesterRequest.h>
 #include <aws/cloudsearch/model/DescribeAnalysisSchemesRequest.h>
 #include <aws/cloudsearch/model/DescribeAvailabilityOptionsRequest.h>
+#include <aws/cloudsearch/model/DescribeDomainEndpointOptionsRequest.h>
 #include <aws/cloudsearch/model/DescribeDomainsRequest.h>
 #include <aws/cloudsearch/model/DescribeExpressionsRequest.h>
 #include <aws/cloudsearch/model/DescribeIndexFieldsRequest.h>
@@ -52,6 +43,7 @@
 #include <aws/cloudsearch/model/IndexDocumentsRequest.h>
 #include <aws/cloudsearch/model/ListDomainNamesRequest.h>
 #include <aws/cloudsearch/model/UpdateAvailabilityOptionsRequest.h>
+#include <aws/cloudsearch/model/UpdateDomainEndpointOptionsRequest.h>
 #include <aws/cloudsearch/model/UpdateScalingParametersRequest.h>
 #include <aws/cloudsearch/model/UpdateServiceAccessPoliciesRequest.h>
 
@@ -71,7 +63,7 @@ static const char* ALLOCATION_TAG = "CloudSearchClient";
 CloudSearchClient::CloudSearchClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-        SERVICE_NAME, clientConfiguration.region),
+        SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<CloudSearchErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -81,7 +73,7 @@ CloudSearchClient::CloudSearchClient(const Client::ClientConfiguration& clientCo
 CloudSearchClient::CloudSearchClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
-         SERVICE_NAME, clientConfiguration.region),
+         SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<CloudSearchErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -92,7 +84,7 @@ CloudSearchClient::CloudSearchClient(const std::shared_ptr<AWSCredentialsProvide
   const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
-         SERVICE_NAME, clientConfiguration.region),
+         SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
     Aws::MakeShared<CloudSearchErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -103,8 +95,9 @@ CloudSearchClient::~CloudSearchClient()
 {
 }
 
-void CloudSearchClient::init(const ClientConfiguration& config)
+void CloudSearchClient::init(const Client::ClientConfiguration& config)
 {
+  SetServiceClientName("CloudSearch");
   m_configScheme = SchemeMapper::ToString(config.scheme);
   if (config.endpointOverride.empty())
   {
@@ -141,18 +134,7 @@ Aws::String CloudSearchClient::ConvertRequestToPresignedUrl(const AmazonSerializ
 BuildSuggestersOutcome CloudSearchClient::BuildSuggesters(const BuildSuggestersRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return BuildSuggestersOutcome(BuildSuggestersResult(outcome.GetResult()));
-  }
-  else
-  {
-    return BuildSuggestersOutcome(outcome.GetError());
-  }
+  return BuildSuggestersOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 BuildSuggestersOutcomeCallable CloudSearchClient::BuildSuggestersCallable(const BuildSuggestersRequest& request) const
@@ -176,18 +158,7 @@ void CloudSearchClient::BuildSuggestersAsyncHelper(const BuildSuggestersRequest&
 CreateDomainOutcome CloudSearchClient::CreateDomain(const CreateDomainRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return CreateDomainOutcome(CreateDomainResult(outcome.GetResult()));
-  }
-  else
-  {
-    return CreateDomainOutcome(outcome.GetError());
-  }
+  return CreateDomainOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 CreateDomainOutcomeCallable CloudSearchClient::CreateDomainCallable(const CreateDomainRequest& request) const
@@ -211,18 +182,7 @@ void CloudSearchClient::CreateDomainAsyncHelper(const CreateDomainRequest& reque
 DefineAnalysisSchemeOutcome CloudSearchClient::DefineAnalysisScheme(const DefineAnalysisSchemeRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DefineAnalysisSchemeOutcome(DefineAnalysisSchemeResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DefineAnalysisSchemeOutcome(outcome.GetError());
-  }
+  return DefineAnalysisSchemeOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DefineAnalysisSchemeOutcomeCallable CloudSearchClient::DefineAnalysisSchemeCallable(const DefineAnalysisSchemeRequest& request) const
@@ -246,18 +206,7 @@ void CloudSearchClient::DefineAnalysisSchemeAsyncHelper(const DefineAnalysisSche
 DefineExpressionOutcome CloudSearchClient::DefineExpression(const DefineExpressionRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DefineExpressionOutcome(DefineExpressionResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DefineExpressionOutcome(outcome.GetError());
-  }
+  return DefineExpressionOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DefineExpressionOutcomeCallable CloudSearchClient::DefineExpressionCallable(const DefineExpressionRequest& request) const
@@ -281,18 +230,7 @@ void CloudSearchClient::DefineExpressionAsyncHelper(const DefineExpressionReques
 DefineIndexFieldOutcome CloudSearchClient::DefineIndexField(const DefineIndexFieldRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DefineIndexFieldOutcome(DefineIndexFieldResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DefineIndexFieldOutcome(outcome.GetError());
-  }
+  return DefineIndexFieldOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DefineIndexFieldOutcomeCallable CloudSearchClient::DefineIndexFieldCallable(const DefineIndexFieldRequest& request) const
@@ -316,18 +254,7 @@ void CloudSearchClient::DefineIndexFieldAsyncHelper(const DefineIndexFieldReques
 DefineSuggesterOutcome CloudSearchClient::DefineSuggester(const DefineSuggesterRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DefineSuggesterOutcome(DefineSuggesterResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DefineSuggesterOutcome(outcome.GetError());
-  }
+  return DefineSuggesterOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DefineSuggesterOutcomeCallable CloudSearchClient::DefineSuggesterCallable(const DefineSuggesterRequest& request) const
@@ -351,18 +278,7 @@ void CloudSearchClient::DefineSuggesterAsyncHelper(const DefineSuggesterRequest&
 DeleteAnalysisSchemeOutcome CloudSearchClient::DeleteAnalysisScheme(const DeleteAnalysisSchemeRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DeleteAnalysisSchemeOutcome(DeleteAnalysisSchemeResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteAnalysisSchemeOutcome(outcome.GetError());
-  }
+  return DeleteAnalysisSchemeOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DeleteAnalysisSchemeOutcomeCallable CloudSearchClient::DeleteAnalysisSchemeCallable(const DeleteAnalysisSchemeRequest& request) const
@@ -386,18 +302,7 @@ void CloudSearchClient::DeleteAnalysisSchemeAsyncHelper(const DeleteAnalysisSche
 DeleteDomainOutcome CloudSearchClient::DeleteDomain(const DeleteDomainRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DeleteDomainOutcome(DeleteDomainResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteDomainOutcome(outcome.GetError());
-  }
+  return DeleteDomainOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DeleteDomainOutcomeCallable CloudSearchClient::DeleteDomainCallable(const DeleteDomainRequest& request) const
@@ -421,18 +326,7 @@ void CloudSearchClient::DeleteDomainAsyncHelper(const DeleteDomainRequest& reque
 DeleteExpressionOutcome CloudSearchClient::DeleteExpression(const DeleteExpressionRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DeleteExpressionOutcome(DeleteExpressionResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteExpressionOutcome(outcome.GetError());
-  }
+  return DeleteExpressionOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DeleteExpressionOutcomeCallable CloudSearchClient::DeleteExpressionCallable(const DeleteExpressionRequest& request) const
@@ -456,18 +350,7 @@ void CloudSearchClient::DeleteExpressionAsyncHelper(const DeleteExpressionReques
 DeleteIndexFieldOutcome CloudSearchClient::DeleteIndexField(const DeleteIndexFieldRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DeleteIndexFieldOutcome(DeleteIndexFieldResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteIndexFieldOutcome(outcome.GetError());
-  }
+  return DeleteIndexFieldOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DeleteIndexFieldOutcomeCallable CloudSearchClient::DeleteIndexFieldCallable(const DeleteIndexFieldRequest& request) const
@@ -491,18 +374,7 @@ void CloudSearchClient::DeleteIndexFieldAsyncHelper(const DeleteIndexFieldReques
 DeleteSuggesterOutcome CloudSearchClient::DeleteSuggester(const DeleteSuggesterRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DeleteSuggesterOutcome(DeleteSuggesterResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DeleteSuggesterOutcome(outcome.GetError());
-  }
+  return DeleteSuggesterOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DeleteSuggesterOutcomeCallable CloudSearchClient::DeleteSuggesterCallable(const DeleteSuggesterRequest& request) const
@@ -526,18 +398,7 @@ void CloudSearchClient::DeleteSuggesterAsyncHelper(const DeleteSuggesterRequest&
 DescribeAnalysisSchemesOutcome CloudSearchClient::DescribeAnalysisSchemes(const DescribeAnalysisSchemesRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeAnalysisSchemesOutcome(DescribeAnalysisSchemesResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeAnalysisSchemesOutcome(outcome.GetError());
-  }
+  return DescribeAnalysisSchemesOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeAnalysisSchemesOutcomeCallable CloudSearchClient::DescribeAnalysisSchemesCallable(const DescribeAnalysisSchemesRequest& request) const
@@ -561,18 +422,7 @@ void CloudSearchClient::DescribeAnalysisSchemesAsyncHelper(const DescribeAnalysi
 DescribeAvailabilityOptionsOutcome CloudSearchClient::DescribeAvailabilityOptions(const DescribeAvailabilityOptionsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeAvailabilityOptionsOutcome(DescribeAvailabilityOptionsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeAvailabilityOptionsOutcome(outcome.GetError());
-  }
+  return DescribeAvailabilityOptionsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeAvailabilityOptionsOutcomeCallable CloudSearchClient::DescribeAvailabilityOptionsCallable(const DescribeAvailabilityOptionsRequest& request) const
@@ -593,21 +443,34 @@ void CloudSearchClient::DescribeAvailabilityOptionsAsyncHelper(const DescribeAva
   handler(this, request, DescribeAvailabilityOptions(request), context);
 }
 
+DescribeDomainEndpointOptionsOutcome CloudSearchClient::DescribeDomainEndpointOptions(const DescribeDomainEndpointOptionsRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  return DescribeDomainEndpointOptionsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
+}
+
+DescribeDomainEndpointOptionsOutcomeCallable CloudSearchClient::DescribeDomainEndpointOptionsCallable(const DescribeDomainEndpointOptionsRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< DescribeDomainEndpointOptionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeDomainEndpointOptions(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void CloudSearchClient::DescribeDomainEndpointOptionsAsync(const DescribeDomainEndpointOptionsRequest& request, const DescribeDomainEndpointOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->DescribeDomainEndpointOptionsAsyncHelper( request, handler, context ); } );
+}
+
+void CloudSearchClient::DescribeDomainEndpointOptionsAsyncHelper(const DescribeDomainEndpointOptionsRequest& request, const DescribeDomainEndpointOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeDomainEndpointOptions(request), context);
+}
+
 DescribeDomainsOutcome CloudSearchClient::DescribeDomains(const DescribeDomainsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeDomainsOutcome(DescribeDomainsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeDomainsOutcome(outcome.GetError());
-  }
+  return DescribeDomainsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeDomainsOutcomeCallable CloudSearchClient::DescribeDomainsCallable(const DescribeDomainsRequest& request) const
@@ -631,18 +494,7 @@ void CloudSearchClient::DescribeDomainsAsyncHelper(const DescribeDomainsRequest&
 DescribeExpressionsOutcome CloudSearchClient::DescribeExpressions(const DescribeExpressionsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeExpressionsOutcome(DescribeExpressionsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeExpressionsOutcome(outcome.GetError());
-  }
+  return DescribeExpressionsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeExpressionsOutcomeCallable CloudSearchClient::DescribeExpressionsCallable(const DescribeExpressionsRequest& request) const
@@ -666,18 +518,7 @@ void CloudSearchClient::DescribeExpressionsAsyncHelper(const DescribeExpressions
 DescribeIndexFieldsOutcome CloudSearchClient::DescribeIndexFields(const DescribeIndexFieldsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeIndexFieldsOutcome(DescribeIndexFieldsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeIndexFieldsOutcome(outcome.GetError());
-  }
+  return DescribeIndexFieldsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeIndexFieldsOutcomeCallable CloudSearchClient::DescribeIndexFieldsCallable(const DescribeIndexFieldsRequest& request) const
@@ -701,18 +542,7 @@ void CloudSearchClient::DescribeIndexFieldsAsyncHelper(const DescribeIndexFields
 DescribeScalingParametersOutcome CloudSearchClient::DescribeScalingParameters(const DescribeScalingParametersRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeScalingParametersOutcome(DescribeScalingParametersResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeScalingParametersOutcome(outcome.GetError());
-  }
+  return DescribeScalingParametersOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeScalingParametersOutcomeCallable CloudSearchClient::DescribeScalingParametersCallable(const DescribeScalingParametersRequest& request) const
@@ -736,18 +566,7 @@ void CloudSearchClient::DescribeScalingParametersAsyncHelper(const DescribeScali
 DescribeServiceAccessPoliciesOutcome CloudSearchClient::DescribeServiceAccessPolicies(const DescribeServiceAccessPoliciesRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeServiceAccessPoliciesOutcome(DescribeServiceAccessPoliciesResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeServiceAccessPoliciesOutcome(outcome.GetError());
-  }
+  return DescribeServiceAccessPoliciesOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeServiceAccessPoliciesOutcomeCallable CloudSearchClient::DescribeServiceAccessPoliciesCallable(const DescribeServiceAccessPoliciesRequest& request) const
@@ -771,18 +590,7 @@ void CloudSearchClient::DescribeServiceAccessPoliciesAsyncHelper(const DescribeS
 DescribeSuggestersOutcome CloudSearchClient::DescribeSuggesters(const DescribeSuggestersRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return DescribeSuggestersOutcome(DescribeSuggestersResult(outcome.GetResult()));
-  }
-  else
-  {
-    return DescribeSuggestersOutcome(outcome.GetError());
-  }
+  return DescribeSuggestersOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 DescribeSuggestersOutcomeCallable CloudSearchClient::DescribeSuggestersCallable(const DescribeSuggestersRequest& request) const
@@ -806,18 +614,7 @@ void CloudSearchClient::DescribeSuggestersAsyncHelper(const DescribeSuggestersRe
 IndexDocumentsOutcome CloudSearchClient::IndexDocuments(const IndexDocumentsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return IndexDocumentsOutcome(IndexDocumentsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return IndexDocumentsOutcome(outcome.GetError());
-  }
+  return IndexDocumentsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 IndexDocumentsOutcomeCallable CloudSearchClient::IndexDocumentsCallable(const IndexDocumentsRequest& request) const
@@ -841,18 +638,7 @@ void CloudSearchClient::IndexDocumentsAsyncHelper(const IndexDocumentsRequest& r
 ListDomainNamesOutcome CloudSearchClient::ListDomainNames(const ListDomainNamesRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return ListDomainNamesOutcome(ListDomainNamesResult(outcome.GetResult()));
-  }
-  else
-  {
-    return ListDomainNamesOutcome(outcome.GetError());
-  }
+  return ListDomainNamesOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 ListDomainNamesOutcomeCallable CloudSearchClient::ListDomainNamesCallable(const ListDomainNamesRequest& request) const
@@ -876,18 +662,7 @@ void CloudSearchClient::ListDomainNamesAsyncHelper(const ListDomainNamesRequest&
 UpdateAvailabilityOptionsOutcome CloudSearchClient::UpdateAvailabilityOptions(const UpdateAvailabilityOptionsRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return UpdateAvailabilityOptionsOutcome(UpdateAvailabilityOptionsResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateAvailabilityOptionsOutcome(outcome.GetError());
-  }
+  return UpdateAvailabilityOptionsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 UpdateAvailabilityOptionsOutcomeCallable CloudSearchClient::UpdateAvailabilityOptionsCallable(const UpdateAvailabilityOptionsRequest& request) const
@@ -908,21 +683,34 @@ void CloudSearchClient::UpdateAvailabilityOptionsAsyncHelper(const UpdateAvailab
   handler(this, request, UpdateAvailabilityOptions(request), context);
 }
 
+UpdateDomainEndpointOptionsOutcome CloudSearchClient::UpdateDomainEndpointOptions(const UpdateDomainEndpointOptionsRequest& request) const
+{
+  Aws::Http::URI uri = m_uri;
+  return UpdateDomainEndpointOptionsOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
+}
+
+UpdateDomainEndpointOptionsOutcomeCallable CloudSearchClient::UpdateDomainEndpointOptionsCallable(const UpdateDomainEndpointOptionsRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UpdateDomainEndpointOptionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateDomainEndpointOptions(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void CloudSearchClient::UpdateDomainEndpointOptionsAsync(const UpdateDomainEndpointOptionsRequest& request, const UpdateDomainEndpointOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UpdateDomainEndpointOptionsAsyncHelper( request, handler, context ); } );
+}
+
+void CloudSearchClient::UpdateDomainEndpointOptionsAsyncHelper(const UpdateDomainEndpointOptionsRequest& request, const UpdateDomainEndpointOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateDomainEndpointOptions(request), context);
+}
+
 UpdateScalingParametersOutcome CloudSearchClient::UpdateScalingParameters(const UpdateScalingParametersRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return UpdateScalingParametersOutcome(UpdateScalingParametersResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateScalingParametersOutcome(outcome.GetError());
-  }
+  return UpdateScalingParametersOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 UpdateScalingParametersOutcomeCallable CloudSearchClient::UpdateScalingParametersCallable(const UpdateScalingParametersRequest& request) const
@@ -946,18 +734,7 @@ void CloudSearchClient::UpdateScalingParametersAsyncHelper(const UpdateScalingPa
 UpdateServiceAccessPoliciesOutcome CloudSearchClient::UpdateServiceAccessPolicies(const UpdateServiceAccessPoliciesRequest& request) const
 {
   Aws::Http::URI uri = m_uri;
-  Aws::StringStream ss;
-  ss << "/";
-  uri.SetPath(uri.GetPath() + ss.str());
-  XmlOutcome outcome = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST);
-  if(outcome.IsSuccess())
-  {
-    return UpdateServiceAccessPoliciesOutcome(UpdateServiceAccessPoliciesResult(outcome.GetResult()));
-  }
-  else
-  {
-    return UpdateServiceAccessPoliciesOutcome(outcome.GetError());
-  }
+  return UpdateServiceAccessPoliciesOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_POST));
 }
 
 UpdateServiceAccessPoliciesOutcomeCallable CloudSearchClient::UpdateServiceAccessPoliciesCallable(const UpdateServiceAccessPoliciesRequest& request) const
@@ -977,6 +754,4 @@ void CloudSearchClient::UpdateServiceAccessPoliciesAsyncHelper(const UpdateServi
 {
   handler(this, request, UpdateServiceAccessPolicies(request), context);
 }
-
-
 

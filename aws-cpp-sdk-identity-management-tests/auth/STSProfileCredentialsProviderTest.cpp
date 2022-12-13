@@ -1,17 +1,7 @@
-/*
-* Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/identity-management/auth/STSProfileCredentialsProvider.h>
 #include <aws/sts/model/AssumeRoleRequest.h>
@@ -88,7 +78,7 @@ public:
         Aws::Environment::UnSetEnv("AWS_DEFAULT_PROFILE");
 
         Aws::FileSystem::CreateDirectoryIfNotExists(ProfileConfigFileAWSCredentialsProvider::GetProfileDirectory().c_str());
-        
+
         Aws::StringStream ss;
         ss << Aws::Auth::GetConfigProfileFilename() + "_blah" << std::this_thread::get_id();
         m_configFilename = ss.str();
@@ -139,6 +129,7 @@ TEST_F(STSProfileCredentialsProviderTest, TestCredentialsLoadAndCache)
     configFile << "aws_access_key_id = " << ACCESS_KEY_ID_1 << std::endl;
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_1 << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -210,6 +201,7 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithStaticAndSourceProfile)
     configFile << "aws_access_key_id = " << ACCESS_KEY_ID_2 << std::endl;
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_2 << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -245,8 +237,6 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithStaticAndSourceProfile)
     ASSERT_STREQ(ACCESS_KEY_ID_3, actualCredentials.GetAWSAccessKeyId().c_str());
     ASSERT_STREQ(SECRET_ACCESS_KEY_ID_3, actualCredentials.GetAWSSecretKey().c_str());
     ASSERT_EQ(expiryTime, actualCredentials.GetExpiration());
-
-
 }
 
 /**
@@ -264,6 +254,7 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithProcessCredentials)
     configFile << " [other]" << std::endl;
     configFile << "credential_process = echo " << WrapEchoStringWithSingleQuoteForUnixShell("{\"Version\": 1, \"AccessKeyId\": \"AccessKey123\", \"SecretAccessKey\": \"SecretKey321\", \"Expiration\": \"1970-01-01T00:00:01Z\"}") << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -314,10 +305,11 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithoutRoleARN)
     configFile << " [other]" << std::endl;
     configFile << "credential_process = echo " << WrapEchoStringWithSingleQuoteForUnixShell("{\"Version\": 1, \"AccessKeyId\": \"AccessKey123\", \"SecretAccessKey\": \"SecretKey321\", \"Expiration\": \"1970-01-01T00:00:01Z\"}") << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
 
-    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) { 
+    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) {
             ADD_FAILURE() << "STS Service client should not be used in this scenario.";
             return nullptr;
     });
@@ -345,6 +337,7 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithoutRoleARNInSourceProfil
     configFile << "aws_access_key_id = " << ACCESS_KEY_ID_1 << std::endl;
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_1 << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -382,10 +375,11 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithoutSourceProfile)
     configFile << "role_arn = " << ROLE_ARN_1 << std::endl;
     configFile << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
 
-    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) { 
+    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) {
             ADD_FAILURE() << "STS Service client should not be used in this scenario.";
             return nullptr;
     });
@@ -407,10 +401,11 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleWithNonExistentSourceProfile
     configFile << "aws_access_key_id = " << ACCESS_KEY_ID_1 << std::endl;
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_1 << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
 
-    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) { 
+    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) {
             ADD_FAILURE() << "STS Service client should not be used in this scenario.";
             return nullptr;
     });
@@ -443,6 +438,7 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleRecursively)
     configFile << "aws_access_key_id = " << ACCESS_KEY_ID_1 << std::endl;
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_1 << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -497,6 +493,7 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleSelfReferencing)
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_1 << std::endl;
     configFile << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -544,6 +541,7 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleSelfReferencingSourceProfile
     configFile << "aws_secret_access_key = " << SECRET_ACCESS_KEY_ID_1 << std::endl;
     configFile << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
     const DateTime expiryTime{DateTime::Now() + roleSessionDuration};
@@ -608,10 +606,11 @@ TEST_F(STSProfileCredentialsProviderTest, AssumeRoleRecursivelyCircularReference
     configFile << "role_arn = " << ROLE_ARN_2 << std::endl;
     configFile << std::endl;
     configFile.close();
+    Aws::Config::ReloadCachedConfigFile();
 
     constexpr auto roleSessionDuration = std::chrono::hours(1);
 
-    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) { 
+    STSProfileCredentialsProvider credsProvider("default", roleSessionDuration, [](const AWSCredentials&) {
             ADD_FAILURE() << "STS Service client should not be used in this scenario.";
             return nullptr;
     });

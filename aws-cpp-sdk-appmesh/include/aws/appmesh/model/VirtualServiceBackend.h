@@ -1,20 +1,11 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/appmesh/AppMesh_EXPORTS.h>
+#include <aws/appmesh/model/ClientPolicy.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -46,6 +37,37 @@ namespace Model
     VirtualServiceBackend(Aws::Utils::Json::JsonView jsonValue);
     VirtualServiceBackend& operator=(Aws::Utils::Json::JsonView jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
+
+
+    /**
+     * <p>A reference to an object that represents the client policy for a backend.</p>
+     */
+    inline const ClientPolicy& GetClientPolicy() const{ return m_clientPolicy; }
+
+    /**
+     * <p>A reference to an object that represents the client policy for a backend.</p>
+     */
+    inline bool ClientPolicyHasBeenSet() const { return m_clientPolicyHasBeenSet; }
+
+    /**
+     * <p>A reference to an object that represents the client policy for a backend.</p>
+     */
+    inline void SetClientPolicy(const ClientPolicy& value) { m_clientPolicyHasBeenSet = true; m_clientPolicy = value; }
+
+    /**
+     * <p>A reference to an object that represents the client policy for a backend.</p>
+     */
+    inline void SetClientPolicy(ClientPolicy&& value) { m_clientPolicyHasBeenSet = true; m_clientPolicy = std::move(value); }
+
+    /**
+     * <p>A reference to an object that represents the client policy for a backend.</p>
+     */
+    inline VirtualServiceBackend& WithClientPolicy(const ClientPolicy& value) { SetClientPolicy(value); return *this;}
+
+    /**
+     * <p>A reference to an object that represents the client policy for a backend.</p>
+     */
+    inline VirtualServiceBackend& WithClientPolicy(ClientPolicy&& value) { SetClientPolicy(std::move(value)); return *this;}
 
 
     /**
@@ -89,6 +111,9 @@ namespace Model
     inline VirtualServiceBackend& WithVirtualServiceName(const char* value) { SetVirtualServiceName(value); return *this;}
 
   private:
+
+    ClientPolicy m_clientPolicy;
+    bool m_clientPolicyHasBeenSet;
 
     Aws::String m_virtualServiceName;
     bool m_virtualServiceNameHasBeenSet;

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
@@ -20,7 +10,11 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/iot/model/TargetSelection.h>
 #include <aws/iot/model/AwsJobExecutionsRolloutConfig.h>
+#include <aws/iot/model/AwsJobPresignedUrlConfig.h>
+#include <aws/iot/model/AwsJobAbortConfig.h>
+#include <aws/iot/model/AwsJobTimeoutConfig.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/iot/model/Protocol.h>
 #include <aws/iot/model/OTAUpdateFile.h>
 #include <aws/iot/model/Tag.h>
 #include <utility>
@@ -131,49 +125,106 @@ namespace Model
 
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline const Aws::Vector<Aws::String>& GetTargets() const{ return m_targets; }
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline void SetTargets(const Aws::Vector<Aws::String>& value) { m_targetsHasBeenSet = true; m_targets = value; }
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline void SetTargets(Aws::Vector<Aws::String>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline CreateOTAUpdateRequest& WithTargets(const Aws::Vector<Aws::String>& value) { SetTargets(value); return *this;}
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline CreateOTAUpdateRequest& WithTargets(Aws::Vector<Aws::String>&& value) { SetTargets(std::move(value)); return *this;}
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline CreateOTAUpdateRequest& AddTargets(const Aws::String& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline CreateOTAUpdateRequest& AddTargets(Aws::String&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The targeted devices to receive OTA updates.</p>
+     * <p>The devices targeted to receive OTA updates.</p>
      */
     inline CreateOTAUpdateRequest& AddTargets(const char* value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
+
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline const Aws::Vector<Protocol>& GetProtocols() const{ return m_protocols; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline bool ProtocolsHasBeenSet() const { return m_protocolsHasBeenSet; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline void SetProtocols(const Aws::Vector<Protocol>& value) { m_protocolsHasBeenSet = true; m_protocols = value; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline void SetProtocols(Aws::Vector<Protocol>&& value) { m_protocolsHasBeenSet = true; m_protocols = std::move(value); }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline CreateOTAUpdateRequest& WithProtocols(const Aws::Vector<Protocol>& value) { SetProtocols(value); return *this;}
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline CreateOTAUpdateRequest& WithProtocols(Aws::Vector<Protocol>&& value) { SetProtocols(std::move(value)); return *this;}
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline CreateOTAUpdateRequest& AddProtocols(const Protocol& value) { m_protocolsHasBeenSet = true; m_protocols.push_back(value); return *this; }
+
+    /**
+     * <p>The protocol used to transfer the OTA update image. Valid values are [HTTP],
+     * [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device
+     * can choose the protocol.</p>
+     */
+    inline CreateOTAUpdateRequest& AddProtocols(Protocol&& value) { m_protocolsHasBeenSet = true; m_protocols.push_back(std::move(value)); return *this; }
 
 
     /**
@@ -269,6 +320,123 @@ namespace Model
 
 
     /**
+     * <p>Configuration information for pre-signed URLs.</p>
+     */
+    inline const AwsJobPresignedUrlConfig& GetAwsJobPresignedUrlConfig() const{ return m_awsJobPresignedUrlConfig; }
+
+    /**
+     * <p>Configuration information for pre-signed URLs.</p>
+     */
+    inline bool AwsJobPresignedUrlConfigHasBeenSet() const { return m_awsJobPresignedUrlConfigHasBeenSet; }
+
+    /**
+     * <p>Configuration information for pre-signed URLs.</p>
+     */
+    inline void SetAwsJobPresignedUrlConfig(const AwsJobPresignedUrlConfig& value) { m_awsJobPresignedUrlConfigHasBeenSet = true; m_awsJobPresignedUrlConfig = value; }
+
+    /**
+     * <p>Configuration information for pre-signed URLs.</p>
+     */
+    inline void SetAwsJobPresignedUrlConfig(AwsJobPresignedUrlConfig&& value) { m_awsJobPresignedUrlConfigHasBeenSet = true; m_awsJobPresignedUrlConfig = std::move(value); }
+
+    /**
+     * <p>Configuration information for pre-signed URLs.</p>
+     */
+    inline CreateOTAUpdateRequest& WithAwsJobPresignedUrlConfig(const AwsJobPresignedUrlConfig& value) { SetAwsJobPresignedUrlConfig(value); return *this;}
+
+    /**
+     * <p>Configuration information for pre-signed URLs.</p>
+     */
+    inline CreateOTAUpdateRequest& WithAwsJobPresignedUrlConfig(AwsJobPresignedUrlConfig&& value) { SetAwsJobPresignedUrlConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The criteria that determine when and how a job abort takes place.</p>
+     */
+    inline const AwsJobAbortConfig& GetAwsJobAbortConfig() const{ return m_awsJobAbortConfig; }
+
+    /**
+     * <p>The criteria that determine when and how a job abort takes place.</p>
+     */
+    inline bool AwsJobAbortConfigHasBeenSet() const { return m_awsJobAbortConfigHasBeenSet; }
+
+    /**
+     * <p>The criteria that determine when and how a job abort takes place.</p>
+     */
+    inline void SetAwsJobAbortConfig(const AwsJobAbortConfig& value) { m_awsJobAbortConfigHasBeenSet = true; m_awsJobAbortConfig = value; }
+
+    /**
+     * <p>The criteria that determine when and how a job abort takes place.</p>
+     */
+    inline void SetAwsJobAbortConfig(AwsJobAbortConfig&& value) { m_awsJobAbortConfigHasBeenSet = true; m_awsJobAbortConfig = std::move(value); }
+
+    /**
+     * <p>The criteria that determine when and how a job abort takes place.</p>
+     */
+    inline CreateOTAUpdateRequest& WithAwsJobAbortConfig(const AwsJobAbortConfig& value) { SetAwsJobAbortConfig(value); return *this;}
+
+    /**
+     * <p>The criteria that determine when and how a job abort takes place.</p>
+     */
+    inline CreateOTAUpdateRequest& WithAwsJobAbortConfig(AwsJobAbortConfig&& value) { SetAwsJobAbortConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Specifies the amount of time each device has to finish its execution of the
+     * job. A timer is started when the job execution status is set to
+     * <code>IN_PROGRESS</code>. If the job execution status is not set to another
+     * terminal state before the timer expires, it will be automatically set to
+     * <code>TIMED_OUT</code>.</p>
+     */
+    inline const AwsJobTimeoutConfig& GetAwsJobTimeoutConfig() const{ return m_awsJobTimeoutConfig; }
+
+    /**
+     * <p>Specifies the amount of time each device has to finish its execution of the
+     * job. A timer is started when the job execution status is set to
+     * <code>IN_PROGRESS</code>. If the job execution status is not set to another
+     * terminal state before the timer expires, it will be automatically set to
+     * <code>TIMED_OUT</code>.</p>
+     */
+    inline bool AwsJobTimeoutConfigHasBeenSet() const { return m_awsJobTimeoutConfigHasBeenSet; }
+
+    /**
+     * <p>Specifies the amount of time each device has to finish its execution of the
+     * job. A timer is started when the job execution status is set to
+     * <code>IN_PROGRESS</code>. If the job execution status is not set to another
+     * terminal state before the timer expires, it will be automatically set to
+     * <code>TIMED_OUT</code>.</p>
+     */
+    inline void SetAwsJobTimeoutConfig(const AwsJobTimeoutConfig& value) { m_awsJobTimeoutConfigHasBeenSet = true; m_awsJobTimeoutConfig = value; }
+
+    /**
+     * <p>Specifies the amount of time each device has to finish its execution of the
+     * job. A timer is started when the job execution status is set to
+     * <code>IN_PROGRESS</code>. If the job execution status is not set to another
+     * terminal state before the timer expires, it will be automatically set to
+     * <code>TIMED_OUT</code>.</p>
+     */
+    inline void SetAwsJobTimeoutConfig(AwsJobTimeoutConfig&& value) { m_awsJobTimeoutConfigHasBeenSet = true; m_awsJobTimeoutConfig = std::move(value); }
+
+    /**
+     * <p>Specifies the amount of time each device has to finish its execution of the
+     * job. A timer is started when the job execution status is set to
+     * <code>IN_PROGRESS</code>. If the job execution status is not set to another
+     * terminal state before the timer expires, it will be automatically set to
+     * <code>TIMED_OUT</code>.</p>
+     */
+    inline CreateOTAUpdateRequest& WithAwsJobTimeoutConfig(const AwsJobTimeoutConfig& value) { SetAwsJobTimeoutConfig(value); return *this;}
+
+    /**
+     * <p>Specifies the amount of time each device has to finish its execution of the
+     * job. A timer is started when the job execution status is set to
+     * <code>IN_PROGRESS</code>. If the job execution status is not set to another
+     * terminal state before the timer expires, it will be automatically set to
+     * <code>TIMED_OUT</code>.</p>
+     */
+    inline CreateOTAUpdateRequest& WithAwsJobTimeoutConfig(AwsJobTimeoutConfig&& value) { SetAwsJobTimeoutConfig(std::move(value)); return *this;}
+
+
+    /**
      * <p>The files to be streamed by the OTA update.</p>
      */
     inline const Aws::Vector<OTAUpdateFile>& GetFiles() const{ return m_files; }
@@ -310,42 +478,58 @@ namespace Model
 
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline CreateOTAUpdateRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline CreateOTAUpdateRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
-     * <p>The IAM role that allows access to the AWS IoT Jobs service.</p>
+     * <p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon
+     * S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA
+     * update job.</p>
      */
     inline CreateOTAUpdateRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
 
@@ -467,11 +651,23 @@ namespace Model
     Aws::Vector<Aws::String> m_targets;
     bool m_targetsHasBeenSet;
 
+    Aws::Vector<Protocol> m_protocols;
+    bool m_protocolsHasBeenSet;
+
     TargetSelection m_targetSelection;
     bool m_targetSelectionHasBeenSet;
 
     AwsJobExecutionsRolloutConfig m_awsJobExecutionsRolloutConfig;
     bool m_awsJobExecutionsRolloutConfigHasBeenSet;
+
+    AwsJobPresignedUrlConfig m_awsJobPresignedUrlConfig;
+    bool m_awsJobPresignedUrlConfigHasBeenSet;
+
+    AwsJobAbortConfig m_awsJobAbortConfig;
+    bool m_awsJobAbortConfigHasBeenSet;
+
+    AwsJobTimeoutConfig m_awsJobTimeoutConfig;
+    bool m_awsJobTimeoutConfigHasBeenSet;
 
     Aws::Vector<OTAUpdateFile> m_files;
     bool m_filesHasBeenSet;

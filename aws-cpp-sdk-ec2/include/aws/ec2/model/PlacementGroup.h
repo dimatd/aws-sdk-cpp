@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -19,6 +9,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/PlacementGroupState.h>
 #include <aws/ec2/model/PlacementStrategy.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ec2/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -178,6 +170,129 @@ namespace Model
      */
     inline PlacementGroup& WithPartitionCount(int value) { SetPartitionCount(value); return *this;}
 
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline const Aws::String& GetGroupId() const{ return m_groupId; }
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline void SetGroupId(const Aws::String& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline void SetGroupId(const char* value) { m_groupIdHasBeenSet = true; m_groupId.assign(value); }
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline PlacementGroup& WithGroupId(const Aws::String& value) { SetGroupId(value); return *this;}
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline PlacementGroup& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of the placement group.</p>
+     */
+    inline PlacementGroup& WithGroupId(const char* value) { SetGroupId(value); return *this;}
+
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline PlacementGroup& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline PlacementGroup& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline PlacementGroup& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
+    /**
+     * <p>Any tags applied to the placement group.</p>
+     */
+    inline PlacementGroup& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline const Aws::String& GetGroupArn() const{ return m_groupArn; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline bool GroupArnHasBeenSet() const { return m_groupArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline void SetGroupArn(const Aws::String& value) { m_groupArnHasBeenSet = true; m_groupArn = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline void SetGroupArn(Aws::String&& value) { m_groupArnHasBeenSet = true; m_groupArn = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline void SetGroupArn(const char* value) { m_groupArnHasBeenSet = true; m_groupArn.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline PlacementGroup& WithGroupArn(const Aws::String& value) { SetGroupArn(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline PlacementGroup& WithGroupArn(Aws::String&& value) { SetGroupArn(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the placement group.</p>
+     */
+    inline PlacementGroup& WithGroupArn(const char* value) { SetGroupArn(value); return *this;}
+
   private:
 
     Aws::String m_groupName;
@@ -191,6 +306,15 @@ namespace Model
 
     int m_partitionCount;
     bool m_partitionCountHasBeenSet;
+
+    Aws::String m_groupId;
+    bool m_groupIdHasBeenSet;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet;
+
+    Aws::String m_groupArn;
+    bool m_groupArnHasBeenSet;
   };
 
 } // namespace Model

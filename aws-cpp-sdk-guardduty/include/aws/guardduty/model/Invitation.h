@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/guardduty/GuardDuty_EXPORTS.h>
@@ -34,7 +24,8 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about the invitation.</p><p><h3>See Also:</h3>   <a
+   * <p>Contains information about the invitation to become a member
+   * account.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/Invitation">AWS
    * API Reference</a></p>
    */
@@ -48,83 +39,91 @@ namespace Model
 
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline const Aws::String& GetAccountId() const{ return m_accountId; }
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline Invitation& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline Invitation& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
 
     /**
-     * <p>Inviter account ID</p>
+     * <p>The ID of the account that the invitation was sent from.</p>
      */
     inline Invitation& WithAccountId(const char* value) { SetAccountId(value); return *this;}
 
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline const Aws::String& GetInvitationId() const{ return m_invitationId; }
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline bool InvitationIdHasBeenSet() const { return m_invitationIdHasBeenSet; }
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline void SetInvitationId(const Aws::String& value) { m_invitationIdHasBeenSet = true; m_invitationId = value; }
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline void SetInvitationId(Aws::String&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::move(value); }
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline void SetInvitationId(const char* value) { m_invitationIdHasBeenSet = true; m_invitationId.assign(value); }
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline Invitation& WithInvitationId(const Aws::String& value) { SetInvitationId(value); return *this;}
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline Invitation& WithInvitationId(Aws::String&& value) { SetInvitationId(std::move(value)); return *this;}
 
     /**
-     * <p>This value is used to validate the inviter account to the member account.</p>
+     * <p>The ID of the invitation. This value is used to validate the inviter account
+     * to the member account.</p>
      */
     inline Invitation& WithInvitationId(const char* value) { SetInvitationId(value); return *this;}
 
@@ -171,42 +170,42 @@ namespace Model
 
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline const Aws::String& GetInvitedAt() const{ return m_invitedAt; }
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline bool InvitedAtHasBeenSet() const { return m_invitedAtHasBeenSet; }
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline void SetInvitedAt(const Aws::String& value) { m_invitedAtHasBeenSet = true; m_invitedAt = value; }
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline void SetInvitedAt(Aws::String&& value) { m_invitedAtHasBeenSet = true; m_invitedAt = std::move(value); }
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline void SetInvitedAt(const char* value) { m_invitedAtHasBeenSet = true; m_invitedAt.assign(value); }
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline Invitation& WithInvitedAt(const Aws::String& value) { SetInvitedAt(value); return *this;}
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline Invitation& WithInvitedAt(Aws::String&& value) { SetInvitedAt(std::move(value)); return *this;}
 
     /**
-     * <p>Timestamp at which the invitation was sent</p>
+     * <p>The timestamp when the invitation was sent.</p>
      */
     inline Invitation& WithInvitedAt(const char* value) { SetInvitedAt(value); return *this;}
 

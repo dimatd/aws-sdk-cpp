@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -34,7 +24,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>Container for granting information.</p> <p>Buckets that use the bucket owner
+   * enforced setting for Object Ownership don't support target grants. For more
+   * information, see <a
+   * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html#grant-log-delivery-permissions-general">Permissions
+   * server access log delivery</a> in the <i>Amazon S3 User Guide</i>.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/TargetGrant">AWS API
    * Reference</a></p>
    */
@@ -49,63 +44,63 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>Container for the person being granted permissions.</p>
      */
     inline const Grantee& GetGrantee() const{ return m_grantee; }
 
     /**
-     * <p/>
+     * <p>Container for the person being granted permissions.</p>
      */
     inline bool GranteeHasBeenSet() const { return m_granteeHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>Container for the person being granted permissions.</p>
      */
     inline void SetGrantee(const Grantee& value) { m_granteeHasBeenSet = true; m_grantee = value; }
 
     /**
-     * <p/>
+     * <p>Container for the person being granted permissions.</p>
      */
     inline void SetGrantee(Grantee&& value) { m_granteeHasBeenSet = true; m_grantee = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Container for the person being granted permissions.</p>
      */
     inline TargetGrant& WithGrantee(const Grantee& value) { SetGrantee(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Container for the person being granted permissions.</p>
      */
     inline TargetGrant& WithGrantee(Grantee&& value) { SetGrantee(std::move(value)); return *this;}
 
 
     /**
-     * <p>Logging permissions assigned to the Grantee for the bucket.</p>
+     * <p>Logging permissions assigned to the grantee for the bucket.</p>
      */
     inline const BucketLogsPermission& GetPermission() const{ return m_permission; }
 
     /**
-     * <p>Logging permissions assigned to the Grantee for the bucket.</p>
+     * <p>Logging permissions assigned to the grantee for the bucket.</p>
      */
     inline bool PermissionHasBeenSet() const { return m_permissionHasBeenSet; }
 
     /**
-     * <p>Logging permissions assigned to the Grantee for the bucket.</p>
+     * <p>Logging permissions assigned to the grantee for the bucket.</p>
      */
     inline void SetPermission(const BucketLogsPermission& value) { m_permissionHasBeenSet = true; m_permission = value; }
 
     /**
-     * <p>Logging permissions assigned to the Grantee for the bucket.</p>
+     * <p>Logging permissions assigned to the grantee for the bucket.</p>
      */
     inline void SetPermission(BucketLogsPermission&& value) { m_permissionHasBeenSet = true; m_permission = std::move(value); }
 
     /**
-     * <p>Logging permissions assigned to the Grantee for the bucket.</p>
+     * <p>Logging permissions assigned to the grantee for the bucket.</p>
      */
     inline TargetGrant& WithPermission(const BucketLogsPermission& value) { SetPermission(value); return *this;}
 
     /**
-     * <p>Logging permissions assigned to the Grantee for the bucket.</p>
+     * <p>Logging permissions assigned to the grantee for the bucket.</p>
      */
     inline TargetGrant& WithPermission(BucketLogsPermission&& value) { SetPermission(std::move(value)); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/docdb/DocDB_EXPORTS.h>
@@ -52,137 +42,137 @@ namespace Model
   public:
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline const Aws::String& GetDBClusterIdentifier() const{ return m_dBClusterIdentifier; }
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline bool DBClusterIdentifierHasBeenSet() const { return m_dBClusterIdentifierHasBeenSet; }
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline void SetDBClusterIdentifier(const Aws::String& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline void SetDBClusterIdentifier(const char* value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier.assign(value); }
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline ModifyDBClusterRequest& WithDBClusterIdentifier(const Aws::String& value) { SetDBClusterIdentifier(value); return *this;}
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline ModifyDBClusterRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
 
     /**
-     * <p>The DB cluster identifier for the cluster that is being modified. This
-     * parameter is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match
-     * the identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
+     * <p>The cluster identifier for the cluster that is being modified. This parameter
+     * is not case sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match the
+     * identifier of an existing <code>DBCluster</code>.</p> </li> </ul>
      */
     inline ModifyDBClusterRequest& WithDBClusterIdentifier(const char* value) { SetDBClusterIdentifier(value); return *this;}
 
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline const Aws::String& GetNewDBClusterIdentifier() const{ return m_newDBClusterIdentifier; }
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline bool NewDBClusterIdentifierHasBeenSet() const { return m_newDBClusterIdentifierHasBeenSet; }
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline void SetNewDBClusterIdentifier(const Aws::String& value) { m_newDBClusterIdentifierHasBeenSet = true; m_newDBClusterIdentifier = value; }
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline void SetNewDBClusterIdentifier(Aws::String&& value) { m_newDBClusterIdentifierHasBeenSet = true; m_newDBClusterIdentifier = std::move(value); }
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline void SetNewDBClusterIdentifier(const char* value) { m_newDBClusterIdentifierHasBeenSet = true; m_newDBClusterIdentifier.assign(value); }
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline ModifyDBClusterRequest& WithNewDBClusterIdentifier(const Aws::String& value) { SetNewDBClusterIdentifier(value); return *this;}
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
     inline ModifyDBClusterRequest& WithNewDBClusterIdentifier(Aws::String&& value) { SetNewDBClusterIdentifier(std::move(value)); return *this;}
 
     /**
-     * <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster.
-     * This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The
-     * first character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
+     * <p>The new cluster identifier for the cluster when renaming a cluster. This
+     * value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
+     * contain from 1 to 63 letters, numbers, or hyphens.</p> </li> <li> <p>The first
+     * character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or
      * contain two consecutive hyphens.</p> </li> </ul> <p>Example:
      * <code>my-cluster2</code> </p>
      */
@@ -192,8 +182,8 @@ namespace Model
     /**
      * <p>A value that specifies whether the changes in this request and any pending
      * changes are asynchronously applied as soon as possible, regardless of the
-     * <code>PreferredMaintenanceWindow</code> setting for the DB cluster. If this
-     * parameter is set to <code>false</code>, changes to the DB cluster are applied
+     * <code>PreferredMaintenanceWindow</code> setting for the cluster. If this
+     * parameter is set to <code>false</code>, changes to the cluster are applied
      * during the next maintenance window.</p> <p>The <code>ApplyImmediately</code>
      * parameter affects only the <code>NewDBClusterIdentifier</code> and
      * <code>MasterUserPassword</code> values. If you set this parameter value to
@@ -208,8 +198,8 @@ namespace Model
     /**
      * <p>A value that specifies whether the changes in this request and any pending
      * changes are asynchronously applied as soon as possible, regardless of the
-     * <code>PreferredMaintenanceWindow</code> setting for the DB cluster. If this
-     * parameter is set to <code>false</code>, changes to the DB cluster are applied
+     * <code>PreferredMaintenanceWindow</code> setting for the cluster. If this
+     * parameter is set to <code>false</code>, changes to the cluster are applied
      * during the next maintenance window.</p> <p>The <code>ApplyImmediately</code>
      * parameter affects only the <code>NewDBClusterIdentifier</code> and
      * <code>MasterUserPassword</code> values. If you set this parameter value to
@@ -224,8 +214,8 @@ namespace Model
     /**
      * <p>A value that specifies whether the changes in this request and any pending
      * changes are asynchronously applied as soon as possible, regardless of the
-     * <code>PreferredMaintenanceWindow</code> setting for the DB cluster. If this
-     * parameter is set to <code>false</code>, changes to the DB cluster are applied
+     * <code>PreferredMaintenanceWindow</code> setting for the cluster. If this
+     * parameter is set to <code>false</code>, changes to the cluster are applied
      * during the next maintenance window.</p> <p>The <code>ApplyImmediately</code>
      * parameter affects only the <code>NewDBClusterIdentifier</code> and
      * <code>MasterUserPassword</code> values. If you set this parameter value to
@@ -240,8 +230,8 @@ namespace Model
     /**
      * <p>A value that specifies whether the changes in this request and any pending
      * changes are asynchronously applied as soon as possible, regardless of the
-     * <code>PreferredMaintenanceWindow</code> setting for the DB cluster. If this
-     * parameter is set to <code>false</code>, changes to the DB cluster are applied
+     * <code>PreferredMaintenanceWindow</code> setting for the cluster. If this
+     * parameter is set to <code>false</code>, changes to the cluster are applied
      * during the next maintenance window.</p> <p>The <code>ApplyImmediately</code>
      * parameter affects only the <code>NewDBClusterIdentifier</code> and
      * <code>MasterUserPassword</code> values. If you set this parameter value to
@@ -284,126 +274,126 @@ namespace Model
 
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline const Aws::String& GetDBClusterParameterGroupName() const{ return m_dBClusterParameterGroupName; }
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline bool DBClusterParameterGroupNameHasBeenSet() const { return m_dBClusterParameterGroupNameHasBeenSet; }
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline void SetDBClusterParameterGroupName(const Aws::String& value) { m_dBClusterParameterGroupNameHasBeenSet = true; m_dBClusterParameterGroupName = value; }
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline void SetDBClusterParameterGroupName(Aws::String&& value) { m_dBClusterParameterGroupNameHasBeenSet = true; m_dBClusterParameterGroupName = std::move(value); }
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline void SetDBClusterParameterGroupName(const char* value) { m_dBClusterParameterGroupNameHasBeenSet = true; m_dBClusterParameterGroupName.assign(value); }
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline ModifyDBClusterRequest& WithDBClusterParameterGroupName(const Aws::String& value) { SetDBClusterParameterGroupName(value); return *this;}
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline ModifyDBClusterRequest& WithDBClusterParameterGroupName(Aws::String&& value) { SetDBClusterParameterGroupName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+     * <p>The name of the cluster parameter group to use for the cluster.</p>
      */
     inline ModifyDBClusterRequest& WithDBClusterParameterGroupName(const char* value) { SetDBClusterParameterGroupName(value); return *this;}
 
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline const Aws::Vector<Aws::String>& GetVpcSecurityGroupIds() const{ return m_vpcSecurityGroupIds; }
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline bool VpcSecurityGroupIdsHasBeenSet() const { return m_vpcSecurityGroupIdsHasBeenSet; }
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline void SetVpcSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds = value; }
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline void SetVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds = std::move(value); }
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline ModifyDBClusterRequest& WithVpcSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetVpcSecurityGroupIds(value); return *this;}
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline ModifyDBClusterRequest& WithVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupIds(std::move(value)); return *this;}
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline ModifyDBClusterRequest& AddVpcSecurityGroupIds(const Aws::String& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(value); return *this; }
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline ModifyDBClusterRequest& AddVpcSecurityGroupIds(Aws::String&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>A list of virtual private cloud (VPC) security groups that the DB cluster
-     * will belong to.</p>
+     * <p>A list of virtual private cloud (VPC) security groups that the cluster will
+     * belong to.</p>
      */
     inline ModifyDBClusterRequest& AddVpcSecurityGroupIds(const char* value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(value); return *this; }
 
 
     /**
-     * <p>The port number on which the DB cluster accepts connections.</p>
-     * <p>Constraints: Must be a value from <code>1150</code> to <code>65535</code>.
-     * </p> <p>Default: The same port as the original DB cluster.</p>
+     * <p>The port number on which the cluster accepts connections.</p> <p>Constraints:
+     * Must be a value from <code>1150</code> to <code>65535</code>. </p> <p>Default:
+     * The same port as the original cluster.</p>
      */
     inline int GetPort() const{ return m_port; }
 
     /**
-     * <p>The port number on which the DB cluster accepts connections.</p>
-     * <p>Constraints: Must be a value from <code>1150</code> to <code>65535</code>.
-     * </p> <p>Default: The same port as the original DB cluster.</p>
+     * <p>The port number on which the cluster accepts connections.</p> <p>Constraints:
+     * Must be a value from <code>1150</code> to <code>65535</code>. </p> <p>Default:
+     * The same port as the original cluster.</p>
      */
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
 
     /**
-     * <p>The port number on which the DB cluster accepts connections.</p>
-     * <p>Constraints: Must be a value from <code>1150</code> to <code>65535</code>.
-     * </p> <p>Default: The same port as the original DB cluster.</p>
+     * <p>The port number on which the cluster accepts connections.</p> <p>Constraints:
+     * Must be a value from <code>1150</code> to <code>65535</code>. </p> <p>Default:
+     * The same port as the original cluster.</p>
      */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
 
     /**
-     * <p>The port number on which the DB cluster accepts connections.</p>
-     * <p>Constraints: Must be a value from <code>1150</code> to <code>65535</code>.
-     * </p> <p>Default: The same port as the original DB cluster.</p>
+     * <p>The port number on which the cluster accepts connections.</p> <p>Constraints:
+     * Must be a value from <code>1150</code> to <code>65535</code>. </p> <p>Default:
+     * The same port as the original cluster.</p>
      */
     inline ModifyDBClusterRequest& WithPort(int value) { SetPort(value); return *this;}
 
@@ -469,11 +459,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline const Aws::String& GetPreferredBackupWindow() const{ return m_preferredBackupWindow; }
 
@@ -481,11 +471,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline bool PreferredBackupWindowHasBeenSet() const { return m_preferredBackupWindowHasBeenSet; }
 
@@ -493,11 +483,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline void SetPreferredBackupWindow(const Aws::String& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = value; }
 
@@ -505,11 +495,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = std::move(value); }
 
@@ -517,11 +507,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline void SetPreferredBackupWindow(const char* value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow.assign(value); }
 
@@ -529,11 +519,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline ModifyDBClusterRequest& WithPreferredBackupWindow(const Aws::String& value) { SetPreferredBackupWindow(value); return *this;}
 
@@ -541,11 +531,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline ModifyDBClusterRequest& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(std::move(value)); return *this;}
 
@@ -553,11 +543,11 @@ namespace Model
      * <p>The daily time range during which automated backups are created if automated
      * backups are enabled, using the <code>BackupRetentionPeriod</code> parameter.
      * </p> <p>The default is a 30-minute window selected at random from an 8-hour
-     * block of time for each AWS Region. </p> <p>Constraints:</p> <ul> <li> <p>Must be
-     * in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Must be in
-     * Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the
-     * preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p>
-     * </li> </ul>
+     * block of time for each Amazon Web Services Region. </p> <p>Constraints:</p> <ul>
+     * <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li>
+     * <p>Must be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not
+     * conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at
+     * least 30 minutes.</p> </li> </ul>
      */
     inline ModifyDBClusterRequest& WithPreferredBackupWindow(const char* value) { SetPreferredBackupWindow(value); return *this;}
 
@@ -566,9 +556,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline const Aws::String& GetPreferredMaintenanceWindow() const{ return m_preferredMaintenanceWindow; }
 
@@ -576,9 +566,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline bool PreferredMaintenanceWindowHasBeenSet() const { return m_preferredMaintenanceWindowHasBeenSet; }
 
@@ -586,9 +576,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline void SetPreferredMaintenanceWindow(const Aws::String& value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow = value; }
 
@@ -596,9 +586,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline void SetPreferredMaintenanceWindow(Aws::String&& value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow = std::move(value); }
 
@@ -606,9 +596,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline void SetPreferredMaintenanceWindow(const char* value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow.assign(value); }
 
@@ -616,9 +606,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline ModifyDBClusterRequest& WithPreferredMaintenanceWindow(const Aws::String& value) { SetPreferredMaintenanceWindow(value); return *this;}
 
@@ -626,9 +616,9 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline ModifyDBClusterRequest& WithPreferredMaintenanceWindow(Aws::String&& value) { SetPreferredMaintenanceWindow(std::move(value)); return *this;}
 
@@ -636,16 +626,16 @@ namespace Model
      * <p>The weekly time range during which system maintenance can occur, in Universal
      * Coordinated Time (UTC).</p> <p>Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p>
      * <p>The default is a 30-minute window selected at random from an 8-hour block of
-     * time for each AWS Region, occurring on a random day of the week. </p> <p>Valid
-     * days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute
-     * window.</p>
+     * time for each Amazon Web Services Region, occurring on a random day of the week.
+     * </p> <p>Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints:
+     * Minimum 30-minute window.</p>
      */
     inline ModifyDBClusterRequest& WithPreferredMaintenanceWindow(const char* value) { SetPreferredMaintenanceWindow(value); return *this;}
 
 
     /**
      * <p>The configuration setting for the log types to be enabled for export to
-     * Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+     * Amazon CloudWatch Logs for a specific instance or cluster. The
      * <code>EnableLogTypes</code> and <code>DisableLogTypes</code> arrays determine
      * which logs are exported (or not exported) to CloudWatch Logs.</p>
      */
@@ -653,7 +643,7 @@ namespace Model
 
     /**
      * <p>The configuration setting for the log types to be enabled for export to
-     * Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+     * Amazon CloudWatch Logs for a specific instance or cluster. The
      * <code>EnableLogTypes</code> and <code>DisableLogTypes</code> arrays determine
      * which logs are exported (or not exported) to CloudWatch Logs.</p>
      */
@@ -661,7 +651,7 @@ namespace Model
 
     /**
      * <p>The configuration setting for the log types to be enabled for export to
-     * Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+     * Amazon CloudWatch Logs for a specific instance or cluster. The
      * <code>EnableLogTypes</code> and <code>DisableLogTypes</code> arrays determine
      * which logs are exported (or not exported) to CloudWatch Logs.</p>
      */
@@ -669,7 +659,7 @@ namespace Model
 
     /**
      * <p>The configuration setting for the log types to be enabled for export to
-     * Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+     * Amazon CloudWatch Logs for a specific instance or cluster. The
      * <code>EnableLogTypes</code> and <code>DisableLogTypes</code> arrays determine
      * which logs are exported (or not exported) to CloudWatch Logs.</p>
      */
@@ -677,7 +667,7 @@ namespace Model
 
     /**
      * <p>The configuration setting for the log types to be enabled for export to
-     * Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+     * Amazon CloudWatch Logs for a specific instance or cluster. The
      * <code>EnableLogTypes</code> and <code>DisableLogTypes</code> arrays determine
      * which logs are exported (or not exported) to CloudWatch Logs.</p>
      */
@@ -685,7 +675,7 @@ namespace Model
 
     /**
      * <p>The configuration setting for the log types to be enabled for export to
-     * Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+     * Amazon CloudWatch Logs for a specific instance or cluster. The
      * <code>EnableLogTypes</code> and <code>DisableLogTypes</code> arrays determine
      * which logs are exported (or not exported) to CloudWatch Logs.</p>
      */
@@ -694,65 +684,49 @@ namespace Model
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline ModifyDBClusterRequest& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline ModifyDBClusterRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version number of the database engine to which you want to upgrade.
-     * Changing this parameter results in an outage. The change is applied during the
-     * next maintenance window unless the <code>ApplyImmediately</code> parameter is
-     * set to <code>true</code>.</p>
+     * Modifying engine version is not supported on Amazon DocumentDB.</p>
      */
     inline ModifyDBClusterRequest& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
 

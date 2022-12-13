@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/lightsail/model/ResourceType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -30,6 +20,7 @@ namespace Aws
       namespace ResourceTypeMapper
       {
 
+        static const int ContainerService_HASH = HashingUtils::HashString("ContainerService");
         static const int Instance_HASH = HashingUtils::HashString("Instance");
         static const int StaticIp_HASH = HashingUtils::HashString("StaticIp");
         static const int KeyPair_HASH = HashingUtils::HashString("KeyPair");
@@ -44,12 +35,21 @@ namespace Aws
         static const int RelationalDatabaseSnapshot_HASH = HashingUtils::HashString("RelationalDatabaseSnapshot");
         static const int ExportSnapshotRecord_HASH = HashingUtils::HashString("ExportSnapshotRecord");
         static const int CloudFormationStackRecord_HASH = HashingUtils::HashString("CloudFormationStackRecord");
+        static const int Alarm_HASH = HashingUtils::HashString("Alarm");
+        static const int ContactMethod_HASH = HashingUtils::HashString("ContactMethod");
+        static const int Distribution_HASH = HashingUtils::HashString("Distribution");
+        static const int Certificate_HASH = HashingUtils::HashString("Certificate");
+        static const int Bucket_HASH = HashingUtils::HashString("Bucket");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
         {
           int hashCode = HashingUtils::HashString(name.c_str());
-          if (hashCode == Instance_HASH)
+          if (hashCode == ContainerService_HASH)
+          {
+            return ResourceType::ContainerService;
+          }
+          else if (hashCode == Instance_HASH)
           {
             return ResourceType::Instance;
           }
@@ -105,6 +105,26 @@ namespace Aws
           {
             return ResourceType::CloudFormationStackRecord;
           }
+          else if (hashCode == Alarm_HASH)
+          {
+            return ResourceType::Alarm;
+          }
+          else if (hashCode == ContactMethod_HASH)
+          {
+            return ResourceType::ContactMethod;
+          }
+          else if (hashCode == Distribution_HASH)
+          {
+            return ResourceType::Distribution;
+          }
+          else if (hashCode == Certificate_HASH)
+          {
+            return ResourceType::Certificate;
+          }
+          else if (hashCode == Bucket_HASH)
+          {
+            return ResourceType::Bucket;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -119,6 +139,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case ResourceType::ContainerService:
+            return "ContainerService";
           case ResourceType::Instance:
             return "Instance";
           case ResourceType::StaticIp:
@@ -147,6 +169,16 @@ namespace Aws
             return "ExportSnapshotRecord";
           case ResourceType::CloudFormationStackRecord:
             return "CloudFormationStackRecord";
+          case ResourceType::Alarm:
+            return "Alarm";
+          case ResourceType::ContactMethod:
+            return "ContactMethod";
+          case ResourceType::Distribution:
+            return "Distribution";
+          case ResourceType::Certificate:
+            return "Certificate";
+          case ResourceType::Bucket:
+            return "Bucket";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

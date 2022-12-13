@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
@@ -209,7 +199,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -218,7 +208,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -227,7 +217,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -236,7 +226,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -245,7 +235,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -254,7 +244,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -263,7 +253,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -272,7 +262,7 @@ namespace Model
     /**
      * <p>The namespace of the metric that the alarm is associated with. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -320,7 +310,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -330,7 +320,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -340,7 +330,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -350,7 +340,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -360,7 +350,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -370,7 +360,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -380,7 +370,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */
@@ -390,7 +380,7 @@ namespace Model
      * <p>For the metric that the CloudWatch alarm is associated with, a complex type
      * that contains information about the dimensions for the metric. For information,
      * see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
      * CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon
      * CloudWatch User Guide</i>.</p>
      */

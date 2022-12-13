@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/comprehend/Comprehend_EXPORTS.h>
@@ -161,6 +151,150 @@ namespace Model
      */
     inline ClassifierEvaluationMetrics& WithF1Score(double value) { SetF1Score(value); return *this;}
 
+
+    /**
+     * <p>A measure of the usefulness of the recognizer results in the test data. High
+     * precision means that the recognizer returned substantially more relevant results
+     * than irrelevant ones. Unlike the Precision metric which comes from averaging the
+     * precision of all available labels, this is based on the overall score of all
+     * precision scores added together.</p>
+     */
+    inline double GetMicroPrecision() const{ return m_microPrecision; }
+
+    /**
+     * <p>A measure of the usefulness of the recognizer results in the test data. High
+     * precision means that the recognizer returned substantially more relevant results
+     * than irrelevant ones. Unlike the Precision metric which comes from averaging the
+     * precision of all available labels, this is based on the overall score of all
+     * precision scores added together.</p>
+     */
+    inline bool MicroPrecisionHasBeenSet() const { return m_microPrecisionHasBeenSet; }
+
+    /**
+     * <p>A measure of the usefulness of the recognizer results in the test data. High
+     * precision means that the recognizer returned substantially more relevant results
+     * than irrelevant ones. Unlike the Precision metric which comes from averaging the
+     * precision of all available labels, this is based on the overall score of all
+     * precision scores added together.</p>
+     */
+    inline void SetMicroPrecision(double value) { m_microPrecisionHasBeenSet = true; m_microPrecision = value; }
+
+    /**
+     * <p>A measure of the usefulness of the recognizer results in the test data. High
+     * precision means that the recognizer returned substantially more relevant results
+     * than irrelevant ones. Unlike the Precision metric which comes from averaging the
+     * precision of all available labels, this is based on the overall score of all
+     * precision scores added together.</p>
+     */
+    inline ClassifierEvaluationMetrics& WithMicroPrecision(double value) { SetMicroPrecision(value); return *this;}
+
+
+    /**
+     * <p>A measure of how complete the classifier results are for the test data. High
+     * recall means that the classifier returned most of the relevant results.
+     * Specifically, this indicates how many of the correct categories in the text that
+     * the model can predict. It is a percentage of correct categories in the text that
+     * can found. Instead of averaging the recall scores of all labels (as with
+     * Recall), micro Recall is based on the overall score of all recall scores added
+     * together.</p>
+     */
+    inline double GetMicroRecall() const{ return m_microRecall; }
+
+    /**
+     * <p>A measure of how complete the classifier results are for the test data. High
+     * recall means that the classifier returned most of the relevant results.
+     * Specifically, this indicates how many of the correct categories in the text that
+     * the model can predict. It is a percentage of correct categories in the text that
+     * can found. Instead of averaging the recall scores of all labels (as with
+     * Recall), micro Recall is based on the overall score of all recall scores added
+     * together.</p>
+     */
+    inline bool MicroRecallHasBeenSet() const { return m_microRecallHasBeenSet; }
+
+    /**
+     * <p>A measure of how complete the classifier results are for the test data. High
+     * recall means that the classifier returned most of the relevant results.
+     * Specifically, this indicates how many of the correct categories in the text that
+     * the model can predict. It is a percentage of correct categories in the text that
+     * can found. Instead of averaging the recall scores of all labels (as with
+     * Recall), micro Recall is based on the overall score of all recall scores added
+     * together.</p>
+     */
+    inline void SetMicroRecall(double value) { m_microRecallHasBeenSet = true; m_microRecall = value; }
+
+    /**
+     * <p>A measure of how complete the classifier results are for the test data. High
+     * recall means that the classifier returned most of the relevant results.
+     * Specifically, this indicates how many of the correct categories in the text that
+     * the model can predict. It is a percentage of correct categories in the text that
+     * can found. Instead of averaging the recall scores of all labels (as with
+     * Recall), micro Recall is based on the overall score of all recall scores added
+     * together.</p>
+     */
+    inline ClassifierEvaluationMetrics& WithMicroRecall(double value) { SetMicroRecall(value); return *this;}
+
+
+    /**
+     * <p>A measure of how accurate the classifier results are for the test data. It is
+     * a combination of the <code>Micro Precision</code> and <code>Micro Recall</code>
+     * values. The <code>Micro F1Score</code> is the harmonic mean of the two scores.
+     * The highest score is 1, and the worst score is 0.</p>
+     */
+    inline double GetMicroF1Score() const{ return m_microF1Score; }
+
+    /**
+     * <p>A measure of how accurate the classifier results are for the test data. It is
+     * a combination of the <code>Micro Precision</code> and <code>Micro Recall</code>
+     * values. The <code>Micro F1Score</code> is the harmonic mean of the two scores.
+     * The highest score is 1, and the worst score is 0.</p>
+     */
+    inline bool MicroF1ScoreHasBeenSet() const { return m_microF1ScoreHasBeenSet; }
+
+    /**
+     * <p>A measure of how accurate the classifier results are for the test data. It is
+     * a combination of the <code>Micro Precision</code> and <code>Micro Recall</code>
+     * values. The <code>Micro F1Score</code> is the harmonic mean of the two scores.
+     * The highest score is 1, and the worst score is 0.</p>
+     */
+    inline void SetMicroF1Score(double value) { m_microF1ScoreHasBeenSet = true; m_microF1Score = value; }
+
+    /**
+     * <p>A measure of how accurate the classifier results are for the test data. It is
+     * a combination of the <code>Micro Precision</code> and <code>Micro Recall</code>
+     * values. The <code>Micro F1Score</code> is the harmonic mean of the two scores.
+     * The highest score is 1, and the worst score is 0.</p>
+     */
+    inline ClassifierEvaluationMetrics& WithMicroF1Score(double value) { SetMicroF1Score(value); return *this;}
+
+
+    /**
+     * <p>Indicates the fraction of labels that are incorrectly predicted. Also seen as
+     * the fraction of wrong labels compared to the total number of labels. Scores
+     * closer to zero are better.</p>
+     */
+    inline double GetHammingLoss() const{ return m_hammingLoss; }
+
+    /**
+     * <p>Indicates the fraction of labels that are incorrectly predicted. Also seen as
+     * the fraction of wrong labels compared to the total number of labels. Scores
+     * closer to zero are better.</p>
+     */
+    inline bool HammingLossHasBeenSet() const { return m_hammingLossHasBeenSet; }
+
+    /**
+     * <p>Indicates the fraction of labels that are incorrectly predicted. Also seen as
+     * the fraction of wrong labels compared to the total number of labels. Scores
+     * closer to zero are better.</p>
+     */
+    inline void SetHammingLoss(double value) { m_hammingLossHasBeenSet = true; m_hammingLoss = value; }
+
+    /**
+     * <p>Indicates the fraction of labels that are incorrectly predicted. Also seen as
+     * the fraction of wrong labels compared to the total number of labels. Scores
+     * closer to zero are better.</p>
+     */
+    inline ClassifierEvaluationMetrics& WithHammingLoss(double value) { SetHammingLoss(value); return *this;}
+
   private:
 
     double m_accuracy;
@@ -174,6 +308,18 @@ namespace Model
 
     double m_f1Score;
     bool m_f1ScoreHasBeenSet;
+
+    double m_microPrecision;
+    bool m_microPrecisionHasBeenSet;
+
+    double m_microRecall;
+    bool m_microRecallHasBeenSet;
+
+    double m_microF1Score;
+    bool m_microF1ScoreHasBeenSet;
+
+    double m_hammingLoss;
+    bool m_hammingLossHasBeenSet;
   };
 
 } // namespace Model

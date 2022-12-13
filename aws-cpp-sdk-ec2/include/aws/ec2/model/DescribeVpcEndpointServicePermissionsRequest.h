@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -191,7 +181,7 @@ namespace Model
      * <p>The maximum number of results to return for the request in a single page. The
      * remaining results of the initial request can be seen by sending another request
      * with the returned <code>NextToken</code> value. This value can be between 5 and
-     * 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000
+     * 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000
      * results are returned.</p>
      */
     inline int GetMaxResults() const{ return m_maxResults; }
@@ -200,7 +190,7 @@ namespace Model
      * <p>The maximum number of results to return for the request in a single page. The
      * remaining results of the initial request can be seen by sending another request
      * with the returned <code>NextToken</code> value. This value can be between 5 and
-     * 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000
+     * 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000
      * results are returned.</p>
      */
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
@@ -209,7 +199,7 @@ namespace Model
      * <p>The maximum number of results to return for the request in a single page. The
      * remaining results of the initial request can be seen by sending another request
      * with the returned <code>NextToken</code> value. This value can be between 5 and
-     * 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000
+     * 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000
      * results are returned.</p>
      */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
@@ -218,7 +208,7 @@ namespace Model
      * <p>The maximum number of results to return for the request in a single page. The
      * remaining results of the initial request can be seen by sending another request
      * with the returned <code>NextToken</code> value. This value can be between 5 and
-     * 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000
+     * 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000
      * results are returned.</p>
      */
     inline DescribeVpcEndpointServicePermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}

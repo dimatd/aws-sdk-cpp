@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/opsworkscm/OpsWorksCM_EXPORTS.h>
@@ -127,7 +117,7 @@ namespace Model
 
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -136,7 +126,7 @@ namespace Model
     inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -145,7 +135,7 @@ namespace Model
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -154,7 +144,7 @@ namespace Model
     inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -163,7 +153,7 @@ namespace Model
     inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -172,7 +162,7 @@ namespace Model
     inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -181,7 +171,7 @@ namespace Model
     inline RestoreServerRequest& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this
@@ -190,7 +180,7 @@ namespace Model
     inline RestoreServerRequest& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
-     * <p> The type of the instance to create. Valid values must be specified in the
+     * <p> The type of instance to restore. Valid values must be specified in the
      * following format: <code>^([cm][34]|t2).*</code> For example,
      * <code>m5.large</code>. Valid values are <code>m5.large</code>,
      * <code>r5.xlarge</code>, and <code>r5.2xlarge</code>. If you do not specify this

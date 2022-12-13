@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/medialive/model/OutputSettings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,6 +24,7 @@ OutputSettings::OutputSettings() :
     m_hlsOutputSettingsHasBeenSet(false),
     m_mediaPackageOutputSettingsHasBeenSet(false),
     m_msSmoothOutputSettingsHasBeenSet(false),
+    m_multiplexOutputSettingsHasBeenSet(false),
     m_rtmpOutputSettingsHasBeenSet(false),
     m_udpOutputSettingsHasBeenSet(false)
 {
@@ -45,6 +36,7 @@ OutputSettings::OutputSettings(JsonView jsonValue) :
     m_hlsOutputSettingsHasBeenSet(false),
     m_mediaPackageOutputSettingsHasBeenSet(false),
     m_msSmoothOutputSettingsHasBeenSet(false),
+    m_multiplexOutputSettingsHasBeenSet(false),
     m_rtmpOutputSettingsHasBeenSet(false),
     m_udpOutputSettingsHasBeenSet(false)
 {
@@ -86,6 +78,13 @@ OutputSettings& OutputSettings::operator =(JsonView jsonValue)
     m_msSmoothOutputSettings = jsonValue.GetObject("msSmoothOutputSettings");
 
     m_msSmoothOutputSettingsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("multiplexOutputSettings"))
+  {
+    m_multiplexOutputSettings = jsonValue.GetObject("multiplexOutputSettings");
+
+    m_multiplexOutputSettingsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("rtmpOutputSettings"))
@@ -136,6 +135,12 @@ JsonValue OutputSettings::Jsonize() const
   if(m_msSmoothOutputSettingsHasBeenSet)
   {
    payload.WithObject("msSmoothOutputSettings", m_msSmoothOutputSettings.Jsonize());
+
+  }
+
+  if(m_multiplexOutputSettingsHasBeenSet)
+  {
+   payload.WithObject("multiplexOutputSettings", m_multiplexOutputSettings.Jsonize());
 
   }
 

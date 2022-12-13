@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/eks/model/CreateClusterRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -27,10 +17,12 @@ CreateClusterRequest::CreateClusterRequest() :
     m_versionHasBeenSet(false),
     m_roleArnHasBeenSet(false),
     m_resourcesVpcConfigHasBeenSet(false),
+    m_kubernetesNetworkConfigHasBeenSet(false),
     m_loggingHasBeenSet(false),
     m_clientRequestToken(Aws::Utils::UUID::RandomUUID()),
     m_clientRequestTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_encryptionConfigHasBeenSet(false)
 {
 }
 
@@ -62,6 +54,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   }
 
+  if(m_kubernetesNetworkConfigHasBeenSet)
+  {
+   payload.WithObject("kubernetesNetworkConfig", m_kubernetesNetworkConfig.Jsonize());
+
+  }
+
   if(m_loggingHasBeenSet)
   {
    payload.WithObject("logging", m_logging.Jsonize());
@@ -82,6 +80,17 @@ Aws::String CreateClusterRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_encryptionConfigHasBeenSet)
+  {
+   Array<JsonValue> encryptionConfigJsonList(m_encryptionConfig.size());
+   for(unsigned encryptionConfigIndex = 0; encryptionConfigIndex < encryptionConfigJsonList.GetLength(); ++encryptionConfigIndex)
+   {
+     encryptionConfigJsonList[encryptionConfigIndex].AsObject(m_encryptionConfig[encryptionConfigIndex].Jsonize());
+   }
+   payload.WithArray("encryptionConfig", std::move(encryptionConfigJsonList));
 
   }
 

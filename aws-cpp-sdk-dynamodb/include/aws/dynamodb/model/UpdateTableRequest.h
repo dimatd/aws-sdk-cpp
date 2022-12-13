@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -22,8 +12,10 @@
 #include <aws/dynamodb/model/ProvisionedThroughput.h>
 #include <aws/dynamodb/model/StreamSpecification.h>
 #include <aws/dynamodb/model/SSESpecification.h>
+#include <aws/dynamodb/model/TableClass.h>
 #include <aws/dynamodb/model/AttributeDefinition.h>
 #include <aws/dynamodb/model/GlobalSecondaryIndexUpdate.h>
+#include <aws/dynamodb/model/ReplicationGroupUpdate.h>
 #include <utility>
 
 namespace Aws
@@ -167,11 +159,14 @@ namespace Model
      * provisioned capacity values must be set. The initial provisioned capacity values
      * are estimated based on the consumed read and write capacity of your table and
      * global secondary indexes over the past 30 minutes.</p> <ul> <li> <p>
-     * <code>PROVISIONED</code> - Sets the billing mode to <code>PROVISIONED</code>. We
-     * recommend using <code>PROVISIONED</code> for predictable workloads.</p> </li>
-     * <li> <p> <code>PAY_PER_REQUEST</code> - Sets the billing mode to
-     * <code>PAY_PER_REQUEST</code>. We recommend using <code>PAY_PER_REQUEST</code>
-     * for unpredictable workloads. </p> </li> </ul>
+     * <code>PROVISIONED</code> - We recommend using <code>PROVISIONED</code> for
+     * predictable workloads. <code>PROVISIONED</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline const BillingMode& GetBillingMode() const{ return m_billingMode; }
 
@@ -181,11 +176,14 @@ namespace Model
      * provisioned capacity values must be set. The initial provisioned capacity values
      * are estimated based on the consumed read and write capacity of your table and
      * global secondary indexes over the past 30 minutes.</p> <ul> <li> <p>
-     * <code>PROVISIONED</code> - Sets the billing mode to <code>PROVISIONED</code>. We
-     * recommend using <code>PROVISIONED</code> for predictable workloads.</p> </li>
-     * <li> <p> <code>PAY_PER_REQUEST</code> - Sets the billing mode to
-     * <code>PAY_PER_REQUEST</code>. We recommend using <code>PAY_PER_REQUEST</code>
-     * for unpredictable workloads. </p> </li> </ul>
+     * <code>PROVISIONED</code> - We recommend using <code>PROVISIONED</code> for
+     * predictable workloads. <code>PROVISIONED</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline bool BillingModeHasBeenSet() const { return m_billingModeHasBeenSet; }
 
@@ -195,11 +193,14 @@ namespace Model
      * provisioned capacity values must be set. The initial provisioned capacity values
      * are estimated based on the consumed read and write capacity of your table and
      * global secondary indexes over the past 30 minutes.</p> <ul> <li> <p>
-     * <code>PROVISIONED</code> - Sets the billing mode to <code>PROVISIONED</code>. We
-     * recommend using <code>PROVISIONED</code> for predictable workloads.</p> </li>
-     * <li> <p> <code>PAY_PER_REQUEST</code> - Sets the billing mode to
-     * <code>PAY_PER_REQUEST</code>. We recommend using <code>PAY_PER_REQUEST</code>
-     * for unpredictable workloads. </p> </li> </ul>
+     * <code>PROVISIONED</code> - We recommend using <code>PROVISIONED</code> for
+     * predictable workloads. <code>PROVISIONED</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline void SetBillingMode(const BillingMode& value) { m_billingModeHasBeenSet = true; m_billingMode = value; }
 
@@ -209,11 +210,14 @@ namespace Model
      * provisioned capacity values must be set. The initial provisioned capacity values
      * are estimated based on the consumed read and write capacity of your table and
      * global secondary indexes over the past 30 minutes.</p> <ul> <li> <p>
-     * <code>PROVISIONED</code> - Sets the billing mode to <code>PROVISIONED</code>. We
-     * recommend using <code>PROVISIONED</code> for predictable workloads.</p> </li>
-     * <li> <p> <code>PAY_PER_REQUEST</code> - Sets the billing mode to
-     * <code>PAY_PER_REQUEST</code>. We recommend using <code>PAY_PER_REQUEST</code>
-     * for unpredictable workloads. </p> </li> </ul>
+     * <code>PROVISIONED</code> - We recommend using <code>PROVISIONED</code> for
+     * predictable workloads. <code>PROVISIONED</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline void SetBillingMode(BillingMode&& value) { m_billingModeHasBeenSet = true; m_billingMode = std::move(value); }
 
@@ -223,11 +227,14 @@ namespace Model
      * provisioned capacity values must be set. The initial provisioned capacity values
      * are estimated based on the consumed read and write capacity of your table and
      * global secondary indexes over the past 30 minutes.</p> <ul> <li> <p>
-     * <code>PROVISIONED</code> - Sets the billing mode to <code>PROVISIONED</code>. We
-     * recommend using <code>PROVISIONED</code> for predictable workloads.</p> </li>
-     * <li> <p> <code>PAY_PER_REQUEST</code> - Sets the billing mode to
-     * <code>PAY_PER_REQUEST</code>. We recommend using <code>PAY_PER_REQUEST</code>
-     * for unpredictable workloads. </p> </li> </ul>
+     * <code>PROVISIONED</code> - We recommend using <code>PROVISIONED</code> for
+     * predictable workloads. <code>PROVISIONED</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline UpdateTableRequest& WithBillingMode(const BillingMode& value) { SetBillingMode(value); return *this;}
 
@@ -237,11 +244,14 @@ namespace Model
      * provisioned capacity values must be set. The initial provisioned capacity values
      * are estimated based on the consumed read and write capacity of your table and
      * global secondary indexes over the past 30 minutes.</p> <ul> <li> <p>
-     * <code>PROVISIONED</code> - Sets the billing mode to <code>PROVISIONED</code>. We
-     * recommend using <code>PROVISIONED</code> for predictable workloads.</p> </li>
-     * <li> <p> <code>PAY_PER_REQUEST</code> - Sets the billing mode to
-     * <code>PAY_PER_REQUEST</code>. We recommend using <code>PAY_PER_REQUEST</code>
-     * for unpredictable workloads. </p> </li> </ul>
+     * <code>PROVISIONED</code> - We recommend using <code>PROVISIONED</code> for
+     * predictable workloads. <code>PROVISIONED</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual">Provisioned
+     * Mode</a>.</p> </li> <li> <p> <code>PAY_PER_REQUEST</code> - We recommend using
+     * <code>PAY_PER_REQUEST</code> for unpredictable workloads.
+     * <code>PAY_PER_REQUEST</code> sets the billing mode to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand">On-Demand
+     * Mode</a>. </p> </li> </ul>
      */
     inline UpdateTableRequest& WithBillingMode(BillingMode&& value) { SetBillingMode(std::move(value)); return *this;}
 
@@ -283,8 +293,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -296,8 +307,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -309,8 +321,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -322,8 +335,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -335,8 +349,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -348,8 +363,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -361,8 +377,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -374,8 +391,9 @@ namespace Model
      * <code>Create</code> - add a new global secondary index to the table.</p> </li>
      * <li> <p> <code>Update</code> - modify the provisioned throughput settings of an
      * existing global secondary index.</p> </li> <li> <p> <code>Delete</code> - remove
-     * a global secondary index from the table.</p> </li> </ul> <p>For more
-     * information, see <a
+     * a global secondary index from the table.</p> </li> </ul> <p>You can create or
+     * delete only one global secondary index per <code>UpdateTable</code>
+     * operation.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing
      * Global Secondary Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
      */
@@ -383,50 +401,50 @@ namespace Model
 
 
     /**
-     * <p>Represents the DynamoDB Streams configuration for the table.</p> <note>
+     * <p>Represents the DynamoDB Streams configuration for the table.</p> 
      * <p>You receive a <code>ResourceInUseException</code> if you try to enable a
      * stream on a table that already has a stream, or if you try to disable a stream
-     * on a table that doesn't have a stream.</p> </note>
+     * on a table that doesn't have a stream.</p> 
      */
     inline const StreamSpecification& GetStreamSpecification() const{ return m_streamSpecification; }
 
     /**
-     * <p>Represents the DynamoDB Streams configuration for the table.</p> <note>
+     * <p>Represents the DynamoDB Streams configuration for the table.</p> 
      * <p>You receive a <code>ResourceInUseException</code> if you try to enable a
      * stream on a table that already has a stream, or if you try to disable a stream
-     * on a table that doesn't have a stream.</p> </note>
+     * on a table that doesn't have a stream.</p> 
      */
     inline bool StreamSpecificationHasBeenSet() const { return m_streamSpecificationHasBeenSet; }
 
     /**
-     * <p>Represents the DynamoDB Streams configuration for the table.</p> <note>
+     * <p>Represents the DynamoDB Streams configuration for the table.</p> 
      * <p>You receive a <code>ResourceInUseException</code> if you try to enable a
      * stream on a table that already has a stream, or if you try to disable a stream
-     * on a table that doesn't have a stream.</p> </note>
+     * on a table that doesn't have a stream.</p> 
      */
     inline void SetStreamSpecification(const StreamSpecification& value) { m_streamSpecificationHasBeenSet = true; m_streamSpecification = value; }
 
     /**
-     * <p>Represents the DynamoDB Streams configuration for the table.</p> <note>
+     * <p>Represents the DynamoDB Streams configuration for the table.</p> 
      * <p>You receive a <code>ResourceInUseException</code> if you try to enable a
      * stream on a table that already has a stream, or if you try to disable a stream
-     * on a table that doesn't have a stream.</p> </note>
+     * on a table that doesn't have a stream.</p> 
      */
     inline void SetStreamSpecification(StreamSpecification&& value) { m_streamSpecificationHasBeenSet = true; m_streamSpecification = std::move(value); }
 
     /**
-     * <p>Represents the DynamoDB Streams configuration for the table.</p> <note>
+     * <p>Represents the DynamoDB Streams configuration for the table.</p> 
      * <p>You receive a <code>ResourceInUseException</code> if you try to enable a
      * stream on a table that already has a stream, or if you try to disable a stream
-     * on a table that doesn't have a stream.</p> </note>
+     * on a table that doesn't have a stream.</p> 
      */
     inline UpdateTableRequest& WithStreamSpecification(const StreamSpecification& value) { SetStreamSpecification(value); return *this;}
 
     /**
-     * <p>Represents the DynamoDB Streams configuration for the table.</p> <note>
+     * <p>Represents the DynamoDB Streams configuration for the table.</p> 
      * <p>You receive a <code>ResourceInUseException</code> if you try to enable a
      * stream on a table that already has a stream, or if you try to disable a stream
-     * on a table that doesn't have a stream.</p> </note>
+     * on a table that doesn't have a stream.</p> 
      */
     inline UpdateTableRequest& WithStreamSpecification(StreamSpecification&& value) { SetStreamSpecification(std::move(value)); return *this;}
 
@@ -461,6 +479,108 @@ namespace Model
      */
     inline UpdateTableRequest& WithSSESpecification(SSESpecification&& value) { SetSSESpecification(std::move(value)); return *this;}
 
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline const Aws::Vector<ReplicationGroupUpdate>& GetReplicaUpdates() const{ return m_replicaUpdates; }
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline bool ReplicaUpdatesHasBeenSet() const { return m_replicaUpdatesHasBeenSet; }
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline void SetReplicaUpdates(const Aws::Vector<ReplicationGroupUpdate>& value) { m_replicaUpdatesHasBeenSet = true; m_replicaUpdates = value; }
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline void SetReplicaUpdates(Aws::Vector<ReplicationGroupUpdate>&& value) { m_replicaUpdatesHasBeenSet = true; m_replicaUpdates = std::move(value); }
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline UpdateTableRequest& WithReplicaUpdates(const Aws::Vector<ReplicationGroupUpdate>& value) { SetReplicaUpdates(value); return *this;}
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline UpdateTableRequest& WithReplicaUpdates(Aws::Vector<ReplicationGroupUpdate>&& value) { SetReplicaUpdates(std::move(value)); return *this;}
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline UpdateTableRequest& AddReplicaUpdates(const ReplicationGroupUpdate& value) { m_replicaUpdatesHasBeenSet = true; m_replicaUpdates.push_back(value); return *this; }
+
+    /**
+     * <p>A list of replica update actions (create, delete, or update) for the
+     * table.</p>  <p>This property only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.</p> 
+     */
+    inline UpdateTableRequest& AddReplicaUpdates(ReplicationGroupUpdate&& value) { m_replicaUpdatesHasBeenSet = true; m_replicaUpdates.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The table class of the table to be updated. Valid values are
+     * <code>STANDARD</code> and <code>STANDARD_INFREQUENT_ACCESS</code>.</p>
+     */
+    inline const TableClass& GetTableClass() const{ return m_tableClass; }
+
+    /**
+     * <p>The table class of the table to be updated. Valid values are
+     * <code>STANDARD</code> and <code>STANDARD_INFREQUENT_ACCESS</code>.</p>
+     */
+    inline bool TableClassHasBeenSet() const { return m_tableClassHasBeenSet; }
+
+    /**
+     * <p>The table class of the table to be updated. Valid values are
+     * <code>STANDARD</code> and <code>STANDARD_INFREQUENT_ACCESS</code>.</p>
+     */
+    inline void SetTableClass(const TableClass& value) { m_tableClassHasBeenSet = true; m_tableClass = value; }
+
+    /**
+     * <p>The table class of the table to be updated. Valid values are
+     * <code>STANDARD</code> and <code>STANDARD_INFREQUENT_ACCESS</code>.</p>
+     */
+    inline void SetTableClass(TableClass&& value) { m_tableClassHasBeenSet = true; m_tableClass = std::move(value); }
+
+    /**
+     * <p>The table class of the table to be updated. Valid values are
+     * <code>STANDARD</code> and <code>STANDARD_INFREQUENT_ACCESS</code>.</p>
+     */
+    inline UpdateTableRequest& WithTableClass(const TableClass& value) { SetTableClass(value); return *this;}
+
+    /**
+     * <p>The table class of the table to be updated. Valid values are
+     * <code>STANDARD</code> and <code>STANDARD_INFREQUENT_ACCESS</code>.</p>
+     */
+    inline UpdateTableRequest& WithTableClass(TableClass&& value) { SetTableClass(std::move(value)); return *this;}
+
   private:
 
     Aws::Vector<AttributeDefinition> m_attributeDefinitions;
@@ -483,6 +603,12 @@ namespace Model
 
     SSESpecification m_sSESpecification;
     bool m_sSESpecificationHasBeenSet;
+
+    Aws::Vector<ReplicationGroupUpdate> m_replicaUpdates;
+    bool m_replicaUpdatesHasBeenSet;
+
+    TableClass m_tableClass;
+    bool m_tableClassHasBeenSet;
   };
 
 } // namespace Model

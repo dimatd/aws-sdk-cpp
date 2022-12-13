@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -139,49 +129,67 @@ namespace Model
 
     /**
      * <p>The name of the event that causes the campaign to be sent or the journey
-     * activity to be performed. This can be a standard type of event that Amazon
-     * Pinpoint generates, such as _email.delivered, or a custom event that's specific
-     * to your application.</p>
+     * activity to be performed. This can be a standard event that Amazon Pinpoint
+     * generates, such as _email.delivered. For campaigns, this can also be a custom
+     * event that's specific to your application. For information about standard
+     * events, see <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html">Streaming
+     * Amazon Pinpoint Events</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p>
      */
     inline const SetDimension& GetEventType() const{ return m_eventType; }
 
     /**
      * <p>The name of the event that causes the campaign to be sent or the journey
-     * activity to be performed. This can be a standard type of event that Amazon
-     * Pinpoint generates, such as _email.delivered, or a custom event that's specific
-     * to your application.</p>
+     * activity to be performed. This can be a standard event that Amazon Pinpoint
+     * generates, such as _email.delivered. For campaigns, this can also be a custom
+     * event that's specific to your application. For information about standard
+     * events, see <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html">Streaming
+     * Amazon Pinpoint Events</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p>
      */
     inline bool EventTypeHasBeenSet() const { return m_eventTypeHasBeenSet; }
 
     /**
      * <p>The name of the event that causes the campaign to be sent or the journey
-     * activity to be performed. This can be a standard type of event that Amazon
-     * Pinpoint generates, such as _email.delivered, or a custom event that's specific
-     * to your application.</p>
+     * activity to be performed. This can be a standard event that Amazon Pinpoint
+     * generates, such as _email.delivered. For campaigns, this can also be a custom
+     * event that's specific to your application. For information about standard
+     * events, see <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html">Streaming
+     * Amazon Pinpoint Events</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p>
      */
     inline void SetEventType(const SetDimension& value) { m_eventTypeHasBeenSet = true; m_eventType = value; }
 
     /**
      * <p>The name of the event that causes the campaign to be sent or the journey
-     * activity to be performed. This can be a standard type of event that Amazon
-     * Pinpoint generates, such as _email.delivered, or a custom event that's specific
-     * to your application.</p>
+     * activity to be performed. This can be a standard event that Amazon Pinpoint
+     * generates, such as _email.delivered. For campaigns, this can also be a custom
+     * event that's specific to your application. For information about standard
+     * events, see <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html">Streaming
+     * Amazon Pinpoint Events</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p>
      */
     inline void SetEventType(SetDimension&& value) { m_eventTypeHasBeenSet = true; m_eventType = std::move(value); }
 
     /**
      * <p>The name of the event that causes the campaign to be sent or the journey
-     * activity to be performed. This can be a standard type of event that Amazon
-     * Pinpoint generates, such as _email.delivered, or a custom event that's specific
-     * to your application.</p>
+     * activity to be performed. This can be a standard event that Amazon Pinpoint
+     * generates, such as _email.delivered. For campaigns, this can also be a custom
+     * event that's specific to your application. For information about standard
+     * events, see <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html">Streaming
+     * Amazon Pinpoint Events</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p>
      */
     inline EventDimensions& WithEventType(const SetDimension& value) { SetEventType(value); return *this;}
 
     /**
      * <p>The name of the event that causes the campaign to be sent or the journey
-     * activity to be performed. This can be a standard type of event that Amazon
-     * Pinpoint generates, such as _email.delivered, or a custom event that's specific
-     * to your application.</p>
+     * activity to be performed. This can be a standard event that Amazon Pinpoint
+     * generates, such as _email.delivered. For campaigns, this can also be a custom
+     * event that's specific to your application. For information about standard
+     * events, see <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html">Streaming
+     * Amazon Pinpoint Events</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p>
      */
     inline EventDimensions& WithEventType(SetDimension&& value) { SetEventType(std::move(value)); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/mediaconvert/model/Job.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -41,6 +31,7 @@ Job::Job() :
     m_errorCode(0),
     m_errorCodeHasBeenSet(false),
     m_errorMessageHasBeenSet(false),
+    m_hopDestinationsHasBeenSet(false),
     m_idHasBeenSet(false),
     m_jobPercentComplete(0),
     m_jobPercentCompleteHasBeenSet(false),
@@ -50,6 +41,7 @@ Job::Job() :
     m_priority(0),
     m_priorityHasBeenSet(false),
     m_queueHasBeenSet(false),
+    m_queueTransitionsHasBeenSet(false),
     m_retryCount(0),
     m_retryCountHasBeenSet(false),
     m_roleHasBeenSet(false),
@@ -78,6 +70,7 @@ Job::Job(JsonView jsonValue) :
     m_errorCode(0),
     m_errorCodeHasBeenSet(false),
     m_errorMessageHasBeenSet(false),
+    m_hopDestinationsHasBeenSet(false),
     m_idHasBeenSet(false),
     m_jobPercentComplete(0),
     m_jobPercentCompleteHasBeenSet(false),
@@ -87,6 +80,7 @@ Job::Job(JsonView jsonValue) :
     m_priority(0),
     m_priorityHasBeenSet(false),
     m_queueHasBeenSet(false),
+    m_queueTransitionsHasBeenSet(false),
     m_retryCount(0),
     m_retryCountHasBeenSet(false),
     m_roleHasBeenSet(false),
@@ -161,6 +155,16 @@ Job& Job::operator =(JsonView jsonValue)
     m_errorMessageHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("hopDestinations"))
+  {
+    Array<JsonView> hopDestinationsJsonList = jsonValue.GetArray("hopDestinations");
+    for(unsigned hopDestinationsIndex = 0; hopDestinationsIndex < hopDestinationsJsonList.GetLength(); ++hopDestinationsIndex)
+    {
+      m_hopDestinations.push_back(hopDestinationsJsonList[hopDestinationsIndex].AsObject());
+    }
+    m_hopDestinationsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
@@ -211,6 +215,16 @@ Job& Job::operator =(JsonView jsonValue)
     m_queue = jsonValue.GetString("queue");
 
     m_queueHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("queueTransitions"))
+  {
+    Array<JsonView> queueTransitionsJsonList = jsonValue.GetArray("queueTransitions");
+    for(unsigned queueTransitionsIndex = 0; queueTransitionsIndex < queueTransitionsJsonList.GetLength(); ++queueTransitionsIndex)
+    {
+      m_queueTransitions.push_back(queueTransitionsJsonList[queueTransitionsIndex].AsObject());
+    }
+    m_queueTransitionsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("retryCount"))
@@ -323,6 +337,17 @@ JsonValue Job::Jsonize() const
 
   }
 
+  if(m_hopDestinationsHasBeenSet)
+  {
+   Array<JsonValue> hopDestinationsJsonList(m_hopDestinations.size());
+   for(unsigned hopDestinationsIndex = 0; hopDestinationsIndex < hopDestinationsJsonList.GetLength(); ++hopDestinationsIndex)
+   {
+     hopDestinationsJsonList[hopDestinationsIndex].AsObject(m_hopDestinations[hopDestinationsIndex].Jsonize());
+   }
+   payload.WithArray("hopDestinations", std::move(hopDestinationsJsonList));
+
+  }
+
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
@@ -367,6 +392,17 @@ JsonValue Job::Jsonize() const
   if(m_queueHasBeenSet)
   {
    payload.WithString("queue", m_queue);
+
+  }
+
+  if(m_queueTransitionsHasBeenSet)
+  {
+   Array<JsonValue> queueTransitionsJsonList(m_queueTransitions.size());
+   for(unsigned queueTransitionsIndex = 0; queueTransitionsIndex < queueTransitionsJsonList.GetLength(); ++queueTransitionsIndex)
+   {
+     queueTransitionsJsonList[queueTransitionsIndex].AsObject(m_queueTransitions[queueTransitionsIndex].Jsonize());
+   }
+   payload.WithArray("queueTransitions", std::move(queueTransitionsJsonList));
 
   }
 

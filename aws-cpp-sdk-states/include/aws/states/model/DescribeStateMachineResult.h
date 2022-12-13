@@ -1,23 +1,16 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/states/SFN_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/states/model/StateMachineStatus.h>
+#include <aws/states/model/StateMachineType.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/states/model/LoggingConfiguration.h>
+#include <aws/states/model/TracingConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -86,7 +79,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
@@ -96,7 +90,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline void SetName(const Aws::String& value) { m_name = value; }
 
@@ -106,7 +101,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline void SetName(Aws::String&& value) { m_name = std::move(value); }
 
@@ -116,7 +112,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline void SetName(const char* value) { m_name.assign(value); }
 
@@ -126,7 +123,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline DescribeStateMachineResult& WithName(const Aws::String& value) { SetName(value); return *this;}
 
@@ -136,7 +134,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline DescribeStateMachineResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
@@ -146,7 +145,8 @@ namespace Model
      * ]</code> </p> </li> <li> <p>wildcard characters <code>? *</code> </p> </li> <li>
      * <p>special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code> </p> </li>
      * <li> <p>control characters (<code>U+0000-001F</code>,
-     * <code>U+007F-009F</code>)</p> </li> </ul>
+     * <code>U+007F-009F</code>)</p> </li> </ul> <p>To enable logging with CloudWatch
+     * Logs, the name should only contain 0-9, A-Z, a-z, - and _.</p>
      */
     inline DescribeStateMachineResult& WithName(const char* value) { SetName(value); return *this;}
 
@@ -278,6 +278,37 @@ namespace Model
 
 
     /**
+     * <p>The <code>type</code> of the state machine (<code>STANDARD</code> or
+     * <code>EXPRESS</code>).</p>
+     */
+    inline const StateMachineType& GetType() const{ return m_type; }
+
+    /**
+     * <p>The <code>type</code> of the state machine (<code>STANDARD</code> or
+     * <code>EXPRESS</code>).</p>
+     */
+    inline void SetType(const StateMachineType& value) { m_type = value; }
+
+    /**
+     * <p>The <code>type</code> of the state machine (<code>STANDARD</code> or
+     * <code>EXPRESS</code>).</p>
+     */
+    inline void SetType(StateMachineType&& value) { m_type = std::move(value); }
+
+    /**
+     * <p>The <code>type</code> of the state machine (<code>STANDARD</code> or
+     * <code>EXPRESS</code>).</p>
+     */
+    inline DescribeStateMachineResult& WithType(const StateMachineType& value) { SetType(value); return *this;}
+
+    /**
+     * <p>The <code>type</code> of the state machine (<code>STANDARD</code> or
+     * <code>EXPRESS</code>).</p>
+     */
+    inline DescribeStateMachineResult& WithType(StateMachineType&& value) { SetType(std::move(value)); return *this;}
+
+
+    /**
      * <p>The date the state machine is created.</p>
      */
     inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
@@ -302,6 +333,48 @@ namespace Model
      */
     inline DescribeStateMachineResult& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
+
+    
+    inline const LoggingConfiguration& GetLoggingConfiguration() const{ return m_loggingConfiguration; }
+
+    
+    inline void SetLoggingConfiguration(const LoggingConfiguration& value) { m_loggingConfiguration = value; }
+
+    
+    inline void SetLoggingConfiguration(LoggingConfiguration&& value) { m_loggingConfiguration = std::move(value); }
+
+    
+    inline DescribeStateMachineResult& WithLoggingConfiguration(const LoggingConfiguration& value) { SetLoggingConfiguration(value); return *this;}
+
+    
+    inline DescribeStateMachineResult& WithLoggingConfiguration(LoggingConfiguration&& value) { SetLoggingConfiguration(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline const TracingConfiguration& GetTracingConfiguration() const{ return m_tracingConfiguration; }
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline void SetTracingConfiguration(const TracingConfiguration& value) { m_tracingConfiguration = value; }
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline void SetTracingConfiguration(TracingConfiguration&& value) { m_tracingConfiguration = std::move(value); }
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline DescribeStateMachineResult& WithTracingConfiguration(const TracingConfiguration& value) { SetTracingConfiguration(value); return *this;}
+
+    /**
+     * <p>Selects whether AWS X-Ray tracing is enabled.</p>
+     */
+    inline DescribeStateMachineResult& WithTracingConfiguration(TracingConfiguration&& value) { SetTracingConfiguration(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_stateMachineArn;
@@ -314,7 +387,13 @@ namespace Model
 
     Aws::String m_roleArn;
 
+    StateMachineType m_type;
+
     Aws::Utils::DateTime m_creationDate;
+
+    LoggingConfiguration m_loggingConfiguration;
+
+    TracingConfiguration m_tracingConfiguration;
   };
 
 } // namespace Model

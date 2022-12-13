@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/s3/model/ReplicationRule.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -38,6 +28,7 @@ ReplicationRule::ReplicationRule() :
     m_status(ReplicationRuleStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_sourceSelectionCriteriaHasBeenSet(false),
+    m_existingObjectReplicationHasBeenSet(false),
     m_destinationHasBeenSet(false),
     m_deleteMarkerReplicationHasBeenSet(false)
 {
@@ -51,6 +42,7 @@ ReplicationRule::ReplicationRule(const XmlNode& xmlNode) :
     m_status(ReplicationRuleStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_sourceSelectionCriteriaHasBeenSet(false),
+    m_existingObjectReplicationHasBeenSet(false),
     m_destinationHasBeenSet(false),
     m_deleteMarkerReplicationHasBeenSet(false)
 {
@@ -92,6 +84,12 @@ ReplicationRule& ReplicationRule::operator =(const XmlNode& xmlNode)
     {
       m_sourceSelectionCriteria = sourceSelectionCriteriaNode;
       m_sourceSelectionCriteriaHasBeenSet = true;
+    }
+    XmlNode existingObjectReplicationNode = resultNode.FirstChild("ExistingObjectReplication");
+    if(!existingObjectReplicationNode.IsNull())
+    {
+      m_existingObjectReplication = existingObjectReplicationNode;
+      m_existingObjectReplicationHasBeenSet = true;
     }
     XmlNode destinationNode = resultNode.FirstChild("Destination");
     if(!destinationNode.IsNull())
@@ -143,6 +141,12 @@ void ReplicationRule::AddToNode(XmlNode& parentNode) const
   {
    XmlNode sourceSelectionCriteriaNode = parentNode.CreateChildElement("SourceSelectionCriteria");
    m_sourceSelectionCriteria.AddToNode(sourceSelectionCriteriaNode);
+  }
+
+  if(m_existingObjectReplicationHasBeenSet)
+  {
+   XmlNode existingObjectReplicationNode = parentNode.CreateChildElement("ExistingObjectReplication");
+   m_existingObjectReplication.AddToNode(existingObjectReplicationNode);
   }
 
   if(m_destinationHasBeenSet)

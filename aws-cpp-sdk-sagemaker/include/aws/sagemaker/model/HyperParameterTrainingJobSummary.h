@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
@@ -39,8 +29,8 @@ namespace Model
 {
 
   /**
-   * <p>Specifies summary information about a training job.</p><p><h3>See Also:</h3> 
-   * <a
+   * <p>The container for the summary information about a training job.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/HyperParameterTrainingJobSummary">AWS
    * API Reference</a></p>
    */
@@ -51,6 +41,47 @@ namespace Model
     HyperParameterTrainingJobSummary(Aws::Utils::Json::JsonView jsonValue);
     HyperParameterTrainingJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
+
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline const Aws::String& GetTrainingJobDefinitionName() const{ return m_trainingJobDefinitionName; }
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline bool TrainingJobDefinitionNameHasBeenSet() const { return m_trainingJobDefinitionNameHasBeenSet; }
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline void SetTrainingJobDefinitionName(const Aws::String& value) { m_trainingJobDefinitionNameHasBeenSet = true; m_trainingJobDefinitionName = value; }
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline void SetTrainingJobDefinitionName(Aws::String&& value) { m_trainingJobDefinitionNameHasBeenSet = true; m_trainingJobDefinitionName = std::move(value); }
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline void SetTrainingJobDefinitionName(const char* value) { m_trainingJobDefinitionNameHasBeenSet = true; m_trainingJobDefinitionName.assign(value); }
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline HyperParameterTrainingJobSummary& WithTrainingJobDefinitionName(const Aws::String& value) { SetTrainingJobDefinitionName(value); return *this;}
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline HyperParameterTrainingJobSummary& WithTrainingJobDefinitionName(Aws::String&& value) { SetTrainingJobDefinitionName(std::move(value)); return *this;}
+
+    /**
+     * <p>The training job definition name.</p>
+     */
+    inline HyperParameterTrainingJobSummary& WithTrainingJobDefinitionName(const char* value) { SetTrainingJobDefinitionName(value); return *this;}
 
 
     /**
@@ -242,8 +273,8 @@ namespace Model
      * <p>Specifies the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline const Aws::Utils::DateTime& GetTrainingEndTime() const{ return m_trainingEndTime; }
 
@@ -251,8 +282,8 @@ namespace Model
      * <p>Specifies the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline bool TrainingEndTimeHasBeenSet() const { return m_trainingEndTimeHasBeenSet; }
 
@@ -260,8 +291,8 @@ namespace Model
      * <p>Specifies the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline void SetTrainingEndTime(const Aws::Utils::DateTime& value) { m_trainingEndTimeHasBeenSet = true; m_trainingEndTime = value; }
 
@@ -269,8 +300,8 @@ namespace Model
      * <p>Specifies the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline void SetTrainingEndTime(Aws::Utils::DateTime&& value) { m_trainingEndTimeHasBeenSet = true; m_trainingEndTime = std::move(value); }
 
@@ -278,8 +309,8 @@ namespace Model
      * <p>Specifies the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline HyperParameterTrainingJobSummary& WithTrainingEndTime(const Aws::Utils::DateTime& value) { SetTrainingEndTime(value); return *this;}
 
@@ -287,8 +318,8 @@ namespace Model
      * <p>Specifies the time when the training job ends on training instances. You are
      * billed for the time interval between the value of <code>TrainingStartTime</code>
      * and this time. For successful jobs and stopped jobs, this is the time after
-     * model artifacts are uploaded. For failed jobs, this is the time when Amazon
-     * SageMaker detects a job failure.</p>
+     * model artifacts are uploaded. For failed jobs, this is the time when SageMaker
+     * detects a job failure.</p>
      */
     inline HyperParameterTrainingJobSummary& WithTrainingEndTime(Aws::Utils::DateTime&& value) { SetTrainingEndTime(std::move(value)); return *this;}
 
@@ -547,6 +578,9 @@ namespace Model
     inline HyperParameterTrainingJobSummary& WithObjectiveStatus(ObjectiveStatus&& value) { SetObjectiveStatus(std::move(value)); return *this;}
 
   private:
+
+    Aws::String m_trainingJobDefinitionName;
+    bool m_trainingJobDefinitionNameHasBeenSet;
 
     Aws::String m_trainingJobName;
     bool m_trainingJobNameHasBeenSet;

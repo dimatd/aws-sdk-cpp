@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -33,8 +23,11 @@ namespace Model
 {
 
   /**
-   * <p>Specifies a condition that must be met for a redirect to apply.
-   * </p><p><h3>See Also:</h3>   <a
+   * <p>A container for describing a condition that must be met for the specified
+   * redirect to apply. For example, 1. If request is for pages in the
+   * <code>/docs</code> folder, redirect to the <code>/documents</code> folder. 2. If
+   * request results in HTTP error 4xx, redirect request to another host where you
+   * might process the error.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/Condition">AWS API
    * Reference</a></p>
    */
@@ -126,10 +119,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline const Aws::String& GetKeyPrefixEquals() const{ return m_keyPrefixEquals; }
 
@@ -138,10 +135,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline bool KeyPrefixEqualsHasBeenSet() const { return m_keyPrefixEqualsHasBeenSet; }
 
@@ -150,10 +151,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline void SetKeyPrefixEquals(const Aws::String& value) { m_keyPrefixEqualsHasBeenSet = true; m_keyPrefixEquals = value; }
 
@@ -162,10 +167,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline void SetKeyPrefixEquals(Aws::String&& value) { m_keyPrefixEqualsHasBeenSet = true; m_keyPrefixEquals = std::move(value); }
 
@@ -174,10 +183,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline void SetKeyPrefixEquals(const char* value) { m_keyPrefixEqualsHasBeenSet = true; m_keyPrefixEquals.assign(value); }
 
@@ -186,10 +199,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline Condition& WithKeyPrefixEquals(const Aws::String& value) { SetKeyPrefixEquals(value); return *this;}
 
@@ -198,10 +215,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline Condition& WithKeyPrefixEquals(Aws::String&& value) { SetKeyPrefixEquals(std::move(value)); return *this;}
 
@@ -210,10 +231,14 @@ namespace Model
      * redirect requests for <code>ExamplePage.html</code>, the key prefix will be
      * <code>ExamplePage.html</code>. To redirect request for all pages with the prefix
      * <code>docs/</code>, the key prefix will be <code>/docs</code>, which identifies
-     * all objects in the docs/ folder. Required when the parent element
+     * all objects in the <code>docs/</code> folder. Required when the parent element
      * <code>Condition</code> is specified and sibling
      * <code>HttpErrorCodeReturnedEquals</code> is not specified. If both conditions
-     * are specified, both must be true for the redirect to be applied.</p>
+     * are specified, both must be true for the redirect to be applied.</p> 
+     * <p>Replacement must be made for object keys containing special characters (such
+     * as carriage returns) when using XML requests. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+     * XML related object key constraints</a>.</p> 
      */
     inline Condition& WithKeyPrefixEquals(const char* value) { SetKeyPrefixEquals(value); return *this;}
 

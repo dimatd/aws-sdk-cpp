@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
@@ -141,6 +131,125 @@ namespace Model
      */
     inline ListPortfolioAccessRequest& WithPortfolioId(const char* value) { SetPortfolioId(value); return *this;}
 
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline const Aws::String& GetOrganizationParentId() const{ return m_organizationParentId; }
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline bool OrganizationParentIdHasBeenSet() const { return m_organizationParentIdHasBeenSet; }
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline void SetOrganizationParentId(const Aws::String& value) { m_organizationParentIdHasBeenSet = true; m_organizationParentId = value; }
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline void SetOrganizationParentId(Aws::String&& value) { m_organizationParentIdHasBeenSet = true; m_organizationParentId = std::move(value); }
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline void SetOrganizationParentId(const char* value) { m_organizationParentIdHasBeenSet = true; m_organizationParentId.assign(value); }
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline ListPortfolioAccessRequest& WithOrganizationParentId(const Aws::String& value) { SetOrganizationParentId(value); return *this;}
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline ListPortfolioAccessRequest& WithOrganizationParentId(Aws::String&& value) { SetOrganizationParentId(std::move(value)); return *this;}
+
+    /**
+     * <p>The ID of an organization node the portfolio is shared with. All children of
+     * this node with an inherited portfolio share will be returned.</p>
+     */
+    inline ListPortfolioAccessRequest& WithOrganizationParentId(const char* value) { SetOrganizationParentId(value); return *this;}
+
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline const Aws::String& GetPageToken() const{ return m_pageToken; }
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline ListPortfolioAccessRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline ListPortfolioAccessRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
+
+    /**
+     * <p>The page token for the next set of results. To retrieve the first set of
+     * results, use null.</p>
+     */
+    inline ListPortfolioAccessRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
+
+
+    /**
+     * <p>The maximum number of items to return with this call.</p>
+     */
+    inline int GetPageSize() const{ return m_pageSize; }
+
+    /**
+     * <p>The maximum number of items to return with this call.</p>
+     */
+    inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
+
+    /**
+     * <p>The maximum number of items to return with this call.</p>
+     */
+    inline void SetPageSize(int value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
+
+    /**
+     * <p>The maximum number of items to return with this call.</p>
+     */
+    inline ListPortfolioAccessRequest& WithPageSize(int value) { SetPageSize(value); return *this;}
+
   private:
 
     Aws::String m_acceptLanguage;
@@ -148,6 +257,15 @@ namespace Model
 
     Aws::String m_portfolioId;
     bool m_portfolioIdHasBeenSet;
+
+    Aws::String m_organizationParentId;
+    bool m_organizationParentIdHasBeenSet;
+
+    Aws::String m_pageToken;
+    bool m_pageTokenHasBeenSet;
+
+    int m_pageSize;
+    bool m_pageSizeHasBeenSet;
   };
 
 } // namespace Model

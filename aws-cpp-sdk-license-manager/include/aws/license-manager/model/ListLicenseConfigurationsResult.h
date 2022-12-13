@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/license-manager/LicenseManager_EXPORTS.h>
@@ -45,37 +35,37 @@ namespace Model
 
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline const Aws::Vector<LicenseConfiguration>& GetLicenseConfigurations() const{ return m_licenseConfigurations; }
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline void SetLicenseConfigurations(const Aws::Vector<LicenseConfiguration>& value) { m_licenseConfigurations = value; }
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline void SetLicenseConfigurations(Aws::Vector<LicenseConfiguration>&& value) { m_licenseConfigurations = std::move(value); }
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline ListLicenseConfigurationsResult& WithLicenseConfigurations(const Aws::Vector<LicenseConfiguration>& value) { SetLicenseConfigurations(value); return *this;}
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline ListLicenseConfigurationsResult& WithLicenseConfigurations(Aws::Vector<LicenseConfiguration>&& value) { SetLicenseConfigurations(std::move(value)); return *this;}
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline ListLicenseConfigurationsResult& AddLicenseConfigurations(const LicenseConfiguration& value) { m_licenseConfigurations.push_back(value); return *this; }
 
     /**
-     * <p>Array of license configuration objects.</p>
+     * <p>Information about the license configurations.</p>
      */
     inline ListLicenseConfigurationsResult& AddLicenseConfigurations(LicenseConfiguration&& value) { m_licenseConfigurations.push_back(std::move(value)); return *this; }
 

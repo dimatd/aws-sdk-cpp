@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/cognito-idp/model/EmailConfigurationType.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -32,7 +22,9 @@ EmailConfigurationType::EmailConfigurationType() :
     m_sourceArnHasBeenSet(false),
     m_replyToEmailAddressHasBeenSet(false),
     m_emailSendingAccount(EmailSendingAccountType::NOT_SET),
-    m_emailSendingAccountHasBeenSet(false)
+    m_emailSendingAccountHasBeenSet(false),
+    m_fromHasBeenSet(false),
+    m_configurationSetHasBeenSet(false)
 {
 }
 
@@ -40,7 +32,9 @@ EmailConfigurationType::EmailConfigurationType(JsonView jsonValue) :
     m_sourceArnHasBeenSet(false),
     m_replyToEmailAddressHasBeenSet(false),
     m_emailSendingAccount(EmailSendingAccountType::NOT_SET),
-    m_emailSendingAccountHasBeenSet(false)
+    m_emailSendingAccountHasBeenSet(false),
+    m_fromHasBeenSet(false),
+    m_configurationSetHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -68,6 +62,20 @@ EmailConfigurationType& EmailConfigurationType::operator =(JsonView jsonValue)
     m_emailSendingAccountHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("From"))
+  {
+    m_from = jsonValue.GetString("From");
+
+    m_fromHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ConfigurationSet"))
+  {
+    m_configurationSet = jsonValue.GetString("ConfigurationSet");
+
+    m_configurationSetHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -90,6 +98,18 @@ JsonValue EmailConfigurationType::Jsonize() const
   if(m_emailSendingAccountHasBeenSet)
   {
    payload.WithString("EmailSendingAccount", EmailSendingAccountTypeMapper::GetNameForEmailSendingAccountType(m_emailSendingAccount));
+  }
+
+  if(m_fromHasBeenSet)
+  {
+   payload.WithString("From", m_from);
+
+  }
+
+  if(m_configurationSetHasBeenSet)
+  {
+   payload.WithString("ConfigurationSet", m_configurationSet);
+
   }
 
   return payload;

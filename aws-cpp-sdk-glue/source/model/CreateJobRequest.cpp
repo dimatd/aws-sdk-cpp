@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/glue/model/CreateJobRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,6 +20,7 @@ CreateJobRequest::CreateJobRequest() :
     m_executionPropertyHasBeenSet(false),
     m_commandHasBeenSet(false),
     m_defaultArgumentsHasBeenSet(false),
+    m_nonOverridableArgumentsHasBeenSet(false),
     m_connectionsHasBeenSet(false),
     m_maxRetries(0),
     m_maxRetriesHasBeenSet(false),
@@ -44,7 +35,8 @@ CreateJobRequest::CreateJobRequest() :
     m_numberOfWorkers(0),
     m_numberOfWorkersHasBeenSet(false),
     m_workerType(WorkerType::NOT_SET),
-    m_workerTypeHasBeenSet(false)
+    m_workerTypeHasBeenSet(false),
+    m_codeGenConfigurationNodesHasBeenSet(false)
 {
 }
 
@@ -96,6 +88,17 @@ Aws::String CreateJobRequest::SerializePayload() const
      defaultArgumentsJsonMap.WithString(defaultArgumentsItem.first, defaultArgumentsItem.second);
    }
    payload.WithObject("DefaultArguments", std::move(defaultArgumentsJsonMap));
+
+  }
+
+  if(m_nonOverridableArgumentsHasBeenSet)
+  {
+   JsonValue nonOverridableArgumentsJsonMap;
+   for(auto& nonOverridableArgumentsItem : m_nonOverridableArguments)
+   {
+     nonOverridableArgumentsJsonMap.WithString(nonOverridableArgumentsItem.first, nonOverridableArgumentsItem.second);
+   }
+   payload.WithObject("NonOverridableArguments", std::move(nonOverridableArgumentsJsonMap));
 
   }
 
@@ -161,6 +164,17 @@ Aws::String CreateJobRequest::SerializePayload() const
   if(m_workerTypeHasBeenSet)
   {
    payload.WithString("WorkerType", WorkerTypeMapper::GetNameForWorkerType(m_workerType));
+  }
+
+  if(m_codeGenConfigurationNodesHasBeenSet)
+  {
+   JsonValue codeGenConfigurationNodesJsonMap;
+   for(auto& codeGenConfigurationNodesItem : m_codeGenConfigurationNodes)
+   {
+     codeGenConfigurationNodesJsonMap.WithObject(codeGenConfigurationNodesItem.first, codeGenConfigurationNodesItem.second.Jsonize());
+   }
+   payload.WithObject("CodeGenConfigurationNodes", std::move(codeGenConfigurationNodesJsonMap));
+
   }
 
   return payload.View().WriteReadable();

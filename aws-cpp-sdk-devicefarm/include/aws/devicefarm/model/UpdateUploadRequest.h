@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -86,124 +76,124 @@ namespace Model
 
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline UpdateUploadRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline UpdateUploadRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
-     * <p>The upload's test spec file name. The name should not contain the '/'
-     * character. The test spec file name must end with the <code>.yaml</code> or
+     * <p>The upload's test spec file name. The name must not contain any forward
+     * slashes (/). The test spec file name must end with the <code>.yaml</code> or
      * <code>.yml</code> file extension.</p>
      */
     inline UpdateUploadRequest& WithName(const char* value) { SetName(value); return *this;}
 
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline const Aws::String& GetContentType() const{ return m_contentType; }
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline void SetContentType(const Aws::String& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline void SetContentType(Aws::String&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline void SetContentType(const char* value) { m_contentTypeHasBeenSet = true; m_contentType.assign(value); }
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline UpdateUploadRequest& WithContentType(const Aws::String& value) { SetContentType(value); return *this;}
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline UpdateUploadRequest& WithContentType(Aws::String&& value) { SetContentType(std::move(value)); return *this;}
 
     /**
-     * <p>The upload's content type (for example, "application/x-yaml").</p>
+     * <p>The upload's content type (for example, <code>application/x-yaml</code>).</p>
      */
     inline UpdateUploadRequest& WithContentType(const char* value) { SetContentType(value); return *this;}
 
 
     /**
-     * <p>Set to true if the YAML file has changed and needs to be updated; otherwise,
-     * set to false.</p>
+     * <p>Set to true if the YAML file has changed and must be updated. Otherwise, set
+     * to false.</p>
      */
     inline bool GetEditContent() const{ return m_editContent; }
 
     /**
-     * <p>Set to true if the YAML file has changed and needs to be updated; otherwise,
-     * set to false.</p>
+     * <p>Set to true if the YAML file has changed and must be updated. Otherwise, set
+     * to false.</p>
      */
     inline bool EditContentHasBeenSet() const { return m_editContentHasBeenSet; }
 
     /**
-     * <p>Set to true if the YAML file has changed and needs to be updated; otherwise,
-     * set to false.</p>
+     * <p>Set to true if the YAML file has changed and must be updated. Otherwise, set
+     * to false.</p>
      */
     inline void SetEditContent(bool value) { m_editContentHasBeenSet = true; m_editContent = value; }
 
     /**
-     * <p>Set to true if the YAML file has changed and needs to be updated; otherwise,
-     * set to false.</p>
+     * <p>Set to true if the YAML file has changed and must be updated. Otherwise, set
+     * to false.</p>
      */
     inline UpdateUploadRequest& WithEditContent(bool value) { SetEditContent(value); return *this;}
 

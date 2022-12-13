@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/docdb/DocDB_EXPORTS.h>
@@ -102,37 +92,37 @@ namespace Model
 
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline const Aws::Vector<DBSubnetGroup>& GetDBSubnetGroups() const{ return m_dBSubnetGroups; }
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline void SetDBSubnetGroups(const Aws::Vector<DBSubnetGroup>& value) { m_dBSubnetGroups = value; }
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline void SetDBSubnetGroups(Aws::Vector<DBSubnetGroup>&& value) { m_dBSubnetGroups = std::move(value); }
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline DescribeDBSubnetGroupsResult& WithDBSubnetGroups(const Aws::Vector<DBSubnetGroup>& value) { SetDBSubnetGroups(value); return *this;}
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline DescribeDBSubnetGroupsResult& WithDBSubnetGroups(Aws::Vector<DBSubnetGroup>&& value) { SetDBSubnetGroups(std::move(value)); return *this;}
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline DescribeDBSubnetGroupsResult& AddDBSubnetGroups(const DBSubnetGroup& value) { m_dBSubnetGroups.push_back(value); return *this; }
 
     /**
-     * <p>Detailed information about one or more DB subnet groups.</p>
+     * <p>Detailed information about one or more subnet groups.</p>
      */
     inline DescribeDBSubnetGroupsResult& AddDBSubnetGroups(DBSubnetGroup&& value) { m_dBSubnetGroups.push_back(std::move(value)); return *this; }
 

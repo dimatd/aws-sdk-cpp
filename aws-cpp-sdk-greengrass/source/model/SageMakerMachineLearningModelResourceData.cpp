@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/greengrass/model/SageMakerMachineLearningModelResourceData.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,12 +20,14 @@ namespace Model
 
 SageMakerMachineLearningModelResourceData::SageMakerMachineLearningModelResourceData() : 
     m_destinationPathHasBeenSet(false),
+    m_ownerSettingHasBeenSet(false),
     m_sageMakerJobArnHasBeenSet(false)
 {
 }
 
 SageMakerMachineLearningModelResourceData::SageMakerMachineLearningModelResourceData(JsonView jsonValue) : 
     m_destinationPathHasBeenSet(false),
+    m_ownerSettingHasBeenSet(false),
     m_sageMakerJobArnHasBeenSet(false)
 {
   *this = jsonValue;
@@ -48,6 +40,13 @@ SageMakerMachineLearningModelResourceData& SageMakerMachineLearningModelResource
     m_destinationPath = jsonValue.GetString("DestinationPath");
 
     m_destinationPathHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OwnerSetting"))
+  {
+    m_ownerSetting = jsonValue.GetObject("OwnerSetting");
+
+    m_ownerSettingHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("SageMakerJobArn"))
@@ -67,6 +66,12 @@ JsonValue SageMakerMachineLearningModelResourceData::Jsonize() const
   if(m_destinationPathHasBeenSet)
   {
    payload.WithString("DestinationPath", m_destinationPath);
+
+  }
+
+  if(m_ownerSettingHasBeenSet)
+  {
+   payload.WithObject("OwnerSetting", m_ownerSetting.Jsonize());
 
   }
 

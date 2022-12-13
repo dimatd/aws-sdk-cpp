@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/workdocs/WorkDocs_EXPORTS.h>
@@ -46,50 +36,50 @@ namespace Model
 
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline const Aws::String& GetAuthenticationToken() const{ return m_authenticationToken; }
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline bool AuthenticationTokenHasBeenSet() const { return m_authenticationTokenHasBeenSet; }
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline void SetAuthenticationToken(const Aws::String& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = value; }
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline void SetAuthenticationToken(Aws::String&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::move(value); }
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline void SetAuthenticationToken(const char* value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken.assign(value); }
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline InitiateDocumentVersionUploadRequest& WithAuthenticationToken(const Aws::String& value) { SetAuthenticationToken(value); return *this;}
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline InitiateDocumentVersionUploadRequest& WithAuthenticationToken(Aws::String&& value) { SetAuthenticationToken(std::move(value)); return *this;}
 
     /**
-     * <p>Amazon WorkDocs authentication token. Do not set this field when using
-     * administrative API actions, as in accessing the API using AWS credentials.</p>
+     * <p>Amazon WorkDocs authentication token. Not required when using AWS
+     * administrator credentials to access the API.</p>
      */
     inline InitiateDocumentVersionUploadRequest& WithAuthenticationToken(const char* value) { SetAuthenticationToken(value); return *this;}
 

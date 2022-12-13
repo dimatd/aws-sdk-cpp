@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/globalaccelerator/GlobalAccelerator_EXPORTS.h>
@@ -151,65 +141,81 @@ namespace Model
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline const Aws::String& GetFlowLogsS3Prefix() const{ return m_flowLogsS3Prefix; }
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline bool FlowLogsS3PrefixHasBeenSet() const { return m_flowLogsS3PrefixHasBeenSet; }
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline void SetFlowLogsS3Prefix(const Aws::String& value) { m_flowLogsS3PrefixHasBeenSet = true; m_flowLogsS3Prefix = value; }
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline void SetFlowLogsS3Prefix(Aws::String&& value) { m_flowLogsS3PrefixHasBeenSet = true; m_flowLogsS3Prefix = std::move(value); }
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline void SetFlowLogsS3Prefix(const char* value) { m_flowLogsS3PrefixHasBeenSet = true; m_flowLogsS3Prefix.assign(value); }
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline AcceleratorAttributes& WithFlowLogsS3Prefix(const Aws::String& value) { SetFlowLogsS3Prefix(value); return *this;}
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline AcceleratorAttributes& WithFlowLogsS3Prefix(Aws::String&& value) { SetFlowLogsS3Prefix(std::move(value)); return *this;}
 
     /**
      * <p>The prefix for the location in the Amazon S3 bucket for the flow logs.
-     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>. If
-     * you don’t specify a prefix, the flow logs are stored in the root of the
-     * bucket.</p>
+     * Attribute is required if <code>FlowLogsEnabled</code> is <code>true</code>.</p>
+     * <p>If you don’t specify a prefix, the flow logs are stored in the root of the
+     * bucket. If you specify slash (/) for the S3 bucket prefix, the log file bucket
+     * folder structure will include a double slash (//), like the following:</p>
+     * <p>s3-bucket_name//AWSLogs/aws_account_id</p>
      */
     inline AcceleratorAttributes& WithFlowLogsS3Prefix(const char* value) { SetFlowLogsS3Prefix(value); return *this;}
 

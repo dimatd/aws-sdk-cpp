@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -45,51 +35,44 @@ namespace Model
 
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline const Aws::Vector<Difference>& GetDifferences() const{ return m_differences; }
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline void SetDifferences(const Aws::Vector<Difference>& value) { m_differences = value; }
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline void SetDifferences(Aws::Vector<Difference>&& value) { m_differences = std::move(value); }
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline GetDifferencesResult& WithDifferences(const Aws::Vector<Difference>& value) { SetDifferences(value); return *this;}
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline GetDifferencesResult& WithDifferences(Aws::Vector<Difference>&& value) { SetDifferences(std::move(value)); return *this;}
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline GetDifferencesResult& AddDifferences(const Difference& value) { m_differences.push_back(value); return *this; }
 
     /**
-     * <p>A differences data type object that contains information about the
-     * differences, including whether the difference is added, modified, or deleted (A,
-     * D, M).</p>
+     * <p>A data type object that contains information about the differences, including
+     * whether the difference is added, modified, or deleted (A, D, M).</p>
      */
     inline GetDifferencesResult& AddDifferences(Difference&& value) { m_differences.push_back(std::move(value)); return *this; }
 

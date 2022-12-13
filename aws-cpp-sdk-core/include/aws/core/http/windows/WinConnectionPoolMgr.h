@@ -1,17 +1,7 @@
-/*
-  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License").
-  * You may not use this file except in compliance with the License.
-  * A copy of the License is located at
-  *
-  *  http://aws.amazon.com/apache2.0
-  *
-  * or in the "license" file accompanying this file. This file is distributed
-  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  * express or implied. See the License for the specific language governing
-  * permissions and limitations under the License.
-  */
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
@@ -28,6 +18,7 @@ namespace Aws
     namespace Http
     {
 
+        class WinHttpSyncHttpClient;
         /**
         * Connection pool manager for windows apis
         * maintains open connections for a given hostname and port.
@@ -47,14 +38,14 @@ namespace Aws
             virtual ~WinConnectionPoolMgr();
 
             /*
-            * Aquires a connection for host and port from pool, or adds connections to pool until pool has reached max size
+            * Acquires a connection for host and port from pool, or adds connections to pool until pool has reached max size
             * If no connections are available and the pool is at its maximum size, then this call will block until connections
             * become available.
             */
-            void* AquireConnectionForHost(const Aws::String& host, uint16_t port);
+            void* AcquireConnectionForHost(const Aws::String& host, uint16_t port);
 
             /*
-            * Releases a connection to host and port back to the pool, if another thread is blocked in Aquire, then the top queued item
+            * Releases a connection to host and port back to the pool, if another thread is blocked in Acquire, then the top queued item
             * will be returned a connection and signaled to continue.
             */
             void ReleaseConnectionForHost(const Aws::String& host, unsigned port, void* connection);
@@ -67,6 +58,7 @@ namespace Aws
              * Gives an opportunity of implementations to make their api calls to cleanup a handle.
              */
             virtual void DoCloseHandle(void* handle) const = 0;
+
         protected:
             /**
              * Container for the connection pool. Allows tracking of number of connections per endpoint and also their handles.
@@ -100,6 +92,7 @@ namespace Aws
              * Gets the interval to send a keep-alive packet for this connection pool.
              */
             unsigned long GetTcpKeepAliveInterval() const { return m_tcpKeepAliveIntervalMs; }
+       
             /**
              * Cleans up all open resources.
              */
@@ -125,6 +118,8 @@ namespace Aws
             bool m_enableTcpKeepAlive;
             unsigned long m_tcpKeepAliveIntervalMs;
             std::mutex m_containerLock;
+
+            friend class WinHttpSyncHttpClient;
         };
 
     } // namespace Http

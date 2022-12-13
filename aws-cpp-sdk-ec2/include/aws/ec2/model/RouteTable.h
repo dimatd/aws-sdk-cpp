@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -55,42 +45,50 @@ namespace Model
 
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline const Aws::Vector<RouteTableAssociation>& GetAssociations() const{ return m_associations; }
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline bool AssociationsHasBeenSet() const { return m_associationsHasBeenSet; }
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline void SetAssociations(const Aws::Vector<RouteTableAssociation>& value) { m_associationsHasBeenSet = true; m_associations = value; }
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline void SetAssociations(Aws::Vector<RouteTableAssociation>&& value) { m_associationsHasBeenSet = true; m_associations = std::move(value); }
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline RouteTable& WithAssociations(const Aws::Vector<RouteTableAssociation>& value) { SetAssociations(value); return *this;}
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline RouteTable& WithAssociations(Aws::Vector<RouteTableAssociation>&& value) { SetAssociations(std::move(value)); return *this;}
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline RouteTable& AddAssociations(const RouteTableAssociation& value) { m_associationsHasBeenSet = true; m_associations.push_back(value); return *this; }
 
     /**
-     * <p>The associations between the route table and one or more subnets.</p>
+     * <p>The associations between the route table and one or more subnets or a
+     * gateway.</p>
      */
     inline RouteTable& AddAssociations(RouteTableAssociation&& value) { m_associationsHasBeenSet = true; m_associations.push_back(std::move(value)); return *this; }
 
@@ -301,42 +299,42 @@ namespace Model
 
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline RouteTable& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline RouteTable& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the AWS account that owns the route table.</p>
+     * <p>The ID of the Amazon Web Services account that owns the route table.</p>
      */
     inline RouteTable& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
 

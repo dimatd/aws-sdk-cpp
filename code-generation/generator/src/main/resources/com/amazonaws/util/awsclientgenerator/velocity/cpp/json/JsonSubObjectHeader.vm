@@ -29,6 +29,9 @@ namespace ${serviceNamespace}
 namespace Model
 {
 #set($classNameRef = "${typeInfo.className}&")
+#foreach($forwardDeclaration in $typeInfo.forwardDeclarations)
+  class $forwardDeclaration;
+#end
 
 #if($shape.documentation)
   /**

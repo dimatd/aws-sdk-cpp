@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -288,50 +278,58 @@ namespace Model
 
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline const Aws::String& GetStartTime() const{ return m_startTime; }
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline void SetStartTime(const Aws::String& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline void SetStartTime(Aws::String&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline void SetStartTime(const char* value) { m_startTimeHasBeenSet = true; m_startTime.assign(value); }
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline Schedule& WithStartTime(const Aws::String& value) { SetStartTime(value); return *this;}
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline Schedule& WithStartTime(Aws::String&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
-     * <p>The scheduled time, in ISO 8601 format, when the campaign began or will
-     * begin.</p>
+     * <p>The scheduled time when the campaign began or will begin. Valid values are:
+     * IMMEDIATE, to start the campaign immediately; or, a specific time in ISO 8601
+     * format.</p>
      */
     inline Schedule& WithStartTime(const char* value) { SetStartTime(value); return *this;}
 

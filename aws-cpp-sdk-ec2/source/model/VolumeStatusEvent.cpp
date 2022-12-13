@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/VolumeStatusEvent.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -35,7 +25,8 @@ VolumeStatusEvent::VolumeStatusEvent() :
     m_eventIdHasBeenSet(false),
     m_eventTypeHasBeenSet(false),
     m_notAfterHasBeenSet(false),
-    m_notBeforeHasBeenSet(false)
+    m_notBeforeHasBeenSet(false),
+    m_instanceIdHasBeenSet(false)
 {
 }
 
@@ -44,7 +35,8 @@ VolumeStatusEvent::VolumeStatusEvent(const XmlNode& xmlNode) :
     m_eventIdHasBeenSet(false),
     m_eventTypeHasBeenSet(false),
     m_notAfterHasBeenSet(false),
-    m_notBeforeHasBeenSet(false)
+    m_notBeforeHasBeenSet(false),
+    m_instanceIdHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -85,6 +77,12 @@ VolumeStatusEvent& VolumeStatusEvent::operator =(const XmlNode& xmlNode)
       m_notBefore = DateTime(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(notBeforeNode.GetText()).c_str()).c_str(), DateFormat::ISO_8601);
       m_notBeforeHasBeenSet = true;
     }
+    XmlNode instanceIdNode = resultNode.FirstChild("instanceId");
+    if(!instanceIdNode.IsNull())
+    {
+      m_instanceId = Aws::Utils::Xml::DecodeEscapedXmlText(instanceIdNode.GetText());
+      m_instanceIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -117,6 +115,11 @@ void VolumeStatusEvent::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << index << locationValue << ".NotBefore=" << StringUtils::URLEncode(m_notBefore.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 
+  if(m_instanceIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
+  }
+
 }
 
 void VolumeStatusEvent::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -140,6 +143,10 @@ void VolumeStatusEvent::OutputToStream(Aws::OStream& oStream, const char* locati
   if(m_notBeforeHasBeenSet)
   {
       oStream << location << ".NotBefore=" << StringUtils::URLEncode(m_notBefore.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_instanceIdHasBeenSet)
+  {
+      oStream << location << ".InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
   }
 }
 

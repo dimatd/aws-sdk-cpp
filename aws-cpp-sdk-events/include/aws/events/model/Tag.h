@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/events/CloudWatchEvents_EXPORTS.h>
@@ -34,9 +24,9 @@ namespace Model
 {
 
   /**
-   * <p>A key-value pair associated with an AWS resource. In EventBridge, rules
-   * support tagging.</p><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/Tag">AWS API
+   * <p>A key-value pair associated with an Amazon Web Services resource. In
+   * EventBridge, rules and event buses support tagging.</p><p><h3>See Also:</h3>  
+   * <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/Tag">AWS API
    * Reference</a></p>
    */
   class AWS_CLOUDWATCHEVENTS_API Tag
@@ -49,49 +39,49 @@ namespace Model
 
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline const Aws::String& GetKey() const{ return m_key; }
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline Tag& WithKey(const Aws::String& value) { SetKey(value); return *this;}
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline Tag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
-     * <p>A string that you can use to assign a value. The combination of tag keys and
+     * <p>A string you can use to assign a value. The combination of tag keys and
      * values can help you organize and categorize your resources.</p>
      */
     inline Tag& WithKey(const char* value) { SetKey(value); return *this;}

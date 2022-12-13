@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/organizations/Organizations_EXPORTS.h>
@@ -49,7 +39,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline const Aws::String& GetRootId() const{ return m_rootId; }
 
@@ -57,7 +47,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline bool RootIdHasBeenSet() const { return m_rootIdHasBeenSet; }
 
@@ -65,7 +55,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline void SetRootId(const Aws::String& value) { m_rootIdHasBeenSet = true; m_rootId = value; }
 
@@ -73,7 +63,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline void SetRootId(Aws::String&& value) { m_rootIdHasBeenSet = true; m_rootId = std::move(value); }
 
@@ -81,7 +71,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline void SetRootId(const char* value) { m_rootIdHasBeenSet = true; m_rootId.assign(value); }
 
@@ -89,7 +79,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline DisablePolicyTypeRequest& WithRootId(const Aws::String& value) { SetRootId(value); return *this;}
 
@@ -97,7 +87,7 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline DisablePolicyTypeRequest& WithRootId(Aws::String&& value) { SetRootId(std::move(value)); return *this;}
 
@@ -105,38 +95,92 @@ namespace Model
      * <p>The unique identifier (ID) of the root in which you want to disable a policy
      * type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string
-     * requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+     * requires "r-" followed by from 4 to 32 lowercase letters or digits.</p>
      */
     inline DisablePolicyTypeRequest& WithRootId(const char* value) { SetRootId(value); return *this;}
 
 
     /**
-     * <p>The policy type that you want to disable in this root.</p>
+     * <p>The policy type that you want to disable in this root. You can specify one of
+     * the following values:</p> <ul> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * </p> </li> </ul>
      */
     inline const PolicyType& GetPolicyType() const{ return m_policyType; }
 
     /**
-     * <p>The policy type that you want to disable in this root.</p>
+     * <p>The policy type that you want to disable in this root. You can specify one of
+     * the following values:</p> <ul> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * </p> </li> </ul>
      */
     inline bool PolicyTypeHasBeenSet() const { return m_policyTypeHasBeenSet; }
 
     /**
-     * <p>The policy type that you want to disable in this root.</p>
+     * <p>The policy type that you want to disable in this root. You can specify one of
+     * the following values:</p> <ul> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * </p> </li> </ul>
      */
     inline void SetPolicyType(const PolicyType& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
 
     /**
-     * <p>The policy type that you want to disable in this root.</p>
+     * <p>The policy type that you want to disable in this root. You can specify one of
+     * the following values:</p> <ul> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * </p> </li> </ul>
      */
     inline void SetPolicyType(PolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
 
     /**
-     * <p>The policy type that you want to disable in this root.</p>
+     * <p>The policy type that you want to disable in this root. You can specify one of
+     * the following values:</p> <ul> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * </p> </li> </ul>
      */
     inline DisablePolicyTypeRequest& WithPolicyType(const PolicyType& value) { SetPolicyType(value); return *this;}
 
     /**
-     * <p>The policy type that you want to disable in this root.</p>
+     * <p>The policy type that you want to disable in this root. You can specify one of
+     * the following values:</p> <ul> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+     * </p> </li> <li> <p> <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+     * </p> </li> </ul>
      */
     inline DisablePolicyTypeRequest& WithPolicyType(PolicyType&& value) { SetPolicyType(std::move(value)); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/eks/model/ErrorCode.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -38,6 +28,15 @@ namespace Aws
         static const int OperationNotPermitted_HASH = HashingUtils::HashString("OperationNotPermitted");
         static const int VpcIdNotFound_HASH = HashingUtils::HashString("VpcIdNotFound");
         static const int Unknown_HASH = HashingUtils::HashString("Unknown");
+        static const int NodeCreationFailure_HASH = HashingUtils::HashString("NodeCreationFailure");
+        static const int PodEvictionFailure_HASH = HashingUtils::HashString("PodEvictionFailure");
+        static const int InsufficientFreeAddresses_HASH = HashingUtils::HashString("InsufficientFreeAddresses");
+        static const int ClusterUnreachable_HASH = HashingUtils::HashString("ClusterUnreachable");
+        static const int InsufficientNumberOfReplicas_HASH = HashingUtils::HashString("InsufficientNumberOfReplicas");
+        static const int ConfigurationConflict_HASH = HashingUtils::HashString("ConfigurationConflict");
+        static const int AdmissionRequestDenied_HASH = HashingUtils::HashString("AdmissionRequestDenied");
+        static const int UnsupportedAddonModification_HASH = HashingUtils::HashString("UnsupportedAddonModification");
+        static const int K8sResourceNotFound_HASH = HashingUtils::HashString("K8sResourceNotFound");
 
 
         ErrorCode GetErrorCodeForName(const Aws::String& name)
@@ -75,6 +74,42 @@ namespace Aws
           {
             return ErrorCode::Unknown;
           }
+          else if (hashCode == NodeCreationFailure_HASH)
+          {
+            return ErrorCode::NodeCreationFailure;
+          }
+          else if (hashCode == PodEvictionFailure_HASH)
+          {
+            return ErrorCode::PodEvictionFailure;
+          }
+          else if (hashCode == InsufficientFreeAddresses_HASH)
+          {
+            return ErrorCode::InsufficientFreeAddresses;
+          }
+          else if (hashCode == ClusterUnreachable_HASH)
+          {
+            return ErrorCode::ClusterUnreachable;
+          }
+          else if (hashCode == InsufficientNumberOfReplicas_HASH)
+          {
+            return ErrorCode::InsufficientNumberOfReplicas;
+          }
+          else if (hashCode == ConfigurationConflict_HASH)
+          {
+            return ErrorCode::ConfigurationConflict;
+          }
+          else if (hashCode == AdmissionRequestDenied_HASH)
+          {
+            return ErrorCode::AdmissionRequestDenied;
+          }
+          else if (hashCode == UnsupportedAddonModification_HASH)
+          {
+            return ErrorCode::UnsupportedAddonModification;
+          }
+          else if (hashCode == K8sResourceNotFound_HASH)
+          {
+            return ErrorCode::K8sResourceNotFound;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -105,6 +140,24 @@ namespace Aws
             return "VpcIdNotFound";
           case ErrorCode::Unknown:
             return "Unknown";
+          case ErrorCode::NodeCreationFailure:
+            return "NodeCreationFailure";
+          case ErrorCode::PodEvictionFailure:
+            return "PodEvictionFailure";
+          case ErrorCode::InsufficientFreeAddresses:
+            return "InsufficientFreeAddresses";
+          case ErrorCode::ClusterUnreachable:
+            return "ClusterUnreachable";
+          case ErrorCode::InsufficientNumberOfReplicas:
+            return "InsufficientNumberOfReplicas";
+          case ErrorCode::ConfigurationConflict:
+            return "ConfigurationConflict";
+          case ErrorCode::AdmissionRequestDenied:
+            return "AdmissionRequestDenied";
+          case ErrorCode::UnsupportedAddonModification:
+            return "UnsupportedAddonModification";
+          case ErrorCode::K8sResourceNotFound:
+            return "K8sResourceNotFound";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

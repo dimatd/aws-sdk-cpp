@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/groundstation/GroundStation_EXPORTS.h>
@@ -88,10 +78,54 @@ namespace Model
      */
     inline DataflowEndpointConfig& WithDataflowEndpointName(const char* value) { SetDataflowEndpointName(value); return *this;}
 
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline const Aws::String& GetDataflowEndpointRegion() const{ return m_dataflowEndpointRegion; }
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline bool DataflowEndpointRegionHasBeenSet() const { return m_dataflowEndpointRegionHasBeenSet; }
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline void SetDataflowEndpointRegion(const Aws::String& value) { m_dataflowEndpointRegionHasBeenSet = true; m_dataflowEndpointRegion = value; }
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline void SetDataflowEndpointRegion(Aws::String&& value) { m_dataflowEndpointRegionHasBeenSet = true; m_dataflowEndpointRegion = std::move(value); }
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline void SetDataflowEndpointRegion(const char* value) { m_dataflowEndpointRegionHasBeenSet = true; m_dataflowEndpointRegion.assign(value); }
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline DataflowEndpointConfig& WithDataflowEndpointRegion(const Aws::String& value) { SetDataflowEndpointRegion(value); return *this;}
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline DataflowEndpointConfig& WithDataflowEndpointRegion(Aws::String&& value) { SetDataflowEndpointRegion(std::move(value)); return *this;}
+
+    /**
+     * <p>Region of a dataflow endpoint.</p>
+     */
+    inline DataflowEndpointConfig& WithDataflowEndpointRegion(const char* value) { SetDataflowEndpointRegion(value); return *this;}
+
   private:
 
     Aws::String m_dataflowEndpointName;
     bool m_dataflowEndpointNameHasBeenSet;
+
+    Aws::String m_dataflowEndpointRegion;
+    bool m_dataflowEndpointRegionHasBeenSet;
   };
 
 } // namespace Model

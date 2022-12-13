@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/codepipeline/model/ActionExecutionInput.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,18 +21,22 @@ namespace Model
 ActionExecutionInput::ActionExecutionInput() : 
     m_actionTypeIdHasBeenSet(false),
     m_configurationHasBeenSet(false),
+    m_resolvedConfigurationHasBeenSet(false),
     m_roleArnHasBeenSet(false),
     m_regionHasBeenSet(false),
-    m_inputArtifactsHasBeenSet(false)
+    m_inputArtifactsHasBeenSet(false),
+    m_namespaceHasBeenSet(false)
 {
 }
 
 ActionExecutionInput::ActionExecutionInput(JsonView jsonValue) : 
     m_actionTypeIdHasBeenSet(false),
     m_configurationHasBeenSet(false),
+    m_resolvedConfigurationHasBeenSet(false),
     m_roleArnHasBeenSet(false),
     m_regionHasBeenSet(false),
-    m_inputArtifactsHasBeenSet(false)
+    m_inputArtifactsHasBeenSet(false),
+    m_namespaceHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -64,6 +58,16 @@ ActionExecutionInput& ActionExecutionInput::operator =(JsonView jsonValue)
       m_configuration[configurationItem.first] = configurationItem.second.AsString();
     }
     m_configurationHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("resolvedConfiguration"))
+  {
+    Aws::Map<Aws::String, JsonView> resolvedConfigurationJsonMap = jsonValue.GetObject("resolvedConfiguration").GetAllObjects();
+    for(auto& resolvedConfigurationItem : resolvedConfigurationJsonMap)
+    {
+      m_resolvedConfiguration[resolvedConfigurationItem.first] = resolvedConfigurationItem.second.AsString();
+    }
+    m_resolvedConfigurationHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("roleArn"))
@@ -90,6 +94,13 @@ ActionExecutionInput& ActionExecutionInput::operator =(JsonView jsonValue)
     m_inputArtifactsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("namespace"))
+  {
+    m_namespace = jsonValue.GetString("namespace");
+
+    m_namespaceHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -114,6 +125,17 @@ JsonValue ActionExecutionInput::Jsonize() const
 
   }
 
+  if(m_resolvedConfigurationHasBeenSet)
+  {
+   JsonValue resolvedConfigurationJsonMap;
+   for(auto& resolvedConfigurationItem : m_resolvedConfiguration)
+   {
+     resolvedConfigurationJsonMap.WithString(resolvedConfigurationItem.first, resolvedConfigurationItem.second);
+   }
+   payload.WithObject("resolvedConfiguration", std::move(resolvedConfigurationJsonMap));
+
+  }
+
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
@@ -134,6 +156,12 @@ JsonValue ActionExecutionInput::Jsonize() const
      inputArtifactsJsonList[inputArtifactsIndex].AsObject(m_inputArtifacts[inputArtifactsIndex].Jsonize());
    }
    payload.WithArray("inputArtifacts", std::move(inputArtifactsJsonList));
+
+  }
+
+  if(m_namespaceHasBeenSet)
+  {
+   payload.WithString("namespace", m_namespace);
 
   }
 

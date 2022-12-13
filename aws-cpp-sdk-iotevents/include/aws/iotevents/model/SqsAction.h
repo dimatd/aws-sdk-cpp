@@ -1,21 +1,12 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iotevents/IoTEvents_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/iotevents/model/Payload.h>
 #include <utility>
 
 namespace Aws
@@ -34,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p>Sends information about the detector model instance and the event which
+   * <p>Sends information about the detector model instance and the event that
    * triggered the action to an Amazon SQS queue.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/iotevents-2018-07-27/SqsAction">AWS
    * API Reference</a></p>
@@ -49,69 +40,106 @@ namespace Model
 
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline const Aws::String& GetQueueUrl() const{ return m_queueUrl; }
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline bool QueueUrlHasBeenSet() const { return m_queueUrlHasBeenSet; }
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline void SetQueueUrl(const Aws::String& value) { m_queueUrlHasBeenSet = true; m_queueUrl = value; }
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline void SetQueueUrl(Aws::String&& value) { m_queueUrlHasBeenSet = true; m_queueUrl = std::move(value); }
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline void SetQueueUrl(const char* value) { m_queueUrlHasBeenSet = true; m_queueUrl.assign(value); }
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline SqsAction& WithQueueUrl(const Aws::String& value) { SetQueueUrl(value); return *this;}
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline SqsAction& WithQueueUrl(Aws::String&& value) { SetQueueUrl(std::move(value)); return *this;}
 
     /**
-     * <p>The URL of the Amazon SQS queue where the data is written.</p>
+     * <p>The URL of the SQS queue where the data is written.</p>
      */
     inline SqsAction& WithQueueUrl(const char* value) { SetQueueUrl(value); return *this;}
 
 
     /**
-     * <p>Set this to TRUE if you want the data to be Base-64 encoded before it is
+     * <p>Set this to TRUE if you want the data to be base-64 encoded before it is
      * written to the queue. Otherwise, set this to FALSE.</p>
      */
     inline bool GetUseBase64() const{ return m_useBase64; }
 
     /**
-     * <p>Set this to TRUE if you want the data to be Base-64 encoded before it is
+     * <p>Set this to TRUE if you want the data to be base-64 encoded before it is
      * written to the queue. Otherwise, set this to FALSE.</p>
      */
     inline bool UseBase64HasBeenSet() const { return m_useBase64HasBeenSet; }
 
     /**
-     * <p>Set this to TRUE if you want the data to be Base-64 encoded before it is
+     * <p>Set this to TRUE if you want the data to be base-64 encoded before it is
      * written to the queue. Otherwise, set this to FALSE.</p>
      */
     inline void SetUseBase64(bool value) { m_useBase64HasBeenSet = true; m_useBase64 = value; }
 
     /**
-     * <p>Set this to TRUE if you want the data to be Base-64 encoded before it is
+     * <p>Set this to TRUE if you want the data to be base-64 encoded before it is
      * written to the queue. Otherwise, set this to FALSE.</p>
      */
     inline SqsAction& WithUseBase64(bool value) { SetUseBase64(value); return *this;}
+
+
+    /**
+     * <p>You can configure the action payload when you send a message to an Amazon SQS
+     * queue.</p>
+     */
+    inline const Payload& GetPayload() const{ return m_payload; }
+
+    /**
+     * <p>You can configure the action payload when you send a message to an Amazon SQS
+     * queue.</p>
+     */
+    inline bool PayloadHasBeenSet() const { return m_payloadHasBeenSet; }
+
+    /**
+     * <p>You can configure the action payload when you send a message to an Amazon SQS
+     * queue.</p>
+     */
+    inline void SetPayload(const Payload& value) { m_payloadHasBeenSet = true; m_payload = value; }
+
+    /**
+     * <p>You can configure the action payload when you send a message to an Amazon SQS
+     * queue.</p>
+     */
+    inline void SetPayload(Payload&& value) { m_payloadHasBeenSet = true; m_payload = std::move(value); }
+
+    /**
+     * <p>You can configure the action payload when you send a message to an Amazon SQS
+     * queue.</p>
+     */
+    inline SqsAction& WithPayload(const Payload& value) { SetPayload(value); return *this;}
+
+    /**
+     * <p>You can configure the action payload when you send a message to an Amazon SQS
+     * queue.</p>
+     */
+    inline SqsAction& WithPayload(Payload&& value) { SetPayload(std::move(value)); return *this;}
 
   private:
 
@@ -120,6 +148,9 @@ namespace Model
 
     bool m_useBase64;
     bool m_useBase64HasBeenSet;
+
+    Payload m_payload;
+    bool m_payloadHasBeenSet;
   };
 
 } // namespace Model

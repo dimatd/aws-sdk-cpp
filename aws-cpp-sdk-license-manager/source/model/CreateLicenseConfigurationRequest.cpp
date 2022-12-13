@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/license-manager/model/CreateLicenseConfigurationRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -32,7 +22,10 @@ CreateLicenseConfigurationRequest::CreateLicenseConfigurationRequest() :
     m_licenseCountHardLimit(false),
     m_licenseCountHardLimitHasBeenSet(false),
     m_licenseRulesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_disassociateWhenNotFound(false),
+    m_disassociateWhenNotFoundHasBeenSet(false),
+    m_productInformationListHasBeenSet(false)
 {
 }
 
@@ -88,6 +81,23 @@ Aws::String CreateLicenseConfigurationRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_disassociateWhenNotFoundHasBeenSet)
+  {
+   payload.WithBool("DisassociateWhenNotFound", m_disassociateWhenNotFound);
+
+  }
+
+  if(m_productInformationListHasBeenSet)
+  {
+   Array<JsonValue> productInformationListJsonList(m_productInformationList.size());
+   for(unsigned productInformationListIndex = 0; productInformationListIndex < productInformationListJsonList.GetLength(); ++productInformationListIndex)
+   {
+     productInformationListJsonList[productInformationListIndex].AsObject(m_productInformationList[productInformationListIndex].Jsonize());
+   }
+   payload.WithArray("ProductInformationList", std::move(productInformationListJsonList));
 
   }
 

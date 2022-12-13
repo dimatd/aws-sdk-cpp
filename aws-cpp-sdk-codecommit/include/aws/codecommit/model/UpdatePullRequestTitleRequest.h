@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -94,50 +84,42 @@ namespace Model
 
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline const Aws::String& GetTitle() const{ return m_title; }
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline UpdatePullRequestTitleRequest& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline UpdatePullRequestTitleRequest& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
 
     /**
-     * <p>The updated title of the pull request. This will replace the existing
-     * title.</p>
+     * <p>The updated title of the pull request. This replaces the existing title.</p>
      */
     inline UpdatePullRequestTitleRequest& WithTitle(const char* value) { SetTitle(value); return *this;}
 

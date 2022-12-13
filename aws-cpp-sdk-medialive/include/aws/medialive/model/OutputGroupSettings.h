@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
@@ -20,6 +10,7 @@
 #include <aws/medialive/model/HlsGroupSettings.h>
 #include <aws/medialive/model/MediaPackageGroupSettings.h>
 #include <aws/medialive/model/MsSmoothGroupSettings.h>
+#include <aws/medialive/model/MultiplexGroupSettings.h>
 #include <aws/medialive/model/RtmpGroupSettings.h>
 #include <aws/medialive/model/UdpGroupSettings.h>
 #include <utility>
@@ -149,6 +140,25 @@ namespace Model
 
 
     
+    inline const MultiplexGroupSettings& GetMultiplexGroupSettings() const{ return m_multiplexGroupSettings; }
+
+    
+    inline bool MultiplexGroupSettingsHasBeenSet() const { return m_multiplexGroupSettingsHasBeenSet; }
+
+    
+    inline void SetMultiplexGroupSettings(const MultiplexGroupSettings& value) { m_multiplexGroupSettingsHasBeenSet = true; m_multiplexGroupSettings = value; }
+
+    
+    inline void SetMultiplexGroupSettings(MultiplexGroupSettings&& value) { m_multiplexGroupSettingsHasBeenSet = true; m_multiplexGroupSettings = std::move(value); }
+
+    
+    inline OutputGroupSettings& WithMultiplexGroupSettings(const MultiplexGroupSettings& value) { SetMultiplexGroupSettings(value); return *this;}
+
+    
+    inline OutputGroupSettings& WithMultiplexGroupSettings(MultiplexGroupSettings&& value) { SetMultiplexGroupSettings(std::move(value)); return *this;}
+
+
+    
     inline const RtmpGroupSettings& GetRtmpGroupSettings() const{ return m_rtmpGroupSettings; }
 
     
@@ -201,6 +211,9 @@ namespace Model
 
     MsSmoothGroupSettings m_msSmoothGroupSettings;
     bool m_msSmoothGroupSettingsHasBeenSet;
+
+    MultiplexGroupSettings m_multiplexGroupSettings;
+    bool m_multiplexGroupSettingsHasBeenSet;
 
     RtmpGroupSettings m_rtmpGroupSettings;
     bool m_rtmpGroupSettingsHasBeenSet;

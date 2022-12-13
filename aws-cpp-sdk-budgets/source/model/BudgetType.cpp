@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/budgets/model/BudgetType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -34,6 +24,8 @@ namespace Aws
         static const int COST_HASH = HashingUtils::HashString("COST");
         static const int RI_UTILIZATION_HASH = HashingUtils::HashString("RI_UTILIZATION");
         static const int RI_COVERAGE_HASH = HashingUtils::HashString("RI_COVERAGE");
+        static const int SAVINGS_PLANS_UTILIZATION_HASH = HashingUtils::HashString("SAVINGS_PLANS_UTILIZATION");
+        static const int SAVINGS_PLANS_COVERAGE_HASH = HashingUtils::HashString("SAVINGS_PLANS_COVERAGE");
 
 
         BudgetType GetBudgetTypeForName(const Aws::String& name)
@@ -54,6 +46,14 @@ namespace Aws
           else if (hashCode == RI_COVERAGE_HASH)
           {
             return BudgetType::RI_COVERAGE;
+          }
+          else if (hashCode == SAVINGS_PLANS_UTILIZATION_HASH)
+          {
+            return BudgetType::SAVINGS_PLANS_UTILIZATION;
+          }
+          else if (hashCode == SAVINGS_PLANS_COVERAGE_HASH)
+          {
+            return BudgetType::SAVINGS_PLANS_COVERAGE;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -77,6 +77,10 @@ namespace Aws
             return "RI_UTILIZATION";
           case BudgetType::RI_COVERAGE:
             return "RI_COVERAGE";
+          case BudgetType::SAVINGS_PLANS_UTILIZATION:
+            return "SAVINGS_PLANS_UTILIZATION";
+          case BudgetType::SAVINGS_PLANS_COVERAGE:
+            return "SAVINGS_PLANS_COVERAGE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

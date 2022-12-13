@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/forecast/ForecastService_EXPORTS.h>
@@ -34,16 +24,16 @@ namespace Model
 {
 
   /**
-   * <p>Configuration information for a hyperparameter tuning job. This object is
-   * specified in the <a>CreatePredictor</a> request.</p> <p>A hyperparameter is a
-   * parameter that governs the model training process and is set before training
-   * starts. This is as opposed to a model parameter that is determined during
-   * training. The values of the hyperparameters have an effect on the chosen model
-   * parameters.</p> <p>A hyperparameter tuning job is the process of choosing the
-   * optimum set of hyperparameter values that optimize a specified metric. This is
-   * accomplished by running many training jobs over a range of hyperparameter
-   * values. The optimum set of values is dependent on the algorithm, the training
-   * data, and the given metric objective.</p><p><h3>See Also:</h3>   <a
+   * <p>Configuration information for a hyperparameter tuning job. You specify this
+   * object in the <a>CreatePredictor</a> request.</p> <p>A <i>hyperparameter</i> is
+   * a parameter that governs the model training process. You set hyperparameters
+   * before training starts, unlike model parameters, which are determined during
+   * training. The values of the hyperparameters effect which values are chosen for
+   * the model parameters.</p> <p>In a <i>hyperparameter tuning job</i>, Amazon
+   * Forecast chooses the set of hyperparameter values that optimize a specified
+   * metric. Forecast accomplishes this by running many training jobs over a range of
+   * hyperparameter values. The optimum set of values depends on the algorithm, the
+   * training data, and the specified metric objective.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/forecast-2018-06-26/HyperParameterTuningJobConfig">AWS
    * API Reference</a></p>
    */

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/mediaconvert/MediaConvert_EXPORTS.h>
@@ -175,29 +165,25 @@ namespace Model
 
     /**
      * Content measuring above this level will be corrected to the target level.
-     * Content measuring below this level will not be corrected. Gating only applies
-     * when not using real_time_correction.
+     * Content measuring below this level will not be corrected.
      */
     inline int GetCorrectionGateLevel() const{ return m_correctionGateLevel; }
 
     /**
      * Content measuring above this level will be corrected to the target level.
-     * Content measuring below this level will not be corrected. Gating only applies
-     * when not using real_time_correction.
+     * Content measuring below this level will not be corrected.
      */
     inline bool CorrectionGateLevelHasBeenSet() const { return m_correctionGateLevelHasBeenSet; }
 
     /**
      * Content measuring above this level will be corrected to the target level.
-     * Content measuring below this level will not be corrected. Gating only applies
-     * when not using real_time_correction.
+     * Content measuring below this level will not be corrected.
      */
     inline void SetCorrectionGateLevel(int value) { m_correctionGateLevelHasBeenSet = true; m_correctionGateLevel = value; }
 
     /**
      * Content measuring above this level will be corrected to the target level.
-     * Content measuring below this level will not be corrected. Gating only applies
-     * when not using real_time_correction.
+     * Content measuring below this level will not be corrected.
      */
     inline AudioNormalizationSettings& WithCorrectionGateLevel(int value) { SetCorrectionGateLevel(value); return *this;}
 

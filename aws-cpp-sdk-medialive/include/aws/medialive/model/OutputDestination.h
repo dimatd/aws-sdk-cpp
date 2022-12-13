@@ -1,22 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/medialive/model/MultiplexProgramChannelDestinationSettings.h>
 #include <aws/medialive/model/MediaPackageOutputDestinationSettings.h>
 #include <aws/medialive/model/OutputDestinationSettings.h>
 #include <utility>
@@ -141,6 +132,37 @@ namespace Model
 
 
     /**
+     * Destination settings for a Multiplex output; one destination for both encoders.
+     */
+    inline const MultiplexProgramChannelDestinationSettings& GetMultiplexSettings() const{ return m_multiplexSettings; }
+
+    /**
+     * Destination settings for a Multiplex output; one destination for both encoders.
+     */
+    inline bool MultiplexSettingsHasBeenSet() const { return m_multiplexSettingsHasBeenSet; }
+
+    /**
+     * Destination settings for a Multiplex output; one destination for both encoders.
+     */
+    inline void SetMultiplexSettings(const MultiplexProgramChannelDestinationSettings& value) { m_multiplexSettingsHasBeenSet = true; m_multiplexSettings = value; }
+
+    /**
+     * Destination settings for a Multiplex output; one destination for both encoders.
+     */
+    inline void SetMultiplexSettings(MultiplexProgramChannelDestinationSettings&& value) { m_multiplexSettingsHasBeenSet = true; m_multiplexSettings = std::move(value); }
+
+    /**
+     * Destination settings for a Multiplex output; one destination for both encoders.
+     */
+    inline OutputDestination& WithMultiplexSettings(const MultiplexProgramChannelDestinationSettings& value) { SetMultiplexSettings(value); return *this;}
+
+    /**
+     * Destination settings for a Multiplex output; one destination for both encoders.
+     */
+    inline OutputDestination& WithMultiplexSettings(MultiplexProgramChannelDestinationSettings&& value) { SetMultiplexSettings(std::move(value)); return *this;}
+
+
+    /**
      * Destination settings for a standard output; one destination for each redundant
      * encoder.
      */
@@ -195,6 +217,9 @@ namespace Model
 
     Aws::Vector<MediaPackageOutputDestinationSettings> m_mediaPackageSettings;
     bool m_mediaPackageSettingsHasBeenSet;
+
+    MultiplexProgramChannelDestinationSettings m_multiplexSettings;
+    bool m_multiplexSettingsHasBeenSet;
 
     Aws::Vector<OutputDestinationSettings> m_settings;
     bool m_settingsHasBeenSet;

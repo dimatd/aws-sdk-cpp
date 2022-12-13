@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/iot/model/ResourceIdentifier.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,7 +24,9 @@ ResourceIdentifier::ResourceIdentifier() :
     m_cognitoIdentityPoolIdHasBeenSet(false),
     m_clientIdHasBeenSet(false),
     m_policyVersionIdentifierHasBeenSet(false),
-    m_accountHasBeenSet(false)
+    m_accountHasBeenSet(false),
+    m_iamRoleArnHasBeenSet(false),
+    m_roleAliasArnHasBeenSet(false)
 {
 }
 
@@ -44,7 +36,9 @@ ResourceIdentifier::ResourceIdentifier(JsonView jsonValue) :
     m_cognitoIdentityPoolIdHasBeenSet(false),
     m_clientIdHasBeenSet(false),
     m_policyVersionIdentifierHasBeenSet(false),
-    m_accountHasBeenSet(false)
+    m_accountHasBeenSet(false),
+    m_iamRoleArnHasBeenSet(false),
+    m_roleAliasArnHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -93,6 +87,20 @@ ResourceIdentifier& ResourceIdentifier::operator =(JsonView jsonValue)
     m_accountHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("iamRoleArn"))
+  {
+    m_iamRoleArn = jsonValue.GetString("iamRoleArn");
+
+    m_iamRoleArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("roleAliasArn"))
+  {
+    m_roleAliasArn = jsonValue.GetString("roleAliasArn");
+
+    m_roleAliasArnHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -133,6 +141,18 @@ JsonValue ResourceIdentifier::Jsonize() const
   if(m_accountHasBeenSet)
   {
    payload.WithString("account", m_account);
+
+  }
+
+  if(m_iamRoleArnHasBeenSet)
+  {
+   payload.WithString("iamRoleArn", m_iamRoleArn);
+
+  }
+
+  if(m_roleAliasArnHasBeenSet)
+  {
+   payload.WithString("roleAliasArn", m_roleAliasArn);
 
   }
 

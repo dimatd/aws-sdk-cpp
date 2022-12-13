@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
@@ -186,11 +176,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -215,11 +214,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -244,11 +252,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -273,11 +290,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -302,11 +328,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -331,11 +366,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -360,11 +404,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>
@@ -389,11 +442,20 @@ namespace Model
 
     /**
      * <p>The constraint parameters, in JSON format. The syntax depends on the
-     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>Specify the
-     * <code>RoleArn</code> property as follows:</p> <p> <code>{"RoleArn" :
-     * "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p> <p>You cannot have both
-     * a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You also
-     * cannot have more than one <code>LAUNCH</code> constraint on a product and
+     * constraint type as follows:</p> <dl> <dt>LAUNCH</dt> <dd> <p>You are required to
+     * specify either the <code>RoleArn</code> or the <code>LocalRoleName</code> but
+     * can't use both.</p> <p>Specify the <code>RoleArn</code> property as follows:</p>
+     * <p> <code>{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}</code> </p>
+     * <p>Specify the <code>LocalRoleName</code> property as follows:</p> <p>
+     * <code>{"LocalRoleName": "SCBasicLaunchRole"}</code> </p> <p>If you specify the
+     * <code>LocalRoleName</code> property, when an account uses the launch constraint,
+     * the IAM role with that name in the account will be used. This allows launch-role
+     * constraints to be account-agnostic so the administrator can create fewer
+     * resources per shared account.</p>  <p>The given role name must exist in
+     * the account used to create the launch constraint and the account of the user who
+     * launches a product with this launch constraint.</p>  <p>You cannot have
+     * both a <code>LAUNCH</code> and a <code>STACKSET</code> constraint.</p> <p>You
+     * also cannot have more than one <code>LAUNCH</code> constraint on a product and
      * portfolio.</p> </dd> <dt>NOTIFICATION</dt> <dd> <p>Specify the
      * <code>NotificationArns</code> property as follows:</p> <p>
      * <code>{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}</code>

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ecs/model/Cluster.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,6 +21,7 @@ namespace Model
 Cluster::Cluster() : 
     m_clusterArnHasBeenSet(false),
     m_clusterNameHasBeenSet(false),
+    m_configurationHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_registeredContainerInstancesCount(0),
     m_registeredContainerInstancesCountHasBeenSet(false),
@@ -42,13 +33,18 @@ Cluster::Cluster() :
     m_activeServicesCountHasBeenSet(false),
     m_statisticsHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+    m_settingsHasBeenSet(false),
+    m_capacityProvidersHasBeenSet(false),
+    m_defaultCapacityProviderStrategyHasBeenSet(false),
+    m_attachmentsHasBeenSet(false),
+    m_attachmentsStatusHasBeenSet(false)
 {
 }
 
 Cluster::Cluster(JsonView jsonValue) : 
     m_clusterArnHasBeenSet(false),
     m_clusterNameHasBeenSet(false),
+    m_configurationHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_registeredContainerInstancesCount(0),
     m_registeredContainerInstancesCountHasBeenSet(false),
@@ -60,7 +56,11 @@ Cluster::Cluster(JsonView jsonValue) :
     m_activeServicesCountHasBeenSet(false),
     m_statisticsHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+    m_settingsHasBeenSet(false),
+    m_capacityProvidersHasBeenSet(false),
+    m_defaultCapacityProviderStrategyHasBeenSet(false),
+    m_attachmentsHasBeenSet(false),
+    m_attachmentsStatusHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -79,6 +79,13 @@ Cluster& Cluster::operator =(JsonView jsonValue)
     m_clusterName = jsonValue.GetString("clusterName");
 
     m_clusterNameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("configuration"))
+  {
+    m_configuration = jsonValue.GetObject("configuration");
+
+    m_configurationHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("status"))
@@ -146,6 +153,43 @@ Cluster& Cluster::operator =(JsonView jsonValue)
     m_settingsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("capacityProviders"))
+  {
+    Array<JsonView> capacityProvidersJsonList = jsonValue.GetArray("capacityProviders");
+    for(unsigned capacityProvidersIndex = 0; capacityProvidersIndex < capacityProvidersJsonList.GetLength(); ++capacityProvidersIndex)
+    {
+      m_capacityProviders.push_back(capacityProvidersJsonList[capacityProvidersIndex].AsString());
+    }
+    m_capacityProvidersHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("defaultCapacityProviderStrategy"))
+  {
+    Array<JsonView> defaultCapacityProviderStrategyJsonList = jsonValue.GetArray("defaultCapacityProviderStrategy");
+    for(unsigned defaultCapacityProviderStrategyIndex = 0; defaultCapacityProviderStrategyIndex < defaultCapacityProviderStrategyJsonList.GetLength(); ++defaultCapacityProviderStrategyIndex)
+    {
+      m_defaultCapacityProviderStrategy.push_back(defaultCapacityProviderStrategyJsonList[defaultCapacityProviderStrategyIndex].AsObject());
+    }
+    m_defaultCapacityProviderStrategyHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("attachments"))
+  {
+    Array<JsonView> attachmentsJsonList = jsonValue.GetArray("attachments");
+    for(unsigned attachmentsIndex = 0; attachmentsIndex < attachmentsJsonList.GetLength(); ++attachmentsIndex)
+    {
+      m_attachments.push_back(attachmentsJsonList[attachmentsIndex].AsObject());
+    }
+    m_attachmentsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("attachmentsStatus"))
+  {
+    m_attachmentsStatus = jsonValue.GetString("attachmentsStatus");
+
+    m_attachmentsStatusHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -162,6 +206,12 @@ JsonValue Cluster::Jsonize() const
   if(m_clusterNameHasBeenSet)
   {
    payload.WithString("clusterName", m_clusterName);
+
+  }
+
+  if(m_configurationHasBeenSet)
+  {
+   payload.WithObject("configuration", m_configuration.Jsonize());
 
   }
 
@@ -225,6 +275,45 @@ JsonValue Cluster::Jsonize() const
      settingsJsonList[settingsIndex].AsObject(m_settings[settingsIndex].Jsonize());
    }
    payload.WithArray("settings", std::move(settingsJsonList));
+
+  }
+
+  if(m_capacityProvidersHasBeenSet)
+  {
+   Array<JsonValue> capacityProvidersJsonList(m_capacityProviders.size());
+   for(unsigned capacityProvidersIndex = 0; capacityProvidersIndex < capacityProvidersJsonList.GetLength(); ++capacityProvidersIndex)
+   {
+     capacityProvidersJsonList[capacityProvidersIndex].AsString(m_capacityProviders[capacityProvidersIndex]);
+   }
+   payload.WithArray("capacityProviders", std::move(capacityProvidersJsonList));
+
+  }
+
+  if(m_defaultCapacityProviderStrategyHasBeenSet)
+  {
+   Array<JsonValue> defaultCapacityProviderStrategyJsonList(m_defaultCapacityProviderStrategy.size());
+   for(unsigned defaultCapacityProviderStrategyIndex = 0; defaultCapacityProviderStrategyIndex < defaultCapacityProviderStrategyJsonList.GetLength(); ++defaultCapacityProviderStrategyIndex)
+   {
+     defaultCapacityProviderStrategyJsonList[defaultCapacityProviderStrategyIndex].AsObject(m_defaultCapacityProviderStrategy[defaultCapacityProviderStrategyIndex].Jsonize());
+   }
+   payload.WithArray("defaultCapacityProviderStrategy", std::move(defaultCapacityProviderStrategyJsonList));
+
+  }
+
+  if(m_attachmentsHasBeenSet)
+  {
+   Array<JsonValue> attachmentsJsonList(m_attachments.size());
+   for(unsigned attachmentsIndex = 0; attachmentsIndex < attachmentsJsonList.GetLength(); ++attachmentsIndex)
+   {
+     attachmentsJsonList[attachmentsIndex].AsObject(m_attachments[attachmentsIndex].Jsonize());
+   }
+   payload.WithArray("attachments", std::move(attachmentsJsonList));
+
+  }
+
+  if(m_attachmentsStatusHasBeenSet)
+  {
+   payload.WithString("attachmentsStatus", m_attachmentsStatus);
 
   }
 

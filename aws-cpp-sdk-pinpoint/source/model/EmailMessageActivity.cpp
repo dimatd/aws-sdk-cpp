@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/pinpoint/model/EmailMessageActivity.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,14 +21,16 @@ namespace Model
 EmailMessageActivity::EmailMessageActivity() : 
     m_messageConfigHasBeenSet(false),
     m_nextActivityHasBeenSet(false),
-    m_templateNameHasBeenSet(false)
+    m_templateNameHasBeenSet(false),
+    m_templateVersionHasBeenSet(false)
 {
 }
 
 EmailMessageActivity::EmailMessageActivity(JsonView jsonValue) : 
     m_messageConfigHasBeenSet(false),
     m_nextActivityHasBeenSet(false),
-    m_templateNameHasBeenSet(false)
+    m_templateNameHasBeenSet(false),
+    m_templateVersionHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -66,6 +58,13 @@ EmailMessageActivity& EmailMessageActivity::operator =(JsonView jsonValue)
     m_templateNameHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("TemplateVersion"))
+  {
+    m_templateVersion = jsonValue.GetString("TemplateVersion");
+
+    m_templateVersionHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -88,6 +87,12 @@ JsonValue EmailMessageActivity::Jsonize() const
   if(m_templateNameHasBeenSet)
   {
    payload.WithString("TemplateName", m_templateName);
+
+  }
+
+  if(m_templateVersionHasBeenSet)
+  {
+   payload.WithString("TemplateVersion", m_templateVersion);
 
   }
 

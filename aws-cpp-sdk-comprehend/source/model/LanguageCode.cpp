@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/comprehend/model/LanguageCode.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -36,6 +26,12 @@ namespace Aws
         static const int de_HASH = HashingUtils::HashString("de");
         static const int it_HASH = HashingUtils::HashString("it");
         static const int pt_HASH = HashingUtils::HashString("pt");
+        static const int ar_HASH = HashingUtils::HashString("ar");
+        static const int hi_HASH = HashingUtils::HashString("hi");
+        static const int ja_HASH = HashingUtils::HashString("ja");
+        static const int ko_HASH = HashingUtils::HashString("ko");
+        static const int zh_HASH = HashingUtils::HashString("zh");
+        static const int zh_TW_HASH = HashingUtils::HashString("zh-TW");
 
 
         LanguageCode GetLanguageCodeForName(const Aws::String& name)
@@ -65,6 +61,30 @@ namespace Aws
           {
             return LanguageCode::pt;
           }
+          else if (hashCode == ar_HASH)
+          {
+            return LanguageCode::ar;
+          }
+          else if (hashCode == hi_HASH)
+          {
+            return LanguageCode::hi;
+          }
+          else if (hashCode == ja_HASH)
+          {
+            return LanguageCode::ja;
+          }
+          else if (hashCode == ko_HASH)
+          {
+            return LanguageCode::ko;
+          }
+          else if (hashCode == zh_HASH)
+          {
+            return LanguageCode::zh;
+          }
+          else if (hashCode == zh_TW_HASH)
+          {
+            return LanguageCode::zh_TW;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -91,6 +111,18 @@ namespace Aws
             return "it";
           case LanguageCode::pt:
             return "pt";
+          case LanguageCode::ar:
+            return "ar";
+          case LanguageCode::hi:
+            return "hi";
+          case LanguageCode::ja:
+            return "ja";
+          case LanguageCode::ko:
+            return "ko";
+          case LanguageCode::zh:
+            return "zh";
+          case LanguageCode::zh_TW:
+            return "zh-TW";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

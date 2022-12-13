@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ssm/model/MaintenanceWindowRunCommandParameters.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,9 +20,11 @@ namespace Model
 
 MaintenanceWindowRunCommandParameters::MaintenanceWindowRunCommandParameters() : 
     m_commentHasBeenSet(false),
+    m_cloudWatchOutputConfigHasBeenSet(false),
     m_documentHashHasBeenSet(false),
     m_documentHashType(DocumentHashType::NOT_SET),
     m_documentHashTypeHasBeenSet(false),
+    m_documentVersionHasBeenSet(false),
     m_notificationConfigHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
     m_outputS3KeyPrefixHasBeenSet(false),
@@ -45,9 +37,11 @@ MaintenanceWindowRunCommandParameters::MaintenanceWindowRunCommandParameters() :
 
 MaintenanceWindowRunCommandParameters::MaintenanceWindowRunCommandParameters(JsonView jsonValue) : 
     m_commentHasBeenSet(false),
+    m_cloudWatchOutputConfigHasBeenSet(false),
     m_documentHashHasBeenSet(false),
     m_documentHashType(DocumentHashType::NOT_SET),
     m_documentHashTypeHasBeenSet(false),
+    m_documentVersionHasBeenSet(false),
     m_notificationConfigHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
     m_outputS3KeyPrefixHasBeenSet(false),
@@ -68,6 +62,13 @@ MaintenanceWindowRunCommandParameters& MaintenanceWindowRunCommandParameters::op
     m_commentHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("CloudWatchOutputConfig"))
+  {
+    m_cloudWatchOutputConfig = jsonValue.GetObject("CloudWatchOutputConfig");
+
+    m_cloudWatchOutputConfigHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("DocumentHash"))
   {
     m_documentHash = jsonValue.GetString("DocumentHash");
@@ -80,6 +81,13 @@ MaintenanceWindowRunCommandParameters& MaintenanceWindowRunCommandParameters::op
     m_documentHashType = DocumentHashTypeMapper::GetDocumentHashTypeForName(jsonValue.GetString("DocumentHashType"));
 
     m_documentHashTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("DocumentVersion"))
+  {
+    m_documentVersion = jsonValue.GetString("DocumentVersion");
+
+    m_documentVersionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("NotificationConfig"))
@@ -147,6 +155,12 @@ JsonValue MaintenanceWindowRunCommandParameters::Jsonize() const
 
   }
 
+  if(m_cloudWatchOutputConfigHasBeenSet)
+  {
+   payload.WithObject("CloudWatchOutputConfig", m_cloudWatchOutputConfig.Jsonize());
+
+  }
+
   if(m_documentHashHasBeenSet)
   {
    payload.WithString("DocumentHash", m_documentHash);
@@ -156,6 +170,12 @@ JsonValue MaintenanceWindowRunCommandParameters::Jsonize() const
   if(m_documentHashTypeHasBeenSet)
   {
    payload.WithString("DocumentHashType", DocumentHashTypeMapper::GetNameForDocumentHashType(m_documentHashType));
+  }
+
+  if(m_documentVersionHasBeenSet)
+  {
+   payload.WithString("DocumentVersion", m_documentVersion);
+
   }
 
   if(m_notificationConfigHasBeenSet)

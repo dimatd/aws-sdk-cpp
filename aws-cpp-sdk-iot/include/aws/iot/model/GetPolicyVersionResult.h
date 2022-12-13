@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
@@ -209,53 +199,53 @@ namespace Model
 
 
     /**
-     * <p>The date the policy version was created.</p>
+     * <p>The date the policy was created.</p>
      */
     inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
 
     /**
-     * <p>The date the policy version was created.</p>
+     * <p>The date the policy was created.</p>
      */
     inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDate = value; }
 
     /**
-     * <p>The date the policy version was created.</p>
+     * <p>The date the policy was created.</p>
      */
     inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDate = std::move(value); }
 
     /**
-     * <p>The date the policy version was created.</p>
+     * <p>The date the policy was created.</p>
      */
     inline GetPolicyVersionResult& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
 
     /**
-     * <p>The date the policy version was created.</p>
+     * <p>The date the policy was created.</p>
      */
     inline GetPolicyVersionResult& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
 
     /**
-     * <p>The date the policy version was last modified.</p>
+     * <p>The date the policy was last modified.</p>
      */
     inline const Aws::Utils::DateTime& GetLastModifiedDate() const{ return m_lastModifiedDate; }
 
     /**
-     * <p>The date the policy version was last modified.</p>
+     * <p>The date the policy was last modified.</p>
      */
     inline void SetLastModifiedDate(const Aws::Utils::DateTime& value) { m_lastModifiedDate = value; }
 
     /**
-     * <p>The date the policy version was last modified.</p>
+     * <p>The date the policy was last modified.</p>
      */
     inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDate = std::move(value); }
 
     /**
-     * <p>The date the policy version was last modified.</p>
+     * <p>The date the policy was last modified.</p>
      */
     inline GetPolicyVersionResult& WithLastModifiedDate(const Aws::Utils::DateTime& value) { SetLastModifiedDate(value); return *this;}
 
     /**
-     * <p>The date the policy version was last modified.</p>
+     * <p>The date the policy was last modified.</p>
      */
     inline GetPolicyVersionResult& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 

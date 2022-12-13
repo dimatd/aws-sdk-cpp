@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -97,106 +87,106 @@ namespace Model
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline const Aws::String& GetBeforeCommitId() const{ return m_beforeCommitId; }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline bool BeforeCommitIdHasBeenSet() const { return m_beforeCommitIdHasBeenSet; }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline void SetBeforeCommitId(const Aws::String& value) { m_beforeCommitIdHasBeenSet = true; m_beforeCommitId = value; }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline void SetBeforeCommitId(Aws::String&& value) { m_beforeCommitIdHasBeenSet = true; m_beforeCommitId = std::move(value); }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline void SetBeforeCommitId(const char* value) { m_beforeCommitIdHasBeenSet = true; m_beforeCommitId.assign(value); }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline PostCommentForComparedCommitRequest& WithBeforeCommitId(const Aws::String& value) { SetBeforeCommitId(value); return *this;}
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline PostCommentForComparedCommitRequest& WithBeforeCommitId(Aws::String&& value) { SetBeforeCommitId(std::move(value)); return *this;}
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'before' commit.</p> <note> <p>This is required for commenting on any commit
-     * unless that commit is the initial commit.</p> </note>
+     * before commit. Required for commenting on any commit unless that commit is the
+     * initial commit.</p>
      */
     inline PostCommentForComparedCommitRequest& WithBeforeCommitId(const char* value) { SetBeforeCommitId(value); return *this;}
 
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline const Aws::String& GetAfterCommitId() const{ return m_afterCommitId; }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline bool AfterCommitIdHasBeenSet() const { return m_afterCommitIdHasBeenSet; }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline void SetAfterCommitId(const Aws::String& value) { m_afterCommitIdHasBeenSet = true; m_afterCommitId = value; }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline void SetAfterCommitId(Aws::String&& value) { m_afterCommitIdHasBeenSet = true; m_afterCommitId = std::move(value); }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline void SetAfterCommitId(const char* value) { m_afterCommitIdHasBeenSet = true; m_afterCommitId.assign(value); }
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline PostCommentForComparedCommitRequest& WithAfterCommitId(const Aws::String& value) { SetAfterCommitId(value); return *this;}
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline PostCommentForComparedCommitRequest& WithAfterCommitId(Aws::String&& value) { SetAfterCommitId(std::move(value)); return *this;}
 
     /**
      * <p>To establish the directionality of the comparison, the full commit ID of the
-     * 'after' commit.</p>
+     * after commit.</p>
      */
     inline PostCommentForComparedCommitRequest& WithAfterCommitId(const char* value) { SetAfterCommitId(value); return *this;}
 
@@ -274,66 +264,66 @@ namespace Model
 
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline PostCommentForComparedCommitRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline PostCommentForComparedCommitRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
 
     /**
-     * <p>A unique, client-generated idempotency token that when provided in a request,
-     * ensures the request cannot be repeated with a changed parameter. If a request is
-     * received with the same parameters and a token is included, the request will
-     * return information about the initial request that used that token.</p>
+     * <p>A unique, client-generated idempotency token that, when provided in a
+     * request, ensures the request cannot be repeated with a changed parameter. If a
+     * request is received with the same parameters and a token is included, the
+     * request returns information about the initial request that used that token.</p>
      */
     inline PostCommentForComparedCommitRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
 

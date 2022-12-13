@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/LaunchTemplatePlacementRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -37,7 +27,10 @@ LaunchTemplatePlacementRequest::LaunchTemplatePlacementRequest() :
     m_hostIdHasBeenSet(false),
     m_tenancy(Tenancy::NOT_SET),
     m_tenancyHasBeenSet(false),
-    m_spreadDomainHasBeenSet(false)
+    m_spreadDomainHasBeenSet(false),
+    m_hostResourceGroupArnHasBeenSet(false),
+    m_partitionNumber(0),
+    m_partitionNumberHasBeenSet(false)
 {
 }
 
@@ -48,7 +41,10 @@ LaunchTemplatePlacementRequest::LaunchTemplatePlacementRequest(const XmlNode& xm
     m_hostIdHasBeenSet(false),
     m_tenancy(Tenancy::NOT_SET),
     m_tenancyHasBeenSet(false),
-    m_spreadDomainHasBeenSet(false)
+    m_spreadDomainHasBeenSet(false),
+    m_hostResourceGroupArnHasBeenSet(false),
+    m_partitionNumber(0),
+    m_partitionNumberHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -95,6 +91,18 @@ LaunchTemplatePlacementRequest& LaunchTemplatePlacementRequest::operator =(const
       m_spreadDomain = Aws::Utils::Xml::DecodeEscapedXmlText(spreadDomainNode.GetText());
       m_spreadDomainHasBeenSet = true;
     }
+    XmlNode hostResourceGroupArnNode = resultNode.FirstChild("HostResourceGroupArn");
+    if(!hostResourceGroupArnNode.IsNull())
+    {
+      m_hostResourceGroupArn = Aws::Utils::Xml::DecodeEscapedXmlText(hostResourceGroupArnNode.GetText());
+      m_hostResourceGroupArnHasBeenSet = true;
+    }
+    XmlNode partitionNumberNode = resultNode.FirstChild("PartitionNumber");
+    if(!partitionNumberNode.IsNull())
+    {
+      m_partitionNumber = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(partitionNumberNode.GetText()).c_str()).c_str());
+      m_partitionNumberHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -132,6 +140,16 @@ void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const
       oStream << location << index << locationValue << ".SpreadDomain=" << StringUtils::URLEncode(m_spreadDomain.c_str()) << "&";
   }
 
+  if(m_hostResourceGroupArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".HostResourceGroupArn=" << StringUtils::URLEncode(m_hostResourceGroupArn.c_str()) << "&";
+  }
+
+  if(m_partitionNumberHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PartitionNumber=" << m_partitionNumber << "&";
+  }
+
 }
 
 void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -159,6 +177,14 @@ void LaunchTemplatePlacementRequest::OutputToStream(Aws::OStream& oStream, const
   if(m_spreadDomainHasBeenSet)
   {
       oStream << location << ".SpreadDomain=" << StringUtils::URLEncode(m_spreadDomain.c_str()) << "&";
+  }
+  if(m_hostResourceGroupArnHasBeenSet)
+  {
+      oStream << location << ".HostResourceGroupArn=" << StringUtils::URLEncode(m_hostResourceGroupArn.c_str()) << "&";
+  }
+  if(m_partitionNumberHasBeenSet)
+  {
+      oStream << location << ".PartitionNumber=" << m_partitionNumber << "&";
   }
 }
 

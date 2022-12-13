@@ -1,22 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ce/CostExplorer_EXPORTS.h>
 #include <aws/ce/CostExplorerRequest.h>
 #include <aws/ce/model/Expression.h>
+#include <aws/ce/model/RightsizingRecommendationConfiguration.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -65,42 +56,105 @@ namespace Model
 
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>You can use Configuration to customize recommendations across two attributes.
+     * You can choose to view recommendations for instances within the same instance
+     * families or across different instance families. You can also choose to view your
+     * estimated savings that are associated with recommendations with consideration of
+     * existing Savings Plans or RI benefits, or neither. </p>
+     */
+    inline const RightsizingRecommendationConfiguration& GetConfiguration() const{ return m_configuration; }
+
+    /**
+     * <p>You can use Configuration to customize recommendations across two attributes.
+     * You can choose to view recommendations for instances within the same instance
+     * families or across different instance families. You can also choose to view your
+     * estimated savings that are associated with recommendations with consideration of
+     * existing Savings Plans or RI benefits, or neither. </p>
+     */
+    inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+
+    /**
+     * <p>You can use Configuration to customize recommendations across two attributes.
+     * You can choose to view recommendations for instances within the same instance
+     * families or across different instance families. You can also choose to view your
+     * estimated savings that are associated with recommendations with consideration of
+     * existing Savings Plans or RI benefits, or neither. </p>
+     */
+    inline void SetConfiguration(const RightsizingRecommendationConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
+
+    /**
+     * <p>You can use Configuration to customize recommendations across two attributes.
+     * You can choose to view recommendations for instances within the same instance
+     * families or across different instance families. You can also choose to view your
+     * estimated savings that are associated with recommendations with consideration of
+     * existing Savings Plans or RI benefits, or neither. </p>
+     */
+    inline void SetConfiguration(RightsizingRecommendationConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
+
+    /**
+     * <p>You can use Configuration to customize recommendations across two attributes.
+     * You can choose to view recommendations for instances within the same instance
+     * families or across different instance families. You can also choose to view your
+     * estimated savings that are associated with recommendations with consideration of
+     * existing Savings Plans or RI benefits, or neither. </p>
+     */
+    inline GetRightsizingRecommendationRequest& WithConfiguration(const RightsizingRecommendationConfiguration& value) { SetConfiguration(value); return *this;}
+
+    /**
+     * <p>You can use Configuration to customize recommendations across two attributes.
+     * You can choose to view recommendations for instances within the same instance
+     * families or across different instance families. You can also choose to view your
+     * estimated savings that are associated with recommendations with consideration of
+     * existing Savings Plans or RI benefits, or neither. </p>
+     */
+    inline GetRightsizingRecommendationRequest& WithConfiguration(RightsizingRecommendationConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline const Aws::String& GetService() const{ return m_service; }
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline void SetService(const Aws::String& value) { m_serviceHasBeenSet = true; m_service = value; }
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline void SetService(Aws::String&& value) { m_serviceHasBeenSet = true; m_service = std::move(value); }
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline void SetService(const char* value) { m_serviceHasBeenSet = true; m_service.assign(value); }
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline GetRightsizingRecommendationRequest& WithService(const Aws::String& value) { SetService(value); return *this;}
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline GetRightsizingRecommendationRequest& WithService(Aws::String&& value) { SetService(std::move(value)); return *this;}
 
     /**
-     * <p>The specific service that you want recommendations for.</p>
+     * <p>The specific service that you want recommendations for. The only valid value
+     * for <code>GetRightsizingRecommendation</code> is "<code>AmazonEC2</code>".</p>
      */
     inline GetRightsizingRecommendationRequest& WithService(const char* value) { SetService(value); return *this;}
 
@@ -182,6 +236,9 @@ namespace Model
 
     Expression m_filter;
     bool m_filterHasBeenSet;
+
+    RightsizingRecommendationConfiguration m_configuration;
+    bool m_configurationHasBeenSet;
 
     Aws::String m_service;
     bool m_serviceHasBeenSet;

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/rekognition/Rekognition_EXPORTS.h>
@@ -34,8 +24,18 @@ namespace Model
 {
 
   /**
-   * <p>Gender of the face and the confidence level in the
-   * determination.</p><p><h3>See Also:</h3>   <a
+   * <p>The predicted gender of a detected face. </p> <p>Amazon Rekognition makes
+   * gender binary (male/female) predictions based on the physical appearance of a
+   * face in a particular image. This kind of prediction is not designed to
+   * categorize a person’s gender identity, and you shouldn't use Amazon Rekognition
+   * to make such a determination. For example, a male actor wearing a long-haired
+   * wig and earrings for a role might be predicted as female.</p> <p>Using Amazon
+   * Rekognition to make gender binary predictions is best suited for use cases where
+   * aggregate gender distribution statistics need to be analyzed without identifying
+   * specific users. For example, the percentage of female users compared to male
+   * users on a social media platform. </p> <p>We don't recommend using gender binary
+   * predictions to make decisions that impact an individual's rights, privacy, or
+   * access to services.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/Gender">AWS
    * API Reference</a></p>
    */
@@ -49,53 +49,53 @@ namespace Model
 
 
     /**
-     * <p>Gender of the face.</p>
+     * <p>The predicted gender of the face.</p>
      */
     inline const GenderType& GetValue() const{ return m_value; }
 
     /**
-     * <p>Gender of the face.</p>
+     * <p>The predicted gender of the face.</p>
      */
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
 
     /**
-     * <p>Gender of the face.</p>
+     * <p>The predicted gender of the face.</p>
      */
     inline void SetValue(const GenderType& value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
-     * <p>Gender of the face.</p>
+     * <p>The predicted gender of the face.</p>
      */
     inline void SetValue(GenderType&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
-     * <p>Gender of the face.</p>
+     * <p>The predicted gender of the face.</p>
      */
     inline Gender& WithValue(const GenderType& value) { SetValue(value); return *this;}
 
     /**
-     * <p>Gender of the face.</p>
+     * <p>The predicted gender of the face.</p>
      */
     inline Gender& WithValue(GenderType&& value) { SetValue(std::move(value)); return *this;}
 
 
     /**
-     * <p>Level of confidence in the determination.</p>
+     * <p>Level of confidence in the prediction.</p>
      */
     inline double GetConfidence() const{ return m_confidence; }
 
     /**
-     * <p>Level of confidence in the determination.</p>
+     * <p>Level of confidence in the prediction.</p>
      */
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
 
     /**
-     * <p>Level of confidence in the determination.</p>
+     * <p>Level of confidence in the prediction.</p>
      */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
 
     /**
-     * <p>Level of confidence in the determination.</p>
+     * <p>Level of confidence in the prediction.</p>
      */
     inline Gender& WithConfidence(double value) { SetConfidence(value); return *this;}
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/elasticbeanstalk/model/PlatformDescription.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -49,7 +39,10 @@ PlatformDescription::PlatformDescription() :
     m_frameworksHasBeenSet(false),
     m_customAmiListHasBeenSet(false),
     m_supportedTierListHasBeenSet(false),
-    m_supportedAddonListHasBeenSet(false)
+    m_supportedAddonListHasBeenSet(false),
+    m_platformLifecycleStateHasBeenSet(false),
+    m_platformBranchNameHasBeenSet(false),
+    m_platformBranchLifecycleStateHasBeenSet(false)
 {
 }
 
@@ -72,7 +65,10 @@ PlatformDescription::PlatformDescription(const XmlNode& xmlNode) :
     m_frameworksHasBeenSet(false),
     m_customAmiListHasBeenSet(false),
     m_supportedTierListHasBeenSet(false),
-    m_supportedAddonListHasBeenSet(false)
+    m_supportedAddonListHasBeenSet(false),
+    m_platformLifecycleStateHasBeenSet(false),
+    m_platformBranchNameHasBeenSet(false),
+    m_platformBranchLifecycleStateHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -221,6 +217,24 @@ PlatformDescription& PlatformDescription::operator =(const XmlNode& xmlNode)
 
       m_supportedAddonListHasBeenSet = true;
     }
+    XmlNode platformLifecycleStateNode = resultNode.FirstChild("PlatformLifecycleState");
+    if(!platformLifecycleStateNode.IsNull())
+    {
+      m_platformLifecycleState = Aws::Utils::Xml::DecodeEscapedXmlText(platformLifecycleStateNode.GetText());
+      m_platformLifecycleStateHasBeenSet = true;
+    }
+    XmlNode platformBranchNameNode = resultNode.FirstChild("PlatformBranchName");
+    if(!platformBranchNameNode.IsNull())
+    {
+      m_platformBranchName = Aws::Utils::Xml::DecodeEscapedXmlText(platformBranchNameNode.GetText());
+      m_platformBranchNameHasBeenSet = true;
+    }
+    XmlNode platformBranchLifecycleStateNode = resultNode.FirstChild("PlatformBranchLifecycleState");
+    if(!platformBranchLifecycleStateNode.IsNull())
+    {
+      m_platformBranchLifecycleState = Aws::Utils::Xml::DecodeEscapedXmlText(platformBranchLifecycleStateNode.GetText());
+      m_platformBranchLifecycleStateHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -344,6 +358,21 @@ void PlatformDescription::OutputToStream(Aws::OStream& oStream, const char* loca
       }
   }
 
+  if(m_platformLifecycleStateHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PlatformLifecycleState=" << StringUtils::URLEncode(m_platformLifecycleState.c_str()) << "&";
+  }
+
+  if(m_platformBranchNameHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PlatformBranchName=" << StringUtils::URLEncode(m_platformBranchName.c_str()) << "&";
+  }
+
+  if(m_platformBranchLifecycleStateHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PlatformBranchLifecycleState=" << StringUtils::URLEncode(m_platformBranchLifecycleState.c_str()) << "&";
+  }
+
 }
 
 void PlatformDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -445,6 +474,18 @@ void PlatformDescription::OutputToStream(Aws::OStream& oStream, const char* loca
       {
         oStream << location << ".SupportedAddonList.member." << supportedAddonListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_platformLifecycleStateHasBeenSet)
+  {
+      oStream << location << ".PlatformLifecycleState=" << StringUtils::URLEncode(m_platformLifecycleState.c_str()) << "&";
+  }
+  if(m_platformBranchNameHasBeenSet)
+  {
+      oStream << location << ".PlatformBranchName=" << StringUtils::URLEncode(m_platformBranchName.c_str()) << "&";
+  }
+  if(m_platformBranchLifecycleStateHasBeenSet)
+  {
+      oStream << location << ".PlatformBranchLifecycleState=" << StringUtils::URLEncode(m_platformBranchLifecycleState.c_str()) << "&";
   }
 }
 

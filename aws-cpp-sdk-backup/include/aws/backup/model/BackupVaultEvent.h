@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/backup/Backup_EXPORTS.h>
@@ -28,11 +18,21 @@ namespace Model
     NOT_SET,
     BACKUP_JOB_STARTED,
     BACKUP_JOB_COMPLETED,
+    BACKUP_JOB_SUCCESSFUL,
+    BACKUP_JOB_FAILED,
+    BACKUP_JOB_EXPIRED,
     RESTORE_JOB_STARTED,
     RESTORE_JOB_COMPLETED,
+    RESTORE_JOB_SUCCESSFUL,
+    RESTORE_JOB_FAILED,
+    COPY_JOB_STARTED,
+    COPY_JOB_SUCCESSFUL,
+    COPY_JOB_FAILED,
     RECOVERY_POINT_MODIFIED,
     BACKUP_PLAN_CREATED,
-    BACKUP_PLAN_MODIFIED
+    BACKUP_PLAN_MODIFIED,
+    S3_BACKUP_OBJECT_FAILED,
+    S3_RESTORE_OBJECT_FAILED
   };
 
 namespace BackupVaultEventMapper

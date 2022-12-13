@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/logs/CloudWatchLogs_EXPORTS.h>
@@ -293,28 +283,28 @@ namespace Model
     /**
      * <p>The maximum number of log events to return in the query. If the query string
      * uses the <code>fields</code> command, only the specified fields and their values
-     * are returned.</p>
+     * are returned. The default is 1000.</p>
      */
     inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>The maximum number of log events to return in the query. If the query string
      * uses the <code>fields</code> command, only the specified fields and their values
-     * are returned.</p>
+     * are returned. The default is 1000.</p>
      */
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
 
     /**
      * <p>The maximum number of log events to return in the query. If the query string
      * uses the <code>fields</code> command, only the specified fields and their values
-     * are returned.</p>
+     * are returned. The default is 1000.</p>
      */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>The maximum number of log events to return in the query. If the query string
      * uses the <code>fields</code> command, only the specified fields and their values
-     * are returned.</p>
+     * are returned. The default is 1000.</p>
      */
     inline StartQueryRequest& WithLimit(int value) { SetLimit(value); return *this;}
 

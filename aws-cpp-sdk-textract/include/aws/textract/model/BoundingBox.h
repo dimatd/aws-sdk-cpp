@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/textract/Textract_EXPORTS.h>
@@ -32,19 +22,19 @@ namespace Model
 {
 
   /**
-   * <p>The bounding box around the recognized text, key, value, table or table cell
-   * on a document page. The <code>left</code> (x-coordinate) and <code>top</code>
-   * (y-coordinate) are coordinates that represent the top and left sides of the
-   * bounding box. Note that the upper-left corner of the image is the origin (0,0).
-   * </p> <p>The <code>top</code> and <code>left</code> values returned are ratios of
-   * the overall document page size. For example, if the input image is 700 x 200
-   * pixels, and the top-left coordinate of the bounding box is 350 x 50 pixels, the
-   * API returns a <code>left</code> value of 0.5 (350/700) and a <code>top</code>
-   * value of 0.25 (50/200).</p> <p>The <code>width</code> and <code>height</code>
-   * values represent the dimensions of the bounding box as a ratio of the overall
-   * document page dimension. For example, if the document page size is 700 x 200
-   * pixels, and the bounding box width is 70 pixels, the width returned is 0.1.
-   * </p><p><h3>See Also:</h3>   <a
+   * <p>The bounding box around the detected page, text, key-value pair, table, table
+   * cell, or selection element on a document page. The <code>left</code>
+   * (x-coordinate) and <code>top</code> (y-coordinate) are coordinates that
+   * represent the top and left sides of the bounding box. Note that the upper-left
+   * corner of the image is the origin (0,0). </p> <p>The <code>top</code> and
+   * <code>left</code> values returned are ratios of the overall document page size.
+   * For example, if the input image is 700 x 200 pixels, and the top-left coordinate
+   * of the bounding box is 350 x 50 pixels, the API returns a <code>left</code>
+   * value of 0.5 (350/700) and a <code>top</code> value of 0.25 (50/200).</p> <p>The
+   * <code>width</code> and <code>height</code> values represent the dimensions of
+   * the bounding box as a ratio of the overall document page dimension. For example,
+   * if the document page size is 700 x 200 pixels, and the bounding box width is 70
+   * pixels, the width returned is 0.1. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/textract-2018-06-27/BoundingBox">AWS
    * API Reference</a></p>
    */

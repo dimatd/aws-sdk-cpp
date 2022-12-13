@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dlm/DLM_EXPORTS.h>
@@ -19,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dlm/model/SettablePolicyStateValues.h>
 #include <aws/dlm/model/PolicyDetails.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
 namespace Aws
@@ -174,40 +165,100 @@ namespace Model
 
 
     /**
-     * <p>The configuration details of the lifecycle policy.</p> <p>Target tags cannot
-     * be re-used across lifecycle policies.</p>
+     * <p>The configuration details of the lifecycle policy.</p>
      */
     inline const PolicyDetails& GetPolicyDetails() const{ return m_policyDetails; }
 
     /**
-     * <p>The configuration details of the lifecycle policy.</p> <p>Target tags cannot
-     * be re-used across lifecycle policies.</p>
+     * <p>The configuration details of the lifecycle policy.</p>
      */
     inline bool PolicyDetailsHasBeenSet() const { return m_policyDetailsHasBeenSet; }
 
     /**
-     * <p>The configuration details of the lifecycle policy.</p> <p>Target tags cannot
-     * be re-used across lifecycle policies.</p>
+     * <p>The configuration details of the lifecycle policy.</p>
      */
     inline void SetPolicyDetails(const PolicyDetails& value) { m_policyDetailsHasBeenSet = true; m_policyDetails = value; }
 
     /**
-     * <p>The configuration details of the lifecycle policy.</p> <p>Target tags cannot
-     * be re-used across lifecycle policies.</p>
+     * <p>The configuration details of the lifecycle policy.</p>
      */
     inline void SetPolicyDetails(PolicyDetails&& value) { m_policyDetailsHasBeenSet = true; m_policyDetails = std::move(value); }
 
     /**
-     * <p>The configuration details of the lifecycle policy.</p> <p>Target tags cannot
-     * be re-used across lifecycle policies.</p>
+     * <p>The configuration details of the lifecycle policy.</p>
      */
     inline CreateLifecyclePolicyRequest& WithPolicyDetails(const PolicyDetails& value) { SetPolicyDetails(value); return *this;}
 
     /**
-     * <p>The configuration details of the lifecycle policy.</p> <p>Target tags cannot
-     * be re-used across lifecycle policies.</p>
+     * <p>The configuration details of the lifecycle policy.</p>
      */
     inline CreateLifecyclePolicyRequest& WithPolicyDetails(PolicyDetails&& value) { SetPolicyDetails(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
+
+    /**
+     * <p>The tags to apply to the lifecycle policy during creation.</p>
+     */
+    inline CreateLifecyclePolicyRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
 
   private:
 
@@ -222,6 +273,9 @@ namespace Model
 
     PolicyDetails m_policyDetails;
     bool m_policyDetailsHasBeenSet;
+
+    Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

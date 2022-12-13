@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/apigatewayv2/ApiGatewayV2_EXPORTS.h>
@@ -50,42 +40,50 @@ namespace Model
 
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline const Aws::String& GetModelSelectionExpression() const{ return m_modelSelectionExpression; }
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline bool ModelSelectionExpressionHasBeenSet() const { return m_modelSelectionExpressionHasBeenSet; }
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline void SetModelSelectionExpression(const Aws::String& value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression = value; }
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline void SetModelSelectionExpression(Aws::String&& value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression = std::move(value); }
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline void SetModelSelectionExpression(const char* value) { m_modelSelectionExpressionHasBeenSet = true; m_modelSelectionExpression.assign(value); }
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline RouteResponse& WithModelSelectionExpression(const Aws::String& value) { SetModelSelectionExpression(value); return *this;}
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline RouteResponse& WithModelSelectionExpression(Aws::String&& value) { SetModelSelectionExpression(std::move(value)); return *this;}
 
     /**
-     * <p>Represents the model selection expression of a route response.</p>
+     * <p>Represents the model selection expression of a route response. Supported only
+     * for WebSocket APIs.</p>
      */
     inline RouteResponse& WithModelSelectionExpression(const char* value) { SetModelSelectionExpression(value); return *this;}
 

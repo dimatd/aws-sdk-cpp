@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/elasticfilesystem/EFS_EXPORTS.h>
@@ -54,7 +44,7 @@ namespace Model
     /**
      * <p>(Optional) Maximum number of mount targets to return in the response.
      * Currently, this number is automatically set to 10, and other values are ignored.
-     * The response is paginated at 10 per page if you have more than 10 mount
+     * The response is paginated at 100 per page if you have more than 100 mount
      * targets.</p>
      */
     inline int GetMaxItems() const{ return m_maxItems; }
@@ -62,7 +52,7 @@ namespace Model
     /**
      * <p>(Optional) Maximum number of mount targets to return in the response.
      * Currently, this number is automatically set to 10, and other values are ignored.
-     * The response is paginated at 10 per page if you have more than 10 mount
+     * The response is paginated at 100 per page if you have more than 100 mount
      * targets.</p>
      */
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
@@ -70,7 +60,7 @@ namespace Model
     /**
      * <p>(Optional) Maximum number of mount targets to return in the response.
      * Currently, this number is automatically set to 10, and other values are ignored.
-     * The response is paginated at 10 per page if you have more than 10 mount
+     * The response is paginated at 100 per page if you have more than 100 mount
      * targets.</p>
      */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
@@ -78,7 +68,7 @@ namespace Model
     /**
      * <p>(Optional) Maximum number of mount targets to return in the response.
      * Currently, this number is automatically set to 10, and other values are ignored.
-     * The response is paginated at 10 per page if you have more than 10 mount
+     * The response is paginated at 100 per page if you have more than 100 mount
      * targets.</p>
      */
     inline DescribeMountTargetsRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
@@ -143,57 +133,65 @@ namespace Model
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline const Aws::String& GetFileSystemId() const{ return m_fileSystemId; }
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline bool FileSystemIdHasBeenSet() const { return m_fileSystemIdHasBeenSet; }
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline void SetFileSystemId(const Aws::String& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = value; }
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline void SetFileSystemId(Aws::String&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::move(value); }
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline void SetFileSystemId(const char* value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId.assign(value); }
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline DescribeMountTargetsRequest& WithFileSystemId(const Aws::String& value) { SetFileSystemId(value); return *this;}
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline DescribeMountTargetsRequest& WithFileSystemId(Aws::String&& value) { SetFileSystemId(std::move(value)); return *this;}
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
-     * (String). It must be included in your request if <code>MountTargetId</code> is
-     * not included.</p>
+     * (String). It must be included in your request if an <code>AccessPointId</code>
+     * or <code>MountTargetId</code> is not included. Accepts either a file system ID
+     * or ARN as input.</p>
      */
     inline DescribeMountTargetsRequest& WithFileSystemId(const char* value) { SetFileSystemId(value); return *this;}
 
@@ -201,58 +199,123 @@ namespace Model
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline const Aws::String& GetMountTargetId() const{ return m_mountTargetId; }
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline bool MountTargetIdHasBeenSet() const { return m_mountTargetIdHasBeenSet; }
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline void SetMountTargetId(const Aws::String& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = value; }
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline void SetMountTargetId(Aws::String&& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = std::move(value); }
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline void SetMountTargetId(const char* value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId.assign(value); }
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline DescribeMountTargetsRequest& WithMountTargetId(const Aws::String& value) { SetMountTargetId(value); return *this;}
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline DescribeMountTargetsRequest& WithMountTargetId(Aws::String&& value) { SetMountTargetId(std::move(value)); return *this;}
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
      * It must be included in your request if <code>FileSystemId</code> is not
-     * included.</p>
+     * included. Accepts either a mount target ID or ARN as input.</p>
      */
     inline DescribeMountTargetsRequest& WithMountTargetId(const char* value) { SetMountTargetId(value); return *this;}
+
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline const Aws::String& GetAccessPointId() const{ return m_accessPointId; }
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline bool AccessPointIdHasBeenSet() const { return m_accessPointIdHasBeenSet; }
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline void SetAccessPointId(const Aws::String& value) { m_accessPointIdHasBeenSet = true; m_accessPointId = value; }
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline void SetAccessPointId(Aws::String&& value) { m_accessPointIdHasBeenSet = true; m_accessPointId = std::move(value); }
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline void SetAccessPointId(const char* value) { m_accessPointIdHasBeenSet = true; m_accessPointId.assign(value); }
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline DescribeMountTargetsRequest& WithAccessPointId(const Aws::String& value) { SetAccessPointId(value); return *this;}
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline DescribeMountTargetsRequest& WithAccessPointId(Aws::String&& value) { SetAccessPointId(std::move(value)); return *this;}
+
+    /**
+     * <p>(Optional) The ID of the access point whose mount targets that you want to
+     * list. It must be included in your request if a <code>FileSystemId</code> or
+     * <code>MountTargetId</code> is not included in your request. Accepts either an
+     * access point ID or ARN as input.</p>
+     */
+    inline DescribeMountTargetsRequest& WithAccessPointId(const char* value) { SetAccessPointId(value); return *this;}
 
   private:
 
@@ -267,6 +330,9 @@ namespace Model
 
     Aws::String m_mountTargetId;
     bool m_mountTargetIdHasBeenSet;
+
+    Aws::String m_accessPointId;
+    bool m_accessPointIdHasBeenSet;
   };
 
 } // namespace Model

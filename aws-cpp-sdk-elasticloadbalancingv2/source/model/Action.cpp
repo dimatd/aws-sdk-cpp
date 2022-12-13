@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/elasticloadbalancingv2/model/Action.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -39,7 +29,8 @@ Action::Action() :
     m_order(0),
     m_orderHasBeenSet(false),
     m_redirectConfigHasBeenSet(false),
-    m_fixedResponseConfigHasBeenSet(false)
+    m_fixedResponseConfigHasBeenSet(false),
+    m_forwardConfigHasBeenSet(false)
 {
 }
 
@@ -52,7 +43,8 @@ Action::Action(const XmlNode& xmlNode) :
     m_order(0),
     m_orderHasBeenSet(false),
     m_redirectConfigHasBeenSet(false),
-    m_fixedResponseConfigHasBeenSet(false)
+    m_fixedResponseConfigHasBeenSet(false),
+    m_forwardConfigHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -105,6 +97,12 @@ Action& Action::operator =(const XmlNode& xmlNode)
       m_fixedResponseConfig = fixedResponseConfigNode;
       m_fixedResponseConfigHasBeenSet = true;
     }
+    XmlNode forwardConfigNode = resultNode.FirstChild("ForwardConfig");
+    if(!forwardConfigNode.IsNull())
+    {
+      m_forwardConfig = forwardConfigNode;
+      m_forwardConfigHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -155,6 +153,13 @@ void Action::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
       m_fixedResponseConfig.OutputToStream(oStream, fixedResponseConfigLocationAndMemberSs.str().c_str());
   }
 
+  if(m_forwardConfigHasBeenSet)
+  {
+      Aws::StringStream forwardConfigLocationAndMemberSs;
+      forwardConfigLocationAndMemberSs << location << index << locationValue << ".ForwardConfig";
+      m_forwardConfig.OutputToStream(oStream, forwardConfigLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void Action::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -194,6 +199,12 @@ void Action::OutputToStream(Aws::OStream& oStream, const char* location) const
       Aws::String fixedResponseConfigLocationAndMember(location);
       fixedResponseConfigLocationAndMember += ".FixedResponseConfig";
       m_fixedResponseConfig.OutputToStream(oStream, fixedResponseConfigLocationAndMember.c_str());
+  }
+  if(m_forwardConfigHasBeenSet)
+  {
+      Aws::String forwardConfigLocationAndMember(location);
+      forwardConfigLocationAndMember += ".ForwardConfig";
+      m_forwardConfig.OutputToStream(oStream, forwardConfigLocationAndMember.c_str());
   }
 }
 

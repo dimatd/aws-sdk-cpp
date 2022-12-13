@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/pinpoint/model/SMSMessage.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -31,22 +21,28 @@ namespace Model
 SMSMessage::SMSMessage() : 
     m_bodyHasBeenSet(false),
     m_keywordHasBeenSet(false),
+    m_mediaUrlHasBeenSet(false),
     m_messageType(MessageType::NOT_SET),
     m_messageTypeHasBeenSet(false),
     m_originationNumberHasBeenSet(false),
     m_senderIdHasBeenSet(false),
-    m_substitutionsHasBeenSet(false)
+    m_substitutionsHasBeenSet(false),
+    m_entityIdHasBeenSet(false),
+    m_templateIdHasBeenSet(false)
 {
 }
 
 SMSMessage::SMSMessage(JsonView jsonValue) : 
     m_bodyHasBeenSet(false),
     m_keywordHasBeenSet(false),
+    m_mediaUrlHasBeenSet(false),
     m_messageType(MessageType::NOT_SET),
     m_messageTypeHasBeenSet(false),
     m_originationNumberHasBeenSet(false),
     m_senderIdHasBeenSet(false),
-    m_substitutionsHasBeenSet(false)
+    m_substitutionsHasBeenSet(false),
+    m_entityIdHasBeenSet(false),
+    m_templateIdHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -65,6 +61,13 @@ SMSMessage& SMSMessage::operator =(JsonView jsonValue)
     m_keyword = jsonValue.GetString("Keyword");
 
     m_keywordHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("MediaUrl"))
+  {
+    m_mediaUrl = jsonValue.GetString("MediaUrl");
+
+    m_mediaUrlHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("MessageType"))
@@ -105,6 +108,20 @@ SMSMessage& SMSMessage::operator =(JsonView jsonValue)
     m_substitutionsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("EntityId"))
+  {
+    m_entityId = jsonValue.GetString("EntityId");
+
+    m_entityIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TemplateId"))
+  {
+    m_templateId = jsonValue.GetString("TemplateId");
+
+    m_templateIdHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -121,6 +138,12 @@ JsonValue SMSMessage::Jsonize() const
   if(m_keywordHasBeenSet)
   {
    payload.WithString("Keyword", m_keyword);
+
+  }
+
+  if(m_mediaUrlHasBeenSet)
+  {
+   payload.WithString("MediaUrl", m_mediaUrl);
 
   }
 
@@ -154,6 +177,18 @@ JsonValue SMSMessage::Jsonize() const
      substitutionsJsonMap.WithArray(substitutionsItem.first, std::move(listOf__stringJsonList));
    }
    payload.WithObject("Substitutions", std::move(substitutionsJsonMap));
+
+  }
+
+  if(m_entityIdHasBeenSet)
+  {
+   payload.WithString("EntityId", m_entityId);
+
+  }
+
+  if(m_templateIdHasBeenSet)
+  {
+   payload.WithString("TemplateId", m_templateId);
 
   }
 

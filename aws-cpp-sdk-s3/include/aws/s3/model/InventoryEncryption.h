@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -50,63 +40,63 @@ namespace Model
 
 
     /**
-     * <p>Specifies the use of SSE-S3 to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-S3 to encrypt delivered inventory reports.</p>
      */
     inline const SSES3& GetSSES3() const{ return m_sSES3; }
 
     /**
-     * <p>Specifies the use of SSE-S3 to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-S3 to encrypt delivered inventory reports.</p>
      */
     inline bool SSES3HasBeenSet() const { return m_sSES3HasBeenSet; }
 
     /**
-     * <p>Specifies the use of SSE-S3 to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-S3 to encrypt delivered inventory reports.</p>
      */
     inline void SetSSES3(const SSES3& value) { m_sSES3HasBeenSet = true; m_sSES3 = value; }
 
     /**
-     * <p>Specifies the use of SSE-S3 to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-S3 to encrypt delivered inventory reports.</p>
      */
     inline void SetSSES3(SSES3&& value) { m_sSES3HasBeenSet = true; m_sSES3 = std::move(value); }
 
     /**
-     * <p>Specifies the use of SSE-S3 to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-S3 to encrypt delivered inventory reports.</p>
      */
     inline InventoryEncryption& WithSSES3(const SSES3& value) { SetSSES3(value); return *this;}
 
     /**
-     * <p>Specifies the use of SSE-S3 to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-S3 to encrypt delivered inventory reports.</p>
      */
     inline InventoryEncryption& WithSSES3(SSES3&& value) { SetSSES3(std::move(value)); return *this;}
 
 
     /**
-     * <p>Specifies the use of SSE-KMS to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-KMS to encrypt delivered inventory reports.</p>
      */
     inline const SSEKMS& GetSSEKMS() const{ return m_sSEKMS; }
 
     /**
-     * <p>Specifies the use of SSE-KMS to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-KMS to encrypt delivered inventory reports.</p>
      */
     inline bool SSEKMSHasBeenSet() const { return m_sSEKMSHasBeenSet; }
 
     /**
-     * <p>Specifies the use of SSE-KMS to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-KMS to encrypt delivered inventory reports.</p>
      */
     inline void SetSSEKMS(const SSEKMS& value) { m_sSEKMSHasBeenSet = true; m_sSEKMS = value; }
 
     /**
-     * <p>Specifies the use of SSE-KMS to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-KMS to encrypt delivered inventory reports.</p>
      */
     inline void SetSSEKMS(SSEKMS&& value) { m_sSEKMSHasBeenSet = true; m_sSEKMS = std::move(value); }
 
     /**
-     * <p>Specifies the use of SSE-KMS to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-KMS to encrypt delivered inventory reports.</p>
      */
     inline InventoryEncryption& WithSSEKMS(const SSEKMS& value) { SetSSEKMS(value); return *this;}
 
     /**
-     * <p>Specifies the use of SSE-KMS to encrypt delivered Inventory reports.</p>
+     * <p>Specifies the use of SSE-KMS to encrypt delivered inventory reports.</p>
      */
     inline InventoryEncryption& WithSSEKMS(SSEKMS&& value) { SetSSEKMS(std::move(value)); return *this;}
 

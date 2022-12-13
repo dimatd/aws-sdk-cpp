@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/Integration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -29,6 +19,8 @@ namespace Model
 {
 
 Integration::Integration() : 
+    m_apiGatewayManaged(false),
+    m_apiGatewayManagedHasBeenSet(false),
     m_connectionIdHasBeenSet(false),
     m_connectionType(ConnectionType::NOT_SET),
     m_connectionTypeHasBeenSet(false),
@@ -39,20 +31,26 @@ Integration::Integration() :
     m_integrationIdHasBeenSet(false),
     m_integrationMethodHasBeenSet(false),
     m_integrationResponseSelectionExpressionHasBeenSet(false),
+    m_integrationSubtypeHasBeenSet(false),
     m_integrationType(IntegrationType::NOT_SET),
     m_integrationTypeHasBeenSet(false),
     m_integrationUriHasBeenSet(false),
     m_passthroughBehavior(PassthroughBehavior::NOT_SET),
     m_passthroughBehaviorHasBeenSet(false),
+    m_payloadFormatVersionHasBeenSet(false),
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
+    m_responseParametersHasBeenSet(false),
     m_templateSelectionExpressionHasBeenSet(false),
     m_timeoutInMillis(0),
-    m_timeoutInMillisHasBeenSet(false)
+    m_timeoutInMillisHasBeenSet(false),
+    m_tlsConfigHasBeenSet(false)
 {
 }
 
 Integration::Integration(JsonView jsonValue) : 
+    m_apiGatewayManaged(false),
+    m_apiGatewayManagedHasBeenSet(false),
     m_connectionIdHasBeenSet(false),
     m_connectionType(ConnectionType::NOT_SET),
     m_connectionTypeHasBeenSet(false),
@@ -63,22 +61,33 @@ Integration::Integration(JsonView jsonValue) :
     m_integrationIdHasBeenSet(false),
     m_integrationMethodHasBeenSet(false),
     m_integrationResponseSelectionExpressionHasBeenSet(false),
+    m_integrationSubtypeHasBeenSet(false),
     m_integrationType(IntegrationType::NOT_SET),
     m_integrationTypeHasBeenSet(false),
     m_integrationUriHasBeenSet(false),
     m_passthroughBehavior(PassthroughBehavior::NOT_SET),
     m_passthroughBehaviorHasBeenSet(false),
+    m_payloadFormatVersionHasBeenSet(false),
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
+    m_responseParametersHasBeenSet(false),
     m_templateSelectionExpressionHasBeenSet(false),
     m_timeoutInMillis(0),
-    m_timeoutInMillisHasBeenSet(false)
+    m_timeoutInMillisHasBeenSet(false),
+    m_tlsConfigHasBeenSet(false)
 {
   *this = jsonValue;
 }
 
 Integration& Integration::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("apiGatewayManaged"))
+  {
+    m_apiGatewayManaged = jsonValue.GetBool("apiGatewayManaged");
+
+    m_apiGatewayManagedHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("connectionId"))
   {
     m_connectionId = jsonValue.GetString("connectionId");
@@ -135,6 +144,13 @@ Integration& Integration::operator =(JsonView jsonValue)
     m_integrationResponseSelectionExpressionHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("integrationSubtype"))
+  {
+    m_integrationSubtype = jsonValue.GetString("integrationSubtype");
+
+    m_integrationSubtypeHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("integrationType"))
   {
     m_integrationType = IntegrationTypeMapper::GetIntegrationTypeForName(jsonValue.GetString("integrationType"));
@@ -154,6 +170,13 @@ Integration& Integration::operator =(JsonView jsonValue)
     m_passthroughBehavior = PassthroughBehaviorMapper::GetPassthroughBehaviorForName(jsonValue.GetString("passthroughBehavior"));
 
     m_passthroughBehaviorHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("payloadFormatVersion"))
+  {
+    m_payloadFormatVersion = jsonValue.GetString("payloadFormatVersion");
+
+    m_payloadFormatVersionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("requestParameters"))
@@ -176,6 +199,22 @@ Integration& Integration::operator =(JsonView jsonValue)
     m_requestTemplatesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("responseParameters"))
+  {
+    Aws::Map<Aws::String, JsonView> responseParametersJsonMap = jsonValue.GetObject("responseParameters").GetAllObjects();
+    for(auto& responseParametersItem : responseParametersJsonMap)
+    {
+      Aws::Map<Aws::String, JsonView> integrationParametersJsonMap = responseParametersItem.second.GetAllObjects();
+      Aws::Map<Aws::String, Aws::String> integrationParametersMap;
+      for(auto& integrationParametersItem : integrationParametersJsonMap)
+      {
+        integrationParametersMap[integrationParametersItem.first] = integrationParametersItem.second.AsString();
+      }
+      m_responseParameters[responseParametersItem.first] = std::move(integrationParametersMap);
+    }
+    m_responseParametersHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("templateSelectionExpression"))
   {
     m_templateSelectionExpression = jsonValue.GetString("templateSelectionExpression");
@@ -190,12 +229,25 @@ Integration& Integration::operator =(JsonView jsonValue)
     m_timeoutInMillisHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("tlsConfig"))
+  {
+    m_tlsConfig = jsonValue.GetObject("tlsConfig");
+
+    m_tlsConfigHasBeenSet = true;
+  }
+
   return *this;
 }
 
 JsonValue Integration::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_apiGatewayManagedHasBeenSet)
+  {
+   payload.WithBool("apiGatewayManaged", m_apiGatewayManaged);
+
+  }
 
   if(m_connectionIdHasBeenSet)
   {
@@ -243,6 +295,12 @@ JsonValue Integration::Jsonize() const
 
   }
 
+  if(m_integrationSubtypeHasBeenSet)
+  {
+   payload.WithString("integrationSubtype", m_integrationSubtype);
+
+  }
+
   if(m_integrationTypeHasBeenSet)
   {
    payload.WithString("integrationType", IntegrationTypeMapper::GetNameForIntegrationType(m_integrationType));
@@ -257,6 +315,12 @@ JsonValue Integration::Jsonize() const
   if(m_passthroughBehaviorHasBeenSet)
   {
    payload.WithString("passthroughBehavior", PassthroughBehaviorMapper::GetNameForPassthroughBehavior(m_passthroughBehavior));
+  }
+
+  if(m_payloadFormatVersionHasBeenSet)
+  {
+   payload.WithString("payloadFormatVersion", m_payloadFormatVersion);
+
   }
 
   if(m_requestParametersHasBeenSet)
@@ -281,6 +345,22 @@ JsonValue Integration::Jsonize() const
 
   }
 
+  if(m_responseParametersHasBeenSet)
+  {
+   JsonValue responseParametersJsonMap;
+   for(auto& responseParametersItem : m_responseParameters)
+   {
+     JsonValue integrationParametersJsonMap;
+     for(auto& integrationParametersItem : responseParametersItem.second)
+     {
+       integrationParametersJsonMap.WithString(integrationParametersItem.first, integrationParametersItem.second);
+     }
+     responseParametersJsonMap.WithObject(responseParametersItem.first, std::move(integrationParametersJsonMap));
+   }
+   payload.WithObject("responseParameters", std::move(responseParametersJsonMap));
+
+  }
+
   if(m_templateSelectionExpressionHasBeenSet)
   {
    payload.WithString("templateSelectionExpression", m_templateSelectionExpression);
@@ -290,6 +370,12 @@ JsonValue Integration::Jsonize() const
   if(m_timeoutInMillisHasBeenSet)
   {
    payload.WithInteger("timeoutInMillis", m_timeoutInMillis);
+
+  }
+
+  if(m_tlsConfigHasBeenSet)
+  {
+   payload.WithObject("tlsConfig", m_tlsConfig.Jsonize());
 
   }
 

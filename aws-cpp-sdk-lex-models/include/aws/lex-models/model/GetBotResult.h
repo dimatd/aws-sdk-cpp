@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lex-models/LexModelBuildingService_EXPORTS.h>
@@ -165,6 +155,68 @@ namespace Model
 
 
     /**
+     * <p>Indicates whether the bot uses accuracy improvements. <code>true</code>
+     * indicates that the bot is using the improvements, otherwise,
+     * <code>false</code>.</p>
+     */
+    inline bool GetEnableModelImprovements() const{ return m_enableModelImprovements; }
+
+    /**
+     * <p>Indicates whether the bot uses accuracy improvements. <code>true</code>
+     * indicates that the bot is using the improvements, otherwise,
+     * <code>false</code>.</p>
+     */
+    inline void SetEnableModelImprovements(bool value) { m_enableModelImprovements = value; }
+
+    /**
+     * <p>Indicates whether the bot uses accuracy improvements. <code>true</code>
+     * indicates that the bot is using the improvements, otherwise,
+     * <code>false</code>.</p>
+     */
+    inline GetBotResult& WithEnableModelImprovements(bool value) { SetEnableModelImprovements(value); return *this;}
+
+
+    /**
+     * <p>The score that determines where Amazon Lex inserts the
+     * <code>AMAZON.FallbackIntent</code>, <code>AMAZON.KendraSearchIntent</code>, or
+     * both when returning alternative intents in a <a
+     * href="https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html">PostContent</a>
+     * or <a
+     * href="https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html">PostText</a>
+     * response. <code>AMAZON.FallbackIntent</code> is inserted if the confidence score
+     * for all intents is below this value. <code>AMAZON.KendraSearchIntent</code> is
+     * only inserted if it is configured for the bot.</p>
+     */
+    inline double GetNluIntentConfidenceThreshold() const{ return m_nluIntentConfidenceThreshold; }
+
+    /**
+     * <p>The score that determines where Amazon Lex inserts the
+     * <code>AMAZON.FallbackIntent</code>, <code>AMAZON.KendraSearchIntent</code>, or
+     * both when returning alternative intents in a <a
+     * href="https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html">PostContent</a>
+     * or <a
+     * href="https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html">PostText</a>
+     * response. <code>AMAZON.FallbackIntent</code> is inserted if the confidence score
+     * for all intents is below this value. <code>AMAZON.KendraSearchIntent</code> is
+     * only inserted if it is configured for the bot.</p>
+     */
+    inline void SetNluIntentConfidenceThreshold(double value) { m_nluIntentConfidenceThreshold = value; }
+
+    /**
+     * <p>The score that determines where Amazon Lex inserts the
+     * <code>AMAZON.FallbackIntent</code>, <code>AMAZON.KendraSearchIntent</code>, or
+     * both when returning alternative intents in a <a
+     * href="https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html">PostContent</a>
+     * or <a
+     * href="https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html">PostText</a>
+     * response. <code>AMAZON.FallbackIntent</code> is inserted if the confidence score
+     * for all intents is below this value. <code>AMAZON.KendraSearchIntent</code> is
+     * only inserted if it is configured for the bot.</p>
+     */
+    inline GetBotResult& WithNluIntentConfidenceThreshold(double value) { SetNluIntentConfidenceThreshold(value); return *this;}
+
+
+    /**
      * <p>The message Amazon Lex uses when it doesn't understand the user's request.
      * For more information, see <a>PutBot</a>. </p>
      */
@@ -227,47 +279,62 @@ namespace Model
 
 
     /**
-     * <p>The status of the bot. If the bot is ready to run, the status is
-     * <code>READY</code>. If there was a problem with building the bot, the status is
-     * <code>FAILED</code> and the <code>failureReason</code> explains why the bot did
-     * not build. If the bot was saved but not built, the status is <code>NOT
-     * BUILT</code>.</p>
+     * <p>The status of the bot. </p> <p>When the status is <code>BUILDING</code>
+     * Amazon Lex is building the bot for testing and use.</p> <p>If the status of the
+     * bot is <code>READY_BASIC_TESTING</code>, you can test the bot using the exact
+     * utterances specified in the bot's intents. When the bot is ready for full
+     * testing or to run, the status is <code>READY</code>.</p> <p>If there was a
+     * problem with building the bot, the status is <code>FAILED</code> and the
+     * <code>failureReason</code> field explains why the bot did not build.</p> <p>If
+     * the bot was saved but not built, the status is <code>NOT_BUILT</code>.</p>
      */
     inline const Status& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the bot. If the bot is ready to run, the status is
-     * <code>READY</code>. If there was a problem with building the bot, the status is
-     * <code>FAILED</code> and the <code>failureReason</code> explains why the bot did
-     * not build. If the bot was saved but not built, the status is <code>NOT
-     * BUILT</code>.</p>
+     * <p>The status of the bot. </p> <p>When the status is <code>BUILDING</code>
+     * Amazon Lex is building the bot for testing and use.</p> <p>If the status of the
+     * bot is <code>READY_BASIC_TESTING</code>, you can test the bot using the exact
+     * utterances specified in the bot's intents. When the bot is ready for full
+     * testing or to run, the status is <code>READY</code>.</p> <p>If there was a
+     * problem with building the bot, the status is <code>FAILED</code> and the
+     * <code>failureReason</code> field explains why the bot did not build.</p> <p>If
+     * the bot was saved but not built, the status is <code>NOT_BUILT</code>.</p>
      */
     inline void SetStatus(const Status& value) { m_status = value; }
 
     /**
-     * <p>The status of the bot. If the bot is ready to run, the status is
-     * <code>READY</code>. If there was a problem with building the bot, the status is
-     * <code>FAILED</code> and the <code>failureReason</code> explains why the bot did
-     * not build. If the bot was saved but not built, the status is <code>NOT
-     * BUILT</code>.</p>
+     * <p>The status of the bot. </p> <p>When the status is <code>BUILDING</code>
+     * Amazon Lex is building the bot for testing and use.</p> <p>If the status of the
+     * bot is <code>READY_BASIC_TESTING</code>, you can test the bot using the exact
+     * utterances specified in the bot's intents. When the bot is ready for full
+     * testing or to run, the status is <code>READY</code>.</p> <p>If there was a
+     * problem with building the bot, the status is <code>FAILED</code> and the
+     * <code>failureReason</code> field explains why the bot did not build.</p> <p>If
+     * the bot was saved but not built, the status is <code>NOT_BUILT</code>.</p>
      */
     inline void SetStatus(Status&& value) { m_status = std::move(value); }
 
     /**
-     * <p>The status of the bot. If the bot is ready to run, the status is
-     * <code>READY</code>. If there was a problem with building the bot, the status is
-     * <code>FAILED</code> and the <code>failureReason</code> explains why the bot did
-     * not build. If the bot was saved but not built, the status is <code>NOT
-     * BUILT</code>.</p>
+     * <p>The status of the bot. </p> <p>When the status is <code>BUILDING</code>
+     * Amazon Lex is building the bot for testing and use.</p> <p>If the status of the
+     * bot is <code>READY_BASIC_TESTING</code>, you can test the bot using the exact
+     * utterances specified in the bot's intents. When the bot is ready for full
+     * testing or to run, the status is <code>READY</code>.</p> <p>If there was a
+     * problem with building the bot, the status is <code>FAILED</code> and the
+     * <code>failureReason</code> field explains why the bot did not build.</p> <p>If
+     * the bot was saved but not built, the status is <code>NOT_BUILT</code>.</p>
      */
     inline GetBotResult& WithStatus(const Status& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the bot. If the bot is ready to run, the status is
-     * <code>READY</code>. If there was a problem with building the bot, the status is
-     * <code>FAILED</code> and the <code>failureReason</code> explains why the bot did
-     * not build. If the bot was saved but not built, the status is <code>NOT
-     * BUILT</code>.</p>
+     * <p>The status of the bot. </p> <p>When the status is <code>BUILDING</code>
+     * Amazon Lex is building the bot for testing and use.</p> <p>If the status of the
+     * bot is <code>READY_BASIC_TESTING</code>, you can test the bot using the exact
+     * utterances specified in the bot's intents. When the bot is ready for full
+     * testing or to run, the status is <code>READY</code>.</p> <p>If there was a
+     * problem with building the bot, the status is <code>FAILED</code> and the
+     * <code>failureReason</code> field explains why the bot did not build.</p> <p>If
+     * the bot was saved but not built, the status is <code>NOT_BUILT</code>.</p>
      */
     inline GetBotResult& WithStatus(Status&& value) { SetStatus(std::move(value)); return *this;}
 
@@ -627,6 +694,25 @@ namespace Model
      */
     inline GetBotResult& WithChildDirected(bool value) { SetChildDirected(value); return *this;}
 
+
+    /**
+     * <p>Indicates whether user utterances should be sent to Amazon Comprehend for
+     * sentiment analysis.</p>
+     */
+    inline bool GetDetectSentiment() const{ return m_detectSentiment; }
+
+    /**
+     * <p>Indicates whether user utterances should be sent to Amazon Comprehend for
+     * sentiment analysis.</p>
+     */
+    inline void SetDetectSentiment(bool value) { m_detectSentiment = value; }
+
+    /**
+     * <p>Indicates whether user utterances should be sent to Amazon Comprehend for
+     * sentiment analysis.</p>
+     */
+    inline GetBotResult& WithDetectSentiment(bool value) { SetDetectSentiment(value); return *this;}
+
   private:
 
     Aws::String m_name;
@@ -634,6 +720,10 @@ namespace Model
     Aws::String m_description;
 
     Aws::Vector<Intent> m_intents;
+
+    bool m_enableModelImprovements;
+
+    double m_nluIntentConfidenceThreshold;
 
     Prompt m_clarificationPrompt;
 
@@ -658,6 +748,8 @@ namespace Model
     Locale m_locale;
 
     bool m_childDirected;
+
+    bool m_detectSentiment;
   };
 
 } // namespace Model

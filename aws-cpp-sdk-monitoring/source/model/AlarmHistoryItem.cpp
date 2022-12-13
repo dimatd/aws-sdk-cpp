@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/monitoring/model/AlarmHistoryItem.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -32,6 +22,8 @@ namespace Model
 
 AlarmHistoryItem::AlarmHistoryItem() : 
     m_alarmNameHasBeenSet(false),
+    m_alarmType(AlarmType::NOT_SET),
+    m_alarmTypeHasBeenSet(false),
     m_timestampHasBeenSet(false),
     m_historyItemType(HistoryItemType::NOT_SET),
     m_historyItemTypeHasBeenSet(false),
@@ -42,6 +34,8 @@ AlarmHistoryItem::AlarmHistoryItem() :
 
 AlarmHistoryItem::AlarmHistoryItem(const XmlNode& xmlNode) : 
     m_alarmNameHasBeenSet(false),
+    m_alarmType(AlarmType::NOT_SET),
+    m_alarmTypeHasBeenSet(false),
     m_timestampHasBeenSet(false),
     m_historyItemType(HistoryItemType::NOT_SET),
     m_historyItemTypeHasBeenSet(false),
@@ -62,6 +56,12 @@ AlarmHistoryItem& AlarmHistoryItem::operator =(const XmlNode& xmlNode)
     {
       m_alarmName = Aws::Utils::Xml::DecodeEscapedXmlText(alarmNameNode.GetText());
       m_alarmNameHasBeenSet = true;
+    }
+    XmlNode alarmTypeNode = resultNode.FirstChild("AlarmType");
+    if(!alarmTypeNode.IsNull())
+    {
+      m_alarmType = AlarmTypeMapper::GetAlarmTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(alarmTypeNode.GetText()).c_str()).c_str());
+      m_alarmTypeHasBeenSet = true;
     }
     XmlNode timestampNode = resultNode.FirstChild("Timestamp");
     if(!timestampNode.IsNull())
@@ -99,6 +99,11 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".AlarmName=" << StringUtils::URLEncode(m_alarmName.c_str()) << "&";
   }
 
+  if(m_alarmTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AlarmType=" << AlarmTypeMapper::GetNameForAlarmType(m_alarmType) << "&";
+  }
+
   if(m_timestampHasBeenSet)
   {
       oStream << location << index << locationValue << ".Timestamp=" << StringUtils::URLEncode(m_timestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
@@ -126,6 +131,10 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_alarmNameHasBeenSet)
   {
       oStream << location << ".AlarmName=" << StringUtils::URLEncode(m_alarmName.c_str()) << "&";
+  }
+  if(m_alarmTypeHasBeenSet)
+  {
+      oStream << location << ".AlarmType=" << AlarmTypeMapper::GetNameForAlarmType(m_alarmType) << "&";
   }
   if(m_timestampHasBeenSet)
   {

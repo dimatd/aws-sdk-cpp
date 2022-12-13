@@ -1,20 +1,11 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 
+#include <aws/core/client/AWSError.h>
 #include <aws/core/client/CoreErrors.h>
 #include <aws/ds/DirectoryService_EXPORTS.h>
 
@@ -52,13 +43,19 @@ enum class DirectoryServiceErrors
   INVALID_ACCESS_KEY_ID = 23,
   REQUEST_TIMEOUT = 24,
   NETWORK_CONNECTION = 99,
-  
+
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   AUTHENTICATION_FAILED= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  CERTIFICATE_ALREADY_EXISTS,
+  CERTIFICATE_DOES_NOT_EXIST,
+  CERTIFICATE_IN_USE,
+  CERTIFICATE_LIMIT_EXCEEDED,
   CLIENT,
+  DIRECTORY_ALREADY_IN_REGION,
   DIRECTORY_ALREADY_SHARED,
+  DIRECTORY_DOES_NOT_EXIST,
   DIRECTORY_LIMIT_EXCEEDED,
   DIRECTORY_NOT_SHARED,
   DIRECTORY_UNAVAILABLE,
@@ -66,12 +63,17 @@ enum class DirectoryServiceErrors
   ENTITY_ALREADY_EXISTS,
   ENTITY_DOES_NOT_EXIST,
   INSUFFICIENT_PERMISSIONS,
+  INVALID_CERTIFICATE,
+  INVALID_CLIENT_AUTH_STATUS,
+  INVALID_L_D_A_P_S_STATUS,
   INVALID_NEXT_TOKEN,
   INVALID_PARAMETER,
   INVALID_PASSWORD,
   INVALID_TARGET,
   IP_ROUTE_LIMIT_EXCEEDED,
+  NO_AVAILABLE_CERTIFICATE,
   ORGANIZATIONS,
+  REGION_LIMIT_EXCEEDED,
   SERVICE,
   SHARE_LIMIT_EXCEEDED,
   SNAPSHOT_LIMIT_EXCEEDED,
@@ -79,6 +81,20 @@ enum class DirectoryServiceErrors
   UNSUPPORTED_OPERATION,
   USER_DOES_NOT_EXIST
 };
+
+class AWS_DIRECTORYSERVICE_API DirectoryServiceError : public Aws::Client::AWSError<DirectoryServiceErrors>
+{
+public:
+  DirectoryServiceError() {}
+  DirectoryServiceError(const Aws::Client::AWSError<Aws::Client::CoreErrors>& rhs) : Aws::Client::AWSError<DirectoryServiceErrors>(rhs) {}
+  DirectoryServiceError(Aws::Client::AWSError<Aws::Client::CoreErrors>&& rhs) : Aws::Client::AWSError<DirectoryServiceErrors>(rhs) {}
+  DirectoryServiceError(const Aws::Client::AWSError<DirectoryServiceErrors>& rhs) : Aws::Client::AWSError<DirectoryServiceErrors>(rhs) {}
+  DirectoryServiceError(Aws::Client::AWSError<DirectoryServiceErrors>&& rhs) : Aws::Client::AWSError<DirectoryServiceErrors>(rhs) {}
+
+  template <typename T>
+  T GetModeledError();
+};
+
 namespace DirectoryServiceErrorMapper
 {
   AWS_DIRECTORYSERVICE_API Aws::Client::AWSError<Aws::Client::CoreErrors> GetErrorForName(const char* errorName);

@@ -1,21 +1,12 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/signer/Signer_EXPORTS.h>
 #include <aws/signer/model/SigningConfigurationOverrides.h>
+#include <aws/signer/model/ImageFormat.h>
 #include <utility>
 
 namespace Aws
@@ -34,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p>Any overrides that are applied to the signing configuration of an AWS Signer
+   * <p>Any overrides that are applied to the signing configuration of a code signing
    * platform.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25/SigningPlatformOverrides">AWS
    * API Reference</a></p>
@@ -48,28 +39,116 @@ namespace Model
     Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
+    /**
+     * <p>A signing configuration that overrides the default encryption or hash
+     * algorithm of a signing job.</p>
+     */
     inline const SigningConfigurationOverrides& GetSigningConfiguration() const{ return m_signingConfiguration; }
 
-    
+    /**
+     * <p>A signing configuration that overrides the default encryption or hash
+     * algorithm of a signing job.</p>
+     */
     inline bool SigningConfigurationHasBeenSet() const { return m_signingConfigurationHasBeenSet; }
 
-    
+    /**
+     * <p>A signing configuration that overrides the default encryption or hash
+     * algorithm of a signing job.</p>
+     */
     inline void SetSigningConfiguration(const SigningConfigurationOverrides& value) { m_signingConfigurationHasBeenSet = true; m_signingConfiguration = value; }
 
-    
+    /**
+     * <p>A signing configuration that overrides the default encryption or hash
+     * algorithm of a signing job.</p>
+     */
     inline void SetSigningConfiguration(SigningConfigurationOverrides&& value) { m_signingConfigurationHasBeenSet = true; m_signingConfiguration = std::move(value); }
 
-    
+    /**
+     * <p>A signing configuration that overrides the default encryption or hash
+     * algorithm of a signing job.</p>
+     */
     inline SigningPlatformOverrides& WithSigningConfiguration(const SigningConfigurationOverrides& value) { SetSigningConfiguration(value); return *this;}
 
-    
+    /**
+     * <p>A signing configuration that overrides the default encryption or hash
+     * algorithm of a signing job.</p>
+     */
     inline SigningPlatformOverrides& WithSigningConfiguration(SigningConfigurationOverrides&& value) { SetSigningConfiguration(std::move(value)); return *this;}
+
+
+    /**
+     * <p>A signed image is a JSON object. When overriding the default signing platform
+     * configuration, a customer can select either of two signing formats,
+     * <code>JSONEmbedded</code> or <code>JSONDetached</code>. (A third format value,
+     * <code>JSON</code>, is reserved for future use.) With <code>JSONEmbedded</code>,
+     * the signing image has the payload embedded in it. With
+     * <code>JSONDetached</code>, the payload is not be embedded in the signing
+     * image.</p>
+     */
+    inline const ImageFormat& GetSigningImageFormat() const{ return m_signingImageFormat; }
+
+    /**
+     * <p>A signed image is a JSON object. When overriding the default signing platform
+     * configuration, a customer can select either of two signing formats,
+     * <code>JSONEmbedded</code> or <code>JSONDetached</code>. (A third format value,
+     * <code>JSON</code>, is reserved for future use.) With <code>JSONEmbedded</code>,
+     * the signing image has the payload embedded in it. With
+     * <code>JSONDetached</code>, the payload is not be embedded in the signing
+     * image.</p>
+     */
+    inline bool SigningImageFormatHasBeenSet() const { return m_signingImageFormatHasBeenSet; }
+
+    /**
+     * <p>A signed image is a JSON object. When overriding the default signing platform
+     * configuration, a customer can select either of two signing formats,
+     * <code>JSONEmbedded</code> or <code>JSONDetached</code>. (A third format value,
+     * <code>JSON</code>, is reserved for future use.) With <code>JSONEmbedded</code>,
+     * the signing image has the payload embedded in it. With
+     * <code>JSONDetached</code>, the payload is not be embedded in the signing
+     * image.</p>
+     */
+    inline void SetSigningImageFormat(const ImageFormat& value) { m_signingImageFormatHasBeenSet = true; m_signingImageFormat = value; }
+
+    /**
+     * <p>A signed image is a JSON object. When overriding the default signing platform
+     * configuration, a customer can select either of two signing formats,
+     * <code>JSONEmbedded</code> or <code>JSONDetached</code>. (A third format value,
+     * <code>JSON</code>, is reserved for future use.) With <code>JSONEmbedded</code>,
+     * the signing image has the payload embedded in it. With
+     * <code>JSONDetached</code>, the payload is not be embedded in the signing
+     * image.</p>
+     */
+    inline void SetSigningImageFormat(ImageFormat&& value) { m_signingImageFormatHasBeenSet = true; m_signingImageFormat = std::move(value); }
+
+    /**
+     * <p>A signed image is a JSON object. When overriding the default signing platform
+     * configuration, a customer can select either of two signing formats,
+     * <code>JSONEmbedded</code> or <code>JSONDetached</code>. (A third format value,
+     * <code>JSON</code>, is reserved for future use.) With <code>JSONEmbedded</code>,
+     * the signing image has the payload embedded in it. With
+     * <code>JSONDetached</code>, the payload is not be embedded in the signing
+     * image.</p>
+     */
+    inline SigningPlatformOverrides& WithSigningImageFormat(const ImageFormat& value) { SetSigningImageFormat(value); return *this;}
+
+    /**
+     * <p>A signed image is a JSON object. When overriding the default signing platform
+     * configuration, a customer can select either of two signing formats,
+     * <code>JSONEmbedded</code> or <code>JSONDetached</code>. (A third format value,
+     * <code>JSON</code>, is reserved for future use.) With <code>JSONEmbedded</code>,
+     * the signing image has the payload embedded in it. With
+     * <code>JSONDetached</code>, the payload is not be embedded in the signing
+     * image.</p>
+     */
+    inline SigningPlatformOverrides& WithSigningImageFormat(ImageFormat&& value) { SetSigningImageFormat(std::move(value)); return *this;}
 
   private:
 
     SigningConfigurationOverrides m_signingConfiguration;
     bool m_signingConfigurationHasBeenSet;
+
+    ImageFormat m_signingImageFormat;
+    bool m_signingImageFormatHasBeenSet;
   };
 
 } // namespace Model

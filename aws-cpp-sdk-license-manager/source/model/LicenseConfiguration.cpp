@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/license-manager/model/LicenseConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -40,12 +30,16 @@ LicenseConfiguration::LicenseConfiguration() :
     m_licenseCountHasBeenSet(false),
     m_licenseCountHardLimit(false),
     m_licenseCountHardLimitHasBeenSet(false),
+    m_disassociateWhenNotFound(false),
+    m_disassociateWhenNotFoundHasBeenSet(false),
     m_consumedLicenses(0),
     m_consumedLicensesHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_ownerAccountIdHasBeenSet(false),
     m_consumedLicenseSummaryListHasBeenSet(false),
-    m_managedResourceSummaryListHasBeenSet(false)
+    m_managedResourceSummaryListHasBeenSet(false),
+    m_productInformationListHasBeenSet(false),
+    m_automatedDiscoveryInformationHasBeenSet(false)
 {
 }
 
@@ -61,12 +55,16 @@ LicenseConfiguration::LicenseConfiguration(JsonView jsonValue) :
     m_licenseCountHasBeenSet(false),
     m_licenseCountHardLimit(false),
     m_licenseCountHardLimitHasBeenSet(false),
+    m_disassociateWhenNotFound(false),
+    m_disassociateWhenNotFoundHasBeenSet(false),
     m_consumedLicenses(0),
     m_consumedLicensesHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_ownerAccountIdHasBeenSet(false),
     m_consumedLicenseSummaryListHasBeenSet(false),
-    m_managedResourceSummaryListHasBeenSet(false)
+    m_managedResourceSummaryListHasBeenSet(false),
+    m_productInformationListHasBeenSet(false),
+    m_automatedDiscoveryInformationHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -132,6 +130,13 @@ LicenseConfiguration& LicenseConfiguration::operator =(JsonView jsonValue)
     m_licenseCountHardLimitHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("DisassociateWhenNotFound"))
+  {
+    m_disassociateWhenNotFound = jsonValue.GetBool("DisassociateWhenNotFound");
+
+    m_disassociateWhenNotFoundHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("ConsumedLicenses"))
   {
     m_consumedLicenses = jsonValue.GetInt64("ConsumedLicenses");
@@ -171,6 +176,23 @@ LicenseConfiguration& LicenseConfiguration::operator =(JsonView jsonValue)
       m_managedResourceSummaryList.push_back(managedResourceSummaryListJsonList[managedResourceSummaryListIndex].AsObject());
     }
     m_managedResourceSummaryListHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ProductInformationList"))
+  {
+    Array<JsonView> productInformationListJsonList = jsonValue.GetArray("ProductInformationList");
+    for(unsigned productInformationListIndex = 0; productInformationListIndex < productInformationListJsonList.GetLength(); ++productInformationListIndex)
+    {
+      m_productInformationList.push_back(productInformationListJsonList[productInformationListIndex].AsObject());
+    }
+    m_productInformationListHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("AutomatedDiscoveryInformation"))
+  {
+    m_automatedDiscoveryInformation = jsonValue.GetObject("AutomatedDiscoveryInformation");
+
+    m_automatedDiscoveryInformationHasBeenSet = true;
   }
 
   return *this;
@@ -232,6 +254,12 @@ JsonValue LicenseConfiguration::Jsonize() const
 
   }
 
+  if(m_disassociateWhenNotFoundHasBeenSet)
+  {
+   payload.WithBool("DisassociateWhenNotFound", m_disassociateWhenNotFound);
+
+  }
+
   if(m_consumedLicensesHasBeenSet)
   {
    payload.WithInt64("ConsumedLicenses", m_consumedLicenses);
@@ -269,6 +297,23 @@ JsonValue LicenseConfiguration::Jsonize() const
      managedResourceSummaryListJsonList[managedResourceSummaryListIndex].AsObject(m_managedResourceSummaryList[managedResourceSummaryListIndex].Jsonize());
    }
    payload.WithArray("ManagedResourceSummaryList", std::move(managedResourceSummaryListJsonList));
+
+  }
+
+  if(m_productInformationListHasBeenSet)
+  {
+   Array<JsonValue> productInformationListJsonList(m_productInformationList.size());
+   for(unsigned productInformationListIndex = 0; productInformationListIndex < productInformationListJsonList.GetLength(); ++productInformationListIndex)
+   {
+     productInformationListJsonList[productInformationListIndex].AsObject(m_productInformationList[productInformationListIndex].Jsonize());
+   }
+   payload.WithArray("ProductInformationList", std::move(productInformationListJsonList));
+
+  }
+
+  if(m_automatedDiscoveryInformationHasBeenSet)
+  {
+   payload.WithObject("AutomatedDiscoveryInformation", m_automatedDiscoveryInformation.Jsonize());
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -22,6 +12,7 @@
 #include <aws/pinpoint/model/JourneySchedule.h>
 #include <aws/pinpoint/model/StartCondition.h>
 #include <aws/pinpoint/model/State.h>
+#include <aws/pinpoint/model/JourneyChannelSettings.h>
 #include <aws/pinpoint/model/Activity.h>
 #include <utility>
 
@@ -56,74 +47,86 @@ namespace Model
 
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline const Aws::Map<Aws::String, Activity>& GetActivities() const{ return m_activities; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline bool ActivitiesHasBeenSet() const { return m_activitiesHasBeenSet; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline void SetActivities(const Aws::Map<Aws::String, Activity>& value) { m_activitiesHasBeenSet = true; m_activities = value; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline void SetActivities(Aws::Map<Aws::String, Activity>&& value) { m_activitiesHasBeenSet = true; m_activities = std::move(value); }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& WithActivities(const Aws::Map<Aws::String, Activity>& value) { SetActivities(value); return *this;}
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& WithActivities(Aws::Map<Aws::String, Activity>&& value) { SetActivities(std::move(value)); return *this;}
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& AddActivities(const Aws::String& key, const Activity& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, value); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& AddActivities(Aws::String&& key, const Activity& value) { m_activitiesHasBeenSet = true; m_activities.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& AddActivities(const Aws::String& key, Activity&& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& AddActivities(Aws::String&& key, Activity&& value) { m_activitiesHasBeenSet = true; m_activities.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& AddActivities(const char* key, Activity&& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>The configuration and other settings for the activities that comprise the
-     * journey.</p>
+     * <p>A map that contains a set of Activity objects, one object for each activity
+     * in the journey. For each Activity object, the key is the unique identifier
+     * (string) for an activity and the value is the settings for the activity.</p>
      */
     inline JourneyResponse& AddActivities(const char* key, const Activity& value) { m_activitiesHasBeenSet = true; m_activities.emplace(key, value); return *this; }
 
@@ -647,7 +650,7 @@ namespace Model
      * specified for it. If a journey's status is CLOSED, you can't add participants to
      * it, and no existing participants can enter the journey for the first time.
      * However, any existing participants who are currently waiting to start an
-     * activity may resume the journey.</p></li></ul>
+     * activity may continue the journey.</p></li></ul>
      */
     inline const State& GetState() const{ return m_state; }
 
@@ -668,7 +671,7 @@ namespace Model
      * specified for it. If a journey's status is CLOSED, you can't add participants to
      * it, and no existing participants can enter the journey for the first time.
      * However, any existing participants who are currently waiting to start an
-     * activity may resume the journey.</p></li></ul>
+     * activity may continue the journey.</p></li></ul>
      */
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
 
@@ -689,7 +692,7 @@ namespace Model
      * specified for it. If a journey's status is CLOSED, you can't add participants to
      * it, and no existing participants can enter the journey for the first time.
      * However, any existing participants who are currently waiting to start an
-     * activity may resume the journey.</p></li></ul>
+     * activity may continue the journey.</p></li></ul>
      */
     inline void SetState(const State& value) { m_stateHasBeenSet = true; m_state = value; }
 
@@ -710,7 +713,7 @@ namespace Model
      * specified for it. If a journey's status is CLOSED, you can't add participants to
      * it, and no existing participants can enter the journey for the first time.
      * However, any existing participants who are currently waiting to start an
-     * activity may resume the journey.</p></li></ul>
+     * activity may continue the journey.</p></li></ul>
      */
     inline void SetState(State&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
@@ -731,7 +734,7 @@ namespace Model
      * specified for it. If a journey's status is CLOSED, you can't add participants to
      * it, and no existing participants can enter the journey for the first time.
      * However, any existing participants who are currently waiting to start an
-     * activity may resume the journey.</p></li></ul>
+     * activity may continue the journey.</p></li></ul>
      */
     inline JourneyResponse& WithState(const State& value) { SetState(value); return *this;}
 
@@ -752,101 +755,152 @@ namespace Model
      * specified for it. If a journey's status is CLOSED, you can't add participants to
      * it, and no existing participants can enter the journey for the first time.
      * However, any existing participants who are currently waiting to start an
-     * activity may resume the journey.</p></li></ul>
+     * activity may continue the journey.</p></li></ul>
      */
     inline JourneyResponse& WithState(State&& value) { SetState(std::move(value)); return *this;}
 
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>A string-to-string map of key-value pairs that identifies the tags that are
-     * associated with the journey. Each tag consists of a required tag key and an
-     * associated tag value.</p>
+     * <p>This object is not used or supported.</p>
      */
     inline JourneyResponse& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline bool GetWaitForQuietTime() const{ return m_waitForQuietTime; }
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline bool WaitForQuietTimeHasBeenSet() const { return m_waitForQuietTimeHasBeenSet; }
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline void SetWaitForQuietTime(bool value) { m_waitForQuietTimeHasBeenSet = true; m_waitForQuietTime = value; }
+
+    /**
+     * <p>Specifies whether endpoints in quiet hours should enter a wait till the end
+     * of their quiet hours.</p>
+     */
+    inline JourneyResponse& WithWaitForQuietTime(bool value) { SetWaitForQuietTime(value); return *this;}
+
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline bool GetRefreshOnSegmentUpdate() const{ return m_refreshOnSegmentUpdate; }
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline bool RefreshOnSegmentUpdateHasBeenSet() const { return m_refreshOnSegmentUpdateHasBeenSet; }
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline void SetRefreshOnSegmentUpdate(bool value) { m_refreshOnSegmentUpdateHasBeenSet = true; m_refreshOnSegmentUpdate = value; }
+
+    /**
+     * <p>Specifies whether a journey should be refreshed on segment update.</p>
+     */
+    inline JourneyResponse& WithRefreshOnSegmentUpdate(bool value) { SetRefreshOnSegmentUpdate(value); return *this;}
+
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline const JourneyChannelSettings& GetJourneyChannelSettings() const{ return m_journeyChannelSettings; }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline bool JourneyChannelSettingsHasBeenSet() const { return m_journeyChannelSettingsHasBeenSet; }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline void SetJourneyChannelSettings(const JourneyChannelSettings& value) { m_journeyChannelSettingsHasBeenSet = true; m_journeyChannelSettings = value; }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline void SetJourneyChannelSettings(JourneyChannelSettings&& value) { m_journeyChannelSettingsHasBeenSet = true; m_journeyChannelSettings = std::move(value); }
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline JourneyResponse& WithJourneyChannelSettings(const JourneyChannelSettings& value) { SetJourneyChannelSettings(value); return *this;}
+
+    /**
+     * <p>The channel-specific configurations for the journey.</p>
+     */
+    inline JourneyResponse& WithJourneyChannelSettings(JourneyChannelSettings&& value) { SetJourneyChannelSettings(std::move(value)); return *this;}
 
   private:
 
@@ -894,6 +948,15 @@ namespace Model
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet;
+
+    bool m_waitForQuietTime;
+    bool m_waitForQuietTimeHasBeenSet;
+
+    bool m_refreshOnSegmentUpdate;
+    bool m_refreshOnSegmentUpdateHasBeenSet;
+
+    JourneyChannelSettings m_journeyChannelSettings;
+    bool m_journeyChannelSettingsHasBeenSet;
   };
 
 } // namespace Model

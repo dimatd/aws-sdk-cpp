@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/Address.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -41,7 +31,11 @@ Address::Address() :
     m_networkInterfaceOwnerIdHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_publicIpv4PoolHasBeenSet(false)
+    m_publicIpv4PoolHasBeenSet(false),
+    m_networkBorderGroupHasBeenSet(false),
+    m_customerOwnedIpHasBeenSet(false),
+    m_customerOwnedIpv4PoolHasBeenSet(false),
+    m_carrierIpHasBeenSet(false)
 {
 }
 
@@ -56,7 +50,11 @@ Address::Address(const XmlNode& xmlNode) :
     m_networkInterfaceOwnerIdHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_publicIpv4PoolHasBeenSet(false)
+    m_publicIpv4PoolHasBeenSet(false),
+    m_networkBorderGroupHasBeenSet(false),
+    m_customerOwnedIpHasBeenSet(false),
+    m_customerOwnedIpv4PoolHasBeenSet(false),
+    m_carrierIpHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -133,6 +131,30 @@ Address& Address::operator =(const XmlNode& xmlNode)
       m_publicIpv4Pool = Aws::Utils::Xml::DecodeEscapedXmlText(publicIpv4PoolNode.GetText());
       m_publicIpv4PoolHasBeenSet = true;
     }
+    XmlNode networkBorderGroupNode = resultNode.FirstChild("networkBorderGroup");
+    if(!networkBorderGroupNode.IsNull())
+    {
+      m_networkBorderGroup = Aws::Utils::Xml::DecodeEscapedXmlText(networkBorderGroupNode.GetText());
+      m_networkBorderGroupHasBeenSet = true;
+    }
+    XmlNode customerOwnedIpNode = resultNode.FirstChild("customerOwnedIp");
+    if(!customerOwnedIpNode.IsNull())
+    {
+      m_customerOwnedIp = Aws::Utils::Xml::DecodeEscapedXmlText(customerOwnedIpNode.GetText());
+      m_customerOwnedIpHasBeenSet = true;
+    }
+    XmlNode customerOwnedIpv4PoolNode = resultNode.FirstChild("customerOwnedIpv4Pool");
+    if(!customerOwnedIpv4PoolNode.IsNull())
+    {
+      m_customerOwnedIpv4Pool = Aws::Utils::Xml::DecodeEscapedXmlText(customerOwnedIpv4PoolNode.GetText());
+      m_customerOwnedIpv4PoolHasBeenSet = true;
+    }
+    XmlNode carrierIpNode = resultNode.FirstChild("carrierIp");
+    if(!carrierIpNode.IsNull())
+    {
+      m_carrierIp = Aws::Utils::Xml::DecodeEscapedXmlText(carrierIpNode.GetText());
+      m_carrierIpHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -196,6 +218,26 @@ void Address::OutputToStream(Aws::OStream& oStream, const char* location, unsign
       oStream << location << index << locationValue << ".PublicIpv4Pool=" << StringUtils::URLEncode(m_publicIpv4Pool.c_str()) << "&";
   }
 
+  if(m_networkBorderGroupHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".NetworkBorderGroup=" << StringUtils::URLEncode(m_networkBorderGroup.c_str()) << "&";
+  }
+
+  if(m_customerOwnedIpHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CustomerOwnedIp=" << StringUtils::URLEncode(m_customerOwnedIp.c_str()) << "&";
+  }
+
+  if(m_customerOwnedIpv4PoolHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CustomerOwnedIpv4Pool=" << StringUtils::URLEncode(m_customerOwnedIpv4Pool.c_str()) << "&";
+  }
+
+  if(m_carrierIpHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CarrierIp=" << StringUtils::URLEncode(m_carrierIp.c_str()) << "&";
+  }
+
 }
 
 void Address::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -245,6 +287,22 @@ void Address::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_publicIpv4PoolHasBeenSet)
   {
       oStream << location << ".PublicIpv4Pool=" << StringUtils::URLEncode(m_publicIpv4Pool.c_str()) << "&";
+  }
+  if(m_networkBorderGroupHasBeenSet)
+  {
+      oStream << location << ".NetworkBorderGroup=" << StringUtils::URLEncode(m_networkBorderGroup.c_str()) << "&";
+  }
+  if(m_customerOwnedIpHasBeenSet)
+  {
+      oStream << location << ".CustomerOwnedIp=" << StringUtils::URLEncode(m_customerOwnedIp.c_str()) << "&";
+  }
+  if(m_customerOwnedIpv4PoolHasBeenSet)
+  {
+      oStream << location << ".CustomerOwnedIpv4Pool=" << StringUtils::URLEncode(m_customerOwnedIpv4Pool.c_str()) << "&";
+  }
+  if(m_carrierIpHasBeenSet)
+  {
+      oStream << location << ".CarrierIp=" << StringUtils::URLEncode(m_carrierIp.c_str()) << "&";
   }
 }
 

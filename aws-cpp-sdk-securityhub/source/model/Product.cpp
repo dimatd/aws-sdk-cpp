@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/securityhub/model/Product.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,6 +24,7 @@ Product::Product() :
     m_companyNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_categoriesHasBeenSet(false),
+    m_integrationTypesHasBeenSet(false),
     m_marketplaceUrlHasBeenSet(false),
     m_activationUrlHasBeenSet(false),
     m_productSubscriptionResourcePolicyHasBeenSet(false)
@@ -46,6 +37,7 @@ Product::Product(JsonView jsonValue) :
     m_companyNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_categoriesHasBeenSet(false),
+    m_integrationTypesHasBeenSet(false),
     m_marketplaceUrlHasBeenSet(false),
     m_activationUrlHasBeenSet(false),
     m_productSubscriptionResourcePolicyHasBeenSet(false)
@@ -91,6 +83,16 @@ Product& Product::operator =(JsonView jsonValue)
       m_categories.push_back(categoriesJsonList[categoriesIndex].AsString());
     }
     m_categoriesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("IntegrationTypes"))
+  {
+    Array<JsonView> integrationTypesJsonList = jsonValue.GetArray("IntegrationTypes");
+    for(unsigned integrationTypesIndex = 0; integrationTypesIndex < integrationTypesJsonList.GetLength(); ++integrationTypesIndex)
+    {
+      m_integrationTypes.push_back(IntegrationTypeMapper::GetIntegrationTypeForName(integrationTypesJsonList[integrationTypesIndex].AsString()));
+    }
+    m_integrationTypesHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("MarketplaceUrl"))
@@ -153,6 +155,17 @@ JsonValue Product::Jsonize() const
      categoriesJsonList[categoriesIndex].AsString(m_categories[categoriesIndex]);
    }
    payload.WithArray("Categories", std::move(categoriesJsonList));
+
+  }
+
+  if(m_integrationTypesHasBeenSet)
+  {
+   Array<JsonValue> integrationTypesJsonList(m_integrationTypes.size());
+   for(unsigned integrationTypesIndex = 0; integrationTypesIndex < integrationTypesJsonList.GetLength(); ++integrationTypesIndex)
+   {
+     integrationTypesJsonList[integrationTypesIndex].AsString(IntegrationTypeMapper::GetNameForIntegrationType(m_integrationTypes[integrationTypesIndex]));
+   }
+   payload.WithArray("IntegrationTypes", std::move(integrationTypesJsonList));
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/CreateVpcEndpointServiceConfigurationRequest.h>
 #include <aws/core/utils/StringUtils.h>
@@ -25,8 +15,12 @@ CreateVpcEndpointServiceConfigurationRequest::CreateVpcEndpointServiceConfigurat
     m_dryRunHasBeenSet(false),
     m_acceptanceRequired(false),
     m_acceptanceRequiredHasBeenSet(false),
+    m_privateDnsNameHasBeenSet(false),
     m_networkLoadBalancerArnsHasBeenSet(false),
-    m_clientTokenHasBeenSet(false)
+    m_gatewayLoadBalancerArnsHasBeenSet(false),
+    m_supportedIpAddressTypesHasBeenSet(false),
+    m_clientTokenHasBeenSet(false),
+    m_tagSpecificationsHasBeenSet(false)
 {
 }
 
@@ -44,6 +38,11 @@ Aws::String CreateVpcEndpointServiceConfigurationRequest::SerializePayload() con
     ss << "AcceptanceRequired=" << std::boolalpha << m_acceptanceRequired << "&";
   }
 
+  if(m_privateDnsNameHasBeenSet)
+  {
+    ss << "PrivateDnsName=" << StringUtils::URLEncode(m_privateDnsName.c_str()) << "&";
+  }
+
   if(m_networkLoadBalancerArnsHasBeenSet)
   {
     unsigned networkLoadBalancerArnsCount = 1;
@@ -55,9 +54,41 @@ Aws::String CreateVpcEndpointServiceConfigurationRequest::SerializePayload() con
     }
   }
 
+  if(m_gatewayLoadBalancerArnsHasBeenSet)
+  {
+    unsigned gatewayLoadBalancerArnsCount = 1;
+    for(auto& item : m_gatewayLoadBalancerArns)
+    {
+      ss << "GatewayLoadBalancerArn." << gatewayLoadBalancerArnsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      gatewayLoadBalancerArnsCount++;
+    }
+  }
+
+  if(m_supportedIpAddressTypesHasBeenSet)
+  {
+    unsigned supportedIpAddressTypesCount = 1;
+    for(auto& item : m_supportedIpAddressTypes)
+    {
+      ss << "SupportedIpAddressType." << supportedIpAddressTypesCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      supportedIpAddressTypesCount++;
+    }
+  }
+
   if(m_clientTokenHasBeenSet)
   {
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
   }
 
   ss << "Version=2016-11-15";

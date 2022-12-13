@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/kafka/Kafka_EXPORTS.h>
@@ -22,6 +12,8 @@
 #include <aws/kafka/model/ConfigurationInfo.h>
 #include <aws/kafka/model/EncryptionInfo.h>
 #include <aws/kafka/model/EnhancedMonitoring.h>
+#include <aws/kafka/model/OpenMonitoringInfo.h>
+#include <aws/kafka/model/LoggingInfo.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
@@ -292,7 +284,8 @@ namespace Model
     /**
      * 
             <p>Specifies the level of monitoring for the MSK cluster. The
-     * possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+     * possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+     * PER_TOPIC_PER_PARTITION.</p>
          
      */
     inline const EnhancedMonitoring& GetEnhancedMonitoring() const{ return m_enhancedMonitoring; }
@@ -300,7 +293,8 @@ namespace Model
     /**
      * 
             <p>Specifies the level of monitoring for the MSK cluster. The
-     * possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+     * possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+     * PER_TOPIC_PER_PARTITION.</p>
          
      */
     inline bool EnhancedMonitoringHasBeenSet() const { return m_enhancedMonitoringHasBeenSet; }
@@ -308,7 +302,8 @@ namespace Model
     /**
      * 
             <p>Specifies the level of monitoring for the MSK cluster. The
-     * possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+     * possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+     * PER_TOPIC_PER_PARTITION.</p>
          
      */
     inline void SetEnhancedMonitoring(const EnhancedMonitoring& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = value; }
@@ -316,7 +311,8 @@ namespace Model
     /**
      * 
             <p>Specifies the level of monitoring for the MSK cluster. The
-     * possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+     * possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+     * PER_TOPIC_PER_PARTITION.</p>
          
      */
     inline void SetEnhancedMonitoring(EnhancedMonitoring&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = std::move(value); }
@@ -324,7 +320,8 @@ namespace Model
     /**
      * 
             <p>Specifies the level of monitoring for the MSK cluster. The
-     * possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+     * possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+     * PER_TOPIC_PER_PARTITION.</p>
          
      */
     inline CreateClusterRequest& WithEnhancedMonitoring(const EnhancedMonitoring& value) { SetEnhancedMonitoring(value); return *this;}
@@ -332,10 +329,54 @@ namespace Model
     /**
      * 
             <p>Specifies the level of monitoring for the MSK cluster. The
-     * possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+     * possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+     * PER_TOPIC_PER_PARTITION.</p>
          
      */
     inline CreateClusterRequest& WithEnhancedMonitoring(EnhancedMonitoring&& value) { SetEnhancedMonitoring(std::move(value)); return *this;}
+
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline const OpenMonitoringInfo& GetOpenMonitoring() const{ return m_openMonitoring; }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline bool OpenMonitoringHasBeenSet() const { return m_openMonitoringHasBeenSet; }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline void SetOpenMonitoring(const OpenMonitoringInfo& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = value; }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline void SetOpenMonitoring(OpenMonitoringInfo&& value) { m_openMonitoringHasBeenSet = true; m_openMonitoring = std::move(value); }
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline CreateClusterRequest& WithOpenMonitoring(const OpenMonitoringInfo& value) { SetOpenMonitoring(value); return *this;}
+
+    /**
+     * 
+            <p>The settings for open monitoring.</p>
+         
+     */
+    inline CreateClusterRequest& WithOpenMonitoring(OpenMonitoringInfo&& value) { SetOpenMonitoring(std::move(value)); return *this;}
 
 
     /**
@@ -393,6 +434,25 @@ namespace Model
          
      */
     inline CreateClusterRequest& WithKafkaVersion(const char* value) { SetKafkaVersion(value); return *this;}
+
+
+    
+    inline const LoggingInfo& GetLoggingInfo() const{ return m_loggingInfo; }
+
+    
+    inline bool LoggingInfoHasBeenSet() const { return m_loggingInfoHasBeenSet; }
+
+    
+    inline void SetLoggingInfo(const LoggingInfo& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = value; }
+
+    
+    inline void SetLoggingInfo(LoggingInfo&& value) { m_loggingInfoHasBeenSet = true; m_loggingInfo = std::move(value); }
+
+    
+    inline CreateClusterRequest& WithLoggingInfo(const LoggingInfo& value) { SetLoggingInfo(value); return *this;}
+
+    
+    inline CreateClusterRequest& WithLoggingInfo(LoggingInfo&& value) { SetLoggingInfo(std::move(value)); return *this;}
 
 
     /**
@@ -535,8 +595,14 @@ namespace Model
     EnhancedMonitoring m_enhancedMonitoring;
     bool m_enhancedMonitoringHasBeenSet;
 
+    OpenMonitoringInfo m_openMonitoring;
+    bool m_openMonitoringHasBeenSet;
+
     Aws::String m_kafkaVersion;
     bool m_kafkaVersionHasBeenSet;
+
+    LoggingInfo m_loggingInfo;
+    bool m_loggingInfoHasBeenSet;
 
     int m_numberOfBrokerNodes;
     bool m_numberOfBrokerNodesHasBeenSet;

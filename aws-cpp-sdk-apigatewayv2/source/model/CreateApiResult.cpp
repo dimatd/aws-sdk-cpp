@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/CreateApiResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -27,13 +17,17 @@ using namespace Aws::Utils;
 using namespace Aws;
 
 CreateApiResult::CreateApiResult() : 
+    m_apiGatewayManaged(false),
     m_disableSchemaValidation(false),
+    m_disableExecuteApiEndpoint(false),
     m_protocolType(ProtocolType::NOT_SET)
 {
 }
 
 CreateApiResult::CreateApiResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
+    m_apiGatewayManaged(false),
     m_disableSchemaValidation(false),
+    m_disableExecuteApiEndpoint(false),
     m_protocolType(ProtocolType::NOT_SET)
 {
   *this = result;
@@ -48,6 +42,12 @@ CreateApiResult& CreateApiResult::operator =(const Aws::AmazonWebServiceResult<J
 
   }
 
+  if(jsonValue.ValueExists("apiGatewayManaged"))
+  {
+    m_apiGatewayManaged = jsonValue.GetBool("apiGatewayManaged");
+
+  }
+
   if(jsonValue.ValueExists("apiId"))
   {
     m_apiId = jsonValue.GetString("apiId");
@@ -57,6 +57,12 @@ CreateApiResult& CreateApiResult::operator =(const Aws::AmazonWebServiceResult<J
   if(jsonValue.ValueExists("apiKeySelectionExpression"))
   {
     m_apiKeySelectionExpression = jsonValue.GetString("apiKeySelectionExpression");
+
+  }
+
+  if(jsonValue.ValueExists("corsConfiguration"))
+  {
+    m_corsConfiguration = jsonValue.GetObject("corsConfiguration");
 
   }
 
@@ -78,6 +84,21 @@ CreateApiResult& CreateApiResult::operator =(const Aws::AmazonWebServiceResult<J
 
   }
 
+  if(jsonValue.ValueExists("disableExecuteApiEndpoint"))
+  {
+    m_disableExecuteApiEndpoint = jsonValue.GetBool("disableExecuteApiEndpoint");
+
+  }
+
+  if(jsonValue.ValueExists("importInfo"))
+  {
+    Array<JsonView> importInfoJsonList = jsonValue.GetArray("importInfo");
+    for(unsigned importInfoIndex = 0; importInfoIndex < importInfoJsonList.GetLength(); ++importInfoIndex)
+    {
+      m_importInfo.push_back(importInfoJsonList[importInfoIndex].AsString());
+    }
+  }
+
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
@@ -96,6 +117,15 @@ CreateApiResult& CreateApiResult::operator =(const Aws::AmazonWebServiceResult<J
 
   }
 
+  if(jsonValue.ValueExists("tags"))
+  {
+    Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
+    for(auto& tagsItem : tagsJsonMap)
+    {
+      m_tags[tagsItem.first] = tagsItem.second.AsString();
+    }
+  }
+
   if(jsonValue.ValueExists("version"))
   {
     m_version = jsonValue.GetString("version");
@@ -108,15 +138,6 @@ CreateApiResult& CreateApiResult::operator =(const Aws::AmazonWebServiceResult<J
     for(unsigned warningsIndex = 0; warningsIndex < warningsJsonList.GetLength(); ++warningsIndex)
     {
       m_warnings.push_back(warningsJsonList[warningsIndex].AsString());
-    }
-  }
-
-  if(jsonValue.ValueExists("tags"))
-  {
-    Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
-    for(auto& tagsItem : tagsJsonMap)
-    {
-      m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
   }
 

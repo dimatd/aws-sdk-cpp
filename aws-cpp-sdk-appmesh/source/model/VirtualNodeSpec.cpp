@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/appmesh/model/VirtualNodeSpec.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -29,6 +19,7 @@ namespace Model
 {
 
 VirtualNodeSpec::VirtualNodeSpec() : 
+    m_backendDefaultsHasBeenSet(false),
     m_backendsHasBeenSet(false),
     m_listenersHasBeenSet(false),
     m_loggingHasBeenSet(false),
@@ -37,6 +28,7 @@ VirtualNodeSpec::VirtualNodeSpec() :
 }
 
 VirtualNodeSpec::VirtualNodeSpec(JsonView jsonValue) : 
+    m_backendDefaultsHasBeenSet(false),
     m_backendsHasBeenSet(false),
     m_listenersHasBeenSet(false),
     m_loggingHasBeenSet(false),
@@ -47,6 +39,13 @@ VirtualNodeSpec::VirtualNodeSpec(JsonView jsonValue) :
 
 VirtualNodeSpec& VirtualNodeSpec::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("backendDefaults"))
+  {
+    m_backendDefaults = jsonValue.GetObject("backendDefaults");
+
+    m_backendDefaultsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("backends"))
   {
     Array<JsonView> backendsJsonList = jsonValue.GetArray("backends");
@@ -87,6 +86,12 @@ VirtualNodeSpec& VirtualNodeSpec::operator =(JsonView jsonValue)
 JsonValue VirtualNodeSpec::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_backendDefaultsHasBeenSet)
+  {
+   payload.WithObject("backendDefaults", m_backendDefaults.Jsonize());
+
+  }
 
   if(m_backendsHasBeenSet)
   {

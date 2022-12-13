@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/organizations/Organizations_EXPORTS.h>
@@ -106,11 +96,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline const Aws::String& GetSourceParentId() const{ return m_sourceParentId; }
 
@@ -119,11 +109,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline bool SourceParentIdHasBeenSet() const { return m_sourceParentIdHasBeenSet; }
 
@@ -132,11 +122,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline void SetSourceParentId(const Aws::String& value) { m_sourceParentIdHasBeenSet = true; m_sourceParentId = value; }
 
@@ -145,11 +135,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline void SetSourceParentId(Aws::String&& value) { m_sourceParentIdHasBeenSet = true; m_sourceParentId = std::move(value); }
 
@@ -158,11 +148,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline void SetSourceParentId(const char* value) { m_sourceParentIdHasBeenSet = true; m_sourceParentId.assign(value); }
 
@@ -171,11 +161,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline MoveAccountRequest& WithSourceParentId(const Aws::String& value) { SetSourceParentId(value); return *this;}
 
@@ -184,11 +174,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline MoveAccountRequest& WithSourceParentId(Aws::String&& value) { SetSourceParentId(std::move(value)); return *this;}
 
@@ -197,11 +187,11 @@ namespace Model
      * to move the account from.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline MoveAccountRequest& WithSourceParentId(const char* value) { SetSourceParentId(value); return *this;}
 
@@ -211,11 +201,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline const Aws::String& GetDestinationParentId() const{ return m_destinationParentId; }
 
@@ -224,11 +214,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline bool DestinationParentIdHasBeenSet() const { return m_destinationParentIdHasBeenSet; }
 
@@ -237,11 +227,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline void SetDestinationParentId(const Aws::String& value) { m_destinationParentIdHasBeenSet = true; m_destinationParentId = value; }
 
@@ -250,11 +240,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline void SetDestinationParentId(Aws::String&& value) { m_destinationParentIdHasBeenSet = true; m_destinationParentId = std::move(value); }
 
@@ -263,11 +253,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline void SetDestinationParentId(const char* value) { m_destinationParentIdHasBeenSet = true; m_destinationParentId.assign(value); }
 
@@ -276,11 +266,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline MoveAccountRequest& WithDestinationParentId(const Aws::String& value) { SetDestinationParentId(value); return *this;}
 
@@ -289,11 +279,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline MoveAccountRequest& WithDestinationParentId(Aws::String&& value) { SetDestinationParentId(std::move(value)); return *this;}
 
@@ -302,11 +292,11 @@ namespace Model
      * to move the account to.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string
      * requires one of the following:</p> <ul> <li> <p> <b>Root</b> - A string that
-     * begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p>
-     * </li> <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
-     * followed by from 4 to 32 lower-case letters or digits (the ID of the root that
-     * the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.</p> </li> </ul>
+     * begins with "r-" followed by from 4 to 32 lowercase letters or digits.</p> </li>
+     * <li> <p> <b>Organizational unit (OU)</b> - A string that begins with "ou-"
+     * followed by from 4 to 32 lowercase letters or digits (the ID of the root that
+     * the OU is in). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.</p> </li> </ul>
      */
     inline MoveAccountRequest& WithDestinationParentId(const char* value) { SetDestinationParentId(value); return *this;}
 

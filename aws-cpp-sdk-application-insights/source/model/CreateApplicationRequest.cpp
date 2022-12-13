@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/application-insights/model/CreateApplicationRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -26,7 +16,16 @@ CreateApplicationRequest::CreateApplicationRequest() :
     m_resourceGroupNameHasBeenSet(false),
     m_opsCenterEnabled(false),
     m_opsCenterEnabledHasBeenSet(false),
-    m_opsItemSNSTopicArnHasBeenSet(false)
+    m_cWEMonitorEnabled(false),
+    m_cWEMonitorEnabledHasBeenSet(false),
+    m_opsItemSNSTopicArnHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_autoConfigEnabled(false),
+    m_autoConfigEnabledHasBeenSet(false),
+    m_autoCreate(false),
+    m_autoCreateHasBeenSet(false),
+    m_groupingType(GroupingType::NOT_SET),
+    m_groupingTypeHasBeenSet(false)
 {
 }
 
@@ -46,10 +45,44 @@ Aws::String CreateApplicationRequest::SerializePayload() const
 
   }
 
+  if(m_cWEMonitorEnabledHasBeenSet)
+  {
+   payload.WithBool("CWEMonitorEnabled", m_cWEMonitorEnabled);
+
+  }
+
   if(m_opsItemSNSTopicArnHasBeenSet)
   {
    payload.WithString("OpsItemSNSTopicArn", m_opsItemSNSTopicArn);
 
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_autoConfigEnabledHasBeenSet)
+  {
+   payload.WithBool("AutoConfigEnabled", m_autoConfigEnabled);
+
+  }
+
+  if(m_autoCreateHasBeenSet)
+  {
+   payload.WithBool("AutoCreate", m_autoCreate);
+
+  }
+
+  if(m_groupingTypeHasBeenSet)
+  {
+   payload.WithString("GroupingType", GroupingTypeMapper::GetNameForGroupingType(m_groupingType));
   }
 
   return payload.View().WriteReadable();

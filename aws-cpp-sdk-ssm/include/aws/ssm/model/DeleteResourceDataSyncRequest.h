@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
@@ -84,10 +74,54 @@ namespace Model
      */
     inline DeleteResourceDataSyncRequest& WithSyncName(const char* value) { SetSyncName(value); return *this;}
 
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline const Aws::String& GetSyncType() const{ return m_syncType; }
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline bool SyncTypeHasBeenSet() const { return m_syncTypeHasBeenSet; }
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline void SetSyncType(const Aws::String& value) { m_syncTypeHasBeenSet = true; m_syncType = value; }
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline void SetSyncType(Aws::String&& value) { m_syncTypeHasBeenSet = true; m_syncType = std::move(value); }
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline void SetSyncType(const char* value) { m_syncTypeHasBeenSet = true; m_syncType.assign(value); }
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline DeleteResourceDataSyncRequest& WithSyncType(const Aws::String& value) { SetSyncType(value); return *this;}
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline DeleteResourceDataSyncRequest& WithSyncType(Aws::String&& value) { SetSyncType(std::move(value)); return *this;}
+
+    /**
+     * <p>Specify the type of resource data sync to delete.</p>
+     */
+    inline DeleteResourceDataSyncRequest& WithSyncType(const char* value) { SetSyncType(value); return *this;}
+
   private:
 
     Aws::String m_syncName;
     bool m_syncNameHasBeenSet;
+
+    Aws::String m_syncType;
+    bool m_syncTypeHasBeenSet;
   };
 
 } // namespace Model

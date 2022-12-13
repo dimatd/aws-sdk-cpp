@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/pinpoint/model/SMSTemplateResponse.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -32,11 +22,15 @@ SMSTemplateResponse::SMSTemplateResponse() :
     m_arnHasBeenSet(false),
     m_bodyHasBeenSet(false),
     m_creationDateHasBeenSet(false),
+    m_defaultSubstitutionsHasBeenSet(false),
     m_lastModifiedDateHasBeenSet(false),
+    m_recommenderIdHasBeenSet(false),
     m_tagsHasBeenSet(false),
+    m_templateDescriptionHasBeenSet(false),
     m_templateNameHasBeenSet(false),
     m_templateType(TemplateType::NOT_SET),
-    m_templateTypeHasBeenSet(false)
+    m_templateTypeHasBeenSet(false),
+    m_versionHasBeenSet(false)
 {
 }
 
@@ -44,11 +38,15 @@ SMSTemplateResponse::SMSTemplateResponse(JsonView jsonValue) :
     m_arnHasBeenSet(false),
     m_bodyHasBeenSet(false),
     m_creationDateHasBeenSet(false),
+    m_defaultSubstitutionsHasBeenSet(false),
     m_lastModifiedDateHasBeenSet(false),
+    m_recommenderIdHasBeenSet(false),
     m_tagsHasBeenSet(false),
+    m_templateDescriptionHasBeenSet(false),
     m_templateNameHasBeenSet(false),
     m_templateType(TemplateType::NOT_SET),
-    m_templateTypeHasBeenSet(false)
+    m_templateTypeHasBeenSet(false),
+    m_versionHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -76,11 +74,25 @@ SMSTemplateResponse& SMSTemplateResponse::operator =(JsonView jsonValue)
     m_creationDateHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("DefaultSubstitutions"))
+  {
+    m_defaultSubstitutions = jsonValue.GetString("DefaultSubstitutions");
+
+    m_defaultSubstitutionsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("LastModifiedDate"))
   {
     m_lastModifiedDate = jsonValue.GetString("LastModifiedDate");
 
     m_lastModifiedDateHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RecommenderId"))
+  {
+    m_recommenderId = jsonValue.GetString("RecommenderId");
+
+    m_recommenderIdHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("tags"))
@@ -91,6 +103,13 @@ SMSTemplateResponse& SMSTemplateResponse::operator =(JsonView jsonValue)
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
     m_tagsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TemplateDescription"))
+  {
+    m_templateDescription = jsonValue.GetString("TemplateDescription");
+
+    m_templateDescriptionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("TemplateName"))
@@ -105,6 +124,13 @@ SMSTemplateResponse& SMSTemplateResponse::operator =(JsonView jsonValue)
     m_templateType = TemplateTypeMapper::GetTemplateTypeForName(jsonValue.GetString("TemplateType"));
 
     m_templateTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Version"))
+  {
+    m_version = jsonValue.GetString("Version");
+
+    m_versionHasBeenSet = true;
   }
 
   return *this;
@@ -132,9 +158,21 @@ JsonValue SMSTemplateResponse::Jsonize() const
 
   }
 
+  if(m_defaultSubstitutionsHasBeenSet)
+  {
+   payload.WithString("DefaultSubstitutions", m_defaultSubstitutions);
+
+  }
+
   if(m_lastModifiedDateHasBeenSet)
   {
    payload.WithString("LastModifiedDate", m_lastModifiedDate);
+
+  }
+
+  if(m_recommenderIdHasBeenSet)
+  {
+   payload.WithString("RecommenderId", m_recommenderId);
 
   }
 
@@ -149,6 +187,12 @@ JsonValue SMSTemplateResponse::Jsonize() const
 
   }
 
+  if(m_templateDescriptionHasBeenSet)
+  {
+   payload.WithString("TemplateDescription", m_templateDescription);
+
+  }
+
   if(m_templateNameHasBeenSet)
   {
    payload.WithString("TemplateName", m_templateName);
@@ -158,6 +202,12 @@ JsonValue SMSTemplateResponse::Jsonize() const
   if(m_templateTypeHasBeenSet)
   {
    payload.WithString("TemplateType", TemplateTypeMapper::GetNameForTemplateType(m_templateType));
+  }
+
+  if(m_versionHasBeenSet)
+  {
+   payload.WithString("Version", m_version);
+
   }
 
   return payload;

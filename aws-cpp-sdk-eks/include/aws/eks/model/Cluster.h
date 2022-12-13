@@ -1,28 +1,22 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/eks/EKS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/eks/model/VpcConfigResponse.h>
+#include <aws/eks/model/KubernetesNetworkConfigResponse.h>
 #include <aws/eks/model/Logging.h>
 #include <aws/eks/model/Identity.h>
 #include <aws/eks/model/ClusterStatus.h>
 #include <aws/eks/model/Certificate.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/eks/model/ConnectorConfigResponse.h>
+#include <aws/eks/model/EncryptionConfig.h>
 #include <utility>
 
 namespace Aws
@@ -251,57 +245,57 @@ namespace Model
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline Cluster& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline Cluster& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the Kubernetes control plane to make calls to AWS API operations on your
-     * behalf.</p>
+     * the Kubernetes control plane to make calls to Amazon Web Services API operations
+     * on your behalf.</p>
      */
     inline Cluster& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
 
@@ -371,6 +365,37 @@ namespace Model
      * Security Group Considerations</a> in the <i>Amazon EKS User Guide</i>.</p>
      */
     inline Cluster& WithResourcesVpcConfig(VpcConfigResponse&& value) { SetResourcesVpcConfig(std::move(value)); return *this;}
+
+
+    /**
+     * <p>The Kubernetes network configuration for the cluster.</p>
+     */
+    inline const KubernetesNetworkConfigResponse& GetKubernetesNetworkConfig() const{ return m_kubernetesNetworkConfig; }
+
+    /**
+     * <p>The Kubernetes network configuration for the cluster.</p>
+     */
+    inline bool KubernetesNetworkConfigHasBeenSet() const { return m_kubernetesNetworkConfigHasBeenSet; }
+
+    /**
+     * <p>The Kubernetes network configuration for the cluster.</p>
+     */
+    inline void SetKubernetesNetworkConfig(const KubernetesNetworkConfigResponse& value) { m_kubernetesNetworkConfigHasBeenSet = true; m_kubernetesNetworkConfig = value; }
+
+    /**
+     * <p>The Kubernetes network configuration for the cluster.</p>
+     */
+    inline void SetKubernetesNetworkConfig(KubernetesNetworkConfigResponse&& value) { m_kubernetesNetworkConfigHasBeenSet = true; m_kubernetesNetworkConfig = std::move(value); }
+
+    /**
+     * <p>The Kubernetes network configuration for the cluster.</p>
+     */
+    inline Cluster& WithKubernetesNetworkConfig(const KubernetesNetworkConfigResponse& value) { SetKubernetesNetworkConfig(value); return *this;}
+
+    /**
+     * <p>The Kubernetes network configuration for the cluster.</p>
+     */
+    inline Cluster& WithKubernetesNetworkConfig(KubernetesNetworkConfigResponse&& value) { SetKubernetesNetworkConfig(std::move(value)); return *this;}
 
 
     /**
@@ -605,94 +630,179 @@ namespace Model
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The metadata that you apply to the cluster to assist with categorization and
-     * organization. Each tag consists of a key and an optional value, both of which
-     * you define.</p>
+     * organization. Each tag consists of a key and an optional value. You define both.
+     * Cluster tags do not propagate to any other resources associated with the
+     * cluster.</p>
      */
     inline Cluster& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
+
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline const Aws::Vector<EncryptionConfig>& GetEncryptionConfig() const{ return m_encryptionConfig; }
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline bool EncryptionConfigHasBeenSet() const { return m_encryptionConfigHasBeenSet; }
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline void SetEncryptionConfig(const Aws::Vector<EncryptionConfig>& value) { m_encryptionConfigHasBeenSet = true; m_encryptionConfig = value; }
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline void SetEncryptionConfig(Aws::Vector<EncryptionConfig>&& value) { m_encryptionConfigHasBeenSet = true; m_encryptionConfig = std::move(value); }
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline Cluster& WithEncryptionConfig(const Aws::Vector<EncryptionConfig>& value) { SetEncryptionConfig(value); return *this;}
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline Cluster& WithEncryptionConfig(Aws::Vector<EncryptionConfig>&& value) { SetEncryptionConfig(std::move(value)); return *this;}
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline Cluster& AddEncryptionConfig(const EncryptionConfig& value) { m_encryptionConfigHasBeenSet = true; m_encryptionConfig.push_back(value); return *this; }
+
+    /**
+     * <p>The encryption configuration for the cluster.</p>
+     */
+    inline Cluster& AddEncryptionConfig(EncryptionConfig&& value) { m_encryptionConfigHasBeenSet = true; m_encryptionConfig.push_back(std::move(value)); return *this; }
+
+
+    /**
+     * <p>The configuration used to connect to a cluster for registration.</p>
+     */
+    inline const ConnectorConfigResponse& GetConnectorConfig() const{ return m_connectorConfig; }
+
+    /**
+     * <p>The configuration used to connect to a cluster for registration.</p>
+     */
+    inline bool ConnectorConfigHasBeenSet() const { return m_connectorConfigHasBeenSet; }
+
+    /**
+     * <p>The configuration used to connect to a cluster for registration.</p>
+     */
+    inline void SetConnectorConfig(const ConnectorConfigResponse& value) { m_connectorConfigHasBeenSet = true; m_connectorConfig = value; }
+
+    /**
+     * <p>The configuration used to connect to a cluster for registration.</p>
+     */
+    inline void SetConnectorConfig(ConnectorConfigResponse&& value) { m_connectorConfigHasBeenSet = true; m_connectorConfig = std::move(value); }
+
+    /**
+     * <p>The configuration used to connect to a cluster for registration.</p>
+     */
+    inline Cluster& WithConnectorConfig(const ConnectorConfigResponse& value) { SetConnectorConfig(value); return *this;}
+
+    /**
+     * <p>The configuration used to connect to a cluster for registration.</p>
+     */
+    inline Cluster& WithConnectorConfig(ConnectorConfigResponse&& value) { SetConnectorConfig(std::move(value)); return *this;}
 
   private:
 
@@ -717,6 +827,9 @@ namespace Model
     VpcConfigResponse m_resourcesVpcConfig;
     bool m_resourcesVpcConfigHasBeenSet;
 
+    KubernetesNetworkConfigResponse m_kubernetesNetworkConfig;
+    bool m_kubernetesNetworkConfigHasBeenSet;
+
     Logging m_logging;
     bool m_loggingHasBeenSet;
 
@@ -737,6 +850,12 @@ namespace Model
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet;
+
+    Aws::Vector<EncryptionConfig> m_encryptionConfig;
+    bool m_encryptionConfigHasBeenSet;
+
+    ConnectorConfigResponse m_connectorConfig;
+    bool m_connectorConfigHasBeenSet;
   };
 
 } // namespace Model

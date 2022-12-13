@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -50,9 +40,90 @@ namespace Model
 
 
     /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline const Aws::String& GetDefaultSubstitutions() const{ return m_defaultSubstitutions; }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline bool DefaultSubstitutionsHasBeenSet() const { return m_defaultSubstitutionsHasBeenSet; }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline void SetDefaultSubstitutions(const Aws::String& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = value; }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline void SetDefaultSubstitutions(Aws::String&& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = std::move(value); }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline void SetDefaultSubstitutions(const char* value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions.assign(value); }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline EmailTemplateRequest& WithDefaultSubstitutions(const Aws::String& value) { SetDefaultSubstitutions(value); return *this;}
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline EmailTemplateRequest& WithDefaultSubstitutions(Aws::String&& value) { SetDefaultSubstitutions(std::move(value)); return *this;}
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline EmailTemplateRequest& WithDefaultSubstitutions(const char* value) { SetDefaultSubstitutions(value); return *this;}
+
+
+    /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline const Aws::String& GetHtmlPart() const{ return m_htmlPart; }
@@ -60,7 +131,7 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline bool HtmlPartHasBeenSet() const { return m_htmlPartHasBeenSet; }
@@ -68,7 +139,7 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline void SetHtmlPart(const Aws::String& value) { m_htmlPartHasBeenSet = true; m_htmlPart = value; }
@@ -76,7 +147,7 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline void SetHtmlPart(Aws::String&& value) { m_htmlPartHasBeenSet = true; m_htmlPart = std::move(value); }
@@ -84,7 +155,7 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline void SetHtmlPart(const char* value) { m_htmlPartHasBeenSet = true; m_htmlPart.assign(value); }
@@ -92,7 +163,7 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline EmailTemplateRequest& WithHtmlPart(const Aws::String& value) { SetHtmlPart(value); return *this;}
@@ -100,7 +171,7 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline EmailTemplateRequest& WithHtmlPart(Aws::String&& value) { SetHtmlPart(std::move(value)); return *this;}
@@ -108,10 +179,83 @@ namespace Model
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
-     * support HTML. You can include links, formatted text, and more in an HTML
+     * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
     inline EmailTemplateRequest& WithHtmlPart(const char* value) { SetHtmlPart(value); return *this;}
+
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline const Aws::String& GetRecommenderId() const{ return m_recommenderId; }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline bool RecommenderIdHasBeenSet() const { return m_recommenderIdHasBeenSet; }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline void SetRecommenderId(const Aws::String& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = value; }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline void SetRecommenderId(Aws::String&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::move(value); }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline void SetRecommenderId(const char* value) { m_recommenderIdHasBeenSet = true; m_recommenderId.assign(value); }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline EmailTemplateRequest& WithRecommenderId(const Aws::String& value) { SetRecommenderId(value); return *this;}
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline EmailTemplateRequest& WithRecommenderId(Aws::String&& value) { SetRecommenderId(std::move(value)); return *this;}
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline EmailTemplateRequest& WithRecommenderId(const char* value) { SetRecommenderId(value); return *this;}
 
 
     /**
@@ -256,79 +400,129 @@ namespace Model
 
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>A custom description of the message template.</p>
+     */
+    inline const Aws::String& GetTemplateDescription() const{ return m_templateDescription; }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline bool TemplateDescriptionHasBeenSet() const { return m_templateDescriptionHasBeenSet; }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(const Aws::String& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = value; }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(Aws::String&& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = std::move(value); }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(const char* value) { m_templateDescriptionHasBeenSet = true; m_templateDescription.assign(value); }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline EmailTemplateRequest& WithTemplateDescription(const Aws::String& value) { SetTemplateDescription(value); return *this;}
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline EmailTemplateRequest& WithTemplateDescription(Aws::String&& value) { SetTemplateDescription(std::move(value)); return *this;}
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline EmailTemplateRequest& WithTemplateDescription(const char* value) { SetTemplateDescription(value); return *this;}
+
+
+    /**
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline const Aws::String& GetTextPart() const{ return m_textPart; }
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline bool TextPartHasBeenSet() const { return m_textPartHasBeenSet; }
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline void SetTextPart(const Aws::String& value) { m_textPartHasBeenSet = true; m_textPart = value; }
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline void SetTextPart(Aws::String&& value) { m_textPartHasBeenSet = true; m_textPart = std::move(value); }
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline void SetTextPart(const char* value) { m_textPartHasBeenSet = true; m_textPart.assign(value); }
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline EmailTemplateRequest& WithTextPart(const Aws::String& value) { SetTextPart(value); return *this;}
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline EmailTemplateRequest& WithTextPart(Aws::String&& value) { SetTextPart(std::move(value)); return *this;}
 
     /**
-     * <p>The message body, in text format, to use in email messages that are based on
-     * the message template. We recommend using text format for email clients that
-     * don't support HTML and clients that are connected to high-latency networks, such
-     * as mobile devices.</p>
+     * <p>The message body, in plain text format, to use in email messages that are
+     * based on the message template. We recommend using plain text format for email
+     * clients that don't render HTML content and clients that are connected to
+     * high-latency networks, such as mobile devices.</p>
      */
     inline EmailTemplateRequest& WithTextPart(const char* value) { SetTextPart(value); return *this;}
 
   private:
 
+    Aws::String m_defaultSubstitutions;
+    bool m_defaultSubstitutionsHasBeenSet;
+
     Aws::String m_htmlPart;
     bool m_htmlPartHasBeenSet;
+
+    Aws::String m_recommenderId;
+    bool m_recommenderIdHasBeenSet;
 
     Aws::String m_subject;
     bool m_subjectHasBeenSet;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet;
+
+    Aws::String m_templateDescription;
+    bool m_templateDescriptionHasBeenSet;
 
     Aws::String m_textPart;
     bool m_textPartHasBeenSet;

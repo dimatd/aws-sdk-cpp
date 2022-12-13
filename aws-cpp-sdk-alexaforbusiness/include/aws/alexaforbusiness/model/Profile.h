@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/alexaforbusiness/AlexaForBusiness_EXPORTS.h>
@@ -19,6 +9,7 @@
 #include <aws/alexaforbusiness/model/DistanceUnit.h>
 #include <aws/alexaforbusiness/model/TemperatureUnit.h>
 #include <aws/alexaforbusiness/model/WakeWord.h>
+#include <aws/alexaforbusiness/model/MeetingRoomConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -329,42 +320,50 @@ namespace Model
 
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline const Aws::String& GetLocale() const{ return m_locale; }
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline bool LocaleHasBeenSet() const { return m_localeHasBeenSet; }
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline void SetLocale(const Aws::String& value) { m_localeHasBeenSet = true; m_locale = value; }
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline void SetLocale(Aws::String&& value) { m_localeHasBeenSet = true; m_locale = std::move(value); }
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline void SetLocale(const char* value) { m_localeHasBeenSet = true; m_locale.assign(value); }
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline Profile& WithLocale(const Aws::String& value) { SetLocale(value); return *this;}
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline Profile& WithLocale(Aws::String&& value) { SetLocale(std::move(value)); return *this;}
 
     /**
-     * <p>The locale of a room profile.</p>
+     * <p>The locale of a room profile. (This is currently available only to a limited
+     * preview audience.)</p>
      */
     inline Profile& WithLocale(const char* value) { SetLocale(value); return *this;}
 
@@ -433,6 +432,27 @@ namespace Model
 
 
     /**
+     * <p>Whether data retention of the profile is enabled.</p>
+     */
+    inline bool GetDataRetentionOptIn() const{ return m_dataRetentionOptIn; }
+
+    /**
+     * <p>Whether data retention of the profile is enabled.</p>
+     */
+    inline bool DataRetentionOptInHasBeenSet() const { return m_dataRetentionOptInHasBeenSet; }
+
+    /**
+     * <p>Whether data retention of the profile is enabled.</p>
+     */
+    inline void SetDataRetentionOptIn(bool value) { m_dataRetentionOptInHasBeenSet = true; m_dataRetentionOptIn = value; }
+
+    /**
+     * <p>Whether data retention of the profile is enabled.</p>
+     */
+    inline Profile& WithDataRetentionOptIn(bool value) { SetDataRetentionOptIn(value); return *this;}
+
+
+    /**
      * <p>The ARN of the address book.</p>
      */
     inline const Aws::String& GetAddressBookArn() const{ return m_addressBookArn; }
@@ -472,6 +492,37 @@ namespace Model
      */
     inline Profile& WithAddressBookArn(const char* value) { SetAddressBookArn(value); return *this;}
 
+
+    /**
+     * <p>Meeting room settings of a room profile.</p>
+     */
+    inline const MeetingRoomConfiguration& GetMeetingRoomConfiguration() const{ return m_meetingRoomConfiguration; }
+
+    /**
+     * <p>Meeting room settings of a room profile.</p>
+     */
+    inline bool MeetingRoomConfigurationHasBeenSet() const { return m_meetingRoomConfigurationHasBeenSet; }
+
+    /**
+     * <p>Meeting room settings of a room profile.</p>
+     */
+    inline void SetMeetingRoomConfiguration(const MeetingRoomConfiguration& value) { m_meetingRoomConfigurationHasBeenSet = true; m_meetingRoomConfiguration = value; }
+
+    /**
+     * <p>Meeting room settings of a room profile.</p>
+     */
+    inline void SetMeetingRoomConfiguration(MeetingRoomConfiguration&& value) { m_meetingRoomConfigurationHasBeenSet = true; m_meetingRoomConfiguration = std::move(value); }
+
+    /**
+     * <p>Meeting room settings of a room profile.</p>
+     */
+    inline Profile& WithMeetingRoomConfiguration(const MeetingRoomConfiguration& value) { SetMeetingRoomConfiguration(value); return *this;}
+
+    /**
+     * <p>Meeting room settings of a room profile.</p>
+     */
+    inline Profile& WithMeetingRoomConfiguration(MeetingRoomConfiguration&& value) { SetMeetingRoomConfiguration(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_profileArn;
@@ -510,8 +561,14 @@ namespace Model
     bool m_pSTNEnabled;
     bool m_pSTNEnabledHasBeenSet;
 
+    bool m_dataRetentionOptIn;
+    bool m_dataRetentionOptInHasBeenSet;
+
     Aws::String m_addressBookArn;
     bool m_addressBookArnHasBeenSet;
+
+    MeetingRoomConfiguration m_meetingRoomConfiguration;
+    bool m_meetingRoomConfigurationHasBeenSet;
   };
 
 } // namespace Model

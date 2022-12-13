@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -19,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/PublicIpv4PoolRange.h>
+#include <aws/ec2/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -36,7 +27,7 @@ namespace Model
 {
 
   /**
-   * <p>Describes an address pool.</p><p><h3>See Also:</h3>   <a
+   * <p>Describes an IPv4 address pool.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PublicIpv4Pool">AWS
    * API Reference</a></p>
    */
@@ -52,42 +43,42 @@ namespace Model
 
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline const Aws::String& GetPoolId() const{ return m_poolId; }
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline bool PoolIdHasBeenSet() const { return m_poolIdHasBeenSet; }
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline void SetPoolId(const Aws::String& value) { m_poolIdHasBeenSet = true; m_poolId = value; }
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline void SetPoolId(Aws::String&& value) { m_poolIdHasBeenSet = true; m_poolId = std::move(value); }
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline void SetPoolId(const char* value) { m_poolIdHasBeenSet = true; m_poolId.assign(value); }
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline PublicIpv4Pool& WithPoolId(const Aws::String& value) { SetPoolId(value); return *this;}
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline PublicIpv4Pool& WithPoolId(Aws::String&& value) { SetPoolId(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the IPv4 address pool.</p>
+     * <p>The ID of the address pool.</p>
      */
     inline PublicIpv4Pool& WithPoolId(const char* value) { SetPoolId(value); return *this;}
 
@@ -215,6 +206,104 @@ namespace Model
      */
     inline PublicIpv4Pool& WithTotalAvailableAddressCount(int value) { SetTotalAvailableAddressCount(value); return *this;}
 
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline const Aws::String& GetNetworkBorderGroup() const{ return m_networkBorderGroup; }
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline bool NetworkBorderGroupHasBeenSet() const { return m_networkBorderGroupHasBeenSet; }
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline void SetNetworkBorderGroup(const Aws::String& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = value; }
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline void SetNetworkBorderGroup(Aws::String&& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = std::move(value); }
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline void SetNetworkBorderGroup(const char* value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup.assign(value); }
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline PublicIpv4Pool& WithNetworkBorderGroup(const Aws::String& value) { SetNetworkBorderGroup(value); return *this;}
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline PublicIpv4Pool& WithNetworkBorderGroup(Aws::String&& value) { SetNetworkBorderGroup(std::move(value)); return *this;}
+
+    /**
+     * <p>The name of the location from which the address pool is advertised. A network
+     * border group is a unique set of Availability Zones or Local Zones from where
+     * Amazon Web Services advertises public IP addresses.</p>
+     */
+    inline PublicIpv4Pool& WithNetworkBorderGroup(const char* value) { SetNetworkBorderGroup(value); return *this;}
+
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline PublicIpv4Pool& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline PublicIpv4Pool& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline PublicIpv4Pool& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
+    /**
+     * <p>Any tags for the address pool.</p>
+     */
+    inline PublicIpv4Pool& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
+
   private:
 
     Aws::String m_poolId;
@@ -231,6 +320,12 @@ namespace Model
 
     int m_totalAvailableAddressCount;
     bool m_totalAvailableAddressCountHasBeenSet;
+
+    Aws::String m_networkBorderGroup;
+    bool m_networkBorderGroupHasBeenSet;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

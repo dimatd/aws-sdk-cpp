@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ecs/model/CreateClusterRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -25,7 +15,10 @@ using namespace Aws::Utils;
 CreateClusterRequest::CreateClusterRequest() : 
     m_clusterNameHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+    m_settingsHasBeenSet(false),
+    m_configurationHasBeenSet(false),
+    m_capacityProvidersHasBeenSet(false),
+    m_defaultCapacityProviderStrategyHasBeenSet(false)
 {
 }
 
@@ -58,6 +51,34 @@ Aws::String CreateClusterRequest::SerializePayload() const
      settingsJsonList[settingsIndex].AsObject(m_settings[settingsIndex].Jsonize());
    }
    payload.WithArray("settings", std::move(settingsJsonList));
+
+  }
+
+  if(m_configurationHasBeenSet)
+  {
+   payload.WithObject("configuration", m_configuration.Jsonize());
+
+  }
+
+  if(m_capacityProvidersHasBeenSet)
+  {
+   Array<JsonValue> capacityProvidersJsonList(m_capacityProviders.size());
+   for(unsigned capacityProvidersIndex = 0; capacityProvidersIndex < capacityProvidersJsonList.GetLength(); ++capacityProvidersIndex)
+   {
+     capacityProvidersJsonList[capacityProvidersIndex].AsString(m_capacityProviders[capacityProvidersIndex]);
+   }
+   payload.WithArray("capacityProviders", std::move(capacityProvidersJsonList));
+
+  }
+
+  if(m_defaultCapacityProviderStrategyHasBeenSet)
+  {
+   Array<JsonValue> defaultCapacityProviderStrategyJsonList(m_defaultCapacityProviderStrategy.size());
+   for(unsigned defaultCapacityProviderStrategyIndex = 0; defaultCapacityProviderStrategyIndex < defaultCapacityProviderStrategyJsonList.GetLength(); ++defaultCapacityProviderStrategyIndex)
+   {
+     defaultCapacityProviderStrategyJsonList[defaultCapacityProviderStrategyIndex].AsObject(m_defaultCapacityProviderStrategy[defaultCapacityProviderStrategyIndex].Jsonize());
+   }
+   payload.WithArray("defaultCapacityProviderStrategy", std::move(defaultCapacityProviderStrategyJsonList));
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/iot/model/ThingIndexingConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -32,7 +22,13 @@ ThingIndexingConfiguration::ThingIndexingConfiguration() :
     m_thingIndexingMode(ThingIndexingMode::NOT_SET),
     m_thingIndexingModeHasBeenSet(false),
     m_thingConnectivityIndexingMode(ThingConnectivityIndexingMode::NOT_SET),
-    m_thingConnectivityIndexingModeHasBeenSet(false)
+    m_thingConnectivityIndexingModeHasBeenSet(false),
+    m_deviceDefenderIndexingMode(DeviceDefenderIndexingMode::NOT_SET),
+    m_deviceDefenderIndexingModeHasBeenSet(false),
+    m_namedShadowIndexingMode(NamedShadowIndexingMode::NOT_SET),
+    m_namedShadowIndexingModeHasBeenSet(false),
+    m_managedFieldsHasBeenSet(false),
+    m_customFieldsHasBeenSet(false)
 {
 }
 
@@ -40,7 +36,13 @@ ThingIndexingConfiguration::ThingIndexingConfiguration(JsonView jsonValue) :
     m_thingIndexingMode(ThingIndexingMode::NOT_SET),
     m_thingIndexingModeHasBeenSet(false),
     m_thingConnectivityIndexingMode(ThingConnectivityIndexingMode::NOT_SET),
-    m_thingConnectivityIndexingModeHasBeenSet(false)
+    m_thingConnectivityIndexingModeHasBeenSet(false),
+    m_deviceDefenderIndexingMode(DeviceDefenderIndexingMode::NOT_SET),
+    m_deviceDefenderIndexingModeHasBeenSet(false),
+    m_namedShadowIndexingMode(NamedShadowIndexingMode::NOT_SET),
+    m_namedShadowIndexingModeHasBeenSet(false),
+    m_managedFieldsHasBeenSet(false),
+    m_customFieldsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -61,6 +63,40 @@ ThingIndexingConfiguration& ThingIndexingConfiguration::operator =(JsonView json
     m_thingConnectivityIndexingModeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("deviceDefenderIndexingMode"))
+  {
+    m_deviceDefenderIndexingMode = DeviceDefenderIndexingModeMapper::GetDeviceDefenderIndexingModeForName(jsonValue.GetString("deviceDefenderIndexingMode"));
+
+    m_deviceDefenderIndexingModeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("namedShadowIndexingMode"))
+  {
+    m_namedShadowIndexingMode = NamedShadowIndexingModeMapper::GetNamedShadowIndexingModeForName(jsonValue.GetString("namedShadowIndexingMode"));
+
+    m_namedShadowIndexingModeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("managedFields"))
+  {
+    Array<JsonView> managedFieldsJsonList = jsonValue.GetArray("managedFields");
+    for(unsigned managedFieldsIndex = 0; managedFieldsIndex < managedFieldsJsonList.GetLength(); ++managedFieldsIndex)
+    {
+      m_managedFields.push_back(managedFieldsJsonList[managedFieldsIndex].AsObject());
+    }
+    m_managedFieldsHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("customFields"))
+  {
+    Array<JsonView> customFieldsJsonList = jsonValue.GetArray("customFields");
+    for(unsigned customFieldsIndex = 0; customFieldsIndex < customFieldsJsonList.GetLength(); ++customFieldsIndex)
+    {
+      m_customFields.push_back(customFieldsJsonList[customFieldsIndex].AsObject());
+    }
+    m_customFieldsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -76,6 +112,38 @@ JsonValue ThingIndexingConfiguration::Jsonize() const
   if(m_thingConnectivityIndexingModeHasBeenSet)
   {
    payload.WithString("thingConnectivityIndexingMode", ThingConnectivityIndexingModeMapper::GetNameForThingConnectivityIndexingMode(m_thingConnectivityIndexingMode));
+  }
+
+  if(m_deviceDefenderIndexingModeHasBeenSet)
+  {
+   payload.WithString("deviceDefenderIndexingMode", DeviceDefenderIndexingModeMapper::GetNameForDeviceDefenderIndexingMode(m_deviceDefenderIndexingMode));
+  }
+
+  if(m_namedShadowIndexingModeHasBeenSet)
+  {
+   payload.WithString("namedShadowIndexingMode", NamedShadowIndexingModeMapper::GetNameForNamedShadowIndexingMode(m_namedShadowIndexingMode));
+  }
+
+  if(m_managedFieldsHasBeenSet)
+  {
+   Array<JsonValue> managedFieldsJsonList(m_managedFields.size());
+   for(unsigned managedFieldsIndex = 0; managedFieldsIndex < managedFieldsJsonList.GetLength(); ++managedFieldsIndex)
+   {
+     managedFieldsJsonList[managedFieldsIndex].AsObject(m_managedFields[managedFieldsIndex].Jsonize());
+   }
+   payload.WithArray("managedFields", std::move(managedFieldsJsonList));
+
+  }
+
+  if(m_customFieldsHasBeenSet)
+  {
+   Array<JsonValue> customFieldsJsonList(m_customFields.size());
+   for(unsigned customFieldsIndex = 0; customFieldsIndex < customFieldsJsonList.GetLength(); ++customFieldsIndex)
+   {
+     customFieldsJsonList[customFieldsIndex].AsObject(m_customFields[customFieldsIndex].Jsonize());
+   }
+   payload.WithArray("customFields", std::move(customFieldsJsonList));
+
   }
 
   return payload;

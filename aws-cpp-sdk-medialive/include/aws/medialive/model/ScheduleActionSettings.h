@@ -1,22 +1,16 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
+#include <aws/medialive/model/HlsId3SegmentTaggingScheduleActionSettings.h>
 #include <aws/medialive/model/HlsTimedMetadataScheduleActionSettings.h>
+#include <aws/medialive/model/InputPrepareScheduleActionSettings.h>
 #include <aws/medialive/model/InputSwitchScheduleActionSettings.h>
+#include <aws/medialive/model/MotionGraphicsActivateScheduleActionSettings.h>
+#include <aws/medialive/model/MotionGraphicsDeactivateScheduleActionSettings.h>
 #include <aws/medialive/model/PauseStateScheduleActionSettings.h>
 #include <aws/medialive/model/Scte35ReturnToNetworkScheduleActionSettings.h>
 #include <aws/medialive/model/Scte35SpliceInsertScheduleActionSettings.h>
@@ -55,6 +49,37 @@ namespace Model
 
 
     /**
+     * Action to insert HLS ID3 segment tagging
+     */
+    inline const HlsId3SegmentTaggingScheduleActionSettings& GetHlsId3SegmentTaggingSettings() const{ return m_hlsId3SegmentTaggingSettings; }
+
+    /**
+     * Action to insert HLS ID3 segment tagging
+     */
+    inline bool HlsId3SegmentTaggingSettingsHasBeenSet() const { return m_hlsId3SegmentTaggingSettingsHasBeenSet; }
+
+    /**
+     * Action to insert HLS ID3 segment tagging
+     */
+    inline void SetHlsId3SegmentTaggingSettings(const HlsId3SegmentTaggingScheduleActionSettings& value) { m_hlsId3SegmentTaggingSettingsHasBeenSet = true; m_hlsId3SegmentTaggingSettings = value; }
+
+    /**
+     * Action to insert HLS ID3 segment tagging
+     */
+    inline void SetHlsId3SegmentTaggingSettings(HlsId3SegmentTaggingScheduleActionSettings&& value) { m_hlsId3SegmentTaggingSettingsHasBeenSet = true; m_hlsId3SegmentTaggingSettings = std::move(value); }
+
+    /**
+     * Action to insert HLS ID3 segment tagging
+     */
+    inline ScheduleActionSettings& WithHlsId3SegmentTaggingSettings(const HlsId3SegmentTaggingScheduleActionSettings& value) { SetHlsId3SegmentTaggingSettings(value); return *this;}
+
+    /**
+     * Action to insert HLS ID3 segment tagging
+     */
+    inline ScheduleActionSettings& WithHlsId3SegmentTaggingSettings(HlsId3SegmentTaggingScheduleActionSettings&& value) { SetHlsId3SegmentTaggingSettings(std::move(value)); return *this;}
+
+
+    /**
      * Action to insert HLS metadata
      */
     inline const HlsTimedMetadataScheduleActionSettings& GetHlsTimedMetadataSettings() const{ return m_hlsTimedMetadataSettings; }
@@ -86,6 +111,37 @@ namespace Model
 
 
     /**
+     * Action to prepare an input for a future immediate input switch
+     */
+    inline const InputPrepareScheduleActionSettings& GetInputPrepareSettings() const{ return m_inputPrepareSettings; }
+
+    /**
+     * Action to prepare an input for a future immediate input switch
+     */
+    inline bool InputPrepareSettingsHasBeenSet() const { return m_inputPrepareSettingsHasBeenSet; }
+
+    /**
+     * Action to prepare an input for a future immediate input switch
+     */
+    inline void SetInputPrepareSettings(const InputPrepareScheduleActionSettings& value) { m_inputPrepareSettingsHasBeenSet = true; m_inputPrepareSettings = value; }
+
+    /**
+     * Action to prepare an input for a future immediate input switch
+     */
+    inline void SetInputPrepareSettings(InputPrepareScheduleActionSettings&& value) { m_inputPrepareSettingsHasBeenSet = true; m_inputPrepareSettings = std::move(value); }
+
+    /**
+     * Action to prepare an input for a future immediate input switch
+     */
+    inline ScheduleActionSettings& WithInputPrepareSettings(const InputPrepareScheduleActionSettings& value) { SetInputPrepareSettings(value); return *this;}
+
+    /**
+     * Action to prepare an input for a future immediate input switch
+     */
+    inline ScheduleActionSettings& WithInputPrepareSettings(InputPrepareScheduleActionSettings&& value) { SetInputPrepareSettings(std::move(value)); return *this;}
+
+
+    /**
      * Action to switch the input
      */
     inline const InputSwitchScheduleActionSettings& GetInputSwitchSettings() const{ return m_inputSwitchSettings; }
@@ -114,6 +170,68 @@ namespace Model
      * Action to switch the input
      */
     inline ScheduleActionSettings& WithInputSwitchSettings(InputSwitchScheduleActionSettings&& value) { SetInputSwitchSettings(std::move(value)); return *this;}
+
+
+    /**
+     * Action to activate a motion graphics image overlay
+     */
+    inline const MotionGraphicsActivateScheduleActionSettings& GetMotionGraphicsImageActivateSettings() const{ return m_motionGraphicsImageActivateSettings; }
+
+    /**
+     * Action to activate a motion graphics image overlay
+     */
+    inline bool MotionGraphicsImageActivateSettingsHasBeenSet() const { return m_motionGraphicsImageActivateSettingsHasBeenSet; }
+
+    /**
+     * Action to activate a motion graphics image overlay
+     */
+    inline void SetMotionGraphicsImageActivateSettings(const MotionGraphicsActivateScheduleActionSettings& value) { m_motionGraphicsImageActivateSettingsHasBeenSet = true; m_motionGraphicsImageActivateSettings = value; }
+
+    /**
+     * Action to activate a motion graphics image overlay
+     */
+    inline void SetMotionGraphicsImageActivateSettings(MotionGraphicsActivateScheduleActionSettings&& value) { m_motionGraphicsImageActivateSettingsHasBeenSet = true; m_motionGraphicsImageActivateSettings = std::move(value); }
+
+    /**
+     * Action to activate a motion graphics image overlay
+     */
+    inline ScheduleActionSettings& WithMotionGraphicsImageActivateSettings(const MotionGraphicsActivateScheduleActionSettings& value) { SetMotionGraphicsImageActivateSettings(value); return *this;}
+
+    /**
+     * Action to activate a motion graphics image overlay
+     */
+    inline ScheduleActionSettings& WithMotionGraphicsImageActivateSettings(MotionGraphicsActivateScheduleActionSettings&& value) { SetMotionGraphicsImageActivateSettings(std::move(value)); return *this;}
+
+
+    /**
+     * Action to deactivate a motion graphics image overlay
+     */
+    inline const MotionGraphicsDeactivateScheduleActionSettings& GetMotionGraphicsImageDeactivateSettings() const{ return m_motionGraphicsImageDeactivateSettings; }
+
+    /**
+     * Action to deactivate a motion graphics image overlay
+     */
+    inline bool MotionGraphicsImageDeactivateSettingsHasBeenSet() const { return m_motionGraphicsImageDeactivateSettingsHasBeenSet; }
+
+    /**
+     * Action to deactivate a motion graphics image overlay
+     */
+    inline void SetMotionGraphicsImageDeactivateSettings(const MotionGraphicsDeactivateScheduleActionSettings& value) { m_motionGraphicsImageDeactivateSettingsHasBeenSet = true; m_motionGraphicsImageDeactivateSettings = value; }
+
+    /**
+     * Action to deactivate a motion graphics image overlay
+     */
+    inline void SetMotionGraphicsImageDeactivateSettings(MotionGraphicsDeactivateScheduleActionSettings&& value) { m_motionGraphicsImageDeactivateSettingsHasBeenSet = true; m_motionGraphicsImageDeactivateSettings = std::move(value); }
+
+    /**
+     * Action to deactivate a motion graphics image overlay
+     */
+    inline ScheduleActionSettings& WithMotionGraphicsImageDeactivateSettings(const MotionGraphicsDeactivateScheduleActionSettings& value) { SetMotionGraphicsImageDeactivateSettings(value); return *this;}
+
+    /**
+     * Action to deactivate a motion graphics image overlay
+     */
+    inline ScheduleActionSettings& WithMotionGraphicsImageDeactivateSettings(MotionGraphicsDeactivateScheduleActionSettings&& value) { SetMotionGraphicsImageDeactivateSettings(std::move(value)); return *this;}
 
 
     /**
@@ -303,11 +421,23 @@ namespace Model
 
   private:
 
+    HlsId3SegmentTaggingScheduleActionSettings m_hlsId3SegmentTaggingSettings;
+    bool m_hlsId3SegmentTaggingSettingsHasBeenSet;
+
     HlsTimedMetadataScheduleActionSettings m_hlsTimedMetadataSettings;
     bool m_hlsTimedMetadataSettingsHasBeenSet;
 
+    InputPrepareScheduleActionSettings m_inputPrepareSettings;
+    bool m_inputPrepareSettingsHasBeenSet;
+
     InputSwitchScheduleActionSettings m_inputSwitchSettings;
     bool m_inputSwitchSettingsHasBeenSet;
+
+    MotionGraphicsActivateScheduleActionSettings m_motionGraphicsImageActivateSettings;
+    bool m_motionGraphicsImageActivateSettingsHasBeenSet;
+
+    MotionGraphicsDeactivateScheduleActionSettings m_motionGraphicsImageDeactivateSettings;
+    bool m_motionGraphicsImageDeactivateSettingsHasBeenSet;
 
     PauseStateScheduleActionSettings m_pauseStateSettings;
     bool m_pauseStateSettingsHasBeenSet;

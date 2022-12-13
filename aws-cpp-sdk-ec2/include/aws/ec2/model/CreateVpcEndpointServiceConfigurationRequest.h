@@ -1,23 +1,14 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ec2/model/TagSpecification.h>
 #include <utility>
 
 namespace Aws
@@ -81,32 +72,77 @@ namespace Model
 
 
     /**
-     * <p>Indicate whether requests from service consumers to create an endpoint to
-     * your service must be accepted. To accept a request, use
-     * <a>AcceptVpcEndpointConnections</a>.</p>
+     * <p>Indicates whether requests from service consumers to create an endpoint to
+     * your service must be accepted manually.</p>
      */
     inline bool GetAcceptanceRequired() const{ return m_acceptanceRequired; }
 
     /**
-     * <p>Indicate whether requests from service consumers to create an endpoint to
-     * your service must be accepted. To accept a request, use
-     * <a>AcceptVpcEndpointConnections</a>.</p>
+     * <p>Indicates whether requests from service consumers to create an endpoint to
+     * your service must be accepted manually.</p>
      */
     inline bool AcceptanceRequiredHasBeenSet() const { return m_acceptanceRequiredHasBeenSet; }
 
     /**
-     * <p>Indicate whether requests from service consumers to create an endpoint to
-     * your service must be accepted. To accept a request, use
-     * <a>AcceptVpcEndpointConnections</a>.</p>
+     * <p>Indicates whether requests from service consumers to create an endpoint to
+     * your service must be accepted manually.</p>
      */
     inline void SetAcceptanceRequired(bool value) { m_acceptanceRequiredHasBeenSet = true; m_acceptanceRequired = value; }
 
     /**
-     * <p>Indicate whether requests from service consumers to create an endpoint to
-     * your service must be accepted. To accept a request, use
-     * <a>AcceptVpcEndpointConnections</a>.</p>
+     * <p>Indicates whether requests from service consumers to create an endpoint to
+     * your service must be accepted manually.</p>
      */
     inline CreateVpcEndpointServiceConfigurationRequest& WithAcceptanceRequired(bool value) { SetAcceptanceRequired(value); return *this;}
+
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline const Aws::String& GetPrivateDnsName() const{ return m_privateDnsName; }
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline bool PrivateDnsNameHasBeenSet() const { return m_privateDnsNameHasBeenSet; }
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline void SetPrivateDnsName(const Aws::String& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = value; }
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::move(value); }
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline void SetPrivateDnsName(const char* value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName.assign(value); }
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithPrivateDnsName(const Aws::String& value) { SetPrivateDnsName(value); return *this;}
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(std::move(value)); return *this;}
+
+    /**
+     * <p>(Interface endpoint configuration) The private DNS name to assign to the VPC
+     * endpoint service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithPrivateDnsName(const char* value) { SetPrivateDnsName(value); return *this;}
 
 
     /**
@@ -165,68 +201,210 @@ namespace Model
 
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetGatewayLoadBalancerArns() const{ return m_gatewayLoadBalancerArns; }
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline bool GatewayLoadBalancerArnsHasBeenSet() const { return m_gatewayLoadBalancerArnsHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline void SetGatewayLoadBalancerArns(const Aws::Vector<Aws::String>& value) { m_gatewayLoadBalancerArnsHasBeenSet = true; m_gatewayLoadBalancerArns = value; }
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline void SetGatewayLoadBalancerArns(Aws::Vector<Aws::String>&& value) { m_gatewayLoadBalancerArnsHasBeenSet = true; m_gatewayLoadBalancerArns = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithGatewayLoadBalancerArns(const Aws::Vector<Aws::String>& value) { SetGatewayLoadBalancerArns(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithGatewayLoadBalancerArns(Aws::Vector<Aws::String>&& value) { SetGatewayLoadBalancerArns(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddGatewayLoadBalancerArns(const Aws::String& value) { m_gatewayLoadBalancerArnsHasBeenSet = true; m_gatewayLoadBalancerArns.push_back(value); return *this; }
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddGatewayLoadBalancerArns(Aws::String&& value) { m_gatewayLoadBalancerArnsHasBeenSet = true; m_gatewayLoadBalancerArns.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddGatewayLoadBalancerArns(const char* value) { m_gatewayLoadBalancerArnsHasBeenSet = true; m_gatewayLoadBalancerArns.push_back(value); return *this; }
+
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetSupportedIpAddressTypes() const{ return m_supportedIpAddressTypes; }
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline bool SupportedIpAddressTypesHasBeenSet() const { return m_supportedIpAddressTypesHasBeenSet; }
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline void SetSupportedIpAddressTypes(const Aws::Vector<Aws::String>& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes = value; }
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline void SetSupportedIpAddressTypes(Aws::Vector<Aws::String>&& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes = std::move(value); }
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithSupportedIpAddressTypes(const Aws::Vector<Aws::String>& value) { SetSupportedIpAddressTypes(value); return *this;}
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithSupportedIpAddressTypes(Aws::Vector<Aws::String>&& value) { SetSupportedIpAddressTypes(std::move(value)); return *this;}
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddSupportedIpAddressTypes(const Aws::String& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes.push_back(value); return *this; }
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddSupportedIpAddressTypes(Aws::String&& value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>The supported IP address types. The possible values are <code>ipv4</code> and
+     * <code>ipv6</code>.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddSupportedIpAddressTypes(const char* value) { m_supportedIpAddressTypesHasBeenSet = true; m_supportedIpAddressTypes.push_back(value); return *this; }
+
+
+    /**
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline const Aws::String& GetClientToken() const{ return m_clientToken; }
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline CreateVpcEndpointServiceConfigurationRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline CreateVpcEndpointServiceConfigurationRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
 
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
+     * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
-     * to Ensure Idempotency</a>.</p>
+     * to ensure idempotency</a>.</p>
      */
     inline CreateVpcEndpointServiceConfigurationRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
+
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
+
+    /**
+     * <p>The tags to associate with the service.</p>
+     */
+    inline CreateVpcEndpointServiceConfigurationRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
 
   private:
 
@@ -236,11 +414,23 @@ namespace Model
     bool m_acceptanceRequired;
     bool m_acceptanceRequiredHasBeenSet;
 
+    Aws::String m_privateDnsName;
+    bool m_privateDnsNameHasBeenSet;
+
     Aws::Vector<Aws::String> m_networkLoadBalancerArns;
     bool m_networkLoadBalancerArnsHasBeenSet;
 
+    Aws::Vector<Aws::String> m_gatewayLoadBalancerArns;
+    bool m_gatewayLoadBalancerArnsHasBeenSet;
+
+    Aws::Vector<Aws::String> m_supportedIpAddressTypes;
+    bool m_supportedIpAddressTypesHasBeenSet;
+
     Aws::String m_clientToken;
     bool m_clientTokenHasBeenSet;
+
+    Aws::Vector<TagSpecification> m_tagSpecifications;
+    bool m_tagSpecificationsHasBeenSet;
   };
 
 } // namespace Model

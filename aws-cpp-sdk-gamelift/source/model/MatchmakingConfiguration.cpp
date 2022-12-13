@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/gamelift/model/MatchmakingConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -30,6 +20,7 @@ namespace Model
 
 MatchmakingConfiguration::MatchmakingConfiguration() : 
     m_nameHasBeenSet(false),
+    m_configurationArnHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_gameSessionQueueArnsHasBeenSet(false),
     m_requestTimeoutSeconds(0),
@@ -39,6 +30,7 @@ MatchmakingConfiguration::MatchmakingConfiguration() :
     m_acceptanceRequired(false),
     m_acceptanceRequiredHasBeenSet(false),
     m_ruleSetNameHasBeenSet(false),
+    m_ruleSetArnHasBeenSet(false),
     m_notificationTargetHasBeenSet(false),
     m_additionalPlayerCount(0),
     m_additionalPlayerCountHasBeenSet(false),
@@ -47,12 +39,15 @@ MatchmakingConfiguration::MatchmakingConfiguration() :
     m_gamePropertiesHasBeenSet(false),
     m_gameSessionDataHasBeenSet(false),
     m_backfillMode(BackfillMode::NOT_SET),
-    m_backfillModeHasBeenSet(false)
+    m_backfillModeHasBeenSet(false),
+    m_flexMatchMode(FlexMatchMode::NOT_SET),
+    m_flexMatchModeHasBeenSet(false)
 {
 }
 
 MatchmakingConfiguration::MatchmakingConfiguration(JsonView jsonValue) : 
     m_nameHasBeenSet(false),
+    m_configurationArnHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_gameSessionQueueArnsHasBeenSet(false),
     m_requestTimeoutSeconds(0),
@@ -62,6 +57,7 @@ MatchmakingConfiguration::MatchmakingConfiguration(JsonView jsonValue) :
     m_acceptanceRequired(false),
     m_acceptanceRequiredHasBeenSet(false),
     m_ruleSetNameHasBeenSet(false),
+    m_ruleSetArnHasBeenSet(false),
     m_notificationTargetHasBeenSet(false),
     m_additionalPlayerCount(0),
     m_additionalPlayerCountHasBeenSet(false),
@@ -70,7 +66,9 @@ MatchmakingConfiguration::MatchmakingConfiguration(JsonView jsonValue) :
     m_gamePropertiesHasBeenSet(false),
     m_gameSessionDataHasBeenSet(false),
     m_backfillMode(BackfillMode::NOT_SET),
-    m_backfillModeHasBeenSet(false)
+    m_backfillModeHasBeenSet(false),
+    m_flexMatchMode(FlexMatchMode::NOT_SET),
+    m_flexMatchModeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -82,6 +80,13 @@ MatchmakingConfiguration& MatchmakingConfiguration::operator =(JsonView jsonValu
     m_name = jsonValue.GetString("Name");
 
     m_nameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ConfigurationArn"))
+  {
+    m_configurationArn = jsonValue.GetString("ConfigurationArn");
+
+    m_configurationArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("Description"))
@@ -127,6 +132,13 @@ MatchmakingConfiguration& MatchmakingConfiguration::operator =(JsonView jsonValu
     m_ruleSetName = jsonValue.GetString("RuleSetName");
 
     m_ruleSetNameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RuleSetArn"))
+  {
+    m_ruleSetArn = jsonValue.GetString("RuleSetArn");
+
+    m_ruleSetArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("NotificationTarget"))
@@ -181,6 +193,13 @@ MatchmakingConfiguration& MatchmakingConfiguration::operator =(JsonView jsonValu
     m_backfillModeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("FlexMatchMode"))
+  {
+    m_flexMatchMode = FlexMatchModeMapper::GetFlexMatchModeForName(jsonValue.GetString("FlexMatchMode"));
+
+    m_flexMatchModeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -191,6 +210,12 @@ JsonValue MatchmakingConfiguration::Jsonize() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
+
+  }
+
+  if(m_configurationArnHasBeenSet)
+  {
+   payload.WithString("ConfigurationArn", m_configurationArn);
 
   }
 
@@ -232,6 +257,12 @@ JsonValue MatchmakingConfiguration::Jsonize() const
   if(m_ruleSetNameHasBeenSet)
   {
    payload.WithString("RuleSetName", m_ruleSetName);
+
+  }
+
+  if(m_ruleSetArnHasBeenSet)
+  {
+   payload.WithString("RuleSetArn", m_ruleSetArn);
 
   }
 
@@ -278,6 +309,11 @@ JsonValue MatchmakingConfiguration::Jsonize() const
   if(m_backfillModeHasBeenSet)
   {
    payload.WithString("BackfillMode", BackfillModeMapper::GetNameForBackfillMode(m_backfillMode));
+  }
+
+  if(m_flexMatchModeHasBeenSet)
+  {
+   payload.WithString("FlexMatchMode", FlexMatchModeMapper::GetNameForFlexMatchMode(m_flexMatchMode));
   }
 
   return payload;

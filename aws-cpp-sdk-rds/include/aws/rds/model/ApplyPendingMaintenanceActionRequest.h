@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
@@ -117,56 +107,56 @@ namespace Model
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline const Aws::String& GetApplyAction() const{ return m_applyAction; }
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline bool ApplyActionHasBeenSet() const { return m_applyActionHasBeenSet; }
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline void SetApplyAction(const Aws::String& value) { m_applyActionHasBeenSet = true; m_applyAction = value; }
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline void SetApplyAction(Aws::String&& value) { m_applyActionHasBeenSet = true; m_applyAction = std::move(value); }
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline void SetApplyAction(const char* value) { m_applyActionHasBeenSet = true; m_applyAction.assign(value); }
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline ApplyPendingMaintenanceActionRequest& WithApplyAction(const Aws::String& value) { SetApplyAction(value); return *this;}
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline ApplyPendingMaintenanceActionRequest& WithApplyAction(Aws::String&& value) { SetApplyAction(std::move(value)); return *this;}
 
     /**
      * <p>The pending maintenance action to apply to this resource.</p> <p>Valid
      * values: <code>system-update</code>, <code>db-upgrade</code>,
-     * <code>hardware-maintenance</code> </p>
+     * <code>hardware-maintenance</code>, <code>ca-certificate-rotation</code> </p>
      */
     inline ApplyPendingMaintenanceActionRequest& WithApplyAction(const char* value) { SetApplyAction(value); return *this;}
 

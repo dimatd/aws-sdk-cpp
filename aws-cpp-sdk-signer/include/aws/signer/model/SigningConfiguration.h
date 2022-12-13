@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/signer/Signer_EXPORTS.h>
@@ -35,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p>The configuration of an AWS Signer operation.</p><p><h3>See Also:</h3>   <a
+   * <p>The configuration of a code signing operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25/SigningConfiguration">AWS
    * API Reference</a></p>
    */
@@ -49,69 +39,69 @@ namespace Model
 
 
     /**
-     * <p>The encryption algorithm options that are available for an AWS Signer
+     * <p>The encryption algorithm options that are available for a code signing
      * job.</p>
      */
     inline const EncryptionAlgorithmOptions& GetEncryptionAlgorithmOptions() const{ return m_encryptionAlgorithmOptions; }
 
     /**
-     * <p>The encryption algorithm options that are available for an AWS Signer
+     * <p>The encryption algorithm options that are available for a code signing
      * job.</p>
      */
     inline bool EncryptionAlgorithmOptionsHasBeenSet() const { return m_encryptionAlgorithmOptionsHasBeenSet; }
 
     /**
-     * <p>The encryption algorithm options that are available for an AWS Signer
+     * <p>The encryption algorithm options that are available for a code signing
      * job.</p>
      */
     inline void SetEncryptionAlgorithmOptions(const EncryptionAlgorithmOptions& value) { m_encryptionAlgorithmOptionsHasBeenSet = true; m_encryptionAlgorithmOptions = value; }
 
     /**
-     * <p>The encryption algorithm options that are available for an AWS Signer
+     * <p>The encryption algorithm options that are available for a code signing
      * job.</p>
      */
     inline void SetEncryptionAlgorithmOptions(EncryptionAlgorithmOptions&& value) { m_encryptionAlgorithmOptionsHasBeenSet = true; m_encryptionAlgorithmOptions = std::move(value); }
 
     /**
-     * <p>The encryption algorithm options that are available for an AWS Signer
+     * <p>The encryption algorithm options that are available for a code signing
      * job.</p>
      */
     inline SigningConfiguration& WithEncryptionAlgorithmOptions(const EncryptionAlgorithmOptions& value) { SetEncryptionAlgorithmOptions(value); return *this;}
 
     /**
-     * <p>The encryption algorithm options that are available for an AWS Signer
+     * <p>The encryption algorithm options that are available for a code signing
      * job.</p>
      */
     inline SigningConfiguration& WithEncryptionAlgorithmOptions(EncryptionAlgorithmOptions&& value) { SetEncryptionAlgorithmOptions(std::move(value)); return *this;}
 
 
     /**
-     * <p>The hash algorithm options that are available for an AWS Signer job.</p>
+     * <p>The hash algorithm options that are available for a code signing job.</p>
      */
     inline const HashAlgorithmOptions& GetHashAlgorithmOptions() const{ return m_hashAlgorithmOptions; }
 
     /**
-     * <p>The hash algorithm options that are available for an AWS Signer job.</p>
+     * <p>The hash algorithm options that are available for a code signing job.</p>
      */
     inline bool HashAlgorithmOptionsHasBeenSet() const { return m_hashAlgorithmOptionsHasBeenSet; }
 
     /**
-     * <p>The hash algorithm options that are available for an AWS Signer job.</p>
+     * <p>The hash algorithm options that are available for a code signing job.</p>
      */
     inline void SetHashAlgorithmOptions(const HashAlgorithmOptions& value) { m_hashAlgorithmOptionsHasBeenSet = true; m_hashAlgorithmOptions = value; }
 
     /**
-     * <p>The hash algorithm options that are available for an AWS Signer job.</p>
+     * <p>The hash algorithm options that are available for a code signing job.</p>
      */
     inline void SetHashAlgorithmOptions(HashAlgorithmOptions&& value) { m_hashAlgorithmOptionsHasBeenSet = true; m_hashAlgorithmOptions = std::move(value); }
 
     /**
-     * <p>The hash algorithm options that are available for an AWS Signer job.</p>
+     * <p>The hash algorithm options that are available for a code signing job.</p>
      */
     inline SigningConfiguration& WithHashAlgorithmOptions(const HashAlgorithmOptions& value) { SetHashAlgorithmOptions(value); return *this;}
 
     /**
-     * <p>The hash algorithm options that are available for an AWS Signer job.</p>
+     * <p>The hash algorithm options that are available for a code signing job.</p>
      */
     inline SigningConfiguration& WithHashAlgorithmOptions(HashAlgorithmOptions&& value) { SetHashAlgorithmOptions(std::move(value)); return *this;}
 

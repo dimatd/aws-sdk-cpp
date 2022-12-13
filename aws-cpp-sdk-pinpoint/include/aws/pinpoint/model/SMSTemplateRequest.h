@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
@@ -97,6 +87,160 @@ namespace Model
      * template.</p>
      */
     inline SMSTemplateRequest& WithBody(const char* value) { SetBody(value); return *this;}
+
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline const Aws::String& GetDefaultSubstitutions() const{ return m_defaultSubstitutions; }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline bool DefaultSubstitutionsHasBeenSet() const { return m_defaultSubstitutionsHasBeenSet; }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline void SetDefaultSubstitutions(const Aws::String& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = value; }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline void SetDefaultSubstitutions(Aws::String&& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = std::move(value); }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline void SetDefaultSubstitutions(const char* value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions.assign(value); }
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline SMSTemplateRequest& WithDefaultSubstitutions(const Aws::String& value) { SetDefaultSubstitutions(value); return *this;}
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline SMSTemplateRequest& WithDefaultSubstitutions(Aws::String&& value) { SetDefaultSubstitutions(std::move(value)); return *this;}
+
+    /**
+     * <p>A JSON object that specifies the default values to use for message variables
+     * in the message template. This object is a set of key-value pairs. Each key
+     * defines a message variable in the template. The corresponding value defines the
+     * default value for that variable. When you create a message that's based on the
+     * template, you can override these defaults with message-specific and
+     * address-specific variables and values.</p>
+     */
+    inline SMSTemplateRequest& WithDefaultSubstitutions(const char* value) { SetDefaultSubstitutions(value); return *this;}
+
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline const Aws::String& GetRecommenderId() const{ return m_recommenderId; }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline bool RecommenderIdHasBeenSet() const { return m_recommenderIdHasBeenSet; }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline void SetRecommenderId(const Aws::String& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = value; }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline void SetRecommenderId(Aws::String&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::move(value); }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline void SetRecommenderId(const char* value) { m_recommenderIdHasBeenSet = true; m_recommenderId.assign(value); }
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline SMSTemplateRequest& WithRecommenderId(const Aws::String& value) { SetRecommenderId(value); return *this;}
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline SMSTemplateRequest& WithRecommenderId(Aws::String&& value) { SetRecommenderId(std::move(value)); return *this;}
+
+    /**
+     * <p>The unique identifier for the recommender model to use for the message
+     * template. Amazon Pinpoint uses this value to determine how to retrieve and
+     * process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation
+     * data.</p>
+     */
+    inline SMSTemplateRequest& WithRecommenderId(const char* value) { SetRecommenderId(value); return *this;}
 
 
     /**
@@ -190,13 +334,63 @@ namespace Model
      */
     inline SMSTemplateRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
 
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline const Aws::String& GetTemplateDescription() const{ return m_templateDescription; }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline bool TemplateDescriptionHasBeenSet() const { return m_templateDescriptionHasBeenSet; }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(const Aws::String& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = value; }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(Aws::String&& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = std::move(value); }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline void SetTemplateDescription(const char* value) { m_templateDescriptionHasBeenSet = true; m_templateDescription.assign(value); }
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline SMSTemplateRequest& WithTemplateDescription(const Aws::String& value) { SetTemplateDescription(value); return *this;}
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline SMSTemplateRequest& WithTemplateDescription(Aws::String&& value) { SetTemplateDescription(std::move(value)); return *this;}
+
+    /**
+     * <p>A custom description of the message template.</p>
+     */
+    inline SMSTemplateRequest& WithTemplateDescription(const char* value) { SetTemplateDescription(value); return *this;}
+
   private:
 
     Aws::String m_body;
     bool m_bodyHasBeenSet;
 
+    Aws::String m_defaultSubstitutions;
+    bool m_defaultSubstitutionsHasBeenSet;
+
+    Aws::String m_recommenderId;
+    bool m_recommenderIdHasBeenSet;
+
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet;
+
+    Aws::String m_templateDescription;
+    bool m_templateDescriptionHasBeenSet;
   };
 
 } // namespace Model

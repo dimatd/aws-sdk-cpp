@@ -1,29 +1,22 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/sagemaker/model/HyperParameterTuningJobObjective.h>
+#include <aws/sagemaker/model/ParameterRanges.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/sagemaker/model/HyperParameterAlgorithmSpecification.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/model/VpcConfig.h>
 #include <aws/sagemaker/model/OutputDataConfig.h>
 #include <aws/sagemaker/model/ResourceConfig.h>
 #include <aws/sagemaker/model/StoppingCondition.h>
 #include <aws/sagemaker/model/CheckpointConfig.h>
+#include <aws/sagemaker/model/RetryStrategy.h>
 #include <aws/sagemaker/model/Channel.h>
 #include <utility>
 
@@ -55,6 +48,85 @@ namespace Model
     HyperParameterTrainingJobDefinition(Aws::Utils::Json::JsonView jsonValue);
     HyperParameterTrainingJobDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
+
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline const Aws::String& GetDefinitionName() const{ return m_definitionName; }
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline bool DefinitionNameHasBeenSet() const { return m_definitionNameHasBeenSet; }
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline void SetDefinitionName(const Aws::String& value) { m_definitionNameHasBeenSet = true; m_definitionName = value; }
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline void SetDefinitionName(Aws::String&& value) { m_definitionNameHasBeenSet = true; m_definitionName = std::move(value); }
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline void SetDefinitionName(const char* value) { m_definitionNameHasBeenSet = true; m_definitionName.assign(value); }
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline HyperParameterTrainingJobDefinition& WithDefinitionName(const Aws::String& value) { SetDefinitionName(value); return *this;}
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline HyperParameterTrainingJobDefinition& WithDefinitionName(Aws::String&& value) { SetDefinitionName(std::move(value)); return *this;}
+
+    /**
+     * <p>The job definition name.</p>
+     */
+    inline HyperParameterTrainingJobDefinition& WithDefinitionName(const char* value) { SetDefinitionName(value); return *this;}
+
+
+    
+    inline const HyperParameterTuningJobObjective& GetTuningObjective() const{ return m_tuningObjective; }
+
+    
+    inline bool TuningObjectiveHasBeenSet() const { return m_tuningObjectiveHasBeenSet; }
+
+    
+    inline void SetTuningObjective(const HyperParameterTuningJobObjective& value) { m_tuningObjectiveHasBeenSet = true; m_tuningObjective = value; }
+
+    
+    inline void SetTuningObjective(HyperParameterTuningJobObjective&& value) { m_tuningObjectiveHasBeenSet = true; m_tuningObjective = std::move(value); }
+
+    
+    inline HyperParameterTrainingJobDefinition& WithTuningObjective(const HyperParameterTuningJobObjective& value) { SetTuningObjective(value); return *this;}
+
+    
+    inline HyperParameterTrainingJobDefinition& WithTuningObjective(HyperParameterTuningJobObjective&& value) { SetTuningObjective(std::move(value)); return *this;}
+
+
+    
+    inline const ParameterRanges& GetHyperParameterRanges() const{ return m_hyperParameterRanges; }
+
+    
+    inline bool HyperParameterRangesHasBeenSet() const { return m_hyperParameterRangesHasBeenSet; }
+
+    
+    inline void SetHyperParameterRanges(const ParameterRanges& value) { m_hyperParameterRangesHasBeenSet = true; m_hyperParameterRanges = value; }
+
+    
+    inline void SetHyperParameterRanges(ParameterRanges&& value) { m_hyperParameterRangesHasBeenSet = true; m_hyperParameterRanges = std::move(value); }
+
+    
+    inline HyperParameterTrainingJobDefinition& WithHyperParameterRanges(const ParameterRanges& value) { SetHyperParameterRanges(value); return *this;}
+
+    
+    inline HyperParameterTrainingJobDefinition& WithHyperParameterRanges(ParameterRanges&& value) { SetHyperParameterRanges(std::move(value)); return *this;}
 
 
     /**
@@ -379,8 +451,8 @@ namespace Model
      * <p>The resources, including the compute instances and storage volumes, to use
      * for the training jobs that the tuning job launches.</p> <p>Storage volumes store
      * model artifacts and incremental states. Training algorithms might also use
-     * storage volumes for scratch space. If you want Amazon SageMaker to use the
-     * storage volume to store the training data, choose <code>File</code> as the
+     * storage volumes for scratch space. If you want SageMaker to use the storage
+     * volume to store the training data, choose <code>File</code> as the
      * <code>TrainingInputMode</code> in the algorithm specification. For distributed
      * training algorithms, specify an instance count greater than 1.</p>
      */
@@ -390,8 +462,8 @@ namespace Model
      * <p>The resources, including the compute instances and storage volumes, to use
      * for the training jobs that the tuning job launches.</p> <p>Storage volumes store
      * model artifacts and incremental states. Training algorithms might also use
-     * storage volumes for scratch space. If you want Amazon SageMaker to use the
-     * storage volume to store the training data, choose <code>File</code> as the
+     * storage volumes for scratch space. If you want SageMaker to use the storage
+     * volume to store the training data, choose <code>File</code> as the
      * <code>TrainingInputMode</code> in the algorithm specification. For distributed
      * training algorithms, specify an instance count greater than 1.</p>
      */
@@ -401,8 +473,8 @@ namespace Model
      * <p>The resources, including the compute instances and storage volumes, to use
      * for the training jobs that the tuning job launches.</p> <p>Storage volumes store
      * model artifacts and incremental states. Training algorithms might also use
-     * storage volumes for scratch space. If you want Amazon SageMaker to use the
-     * storage volume to store the training data, choose <code>File</code> as the
+     * storage volumes for scratch space. If you want SageMaker to use the storage
+     * volume to store the training data, choose <code>File</code> as the
      * <code>TrainingInputMode</code> in the algorithm specification. For distributed
      * training algorithms, specify an instance count greater than 1.</p>
      */
@@ -412,8 +484,8 @@ namespace Model
      * <p>The resources, including the compute instances and storage volumes, to use
      * for the training jobs that the tuning job launches.</p> <p>Storage volumes store
      * model artifacts and incremental states. Training algorithms might also use
-     * storage volumes for scratch space. If you want Amazon SageMaker to use the
-     * storage volume to store the training data, choose <code>File</code> as the
+     * storage volumes for scratch space. If you want SageMaker to use the storage
+     * volume to store the training data, choose <code>File</code> as the
      * <code>TrainingInputMode</code> in the algorithm specification. For distributed
      * training algorithms, specify an instance count greater than 1.</p>
      */
@@ -423,8 +495,8 @@ namespace Model
      * <p>The resources, including the compute instances and storage volumes, to use
      * for the training jobs that the tuning job launches.</p> <p>Storage volumes store
      * model artifacts and incremental states. Training algorithms might also use
-     * storage volumes for scratch space. If you want Amazon SageMaker to use the
-     * storage volume to store the training data, choose <code>File</code> as the
+     * storage volumes for scratch space. If you want SageMaker to use the storage
+     * volume to store the training data, choose <code>File</code> as the
      * <code>TrainingInputMode</code> in the algorithm specification. For distributed
      * training algorithms, specify an instance count greater than 1.</p>
      */
@@ -434,8 +506,8 @@ namespace Model
      * <p>The resources, including the compute instances and storage volumes, to use
      * for the training jobs that the tuning job launches.</p> <p>Storage volumes store
      * model artifacts and incremental states. Training algorithms might also use
-     * storage volumes for scratch space. If you want Amazon SageMaker to use the
-     * storage volume to store the training data, choose <code>File</code> as the
+     * storage volumes for scratch space. If you want SageMaker to use the storage
+     * volume to store the training data, choose <code>File</code> as the
      * <code>TrainingInputMode</code> in the algorithm specification. For distributed
      * training algorithms, specify an instance count greater than 1.</p>
      */
@@ -444,49 +516,49 @@ namespace Model
 
     /**
      * <p>Specifies a limit to how long a model hyperparameter training job can run. It
-     * also specifies how long you are willing to wait for a managed spot training job
-     * to complete. When the job reaches the a limit, Amazon SageMaker ends the
-     * training job. Use this API to cap model training costs.</p>
+     * also specifies how long a managed spot training job has to complete. When the
+     * job reaches the time limit, SageMaker ends the training job. Use this API to cap
+     * model training costs.</p>
      */
     inline const StoppingCondition& GetStoppingCondition() const{ return m_stoppingCondition; }
 
     /**
      * <p>Specifies a limit to how long a model hyperparameter training job can run. It
-     * also specifies how long you are willing to wait for a managed spot training job
-     * to complete. When the job reaches the a limit, Amazon SageMaker ends the
-     * training job. Use this API to cap model training costs.</p>
+     * also specifies how long a managed spot training job has to complete. When the
+     * job reaches the time limit, SageMaker ends the training job. Use this API to cap
+     * model training costs.</p>
      */
     inline bool StoppingConditionHasBeenSet() const { return m_stoppingConditionHasBeenSet; }
 
     /**
      * <p>Specifies a limit to how long a model hyperparameter training job can run. It
-     * also specifies how long you are willing to wait for a managed spot training job
-     * to complete. When the job reaches the a limit, Amazon SageMaker ends the
-     * training job. Use this API to cap model training costs.</p>
+     * also specifies how long a managed spot training job has to complete. When the
+     * job reaches the time limit, SageMaker ends the training job. Use this API to cap
+     * model training costs.</p>
      */
     inline void SetStoppingCondition(const StoppingCondition& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = value; }
 
     /**
      * <p>Specifies a limit to how long a model hyperparameter training job can run. It
-     * also specifies how long you are willing to wait for a managed spot training job
-     * to complete. When the job reaches the a limit, Amazon SageMaker ends the
-     * training job. Use this API to cap model training costs.</p>
+     * also specifies how long a managed spot training job has to complete. When the
+     * job reaches the time limit, SageMaker ends the training job. Use this API to cap
+     * model training costs.</p>
      */
     inline void SetStoppingCondition(StoppingCondition&& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = std::move(value); }
 
     /**
      * <p>Specifies a limit to how long a model hyperparameter training job can run. It
-     * also specifies how long you are willing to wait for a managed spot training job
-     * to complete. When the job reaches the a limit, Amazon SageMaker ends the
-     * training job. Use this API to cap model training costs.</p>
+     * also specifies how long a managed spot training job has to complete. When the
+     * job reaches the time limit, SageMaker ends the training job. Use this API to cap
+     * model training costs.</p>
      */
     inline HyperParameterTrainingJobDefinition& WithStoppingCondition(const StoppingCondition& value) { SetStoppingCondition(value); return *this;}
 
     /**
      * <p>Specifies a limit to how long a model hyperparameter training job can run. It
-     * also specifies how long you are willing to wait for a managed spot training job
-     * to complete. When the job reaches the a limit, Amazon SageMaker ends the
-     * training job. Use this API to cap model training costs.</p>
+     * also specifies how long a managed spot training job has to complete. When the
+     * job reaches the time limit, SageMaker ends the training job. Use this API to cap
+     * model training costs.</p>
      */
     inline HyperParameterTrainingJobDefinition& WithStoppingCondition(StoppingCondition&& value) { SetStoppingCondition(std::move(value)); return *this;}
 
@@ -495,10 +567,9 @@ namespace Model
      * <p>Isolates the training container. No inbound or outbound network calls can be
      * made, except for calls between peers within a training cluster for distributed
      * training. If network isolation is used for training jobs that are configured to
-     * use a VPC, Amazon SageMaker downloads and uploads customer data and model
-     * artifacts through the specified VPC, but the training container does not have
-     * network access.</p> <note> <p>The Semantic Segmentation built-in algorithm does
-     * not support network isolation.</p> </note>
+     * use a VPC, SageMaker downloads and uploads customer data and model artifacts
+     * through the specified VPC, but the training container does not have network
+     * access.</p>
      */
     inline bool GetEnableNetworkIsolation() const{ return m_enableNetworkIsolation; }
 
@@ -506,10 +577,9 @@ namespace Model
      * <p>Isolates the training container. No inbound or outbound network calls can be
      * made, except for calls between peers within a training cluster for distributed
      * training. If network isolation is used for training jobs that are configured to
-     * use a VPC, Amazon SageMaker downloads and uploads customer data and model
-     * artifacts through the specified VPC, but the training container does not have
-     * network access.</p> <note> <p>The Semantic Segmentation built-in algorithm does
-     * not support network isolation.</p> </note>
+     * use a VPC, SageMaker downloads and uploads customer data and model artifacts
+     * through the specified VPC, but the training container does not have network
+     * access.</p>
      */
     inline bool EnableNetworkIsolationHasBeenSet() const { return m_enableNetworkIsolationHasBeenSet; }
 
@@ -517,10 +587,9 @@ namespace Model
      * <p>Isolates the training container. No inbound or outbound network calls can be
      * made, except for calls between peers within a training cluster for distributed
      * training. If network isolation is used for training jobs that are configured to
-     * use a VPC, Amazon SageMaker downloads and uploads customer data and model
-     * artifacts through the specified VPC, but the training container does not have
-     * network access.</p> <note> <p>The Semantic Segmentation built-in algorithm does
-     * not support network isolation.</p> </note>
+     * use a VPC, SageMaker downloads and uploads customer data and model artifacts
+     * through the specified VPC, but the training container does not have network
+     * access.</p>
      */
     inline void SetEnableNetworkIsolation(bool value) { m_enableNetworkIsolationHasBeenSet = true; m_enableNetworkIsolation = value; }
 
@@ -528,10 +597,9 @@ namespace Model
      * <p>Isolates the training container. No inbound or outbound network calls can be
      * made, except for calls between peers within a training cluster for distributed
      * training. If network isolation is used for training jobs that are configured to
-     * use a VPC, Amazon SageMaker downloads and uploads customer data and model
-     * artifacts through the specified VPC, but the training container does not have
-     * network access.</p> <note> <p>The Semantic Segmentation built-in algorithm does
-     * not support network isolation.</p> </note>
+     * use a VPC, SageMaker downloads and uploads customer data and model artifacts
+     * through the specified VPC, but the training container does not have network
+     * access.</p>
      */
     inline HyperParameterTrainingJobDefinition& WithEnableNetworkIsolation(bool value) { SetEnableNetworkIsolation(value); return *this;}
 
@@ -616,7 +684,53 @@ namespace Model
     
     inline HyperParameterTrainingJobDefinition& WithCheckpointConfig(CheckpointConfig&& value) { SetCheckpointConfig(std::move(value)); return *this;}
 
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline const RetryStrategy& GetRetryStrategy() const{ return m_retryStrategy; }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline bool RetryStrategyHasBeenSet() const { return m_retryStrategyHasBeenSet; }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline void SetRetryStrategy(const RetryStrategy& value) { m_retryStrategyHasBeenSet = true; m_retryStrategy = value; }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline void SetRetryStrategy(RetryStrategy&& value) { m_retryStrategyHasBeenSet = true; m_retryStrategy = std::move(value); }
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline HyperParameterTrainingJobDefinition& WithRetryStrategy(const RetryStrategy& value) { SetRetryStrategy(value); return *this;}
+
+    /**
+     * <p>The number of times to retry the job when the job fails due to an
+     * <code>InternalServerError</code>.</p>
+     */
+    inline HyperParameterTrainingJobDefinition& WithRetryStrategy(RetryStrategy&& value) { SetRetryStrategy(std::move(value)); return *this;}
+
   private:
+
+    Aws::String m_definitionName;
+    bool m_definitionNameHasBeenSet;
+
+    HyperParameterTuningJobObjective m_tuningObjective;
+    bool m_tuningObjectiveHasBeenSet;
+
+    ParameterRanges m_hyperParameterRanges;
+    bool m_hyperParameterRangesHasBeenSet;
 
     Aws::Map<Aws::String, Aws::String> m_staticHyperParameters;
     bool m_staticHyperParametersHasBeenSet;
@@ -653,6 +767,9 @@ namespace Model
 
     CheckpointConfig m_checkpointConfig;
     bool m_checkpointConfigHasBeenSet;
+
+    RetryStrategy m_retryStrategy;
+    bool m_retryStrategyHasBeenSet;
   };
 
 } // namespace Model

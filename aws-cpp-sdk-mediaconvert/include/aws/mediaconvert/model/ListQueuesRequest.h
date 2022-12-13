@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/mediaconvert/MediaConvert_EXPORTS.h>
@@ -164,37 +154,37 @@ namespace Model
 
 
     /**
-     * When you request lists of resources, you can optionally specify whether they are
+     * Optional. When you request lists of resources, you can specify whether they are
      * sorted in ASCENDING or DESCENDING order. Default varies by resource.
      */
     inline const Order& GetOrder() const{ return m_order; }
 
     /**
-     * When you request lists of resources, you can optionally specify whether they are
+     * Optional. When you request lists of resources, you can specify whether they are
      * sorted in ASCENDING or DESCENDING order. Default varies by resource.
      */
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
 
     /**
-     * When you request lists of resources, you can optionally specify whether they are
+     * Optional. When you request lists of resources, you can specify whether they are
      * sorted in ASCENDING or DESCENDING order. Default varies by resource.
      */
     inline void SetOrder(const Order& value) { m_orderHasBeenSet = true; m_order = value; }
 
     /**
-     * When you request lists of resources, you can optionally specify whether they are
+     * Optional. When you request lists of resources, you can specify whether they are
      * sorted in ASCENDING or DESCENDING order. Default varies by resource.
      */
     inline void SetOrder(Order&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
 
     /**
-     * When you request lists of resources, you can optionally specify whether they are
+     * Optional. When you request lists of resources, you can specify whether they are
      * sorted in ASCENDING or DESCENDING order. Default varies by resource.
      */
     inline ListQueuesRequest& WithOrder(const Order& value) { SetOrder(value); return *this;}
 
     /**
-     * When you request lists of resources, you can optionally specify whether they are
+     * Optional. When you request lists of resources, you can specify whether they are
      * sorted in ASCENDING or DESCENDING order. Default varies by resource.
      */
     inline ListQueuesRequest& WithOrder(Order&& value) { SetOrder(std::move(value)); return *this;}

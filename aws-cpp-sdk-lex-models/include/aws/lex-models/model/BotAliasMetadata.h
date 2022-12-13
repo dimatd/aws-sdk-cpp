@@ -1,22 +1,13 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lex-models/LexModelBuildingService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/lex-models/model/ConversationLogsResponse.h>
 #include <utility>
 
 namespace Aws
@@ -320,6 +311,43 @@ namespace Model
      */
     inline BotAliasMetadata& WithChecksum(const char* value) { SetChecksum(value); return *this;}
 
+
+    /**
+     * <p>Settings that determine how Amazon Lex uses conversation logs for the
+     * alias.</p>
+     */
+    inline const ConversationLogsResponse& GetConversationLogs() const{ return m_conversationLogs; }
+
+    /**
+     * <p>Settings that determine how Amazon Lex uses conversation logs for the
+     * alias.</p>
+     */
+    inline bool ConversationLogsHasBeenSet() const { return m_conversationLogsHasBeenSet; }
+
+    /**
+     * <p>Settings that determine how Amazon Lex uses conversation logs for the
+     * alias.</p>
+     */
+    inline void SetConversationLogs(const ConversationLogsResponse& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = value; }
+
+    /**
+     * <p>Settings that determine how Amazon Lex uses conversation logs for the
+     * alias.</p>
+     */
+    inline void SetConversationLogs(ConversationLogsResponse&& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = std::move(value); }
+
+    /**
+     * <p>Settings that determine how Amazon Lex uses conversation logs for the
+     * alias.</p>
+     */
+    inline BotAliasMetadata& WithConversationLogs(const ConversationLogsResponse& value) { SetConversationLogs(value); return *this;}
+
+    /**
+     * <p>Settings that determine how Amazon Lex uses conversation logs for the
+     * alias.</p>
+     */
+    inline BotAliasMetadata& WithConversationLogs(ConversationLogsResponse&& value) { SetConversationLogs(std::move(value)); return *this;}
+
   private:
 
     Aws::String m_name;
@@ -342,6 +370,9 @@ namespace Model
 
     Aws::String m_checksum;
     bool m_checksumHasBeenSet;
+
+    ConversationLogsResponse m_conversationLogs;
+    bool m_conversationLogsHasBeenSet;
   };
 
 } // namespace Model

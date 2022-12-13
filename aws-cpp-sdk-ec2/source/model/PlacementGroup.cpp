@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ec2/model/PlacementGroup.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -37,7 +27,10 @@ PlacementGroup::PlacementGroup() :
     m_strategy(PlacementStrategy::NOT_SET),
     m_strategyHasBeenSet(false),
     m_partitionCount(0),
-    m_partitionCountHasBeenSet(false)
+    m_partitionCountHasBeenSet(false),
+    m_groupIdHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_groupArnHasBeenSet(false)
 {
 }
 
@@ -48,7 +41,10 @@ PlacementGroup::PlacementGroup(const XmlNode& xmlNode) :
     m_strategy(PlacementStrategy::NOT_SET),
     m_strategyHasBeenSet(false),
     m_partitionCount(0),
-    m_partitionCountHasBeenSet(false)
+    m_partitionCountHasBeenSet(false),
+    m_groupIdHasBeenSet(false),
+    m_tagsHasBeenSet(false),
+    m_groupArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -83,6 +79,30 @@ PlacementGroup& PlacementGroup::operator =(const XmlNode& xmlNode)
       m_partitionCount = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(partitionCountNode.GetText()).c_str()).c_str());
       m_partitionCountHasBeenSet = true;
     }
+    XmlNode groupIdNode = resultNode.FirstChild("groupId");
+    if(!groupIdNode.IsNull())
+    {
+      m_groupId = Aws::Utils::Xml::DecodeEscapedXmlText(groupIdNode.GetText());
+      m_groupIdHasBeenSet = true;
+    }
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
+    if(!tagsNode.IsNull())
+    {
+      XmlNode tagsMember = tagsNode.FirstChild("item");
+      while(!tagsMember.IsNull())
+      {
+        m_tags.push_back(tagsMember);
+        tagsMember = tagsMember.NextNode("item");
+      }
+
+      m_tagsHasBeenSet = true;
+    }
+    XmlNode groupArnNode = resultNode.FirstChild("groupArn");
+    if(!groupArnNode.IsNull())
+    {
+      m_groupArn = Aws::Utils::Xml::DecodeEscapedXmlText(groupArnNode.GetText());
+      m_groupArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -110,6 +130,27 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".PartitionCount=" << m_partitionCount << "&";
   }
 
+  if(m_groupIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".GroupId=" << StringUtils::URLEncode(m_groupId.c_str()) << "&";
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+      unsigned tagsIdx = 1;
+      for(auto& item : m_tags)
+      {
+        Aws::StringStream tagsSs;
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
+      }
+  }
+
+  if(m_groupArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".GroupArn=" << StringUtils::URLEncode(m_groupArn.c_str()) << "&";
+  }
+
 }
 
 void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -129,6 +170,24 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location)
   if(m_partitionCountHasBeenSet)
   {
       oStream << location << ".PartitionCount=" << m_partitionCount << "&";
+  }
+  if(m_groupIdHasBeenSet)
+  {
+      oStream << location << ".GroupId=" << StringUtils::URLEncode(m_groupId.c_str()) << "&";
+  }
+  if(m_tagsHasBeenSet)
+  {
+      unsigned tagsIdx = 1;
+      for(auto& item : m_tags)
+      {
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
+      }
+  }
+  if(m_groupArnHasBeenSet)
+  {
+      oStream << location << ".GroupArn=" << StringUtils::URLEncode(m_groupArn.c_str()) << "&";
   }
 }
 

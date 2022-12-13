@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/medialive/model/M3u8Settings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,6 +23,8 @@ M3u8Settings::M3u8Settings() :
     m_audioFramesPerPesHasBeenSet(false),
     m_audioPidsHasBeenSet(false),
     m_ecmPidHasBeenSet(false),
+    m_nielsenId3Behavior(M3u8NielsenId3Behavior::NOT_SET),
+    m_nielsenId3BehaviorHasBeenSet(false),
     m_patInterval(0),
     m_patIntervalHasBeenSet(false),
     m_pcrControl(M3u8PcrControl::NOT_SET),
@@ -62,6 +54,8 @@ M3u8Settings::M3u8Settings(JsonView jsonValue) :
     m_audioFramesPerPesHasBeenSet(false),
     m_audioPidsHasBeenSet(false),
     m_ecmPidHasBeenSet(false),
+    m_nielsenId3Behavior(M3u8NielsenId3Behavior::NOT_SET),
+    m_nielsenId3BehaviorHasBeenSet(false),
     m_patInterval(0),
     m_patIntervalHasBeenSet(false),
     m_pcrControl(M3u8PcrControl::NOT_SET),
@@ -108,6 +102,13 @@ M3u8Settings& M3u8Settings::operator =(JsonView jsonValue)
     m_ecmPid = jsonValue.GetString("ecmPid");
 
     m_ecmPidHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("nielsenId3Behavior"))
+  {
+    m_nielsenId3Behavior = M3u8NielsenId3BehaviorMapper::GetM3u8NielsenId3BehaviorForName(jsonValue.GetString("nielsenId3Behavior"));
+
+    m_nielsenId3BehaviorHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("patInterval"))
@@ -224,6 +225,11 @@ JsonValue M3u8Settings::Jsonize() const
   {
    payload.WithString("ecmPid", m_ecmPid);
 
+  }
+
+  if(m_nielsenId3BehaviorHasBeenSet)
+  {
+   payload.WithString("nielsenId3Behavior", M3u8NielsenId3BehaviorMapper::GetNameForM3u8NielsenId3Behavior(m_nielsenId3Behavior));
   }
 
   if(m_patIntervalHasBeenSet)

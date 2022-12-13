@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -48,27 +38,27 @@ namespace Model
 
 
     /**
-     * <p>An object containing information about the requested device.</p>
+     * <p>An object that contains information about the requested device.</p>
      */
     inline const Device& GetDevice() const{ return m_device; }
 
     /**
-     * <p>An object containing information about the requested device.</p>
+     * <p>An object that contains information about the requested device.</p>
      */
     inline void SetDevice(const Device& value) { m_device = value; }
 
     /**
-     * <p>An object containing information about the requested device.</p>
+     * <p>An object that contains information about the requested device.</p>
      */
     inline void SetDevice(Device&& value) { m_device = std::move(value); }
 
     /**
-     * <p>An object containing information about the requested device.</p>
+     * <p>An object that contains information about the requested device.</p>
      */
     inline GetDeviceResult& WithDevice(const Device& value) { SetDevice(value); return *this;}
 
     /**
-     * <p>An object containing information about the requested device.</p>
+     * <p>An object that contains information about the requested device.</p>
      */
     inline GetDeviceResult& WithDevice(Device&& value) { SetDevice(std::move(value)); return *this;}
 

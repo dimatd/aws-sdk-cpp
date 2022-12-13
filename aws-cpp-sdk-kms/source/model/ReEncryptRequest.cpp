@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/kms/model/ReEncryptRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -26,8 +16,13 @@ using namespace Aws::Utils;
 ReEncryptRequest::ReEncryptRequest() : 
     m_ciphertextBlobHasBeenSet(false),
     m_sourceEncryptionContextHasBeenSet(false),
+    m_sourceKeyIdHasBeenSet(false),
     m_destinationKeyIdHasBeenSet(false),
     m_destinationEncryptionContextHasBeenSet(false),
+    m_sourceEncryptionAlgorithm(EncryptionAlgorithmSpec::NOT_SET),
+    m_sourceEncryptionAlgorithmHasBeenSet(false),
+    m_destinationEncryptionAlgorithm(EncryptionAlgorithmSpec::NOT_SET),
+    m_destinationEncryptionAlgorithmHasBeenSet(false),
     m_grantTokensHasBeenSet(false)
 {
 }
@@ -52,6 +47,12 @@ Aws::String ReEncryptRequest::SerializePayload() const
 
   }
 
+  if(m_sourceKeyIdHasBeenSet)
+  {
+   payload.WithString("SourceKeyId", m_sourceKeyId);
+
+  }
+
   if(m_destinationKeyIdHasBeenSet)
   {
    payload.WithString("DestinationKeyId", m_destinationKeyId);
@@ -67,6 +68,16 @@ Aws::String ReEncryptRequest::SerializePayload() const
    }
    payload.WithObject("DestinationEncryptionContext", std::move(destinationEncryptionContextJsonMap));
 
+  }
+
+  if(m_sourceEncryptionAlgorithmHasBeenSet)
+  {
+   payload.WithString("SourceEncryptionAlgorithm", EncryptionAlgorithmSpecMapper::GetNameForEncryptionAlgorithmSpec(m_sourceEncryptionAlgorithm));
+  }
+
+  if(m_destinationEncryptionAlgorithmHasBeenSet)
+  {
+   payload.WithString("DestinationEncryptionAlgorithm", EncryptionAlgorithmSpecMapper::GetNameForEncryptionAlgorithmSpec(m_destinationEncryptionAlgorithm));
   }
 
   if(m_grantTokensHasBeenSet)

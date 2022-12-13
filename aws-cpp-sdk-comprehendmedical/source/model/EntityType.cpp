@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/comprehendmedical/model/EntityType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -35,6 +25,7 @@ namespace Aws
         static const int PROTECTED_HEALTH_INFORMATION_HASH = HashingUtils::HashString("PROTECTED_HEALTH_INFORMATION");
         static const int TEST_TREATMENT_PROCEDURE_HASH = HashingUtils::HashString("TEST_TREATMENT_PROCEDURE");
         static const int ANATOMY_HASH = HashingUtils::HashString("ANATOMY");
+        static const int TIME_EXPRESSION_HASH = HashingUtils::HashString("TIME_EXPRESSION");
 
 
         EntityType GetEntityTypeForName(const Aws::String& name)
@@ -60,6 +51,10 @@ namespace Aws
           {
             return EntityType::ANATOMY;
           }
+          else if (hashCode == TIME_EXPRESSION_HASH)
+          {
+            return EntityType::TIME_EXPRESSION;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -84,6 +79,8 @@ namespace Aws
             return "TEST_TREATMENT_PROCEDURE";
           case EntityType::ANATOMY:
             return "ANATOMY";
+          case EntityType::TIME_EXPRESSION:
+            return "TIME_EXPRESSION";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

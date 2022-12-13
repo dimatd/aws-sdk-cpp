@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/apigatewayv2/model/UpdateIntegrationRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -33,16 +23,20 @@ UpdateIntegrationRequest::UpdateIntegrationRequest() :
     m_descriptionHasBeenSet(false),
     m_integrationIdHasBeenSet(false),
     m_integrationMethodHasBeenSet(false),
+    m_integrationSubtypeHasBeenSet(false),
     m_integrationType(IntegrationType::NOT_SET),
     m_integrationTypeHasBeenSet(false),
     m_integrationUriHasBeenSet(false),
     m_passthroughBehavior(PassthroughBehavior::NOT_SET),
     m_passthroughBehaviorHasBeenSet(false),
+    m_payloadFormatVersionHasBeenSet(false),
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
+    m_responseParametersHasBeenSet(false),
     m_templateSelectionExpressionHasBeenSet(false),
     m_timeoutInMillis(0),
-    m_timeoutInMillisHasBeenSet(false)
+    m_timeoutInMillisHasBeenSet(false),
+    m_tlsConfigHasBeenSet(false)
 {
 }
 
@@ -84,6 +78,12 @@ Aws::String UpdateIntegrationRequest::SerializePayload() const
 
   }
 
+  if(m_integrationSubtypeHasBeenSet)
+  {
+   payload.WithString("integrationSubtype", m_integrationSubtype);
+
+  }
+
   if(m_integrationTypeHasBeenSet)
   {
    payload.WithString("integrationType", IntegrationTypeMapper::GetNameForIntegrationType(m_integrationType));
@@ -98,6 +98,12 @@ Aws::String UpdateIntegrationRequest::SerializePayload() const
   if(m_passthroughBehaviorHasBeenSet)
   {
    payload.WithString("passthroughBehavior", PassthroughBehaviorMapper::GetNameForPassthroughBehavior(m_passthroughBehavior));
+  }
+
+  if(m_payloadFormatVersionHasBeenSet)
+  {
+   payload.WithString("payloadFormatVersion", m_payloadFormatVersion);
+
   }
 
   if(m_requestParametersHasBeenSet)
@@ -122,6 +128,22 @@ Aws::String UpdateIntegrationRequest::SerializePayload() const
 
   }
 
+  if(m_responseParametersHasBeenSet)
+  {
+   JsonValue responseParametersJsonMap;
+   for(auto& responseParametersItem : m_responseParameters)
+   {
+     JsonValue integrationParametersJsonMap;
+     for(auto& integrationParametersItem : responseParametersItem.second)
+     {
+       integrationParametersJsonMap.WithString(integrationParametersItem.first, integrationParametersItem.second);
+     }
+     responseParametersJsonMap.WithObject(responseParametersItem.first, std::move(integrationParametersJsonMap));
+   }
+   payload.WithObject("responseParameters", std::move(responseParametersJsonMap));
+
+  }
+
   if(m_templateSelectionExpressionHasBeenSet)
   {
    payload.WithString("templateSelectionExpression", m_templateSelectionExpression);
@@ -131,6 +153,12 @@ Aws::String UpdateIntegrationRequest::SerializePayload() const
   if(m_timeoutInMillisHasBeenSet)
   {
    payload.WithInteger("timeoutInMillis", m_timeoutInMillis);
+
+  }
+
+  if(m_tlsConfigHasBeenSet)
+  {
+   payload.WithObject("tlsConfig", m_tlsConfig.Jsonize());
 
   }
 

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
@@ -205,50 +195,50 @@ namespace Model
 
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline const Aws::String& GetUrl() const{ return m_url; }
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline Sample& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline Sample& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
 
     /**
-     * <p>The pre-signed Amazon S3 URL that can be used with a corresponding GET
-     * request to download the sample's file.</p>
+     * <p>The presigned Amazon S3 URL that can be used with a GET request to download
+     * the sample's file.</p>
      */
     inline Sample& WithUrl(const char* value) { SetUrl(value); return *this;}
 

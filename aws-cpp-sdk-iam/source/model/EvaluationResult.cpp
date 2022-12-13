@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/iam/model/EvaluationResult.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -38,6 +28,7 @@ EvaluationResult::EvaluationResult() :
     m_matchedStatementsHasBeenSet(false),
     m_missingContextValuesHasBeenSet(false),
     m_organizationsDecisionDetailHasBeenSet(false),
+    m_permissionsBoundaryDecisionDetailHasBeenSet(false),
     m_evalDecisionDetailsHasBeenSet(false),
     m_resourceSpecificResultsHasBeenSet(false)
 {
@@ -51,6 +42,7 @@ EvaluationResult::EvaluationResult(const XmlNode& xmlNode) :
     m_matchedStatementsHasBeenSet(false),
     m_missingContextValuesHasBeenSet(false),
     m_organizationsDecisionDetailHasBeenSet(false),
+    m_permissionsBoundaryDecisionDetailHasBeenSet(false),
     m_evalDecisionDetailsHasBeenSet(false),
     m_resourceSpecificResultsHasBeenSet(false)
 {
@@ -110,6 +102,12 @@ EvaluationResult& EvaluationResult::operator =(const XmlNode& xmlNode)
     {
       m_organizationsDecisionDetail = organizationsDecisionDetailNode;
       m_organizationsDecisionDetailHasBeenSet = true;
+    }
+    XmlNode permissionsBoundaryDecisionDetailNode = resultNode.FirstChild("PermissionsBoundaryDecisionDetail");
+    if(!permissionsBoundaryDecisionDetailNode.IsNull())
+    {
+      m_permissionsBoundaryDecisionDetail = permissionsBoundaryDecisionDetailNode;
+      m_permissionsBoundaryDecisionDetailHasBeenSet = true;
     }
     XmlNode evalDecisionDetailsNode = resultNode.FirstChild("EvalDecisionDetails");
 
@@ -188,6 +186,13 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       m_organizationsDecisionDetail.OutputToStream(oStream, organizationsDecisionDetailLocationAndMemberSs.str().c_str());
   }
 
+  if(m_permissionsBoundaryDecisionDetailHasBeenSet)
+  {
+      Aws::StringStream permissionsBoundaryDecisionDetailLocationAndMemberSs;
+      permissionsBoundaryDecisionDetailLocationAndMemberSs << location << index << locationValue << ".PermissionsBoundaryDecisionDetail";
+      m_permissionsBoundaryDecisionDetail.OutputToStream(oStream, permissionsBoundaryDecisionDetailLocationAndMemberSs.str().c_str());
+  }
+
   if(m_evalDecisionDetailsHasBeenSet)
   {
       unsigned evalDecisionDetailsIdx = 1;
@@ -251,6 +256,12 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       Aws::String organizationsDecisionDetailLocationAndMember(location);
       organizationsDecisionDetailLocationAndMember += ".OrganizationsDecisionDetail";
       m_organizationsDecisionDetail.OutputToStream(oStream, organizationsDecisionDetailLocationAndMember.c_str());
+  }
+  if(m_permissionsBoundaryDecisionDetailHasBeenSet)
+  {
+      Aws::String permissionsBoundaryDecisionDetailLocationAndMember(location);
+      permissionsBoundaryDecisionDetailLocationAndMember += ".PermissionsBoundaryDecisionDetail";
+      m_permissionsBoundaryDecisionDetail.OutputToStream(oStream, permissionsBoundaryDecisionDetailLocationAndMember.c_str());
   }
   if(m_evalDecisionDetailsHasBeenSet)
   {

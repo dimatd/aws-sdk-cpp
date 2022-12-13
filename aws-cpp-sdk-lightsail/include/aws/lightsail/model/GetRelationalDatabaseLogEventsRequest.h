@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/lightsail/Lightsail_EXPORTS.h>
@@ -249,8 +239,8 @@ namespace Model
      * <p>Parameter to specify if the log should start from head or tail. If
      * <code>true</code> is specified, the log event starts from the head of the log.
      * If <code>false</code> is specified, the log event starts from the tail of the
-     * log.</p> <note> <p>For PostgreSQL, the default value of <code>false</code> is
-     * the only option available.</p> </note>
+     * log.</p>  <p>For PostgreSQL, the default value of <code>false</code> is
+     * the only option available.</p> 
      */
     inline bool GetStartFromHead() const{ return m_startFromHead; }
 
@@ -258,8 +248,8 @@ namespace Model
      * <p>Parameter to specify if the log should start from head or tail. If
      * <code>true</code> is specified, the log event starts from the head of the log.
      * If <code>false</code> is specified, the log event starts from the tail of the
-     * log.</p> <note> <p>For PostgreSQL, the default value of <code>false</code> is
-     * the only option available.</p> </note>
+     * log.</p>  <p>For PostgreSQL, the default value of <code>false</code> is
+     * the only option available.</p> 
      */
     inline bool StartFromHeadHasBeenSet() const { return m_startFromHeadHasBeenSet; }
 
@@ -267,8 +257,8 @@ namespace Model
      * <p>Parameter to specify if the log should start from head or tail. If
      * <code>true</code> is specified, the log event starts from the head of the log.
      * If <code>false</code> is specified, the log event starts from the tail of the
-     * log.</p> <note> <p>For PostgreSQL, the default value of <code>false</code> is
-     * the only option available.</p> </note>
+     * log.</p>  <p>For PostgreSQL, the default value of <code>false</code> is
+     * the only option available.</p> 
      */
     inline void SetStartFromHead(bool value) { m_startFromHeadHasBeenSet = true; m_startFromHead = value; }
 
@@ -276,57 +266,81 @@ namespace Model
      * <p>Parameter to specify if the log should start from head or tail. If
      * <code>true</code> is specified, the log event starts from the head of the log.
      * If <code>false</code> is specified, the log event starts from the tail of the
-     * log.</p> <note> <p>For PostgreSQL, the default value of <code>false</code> is
-     * the only option available.</p> </note>
+     * log.</p>  <p>For PostgreSQL, the default value of <code>false</code> is
+     * the only option available.</p> 
      */
     inline GetRelationalDatabaseLogEventsRequest& WithStartFromHead(bool value) { SetStartFromHead(value); return *this;}
 
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline const Aws::String& GetPageToken() const{ return m_pageToken; }
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline GetRelationalDatabaseLogEventsRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline GetRelationalDatabaseLogEventsRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
 
     /**
-     * <p>A token used for advancing to a specific page of results for your <code>get
-     * relational database log events</code> request.</p>
+     * <p>The token to advance to the next or previous page of results from your
+     * request.</p> <p>To get a page token, perform an initial
+     * <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward
+     * token that you can specify as the page token in a subsequent request.</p>
      */
     inline GetRelationalDatabaseLogEventsRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
 

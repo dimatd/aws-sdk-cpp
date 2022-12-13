@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
@@ -53,49 +43,49 @@ namespace Model
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline const Aws::String& GetResourceName() const{ return m_resourceName; }
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline DeleteTagsRequest& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline DeleteTagsRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags.
-     * For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+     * For example, <code>arn:aws:redshift:us-east-2:123456789:cluster:t1</code>. </p>
      */
     inline DeleteTagsRequest& WithResourceName(const char* value) { SetResourceName(value); return *this;}
 

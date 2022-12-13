@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/forecast/ForecastService_EXPORTS.h>
@@ -37,9 +27,9 @@ namespace Model
   /**
    * <p>Describes a filter for choosing a subset of objects. Each filter consists of
    * a condition and a match statement. The condition is either <code>IS</code> or
-   * <code>IS_NOT</code>, which specifies whether to include or exclude,
-   * respectively, the objects that match the statement. The match statement consists
-   * of a key and a value.</p><p><h3>See Also:</h3>   <a
+   * <code>IS_NOT</code>, which specifies whether to include or exclude the objects
+   * that match the statement, respectively. The match statement consists of a key
+   * and a value.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/forecast-2018-06-26/Filter">AWS API
    * Reference</a></p>
    */
@@ -94,73 +84,85 @@ namespace Model
 
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline const Aws::String& GetValue() const{ return m_value; }
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline Filter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline Filter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
-     * <p>A valid value for <code>Key</code>.</p>
+     * <p>The value to match.</p>
      */
     inline Filter& WithValue(const char* value) { SetValue(value); return *this;}
 
 
     /**
-     * <p>The condition to apply.</p>
+     * <p>The condition to apply. To include the objects that match the statement,
+     * specify <code>IS</code>. To exclude matching objects, specify
+     * <code>IS_NOT</code>.</p>
      */
     inline const FilterConditionString& GetCondition() const{ return m_condition; }
 
     /**
-     * <p>The condition to apply.</p>
+     * <p>The condition to apply. To include the objects that match the statement,
+     * specify <code>IS</code>. To exclude matching objects, specify
+     * <code>IS_NOT</code>.</p>
      */
     inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
 
     /**
-     * <p>The condition to apply.</p>
+     * <p>The condition to apply. To include the objects that match the statement,
+     * specify <code>IS</code>. To exclude matching objects, specify
+     * <code>IS_NOT</code>.</p>
      */
     inline void SetCondition(const FilterConditionString& value) { m_conditionHasBeenSet = true; m_condition = value; }
 
     /**
-     * <p>The condition to apply.</p>
+     * <p>The condition to apply. To include the objects that match the statement,
+     * specify <code>IS</code>. To exclude matching objects, specify
+     * <code>IS_NOT</code>.</p>
      */
     inline void SetCondition(FilterConditionString&& value) { m_conditionHasBeenSet = true; m_condition = std::move(value); }
 
     /**
-     * <p>The condition to apply.</p>
+     * <p>The condition to apply. To include the objects that match the statement,
+     * specify <code>IS</code>. To exclude matching objects, specify
+     * <code>IS_NOT</code>.</p>
      */
     inline Filter& WithCondition(const FilterConditionString& value) { SetCondition(value); return *this;}
 
     /**
-     * <p>The condition to apply.</p>
+     * <p>The condition to apply. To include the objects that match the statement,
+     * specify <code>IS</code>. To exclude matching objects, specify
+     * <code>IS_NOT</code>.</p>
      */
     inline Filter& WithCondition(FilterConditionString&& value) { SetCondition(std::move(value)); return *this;}
 

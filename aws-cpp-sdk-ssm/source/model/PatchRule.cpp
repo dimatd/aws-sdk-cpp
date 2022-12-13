@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/ssm/model/PatchRule.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -34,6 +24,7 @@ PatchRule::PatchRule() :
     m_complianceLevelHasBeenSet(false),
     m_approveAfterDays(0),
     m_approveAfterDaysHasBeenSet(false),
+    m_approveUntilDateHasBeenSet(false),
     m_enableNonSecurity(false),
     m_enableNonSecurityHasBeenSet(false)
 {
@@ -45,6 +36,7 @@ PatchRule::PatchRule(JsonView jsonValue) :
     m_complianceLevelHasBeenSet(false),
     m_approveAfterDays(0),
     m_approveAfterDaysHasBeenSet(false),
+    m_approveUntilDateHasBeenSet(false),
     m_enableNonSecurity(false),
     m_enableNonSecurityHasBeenSet(false)
 {
@@ -72,6 +64,13 @@ PatchRule& PatchRule::operator =(JsonView jsonValue)
     m_approveAfterDays = jsonValue.GetInteger("ApproveAfterDays");
 
     m_approveAfterDaysHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ApproveUntilDate"))
+  {
+    m_approveUntilDate = jsonValue.GetString("ApproveUntilDate");
+
+    m_approveUntilDateHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("EnableNonSecurity"))
@@ -102,6 +101,12 @@ JsonValue PatchRule::Jsonize() const
   if(m_approveAfterDaysHasBeenSet)
   {
    payload.WithInteger("ApproveAfterDays", m_approveAfterDays);
+
+  }
+
+  if(m_approveUntilDateHasBeenSet)
+  {
+   payload.WithString("ApproveUntilDate", m_approveUntilDate);
 
   }
 

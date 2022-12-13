@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
@@ -97,42 +87,42 @@ namespace Model
     /**
      * <p>The status of the pull request. The only valid operations are to update the
      * status from <code>OPEN</code> to <code>OPEN</code>, <code>OPEN</code> to
-     * <code>CLOSED</code> or from from <code>CLOSED</code> to <code>CLOSED</code>.</p>
+     * <code>CLOSED</code> or from <code>CLOSED</code> to <code>CLOSED</code>.</p>
      */
     inline const PullRequestStatusEnum& GetPullRequestStatus() const{ return m_pullRequestStatus; }
 
     /**
      * <p>The status of the pull request. The only valid operations are to update the
      * status from <code>OPEN</code> to <code>OPEN</code>, <code>OPEN</code> to
-     * <code>CLOSED</code> or from from <code>CLOSED</code> to <code>CLOSED</code>.</p>
+     * <code>CLOSED</code> or from <code>CLOSED</code> to <code>CLOSED</code>.</p>
      */
     inline bool PullRequestStatusHasBeenSet() const { return m_pullRequestStatusHasBeenSet; }
 
     /**
      * <p>The status of the pull request. The only valid operations are to update the
      * status from <code>OPEN</code> to <code>OPEN</code>, <code>OPEN</code> to
-     * <code>CLOSED</code> or from from <code>CLOSED</code> to <code>CLOSED</code>.</p>
+     * <code>CLOSED</code> or from <code>CLOSED</code> to <code>CLOSED</code>.</p>
      */
     inline void SetPullRequestStatus(const PullRequestStatusEnum& value) { m_pullRequestStatusHasBeenSet = true; m_pullRequestStatus = value; }
 
     /**
      * <p>The status of the pull request. The only valid operations are to update the
      * status from <code>OPEN</code> to <code>OPEN</code>, <code>OPEN</code> to
-     * <code>CLOSED</code> or from from <code>CLOSED</code> to <code>CLOSED</code>.</p>
+     * <code>CLOSED</code> or from <code>CLOSED</code> to <code>CLOSED</code>.</p>
      */
     inline void SetPullRequestStatus(PullRequestStatusEnum&& value) { m_pullRequestStatusHasBeenSet = true; m_pullRequestStatus = std::move(value); }
 
     /**
      * <p>The status of the pull request. The only valid operations are to update the
      * status from <code>OPEN</code> to <code>OPEN</code>, <code>OPEN</code> to
-     * <code>CLOSED</code> or from from <code>CLOSED</code> to <code>CLOSED</code>.</p>
+     * <code>CLOSED</code> or from <code>CLOSED</code> to <code>CLOSED</code>.</p>
      */
     inline UpdatePullRequestStatusRequest& WithPullRequestStatus(const PullRequestStatusEnum& value) { SetPullRequestStatus(value); return *this;}
 
     /**
      * <p>The status of the pull request. The only valid operations are to update the
      * status from <code>OPEN</code> to <code>OPEN</code>, <code>OPEN</code> to
-     * <code>CLOSED</code> or from from <code>CLOSED</code> to <code>CLOSED</code>.</p>
+     * <code>CLOSED</code> or from <code>CLOSED</code> to <code>CLOSED</code>.</p>
      */
     inline UpdatePullRequestStatusRequest& WithPullRequestStatus(PullRequestStatusEnum&& value) { SetPullRequestStatus(std::move(value)); return *this;}
 

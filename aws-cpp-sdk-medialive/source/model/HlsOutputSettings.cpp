@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/medialive/model/HlsOutputSettings.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -29,6 +19,8 @@ namespace Model
 {
 
 HlsOutputSettings::HlsOutputSettings() : 
+    m_h265PackagingType(HlsH265PackagingType::NOT_SET),
+    m_h265PackagingTypeHasBeenSet(false),
     m_hlsSettingsHasBeenSet(false),
     m_nameModifierHasBeenSet(false),
     m_segmentModifierHasBeenSet(false)
@@ -36,6 +28,8 @@ HlsOutputSettings::HlsOutputSettings() :
 }
 
 HlsOutputSettings::HlsOutputSettings(JsonView jsonValue) : 
+    m_h265PackagingType(HlsH265PackagingType::NOT_SET),
+    m_h265PackagingTypeHasBeenSet(false),
     m_hlsSettingsHasBeenSet(false),
     m_nameModifierHasBeenSet(false),
     m_segmentModifierHasBeenSet(false)
@@ -45,6 +39,13 @@ HlsOutputSettings::HlsOutputSettings(JsonView jsonValue) :
 
 HlsOutputSettings& HlsOutputSettings::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("h265PackagingType"))
+  {
+    m_h265PackagingType = HlsH265PackagingTypeMapper::GetHlsH265PackagingTypeForName(jsonValue.GetString("h265PackagingType"));
+
+    m_h265PackagingTypeHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("hlsSettings"))
   {
     m_hlsSettings = jsonValue.GetObject("hlsSettings");
@@ -72,6 +73,11 @@ HlsOutputSettings& HlsOutputSettings::operator =(JsonView jsonValue)
 JsonValue HlsOutputSettings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_h265PackagingTypeHasBeenSet)
+  {
+   payload.WithString("h265PackagingType", HlsH265PackagingTypeMapper::GetNameForHlsH265PackagingType(m_h265PackagingType));
+  }
 
   if(m_hlsSettingsHasBeenSet)
   {

@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
@@ -186,37 +176,37 @@ namespace Model
 
 
     /**
-     * <p>Autoscaling settings for a global secondary index replica's read capacity
+     * <p>Auto scaling settings for a global secondary index replica's read capacity
      * units.</p>
      */
     inline const AutoScalingSettingsDescription& GetProvisionedReadCapacityAutoScalingSettings() const{ return m_provisionedReadCapacityAutoScalingSettings; }
 
     /**
-     * <p>Autoscaling settings for a global secondary index replica's read capacity
+     * <p>Auto scaling settings for a global secondary index replica's read capacity
      * units.</p>
      */
     inline bool ProvisionedReadCapacityAutoScalingSettingsHasBeenSet() const { return m_provisionedReadCapacityAutoScalingSettingsHasBeenSet; }
 
     /**
-     * <p>Autoscaling settings for a global secondary index replica's read capacity
+     * <p>Auto scaling settings for a global secondary index replica's read capacity
      * units.</p>
      */
     inline void SetProvisionedReadCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { m_provisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedReadCapacityAutoScalingSettings = value; }
 
     /**
-     * <p>Autoscaling settings for a global secondary index replica's read capacity
+     * <p>Auto scaling settings for a global secondary index replica's read capacity
      * units.</p>
      */
     inline void SetProvisionedReadCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { m_provisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedReadCapacityAutoScalingSettings = std::move(value); }
 
     /**
-     * <p>Autoscaling settings for a global secondary index replica's read capacity
+     * <p>Auto scaling settings for a global secondary index replica's read capacity
      * units.</p>
      */
     inline ReplicaGlobalSecondaryIndexSettingsDescription& WithProvisionedReadCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { SetProvisionedReadCapacityAutoScalingSettings(value); return *this;}
 
     /**
-     * <p>Autoscaling settings for a global secondary index replica's read capacity
+     * <p>Auto scaling settings for a global secondary index replica's read capacity
      * units.</p>
      */
     inline ReplicaGlobalSecondaryIndexSettingsDescription& WithProvisionedReadCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { SetProvisionedReadCapacityAutoScalingSettings(std::move(value)); return *this;}
@@ -248,37 +238,37 @@ namespace Model
 
 
     /**
-     * <p>AutoScaling settings for a global secondary index replica's write capacity
+     * <p>Auto scaling settings for a global secondary index replica's write capacity
      * units.</p>
      */
     inline const AutoScalingSettingsDescription& GetProvisionedWriteCapacityAutoScalingSettings() const{ return m_provisionedWriteCapacityAutoScalingSettings; }
 
     /**
-     * <p>AutoScaling settings for a global secondary index replica's write capacity
+     * <p>Auto scaling settings for a global secondary index replica's write capacity
      * units.</p>
      */
     inline bool ProvisionedWriteCapacityAutoScalingSettingsHasBeenSet() const { return m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet; }
 
     /**
-     * <p>AutoScaling settings for a global secondary index replica's write capacity
+     * <p>Auto scaling settings for a global secondary index replica's write capacity
      * units.</p>
      */
     inline void SetProvisionedWriteCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettings = value; }
 
     /**
-     * <p>AutoScaling settings for a global secondary index replica's write capacity
+     * <p>Auto scaling settings for a global secondary index replica's write capacity
      * units.</p>
      */
     inline void SetProvisionedWriteCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { m_provisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_provisionedWriteCapacityAutoScalingSettings = std::move(value); }
 
     /**
-     * <p>AutoScaling settings for a global secondary index replica's write capacity
+     * <p>Auto scaling settings for a global secondary index replica's write capacity
      * units.</p>
      */
     inline ReplicaGlobalSecondaryIndexSettingsDescription& WithProvisionedWriteCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { SetProvisionedWriteCapacityAutoScalingSettings(value); return *this;}
 
     /**
-     * <p>AutoScaling settings for a global secondary index replica's write capacity
+     * <p>Auto scaling settings for a global secondary index replica's write capacity
      * units.</p>
      */
     inline ReplicaGlobalSecondaryIndexSettingsDescription& WithProvisionedWriteCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { SetProvisionedWriteCapacityAutoScalingSettings(std::move(value)); return *this;}

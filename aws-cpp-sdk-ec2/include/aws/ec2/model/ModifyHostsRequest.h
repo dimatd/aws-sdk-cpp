@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -130,7 +120,7 @@ namespace Model
      * <p>Indicates whether to enable or disable host recovery for the Dedicated Host.
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html">
-     * Host Recovery</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * Host recovery</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
     inline const HostRecovery& GetHostRecovery() const{ return m_hostRecovery; }
 
@@ -138,7 +128,7 @@ namespace Model
      * <p>Indicates whether to enable or disable host recovery for the Dedicated Host.
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html">
-     * Host Recovery</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * Host recovery</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
     inline bool HostRecoveryHasBeenSet() const { return m_hostRecoveryHasBeenSet; }
 
@@ -146,7 +136,7 @@ namespace Model
      * <p>Indicates whether to enable or disable host recovery for the Dedicated Host.
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html">
-     * Host Recovery</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * Host recovery</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
     inline void SetHostRecovery(const HostRecovery& value) { m_hostRecoveryHasBeenSet = true; m_hostRecovery = value; }
 
@@ -154,7 +144,7 @@ namespace Model
      * <p>Indicates whether to enable or disable host recovery for the Dedicated Host.
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html">
-     * Host Recovery</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * Host recovery</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
     inline void SetHostRecovery(HostRecovery&& value) { m_hostRecoveryHasBeenSet = true; m_hostRecovery = std::move(value); }
 
@@ -162,7 +152,7 @@ namespace Model
      * <p>Indicates whether to enable or disable host recovery for the Dedicated Host.
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html">
-     * Host Recovery</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * Host recovery</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
     inline ModifyHostsRequest& WithHostRecovery(const HostRecovery& value) { SetHostRecovery(value); return *this;}
 
@@ -170,9 +160,171 @@ namespace Model
      * <p>Indicates whether to enable or disable host recovery for the Dedicated Host.
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html">
-     * Host Recovery</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     * Host recovery</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
     inline ModifyHostsRequest& WithHostRecovery(HostRecovery&& value) { SetHostRecovery(std::move(value)); return *this;}
+
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline ModifyHostsRequest& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline ModifyHostsRequest& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
+
+    /**
+     * <p>Specifies the instance type to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support only a specific instance
+     * type.</p> <p>If you want to modify a Dedicated Host to support multiple instance
+     * types in its current instance family, omit this parameter and specify
+     * <b>InstanceFamily</b> instead. You cannot specify <b>InstanceType</b> and
+     * <b>InstanceFamily</b> in the same request.</p>
+     */
+    inline ModifyHostsRequest& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
+
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline const Aws::String& GetInstanceFamily() const{ return m_instanceFamily; }
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline bool InstanceFamilyHasBeenSet() const { return m_instanceFamilyHasBeenSet; }
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline void SetInstanceFamily(const Aws::String& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = value; }
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline void SetInstanceFamily(Aws::String&& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = std::move(value); }
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline void SetInstanceFamily(const char* value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily.assign(value); }
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline ModifyHostsRequest& WithInstanceFamily(const Aws::String& value) { SetInstanceFamily(value); return *this;}
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline ModifyHostsRequest& WithInstanceFamily(Aws::String&& value) { SetInstanceFamily(std::move(value)); return *this;}
+
+    /**
+     * <p>Specifies the instance family to be supported by the Dedicated Host. Specify
+     * this parameter to modify a Dedicated Host to support multiple instance types
+     * within its current instance family.</p> <p>If you want to modify a Dedicated
+     * Host to support a specific instance type only, omit this parameter and specify
+     * <b>InstanceType</b> instead. You cannot specify <b>InstanceFamily</b> and
+     * <b>InstanceType</b> in the same request.</p>
+     */
+    inline ModifyHostsRequest& WithInstanceFamily(const char* value) { SetInstanceFamily(value); return *this;}
 
   private:
 
@@ -184,6 +336,12 @@ namespace Model
 
     HostRecovery m_hostRecovery;
     bool m_hostRecoveryHasBeenSet;
+
+    Aws::String m_instanceType;
+    bool m_instanceTypeHasBeenSet;
+
+    Aws::String m_instanceFamily;
+    bool m_instanceFamilyHasBeenSet;
   };
 
 } // namespace Model

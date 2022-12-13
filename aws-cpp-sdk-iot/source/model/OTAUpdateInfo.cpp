@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/iot/model/OTAUpdateInfo.h>
 #include <aws/core/utils/json/JsonSerializer.h>
@@ -35,7 +25,9 @@ OTAUpdateInfo::OTAUpdateInfo() :
     m_lastModifiedDateHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_targetsHasBeenSet(false),
+    m_protocolsHasBeenSet(false),
     m_awsJobExecutionsRolloutConfigHasBeenSet(false),
+    m_awsJobPresignedUrlConfigHasBeenSet(false),
     m_targetSelection(TargetSelection::NOT_SET),
     m_targetSelectionHasBeenSet(false),
     m_otaUpdateFilesHasBeenSet(false),
@@ -55,7 +47,9 @@ OTAUpdateInfo::OTAUpdateInfo(JsonView jsonValue) :
     m_lastModifiedDateHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_targetsHasBeenSet(false),
+    m_protocolsHasBeenSet(false),
     m_awsJobExecutionsRolloutConfigHasBeenSet(false),
+    m_awsJobPresignedUrlConfigHasBeenSet(false),
     m_targetSelection(TargetSelection::NOT_SET),
     m_targetSelectionHasBeenSet(false),
     m_otaUpdateFilesHasBeenSet(false),
@@ -116,11 +110,28 @@ OTAUpdateInfo& OTAUpdateInfo::operator =(JsonView jsonValue)
     m_targetsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("protocols"))
+  {
+    Array<JsonView> protocolsJsonList = jsonValue.GetArray("protocols");
+    for(unsigned protocolsIndex = 0; protocolsIndex < protocolsJsonList.GetLength(); ++protocolsIndex)
+    {
+      m_protocols.push_back(ProtocolMapper::GetProtocolForName(protocolsJsonList[protocolsIndex].AsString()));
+    }
+    m_protocolsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("awsJobExecutionsRolloutConfig"))
   {
     m_awsJobExecutionsRolloutConfig = jsonValue.GetObject("awsJobExecutionsRolloutConfig");
 
     m_awsJobExecutionsRolloutConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("awsJobPresignedUrlConfig"))
+  {
+    m_awsJobPresignedUrlConfig = jsonValue.GetObject("awsJobPresignedUrlConfig");
+
+    m_awsJobPresignedUrlConfigHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("targetSelection"))
@@ -224,9 +235,26 @@ JsonValue OTAUpdateInfo::Jsonize() const
 
   }
 
+  if(m_protocolsHasBeenSet)
+  {
+   Array<JsonValue> protocolsJsonList(m_protocols.size());
+   for(unsigned protocolsIndex = 0; protocolsIndex < protocolsJsonList.GetLength(); ++protocolsIndex)
+   {
+     protocolsJsonList[protocolsIndex].AsString(ProtocolMapper::GetNameForProtocol(m_protocols[protocolsIndex]));
+   }
+   payload.WithArray("protocols", std::move(protocolsJsonList));
+
+  }
+
   if(m_awsJobExecutionsRolloutConfigHasBeenSet)
   {
    payload.WithObject("awsJobExecutionsRolloutConfig", m_awsJobExecutionsRolloutConfig.Jsonize());
+
+  }
+
+  if(m_awsJobPresignedUrlConfigHasBeenSet)
+  {
+   payload.WithObject("awsJobPresignedUrlConfig", m_awsJobPresignedUrlConfig.Jsonize());
 
   }
 

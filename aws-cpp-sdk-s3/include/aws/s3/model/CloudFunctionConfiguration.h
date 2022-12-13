@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
@@ -35,7 +25,8 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
+   * <p>Container for specifying the Lambda notification configuration.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CloudFunctionConfiguration">AWS
    * API Reference</a></p>
    */
@@ -75,124 +66,132 @@ namespace Model
 
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline const Aws::Vector<Event>& GetEvents() const{ return m_events; }
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline bool EventsHasBeenSet() const { return m_eventsHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline void SetEvents(const Aws::Vector<Event>& value) { m_eventsHasBeenSet = true; m_events = value; }
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline void SetEvents(Aws::Vector<Event>&& value) { m_eventsHasBeenSet = true; m_events = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline CloudFunctionConfiguration& WithEvents(const Aws::Vector<Event>& value) { SetEvents(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline CloudFunctionConfiguration& WithEvents(Aws::Vector<Event>&& value) { SetEvents(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline CloudFunctionConfiguration& AddEvents(const Event& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
 
     /**
-     * <p/>
+     * <p>Bucket events for which to send notifications.</p>
      */
     inline CloudFunctionConfiguration& AddEvents(Event&& value) { m_eventsHasBeenSet = true; m_events.push_back(std::move(value)); return *this; }
 
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline const Aws::String& GetCloudFunction() const{ return m_cloudFunction; }
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline bool CloudFunctionHasBeenSet() const { return m_cloudFunctionHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline void SetCloudFunction(const Aws::String& value) { m_cloudFunctionHasBeenSet = true; m_cloudFunction = value; }
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline void SetCloudFunction(Aws::String&& value) { m_cloudFunctionHasBeenSet = true; m_cloudFunction = std::move(value); }
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline void SetCloudFunction(const char* value) { m_cloudFunctionHasBeenSet = true; m_cloudFunction.assign(value); }
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline CloudFunctionConfiguration& WithCloudFunction(const Aws::String& value) { SetCloudFunction(value); return *this;}
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline CloudFunctionConfiguration& WithCloudFunction(Aws::String&& value) { SetCloudFunction(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>Lambda cloud function ARN that Amazon S3 can invoke when it detects events of
+     * the specified type.</p>
      */
     inline CloudFunctionConfiguration& WithCloudFunction(const char* value) { SetCloudFunction(value); return *this;}
 
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline const Aws::String& GetInvocationRole() const{ return m_invocationRole; }
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline bool InvocationRoleHasBeenSet() const { return m_invocationRoleHasBeenSet; }
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline void SetInvocationRole(const Aws::String& value) { m_invocationRoleHasBeenSet = true; m_invocationRole = value; }
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline void SetInvocationRole(Aws::String&& value) { m_invocationRoleHasBeenSet = true; m_invocationRole = std::move(value); }
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline void SetInvocationRole(const char* value) { m_invocationRoleHasBeenSet = true; m_invocationRole.assign(value); }
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline CloudFunctionConfiguration& WithInvocationRole(const Aws::String& value) { SetInvocationRole(value); return *this;}
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline CloudFunctionConfiguration& WithInvocationRole(Aws::String&& value) { SetInvocationRole(std::move(value)); return *this;}
 
     /**
-     * <p/>
+     * <p>The role supporting the invocation of the Lambda function</p>
      */
     inline CloudFunctionConfiguration& WithInvocationRole(const char* value) { SetInvocationRole(value); return *this;}
 

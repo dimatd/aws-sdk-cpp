@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
@@ -62,24 +52,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
 
@@ -97,24 +90,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
 
@@ -132,24 +128,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
@@ -167,24 +166,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
@@ -202,24 +204,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline DescribeVolumesRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
 
@@ -237,24 +242,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline DescribeVolumesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
@@ -272,24 +280,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline DescribeVolumesRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
@@ -307,24 +318,27 @@ namespace Model
      * created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the
      * volume was created.</p> </li> <li> <p> <code>encrypted</code> - Indicates
      * whether the volume is encrypted (<code>true</code> | <code>false</code>)</p>
-     * </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li>
-     * <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was
-     * created.</p> </li> <li> <p> <code>status</code> - The status of the volume
-     * (<code>creating</code> | <code>available</code> | <code>in-use</code> |
-     * <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li>
-     * <li> <p> <code>tag</code>:&lt;key&gt; - The key/value combination of a tag
-     * assigned to the resource. Use the tag key in the filter name and the tag value
-     * as the filter value. For example, to find all resources that have a tag with the
-     * key <code>Owner</code> and the value <code>TeamA</code>, specify
-     * <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter
-     * value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to
-     * the resource. Use this filter to find all resources assigned a tag with a
-     * specific key, regardless of the tag value.</p> </li> <li> <p>
-     * <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
-     * <code>volume-type</code> - The Amazon EBS volume type. This can be
-     * <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS
-     * SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold
-     * HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
+     * </li> <li> <p> <code>multi-attach-enabled</code> - Indicates whether the volume
+     * is enabled for Multi-Attach (<code>true</code> | <code>false</code>)</p> </li>
+     * <li> <p> <code>fast-restored</code> - Indicates whether the volume was created
+     * from a snapshot that is enabled for fast snapshot restore (<code>true</code> |
+     * <code>false</code>).</p> </li> <li> <p> <code>size</code> - The size of the
+     * volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from
+     * which the volume was created.</p> </li> <li> <p> <code>status</code> - The state
+     * of the volume (<code>creating</code> | <code>available</code> |
+     * <code>in-use</code> | <code>deleting</code> | <code>deleted</code> |
+     * <code>error</code>).</p> </li> <li> <p> <code>tag</code>:&lt;key&gt; - The
+     * key/value combination of a tag assigned to the resource. Use the tag key in the
+     * filter name and the tag value as the filter value. For example, to find all
+     * resources that have a tag with the key <code>Owner</code> and the value
+     * <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and
+     * <code>TeamA</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code>
+     * - The key of a tag assigned to the resource. Use this filter to find all
+     * resources assigned a tag with a specific key, regardless of the tag value.</p>
+     * </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p>
+     * <code>volume-type</code> - The Amazon EBS volume type (<code>gp2</code> |
+     * <code>gp3</code> | <code>io1</code> | <code>io2</code> | <code>st1</code> |
+     * <code>sc1</code>| <code>standard</code>)</p> </li> </ul>
      */
     inline DescribeVolumesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 

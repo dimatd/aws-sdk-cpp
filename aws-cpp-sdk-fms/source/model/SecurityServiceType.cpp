@@ -1,17 +1,7 @@
-﻿/*
-* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License").
-* You may not use this file except in compliance with the License.
-* A copy of the License is located at
-*
-*  http://aws.amazon.com/apache2.0
-*
-* or in the "license" file accompanying this file. This file is distributed
-* on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-* express or implied. See the License for the specific language governing
-* permissions and limitations under the License.
-*/
+﻿/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0.
+ */
 
 #include <aws/fms/model/SecurityServiceType.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -31,10 +21,14 @@ namespace Aws
       {
 
         static const int WAF_HASH = HashingUtils::HashString("WAF");
+        static const int WAFV2_HASH = HashingUtils::HashString("WAFV2");
         static const int SHIELD_ADVANCED_HASH = HashingUtils::HashString("SHIELD_ADVANCED");
         static const int SECURITY_GROUPS_COMMON_HASH = HashingUtils::HashString("SECURITY_GROUPS_COMMON");
         static const int SECURITY_GROUPS_CONTENT_AUDIT_HASH = HashingUtils::HashString("SECURITY_GROUPS_CONTENT_AUDIT");
         static const int SECURITY_GROUPS_USAGE_AUDIT_HASH = HashingUtils::HashString("SECURITY_GROUPS_USAGE_AUDIT");
+        static const int NETWORK_FIREWALL_HASH = HashingUtils::HashString("NETWORK_FIREWALL");
+        static const int DNS_FIREWALL_HASH = HashingUtils::HashString("DNS_FIREWALL");
+        static const int THIRD_PARTY_FIREWALL_HASH = HashingUtils::HashString("THIRD_PARTY_FIREWALL");
 
 
         SecurityServiceType GetSecurityServiceTypeForName(const Aws::String& name)
@@ -43,6 +37,10 @@ namespace Aws
           if (hashCode == WAF_HASH)
           {
             return SecurityServiceType::WAF;
+          }
+          else if (hashCode == WAFV2_HASH)
+          {
+            return SecurityServiceType::WAFV2;
           }
           else if (hashCode == SHIELD_ADVANCED_HASH)
           {
@@ -60,6 +58,18 @@ namespace Aws
           {
             return SecurityServiceType::SECURITY_GROUPS_USAGE_AUDIT;
           }
+          else if (hashCode == NETWORK_FIREWALL_HASH)
+          {
+            return SecurityServiceType::NETWORK_FIREWALL;
+          }
+          else if (hashCode == DNS_FIREWALL_HASH)
+          {
+            return SecurityServiceType::DNS_FIREWALL;
+          }
+          else if (hashCode == THIRD_PARTY_FIREWALL_HASH)
+          {
+            return SecurityServiceType::THIRD_PARTY_FIREWALL;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -76,6 +86,8 @@ namespace Aws
           {
           case SecurityServiceType::WAF:
             return "WAF";
+          case SecurityServiceType::WAFV2:
+            return "WAFV2";
           case SecurityServiceType::SHIELD_ADVANCED:
             return "SHIELD_ADVANCED";
           case SecurityServiceType::SECURITY_GROUPS_COMMON:
@@ -84,6 +96,12 @@ namespace Aws
             return "SECURITY_GROUPS_CONTENT_AUDIT";
           case SecurityServiceType::SECURITY_GROUPS_USAGE_AUDIT:
             return "SECURITY_GROUPS_USAGE_AUDIT";
+          case SecurityServiceType::NETWORK_FIREWALL:
+            return "NETWORK_FIREWALL";
+          case SecurityServiceType::DNS_FIREWALL:
+            return "DNS_FIREWALL";
+          case SecurityServiceType::THIRD_PARTY_FIREWALL:
+            return "THIRD_PARTY_FIREWALL";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)
